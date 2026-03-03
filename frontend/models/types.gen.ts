@@ -589,6 +589,7 @@ export type TranslationParams = {
     corpusTextId?: (number) | null;
     text: string;
     source: string;
+    anchorStartIndex?: (number) | null;
 };
 
 export type TranslationViewModel = {
@@ -596,6 +597,8 @@ export type TranslationViewModel = {
     text: string;
     source: Array<SourceRefViewModel>;
     sourceEditableText: string;
+    anchorStartIndex?: (number) | null;
+    anchorEndIndex?: (number) | null;
 };
 
 export type UpdateCompoundParams = {

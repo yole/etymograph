@@ -50,25 +50,36 @@ class CorpusText(
     var text: String
         get() = _text
         set(value) {
-            val wordMap = mutableMapOf<String, MutableList<CorpusWordAssociation?>>()
-            for (word in iterateWords()) {
-                wordMap.getOrPut(word.normalizedText) { arrayListOf() }.add(_words.find { it.index == word.index })
-            }
+            updateText(value)
+        }
 
-            _text = value
+    fun updateText(value: String): Map<Int, Int> {
+        val oldWords = iterateWords().toList()
+        val oldWordMap = mutableMapOf<String, MutableList<WordText>>()
+        val oldAssociations = _words.associateBy { it.index }
+        for (word in oldWords) {
+            oldWordMap.getOrPut(word.normalizedText) { arrayListOf() }.add(word)
+        }
 
-            _words.clear()
-            for (word in iterateWords()) {
-                val list = wordMap[word.normalizedText]
-                if (!list.isNullOrEmpty()) {
-                    val assocWord = list.first()
-                    if (assocWord != null) {
-                        _words.add(CorpusWordAssociation(word.index, assocWord.word, assocWord.contextGloss))
-                    }
-                    list.removeAt(0)
+        _text = value
+        val newWords = iterateWords().toList()
+
+        _words.clear()
+        val oldToNewWordIndices = mutableMapOf<Int, Int>()
+        for (word in newWords) {
+            val list = oldWordMap[word.normalizedText]
+            if (!list.isNullOrEmpty()) {
+                val oldWord = list.removeAt(0)
+                oldToNewWordIndices[oldWord.index] = word.index
+                val assocWord = oldAssociations[oldWord.index]
+                if (assocWord != null) {
+                    _words.add(CorpusWordAssociation(word.index, assocWord.word, assocWord.contextGloss))
                 }
             }
         }
+
+        return oldToNewWordIndices
+    }
 
     fun mapToLines(repo: GraphRepository): List<CorpusTextLine> {
         var currentIndex = 0
@@ -207,5 +218,27 @@ class Translation(
     val corpusText: CorpusText,
     var text: String,
     source: List<SourceRef>,
-    notes: String?
-) : LangEntity(id, source, notes)
+    notes: String?,
+    var anchorStartIndex: Int? = null,
+    var anchorEndIndex: Int? = null
+) : LangEntity(id, source, notes) {
+    fun remapAnchor(oldToNewWordIndices: Map<Int, Int>) {
+        val start = anchorStartIndex ?: return
+        val end = anchorEndIndex ?: return
+        if (start >= end) {
+            anchorStartIndex = null
+            anchorEndIndex = null
+            return
+        }
+
+        val mappedWordIndices = (start until end).mapNotNull { oldToNewWordIndices[it] }
+        if (mappedWordIndices.isEmpty()) {
+            anchorStartIndex = null
+            anchorEndIndex = null
+            return
+        }
+
+        anchorStartIndex = mappedWordIndices.minOrNull()
+        anchorEndIndex = mappedWordIndices.maxOrNull()?.plus(1)
+    }
+}

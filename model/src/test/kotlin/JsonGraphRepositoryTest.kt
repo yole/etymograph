@@ -141,10 +141,14 @@ class JsonGraphRepositoryTest : QBaseTest() {
     @Test
     fun serializeTranslation() {
         val corpusText = repo.addCorpusText("abc", null, q)
-        repo.addTranslation(corpusText, "def", emptyList())
+        val translation = repo.addTranslation(corpusText, "def", emptyList())
+        translation.anchorStartIndex = 0
+        translation.anchorEndIndex = 1
         val repo2 = repo.roundtrip()
         val corpusText2 = repo2.corpusTextById(corpusText.id)!!
-        assertEquals(1, repo2.translationsForText(corpusText2).size)
+        val translation2 = repo2.translationsForText(corpusText2).single()
+        assertEquals(0, translation2.anchorStartIndex)
+        assertEquals(1, translation2.anchorEndIndex)
     }
 
     private fun JsonGraphRepository.roundtrip(): JsonGraphRepository {

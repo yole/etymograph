@@ -1,7 +1,7 @@
 import {useState} from "react";
 import WordForm, {WordFormData} from "@/forms/WordForm";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faEdit, faCheck} from '@fortawesome/free-solid-svg-icons'
+import {faEdit, faCheck, faCommentDots} from '@fortawesome/free-solid-svg-icons'
 import {
     fetchBackend,
     associateWord,
@@ -17,7 +17,7 @@ import CorpusTextForm from "@/forms/CorpusTextForm";
 import TranslationForm from "@/forms/TranslationForm";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import WordGloss from "@/components/WordGloss";
-import {CorpusTextViewModel, CorpusWordCandidateViewModel, CorpusWordViewModel, WordViewModel} from "@/models";
+import {CorpusTextViewModel, CorpusWordCandidateViewModel, CorpusWordViewModel, TranslationViewModel, WordViewModel} from "@/models";
 import WordTextView from "@/components/WordTextView";
 import {Urls} from "@/components/Urls";
 
@@ -37,21 +37,27 @@ interface CorpusTextWordLinkProps {
     word: CorpusWordViewModel
     corpusText: CorpusTextViewModel
     showWordForm: (text: string, index: number) => void
+    showTranslationFormAtWord: (index: number) => void
 }
 
 export function CorpusTextWordLink(params: CorpusTextWordLinkProps) {
     const w = params.word
     const corpusText = params.corpusText
     const showWordForm = params.showWordForm
+    const showTranslationFormAtWord = params.showTranslationFormAtWord
     const [hovered, setHovered] = useState(false)
     const router = useRouter()
+
+    const renderActions = () => hovered && allowEdit() && <span className="iconWithMargin">
+        <FontAwesomeIcon icon={faEdit} onClick={() => showWordForm(w.normalizedText, w.index)}/>
+        {' '}
+        <FontAwesomeIcon icon={faCommentDots} onClick={() => showTranslationFormAtWord(w.index)}/>
+    </span>
 
     if (w.wordCandidates && w.wordCandidates.length > 1) {
         return <span onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
             <WordTextView text={w.text} syllabograms={w.syllabogramSequence}/>
-            {hovered && allowEdit() && <span className="iconWithMargin">
-                <FontAwesomeIcon icon={faEdit} onClick={() => showWordForm(w.normalizedText, w.index)}/>
-            </span>}
+            {renderActions()}
         </span>
     } else if (w.wordText || w.gloss) {
         let linkText = (w.wordUrlKey ?? w.wordText ?? w.normalizedText).toLowerCase()
@@ -63,14 +69,15 @@ export function CorpusTextWordLink(params: CorpusTextWordLinkProps) {
                 <WordTextView text={w.text} syllabograms={w.syllabogramSequence}
                               stressIndex={w.stressIndex} stressLength={w.stressLength}/>
             </Link>
-            {hovered && allowEdit() && <span className="iconWithMargin">
-                <FontAwesomeIcon icon={faEdit} onClick={() => showWordForm(w.normalizedText, w.index)}/>
-            </span>}
+            {renderActions()}
         </span>
     } else {
-        return <span className="undefWord" onClick={() => {
-            if (allowEdit()) showWordForm(w.normalizedText, w.index)
-        }}><WordTextView text={w.text} syllabograms={w.syllabogramSequence}/></span>
+        return <span onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+            <span className="undefWord" onClick={() => {
+                if (allowEdit()) showWordForm(w.normalizedText, w.index)
+            }}><WordTextView text={w.text} syllabograms={w.syllabogramSequence}/></span>
+            {renderActions()}
+        </span>
     }
 }
 
@@ -101,6 +108,58 @@ function CorpusTextGlossChoice(params: CorpusTextGlossChoiceProps) {
     </span>
 }
 
+interface TextSegment {
+    start: number
+    end: number
+    translations: TranslationViewModel[]
+}
+
+function segmentKey(start: number, end: number): string {
+    return `${start}:${end}`
+}
+
+function buildSegments(corpusText: CorpusTextViewModel): { segments: TextSegment[], unanchoredTranslations: TranslationViewModel[] } {
+    const wordCount = corpusText.lines.flatMap(line => line.words).length
+    const boundaries = new Set<number>([0, wordCount])
+    const translationsBySegment = new Map<string, TranslationViewModel[]>()
+    const unanchoredTranslations: TranslationViewModel[] = []
+
+    corpusText.translations.forEach(translation => {
+        const start = translation.anchorStartIndex
+        const end = translation.anchorEndIndex
+        if (start === null || start === undefined || end === null || end === undefined || start < 0 || end > wordCount || start >= end) {
+            unanchoredTranslations.push(translation)
+            return
+        }
+
+        boundaries.add(start)
+        boundaries.add(end)
+        const key = segmentKey(start, end)
+        const list = translationsBySegment.get(key)
+        if (list) {
+            list.push(translation)
+        } else {
+            translationsBySegment.set(key, [translation])
+        }
+    })
+
+    const sortedBoundaries = Array.from(boundaries).sort((a, b) => a - b)
+    const segments: TextSegment[] = []
+    for (let i = 0; i < sortedBoundaries.length - 1; i++) {
+        const start = sortedBoundaries[i]
+        const end = sortedBoundaries[i + 1]
+        if (start === end) continue
+
+        segments.push({
+            start,
+            end,
+            translations: translationsBySegment.get(segmentKey(start, end)) ?? []
+        })
+    }
+
+    return {segments, unanchoredTranslations}
+}
+
 export default function CorpusText(params) {
     const corpusText = params.loaderData as CorpusTextViewModel
     const [editMode, setEditMode] = useState(false)
@@ -109,10 +168,13 @@ export default function CorpusText(params) {
     const [wordIndex, setWordIndex] = useState(-1)
     const [showTranslationForm, setShowTranslationForm] = useState(false)
     const [editTranslationId, setEditTranslationId] = useState(undefined)
+    const [newTranslationAnchorStart, setNewTranslationAnchorStart] = useState<number | undefined>(undefined)
     const [alternatives, setAlternatives] = useState([])
     const [errorText, setErrorText] = useState("")
     const router = useRouter()
     const graph = router.query.graph as string;
+    const allWords = corpusText.lines.flatMap(l => l.words)
+    const {segments, unanchoredTranslations} = buildSegments(corpusText)
 
     function textSubmitted() {
         setEditMode(false)
@@ -145,18 +207,21 @@ export default function CorpusText(params) {
         setWordFormVisible(false)
     }
 
-    function toggleTranslationForm(id?: number) {
-        if (showTranslationForm && editTranslationId === id) {
+    function toggleTranslationForm(id?: number, anchorStartIndex?: number) {
+        if (showTranslationForm && editTranslationId === id && newTranslationAnchorStart === anchorStartIndex) {
             setShowTranslationForm(false)
+            setNewTranslationAnchorStart(undefined)
         } else {
             setShowTranslationForm(true)
             setEditTranslationId(id)
+            setNewTranslationAnchorStart(anchorStartIndex)
         }
     }
 
     function translationSubmitted() {
         setShowTranslationForm(false)
         setEditTranslationId(undefined)
+        setNewTranslationAnchorStart(undefined)
         router.replace(router.asPath)
     }
 
@@ -171,22 +236,35 @@ export default function CorpusText(params) {
                          {title: "Corpus", url: `/${graph}/corpus/${corpusText.language}`}
                      ]}/>
         {!editMode && <>
-            {corpusText.lines.map(l => (
-                <div key={l.words[0].index}>
-                    <div className="corpusTextLine">
-                        {l.words.map((w, index) =>
-                            <span className="corpusTextWord" key={index}>
-                                <CorpusTextWordLink word={w} corpusText={corpusText} showWordForm={showWordForm}/><br/>
-                                {w.wordCandidates && w.wordCandidates.length > 1 &&
-                                    w.wordCandidates.map((c, i) => <>
-                                        {i > 0 && " | "}
-                                        <CorpusTextGlossChoice corpusText={corpusText} word={w} candidate={c}/>
-                                    </>)}
-                                {(!w.wordCandidates || w.wordCandidates.length <= 1) && <WordGloss gloss={w.gloss}/>}
-                                {w.contextGloss && <><br/><span className="contextGloss">{w.contextGloss}</span></>}
-                            </span>)}
-                    </div>
-                    {wordIndex >= l.words[0].index && wordIndex <= l.words[l.words.length - 1].index && wordFormVisible &&
+            {segments.map(segment => (
+                <div key={`segment-${segment.start}-${segment.end}`}>
+                    {corpusText.lines.map(line => {
+                        const segmentWords = line.words.filter(w => w.index >= segment.start && w.index < segment.end)
+                        if (segmentWords.length === 0) return null
+
+                        return <div key={`line-${segment.start}-${segment.end}-${line.words[0].index}`}>
+                            <div className="corpusTextLine">
+                                {segmentWords.map((w, index) =>
+                                    <span className="corpusTextWord" key={index}>
+                                        <CorpusTextWordLink
+                                            word={w}
+                                            corpusText={corpusText}
+                                            showWordForm={showWordForm}
+                                            showTranslationFormAtWord={(clickedWordIndex) => toggleTranslationForm(undefined, clickedWordIndex)}
+                                        />
+                                        <br/>
+                                        {w.wordCandidates && w.wordCandidates.length > 1 &&
+                                            w.wordCandidates.map((c, i) => <>
+                                                {i > 0 && " | "}
+                                                <CorpusTextGlossChoice corpusText={corpusText} word={w} candidate={c}/>
+                                            </>)}
+                                        {(!w.wordCandidates || w.wordCandidates.length <= 1) && <WordGloss gloss={w.gloss}/>}
+                                        {w.contextGloss && <><br/><span className="contextGloss">{w.contextGloss}</span></>}
+                                    </span>)}
+                            </div>
+                        </div>
+                    })}
+                    {wordIndex >= segment.start && wordIndex < segment.end && wordFormVisible &&
                         <>
                             <div>{alternatives.map(alt => <>
                                 <button className="inlineButton"
@@ -199,7 +277,7 @@ export default function CorpusText(params) {
                                       defaultValues={{
                                           language: corpusText.language,
                                           text: predefWord,
-                                          contextGloss: l.words[wordIndex - l.words[0].index].contextGloss,
+                                          contextGloss: allWords.find(w => w.index === wordIndex)?.contextGloss,
                                           syllabographic: corpusText.syllabographic,
                                       }}
                                       languageReadOnly={true}
@@ -210,6 +288,40 @@ export default function CorpusText(params) {
                                       showSyllabographic={true}
                                       cancelled={() => setWordFormVisible(false)}/>
                         </>
+                    }
+                    {segment.translations.length > 0 && <>
+                        <h4>Translations</h4>
+                        {segment.translations.map(t => <>
+                            {(!showTranslationForm || editTranslationId !== t.id) && <>
+                                <div>{t.text} <SourceRefs source={t.source}/></div>
+                                {allowEdit() && <button onClick={() => toggleTranslationForm(t.id)}>Edit translation</button>}
+                            </>}
+                            {showTranslationForm && editTranslationId === t.id &&
+                                <TranslationForm corpusTextId={Number.parseInt(router.query.id as string)}
+                                                 updateId={t.id}
+                                                 defaultValues={{
+                                                     text: t.text,
+                                                     source: t.sourceEditableText
+                                                 }}
+                                                 submitted={translationSubmitted}
+                                                 cancelled={() => toggleTranslationForm(t.id)}
+                                                 focusTarget='text'
+                                />}
+                        </>)}
+                    </>}
+                    {showTranslationForm && editTranslationId === undefined && newTranslationAnchorStart !== undefined &&
+                        newTranslationAnchorStart >= segment.start && newTranslationAnchorStart < segment.end &&
+                        <TranslationForm
+                            corpusTextId={Number.parseInt(router.query.id as string)}
+                            anchorStartIndex={newTranslationAnchorStart}
+                            submitted={translationSubmitted}
+                            cancelled={() => {
+                                setShowTranslationForm(false)
+                                setEditTranslationId(undefined)
+                                setNewTranslationAnchorStart(undefined)
+                            }}
+                            focusTarget='text'
+                        />
                     }
                 </div>
             ))}
@@ -229,9 +341,9 @@ export default function CorpusText(params) {
                                      }}
                                      submitted={textSubmitted}
                                      cancelled={() => setEditMode(false)}/>}
-        {corpusText.translations.length > 0 && <>
-            <h3>Translations</h3>
-            {corpusText.translations.map(t => <>
+        {unanchoredTranslations.length > 0 && <>
+            <h3>Unanchored translations</h3>
+            {unanchoredTranslations.map(t => <>
                 {(!showTranslationForm || editTranslationId !== t.id) && <>
                     <div>{t.text} <SourceRefs source={t.source}/></div>
                     {allowEdit() && <button onClick={() => toggleTranslationForm(t.id)}>Edit translation</button>}
@@ -252,18 +364,10 @@ export default function CorpusText(params) {
         {allowEdit() && <p>
             {!editMode && <>
                 <button className="uiButton" onClick={() => setEditMode(true)}>Edit</button>
-                {' '}</>}
-            <button className="uiButton" onClick={() => toggleTranslationForm(undefined)}>Add translation</button>
-            {' '}
+                {' '}
+            </>}
             <button className="uiButton" onClick={() => lockAssociationsClicked()}>Lock associations</button>
         </p>}
         {errorText !== "" && <div className="errorText">{errorText}</div>}
-        {showTranslationForm && editTranslationId === undefined &&
-            <TranslationForm
-                corpusTextId={Number.parseInt(router.query.id as string)}
-                submitted={translationSubmitted}
-                cancelled={() => toggleTranslationForm(undefined)}
-                focusTarget='text'
-            />}
     </>
 }

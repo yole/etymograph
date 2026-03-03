@@ -317,7 +317,9 @@ data class TranslationData(
     val id: Int,
     val text: String,
     val sourceRefs: List<SourceRefData>? = null,
-    val notes: String? = null
+    val notes: String? = null,
+    val anchorStartIndex: Int? = null,
+    val anchorEndIndex: Int? = null
 )
 
 @Serializable
@@ -508,7 +510,14 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
 
     private fun collectTranslations(corpusText: CorpusText): List<TranslationData> {
         return allLangEntities.filterIsInstance<Translation>().filter { it.corpusText == corpusText }.map { t ->
-            TranslationData(t.id, t.text, t.source.sourceToSerializedFormat(), t.notes)
+            TranslationData(
+                t.id,
+                t.text,
+                t.source.sourceToSerializedFormat(),
+                t.notes,
+                t.anchorStartIndex,
+                t.anchorEndIndex
+            )
         }
     }
 
@@ -771,7 +780,9 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                         addedCorpusText,
                         translationData.text,
                         loadSource(translationData.sourceRefs),
-                        translationData.notes
+                        translationData.notes,
+                        translationData.anchorStartIndex,
+                        translationData.anchorEndIndex
                     )
                     setLangEntity(translation.id, translation)
                     storeTranslation(addedCorpusText, translation)

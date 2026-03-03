@@ -168,13 +168,16 @@ class WordControllerTest {
     @Test
     fun explicitStress() {
         val word = wordController.addWord(graph, "q", WordController.AddWordParameters(
-            "eˈa", null, null, null, null, false, null, null)
+            text = "eˈa",
+            reconstructed = false,
+            syllabographic = null,
+            source = null)
         )
         assertEquals("ea", word.text)
         assertEquals(1, word.stressIndex)
         assertEquals(1, word.stressLength)
 
-        val wordModel = wordController.wordJson(graph, "q", "ea").single()
+        val wordModel = wordController.wordJson(graph, "q", "ea", false).single()
         assertEquals(1, wordModel.stressIndex)
         assertEquals(1, wordModel.stressLength)
         assertEquals("eˈa", wordModel.textWithExplicitStress)

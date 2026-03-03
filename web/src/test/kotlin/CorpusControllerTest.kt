@@ -6,6 +6,7 @@ import org.junit.Test
 import ru.yole.etymograph.*
 import ru.yole.etymograph.web.controllers.CorpusController
 import ru.yole.etymograph.web.controllers.RuleController
+import ru.yole.etymograph.web.controllers.TranslationController
 
 class CorpusControllerTest {
     private lateinit var fixture: QTestFixture
@@ -96,5 +97,49 @@ class CorpusControllerTest {
         val textJson = corpusController.textJson(graph, corpusTextViewModel.id)
         assertEquals("mmur-si", textJson.lines.single().words[0].wordUrlKey)
         assertEquals(word.id, textJson.lines.single().words[0].wordId)
+    }
+
+    @Test
+    fun remapTranslationAnchorAfterTextEdit() {
+        val corpusParams = CorpusController.CorpusTextParams(text = "Ai laurie lantar")
+        val corpusText = corpusController.newText(graph, "q", corpusParams)
+        val translationController = TranslationController()
+        translationController.addTranslation(
+            graph,
+            TranslationController.TranslationParams(corpusText.id, "Golden fall", "", 1)
+        )
+
+        corpusController.editText(
+            graph,
+            corpusText.id,
+            CorpusController.CorpusTextParams(text = "Ai lantar")
+        )
+
+        val updated = corpusController.textJson(graph, corpusText.id)
+        assertEquals(1, updated.translations.size)
+        assertEquals(1, updated.translations[0].anchorStartIndex)
+        assertEquals(2, updated.translations[0].anchorEndIndex)
+    }
+
+    @Test
+    fun unanchorTranslationWhenRangeDeleted() {
+        val corpusParams = CorpusController.CorpusTextParams(text = "Ai laurie")
+        val corpusText = corpusController.newText(graph, "q", corpusParams)
+        val translationController = TranslationController()
+        translationController.addTranslation(
+            graph,
+            TranslationController.TranslationParams(corpusText.id, "Golden", "", 1)
+        )
+
+        corpusController.editText(
+            graph,
+            corpusText.id,
+            CorpusController.CorpusTextParams(text = "Ai")
+        )
+
+        val updated = corpusController.textJson(graph, corpusText.id)
+        assertEquals(1, updated.translations.size)
+        assertEquals(null, updated.translations[0].anchorStartIndex)
+        assertEquals(null, updated.translations[0].anchorEndIndex)
     }
 }

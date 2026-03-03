@@ -63,7 +63,9 @@ class CorpusController {
         val id: Int,
         val text: String,
         val source: List<SourceRefViewModel>,
-        val sourceEditableText: String
+        val sourceEditableText: String,
+        val anchorStartIndex: Int? = null,
+        val anchorEndIndex: Int? = null
     )
 
     @Serializable
@@ -139,7 +141,10 @@ class CorpusController {
     @PostMapping("/text/{id}")
     fun editText(repo: GraphRepository, @PathVariable id: Int, @RequestBody params: CorpusTextParams) {
         val corpusText = repo.resolveCorpusText(id)
-        corpusText.text = params.text
+        val oldToNewWordIndices = corpusText.updateText(params.text)
+        repo.translationsForText(corpusText).forEach {
+            it.remapAnchor(oldToNewWordIndices)
+        }
         corpusText.title = params.title.nullize()
         corpusText.source = parseSourceRefs(repo, params.source)
         corpusText.notes = params.notes.nullize()
@@ -190,4 +195,11 @@ class CorpusController {
 }
 
 fun translationToViewModel(t: Translation, repo: GraphRepository): TranslationViewModel =
-    TranslationViewModel(t.id, t.text, t.source.toViewModel(repo), t.source.toEditableText(repo))
+    TranslationViewModel(
+        t.id,
+        t.text,
+        t.source.toViewModel(repo),
+        t.source.toEditableText(repo),
+        t.anchorStartIndex,
+        t.anchorEndIndex
+    )

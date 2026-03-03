@@ -3409,6 +3409,10 @@ components:
           type: "string"
         source:
           type: "string"
+        anchorStartIndex:
+          type: "integer"
+          format: "int32"
+          nullable: true
       required:
         - "text"
         - "source"
@@ -3426,6 +3430,14 @@ components:
             $ref: "#/components/schemas/SourceRefViewModel"
         sourceEditableText:
           type: "string"
+        anchorStartIndex:
+          type: "integer"
+          format: "int32"
+          nullable: true
+        anchorEndIndex:
+          type: "integer"
+          format: "int32"
+          nullable: true
       required:
         - "id"
         - "text"
