@@ -616,7 +616,14 @@ function SingleWord({word}: { word: WordViewModel }) {
             }
 
             {!isCompound && <><button className="uiButton" onClick={() => setShowVariationOf(!showVariationOf)}>Variation</button><br/></>}
-            {showVariationOf && <WordForm wordSubmitted={submitted} linkType='=' reverseLink={true} linkTarget={word} defaultValues={{language: word.language}} languageReadOnly={true} cancelled={() => setShowVariationOf(false)}/>}
+            {showVariationOf && <WordForm
+                wordSubmitted={submitted}
+                linkType='=' reverseLink={true} linkTarget={word}
+                defaultValues={{language: word.language}}
+                languageReadOnly={true}
+                showSyllabographic={word.syllabographic}
+                cancelled={() => setShowVariationOf(false)}/>
+            }
 
             {canSuggestParseCandidates && <>
                 <button className="inlineButton" onClick={() => suggestParseCandidatesClicked()}>Suggest lemma and derivation</button>
@@ -644,7 +651,14 @@ function SingleWord({word}: { word: WordViewModel }) {
 
 
             {!isCompound && <><button className="uiButton" onClick={() => setShowVariation(!showVariation)}>Add variation</button>{' '}</>}
-            {showVariation && <WordForm wordSubmitted={submitted} linkType='=' linkTarget={word} defaultValues={{language: word.language}} languageReadOnly={true} cancelled={() => setShowVariation(false)}/>}
+            {showVariation && <WordForm
+                wordSubmitted={submitted}
+                linkType='=' linkTarget={word}
+                defaultValues={{language: word.language}}
+                languageReadOnly={true}
+                showSyllabographic={word.syllabographic}
+                cancelled={() => setShowVariation(false)}/>
+            }
             <button className="uiButton" onClick={() => setShowRuleLink(!showRuleLink)}>Add related rule</button><br/>
             {showRuleLink && <RuleLinkForm submitted={ruleLinkSubmitted} fromEntityId={word.id}/>}
 
