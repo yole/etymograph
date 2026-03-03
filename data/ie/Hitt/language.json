@@ -387,6 +387,18 @@
                     "abbreviation": "MP"
                 }
             ]
+        },
+        {
+            "name": "Non-finite form",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Participle",
+                    "abbreviation": "PTCP"
+                }
+            ]
         }
     ],
     "wordClasses": [

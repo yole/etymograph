@@ -264,5 +264,79 @@
         "posList": [
             "V"
         ]
+    },
+    {
+        "id": 61,
+        "name": "Secondary Endings",
+        "rows": [
+            "1",
+            "2",
+            "3"
+        ],
+        "columns": [
+            {
+                "title": "Sg",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            11001
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            11006
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            11011
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Du",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            11002
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            11007
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            11012
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Pl",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            11004
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            11009
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            11014
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "V"
+        ]
     }
 ]

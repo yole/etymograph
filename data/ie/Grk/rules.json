@@ -43,13 +43,331 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "e > ἐ / #_"
+                            "{ha|he|hi|ho|hu|hē|hō} > {ἁ|ἑ|ἱ|ὁ|ὑ|ἡ|ὡ} / #_"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "{a|e|i|o|u|ē|ō} > {ἀ|ἐ|ἰ|ὀ|ὐ|ἠ|ὠ} / #_"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "s > ς / _#"
                         ]
                     }
                 ],
                 "condition": {
                     "type": "otherwise"
                 }
+            }
+        ]
+    },
+    {
+        "id": 11022,
+        "name": "grk-word-final-m",
+        "fromLang": "PIE",
+        "toLang": "Grk",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "m > n / _#"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "refText": "Ringe 2024:112"
+            }
+        ]
+    },
+    {
+        "id": 11023,
+        "name": "grk-vocalic-nasals",
+        "fromLang": "PIE",
+        "toLang": "Grk",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "{m̥|n̥} > a"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "refText": "Ringe 2024:113"
+            }
+        ]
+    },
+    {
+        "id": 11024,
+        "name": "grk-thorn-clusters",
+        "fromLang": "PIE",
+        "toLang": "Grk",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "{tḱ|tk} > kt"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "dʰgʰ > χθ"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "dʰgʷʰ > φθ"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "refText": "Ringe 2024:116"
+            }
+        ]
+    },
+    {
+        "id": 11025,
+        "name": "grk-palatals",
+        "fromLang": "PIE",
+        "toLang": "Grk",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "ḱ > k"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "ǵ > g"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "ǵʰ > gʰ"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "refText": "Ringe 2024:116"
+            }
+        ]
+    },
+    {
+        "id": 11026,
+        "name": "grk-cowgills-law",
+        "fromLang": "PIE",
+        "toLang": "Grk",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "o > u / [nasal]_[labiovelar]"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "o > u / [labiovelar]_[nasal]"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "refText": "Ringe 2024:119"
+            }
+        ]
+    },
+    {
+        "id": 11027,
+        "name": "grk-tst-clusters",
+        "fromLang": "PIE",
+        "toLang": "Grk",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "T > 0 / _st"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "refText": "Ringe 2024:121"
+            }
+        ]
+    },
+    {
+        "id": 11028,
+        "name": "grk-voicing-assimilation",
+        "fromLang": "PIE",
+        "toLang": "Grk",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "[-sonorant,-continuant] > [-voice] / _[-sonorant,-continuant,-voice]"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "refText": "Ringe 2024:122"
+            }
+        ]
+    },
+    {
+        "id": 11030,
+        "name": "grk-aspirate-devoicing",
+        "fromLang": "PIE",
+        "toLang": "Grk",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "bʰ > φ"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "dʰ > θ"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "ǵʰ > χ"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "gʰ > χ"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "gʷʰ > χʷ"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "refText": "Ringe 2024:125"
+            }
+        ]
+    },
+    {
+        "id": 11032,
+        "name": "grk-lenition-of-s",
+        "fromLang": "PIE",
+        "toLang": "Grk",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "s > h / #_![-sonorant,-continuant]"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "s > h / V_V"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "s > h / _R"
+                        ]
+                    },
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "s > h / R_"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "sourceRefs": [
+            {
+                "refText": "Ringe 2024:131"
             }
         ]
     }

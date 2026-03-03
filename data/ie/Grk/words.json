@@ -61,5 +61,20 @@
                 "refText": "55"
             }
         ]
+    },
+    {
+        "id": 11034,
+        "text": "ἕν",
+        "gloss": "one.N",
+        "sourceRefs": [
+            {
+                "refText": "Ringe 2024:131"
+            }
+        ]
+    },
+    {
+        "id": 11036,
+        "text": "ἑπτά",
+        "gloss": "seven"
     }
 ]

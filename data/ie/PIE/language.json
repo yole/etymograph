@@ -81,7 +81,8 @@
             "classes": [
                 "voiceless",
                 "alveolar",
-                "stop"
+                "stop",
+                "T"
             ]
         },
         {
@@ -189,7 +190,8 @@
             "classes": [
                 "voiced",
                 "alveolar",
-                "stop"
+                "stop",
+                "T"
             ]
         },
         {
@@ -272,7 +274,8 @@
                 "aspirated",
                 "voiced",
                 "alveolar",
-                "stop"
+                "stop",
+                "T"
             ]
         },
         {
@@ -306,7 +309,8 @@
             "classes": [
                 "voiced",
                 "alveolar",
-                "trill"
+                "trill",
+                "R"
             ]
         },
         {
@@ -318,7 +322,8 @@
                 "voiced",
                 "alveolar",
                 "lateral",
-                "approximant"
+                "approximant",
+                "R"
             ]
         },
         {
@@ -330,7 +335,8 @@
                 "voiced",
                 "bilabial",
                 "nasal",
-                "consonant"
+                "consonant",
+                "R"
             ]
         },
         {
@@ -342,7 +348,8 @@
                 "voiced",
                 "alveolar",
                 "nasal",
-                "consonant"
+                "consonant",
+                "R"
             ]
         },
         {
@@ -404,7 +411,8 @@
             "classes": [
                 "voiced",
                 "velar",
-                "approximant"
+                "approximant",
+                "R"
             ],
             "notes": ""
         },
@@ -416,7 +424,8 @@
             "classes": [
                 "voiced",
                 "bilabial",
-                "approximant"
+                "approximant",
+                "R"
             ],
             "notes": ""
         },

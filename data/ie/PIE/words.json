@@ -429,13 +429,12 @@
     },
     {
         "id": 10527,
-        "text": "gʷʰnenti",
-        "gloss": "kill.3PL",
-        "pos": "V"
+        "text": "gʷʰnenti"
     },
     {
         "id": 10528,
         "text": "gʷʰen-",
+        "gloss": "destroy",
         "pos": "V"
     },
     {
@@ -463,12 +462,6 @@
     {
         "id": 10536,
         "text": "h₂eǵeti"
-    },
-    {
-        "id": 10537,
-        "text": "gʷʰen-",
-        "gloss": "destroy",
-        "pos": "V"
     },
     {
         "id": 10538,
@@ -538,5 +531,68 @@
         "id": 10822,
         "text": "moneioH",
         "gloss": "cause to think.1SG"
+    },
+    {
+        "id": 11000,
+        "text": "-m",
+        "gloss": "Secondary 1sg. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 11003,
+        "text": "-me",
+        "gloss": "Secondary Endings 1pl. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 11005,
+        "text": "-s",
+        "gloss": "Secondary 2sg. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 11008,
+        "text": "-te",
+        "gloss": "Secondary Endings 2pl. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 11010,
+        "text": "-t",
+        "gloss": "Secondary 3sg. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 11013,
+        "text": "-ent",
+        "gloss": "Secondary 3pl. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 11015,
+        "text": "-i",
+        "gloss": "hic-et-nunc particle",
+        "pos": "AFF"
+    },
+    {
+        "id": 11020,
+        "text": "h₁e-",
+        "gloss": "augment",
+        "pos": "AFF"
+    },
+    {
+        "id": 11033,
+        "text": "sém",
+        "gloss": "one.N",
+        "sourceRefs": [
+            {
+                "refText": "Ringe 2024:131"
+            }
+        ]
+    },
+    {
+        "id": 11035,
+        "text": "septm̥",
+        "gloss": "seven"
     }
 ]

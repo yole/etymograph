@@ -1611,5 +1611,576 @@
                 "text": "If a person dies inside another field..."
             }
         ]
+    },
+    {
+        "id": 11037,
+        "text": "MU^ḪI.A^-uš-ši EGIR ne-u̯a-aḫ-ḫe-er na-aḫ-ša-ra-at-ta-an ne-u̯a-aḫ-ḫe-er",
+        "title": "Example 5.01",
+        "words": [
+            {
+                "index": 0,
+                "id": 11046,
+                "contextGloss": ""
+            },
+            {
+                "index": 1,
+                "id": 11038,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 11040,
+                "contextGloss": ""
+            },
+            {
+                "index": 3,
+                "id": 11043,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 11052,
+                "text": "They have renewed his years and his awe"
+            }
+        ]
+    },
+    {
+        "id": 11053,
+        "text": "nu-un-na-aš _A-BU-I̯A an-da ar-nu-ut nu-un-na-aš le-en-ka4-nu-ut",
+        "title": "Example 5.02",
+        "words": [
+            {
+                "index": 3,
+                "id": 11054,
+                "contextGloss": ""
+            },
+            {
+                "index": 5,
+                "id": 11057,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 11060,
+                "text": "My father brought us together and made us swear an oath"
+            }
+        ]
+    },
+    {
+        "id": 11061,
+        "text": "nu KUR ^URU^pár-ḫa-an-na _IŠ-TU ^GIŠ^TUKUL e-ep-zi nu-kán a-pa-a-aš-ša _A-NA LUGAL KUR ^URU^ ^d^U-TA-AŠ-ŠA a-aš-ša-an-za",
+        "title": "Example 5.03",
+        "words": [
+            {
+                "index": 1,
+                "id": 11066,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 11076,
+                "contextGloss": ""
+            },
+            {
+                "index": 3,
+                "id": 11062,
+                "contextGloss": ""
+            },
+            {
+                "index": 4,
+                "id": 11065,
+                "contextGloss": ""
+            },
+            {
+                "index": 5,
+                "id": 11063,
+                "contextGloss": ""
+            },
+            {
+                "index": 7,
+                "id": 11067,
+                "contextGloss": ""
+            },
+            {
+                "index": 13,
+                "id": 11071,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 11080,
+                "text": "He will take the Land of Parḫa, too, with weapons, and that (land) too will then be belonging to the King of the Land of Tarḫuntašša."
+            }
+        ]
+    },
+    {
+        "id": 11081,
+        "text": "ša-an-kán e-ep-per _QA-DU DUMU^MEŠ^-_ŠU-i̯a ku-en-ner",
+        "title": "Example 5.04",
+        "words": [
+            {
+                "index": 0,
+                "id": 11087,
+                "contextGloss": ""
+            },
+            {
+                "index": 1,
+                "id": 11091,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 11082,
+                "contextGloss": ""
+            },
+            {
+                "index": 3,
+                "id": 11085,
+                "contextGloss": ""
+            },
+            {
+                "index": 4,
+                "id": 11093,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 11095,
+                "text": "They seized him and they killed (him) together with his sons"
+            }
+        ]
+    },
+    {
+        "id": 11096,
+        "text": "_A-BU-I̯A-ma-an-na-aš-za ^m^mur-ši-li-iš 4 DUMU^ḪI.A^ ^m^ḫal-pa-šu-lu-pí-in ^m^NIR.GÁL-in ^m^ḫa-at-tu-ši-li-in ^f^DINGIR^MEŠ^.IR-in-na DUMU.MUNUS-an ḫa-aš-ta nu-za ḫu-u-ma-an-da-aš-pát EGIR-ez-zi-iš DUMU-aš e-šu-un",
+        "title": "Example 5.05",
+        "words": [
+            {
+                "index": 0,
+                "id": 11098,
+                "contextGloss": ""
+            },
+            {
+                "index": 3,
+                "id": 11097,
+                "contextGloss": ""
+            },
+            {
+                "index": 8,
+                "id": 11100,
+                "contextGloss": ""
+            },
+            {
+                "index": 9,
+                "id": 11102,
+                "contextGloss": ""
+            },
+            {
+                "index": 11,
+                "id": 11105,
+                "contextGloss": ""
+            },
+            {
+                "index": 12,
+                "id": 11111,
+                "contextGloss": ""
+            },
+            {
+                "index": 13,
+                "id": 11114,
+                "contextGloss": ""
+            },
+            {
+                "index": 14,
+                "id": 11115,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 11117,
+                "text": "My father Muršili fathered us, four children, Ḫalpašulupi, Muu̯attalli, Ḫattušili, and Maššannauzzi, a daughter. And I was the youngest child of all."
+            }
+        ]
+    },
+    {
+        "id": 11118,
+        "text": "nu-mu ^d^IŠTAR GAŠAN-I̯A ku-it ka-ni-iš-ša-an ḫar-ta ŠEŠ-I̯A-i̯a-mu ^m^NIR.GÁL a-aš-šu ḫar-ta",
+        "title": "Example 5.06",
+        "words": [
+            {
+                "index": 2,
+                "id": 11119,
+                "contextGloss": ""
+            },
+            {
+                "index": 3,
+                "id": 11125,
+                "contextGloss": ""
+            },
+            {
+                "index": 4,
+                "id": 11128,
+                "contextGloss": ""
+            },
+            {
+                "index": 6,
+                "id": 11130,
+                "contextGloss": ""
+            },
+            {
+                "index": 8,
+                "id": 11132,
+                "contextGloss": ""
+            },
+            {
+                "index": 9,
+                "id": 11122,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 11133,
+                "text": "Because Ishtar, My Lady, had recognized / elected me, my brother Muwatalli held me dear."
+            }
+        ]
+    },
+    {
+        "id": 11134,
+        "text": "ki-nu-un-ma-aš-kán ^GIŠ^iš-ta-na-ni GUB-ri",
+        "title": "Example 5.07",
+        "words": [
+            {
+                "index": 0,
+                "id": 11138,
+                "contextGloss": ""
+            },
+            {
+                "index": 1,
+                "id": 11135,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 11140,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 11141,
+                "text": "Now (s)he will stand / stands on / near the altar"
+            }
+        ]
+    },
+    {
+        "id": 11142,
+        "text": "nu-uš-kán ma-a-an ku-e-mi ma-a-nu-uš ar-nu-mi",
+        "title": "Example 5.08",
+        "words": [
+            {
+                "index": 0,
+                "id": 11145,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 11143,
+                "contextGloss": ""
+            },
+            {
+                "index": 3,
+                "id": 11149,
+                "contextGloss": ""
+            },
+            {
+                "index": 4,
+                "id": 11147,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 11151,
+                "text": "I will either kill them or deport them"
+            }
+        ]
+    },
+    {
+        "id": 11152,
+        "text": "ki-i _ṬUP-PU ar-ḫa ḫar-ra-an e-eš-ta na-at _A-NA _PA-NI ^m^_MA-AḪ-ḪU-ZI _Ù _A-NA ^m^ḪAL-U̯A-LÚ ú-uk ^m^du-da-aš EGIR-pa ne-u̯a-aḫ-ḫu-un",
+        "title": "Example 5.09",
+        "words": [
+            {
+                "index": 0,
+                "id": 11153,
+                "contextGloss": ""
+            },
+            {
+                "index": 1,
+                "id": 11155,
+                "contextGloss": ""
+            },
+            {
+                "index": 3,
+                "id": 11165,
+                "contextGloss": ""
+            },
+            {
+                "index": 4,
+                "id": 11163,
+                "contextGloss": ""
+            },
+            {
+                "index": 5,
+                "id": 11156,
+                "contextGloss": ""
+            },
+            {
+                "index": 9,
+                "id": 11158,
+                "contextGloss": ""
+            },
+            {
+                "index": 12,
+                "id": 11162,
+                "contextGloss": ""
+            },
+            {
+                "index": 14,
+                "id": 11161,
+                "contextGloss": ""
+            },
+            {
+                "index": 15,
+                "id": 11159,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 11168,
+                "text": "This tablet was fully destroyed. And I, Duda, made it new again before the eyes of Mahhuzi and Halwaziti"
+            }
+        ]
+    },
+    {
+        "id": 11169,
+        "text": "nu É.DINGIR^LIM^ im-ma 1-an ḫar-ak-zi ^URU^ḫa-at-tu-ša-aš-ma LUGAL-aš a-aš-šu _UL ḫar-ak-zi",
+        "title": "Example 5.10",
+        "words": [
+            {
+                "index": 1,
+                "id": 11170,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 11171,
+                "contextGloss": ""
+            },
+            {
+                "index": 8,
+                "id": 11173,
+                "contextGloss": ""
+            },
+            {
+                "index": 4,
+                "id": 11174,
+                "contextGloss": ""
+            },
+            {
+                "index": 6,
+                "id": 11177,
+                "contextGloss": ""
+            },
+            {
+                "index": 5,
+                "id": 11178,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 11181,
+                "text": "One temple indeed will perish but the possessions of the King of Hattuša will not perish"
+            }
+        ]
+    },
+    {
+        "id": 11182,
+        "text": "a-pa-a-at-ma-kán ḫu-u-ma-an ar-ḫa ḫa-aš-pé-er-pát",
+        "title": "Example 5.11",
+        "words": [
+            {
+                "index": 0,
+                "id": 11183,
+                "contextGloss": ""
+            },
+            {
+                "index": 1,
+                "id": 11187,
+                "contextGloss": ""
+            },
+            {
+                "index": 3,
+                "id": 11189,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 11194,
+                "text": "They destroyed all of it fully!"
+            }
+        ]
+    },
+    {
+        "id": 11195,
+        "text": "pár-ku-i-ša-aš a-pa-a-aš mi-iš-ri-u̯a-an-za-aš a-pa-a-aš ḫar-ki-ša-aš a-pa-a-aš na-aš-kán ḫu-u-ma-an-da-az a-ša-nu-u̯a-an-za",
+        "title": "Example 5.12",
+        "words": [
+            {
+                "index": 0,
+                "id": 11196,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 11201,
+                "contextGloss": ""
+            },
+            {
+                "index": 4,
+                "id": 11206,
+                "contextGloss": ""
+            },
+            {
+                "index": 7,
+                "id": 11211,
+                "contextGloss": ""
+            },
+            {
+                "index": 8,
+                "id": 11213,
+                "contextGloss": ""
+            },
+            {
+                "index": 1,
+                "id": 11068
+            },
+            {
+                "index": 3,
+                "id": 11068
+            },
+            {
+                "index": 5,
+                "id": 11068
+            },
+            {
+                "index": 6,
+                "id": 10343
+            }
+        ],
+        "translations": [
+            {
+                "id": 11216,
+                "text": "She is pure, that one; she is beautiful, that one; she is white, that one, and she is provided with everything"
+            }
+        ]
+    },
+    {
+        "id": 11217,
+        "text": "EGIR-an-ma-an-kán ^LÚ^KÚR ku-en-ta",
+        "title": "Example 5.13",
+        "words": [
+            {
+                "index": 1,
+                "id": 11218,
+                "contextGloss": ""
+            },
+            {
+                "index": 0,
+                "id": 11219,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 11221,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 11223,
+                "text": "(But) afterwards / then the enemy killed him"
+            }
+        ]
+    },
+    {
+        "id": 11224,
+        "text": "É^MEŠ^.DINGIR^MEŠ^-kán pa-ra-a ša-an-ḫa-an-zi",
+        "title": "Example 5.14",
+        "words": [
+            {
+                "index": 0,
+                "id": 11226,
+                "contextGloss": ""
+            },
+            {
+                "index": 1,
+                "id": 11230,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 11232,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 11235,
+                "text": "They sweep the temples"
+            }
+        ]
+    },
+    {
+        "id": 11236,
+        "text": "nu _A-NA ^m^MA-AD-DU-U̯A-AT-TA ^m^ku-pa-an-ta-^d^LAMMA-aš ke-e-ma me-na-aḫ-ḫa-an-ta li-in-ga-an ḫar-zi",
+        "title": "Example 5.15",
+        "words": [
+            {
+                "index": 4,
+                "id": 11242,
+                "contextGloss": ""
+            },
+            {
+                "index": 5,
+                "id": 11246,
+                "contextGloss": ""
+            },
+            {
+                "index": 6,
+                "id": 11239,
+                "contextGloss": ""
+            },
+            {
+                "index": 7,
+                "id": 11237,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 11248,
+                "text": "(But) Kupanta-LAMMA has sworn these things opposite / in the presence of / standing before Madduwatta"
+            }
+        ]
     }
 ]

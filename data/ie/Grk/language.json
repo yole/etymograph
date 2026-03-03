@@ -72,6 +72,7 @@
             "graphemes": [
                 "η"
             ],
+            "sound": "ē",
             "classes": [
                 "long",
                 "front",
@@ -88,7 +89,7 @@
             "classes": [
                 "aspirated",
                 "voiceless",
-                "dental",
+                "alveolar",
                 "stop"
             ],
             "notes": ""
@@ -273,11 +274,39 @@
             "graphemes": [
                 "ω"
             ],
+            "sound": "ō",
             "classes": [
                 "long",
                 "back",
                 "open-mid",
                 "vowel"
+            ],
+            "notes": ""
+        },
+        {
+            "id": 11029,
+            "graphemes": [
+                "χʷ"
+            ],
+            "classes": [
+                "labialized",
+                "aspirated",
+                "voiceless",
+                "velar",
+                "stop"
+            ],
+            "historical": true,
+            "notes": ""
+        },
+        {
+            "id": 11031,
+            "graphemes": [
+                "h"
+            ],
+            "classes": [
+                "voiceless",
+                "glottal",
+                "fricative"
             ],
             "notes": ""
         }

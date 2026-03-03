@@ -214,6 +214,21 @@
             {
                 "instructions": [
                     {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "nza"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "nt"
+                }
+            },
+            {
+                "instructions": [
+                    {
                         "type": "AppendMorpheme",
                         "args": [
                             "10874"
@@ -262,6 +277,27 @@
         "fromLang": "Hitt",
         "toLang": "Hitt",
         "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'a'"
+                        ]
+                    },
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "10212"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "tt"
+                }
+            },
             {
                 "instructions": [
                     {
@@ -325,10 +361,25 @@
         "name": "hitt-gen-pl",
         "fromLang": "Hitt",
         "toLang": "Hitt",
-        "branches": [],
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "11110"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
         "addedCategories": ".GEN.PL",
         "fromPOS": [
-            "N"
+            "N",
+            "ADJ"
         ]
     },
     {
@@ -1120,6 +1171,60 @@
         ],
         "fromPOS": [
             "V"
+        ]
+    },
+    {
+        "id": 11074,
+        "name": "hitt-ptcp",
+        "fromLang": "Hitt",
+        "toLang": "Hitt",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "11073"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PTCP",
+        "fromPOS": [
+            "N"
+        ],
+        "toPOS": "ADJ"
+    },
+    {
+        "id": 11127,
+        "name": "hitt-nom-acc-sg-n",
+        "fromLang": "Hitt",
+        "toLang": "Hitt",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ChangeEnding",
+                        "args": [
+                            "n"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "nt"
+                }
+            }
+        ],
+        "addedCategories": ".NOM/ACC.SG.N",
+        "fromPOS": [
+            "ADJ",
+            "PRON"
         ]
     }
 ]

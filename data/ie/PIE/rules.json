@@ -1237,5 +1237,218 @@
         "fromPOS": [
             "V"
         ]
+    },
+    {
+        "id": 11001,
+        "name": "pie-2nd-1sg",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "11000"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".1SG",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 11002,
+        "name": "pie-2nd-1du",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [],
+        "addedCategories": ".1DU",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 11004,
+        "name": "pie-2nd-1pl",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "11003"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".1PL",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 11006,
+        "name": "pie-2nd-2sg",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "11005"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".2SG",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 11007,
+        "name": "pie-2nd-2du",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [],
+        "addedCategories": ".2DU",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 11009,
+        "name": "pie-2nd-2pl",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "11008"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".2PL",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 11011,
+        "name": "pie-2nd-3sg",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "11010"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".3SG",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 11012,
+        "name": "pie-2nd-3du",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [],
+        "addedCategories": ".3DU",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 11014,
+        "name": "pie-2nd-3pl",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "11013"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".3PL",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 11021,
+        "name": "pie-augment",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "PrependMorpheme",
+                        "args": [
+                            "11020"
+                        ]
+                    },
+                    {
+                        "type": "ApplyStress",
+                        "args": [
+                            "first"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "fromPOS": [
+            "V"
+        ]
     }
 ]
