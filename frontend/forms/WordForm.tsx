@@ -89,6 +89,9 @@ export default function WordForm(props: WordFormProps) {
     }
 
     async function updateWordStatus(data) {
+        if (!isAddingLink) {
+            return
+        }
         if (!data.text) {
             setNewWord(false)
             setWordDefinitions([])
