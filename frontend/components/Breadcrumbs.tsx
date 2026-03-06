@@ -3,6 +3,7 @@ import {useContext, useEffect, useRef} from "react";
 import {GlobalStateContext, GraphContext} from "@/components/Contexts";
 import {allowEdit} from "@/api";
 import {useRouter} from "next/router";
+import {ActionIcon} from "@mantine/core";
 
 interface BreadcrumbStep {
     title: string;
@@ -68,7 +69,7 @@ export default function Breadcrumbs(props: BreadcrumbsProps) {
             <input ref={inputRef} type="search" name="q" aria-label="Search words" dir="auto"
                    defaultValue={currentQ} placeholder="Search words…"
                    style={{maxWidth: '24ch'}} />
-            <button type="submit" aria-label="Search">🔍</button>
+            <ActionIcon type="submit" aria-label="Search" variant="default">🔍</ActionIcon>
         </form>
         }
     </div></div>
