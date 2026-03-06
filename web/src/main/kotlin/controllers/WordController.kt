@@ -130,7 +130,8 @@ class WordController(val dictionaryService: DictionaryService) {
         val stressLength: Int?,
         val compound: Boolean,
         val hasParadigms: Boolean,
-        val suggestedDeriveSequences: List<WordRuleSequenceViewModel>
+        val suggestedDeriveSequences: List<WordRuleSequenceViewModel>,
+        val baseWord: WordViewModel? = null
     )
 
     @GetMapping("/{graph}/word/{lang}/{text}")
@@ -174,6 +175,8 @@ class WordController(val dictionaryService: DictionaryService) {
 
         val effectivePOS = getOrComputePOS(graph)
         val hasParadigms = baseWordLink(graph) == null && graph.paradigmsForLanguage(language).any { effectivePOS in it.pos }
+
+        val baseWord = baseWord(graph)
 
         return WordViewModel(
             id,
@@ -256,7 +259,8 @@ class WordController(val dictionaryService: DictionaryService) {
             hasParadigms,
             graph.suggestDeriveRuleSequences(this).map {
                 WordRuleSequenceViewModel(it.name, it.id)
-            }
+            },
+            baseWord?.toViewModel(graph)
         )
     }
 

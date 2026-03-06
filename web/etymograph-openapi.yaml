@@ -2106,6 +2106,9 @@ components:
           type: "array"
           items:
             $ref: "#/components/schemas/WordRuleSequenceViewModel"
+        baseWord:
+          nullable: true
+          $ref: "#/components/schemas/WordViewModel"
       required:
         - "id"
         - "language"

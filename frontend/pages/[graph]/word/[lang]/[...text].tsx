@@ -289,7 +289,7 @@ function WordLinkTypeComponent(params: WordLinkTypeProps) {
     </>)}</>
 }
 
-function SingleWord({word}: { word: WordViewModel }) {
+function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean }) {
     const globalState = useContext(GlobalStateContext)
 
     const router = useRouter()
@@ -485,12 +485,15 @@ function SingleWord({word}: { word: WordViewModel }) {
     const canSuggestParseCandidates = !isCompound && !word.syllabogramSequence
 
     return <>
-        <Breadcrumbs langId={word.language} langName={word.languageFullName}
+        {!embedded && <Breadcrumbs langId={word.language} langName={word.languageFullName}
                      steps={[{title: dictionaryTitle, url: `/${graph}/dictionary/${word.language}${dictionaryLink}`}]}>
             <WordTextView text={word.text} syllabograms={word.syllabogramSequence}
                     stressIndex={word.stressIndex} stressLength={word.stressLength}
                     reconstructed={word.reconstructed || word.languageReconstructed}/>
-        </Breadcrumbs>
+        </Breadcrumbs>}
+        {embedded && <h3><WordTextView text={word.text} syllabograms={word.syllabogramSequence}
+                                       stressIndex={word.stressIndex} stressLength={word.stressLength}
+                                       reconstructed={word.reconstructed || word.languageReconstructed}/></h3>}
 
         {!editMode && <>
             {word.pos && <div>{word.pos} {word.classes.length > 0 && "(" + word.classes.join(", ") + ")"}</div>}
@@ -679,6 +682,8 @@ function SingleWord({word}: { word: WordViewModel }) {
             {errorText !== "" && <div className="errorText">{errorText}</div>}
         </>}
         {word.hasParadigms && <Link href={`/${graph}/paradigms/${word.language}/word/${word.id}`}>Paradigms</Link>}
+
+        {word.baseWord && <blockquote><SingleWord word={word.baseWord} embedded={true}/></blockquote>}
     </>
 }
 
