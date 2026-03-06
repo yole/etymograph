@@ -4,6 +4,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faKeyboard} from '@fortawesome/free-solid-svg-icons'
 import {InputAssistViewModel} from "@/models";
 import {useEtymographFormContext} from "@/components/EtymographForm";
+import {ActionIcon} from "@mantine/core";
 
 interface InputAssistProps {
     languageProp?: string;
@@ -45,7 +46,15 @@ export default function InputAssist(props: InputAssistProps) {
     }
 
     return <span className={props.inline ? "inputAssist" : ""}>
-        <span className="iconWithMarginRight"><FontAwesomeIcon icon={faKeyboard} onClick={() => setInputAssistVisible(!inputAssistVisible)}/></span>
+        <ActionIcon
+            type="button"
+            variant="default"
+            aria-label="Toggle input assist"
+            className="iconWithMarginRight"
+            onClick={() => setInputAssistVisible(!inputAssistVisible)}
+        >
+            <FontAwesomeIcon icon={faKeyboard}/>
+        </ActionIcon>
         {inputAssistVisible && collectInputAssists(globalState.inputAssists).map(assist =>
             <button type="button" className="inlineButton inputAssistButton"
                     key={assist}
