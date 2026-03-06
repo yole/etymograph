@@ -1,8 +1,8 @@
 import {GlobalStateContext} from "@/components/Contexts";
-import {Controller, useFormContext} from "react-hook-form";
 import {useContext} from "react";
 import Select from "react-select";
 import {FormFieldProps} from "@/components/FormRow";
+import {useEtymographFormContext} from "@/components/EtymographForm";
 
 interface WordClassSelectProps extends FormFieldProps {
     languageProp?: string;
@@ -12,13 +12,14 @@ interface WordClassSelectProps extends FormFieldProps {
 }
 
 export default function WordClassSelect(props: WordClassSelectProps) {
-    const {control, watch} = useFormContext()
+    const form = useEtymographFormContext()
+    const formValues = form.getValues()
     const globalState = useContext(GlobalStateContext)
     const lang = props.languageProp !== undefined
-        ? watch(props.languageProp)
+        ? formValues[props.languageProp]
         : props.language
     const pos = props.posProp !== undefined
-        ? watch(props.posProp)
+        ? formValues[props.posProp]
         : props.pos
     const language = globalState.languages.find(l => l.shortName === lang)
 
@@ -32,11 +33,8 @@ export default function WordClassSelect(props: WordClassSelectProps) {
                     label: v.name === v.abbreviation ? v.name : `${v.name} (${v.abbreviation})`})
                 )))
 
-    const valueFn = (value) => value === undefined ? [] : value.split(" ").map(s => wordClasses.find(r => r.value === s))
-
-    function changeFn(onChange) {
-        return (val) => onChange(val.map(c => c.value).join(" "))
-    }
+    const value = formValues[props.id]
+    const selectedValues = value === undefined ? [] : value.split(" ").map(s => wordClasses.find(r => r.value === s)).filter(Boolean)
 
     if (wordClasses.length == 0) {
         return <></>;
@@ -44,15 +42,10 @@ export default function WordClassSelect(props: WordClassSelectProps) {
     return <tr>
         <td><label htmlFor={props.id}>{props.label}:</label></td>
         <td>
-            <Controller
-                render={({ field: { onChange, value, name, ref } }) =>
-                    <Select options={wordClasses}
-                            isMulti={true}
-                            value={valueFn(value)}
-                            onChange={changeFn(onChange)}
-                    /> }
-                name={props.id}
-                control={control}
+            <Select options={wordClasses}
+                    isMulti={true}
+                    value={selectedValues}
+                    onChange={(val) => form.setFieldValue(props.id, (val ?? []).map(c => c.value).join(" "))}
             />
         </td>
     </tr>

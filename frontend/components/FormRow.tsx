@@ -1,5 +1,5 @@
-import {useFormContext} from "react-hook-form";
 import InputAssist from "@/components/InputAssist";
+import {useEtymographFormContext} from "@/components/EtymographForm";
 
 export interface FormFieldProps {
     id: string;
@@ -17,14 +17,14 @@ interface FormRowProps extends FormFieldProps{
 }
 
 export default function FormRow(props: FormRowProps) {
-    const {register, getValues} = useFormContext()
+    const form = useEtymographFormContext()
 
     return <tr onBlur={() => {
-        if (props.handleBlur !== undefined) props.handleBlur(getValues())
+        if (props.handleBlur !== undefined) props.handleBlur(form.getValues())
     }}>
         <td><label htmlFor={props.id}>{props.label}:</label></td>
         <td>
-            <input id={props.id} readOnly={props.readOnly} size={props.size} type="text" autoComplete="off" className="formRow" {...register(props.id)}/>
+            <input id={props.id} readOnly={props.readOnly} size={props.size} type="text" autoComplete="off" className="formRow" {...form.getInputProps(props.id)}/>
             {props.inputAssist &&
                 <InputAssist id={props.id}
                              language={props.inputAssistLanguage}

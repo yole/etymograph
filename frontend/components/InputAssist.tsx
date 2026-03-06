@@ -2,8 +2,8 @@ import {useContext, useState} from "react";
 import {GlobalStateContext} from "@/components/Contexts";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faKeyboard} from '@fortawesome/free-solid-svg-icons'
-import {useFormContext} from "react-hook-form";
 import {InputAssistViewModel} from "@/models";
+import {useEtymographFormContext} from "@/components/EtymographForm";
 
 interface InputAssistProps {
     languageProp?: string;
@@ -13,14 +13,15 @@ interface InputAssistProps {
 }
 
 export default function InputAssist(props: InputAssistProps) {
-    const {watch} = useFormContext()
+    const form = useEtymographFormContext()
+    const formValues = form.getValues()
     const globalState = useContext(GlobalStateContext)
     const [inputAssistVisible, setInputAssistVisible] = useState(false)
 
     if (!globalState.inputAssists) return <></>
 
     const lang = props.languageProp !== undefined
-        ? watch(props.languageProp)
+        ? formValues[props.languageProp]
         : props.language
 
     function collectInputAssists(assists: InputAssistViewModel): string[] {
@@ -30,11 +31,16 @@ export default function InputAssist(props: InputAssistProps) {
     }
 
     function handleInputAssist(id: string, char: string) {
-        const inputField = document.getElementById(id) as HTMLInputElement
-        const currentValue = inputField.value
-        const selectionEnd = inputField.selectionEnd;
-        inputField.value = currentValue.substring(0, inputField.selectionStart) + char + currentValue.substring(selectionEnd)
-        inputField.setSelectionRange(selectionEnd + char.length, selectionEnd + char.length)
+        const inputField = document.getElementById(id) as HTMLInputElement | HTMLTextAreaElement | null
+        if (inputField === null) return
+        const selectionStart = inputField.selectionStart ?? 0
+        const selectionEnd = inputField.selectionEnd ?? selectionStart
+        const currentValue = inputField.value ?? ""
+        const newValue = currentValue.substring(0, selectionStart) + char + currentValue.substring(selectionEnd)
+        inputField.value = newValue
+        form.setFieldValue(id, newValue)
+        const cursorPos = selectionStart + char.length
+        inputField.setSelectionRange(cursorPos, cursorPos)
         inputField.focus()
     }
 
@@ -42,6 +48,7 @@ export default function InputAssist(props: InputAssistProps) {
         <span className="iconWithMarginRight"><FontAwesomeIcon icon={faKeyboard} onClick={() => setInputAssistVisible(!inputAssistVisible)}/></span>
         {inputAssistVisible && collectInputAssists(globalState.inputAssists).map(assist =>
             <button type="button" className="inlineButton inputAssistButton"
+                    key={assist}
                     onClick={() => handleInputAssist(props.id, assist) }
             >{assist}</button>
         )}

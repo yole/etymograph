@@ -1,8 +1,8 @@
 import {GlobalStateContext} from "@/components/Contexts";
-import {Controller, useFormContext} from "react-hook-form";
 import {useContext} from "react";
 import Select from "react-select";
 import {FormFieldProps} from "@/components/FormRow";
+import {useEtymographFormContext} from "@/components/EtymographForm";
 
 interface PosSelectProps extends FormFieldProps {
     languageProp?: string;
@@ -12,10 +12,11 @@ interface PosSelectProps extends FormFieldProps {
 }
 
 export default function PosSelect(props: PosSelectProps) {
-    const {control, watch} = useFormContext()
+    const form = useEtymographFormContext()
+    const formValues = form.getValues()
     const globalState = useContext(GlobalStateContext)
     const lang = props.languageProp !== undefined
-        ? watch(props.languageProp)
+        ? formValues[props.languageProp]
         : props.language
     const language = globalState.languages.find(l => l.shortName === lang)
 
@@ -27,28 +28,20 @@ export default function PosSelect(props: PosSelectProps) {
         pos = [{value: '', label: 'None'}].concat(pos)
     }
 
-    const valueFn = props.isMulti
-        ? (value) => value === undefined ? [] : value.split(",").map(s => pos.find(r => r.value === s))
-        : (value) => pos.find((r) => r.value === value)
-
-    function changeFn(onChange) {
-        return props.isMulti
-            ? (val) => onChange(val.map(c => c.value).join(","))
-            : (val) => onChange(val.value)
-    }
+    const value = formValues[props.id]
+    const selectedValue = props.isMulti
+        ? (value === undefined ? [] : value.split(",").map(s => pos.find(r => r.value === s)).filter(Boolean))
+        : pos.find((r) => r.value === value) ?? null
 
     return <tr>
         <td><label htmlFor={props.id}>{props.label}:</label></td>
         <td>
-            <Controller
-                render={({ field: { onChange, value, name, ref } }) =>
-                    <Select options={pos}
-                            isMulti={props.isMulti}
-                            value={valueFn(value)}
-                            onChange={changeFn(onChange)}
-                    /> }
-                name={props.id}
-                control={control}
+            <Select options={pos}
+                    isMulti={props.isMulti}
+                    value={selectedValue}
+                    onChange={(val) => props.isMulti
+                        ? form.setFieldValue(props.id, (val ?? []).map(c => c.value).join(","))
+                        : form.setFieldValue(props.id, val?.value ?? "")}
             />
         </td>
     </tr>

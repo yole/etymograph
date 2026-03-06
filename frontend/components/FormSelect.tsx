@@ -1,5 +1,5 @@
-import {useFormContext} from "react-hook-form";
 import {FormFieldProps} from "@/components/FormRow";
+import {useEtymographFormContext} from "@/components/EtymographForm";
 
 interface FormSelectOption {
     id: string;
@@ -12,14 +12,16 @@ interface FormSelectProps extends FormFieldProps {
 }
 
 export default function FormSelect(props: FormSelectProps) {
-    const {register} = useFormContext()
+    const form = useEtymographFormContext()
+    const formValues = form.getValues()
+    const value = formValues[props.id] ?? props.selection ?? "-1"
 
     return <tr>
         <td><label htmlFor={props.id}>{props.label}:</label></td>
         <td>
-            <select {...register(props.id)}>
+            <select id={props.id} value={value} onChange={(event) => form.setFieldValue(props.id, event.currentTarget.value)}>
                 <option value="-1">-</option>
-                {props.options.map(mc => <option value={mc.id} selected={mc.id === props.selection}>{mc.text}</option>)}
+                {props.options.map(mc => <option key={mc.id} value={mc.id}>{mc.text}</option>)}
             </select>
         </td>
     </tr>

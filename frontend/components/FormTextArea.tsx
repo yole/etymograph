@@ -1,6 +1,6 @@
 import React from "react";
-import {useFormContext} from "react-hook-form";
 import InputAssist from "@/components/InputAssist";
+import {useEtymographFormContext} from "@/components/EtymographForm";
 
 interface FormTextAreaProps  {
     id: string;
@@ -12,7 +12,8 @@ interface FormTextAreaProps  {
 }
 
 export default function FormTextArea(props: FormTextAreaProps) {
-    const {register} = useFormContext()
+    const form = useEtymographFormContext()
+    const inputProps = form.getInputProps(props.id)
 
     function onKeyDown(e: React.KeyboardEvent) {
         if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
@@ -21,7 +22,7 @@ export default function FormTextArea(props: FormTextAreaProps) {
     }
 
     return <>
-        <textarea rows={props.rows} cols={props.cols} id={props.id} {...register(props.id)}
+        <textarea rows={props.rows} cols={props.cols} id={props.id} {...inputProps}
                   onKeyDown={onKeyDown} className={props.className}/>
         {props.inputAssist && <div><InputAssist id={props.id} language={props.inputAssistLang}/></div>}
     </>

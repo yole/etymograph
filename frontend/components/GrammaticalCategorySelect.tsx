@@ -1,8 +1,8 @@
 import {GlobalStateContext} from "@/components/Contexts";
-import {Controller, useFormContext} from "react-hook-form";
 import {useContext} from "react";
 import Select from "react-select";
 import {FormFieldProps} from "@/components/FormRow";
+import {useEtymographFormContext} from "@/components/EtymographForm";
 
 interface GrammaticalCategorySelectProps extends FormFieldProps {
     languageProp?: string;
@@ -13,13 +13,14 @@ interface GrammaticalCategorySelectProps extends FormFieldProps {
 }
 
 export default function GrammaticalCategorySelect(props: GrammaticalCategorySelectProps) {
-    const {control, watch} = useFormContext()
+    const form = useEtymographFormContext()
+    const formValues = form.getValues()
     const globalState = useContext(GlobalStateContext)
     const lang = props.languageProp !== undefined
-        ? watch(props.languageProp)
+        ? formValues[props.languageProp]
         : props.language
     const pos = props.posProp !== undefined
-        ? watch(props.posProp)
+        ? formValues[props.posProp]
         : props.pos
     const language = globalState.languages.find(l => l.shortName === lang)
 
@@ -34,18 +35,14 @@ export default function GrammaticalCategorySelect(props: GrammaticalCategorySele
 
     const isMulti = props.isMulti !== false
 
-    const valueFn = isMulti
-        ? (value) => value === undefined
+    const value = formValues[props.id]
+    const selectedValue = isMulti
+        ? (value === undefined
             ? []
             : value.split(",").map(s => s.trim()).filter(s => s.length > 0)
                 .map(s => grammaticalCategories.find(r => r.value === s))
-        : (value) => grammaticalCategories.find((r) => r.value === value)
-
-    function changeFn(onChange) {
-        return isMulti
-            ? (val) => onChange(val.map(c => c.value).join(", "))
-            : (val) => onChange(val.value)
-    }
+                .filter(Boolean))
+        : grammaticalCategories.find((r) => r.value === value) ?? null
 
     if (grammaticalCategories.length == 0) {
         return <></>;
@@ -53,15 +50,12 @@ export default function GrammaticalCategorySelect(props: GrammaticalCategorySele
     return <tr>
         <td><label htmlFor={props.id}>{props.label}:</label></td>
         <td>
-            <Controller
-                render={({ field: { onChange, value, name, ref } }) =>
-                    <Select options={grammaticalCategories}
-                            isMulti={isMulti}
-                            value={valueFn(value)}
-                            onChange={changeFn(onChange)}
-                    /> }
-                name={props.id}
-                control={control}
+            <Select options={grammaticalCategories}
+                    isMulti={isMulti}
+                    value={selectedValue}
+                    onChange={(val) => isMulti
+                        ? form.setFieldValue(props.id, (val ?? []).map(c => c.value).join(", "))
+                        : form.setFieldValue(props.id, val?.value ?? "")}
             />
         </td>
     </tr>
