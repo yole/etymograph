@@ -274,6 +274,7 @@ class Word(
 
     fun baseWord(graph: GraphRepository): Word? {
         getTransliterationOf(graph)?.let { return it }
+        getVariationOf(graph)?.let { return it }
         val derivation = baseWordLink(graph)
         if (derivation != null) {
             return derivation.toEntity as? Word
