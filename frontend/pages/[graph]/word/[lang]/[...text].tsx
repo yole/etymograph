@@ -331,7 +331,7 @@ function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean 
         setEditMode(false)
         setLookupErrorText(null)
         setLookupVariants([])
-        if (r.text !== word.text || r.syllabographic !== word.syllabographic) {
+        if (!embedded && (r.text !== word.text || r.syllabographic !== word.syllabographic)) {
             router.push(Urls.Words.fromWordForm(graph, r))
         }
         else {
