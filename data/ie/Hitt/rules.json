@@ -242,7 +242,9 @@
         ],
         "addedCategories": ".NOM.SG",
         "fromPOS": [
-            "N"
+            "N",
+            "ADJ",
+            "NP"
         ]
     },
     {
@@ -324,7 +326,22 @@
         "name": "hitt-acc-pl",
         "fromLang": "Hitt",
         "toLang": "Hitt",
-        "branches": [],
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "10546"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "wordIs",
+                    "wordClass": "c"
+                }
+            }
+        ],
         "addedCategories": ".ACC.PL",
         "fromPOS": [
             "N"
@@ -353,7 +370,8 @@
         "addedCategories": ".GEN.SG",
         "fromPOS": [
             "N",
-            "PRON"
+            "PRON",
+            "ADJ"
         ]
     },
     {
@@ -432,6 +450,21 @@
             {
                 "instructions": [
                     {
+                        "type": "ChangeEndingToMorpheme",
+                        "args": [
+                            "10714"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "characters": "a"
+                }
+            },
+            {
+                "instructions": [
+                    {
                         "type": "AppendMorpheme",
                         "args": [
                             "10714"
@@ -445,7 +478,8 @@
         ],
         "addedCategories": ".DAT.PL",
         "fromPOS": [
-            "N"
+            "N",
+            "ADJ"
         ]
     },
     {
@@ -539,7 +573,21 @@
         "name": "hitt-erg-sg",
         "fromLang": "Hitt",
         "toLang": "Hitt",
-        "branches": [],
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "11361"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
         "addedCategories": ".ERG.SG",
         "fromPOS": [
             "N"
@@ -550,7 +598,21 @@
         "name": "hitt-erg-pl",
         "fromLang": "Hitt",
         "toLang": "Hitt",
-        "branches": [],
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "11362"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
         "addedCategories": ".ERG.PL",
         "fromPOS": [
             "N"
@@ -583,22 +645,25 @@
     },
     {
         "id": 10142,
-        "name": "hitt-ins-sg",
+        "name": "hitt-ins",
         "fromLang": "Hitt",
         "toLang": "Hitt",
-        "branches": [],
-        "addedCategories": ".INS.SG",
-        "fromPOS": [
-            "N"
-        ]
-    },
-    {
-        "id": 10143,
-        "name": "hitt-ins-pl",
-        "fromLang": "Hitt",
-        "toLang": "Hitt",
-        "branches": [],
-        "addedCategories": ".INS.PL",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "11347"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".INS",
         "fromPOS": [
             "N"
         ]
@@ -1224,7 +1289,56 @@
         "addedCategories": ".NOM/ACC.SG.N",
         "fromPOS": [
             "ADJ",
+            "PRON",
+            "N"
+        ]
+    },
+    {
+        "id": 11305,
+        "name": "hitt-nom-acc-pl-n",
+        "fromLang": "Hitt",
+        "toLang": "Hitt",
+        "branches": [],
+        "addedCategories": ".NOM/ACC.PL.N",
+        "fromPOS": [
+            "ADJ",
             "PRON"
+        ]
+    },
+    {
+        "id": 11364,
+        "name": "hitt-sup",
+        "fromLang": "Hitt",
+        "toLang": "Hitt",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "11363"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".SUP",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 11482,
+        "name": "hitt-akk-nom",
+        "fromLang": "Hitt",
+        "toLang": "Hitt",
+        "branches": [],
+        "addedCategories": ".NOM",
+        "fromPOS": [
+            "N"
         ]
     }
 ]

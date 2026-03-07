@@ -129,7 +129,8 @@
         {
             "id": 10152,
             "graphemes": [
-                "t"
+                "t",
+                "d"
             ],
             "classes": [
                 "voiceless",
@@ -217,6 +218,39 @@
                 "vowel"
             ],
             "notes": ""
+        },
+        {
+            "id": 11480,
+            "graphemes": [
+                "r"
+            ],
+            "classes": [
+                "voiced",
+                "alveolar",
+                "trill"
+            ]
+        },
+        {
+            "id": 11494,
+            "graphemes": [
+                "i̯"
+            ],
+            "classes": [
+                "voiced",
+                "velar",
+                "approximant"
+            ]
+        },
+        {
+            "id": 11513,
+            "graphemes": [
+                "u̯"
+            ],
+            "classes": [
+                "voiced",
+                "bilabial",
+                "approximant"
+            ]
         }
     ],
     "protoLanguageShortName": "PAnat",
@@ -397,6 +431,10 @@
                 {
                     "name": "Participle",
                     "abbreviation": "PTCP"
+                },
+                {
+                    "name": "Supine",
+                    "abbreviation": "SUP"
                 }
             ]
         }

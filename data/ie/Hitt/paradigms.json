@@ -155,12 +155,6 @@
                         "ruleAlternatives": [
                             10139
                         ]
-                    },
-                    {},
-                    {
-                        "ruleAlternatives": [
-                            10143
-                        ]
                     }
                 ]
             }
@@ -322,6 +316,34 @@
                     {
                         "ruleAlternatives": [
                             10612
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "V"
+        ]
+    },
+    {
+        "id": 62,
+        "name": "Verb Non-finite Forms",
+        "rows": [
+            "Participle",
+            "Supine"
+        ],
+        "columns": [
+            {
+                "title": "Form",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            11074
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            11364
                         ]
                     }
                 ]

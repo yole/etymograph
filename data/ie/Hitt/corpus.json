@@ -2,16 +2,16 @@
     {
         "id": 10083,
         "text": "nu-mu _Ú-UL iš-ta-ma-aš-zi",
-        "title": "Example 1.1",
+        "title": "Example 1.01",
         "words": [
-            {
-                "index": 1,
-                "id": 10084,
-                "contextGloss": ""
-            },
             {
                 "index": 0,
                 "id": 10085,
+                "contextGloss": ""
+            },
+            {
+                "index": 1,
+                "id": 10084,
                 "contextGloss": ""
             },
             {
@@ -30,7 +30,7 @@
     {
         "id": 10100,
         "text": "ma-a-an _I-NA UD.15.KAM ^d^SÎN-aš a-ki LUGAL.GAL a-ki",
-        "title": "Example 1.2",
+        "title": "Example 1.02",
         "words": [
             {
                 "index": 0,
@@ -53,7 +53,7 @@
     {
         "id": 10106,
         "text": "ta KÁ.GAL ḫa-at-ki",
-        "title": "Example 1.3",
+        "title": "Example 1.03",
         "words": [
             {
                 "index": 0,
@@ -1711,8 +1711,16 @@
         ],
         "translations": [
             {
-                "id": 11080,
-                "text": "He will take the Land of Parḫa, too, with weapons, and that (land) too will then be belonging to the King of the Land of Tarḫuntašša."
+                "id": 11249,
+                "text": "and that (land) too will then be belonging to the King of the Land of Tarḫuntašša.",
+                "anchorStartIndex": 6,
+                "anchorEndIndex": 14
+            },
+            {
+                "id": 11250,
+                "text": "He will take the Land of Parḫa, too, with weapons",
+                "anchorStartIndex": 0,
+                "anchorEndIndex": 6
             }
         ]
     },
@@ -1964,8 +1972,16 @@
         ],
         "translations": [
             {
-                "id": 11168,
-                "text": "This tablet was fully destroyed. And I, Duda, made it new again before the eyes of Mahhuzi and Halwaziti"
+                "id": 11251,
+                "text": "This tablet was fully destroyed.",
+                "anchorStartIndex": 0,
+                "anchorEndIndex": 5
+            },
+            {
+                "id": 11252,
+                "text": "And I, Duda, made it new again before the eyes of Mahhuzi and Halwaziti.",
+                "anchorStartIndex": 5,
+                "anchorEndIndex": 16
             }
         ]
     },
@@ -2118,7 +2134,7 @@
         "translations": [
             {
                 "id": 11223,
-                "text": "(But) afterwards / then the enemy killed him"
+                "text": "(But) afterwards / then the enemy killed him."
             }
         ]
     },
@@ -2146,7 +2162,7 @@
         "translations": [
             {
                 "id": 11235,
-                "text": "They sweep the temples"
+                "text": "They sweep the temples."
             }
         ]
     },
@@ -2180,6 +2196,803 @@
             {
                 "id": 11248,
                 "text": "(But) Kupanta-LAMMA has sworn these things opposite / in the presence of / standing before Madduwatta"
+            }
+        ]
+    },
+    {
+        "id": 11253,
+        "text": "zi-ik-ma-za DUMU-aš nu _Ú-UL ku-it-ki ša-ak-ti na-aḫ-šar-nu-ši-ma-mu _Ú-UL",
+        "title": "Example 6.01",
+        "words": [
+            {
+                "index": 0,
+                "id": 11254,
+                "contextGloss": ""
+            },
+            {
+                "index": 4,
+                "id": 11256,
+                "contextGloss": ""
+            },
+            {
+                "index": 5,
+                "id": 11258,
+                "contextGloss": ""
+            },
+            {
+                "index": 6,
+                "id": 11261,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 11266,
+                "text": "You’re a child and you know nothing",
+                "anchorStartIndex": 0,
+                "anchorEndIndex": 6
+            },
+            {
+                "id": 11267,
+                "text": "and you don’t impress me",
+                "anchorStartIndex": 6,
+                "anchorEndIndex": 8
+            }
+        ]
+    },
+    {
+        "id": 11268,
+        "text": "šu-uš ta-me-eš-šer še a-ker",
+        "title": "Example 6.02",
+        "words": [
+            {
+                "index": 0,
+                "id": 11269,
+                "contextGloss": ""
+            },
+            {
+                "index": 1,
+                "id": 11271,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 11274,
+                "contextGloss": ""
+            },
+            {
+                "index": 3,
+                "id": 11277,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 11279,
+                "text": "They oppressed them and they died.",
+                "anchorStartIndex": 0,
+                "anchorEndIndex": 4
+            }
+        ]
+    },
+    {
+        "id": 11280,
+        "text": "nu KÁ.GAL^ḪI.A^ EGIR-pa ḫé-še-er",
+        "title": "Example 6.03",
+        "words": [
+            {
+                "index": 1,
+                "id": 11281,
+                "contextGloss": ""
+            },
+            {
+                "index": 3,
+                "id": 11283,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 11286,
+                "text": "They opened the gates",
+                "anchorStartIndex": 0,
+                "anchorEndIndex": 4
+            }
+        ]
+    },
+    {
+        "id": 11287,
+        "text": "ma-aḫ-ḫa-an-ma LUGAL-uš _I-NA É^TIM^ GAL a-ri ḫa-an-te-ez-zi-az-ma ^LÚ.MEŠ^ALAN.ZU9 ka-ru-ú a-ra-an-ta-ri",
+        "title": "Example 6.04",
+        "words": [
+            {
+                "index": 5,
+                "id": 11288,
+                "contextGloss": ""
+            },
+            {
+                "index": 6,
+                "id": 11291,
+                "contextGloss": ""
+            },
+            {
+                "index": 8,
+                "id": 11295,
+                "contextGloss": ""
+            },
+            {
+                "index": 7,
+                "id": 11297,
+                "contextGloss": ""
+            },
+            {
+                "index": 9,
+                "id": 11298,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 11300,
+                "text": "But when the king arrives at the palace",
+                "anchorStartIndex": 0,
+                "anchorEndIndex": 6
+            },
+            {
+                "id": 11301,
+                "text": "the clowns are already standing at the front",
+                "anchorStartIndex": 6,
+                "anchorEndIndex": 10
+            }
+        ]
+    },
+    {
+        "id": 11302,
+        "text": "nu ke-e-ta-aš _A-NA KUR.KUR^ḪI.A^ šu-me-en-za-an É^ḪI.A^ DINGIR^MEŠ^-KU-NU ku-e e-eš-ta na-at LÚ^MEŠ^ ^URU^GA-AŠ-GA ar-ḫa pí-ip-pé-er",
+        "title": "Example 6.05",
+        "words": [
+            {
+                "index": 1,
+                "id": 11313,
+                "contextGloss": ""
+            },
+            {
+                "index": 3,
+                "id": 11310,
+                "contextGloss": ""
+            },
+            {
+                "index": 4,
+                "id": 11307,
+                "contextGloss": ""
+            },
+            {
+                "index": 5,
+                "id": 11311,
+                "contextGloss": ""
+            },
+            {
+                "index": 6,
+                "id": 11315,
+                "contextGloss": ""
+            },
+            {
+                "index": 7,
+                "id": 11303,
+                "contextGloss": ""
+            },
+            {
+                "index": 9,
+                "id": 11318,
+                "contextGloss": ""
+            },
+            {
+                "index": 13,
+                "id": 11321,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 11324,
+                "text": "Which temples of yours were present in these lands",
+                "anchorStartIndex": 0,
+                "anchorEndIndex": 9
+            },
+            {
+                "id": 11325,
+                "text": "the men of Kaška have fully destroyed them",
+                "anchorStartIndex": 9,
+                "anchorEndIndex": 14
+            }
+        ]
+    },
+    {
+        "id": 11326,
+        "text": "nu-kán NAM.RA^ḪI.A^ ku-iš GU4 UDU an-da e-eš-ta na-an ḫu-u-ma-an-da-an e-ep-ta",
+        "title": "Example 6.06",
+        "words": [
+            {
+                "index": 1,
+                "id": 11327,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 11329,
+                "contextGloss": ""
+            },
+            {
+                "index": 7,
+                "id": 11330,
+                "contextGloss": ""
+            },
+            {
+                "index": 9,
+                "id": 11333,
+                "contextGloss": ""
+            },
+            {
+                "index": 8,
+                "id": 11335,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 11337,
+                "text": "Which deportees, cows and sheep (= living booty’) were present inside",
+                "anchorStartIndex": 0,
+                "anchorEndIndex": 7
+            },
+            {
+                "id": 11338,
+                "text": "that he seized in its entirety",
+                "anchorStartIndex": 7,
+                "anchorEndIndex": 10
+            }
+        ]
+    },
+    {
+        "id": 11339,
+        "text": "na-aš-ta DINGIR^MEŠ^ ḫu-u-ma-an-du-uš lam-ni-it ḫal-za-a-i",
+        "title": "Example 6.07",
+        "words": [
+            {
+                "index": 0,
+                "id": 11340,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 11342,
+                "contextGloss": ""
+            },
+            {
+                "index": 3,
+                "id": 11344,
+                "contextGloss": ""
+            },
+            {
+                "index": 4,
+                "id": 11348,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 11351,
+                "text": "He calls all the gods by name",
+                "anchorStartIndex": 0,
+                "anchorEndIndex": 5
+            }
+        ]
+    },
+    {
+        "id": 11352,
+        "text": "nu-za-kán ^URU^ḫa-pa-ra-an i-ni-iš-ša-an ta-ma-aš-ta",
+        "title": "Example 6.08",
+        "words": [
+            {
+                "index": 0,
+                "id": 11353,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 11355,
+                "contextGloss": ""
+            },
+            {
+                "index": 3,
+                "id": 11357,
+                "contextGloss": ""
+            },
+            {
+                "index": 1,
+                "id": 11456
+            }
+        ],
+        "translations": [
+            {
+                "id": 11360,
+                "text": "He oppressed the city in that way",
+                "anchorStartIndex": 0,
+                "anchorEndIndex": 4
+            }
+        ]
+    },
+    {
+        "id": 11365,
+        "text": "ma-an-kán ^d^UTU^_ŠI^ _BE-LÍ-I̯A _BE-LU ku-in-ki pa-ra-a na-it-ti ma-na KUR-i LÚ.KÚR _Ú-UL dam-mi-iš-ḫa-ez-zi",
+        "title": "Example 9.01",
+        "words": [
+            {
+                "index": 0,
+                "id": 11366,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 11370,
+                "contextGloss": ""
+            },
+            {
+                "index": 4,
+                "id": 11374,
+                "contextGloss": ""
+            },
+            {
+                "index": 7,
+                "id": 11376,
+                "contextGloss": ""
+            },
+            {
+                "index": 8,
+                "id": 11379,
+                "contextGloss": ""
+            },
+            {
+                "index": 11,
+                "id": 11381,
+                "contextGloss": ""
+            },
+            {
+                "index": 6,
+                "id": 11386,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 11384,
+                "text": "Were you, My Majesty, My Lord, to send some lord,",
+                "anchorStartIndex": 0,
+                "anchorEndIndex": 7
+            },
+            {
+                "id": 11385,
+                "text": "the enemy would not be able to do damage to the country",
+                "anchorStartIndex": 7,
+                "anchorEndIndex": 12
+            }
+        ]
+    },
+    {
+        "id": 11389,
+        "text": "nu e-eš-har-šum-mi-it e-eš-šu-u̯a-an ti-i-e-er",
+        "title": "Example 9.02",
+        "words": [
+            {
+                "index": 1,
+                "id": 11390,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 11395,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 11394,
+                "text": "They began shedding our blood",
+                "anchorStartIndex": 0,
+                "anchorEndIndex": 4
+            }
+        ]
+    },
+    {
+        "id": 11398,
+        "text": "ma-a-aḫ-ḫa-an ^GIŠ^ḫu-lu-ga-an-ni-iš pár-na-aš-ša pa-iz-zi ^LÚ^ša-la-aš-ḫa-aš-ma ^GIŠ^ŠUKUR^ḪI.A^ _A-NA ^LÚ^Ì.DU8 pa-a-i",
+        "title": "Example 9.03",
+        "words": [
+            {
+                "index": 0,
+                "id": 11421,
+                "contextGloss": ""
+            },
+            {
+                "index": 1,
+                "id": 11423,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 11399,
+                "text": "When the wagon goes to his house",
+                "anchorStartIndex": 0,
+                "anchorEndIndex": 4
+            },
+            {
+                "id": 11400,
+                "text": "the horse servant will give the spears to the gatekeeper",
+                "anchorStartIndex": 4,
+                "anchorEndIndex": 9
+            }
+        ]
+    },
+    {
+        "id": 11401,
+        "text": "ap-pé-ez-zi-i̯a-na ^m^a-ni-it-ta-aš LUGAL.GAL ^d^ši-ú-šum-mi-in ^URU^za-a-al-pu-u̯a-az a-ap-pa ^URU^ne-e-ša pé-e-taḫ-ḫu-un",
+        "title": "Example 9.04",
+        "words": [
+            {
+                "index": 0,
+                "id": 11402,
+                "contextGloss": ""
+            },
+            {
+                "index": 3,
+                "id": 11406,
+                "contextGloss": ""
+            },
+            {
+                "index": 5,
+                "id": 11410,
+                "contextGloss": ""
+            },
+            {
+                "index": 7,
+                "id": 11411,
+                "contextGloss": ""
+            },
+            {
+                "index": 4,
+                "id": 11418,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 11414,
+                "text": "But later I, Anitta, Greatking, brought our God from Zalpuwa back to Neša",
+                "anchorStartIndex": 0,
+                "anchorEndIndex": 8
+            }
+        ]
+    },
+    {
+        "id": 11426,
+        "text": "na-at ši-i-ú-ni-mi tu-uk me-mi-iš-ke-mi",
+        "title": "Example 9.05",
+        "words": [
+            {
+                "index": 0,
+                "id": 11156
+            },
+            {
+                "index": 1,
+                "id": 11427,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 11431,
+                "text": "I am telling it to *you*, my God",
+                "anchorStartIndex": 0,
+                "anchorEndIndex": 4
+            }
+        ]
+    },
+    {
+        "id": 11433,
+        "text": "nu-mu-za am-me-el DINGIR-I̯A DUMU.NAM.U19.LU tu-ug-ga-aš-ta-aš iš-ta-an-za-aš-ta-aš ÌR-KA ḫal-za-it-ta",
+        "title": "Example 9.06",
+        "words": [
+            {
+                "index": 3,
+                "id": 11434,
+                "contextGloss": ""
+            },
+            {
+                "index": 4,
+                "id": 11435,
+                "contextGloss": ""
+            },
+            {
+                "index": 2,
+                "id": 11439,
+                "contextGloss": ""
+            },
+            {
+                "index": 5,
+                "id": 11441,
+                "contextGloss": ""
+            },
+            {
+                "index": 6,
+                "id": 11444,
+                "contextGloss": ""
+            },
+            {
+                "index": 0,
+                "id": 11447,
+                "contextGloss": ""
+            },
+            {
+                "index": 7,
+                "id": 11454,
+                "contextGloss": ""
+            }
+        ],
+        "translations": [
+            {
+                "id": 11453,
+                "text": "You, god of mine, have called me, a mortal, as a servant of your body and your soul",
+                "anchorStartIndex": 0,
+                "anchorEndIndex": 8
+            }
+        ]
+    },
+    {
+        "id": 11460,
+        "text": "nu mi-e-ú-uš ku-i-uš GU4^ḪI.A^-uš ^d^UTU-uš tu-u-ri-i̯a-an ḫar-ši nu-uš-ma-aš ka-a-ša DUMU.NAM.LÚ.U19.LU-aš ḫal-ki-in šu-uḫ-ḫa-aš",
+        "title": "Example 6.09",
+        "words": [
+            {
+                "index": 5,
+                "id": 11461
+            },
+            {
+                "index": 6,
+                "id": 11464
+            },
+            {
+                "index": 7,
+                "id": 11466
+            },
+            {
+                "index": 11,
+                "id": 11468
+            },
+            {
+                "index": 10,
+                "id": 11470
+            },
+            {
+                "index": 9,
+                "id": 11472
+            },
+            {
+                "index": 2,
+                "id": 11474
+            },
+            {
+                "index": 3,
+                "id": 11476
+            }
+        ],
+        "translations": [
+            {
+                "id": 11478,
+                "text": "Which four oxen you, Sun-god, have harnessed",
+                "anchorStartIndex": 0,
+                "anchorEndIndex": 7
+            },
+            {
+                "id": 11479,
+                "text": "to them the mortal has just now strewn grain",
+                "anchorStartIndex": 7,
+                "anchorEndIndex": 12
+            }
+        ]
+    },
+    {
+        "id": 11481,
+        "text": "na-aš-ta DINGIR^LUM^ _IŠ-TU É.DINGIR^LIM^ pa-ra-a ú-da-an-zi",
+        "title": "Example 6.10",
+        "words": [
+            {
+                "index": 1,
+                "id": 11483
+            },
+            {
+                "index": 5,
+                "id": 11484
+            }
+        ],
+        "translations": [
+            {
+                "id": 11488,
+                "text": "They bring forth the deity out from the temple",
+                "anchorStartIndex": 0,
+                "anchorEndIndex": 6
+            }
+        ]
+    },
+    {
+        "id": 11489,
+        "text": "nu-un-na-aš ^d^UTU ^URU^PÚ-NA GAŠAN-I̯A ku-e-da-ni pé-di ti-it-ta-nu-uš na-at tu-el a-aš-ši-i̯a-an-ta-aš DUMU-aš _ŠA ^d^IM ^URU^NE-RI-IK _AŠ-RU",
+        "title": "Example 6.11",
+        "words": [
+            {
+                "index": 4,
+                "id": 11490
+            },
+            {
+                "index": 9,
+                "id": 11492
+            },
+            {
+                "index": 11,
+                "id": 11496
+            },
+            {
+                "index": 14,
+                "id": 11497
+            },
+            {
+                "index": 5,
+                "id": 11499
+            },
+            {
+                "index": 6,
+                "id": 11501
+            },
+            {
+                "index": 7,
+                "id": 11156
+            },
+            {
+                "index": 10,
+                "id": 11506
+            }
+        ],
+        "translations": [
+            {
+                "id": 11504,
+                "text": "In which place you, O Sun-goddess of Arinna, My Lady, have installed us",
+                "anchorStartIndex": 0,
+                "anchorEndIndex": 7
+            },
+            {
+                "id": 11505,
+                "text": "That is the place of your beloved son, the Storm-god of Nerik",
+                "anchorStartIndex": 7,
+                "anchorEndIndex": 15
+            }
+        ]
+    },
+    {
+        "id": 11507,
+        "text": "nu-za-kán _A-NA ^GIŠ^GU.ZA _A-BI-I̯A ku-u̯a-pí e-eš-ḫa-at nu-za ke-e a-ra-aḫ-zé-na-aš KUR.KUR^MEŠ^ ^LÚ^KÚR _I-NA MU.10.KAM tar-aḫ-ḫu-un na-at-kán ku-e-nu-un",
+        "title": "Example 6.12",
+        "words": [
+            {
+                "index": 3,
+                "id": 11508
+            },
+            {
+                "index": 9,
+                "id": 11510
+            },
+            {
+                "index": 4,
+                "id": 11511
+            },
+            {
+                "index": 8,
+                "id": 11514
+            },
+            {
+                "index": 5,
+                "id": 11517
+            },
+            {
+                "index": 15,
+                "id": 11519
+            },
+            {
+                "index": 14,
+                "id": 11521
+            }
+        ],
+        "translations": [
+            {
+                "id": 11523,
+                "text": "When I sat down on the throne of my father",
+                "anchorStartIndex": 0,
+                "anchorEndIndex": 6
+            },
+            {
+                "id": 11524,
+                "text": "I conquered these enemies in the foreign lands in a period of ten years",
+                "anchorStartIndex": 6,
+                "anchorEndIndex": 14
+            },
+            {
+                "id": 11525,
+                "text": "and I slew them",
+                "anchorStartIndex": 14,
+                "anchorEndIndex": 16
+            }
+        ]
+    },
+    {
+        "id": 11526,
+        "text": "ma-a-an _I-NA UD.15.KAM ^d^_SÎN-aš a-ki a-ru-na-aš a-aš-šu ḫar-ak-zi na-aš-ma šu-up-pa-la-an te-pa-u-e-eš-zi",
+        "title": "Example 6.13",
+        "words": [
+            {
+                "index": 3,
+                "id": 11527
+            },
+            {
+                "index": 9,
+                "id": 11529
+            },
+            {
+                "index": 5,
+                "id": 11532
+            },
+            {
+                "index": 10,
+                "id": 11535
+            }
+        ],
+        "translations": [
+            {
+                "id": 11538,
+                "text": "When on the 15th day the Moon-god dies, the goods of the sea will perish",
+                "anchorStartIndex": 0,
+                "anchorEndIndex": 8
+            },
+            {
+                "id": 11539,
+                "text": "or the cattle will diminish",
+                "anchorStartIndex": 8,
+                "anchorEndIndex": 11
+            }
+        ]
+    },
+    {
+        "id": 11540,
+        "text": "na-at du-li-i̯a-aš pé-di an-da e-re-er",
+        "title": "Example 6.14",
+        "words": [
+            {
+                "index": 1,
+                "id": 11541
+            },
+            {
+                "index": 4,
+                "id": 11544
+            },
+            {
+                "index": 0,
+                "id": 11546
+            }
+        ],
+        "translations": [
+            {
+                "id": 11549,
+                "text": "They arrived at the place of the meeting",
+                "anchorStartIndex": 0,
+                "anchorEndIndex": 5
             }
         ]
     }
