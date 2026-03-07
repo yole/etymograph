@@ -274,12 +274,16 @@ class Word(
 
     fun baseWord(graph: GraphRepository): Word? {
         getTransliterationOf(graph)?.let { return it }
+        val derivation = baseWordLink(graph)
+        if (derivation != null) {
+            return derivation.toEntity as? Word
+        }
         return null
     }
 
     fun getOrComputeGloss(graph: GraphRepository): String? {
         gloss?.let { return it }
-        baseWord(graph)?.let { return it.getOrComputeGloss(graph) }
+        getTransliterationOf(graph)?.let { return it.getOrComputeGloss(graph) }
 
         val variationOf = getVariationOf(graph)
         if (variationOf != null) {
