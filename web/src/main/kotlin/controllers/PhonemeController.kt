@@ -58,7 +58,7 @@ class PhonemeController {
     data class UpdatePhonemeParameters(
         val graphemes: String,
         val sound: String,
-        val classes: String,
+        val classes: String? = null,
         val historical: Boolean = false,
         val source: String? = null,
         val notes: String? = null
@@ -107,7 +107,7 @@ class PhonemeController {
     }
 
     private fun parseClasses(params: UpdatePhonemeParameters) =
-        params.classes.trim().takeIf { it.isNotEmpty() }?.split(' ')?.toSet() ?: emptySet()
+        params.classes.orEmpty().trim().takeIf { it.isNotEmpty() }?.split(' ')?.toSet() ?: emptySet()
 
     @PostMapping("/{graph}/phoneme/{id}/delete")
     fun deletePhoneme(repo: GraphRepository, @PathVariable id: Int) {
