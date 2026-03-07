@@ -89,7 +89,7 @@ export default function WordForm(props: WordFormProps) {
     }
 
     async function updateWordStatus(data) {
-        if (!isAddingLink) {
+        if (!isAddingLink && !props.newCompound && !props.addToCompound) {
             return
         }
         if (!data.text) {
