@@ -14,7 +14,7 @@ class TranslationController {
     data class TranslationParams(
         val corpusTextId: Int? = null,
         val text: String,
-        val source: String,
+        val source: String? = null,
         val anchorStartIndex: Int? = null
     )
 
@@ -44,7 +44,7 @@ class TranslationController {
                 .forEach {
                     val start = it.anchorStartIndex ?: return@forEach
                     val end = it.anchorEndIndex ?: return@forEach
-                    if (start < anchorStartIndex && end > anchorStartIndex) {
+                    if (anchorStartIndex in (start + 1)..<end) {
                         it.anchorEndIndex = anchorStartIndex
                     }
                 }
