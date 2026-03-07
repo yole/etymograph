@@ -4,102 +4,104 @@ import java.util.*
 
 data class ConsistencyCheckerIssue(val description: String)
 
-interface ConsistencyChecker {
-    fun check(repo: GraphRepository, language: Language, report: (ConsistencyCheckerIssue) -> Unit)
-}
-
-object WordTextChecker : ConsistencyChecker {
-    override fun check(repo: GraphRepository, language: Language, report: (ConsistencyCheckerIssue) -> Unit) {
+abstract class ConsistencyChecker {
+    open fun check(repo: GraphRepository, language: Language, report: (ConsistencyCheckerIssue) -> Unit) {
         for (word in repo.allWords(language)) {
-            var charactersNotInInventory = false
-            val text = word.asPhonemic().text
-            language.phonoPhonemeLookup.iteratePhonemes(text) { startIndex, endIndex, phoneme, _ ->
-                if (phoneme == null && text.substring(startIndex, endIndex) != "-") charactersNotInInventory = true
-            }
-            if (charactersNotInInventory) {
-                report(ConsistencyCheckerIssue("Word text contains characters outside of inventory for $word"))
-            }
+            checkWord(repo, word, report)
         }
+    }
+
+    open fun checkWord(repo: GraphRepository, word: Word, report: (ConsistencyCheckerIssue) -> Unit) {
     }
 }
 
-object PosChecker : ConsistencyChecker {
-    override fun check(repo: GraphRepository, language: Language, report: (ConsistencyCheckerIssue) -> Unit) {
-        for (word in repo.allWords(language)) {
-            val baseWordLink = word.baseWordLink(repo)
-            val variationOf = word.getVariationOf(repo)
-            if ((baseWordLink != null || variationOf != null) && word.pos != null) {
-                report(ConsistencyCheckerIssue("POS specified for derived word $word"))
-            }
-            else if (baseWordLink == null && variationOf == null && word.pos == null &&
-                repo.findCompoundsByCompoundWord(word).isEmpty())
-            {
-                report(ConsistencyCheckerIssue("No POS specified for word $word"))
-            }
-            else if (word.pos != null && language.pos.none { it.abbreviation == word.pos }) {
-                report(ConsistencyCheckerIssue("POS '${word.pos}' not in list for word $word"))
-            }
+object WordTextChecker : ConsistencyChecker() {
+    override fun checkWord(repo: GraphRepository, word: Word, report: (ConsistencyCheckerIssue) -> Unit) {
+        if (word.syllabographic) {
+            return
         }
-    }
-}
-
-object GlossChecker : ConsistencyChecker {
-    override fun check(repo: GraphRepository, language: Language, report: (ConsistencyCheckerIssue) -> Unit) {
-        for (word in repo.allWords(language)) {
-            val baseWordLink = word.baseWordLink(repo)
-            val variationOf = word.getVariationOf(repo)
-            if ((baseWordLink != null || variationOf != null) && word.gloss != null) {
-                report(ConsistencyCheckerIssue("Gloss specified for derived word $word"))
-            }
-            else if (baseWordLink == null && variationOf == null && word.gloss == null &&
-                word.pos != KnownPartsOfSpeech.properName.abbreviation && repo.findCompoundsByCompoundWord(word).isEmpty())
-            {
-                report(ConsistencyCheckerIssue("No gloss specified for word $word"))
-            }
-        }
-    }
-}
-
-object WordClassChecker : ConsistencyChecker {
-    override fun check(repo: GraphRepository, language: Language, report: (ConsistencyCheckerIssue) -> Unit) {
-        for (word in repo.allWords(language)) {
-            for (cls in word.classes) {
-                val wordClass = language.wordClasses.find { it.values.any { v -> v.abbreviation == cls } }
-                if (wordClass == null) {
-                    report(ConsistencyCheckerIssue("Word class '$cls''not found for $word"))
-                }
-                else if (word.pos !in wordClass.pos) {
-                    report(ConsistencyCheckerIssue("Word POS does not match POS of word class '$cls' for $word"))
+        val charactersNotInInventory = mutableSetOf<String>()
+        val text = word.asPhonemic().text
+        word.language.phonoPhonemeLookup.iteratePhonemes(text) { startIndex, endIndex, phoneme, _ ->
+            if (phoneme == null) {
+                val text = text.substring(startIndex, endIndex)
+                if (text != "-") {
+                    charactersNotInInventory.add(text)
                 }
             }
         }
+        if (charactersNotInInventory.isNotEmpty()) {
+            report(ConsistencyCheckerIssue("Word text contains characters outside of inventory for $word: " +
+                    charactersNotInInventory.joinToString(", ")))
+        }
     }
 }
 
-object LinkChecker : ConsistencyChecker {
-    override fun check(repo: GraphRepository, language: Language, report: (ConsistencyCheckerIssue) -> Unit) {
-        for (word in repo.allWords(language)) {
-            val links = repo.getLinksFrom(word)
-            for (link in links) {
-                if (link.type == Link.Derived && link.rules.isEmpty()) {
-                    report(ConsistencyCheckerIssue("Derived link with no rules for word $word"))
-                }
-                var expectedPOS = (link.toEntity as? Word)?.pos
-                if (expectedPOS != null) {
-                    for (rule in link.rules) {
-                        val rulePOS = repo.paradigmForRule(rule)?.pos ?: rule.fromPOS
-                        if (rulePOS.isNotEmpty() && expectedPOS !in rulePOS) {
-                            report(ConsistencyCheckerIssue("Word POS does not match rule POS for link from $word, rule ${rule.name}"))
-                        }
-                        expectedPOS = rule.toPOS
+object PosChecker : ConsistencyChecker() {
+    override fun checkWord(repo: GraphRepository, word: Word, report: (ConsistencyCheckerIssue) -> Unit) {
+        val baseWord = word.baseWord(repo)
+        if ((baseWord != null) && word.pos != null) {
+            report(ConsistencyCheckerIssue("POS specified for derived word $word"))
+        }
+        else if (baseWord == null && word.pos == null && repo.findCompoundsByCompoundWord(word).isEmpty()) {
+            report(ConsistencyCheckerIssue("No POS specified for word $word"))
+        }
+        else if (word.pos != null && word.language.pos.none { it.abbreviation == word.pos }) {
+            report(ConsistencyCheckerIssue("POS '${word.pos}' not in list for word $word"))
+        }
+    }
+}
+
+object GlossChecker : ConsistencyChecker() {
+    override fun checkWord(repo: GraphRepository, word: Word, report: (ConsistencyCheckerIssue) -> Unit) {
+        val baseWord = word.baseWord(repo)
+        if (baseWord != null  && word.gloss != null) {
+            report(ConsistencyCheckerIssue("Gloss specified for derived word $word"))
+        }
+        else if (baseWord == null && word.gloss == null &&
+            word.pos != KnownPartsOfSpeech.properName.abbreviation && repo.findCompoundsByCompoundWord(word).isEmpty())
+        {
+            report(ConsistencyCheckerIssue("No gloss specified for word $word"))
+        }
+    }
+}
+
+object WordClassChecker : ConsistencyChecker() {
+    override fun checkWord(repo: GraphRepository, word: Word, report: (ConsistencyCheckerIssue) -> Unit) {
+        for (cls in word.classes) {
+            val wordClass = word.language.wordClasses.find { it.values.any { v -> v.abbreviation == cls } }
+            if (wordClass == null) {
+                report(ConsistencyCheckerIssue("Word class '$cls''not found for $word"))
+            }
+            else if (word.pos !in wordClass.pos) {
+                report(ConsistencyCheckerIssue("Word POS does not match POS of word class '$cls' for $word"))
+            }
+        }
+    }
+}
+
+object LinkChecker : ConsistencyChecker() {
+    override fun checkWord(repo: GraphRepository, word: Word, report: (ConsistencyCheckerIssue) -> Unit) {
+        val links = repo.getLinksFrom(word)
+        for (link in links) {
+            if (link.type == Link.Derived && link.rules.isEmpty()) {
+                report(ConsistencyCheckerIssue("Derived link with no rules for word $word"))
+            }
+            var expectedPOS = (link.toEntity as? Word)?.pos
+            if (expectedPOS != null) {
+                for (rule in link.rules) {
+                    val rulePOS = repo.paradigmForRule(rule)?.pos ?: rule.fromPOS
+                    if (rulePOS.isNotEmpty() && expectedPOS !in rulePOS) {
+                        report(ConsistencyCheckerIssue("Word POS does not match rule POS for link from $word, rule ${rule.name}"))
                     }
+                    expectedPOS = rule.toPOS
                 }
             }
         }
     }
 }
 
-object CorpusTextChecker : ConsistencyChecker {
+object CorpusTextChecker : ConsistencyChecker() {
     override fun check(repo: GraphRepository, language: Language, report: (ConsistencyCheckerIssue) -> Unit) {
         for (corpusText in repo.corpusTextsInLanguage(language)) {
             for (line in corpusText.mapToLines(repo)) {
@@ -115,7 +117,7 @@ object CorpusTextChecker : ConsistencyChecker {
     }
 }
 
-object RuleChecker : ConsistencyChecker {
+object RuleChecker : ConsistencyChecker() {
     override fun check(repo: GraphRepository, language: Language, report: (ConsistencyCheckerIssue) -> Unit) {
         for (rule in repo.allRules().filter { it.toLanguage == language }) {
             for (pos in rule.fromPOS) {
