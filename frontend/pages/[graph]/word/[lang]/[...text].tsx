@@ -37,6 +37,7 @@ import {
 } from "@/models";
 import WordTextView from "@/components/WordTextView";
 import {Urls} from "@/components/Urls";
+import {Accordion} from "@mantine/core";
 
 export const config = {
     unstable_runtimeJS: true
@@ -484,6 +485,8 @@ function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean 
     const canShowTranscription = word.syllabogramSequence !== null
     const canSuggestParseCandidates = !isCompound && !word.syllabogramSequence
 
+    const realGloss = word.glossComputed ? undefined : word.gloss
+
     return <>
         {!embedded && <Breadcrumbs langId={word.language} langName={word.languageFullName}
                      steps={[{title: dictionaryTitle, url: `/${graph}/dictionary/${word.language}${dictionaryLink}`}]}>
@@ -521,7 +524,7 @@ function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean 
             defaultValues={{
                 language: word.language,
                 text: word.textWithExplicitStress,
-                gloss: word.glossComputed ? undefined : word.gloss,
+                gloss: realGloss,
                 fullGloss: word.fullGloss,
                 pos: word.pos,
                 classes: classesEditable,
@@ -541,7 +544,7 @@ function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean 
             <button className="uiButton" onClick={() => deleteWordClicked()}>Delete</button>
         </>}
 
-        {word.attestations.length > 0 &&
+        {!word.baseWord && word.attestations.length > 0 &&
             <p>Attested in {word.attestations.map((att, i) => <>
                     {i > 0 && ", "}
                     <Link href={`/${graph}/corpus/text/${att.textId}`}>{att.textTitle}</Link>
@@ -587,8 +590,8 @@ function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean 
             </>
         }
 
-        {allowEdit() && <>
-            <h4>Define this word</h4>
+        {allowEdit() && <Accordion defaultValue={word.baseWord || realGloss ? "" : "define"}>
+            <Accordion.Item value="define"><Accordion.Control><b>Define this word</b></Accordion.Control><Accordion.Panel>
             {canShowTranscription && <><button className="uiButton" onClick={showTranscriptionClicked}>Transcription</button>{' '}</>}
             {showTranscription &&
                 <WordForm
@@ -642,8 +645,8 @@ function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean 
                             <button onClick={() => acceptParseCandidate(pc)}>Accept</button>
                         </p>
                     </>))}</>}
-
-            <h4>Add linked words</h4>
+            </Accordion.Panel></Accordion.Item>
+            <Accordion.Item value="link"><Accordion.Control><b>Add linked words</b></Accordion.Control><Accordion.Panel>
 
             <button className="uiButton" onClick={() => setShowDerivedWord(!showDerivedWord)}>Add inflected form</button>{' '}
             {showDerivedWord && <WordForm wordSubmitted={submitted} linkType='>' linkTarget={word}
@@ -664,8 +667,8 @@ function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean 
             }
             <button className="uiButton" onClick={() => setShowRuleLink(!showRuleLink)}>Add related rule</button><br/>
             {showRuleLink && <RuleLinkForm submitted={ruleLinkSubmitted} fromEntityId={word.id}/>}
-
-            <h4>Etymology</h4>
+            </Accordion.Panel></Accordion.Item>
+            <Accordion.Item value="etymology"><Accordion.Control><b>Etymology</b></Accordion.Control><Accordion.Panel>
 
             <button className="uiButton"  onClick={() => setShowOriginWord(!showOriginWord)}>Add origin word</button>{' '}
             {showOriginWord && <WordForm wordSubmitted={submitted} linkType='^' linkTarget={word} reverseLink={true}
@@ -680,7 +683,7 @@ function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean 
             <br/>
             <p/>
             {errorText !== "" && <div className="errorText">{errorText}</div>}
-        </>}
+        </Accordion.Panel></Accordion.Item></Accordion>}
         {word.hasParadigms && <Link href={`/${graph}/paradigms/${word.language}/word/${word.id}`}>Paradigms</Link>}
 
         {word.baseWord && <blockquote><SingleWord word={word.baseWord} embedded={true}/></blockquote>}
