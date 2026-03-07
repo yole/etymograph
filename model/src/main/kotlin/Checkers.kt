@@ -92,7 +92,7 @@ object LinkChecker : ConsistencyChecker() {
             var expectedPOS = (link.toEntity as? Word)?.pos
             if (expectedPOS != null) {
                 for (rule in link.rules) {
-                    val rulePOS = repo.paradigmForRule(rule)?.pos ?: rule.fromPOS
+                    val rulePOS = (repo.paradigmForRule(rule)?.pos?.toSet() ?: emptySet()) + rule.fromPOS
                     if (rulePOS.isNotEmpty() && expectedPOS !in rulePOS) {
                         report(ConsistencyCheckerIssue("Word POS does not match rule POS for link from $word, rule ${rule.name}"))
                     }
