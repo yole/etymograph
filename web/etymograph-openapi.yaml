@@ -2106,6 +2106,10 @@ components:
           type: "array"
           items:
             $ref: "#/components/schemas/WordRuleSequenceViewModel"
+        consistencyIssues:
+          type: "array"
+          items:
+            type: "string"
         baseWord:
           nullable: true
           $ref: "#/components/schemas/WordViewModel"
@@ -2134,6 +2138,7 @@ components:
         - "compound"
         - "hasParadigms"
         - "suggestedDeriveSequences"
+        - "consistencyIssues"
     LookupParameters:
       type: "object"
       properties:

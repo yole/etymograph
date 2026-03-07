@@ -131,6 +131,7 @@ class WordController(val dictionaryService: DictionaryService) {
         val compound: Boolean,
         val hasParadigms: Boolean,
         val suggestedDeriveSequences: List<WordRuleSequenceViewModel>,
+        val consistencyIssues: List<String>,
         val baseWord: WordViewModel? = null
     )
 
@@ -177,6 +178,13 @@ class WordController(val dictionaryService: DictionaryService) {
         val hasParadigms = baseWordLink(graph) == null && graph.paradigmsForLanguage(language).any { effectivePOS in it.pos }
 
         val baseWord = baseWord(graph)
+        val consistencyIssues = buildList {
+            for (checker in consistencyCheckers) {
+                checker.checkWord(graph, this@toViewModel) { issue ->
+                    add(issue.description)
+                }
+            }
+        }
 
         return WordViewModel(
             id,
@@ -260,6 +268,7 @@ class WordController(val dictionaryService: DictionaryService) {
             graph.suggestDeriveRuleSequences(this).map {
                 WordRuleSequenceViewModel(it.name, it.id)
             },
+            consistencyIssues,
             baseWord?.toViewModel(graph)
         )
     }

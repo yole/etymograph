@@ -37,7 +37,7 @@ import {
 } from "@/models";
 import WordTextView from "@/components/WordTextView";
 import {Urls} from "@/components/Urls";
-import {Accordion} from "@mantine/core";
+import {Accordion, Alert} from "@mantine/core";
 
 export const config = {
     unstable_runtimeJS: true
@@ -505,6 +505,11 @@ function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean 
             </p>
             {word.notes && <p>{word.notes}</p>}
             <SourceRefs source={word.source}/>
+            {word.consistencyIssues.map((issue, index) => (
+                <Alert key={`${word.id}-${index}`} color="yellow" title="Consistency issue" mb="sm">
+                    {issue}
+                </Alert>
+            ))}
 
             {allowEdit() && dictionaries.includes("wiktionary") && <p>
                 <button className="inlineButton" onClick={() => lookupWordClicked()}>Look up in Wiktionary</button><br/>

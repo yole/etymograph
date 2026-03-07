@@ -752,5 +752,6 @@ export type WordViewModel = {
     compound: boolean;
     hasParadigms: boolean;
     suggestedDeriveSequences: Array<WordRuleSequenceViewModel>;
+    consistencyIssues: Array<(string)>;
     baseWord?: (WordViewModel) | null;
 };
