@@ -34,11 +34,9 @@ export function useEtymographFormContext() {
 }
 
 export default function EtymographForm<Data, ResponseData=Data>(props: EtymographFormProps<Data, ResponseData>) {
-    const [, setFormVersion] = useState(0)
     const form = useForm({
         mode: "uncontrolled",
-        initialValues: (props.defaultValues ?? {}) as any,
-        onValuesChange: () => setFormVersion((v) => v + 1),
+        initialValues: (props.defaultValues ?? {}) as any
     });
     const [errorText, setErrorText] = useState("")
     const router = useRouter()
