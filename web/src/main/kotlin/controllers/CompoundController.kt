@@ -34,7 +34,7 @@ class CompoundController {
     fun addToCompound(repo: GraphRepository, @PathVariable id: Int, @RequestBody params: UpdateCompoundParams) {
         val compound = repo.resolveCompound(id)
         val componentWord = repo.resolveWord(params.componentId)
-        compound.components.add(componentWord)
+        repo.addToCompound(compound, componentWord)
         if (params.markHead) {
             compound.headIndex = compound.components.size - 1
         }

@@ -753,10 +753,20 @@ open class InMemoryGraphRepository : GraphRepository() {
         source: List<SourceRef>,
         notes: String?
     ): Compound {
+        if (compoundWord in components) {
+            throw IllegalArgumentException("A word cannot be a compound member of itself")
+        }
         val compound = Compound(allLangEntities.size, compoundWord, components.toMutableList(), headIndex, source, notes)
         compounds.getOrPut(compoundWord.id) { arrayListOf() }.add(compound)
         allLangEntities.add(compound)
         return compound
+    }
+
+    override fun addToCompound(compound: Compound, component: Word) {
+        if (compound.compoundWord == component) {
+            throw IllegalArgumentException("A word cannot be a compound member of itself")
+        }
+        compound.components.add(component)
     }
 
     override fun findCompoundsByComponent(component: Word): List<Compound> {

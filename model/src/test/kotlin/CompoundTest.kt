@@ -1,6 +1,7 @@
 package ru.yole.etymograph
 
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertThrows
 import org.junit.Before
 import org.junit.Test
 
@@ -132,5 +133,21 @@ class CompoundTest : QBaseTest() {
         repo.addLink(stad, stadr, Link.Derived, listOf(onAcc))
         val suggestions = repo.suggestCompound(stadr)
         assertEquals(0, suggestions.size)
+    }
+
+    @Test
+    fun createCompoundRejectsSelfReference() {
+        assertThrows(IllegalArgumentException::class.java) {
+            repo.createCompound(faramir, listOf(faramir))
+        }
+    }
+
+    @Test
+    fun addToCompoundRejectsSelfReference() {
+        val compound = repo.createCompound(faramir, listOf(fara))
+
+        assertThrows(IllegalArgumentException::class.java) {
+            repo.addToCompound(compound, faramir)
+        }
     }
 }
