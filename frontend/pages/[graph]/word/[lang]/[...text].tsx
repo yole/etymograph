@@ -368,7 +368,14 @@ function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean 
     function deleteWordClicked() {
         if (window.confirm("Delete this word?")) {
             deleteWord(graph, word.id)
-                .then(() => router.push(`/${graph}/dictionary/${word.language}`))
+                .then(() => {
+                    if (embedded) {
+                        router.replace(router.asPath)
+                    }
+                    else {
+                        router.push(`/${graph}/dictionary/${word.language}`);
+                    }
+                })
         }
     }
 
