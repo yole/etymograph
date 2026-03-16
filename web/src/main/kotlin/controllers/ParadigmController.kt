@@ -113,7 +113,7 @@ class ParadigmController {
         val prefix: String,
         val rows: String,
         val columns: String,
-        val endings: String
+        val endings: String?
     )
 
     @PostMapping("/{graph}/paradigm/generate")
@@ -125,7 +125,7 @@ class ParadigmController {
             params.rows.split(",").map { it.trim() },
             params.columns.split(",").map { it.trim() },
             params.prefix, params.addedCategories,
-            params.endings.split(",").map { it.trim() }
+            params.endings.orEmpty().split(",").map { it.trim() }
         )
 
         return paradigm.toViewModel(repo)
