@@ -308,7 +308,7 @@ class Word(
             }
         }
         if (pos == KnownPartsOfSpeech.properName.abbreviation) {
-            return text.replaceFirstChar { it.uppercase(Locale.FRANCE) }
+            return text.replaceFirstChar { it.uppercase(Locale.FRANCE) }.removeSuffix("-")
         }
         return null
     }
