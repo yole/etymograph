@@ -406,8 +406,18 @@ class MorphemeInstruction(type: InstructionType, val morphemeId: Int, comment: S
     override fun apply(word: Word, context: RuleApplyContext): Word {
         val morpheme = context.graph.wordById(morphemeId) ?: throw IllegalStateException("Target morpheme not found")
         return when (type) {
-            InstructionType.PrependMorpheme ->
-                word.derive(morpheme.text.trimEnd('-') + word.text)
+            InstructionType.PrependMorpheme -> {
+                val effectiveText = morpheme.text.trimEnd('-')
+                var segments = word.segments?.takeIf { it.isNotEmpty() } ?: listOf(WordSegment(0, word.text.length))
+                if (segments.first().firstCharacter > 0) {
+                    segments = listOf(WordSegment(0, segments.first().firstCharacter)) + segments
+                }
+                val newSegment = WordSegment(0, effectiveText.length, context.rule.addedCategories, morpheme, context.rule)
+                word.derive(
+                    effectiveText + word.text,
+                    segments = listOf(newSegment) + segments.map { it.shiftTo(it.firstCharacter + effectiveText.length) }
+                )
+            }
             InstructionType.AppendMorpheme -> {
                 val effectiveText = morpheme.text.trimStart('-')
                 word.derive(

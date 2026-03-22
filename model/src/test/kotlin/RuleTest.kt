@@ -685,6 +685,9 @@ class RuleTest : QBaseTest() {
         val frignan = repo.addWord("frignan", language = oe)
         val result = rule.apply(frignan, repo)
         assertEquals("gefrignan", result.text)
+        assertEquals(2, result.segments!!.size)
+        assertEquals(2, result.segments!![0].length)
+        assertEquals(7, result.segments!![1].length)
 
         assertEquals("prepend morpheme 'ge-: Prefix: ge'", rule.firstInstruction.toEditableText(repo))
         assertEquals("ge-", rule.firstInstruction.toSummaryText(repo))
@@ -708,6 +711,24 @@ class RuleTest : QBaseTest() {
         assertEquals(1, result.segments!!.size)
         assertEquals(inn, result.segments!![0].sourceWord)
         assertEquals(3, result.segments!![0].length)
+    }
+
+    @Test
+    fun morphemeChainSegments() {
+        val on = Language("Old Norse", "ON")
+        val repo = InMemoryGraphRepository().with(on)
+        val inn = repo.addWord("inn", "the", language = on)
+        val gePrefix = repo.addWord("ge-", "Prefix: ge", language = on)
+        val rule = repo.rule("- append morpheme 'inn: the'", fromLanguage = on)
+        val rule2 = repo.rule("- prepend morpheme 'ge-: Prefix: ge'", fromLanguage = on)
+        val hestr = repo.addWord("hestr", language = on)
+        val result = rule2.apply(rule.apply(hestr, repo), repo)
+        assertEquals("gehestrinn", result.text)
+        val segments = result.segments!!
+        assertEquals(3, segments.size)
+        assertEquals(0, segments[0].firstCharacter)
+        assertEquals(2, segments[1].firstCharacter)
+        assertEquals(7, segments[2].firstCharacter)
     }
 
     @Test

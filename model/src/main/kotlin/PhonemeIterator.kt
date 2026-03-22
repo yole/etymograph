@@ -441,5 +441,7 @@ class PhonemeIterator {
 
     val segments: List<WordSegment>?
         get() = word?.segments
+
+    val rootSegment: WordSegment? by lazy { word?.findRootSegment(repo) }
 }
 

@@ -95,12 +95,24 @@ open class PhonemeClass(val name: String, var matchingPhonemes: List<String> = e
             }
         }
 
+        val root = object : PhonemeClass("root") {
+            override fun matchesCurrent(it: PhonemeIterator): Boolean {
+                val segment = it.rootSegment ?: return true
+                val charIndex = it.phonemeToCharacterIndex(it.index)
+                if (charIndex in segment.firstCharacter..<segment.firstCharacter + segment.length) {
+                    return true
+                }
+                return false
+            }
+        }
+
         val specialPhonemeClasses = listOf(
             sound,
             diphthong, stressed, nucleus,
             wordInitial, wordFinal,
             syllableInitial, syllableFinal,
-            morphemeInitial, morphemeFinal, geminate
+            morphemeInitial, morphemeFinal, geminate,
+            root
         )
 
         const val vowelClassName = "vowel"

@@ -112,4 +112,14 @@ class PhonemeClassTest : QBaseTest() {
         assertEquals("herit", result.text)
     }
 
+    @Test
+    fun rootVowel() {
+        val repo = InMemoryGraphRepository().with(q)
+        val augment = repo.addWord("e", "augment", language = q)
+        val soundRule = repo.rule("* e > o", name = "q-o-grade")
+        val rule = repo.rule("- prepend morpheme 'e: augment'\n- apply sound rule 'q-o-grade' to first root vowel")
+        val hallæri = repo.addWord("kes", language = q)
+        val result = rule.apply(hallæri, repo)
+        assertEquals("ekos", result.text)
+    }
 }

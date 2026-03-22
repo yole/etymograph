@@ -26,14 +26,7 @@ abstract class SyllableClass(val name: String) {
         val rootSyllable = object : SyllableClass("root syllable") {
             override fun matches(word: Word?, syllable: Syllable, repo: GraphRepository?): Boolean {
                 if (word == null) return false
-                val orthoWord = word.asOrthographic()
-                val segments = (repo?.restoreSegments(orthoWord) ?: orthoWord).segments
-                val rootSegment = segments?.firstOrNull {
-                    it.sourceRule == null &&
-                            (it.sourceWord == null ||
-                                    (it.sourceWord.pos != KnownPartsOfSpeech.preverb.abbreviation &&
-                                            it.sourceWord.pos != KnownPartsOfSpeech.affix.abbreviation))
-                } ?: return true
+                val rootSegment = word.findRootSegment(repo) ?: return true
                 return syllable.startIndex >= rootSegment.firstCharacter
             }
         }

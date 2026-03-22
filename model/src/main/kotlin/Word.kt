@@ -31,6 +31,9 @@ class WordSegment(
             return WordSegment(firstCharacter, length, category, sourceWord, sourceRule)
         }
     }
+
+    fun shiftTo(startIndex: Int, length: Int? = null) =
+        WordSegment(startIndex, length ?: this.length, category, sourceWord, sourceRule, clitic)
 }
 
 fun remapSegments(phonemes: PhonemeIterator, segments: List<WordSegment>?): List<WordSegment>? {
@@ -45,9 +48,7 @@ fun remapSegments(phonemes: PhonemeIterator, segments: List<WordSegment>?): List
         else {
             val startChar = phonemes.resultPhonemeToCharacterIndex(start)
             val endChar = phonemes.resultPhonemeToCharacterIndex(end)
-            WordSegment(
-                startChar, endChar - startChar,
-                segment.category, segment.sourceWord, segment.sourceRule, segment.clitic)
+            segment.shiftTo(startChar, endChar - startChar)
         }
     }
 }
@@ -393,6 +394,17 @@ class Word(
             compound.headComponent()?.pos?.let { return it }
         }
         return null
+    }
+
+    fun findRootSegment(graph: GraphRepository?): WordSegment? {
+        val orthoWord = asOrthographic()
+        val segments = (graph?.restoreSegments(orthoWord) ?: orthoWord).segments
+        return segments?.firstOrNull {
+            it.sourceRule == null &&
+                    (it.sourceWord == null ||
+                            (it.sourceWord.pos != KnownPartsOfSpeech.preverb.abbreviation &&
+                             it.sourceWord.pos != KnownPartsOfSpeech.affix.abbreviation))
+        }
     }
 
     companion object {
