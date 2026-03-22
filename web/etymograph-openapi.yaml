@@ -3208,6 +3208,8 @@ components:
         protoLanguageShortName:
           type: "string"
           nullable: true
+        reconstructed:
+          type: "boolean"
         pos:
           type: "array"
           items:

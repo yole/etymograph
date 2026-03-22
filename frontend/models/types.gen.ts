@@ -193,6 +193,7 @@ export type LanguageShortViewModel = {
     name: string;
     shortName: string;
     protoLanguageShortName?: (string) | null;
+    reconstructed?: boolean;
     pos: Array<WordCategoryValueViewModel>;
     grammaticalCategories: Array<WordCategoryViewModel>;
     wordClasses: Array<WordCategoryViewModel>;

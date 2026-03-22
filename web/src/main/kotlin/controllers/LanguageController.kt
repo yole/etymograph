@@ -61,6 +61,7 @@ class LanguageController {
         val name: String,
         val shortName: String,
         val protoLanguageShortName: String?,
+        val reconstructed: Boolean,
         val pos: List<WordCategoryValueViewModel>,
         val grammaticalCategories: List<WordCategoryViewModel>,
         val wordClasses: List<WordCategoryViewModel>,
@@ -109,6 +110,7 @@ class LanguageController {
             name,
             shortName,
             protoLanguage?.shortName,
+            reconstructed,
             pos.map { WordCategoryValueViewModel(it.name, it.abbreviation) },
             grammaticalCategories.map {
                 WordCategoryViewModel(it.name, it.pos, it.values.map {
