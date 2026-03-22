@@ -38,7 +38,7 @@ export async function getStaticPaths() {
 function ExampleList(params: {rule: RuleViewModel, examples: RuleExampleViewModel[]}) {
     const {rule, examples} = params
     const haveSteps = examples.some(ex => ex.wordBeforeRule !== null || ex.wordAfterRule !== null)
-    const haveExpected = examples.some(ex => ex.expectedWord !== null && ex.expectedWord !== ex.fromWord.text)
+    const haveExpected = examples.some(ex => ex.expectedWord && ex.expectedWord !== ex.fromWord.text)
     return <table className="tableWithBorders">
         <thead>
         <tr>
