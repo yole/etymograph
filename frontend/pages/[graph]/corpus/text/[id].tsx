@@ -179,7 +179,7 @@ function TranslationView(params: {translation: TranslationViewModel}) {
 
     return <>
         {(!showTranslationForm) && <>
-            <div>"{t.text}" <SourceRefs source={t.source}/></div>
+            <div>&quot;{t.text}&quot; <SourceRefs source={t.source}/></div>
             {allowEdit() && <>
                 <button onClick={() => setShowTranslationForm(!showTranslationForm)}>Edit translation</button>
                 {' '}
