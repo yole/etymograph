@@ -481,7 +481,7 @@
                 }
             }
         ],
-        "addedCategories": ".PRES.1SG",
+        "addedCategories": ".1SG",
         "fromPOS": [
             "V"
         ]
@@ -552,7 +552,7 @@
                 }
             }
         ],
-        "addedCategories": ".PRES.1PL",
+        "addedCategories": ".1PL",
         "fromPOS": [
             "V"
         ],
@@ -583,7 +583,7 @@
                 }
             }
         ],
-        "addedCategories": ".PRES.2SG",
+        "addedCategories": "2SG",
         "fromPOS": [
             "V"
         ]
@@ -654,7 +654,7 @@
                 }
             }
         ],
-        "addedCategories": ".PRES.2PL",
+        "addedCategories": ".2PL",
         "fromPOS": [
             "V"
         ]
@@ -679,7 +679,7 @@
                 }
             }
         ],
-        "addedCategories": ".PRES.3SG",
+        "addedCategories": ".3SG",
         "fromPOS": [
             "V"
         ]
@@ -750,7 +750,7 @@
                 }
             }
         ],
-        "addedCategories": ".PRES.3PL",
+        "addedCategories": ".3PL",
         "fromPOS": [
             "V"
         ]
@@ -1025,7 +1025,8 @@
         ],
         "fromPOS": [
             "V"
-        ]
+        ],
+        "toPOS": "V"
     },
     {
         "id": 10521,
@@ -1039,7 +1040,14 @@
                         "type": "ApplySoundRule",
                         "args": [
                             "10072",
-                            "first ablauting vowel"
+                            "first root ablauting vowel"
+                        ]
+                    },
+                    {
+                        "type": "ApplySoundRule",
+                        "args": [
+                            "12056",
+                            "first root sound"
                         ]
                     }
                 ],
@@ -1051,7 +1059,7 @@
     },
     {
         "id": 10522,
-        "name": "pie-nasal-infix",
+        "name": "pie-nasal-infix-present",
         "fromLang": "PIE",
         "toLang": "PIE",
         "branches": [
@@ -1077,9 +1085,11 @@
                 }
             }
         ],
+        "addedCategories": ".PRES",
         "fromPOS": [
             "V"
-        ]
+        ],
+        "toPOS": "V"
     },
     {
         "id": 10529,
@@ -1107,6 +1117,7 @@
                 }
             }
         ],
+        "addedCategories": ".PRES",
         "fromPOS": [
             "V"
         ]
@@ -1131,9 +1142,11 @@
                 }
             }
         ],
+        "addedCategories": ".PRES",
         "fromPOS": [
             "V"
-        ]
+        ],
+        "toPOS": "V"
     },
     {
         "id": 10810,
@@ -1161,9 +1174,11 @@
                 }
             }
         ],
+        "addedCategories": ".PRES",
         "fromPOS": [
             "V"
-        ]
+        ],
+        "toPOS": "V"
     },
     {
         "id": 10817,
@@ -1234,9 +1249,11 @@
                 }
             }
         ],
+        "addedCategories": ".CAUS.PRES",
         "fromPOS": [
             "V"
-        ]
+        ],
+        "toPOS": "V"
     },
     {
         "id": 11001,
@@ -1244,6 +1261,21 @@
         "fromLang": "PIE",
         "toLang": "PIE",
         "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'m̥'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "leaf",
+                    "cond": "EndsWith",
+                    "cls": "consonant"
+                }
+            },
             {
                 "instructions": [
                     {
@@ -1343,6 +1375,12 @@
         "branches": [
             {
                 "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "10521"
+                        ]
+                    },
                     {
                         "type": "AppendMorpheme",
                         "args": [
@@ -1449,6 +1487,322 @@
         ],
         "fromPOS": [
             "V"
+        ]
+    },
+    {
+        "id": 11550,
+        "name": "pie-lengthened-grade-vowel",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "e > ē"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ]
+    },
+    {
+        "id": 11551,
+        "name": "pie-lengthened-grade-root",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplySoundRule",
+                        "args": [
+                            "11550",
+                            "first ablauting vowel"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ]
+    },
+    {
+        "id": 11553,
+        "name": "pie-s-aorist",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "11551"
+                        ]
+                    },
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "11552"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".AOR",
+        "fromPOS": [
+            "V"
+        ]
+    },
+    {
+        "id": 12025,
+        "name": "pie-root-aor",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".AOR",
+        "fromPOS": [
+            "V"
+        ],
+        "toPOS": "V"
+    },
+    {
+        "id": 12040,
+        "name": "pie-thematic-ie-present",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "10521"
+                        ]
+                    },
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "12039"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PRES",
+        "fromPOS": [
+            "V",
+            "N"
+        ],
+        "toPOS": "V"
+    },
+    {
+        "id": 12047,
+        "name": "pie-thematized-ie-present",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "12039"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PRES",
+        "fromPOS": [
+            "V"
+        ],
+        "toPOS": "V",
+        "sourceRefs": [
+            {
+                "pubId": 12,
+                "refText": "255"
+            }
+        ]
+    },
+    {
+        "id": 12049,
+        "name": "pie-root-present",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "NoChange",
+                        "args": []
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PRES",
+        "fromPOS": [
+            "V"
+        ],
+        "toPOS": "V"
+    },
+    {
+        "id": 12051,
+        "name": "pie-s-present",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "10521"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'es'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".PRES",
+        "fromPOS": [
+            "V"
+        ],
+        "toPOS": "V",
+        "sourceRefs": [
+            {
+                "pubId": 12,
+                "refText": "257"
+            }
+        ]
+    },
+    {
+        "id": 12056,
+        "name": "pie-vocalize",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Spe",
+                        "args": [
+                            "u̯ > u"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ]
+    },
+    {
+        "id": 12064,
+        "name": "pie-augment-impf",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "PrependMorpheme",
+                        "args": [
+                            "11020"
+                        ]
+                    },
+                    {
+                        "type": "ApplyStress",
+                        "args": [
+                            "first"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".IPF",
+        "replacedCategories": ".PRES",
+        "fromPOS": [
+            "V"
+        ],
+        "toPOS": "V"
+    },
+    {
+        "id": 12066,
+        "name": "pie-verbal-i-reduplication",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "Prepend",
+                        "args": [
+                            "'i'"
+                        ]
+                    },
+                    {
+                        "type": "Prepend",
+                        "args": [
+                            "first consonant"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "fromPOS": [
+            "V"
+        ],
+        "toPOS": "V",
+        "sourceRefs": [
+            {
+                "pubId": 12,
+                "refText": "253"
+            }
         ]
     }
 ]

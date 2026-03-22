@@ -66,7 +66,8 @@
         {
             "id": 10147,
             "graphemes": [
-                "k"
+                "k",
+                "g"
             ],
             "classes": [
                 "voiceless",
@@ -423,6 +424,22 @@
             ]
         },
         {
+            "name": "Mood",
+            "pos": [
+                "V"
+            ],
+            "values": [
+                {
+                    "name": "Indicative",
+                    "abbreviation": "IND"
+                },
+                {
+                    "name": "Imperative",
+                    "abbreviation": "IMP"
+                }
+            ]
+        },
+        {
             "name": "Non-finite form",
             "pos": [
                 "V"
@@ -435,6 +452,18 @@
                 {
                     "name": "Supine",
                     "abbreviation": "SUP"
+                },
+                {
+                    "name": "Infinitive I",
+                    "abbreviation": "INF1"
+                },
+                {
+                    "name": "Infinitive II",
+                    "abbreviation": "INF2"
+                },
+                {
+                    "name": "Verbal Noun",
+                    "abbreviation": "VN"
                 }
             ]
         }

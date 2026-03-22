@@ -2580,18 +2580,21 @@
     },
     {
         "id": 11389,
-        "text": "nu e-eš-har-šum-mi-it e-eš-šu-u̯a-an ti-i-e-er",
+        "text": "nu e-eš-ḫar-šum-mi-it e-eš-šu-u̯a-an ti-i-e-er",
         "title": "Example 9.02",
         "words": [
-            {
-                "index": 1,
-                "id": 11390,
-                "contextGloss": ""
-            },
             {
                 "index": 2,
                 "id": 11395,
                 "contextGloss": ""
+            },
+            {
+                "index": 1,
+                "id": 11719
+            },
+            {
+                "index": 3,
+                "id": 11723
             }
         ],
         "translations": [
@@ -2617,6 +2620,26 @@
                 "index": 1,
                 "id": 11423,
                 "contextGloss": ""
+            },
+            {
+                "index": 8,
+                "id": 11594
+            },
+            {
+                "index": 5,
+                "id": 11725
+            },
+            {
+                "index": 2,
+                "id": 11727
+            },
+            {
+                "index": 4,
+                "id": 11733
+            },
+            {
+                "index": 7,
+                "id": 11738
             }
         ],
         "translations": [
@@ -2687,6 +2710,10 @@
                 "index": 1,
                 "id": 11427,
                 "contextGloss": ""
+            },
+            {
+                "index": 3,
+                "id": 11739
             }
         ],
         "translations": [
@@ -2993,6 +3020,1064 @@
                 "text": "They arrived at the place of the meeting",
                 "anchorStartIndex": 0,
                 "anchorEndIndex": 5
+            }
+        ]
+    },
+    {
+        "id": 11556,
+        "text": "na-aš-ta an-da-i̯a _Ú-UL ku-in-ki tar-na-i pa-ra-a-i̯a-kán _Ú-UL ku-in-ki tar-na-i",
+        "title": "Example 7.01",
+        "words": [
+            {
+                "index": 8,
+                "id": 11557
+            },
+            {
+                "index": 5,
+                "id": 11560
+            },
+            {
+                "index": 1,
+                "id": 11562
+            }
+        ],
+        "translations": [
+            {
+                "id": 11564,
+                "text": "He neither lets anyone in, nor lets anyone out",
+                "anchorStartIndex": 0,
+                "anchorEndIndex": 9
+            }
+        ]
+    },
+    {
+        "id": 11565,
+        "text": "nu _I-NA KUR ^URU^TÁG-GA-AŠ-TA pa-a-un nu-mu iš-ta-ma-aš-ša-an ku-it ḫar-ke-er nu-uš-ma-aš-kán nam-ma UD.KAM-az GÉŠPU-it EGIR-pa-an-da _Ú-UL pa-a-un nu GE6-az i-i̯a-aḫ-ḫa-at",
+        "title": "Example 7.02",
+        "words": [
+            {
+                "index": 4,
+                "id": 11566
+            },
+            {
+                "index": 8,
+                "id": 11569
+            },
+            {
+                "index": 6,
+                "id": 11571
+            },
+            {
+                "index": 10,
+                "id": 11573
+            },
+            {
+                "index": 11,
+                "id": 11574
+            },
+            {
+                "index": 12,
+                "id": 11576
+            },
+            {
+                "index": 17,
+                "id": 11578
+            },
+            {
+                "index": 13,
+                "id": 11580
+            },
+            {
+                "index": 18,
+                "id": 11582
+            }
+        ],
+        "translations": [
+            {
+                "id": 11579,
+                "text": "I went to the land of Taggašta. And because they had heard me",
+                "anchorStartIndex": 0,
+                "anchorEndIndex": 9
+            },
+            {
+                "id": 11584,
+                "text": "after (that) I did not go anymore to them with weapons at day-time",
+                "anchorStartIndex": 9,
+                "anchorEndIndex": 16
+            },
+            {
+                "id": 11585,
+                "text": "(but) I marched at night",
+                "anchorStartIndex": 16,
+                "anchorEndIndex": 19
+            }
+        ]
+    },
+    {
+        "id": 11586,
+        "text": "ták-ku GU4-aš A.ŠÀ^ḪI.A^-ni ku-el-ka4 a-ki _BE-EL A.ŠÀ 2 GU4 pa-a-i",
+        "title": "Example 7.03",
+        "words": [
+            {
+                "index": 1,
+                "id": 11587
+            },
+            {
+                "index": 2,
+                "id": 11588
+            },
+            {
+                "index": 3,
+                "id": 11591
+            },
+            {
+                "index": 5,
+                "id": 11593
+            },
+            {
+                "index": 9,
+                "id": 11594
+            }
+        ],
+        "translations": [
+            {
+                "id": 11597,
+                "text": "If a cow dies in someone’s field",
+                "anchorStartIndex": 0,
+                "anchorEndIndex": 5
+            },
+            {
+                "id": 11598,
+                "text": "the owner of the field will give two cows (in return)",
+                "anchorStartIndex": 5,
+                "anchorEndIndex": 10
+            }
+        ]
+    },
+    {
+        "id": 11599,
+        "text": "ma-na-aš-kán šu-uḫ-ḫa-az kat-ta ma-uš-ta-at na-an ^MUNUS.MEŠ^SUḪUR.LÁL e-ep-per na-an _Ú-UL tar-né-er",
+        "title": "Example 7.04",
+        "words": [
+            {
+                "index": 0,
+                "id": 11600
+            },
+            {
+                "index": 1,
+                "id": 11602
+            },
+            {
+                "index": 5,
+                "id": 11605
+            },
+            {
+                "index": 9,
+                "id": 11606
+            }
+        ],
+        "translations": [
+            {
+                "id": 11608,
+                "text": "She would have fallen down from the roof, (but) the SUḪUR.LÁL servants grabbed her",
+                "anchorStartIndex": 0,
+                "anchorEndIndex": 7
+            },
+            {
+                "id": 11609,
+                "text": "and did not let her go",
+                "anchorStartIndex": 7,
+                "anchorEndIndex": 10
+            }
+        ]
+    },
+    {
+        "id": 11610,
+        "text": "nu ^d^UTU^_ŠI^ ^URU^kat-ḫa-id-du-u̯a-an GUL-un na-an _IŠ-TU NAM.RA GU4 UDU ^URU^KÙ.BABBAR-ši ar-ḫa ú-da-aḫ-ḫu-un URU-an-ma ar-ḫa u̯a-ar-nu-nu-un",
+        "title": "Example 7.05",
+        "words": [
+            {
+                "index": 3,
+                "id": 11611
+            },
+            {
+                "index": 9,
+                "id": 11613
+            },
+            {
+                "index": 11,
+                "id": 11615
+            },
+            {
+                "index": 12,
+                "id": 11618
+            }
+        ],
+        "translations": [
+            {
+                "id": 11620,
+                "text": "I, my Majesty, attacked the city of Katḫaidduu̯a",
+                "anchorStartIndex": 0,
+                "anchorEndIndex": 4
+            },
+            {
+                "id": 11621,
+                "text": "and I brought it together with (its) inhabitants, cows and sheep (= all living booty) to Ḫattuša",
+                "anchorStartIndex": 4,
+                "anchorEndIndex": 12
+            },
+            {
+                "id": 11622,
+                "text": "But the city (itself) I burnt down to the ground",
+                "anchorStartIndex": 12,
+                "anchorEndIndex": 15
+            }
+        ]
+    },
+    {
+        "id": 11623,
+        "text": "nu-kán ku-iš UDU da-ma-a-aš-zi ku-iš-ma ŠAḪ.TUR pé-e ḫar-zi _A-NA EZEN4 _DI12-ŠI",
+        "title": "Example 7.06",
+        "words": [
+            {
+                "index": 3,
+                "id": 11624
+            },
+            {
+                "index": 4,
+                "id": 11629
+            },
+            {
+                "index": 5,
+                "id": 11631
+            },
+            {
+                "index": 6,
+                "id": 11627
+            },
+            {
+                "index": 9,
+                "id": 11626
+            },
+            {
+                "index": 10,
+                "id": 11632
+            }
+        ],
+        "translations": [
+            {
+                "id": 11634,
+                "text": "The one will drive the sheep, and the other will hold the piglet ready, on the festival of spring",
+                "anchorStartIndex": 0,
+                "anchorEndIndex": 11
+            }
+        ]
+    },
+    {
+        "id": 11658,
+        "text": "nu ALAM^ḪI.A^ DÙ-mi na-at-ša-an ^GI^pád-da-ni te-eḫ-ḫi",
+        "title": "Example 8.01",
+        "words": [
+            {
+                "index": 1,
+                "id": 11659
+            },
+            {
+                "index": 5,
+                "id": 11661
+            },
+            {
+                "index": 4,
+                "id": 11664
+            },
+            {
+                "index": 2,
+                "id": 11667
+            }
+        ],
+        "translations": [
+            {
+                "id": 11669,
+                "text": "I make figurines and place them in a basket",
+                "anchorStartIndex": 0,
+                "anchorEndIndex": 6
+            }
+        ]
+    },
+    {
+        "id": 11670,
+        "text": "na-aš-ta tu-uk ^m^ḫu-ul-la-an ku-u̯a-pí gi-im-ma-an-ti pa-ra-a ne-eḫ-ḫu-un nu-ut-ta a-pí-i̯a _Ú-UL iš-ta-ma-aš-še-er",
+        "title": "Example 8.02",
+        "words": [
+            {
+                "index": 8,
+                "id": 11671
+            },
+            {
+                "index": 10,
+                "id": 11673
+            },
+            {
+                "index": 6,
+                "id": 11675
+            },
+            {
+                "index": 4,
+                "id": 11678
+            }
+        ],
+        "translations": [
+            {
+                "id": 11681,
+                "text": "Where I had sent you, Ḫulla, in winter",
+                "anchorStartIndex": 0,
+                "anchorEndIndex": 7
+            },
+            {
+                "id": 11682,
+                "text": "there they did not listen to you",
+                "anchorStartIndex": 7,
+                "anchorEndIndex": 11
+            }
+        ]
+    },
+    {
+        "id": 11683,
+        "text": "mar-ta-ri-u̯a-ra-at-kán nu-u̯a-ra-at-kán a-aš-zi",
+        "title": "Example 8.03",
+        "words": [
+            {
+                "index": 0,
+                "id": 11684
+            },
+            {
+                "index": 1,
+                "id": 11689
+            },
+            {
+                "index": 2,
+                "id": 11691
+            }
+        ],
+        "translations": [
+            {
+                "id": 11693,
+                "text": "“It disappears (or) it stays”",
+                "anchorStartIndex": 0,
+                "anchorEndIndex": 3
+            }
+        ]
+    },
+    {
+        "id": 11694,
+        "text": "ta LUGAL-uš ^URU^ta-ḫur-pa-za ^URU^a-ri-in-na an-da-an ^GIŠ^GIGIR-it pa-iz-zi",
+        "title": "Example 8.04",
+        "words": [
+            {
+                "index": 5,
+                "id": 11695
+            },
+            {
+                "index": 6,
+                "id": 11696
+            },
+            {
+                "index": 4,
+                "id": 11698
+            }
+        ],
+        "translations": [
+            {
+                "id": 11700,
+                "text": "The king will go from Taḫurpa into Arinna by wagon",
+                "anchorStartIndex": 0,
+                "anchorEndIndex": 7
+            }
+        ]
+    },
+    {
+        "id": 11701,
+        "text": "na-aš _A-NA DUMU.É.GAL GÙB-li-it ŠU-it pa-a-i DUMU.É.GAL-ma-aš GÙB-la-az ki-iš-ša-ra-az LUGAL-i pa-a-i",
+        "title": "Example 8.05",
+        "words": [
+            {
+                "index": 2,
+                "id": 11702
+            },
+            {
+                "index": 4,
+                "id": 11703
+            },
+            {
+                "index": 6,
+                "id": 11704
+            },
+            {
+                "index": 8,
+                "id": 11706
+            },
+            {
+                "index": 0,
+                "id": 11712
+            }
+        ],
+        "translations": [
+            {
+                "id": 11709,
+                "text": "He will give them to the palace servant with the left hand",
+                "anchorStartIndex": 0,
+                "anchorEndIndex": 6
+            },
+            {
+                "id": 11710,
+                "text": "and the palace servant will (then) give them with the left hand to the king",
+                "anchorStartIndex": 6,
+                "anchorEndIndex": 11
+            }
+        ]
+    },
+    {
+        "id": 11749,
+        "text": "a-ap-pa-ma-kán ^m^at-ta-ri-iš-ši-i̯a-aš LÚ ^URU^A-AḪ-ḪI-IA-A ar-ḫa ú-et nu EGIR-an tu-uk-pát ^m^ma-ad-du-u̯a-at-ta-an ku-na-an-na ša-an-ḫi-iš-ke-et\n_A-BI ^d^UTU^_ŠI^-ma ma-aḫ-ḫa-an _IŠ-ME na-aš-ta ^m^ki-iš-na-pí-li-in ERÍN^MEŠ^\nANŠE.KUR.RA^ḪI.A^ _A-NA ^m^AT-TA-RI-IŠ-ŠI-I̯A me-na-aḫ-ḫa-an-ta za-aḫ-ḫi-i̯a pa-ra-a na-iš\nnu zi-ik ^m^ma-ad-du-u̯a-at-ta-aš nam-ma ^m^at-ta-ri-iš-ši-i̯a-an _Ú-UL ma-az-za-aš-ta nu-uš-ši pé-ra-an ar-ḫa tar-na-aš nu-ud-du-za ú-et ^m^ki-iš-na-pí-li-iš\nx - x - x _IŠ-TU KUR ^URU^ḪA-AT-TI ḫu-i-nu-ut ^m^ki-iš-na-pí-li-ša _A-NA ^m^AT-TA-RI-IŠ-ŠI-I̯A me-na-aḫ-ḫa-an-ta za-aḫ-ḫi-i̯a pa-it nu _ŠA ^m^AT-TA-RI-IŠ-ŠI-I̯A 1 ME ^GIŠ^GIGIR x x _LI-IM ERÍN^MEŠ^ za-aḫ-ḫi-i̯a ti-i-e-er nu za-aḫ-ḫe-er\nna-aš-ta _ŠA ^m^AT-TA-RI-IŠ-ŠI-I̯A-i̯a 1 ^LÚ^ŠIG5-in ku-e-ner an-ze-el-la-kán 1 ^LÚ^ŠIG5 ^m^zi-da-a-an-za-an ku-e-ner nu ^m^at-ta-ri-iš-ši-i̯a-aš\n_A-NA ^m^_MA-AD-DU-U̯A-AT-TA ar-ḫa ne-e-a-at na-aš-za ar-ḫa _I-NA KUR-ŠU pa-it nu ^m^ma-ad-du-u̯a-at-ta-an nam-ma ta-a-an pé-e-da-aš-ša-aḫ-ḫe-er\na-ap-pa-ma ^URU^da-la-u-u̯a-aš ku-u-ru-ur _IṢ-BAT nu ^m^ma-ad-du-u̯a-at-ta-aš _A-NA ^m^KI-IŠ-NA-PÍ-LI ki-iš-ša-an ḫa-at-ra-a-et ú-uk-u̯a u̯a-al-ḫu-u-an-zi\n^URU^da-la-u-u̯a pa-i-mi šu-me-ša-u̯a ^URU^ḫi-in-du-u̯a i-it-ten nu-u̯a ú-uk ^URU^da-la-u-u̯a-an u̯a-al-aḫ-mi nu-u̯a nam-ma ERÍN^MEŠ^ ^URU^DA-LA-U-U̯A _A-NA ^URU^ḪI-IN-DU-U̯A\nšar-di-i̯a _Ú-UL ú-ez-zi nu-u̯a ^URU^ḫi-in-du-u̯a-an ḫar-ni-ik-te-ni nu ^m^ki-iš-na-pí-li-iš ERÍN^MEŠ^-an ^URU^ḫi-in-du-u̯a za-aḫ-ḫi-i̯a pé-ḫu-te-et\n^m^ma-ad-du-u̯a-at-ta-ša nam-ma ^URU^da-la-u-u̯a za-aḫ-ḫi-i̯a _Ú-UL ku-it pa-it na-aš-ta _A-NA LÚ^MEŠ^ ^URU^DA-LA-U-U̯A im-ma kat-ta-an ar-ḫa ḫa-at-ra-a-et\nka-a-aš-ma-u̯a ERÍN^MEŠ^ ^URU^ḪA-AT-TI ^URU^ḫi-in-du-u̯a za-aḫ-ḫi-i̯a pa-it nu-u̯a-aš-ma-aš KAŠKAL-an pé-ra-an e-ep-ten nu-u̯a-ra-aš u̯a-al-aḫ-ten\nnu-uš-ša-an ERÍN^MEŠ^ ^URU^DA-LA-U-U̯A KAŠKAL-ši pa-ra-a ú-u̯a-te-e-er nu ú-e-er an-ze-el ERÍN^MEŠ^-_ti KAŠKAL-an e-ep-per nu-uš ni-ni-in-ke-er\nna-aš-ta ^m^ki-iš-na-pí-li-in ^m^pár-ta-ḫu-ul-la-an-na ku-e-ner ^m^ma-ad-du-u̯a-at-ta-aš-ma-aš-ma-aš-kán pa-ra-a ḫa-aḫ-ḫar-aš-ke-et",
+        "title": "Madduwatta-text",
+        "words": [
+            {
+                "index": 0,
+                "id": 11756
+            },
+            {
+                "index": 1,
+                "id": 11750
+            },
+            {
+                "index": 3,
+                "id": 11893
+            },
+            {
+                "index": 5,
+                "id": 11753
+            },
+            {
+                "index": 8,
+                "id": 11759
+            },
+            {
+                "index": 9,
+                "id": 11761
+            },
+            {
+                "index": 10,
+                "id": 11766
+            },
+            {
+                "index": 11,
+                "id": 11768
+            },
+            {
+                "index": 14,
+                "id": 11771
+            },
+            {
+                "index": 15,
+                "id": 11772
+            },
+            {
+                "index": 17,
+                "id": 11894
+            },
+            {
+                "index": 18,
+                "id": 11773
+            },
+            {
+                "index": 19,
+                "id": 11774
+            },
+            {
+                "index": 23,
+                "id": 11776
+            },
+            {
+                "index": 25,
+                "id": 11779
+            },
+            {
+                "index": 28,
+                "id": 11782
+            },
+            {
+                "index": 30,
+                "id": 11784
+            },
+            {
+                "index": 32,
+                "id": 11786
+            },
+            {
+                "index": 33,
+                "id": 11790
+            },
+            {
+                "index": 36,
+                "id": 11792
+            },
+            {
+                "index": 37,
+                "id": 11795
+            },
+            {
+                "index": 39,
+                "id": 11897
+            },
+            {
+                "index": 48,
+                "id": 11799
+            },
+            {
+                "index": 49,
+                "id": 11900
+            },
+            {
+                "index": 54,
+                "id": 11803
+            },
+            {
+                "index": 59,
+                "id": 11806
+            },
+            {
+                "index": 63,
+                "id": 11807
+            },
+            {
+                "index": 68,
+                "id": 11903
+            },
+            {
+                "index": 73,
+                "id": 11810
+            },
+            {
+                "index": 74,
+                "id": 11812
+            },
+            {
+                "index": 75,
+                "id": 11815
+            },
+            {
+                "index": 78,
+                "id": 11820
+            },
+            {
+                "index": 85,
+                "id": 11824
+            },
+            {
+                "index": 86,
+                "id": 11828
+            },
+            {
+                "index": 89,
+                "id": 11830
+            },
+            {
+                "index": 94,
+                "id": 11833
+            },
+            {
+                "index": 95,
+                "id": 11835
+            },
+            {
+                "index": 96,
+                "id": 11905
+            },
+            {
+                "index": 97,
+                "id": 11909
+            },
+            {
+                "index": 98,
+                "id": 11907
+            },
+            {
+                "index": 99,
+                "id": 11912
+            },
+            {
+                "index": 104,
+                "id": 11914
+            },
+            {
+                "index": 105,
+                "id": 11916
+            },
+            {
+                "index": 106,
+                "id": 11920
+            },
+            {
+                "index": 107,
+                "id": 11923
+            },
+            {
+                "index": 108,
+                "id": 11998
+            },
+            {
+                "index": 109,
+                "id": 11925
+            },
+            {
+                "index": 110,
+                "id": 11928
+            },
+            {
+                "index": 112,
+                "id": 11932
+            },
+            {
+                "index": 113,
+                "id": 11935
+            },
+            {
+                "index": 115,
+                "id": 12000
+            },
+            {
+                "index": 116,
+                "id": 11937
+            },
+            {
+                "index": 120,
+                "id": 12002
+            },
+            {
+                "index": 122,
+                "id": 12003
+            },
+            {
+                "index": 123,
+                "id": 11940
+            },
+            {
+                "index": 125,
+                "id": 11943
+            },
+            {
+                "index": 127,
+                "id": 12004
+            },
+            {
+                "index": 128,
+                "id": 11946
+            },
+            {
+                "index": 131,
+                "id": 11950
+            },
+            {
+                "index": 132,
+                "id": 11954
+            },
+            {
+                "index": 134,
+                "id": 11951
+            },
+            {
+                "index": 135,
+                "id": 12006
+            },
+            {
+                "index": 140,
+                "id": 11125,
+                "contextGloss": "at all"
+            },
+            {
+                "index": 147,
+                "id": 11959
+            },
+            {
+                "index": 150,
+                "id": 11962
+            },
+            {
+                "index": 156,
+                "id": 11971
+            },
+            {
+                "index": 157,
+                "id": 11967
+            },
+            {
+                "index": 159,
+                "id": 11969
+            },
+            {
+                "index": 160,
+                "id": 11977
+            },
+            {
+                "index": 161,
+                "id": 11979
+            },
+            {
+                "index": 162,
+                "id": 11982
+            },
+            {
+                "index": 165,
+                "id": 11984
+            },
+            {
+                "index": 167,
+                "id": 11986
+            },
+            {
+                "index": 169,
+                "id": 11990
+            },
+            {
+                "index": 175,
+                "id": 11993
+            },
+            {
+                "index": 180,
+                "id": 12009
+            },
+            {
+                "index": 182,
+                "id": 12011
+            },
+            {
+                "index": 171,
+                "id": 12015
+            },
+            {
+                "index": 178,
+                "id": 12016
+            }
+        ],
+        "translations": [
+            {
+                "id": 11758,
+                "text": "Later came Attarišši̯a, the man from Ahhiyawa",
+                "anchorStartIndex": 0,
+                "anchorEndIndex": 6
+            },
+            {
+                "id": 11770,
+                "text": "and afterwards he repeatedly tried to kill you, Madduwatta",
+                "anchorStartIndex": 6,
+                "anchorEndIndex": 12
+            },
+            {
+                "id": 11775,
+                "text": "but when the father of my majesty heard of this",
+                "anchorStartIndex": 12,
+                "anchorEndIndex": 16
+            },
+            {
+                "id": 11781,
+                "text": "he sent Kišnapili, army and сharioteers to battle against Attarišši̯a",
+                "anchorStartIndex": 16,
+                "anchorEndIndex": 26
+            },
+            {
+                "id": 11789,
+                "text": "and then you, Madduwatta, did not withstand Attariššii̯a",
+                "anchorStartIndex": 26,
+                "anchorEndIndex": 33
+            },
+            {
+                "id": 11794,
+                "text": "and you yielded to him",
+                "anchorStartIndex": 33,
+                "anchorEndIndex": 37
+            },
+            {
+                "id": 11798,
+                "text": "and Kišnapili came from the land of Hatti to save you",
+                "anchorStartIndex": 37,
+                "anchorEndIndex": 49
+            },
+            {
+                "id": 11805,
+                "text": "and Kišnapiliš went to battle against Atariššia",
+                "anchorStartIndex": 49,
+                "anchorEndIndex": 55
+            },
+            {
+                "id": 11808,
+                "text": "and of Attariššii̯a he placed a hundred wagons and x thousand troops for battle",
+                "anchorStartIndex": 55,
+                "anchorEndIndex": 67
+            },
+            {
+                "id": 11809,
+                "text": "and they battled",
+                "anchorStartIndex": 67,
+                "anchorEndIndex": 69
+            },
+            {
+                "id": 11814,
+                "text": "and they killed one officer of Attariššii̯a",
+                "anchorStartIndex": 69,
+                "anchorEndIndex": 75
+            },
+            {
+                "id": 11823,
+                "text": "and of us they killed one officer, Zidānza",
+                "anchorStartIndex": 75,
+                "anchorEndIndex": 80
+            },
+            {
+                "id": 11827,
+                "text": "and Attariššii̯a turned away from Madduwatta",
+                "anchorStartIndex": 80,
+                "anchorEndIndex": 86
+            },
+            {
+                "id": 11832,
+                "text": "and he went to his land",
+                "anchorStartIndex": 86,
+                "anchorEndIndex": 91
+            },
+            {
+                "id": 11838,
+                "text": "and then they installed Madduwatta as a ruler the second time",
+                "anchorStartIndex": 91,
+                "anchorEndIndex": 96
+            },
+            {
+                "id": 11913,
+                "text": "later, the city of Dalauwa took up enmity",
+                "anchorStartIndex": 96,
+                "anchorEndIndex": 100
+            },
+            {
+                "id": 11919,
+                "text": "and Madduwatta sent the following message to Kišnapili",
+                "anchorStartIndex": 100,
+                "anchorEndIndex": 106
+            },
+            {
+                "id": 11927,
+                "text": "I will go to Dalauwa to attack",
+                "anchorStartIndex": 106,
+                "anchorEndIndex": 110
+            },
+            {
+                "id": 11934,
+                "text": "and y'all must go to Hinduwa",
+                "anchorStartIndex": 110,
+                "anchorEndIndex": 113
+            },
+            {
+                "id": 11939,
+                "text": "and I will attack Dalauwa",
+                "anchorStartIndex": 113,
+                "anchorEndIndex": 117
+            },
+            {
+                "id": 11945,
+                "text": "and then the army of Dalauwa will not come to help Hinduwa",
+                "anchorStartIndex": 117,
+                "anchorEndIndex": 126
+            },
+            {
+                "id": 11949,
+                "text": "and you will destroy Hinduwa",
+                "anchorStartIndex": 126,
+                "anchorEndIndex": 129
+            },
+            {
+                "id": 11957,
+                "text": "and Kišnapili brought the army for battle to Hinduwa",
+                "anchorStartIndex": 129,
+                "anchorEndIndex": 135
+            },
+            {
+                "id": 11958,
+                "text": "and Madduwatta then did not go to Dalauwa to battle at all",
+                "anchorStartIndex": 135,
+                "anchorEndIndex": 142
+            },
+            {
+                "id": 11961,
+                "text": "and he indeed sent a message to the men of Dalauwa instead",
+                "anchorStartIndex": 142,
+                "anchorEndIndex": 150
+            },
+            {
+                "id": 11966,
+                "text": "just now the army of the Land of Hatti went to battle to Hinduwa",
+                "anchorStartIndex": 150,
+                "anchorEndIndex": 156
+            },
+            {
+                "id": 11976,
+                "text": "and you must take the way in front of them",
+                "anchorStartIndex": 156,
+                "anchorEndIndex": 160
+            },
+            {
+                "id": 11981,
+                "text": "and you must attack them",
+                "anchorStartIndex": 160,
+                "anchorEndIndex": 162
+            },
+            {
+                "id": 11989,
+                "text": "and the army of Dalauwa moved forth on the way",
+                "anchorStartIndex": 162,
+                "anchorEndIndex": 168
+            },
+            {
+                "id": 11992,
+                "text": "and they came and seized the way of our army",
+                "anchorStartIndex": 168,
+                "anchorEndIndex": 174
+            },
+            {
+                "id": 11996,
+                "text": "and they took us by surprise",
+                "anchorStartIndex": 174,
+                "anchorEndIndex": 176
+            },
+            {
+                "id": 11997,
+                "text": "and they killed Kišnapili and Partahula",
+                "anchorStartIndex": 176,
+                "anchorEndIndex": 180
+            },
+            {
+                "id": 12014,
+                "text": "and moreover, Madduwatta repeatedly made fun of them",
+                "anchorStartIndex": 180,
+                "anchorEndIndex": 183
+            }
+        ]
+    },
+    {
+        "id": 11839,
+        "text": "na-aš _I-NA ^ḪUR.SAG^NA-TA-RA ḫu-ur-nu-u̯a-an-zi pa-it DINGIR^MEŠ^-eš-kán ^m^ke-eš-ši-i̯a\niš-pa-an-du-uz-zi še-er kar-tim-mi-i̯a-u-u̯a-an-te-eš nu-uš-ši ḫu-u-i-tar\nḫu-u-ma-an pé-ra-an ar-ḫa mu-un-na-a-er\n^m^ke-eš-ši-iš ITU.3.KAM-aš ḪUR.SAG^MEŠ^-aš an-da ú-e-ḫa-at-ta EGIR-pa-ma-aš-ša-an\nURU-ZU\nša-an-na-pí-liš nu-u-ma-an pa-iz-zi ka-a-aš-ti ka-ni-in-ti nu ^m^ke-eš-ši-in\ni-da-a-la-u̯a-an-za GIG-an-za ḫar-zi",
+        "title": "The story of Hunter Kešši",
+        "words": [
+            {
+                "index": 0,
+                "id": 10496
+            },
+            {
+                "index": 3,
+                "id": 11841
+            },
+            {
+                "index": 11,
+                "id": 11848
+            },
+            {
+                "index": 15,
+                "id": 11844
+            },
+            {
+                "index": 18,
+                "id": 11855
+            },
+            {
+                "index": 20,
+                "id": 11851
+            },
+            {
+                "index": 21,
+                "id": 11865
+            },
+            {
+                "index": 22,
+                "id": 11862
+            },
+            {
+                "index": 23,
+                "id": 11859
+            },
+            {
+                "index": 24,
+                "id": 11857
+            },
+            {
+                "index": 26,
+                "id": 11868
+            },
+            {
+                "index": 27,
+                "id": 11871
+            },
+            {
+                "index": 30,
+                "id": 11875
+            },
+            {
+                "index": 31,
+                "id": 11878
+            },
+            {
+                "index": 29,
+                "id": 11880
+            },
+            {
+                "index": 16,
+                "id": 11883
+            },
+            {
+                "index": 7,
+                "id": 11885
+            },
+            {
+                "index": 8,
+                "id": 11887
+            },
+            {
+                "index": 9,
+                "id": 11889
+            }
+        ],
+        "translations": [
+            {
+                "id": 11840,
+                "text": "and he went to mount Natara for hunting",
+                "anchorStartIndex": 0,
+                "anchorEndIndex": 5
+            },
+            {
+                "id": 11847,
+                "text": "But the gods were angry with Kešši because of the (absence of) libation",
+                "anchorStartIndex": 5,
+                "anchorEndIndex": 10
+            },
+            {
+                "id": 11850,
+                "text": "And they fully hid all the game before him",
+                "anchorStartIndex": 10,
+                "anchorEndIndex": 16
+            },
+            {
+                "id": 11854,
+                "text": "K. roams around in the mountains for 3 months",
+                "anchorStartIndex": 16,
+                "anchorEndIndex": 21
+            },
+            {
+                "id": 11874,
+                "text": "But he doesn't want to go back to his city empty-handed, in hunger and in thirst",
+                "anchorStartIndex": 21,
+                "anchorEndIndex": 28
+            },
+            {
+                "id": 11892,
+                "text": "An evil illness holds Kešši",
+                "anchorStartIndex": 28,
+                "anchorEndIndex": 33
             }
         ]
     }

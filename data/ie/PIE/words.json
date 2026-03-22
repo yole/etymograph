@@ -138,7 +138,7 @@
     {
         "id": 10155,
         "text": "-mi",
-        "gloss": "Primary athematic 1sg ending",
+        "gloss": "Primary athematic 1sg. ending",
         "pos": "AFF"
     },
     {
@@ -198,7 +198,7 @@
     {
         "id": 10183,
         "text": "-oH",
-        "gloss": "Primary thematic 1sg ending",
+        "gloss": "Primary thematic 1sg. ending",
         "pos": "AFF"
     },
     {
@@ -541,7 +541,7 @@
     {
         "id": 11003,
         "text": "-me",
-        "gloss": "Secondary Endings 1pl. ending",
+        "gloss": "Secondary 1pl. ending",
         "pos": "AFF"
     },
     {
@@ -553,7 +553,7 @@
     {
         "id": 11008,
         "text": "-te",
-        "gloss": "Secondary Endings 2pl. ending",
+        "gloss": "Secondary 2pl. ending",
         "pos": "AFF"
     },
     {
@@ -599,5 +599,263 @@
         "id": 11425,
         "text": "di̯eu-",
         "gloss": "god"
+    },
+    {
+        "id": 11552,
+        "text": "-s",
+        "gloss": "s-aorist suffix",
+        "pos": "AFF"
+    },
+    {
+        "id": 11554,
+        "text": "u̯eǵʰ-",
+        "gloss": "carry",
+        "pos": "V"
+    },
+    {
+        "id": 11555,
+        "text": "h₁éu̯ēǵʰsm̥"
+    },
+    {
+        "id": 12021,
+        "text": "u̯ert-",
+        "gloss": "turn",
+        "pos": "V"
+    },
+    {
+        "id": 12022,
+        "text": "u̯orteioH"
+    },
+    {
+        "id": 12023,
+        "text": "gʷem-",
+        "gloss": "go",
+        "pos": "V"
+    },
+    {
+        "id": 12024,
+        "text": "h₁egʷemt"
+    },
+    {
+        "id": 12028,
+        "text": "i̯ungénti"
+    },
+    {
+        "id": 12029,
+        "text": "dʰeugʰsi"
+    },
+    {
+        "id": 12030,
+        "text": "dʰeugʰti"
+    },
+    {
+        "id": 12031,
+        "text": "dʰugʰenti"
+    },
+    {
+        "id": 12035,
+        "text": "h₁dte"
+    },
+    {
+        "id": 12036,
+        "text": "leikʷ-",
+        "gloss": "leave",
+        "pos": "V"
+    },
+    {
+        "id": 12037,
+        "text": "linkʷenti"
+    },
+    {
+        "id": 12039,
+        "text": "-ie-",
+        "gloss": "ie-present suffix",
+        "pos": "AFF"
+    },
+    {
+        "id": 12041,
+        "text": "gʷmioH"
+    },
+    {
+        "id": 12042,
+        "text": "ǵenh₁-",
+        "gloss": "be born",
+        "pos": "V"
+    },
+    {
+        "id": 12043,
+        "text": "neḱ-",
+        "gloss": "disappear",
+        "pos": "V"
+    },
+    {
+        "id": 12045,
+        "text": "speḱ-",
+        "gloss": "see",
+        "pos": "V"
+    },
+    {
+        "id": 12046,
+        "text": "speḱiomom",
+        "sourceRefs": [
+            {
+                "pubId": 12,
+                "refText": "262"
+            }
+        ]
+    },
+    {
+        "id": 12048,
+        "text": "bʰeh₂-",
+        "gloss": "speak",
+        "pos": "V"
+    },
+    {
+        "id": 12050,
+        "text": "monéieh₁i"
+    },
+    {
+        "id": 12052,
+        "text": "kh₂ep-",
+        "gloss": "take",
+        "pos": "V"
+    },
+    {
+        "id": 12053,
+        "text": "kh₂psth₁é",
+        "sourceRefs": [
+            {
+                "pubId": 12,
+                "refText": "262"
+            }
+        ]
+    },
+    {
+        "id": 12054,
+        "text": "u̯emh₁-",
+        "gloss": "vomit",
+        "pos": "V"
+    },
+    {
+        "id": 12055,
+        "text": "umh₁énti",
+        "sourceRefs": [
+            {
+                "pubId": 12,
+                "refText": "262"
+            }
+        ]
+    },
+    {
+        "id": 12057,
+        "text": "ǵneh₃-",
+        "gloss": "know",
+        "pos": "V"
+    },
+    {
+        "id": 12058,
+        "text": "ǵnh₃skéte",
+        "sourceRefs": [
+            {
+                "pubId": 12,
+                "refText": "262"
+            }
+        ]
+    },
+    {
+        "id": 12059,
+        "text": "u̯eǵʰete"
+    },
+    {
+        "id": 12060,
+        "text": "gʷmskesi"
+    },
+    {
+        "id": 12061,
+        "text": "h₂ueks-",
+        "gloss": "grow",
+        "pos": "V"
+    },
+    {
+        "id": 12062,
+        "text": "h₂uokseioH"
+    },
+    {
+        "id": 12063,
+        "text": "h₁espeḱieme"
+    },
+    {
+        "id": 12065,
+        "text": "h₁ebʰeh₂t"
+    },
+    {
+        "id": 12067,
+        "text": "h₁esish₁ent",
+        "sourceRefs": [
+            {
+                "pubId": 12,
+                "refText": "262"
+            }
+        ]
+    },
+    {
+        "id": 12068,
+        "text": "h₁emoneies"
+    },
+    {
+        "id": 12069,
+        "text": "h₁ekh₂pste"
+    },
+    {
+        "id": 12070,
+        "text": "h₁élinkʷm̥",
+        "sourceRefs": [
+            {
+                "pubId": 12,
+                "refText": "262"
+            }
+        ]
+    },
+    {
+        "id": 12071,
+        "text": "u̯oǵʰeieti"
+    },
+    {
+        "id": 12072,
+        "text": "h₁eu̯oǵʰeiet"
+    },
+    {
+        "id": 12073,
+        "text": "kelh₂-",
+        "gloss": "break",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 16,
+                "refText": "350"
+            }
+        ]
+    },
+    {
+        "id": 12074,
+        "text": "klnh₂enti"
+    },
+    {
+        "id": 12075,
+        "text": "leikʷessi"
+    },
+    {
+        "id": 12076,
+        "text": "gʷmiete"
+    },
+    {
+        "id": 12077,
+        "text": "steh₂-",
+        "gloss": "stand up",
+        "pos": "V"
+    },
+    {
+        "id": 12078,
+        "text": "h₁esteh₂m̥"
     }
 ]

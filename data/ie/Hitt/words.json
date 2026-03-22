@@ -2618,7 +2618,7 @@
     {
         "id": 10995,
         "text": "anda",
-        "gloss": "inside",
+        "gloss": "into",
         "pos": "ADV"
     },
     {
@@ -3543,6 +3543,7 @@
         "id": 11273,
         "text": "damešš-",
         "gloss": "oppress",
+        "fullGloss": "oppress, drive",
         "pos": "V",
         "classes": [
             "mi"
@@ -3977,17 +3978,14 @@
         ]
     },
     {
-        "id": 11390,
-        "text": "e-eš-har-šum-mi-it",
+        "id": 11391,
+        "text": "e-eš-ḫar",
         "syllabographic": true
     },
     {
-        "id": 11391,
-        "text": "e-eš-har"
-    },
-    {
         "id": 11393,
-        "text": "šum-mi-it"
+        "text": "šum-mi-it",
+        "syllabographic": true
     },
     {
         "id": 11395,
@@ -4130,7 +4128,12 @@
     },
     {
         "id": 11430,
-        "text": "mi"
+        "text": "mi",
+        "gloss": "POSS.1SG",
+        "pos": "PRON",
+        "classes": [
+            "clitic"
+        ]
     },
     {
         "id": 11432,
@@ -4154,7 +4157,8 @@
     },
     {
         "id": 11438,
-        "text": "ta-aš"
+        "text": "ta-aš",
+        "syllabographic": true
     },
     {
         "id": 11439,
@@ -4241,7 +4245,8 @@
         "id": 11459,
         "text": "arḫa",
         "gloss": "fully",
-        "pos": "ADV"
+        "pos": "ADV",
+        "notes": "Old all. 'towards the border'"
     },
     {
         "id": 11461,
@@ -4585,5 +4590,1819 @@
         "classes": [
             "clitic"
         ]
+    },
+    {
+        "id": 11557,
+        "text": "tar-na-i",
+        "syllabographic": true
+    },
+    {
+        "id": 11558,
+        "text": "tarnai"
+    },
+    {
+        "id": 11559,
+        "text": "tarna-",
+        "gloss": "to let",
+        "pos": "V",
+        "classes": [
+            "hi"
+        ]
+    },
+    {
+        "id": 11560,
+        "text": "pa-ra-a-i̯a-kán",
+        "syllabographic": true
+    },
+    {
+        "id": 11562,
+        "text": "an-da-i̯a",
+        "syllabographic": true
+    },
+    {
+        "id": 11566,
+        "text": "pa-a-un",
+        "syllabographic": true
+    },
+    {
+        "id": 11567,
+        "text": "pāun"
+    },
+    {
+        "id": 11568,
+        "text": "pai-",
+        "gloss": "go",
+        "pos": "V",
+        "classes": [
+            "mi"
+        ]
+    },
+    {
+        "id": 11569,
+        "text": "ḫar-ke-er",
+        "syllabographic": true
+    },
+    {
+        "id": 11570,
+        "text": "ḫarker"
+    },
+    {
+        "id": 11571,
+        "text": "iš-ta-ma-aš-ša-an",
+        "syllabographic": true
+    },
+    {
+        "id": 11572,
+        "text": "ištamaššan"
+    },
+    {
+        "id": 11573,
+        "text": "nam-ma",
+        "syllabographic": true
+    },
+    {
+        "id": 11574,
+        "text": "UD.KAM-az",
+        "syllabographic": true
+    },
+    {
+        "id": 11575,
+        "text": "UD.KAM",
+        "gloss": "day",
+        "pos": "N",
+        "syllabographic": true
+    },
+    {
+        "id": 11576,
+        "text": "GÉŠPU-it",
+        "syllabographic": true
+    },
+    {
+        "id": 11577,
+        "text": "GÉŠPU",
+        "gloss": "violence",
+        "pos": "N",
+        "syllabographic": true
+    },
+    {
+        "id": 11578,
+        "text": "GE6-az",
+        "gloss": "at night",
+        "syllabographic": true
+    },
+    {
+        "id": 11580,
+        "text": "EGIR-pa-an-da",
+        "syllabographic": true
+    },
+    {
+        "id": 11581,
+        "text": "āppanda",
+        "gloss": "later",
+        "pos": "ADV"
+    },
+    {
+        "id": 11582,
+        "text": "i-i̯a-aḫ-ḫa-at",
+        "syllabographic": true
+    },
+    {
+        "id": 11583,
+        "text": "ii̯aḫḫat",
+        "gloss": "march.PST.M/P.1SG"
+    },
+    {
+        "id": 11587,
+        "text": "GU4-aš",
+        "syllabographic": true
+    },
+    {
+        "id": 11588,
+        "text": "A.ŠÀ^ḪI.A^-ni",
+        "syllabographic": true
+    },
+    {
+        "id": 11589,
+        "text": "A.ŠÀ^ḪI.A^",
+        "syllabographic": true
+    },
+    {
+        "id": 11590,
+        "text": "A.ŠÀ",
+        "gloss": "field",
+        "pos": "N",
+        "syllabographic": true
+    },
+    {
+        "id": 11591,
+        "text": "ku-el-ka4",
+        "syllabographic": true
+    },
+    {
+        "id": 11592,
+        "text": "kuelka"
+    },
+    {
+        "id": 11593,
+        "text": "_BE-EL",
+        "syllabographic": true
+    },
+    {
+        "id": 11594,
+        "text": "pa-a-i",
+        "syllabographic": true
+    },
+    {
+        "id": 11595,
+        "text": "pāi"
+    },
+    {
+        "id": 11596,
+        "text": "pai-",
+        "gloss": "give",
+        "pos": "V",
+        "classes": [
+            "hi"
+        ]
+    },
+    {
+        "id": 11600,
+        "text": "ma-na-aš-kán",
+        "syllabographic": true
+    },
+    {
+        "id": 11602,
+        "text": "šu-uḫ-ḫa-az",
+        "syllabographic": true
+    },
+    {
+        "id": 11603,
+        "text": "šuḫḫaz"
+    },
+    {
+        "id": 11604,
+        "text": "šuḫḫa-",
+        "gloss": "roof",
+        "pos": "N",
+        "classes": [
+            "C"
+        ]
+    },
+    {
+        "id": 11605,
+        "text": "^MUNUS.MEŠ^SUḪUR.LÁL",
+        "gloss": "female servant",
+        "pos": "N",
+        "syllabographic": true
+    },
+    {
+        "id": 11606,
+        "text": "tar-né-er",
+        "syllabographic": true
+    },
+    {
+        "id": 11607,
+        "text": "tarner"
+    },
+    {
+        "id": 11611,
+        "text": "GUL-un",
+        "syllabographic": true
+    },
+    {
+        "id": 11612,
+        "text": "u̯alḫun"
+    },
+    {
+        "id": 11613,
+        "text": "^URU^KÙ.BABBAR-ši",
+        "syllabographic": true
+    },
+    {
+        "id": 11614,
+        "text": "^URU^KÙ.BABBAR",
+        "gloss": "Hattuša",
+        "pos": "NP",
+        "syllabographic": true
+    },
+    {
+        "id": 11615,
+        "text": "ú-da-aḫ-ḫu-un",
+        "syllabographic": true
+    },
+    {
+        "id": 11616,
+        "text": "udaḫḫun"
+    },
+    {
+        "id": 11617,
+        "text": "uda-",
+        "gloss": "bring",
+        "pos": "V",
+        "classes": [
+            "hi"
+        ]
+    },
+    {
+        "id": 11618,
+        "text": "URU-an-ma",
+        "syllabographic": true
+    },
+    {
+        "id": 11624,
+        "text": "da-ma-a-aš-zi",
+        "syllabographic": true
+    },
+    {
+        "id": 11625,
+        "text": "damāšzi"
+    },
+    {
+        "id": 11626,
+        "text": "EZEN4",
+        "gloss": "feast",
+        "pos": "N",
+        "syllabographic": true
+    },
+    {
+        "id": 11627,
+        "text": "pé-e",
+        "syllabographic": true
+    },
+    {
+        "id": 11628,
+        "text": "pē",
+        "gloss": "ready",
+        "pos": "ADV"
+    },
+    {
+        "id": 11629,
+        "text": "ku-iš-ma",
+        "syllabographic": true
+    },
+    {
+        "id": 11631,
+        "text": "ŠAḪ.TUR",
+        "gloss": "piglet",
+        "pos": "N",
+        "syllabographic": true
+    },
+    {
+        "id": 11632,
+        "text": "_DI12-ŠI",
+        "syllabographic": true
+    },
+    {
+        "id": 11633,
+        "text": "_DĪ-ŠU",
+        "gloss": "spring",
+        "pos": "N",
+        "syllabographic": true
+    },
+    {
+        "id": 11635,
+        "text": "-allu",
+        "gloss": "Verb Imperative imp.1sg. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 11638,
+        "text": "-i",
+        "gloss": "Verb Imperative imp.2sg. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 11640,
+        "text": "-tten",
+        "gloss": "Verb Imperative imp.2pl. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 11642,
+        "text": "-ttu",
+        "gloss": "imp.3sg. mi-conj. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 11644,
+        "text": "-antu",
+        "gloss": "Verb Imperative imp.3pl. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 11646,
+        "text": "-u",
+        "gloss": "imp.3sg. hi-conj. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 11647,
+        "text": "-ḫḫaru",
+        "gloss": "Verb Medio-passive Imperative imp.mp.1sg. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 11650,
+        "text": "ḫḫut",
+        "gloss": "Verb Medio-passive Imperative imp.mp.2sg. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 11652,
+        "text": "-ddumat",
+        "gloss": "Verb Medio-passive Imperative imp.mp.2pl. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 11654,
+        "text": "-aru",
+        "gloss": "Verb Medio-passive Imperative imp.mp.3sg. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 11656,
+        "text": "-antaru",
+        "gloss": "Verb Medio-passive Imperative imp.mp.3pl. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 11659,
+        "text": "ALAM^ḪI.A^",
+        "syllabographic": true
+    },
+    {
+        "id": 11660,
+        "text": "ALAM",
+        "gloss": "figurine",
+        "pos": "N"
+    },
+    {
+        "id": 11661,
+        "text": "te-eḫ-ḫi",
+        "syllabographic": true
+    },
+    {
+        "id": 11662,
+        "text": "teḫḫi"
+    },
+    {
+        "id": 11663,
+        "text": "dai-",
+        "gloss": "place",
+        "pos": "V",
+        "classes": [
+            "hi"
+        ]
+    },
+    {
+        "id": 11664,
+        "text": "^GI^pád-da-ni",
+        "syllabographic": true
+    },
+    {
+        "id": 11665,
+        "text": "paddani"
+    },
+    {
+        "id": 11666,
+        "text": "paddar-",
+        "gloss": "basket",
+        "pos": "N"
+    },
+    {
+        "id": 11667,
+        "text": "DÙ-mi",
+        "syllabographic": true
+    },
+    {
+        "id": 11668,
+        "text": "DÙ",
+        "gloss": "make",
+        "pos": "V",
+        "classes": [
+            "mi"
+        ],
+        "syllabographic": true
+    },
+    {
+        "id": 11671,
+        "text": "a-pí-i̯a",
+        "syllabographic": true
+    },
+    {
+        "id": 11672,
+        "text": "apii̯a",
+        "gloss": "there",
+        "fullGloss": "there, then",
+        "pos": "ADV"
+    },
+    {
+        "id": 11673,
+        "text": "iš-ta-ma-aš-še-er",
+        "syllabographic": true
+    },
+    {
+        "id": 11674,
+        "text": "ištamaššer"
+    },
+    {
+        "id": 11675,
+        "text": "ne-eḫ-ḫu-un",
+        "syllabographic": true
+    },
+    {
+        "id": 11676,
+        "text": "neḫḫun"
+    },
+    {
+        "id": 11678,
+        "text": "gi-im-ma-an-ti",
+        "syllabographic": true
+    },
+    {
+        "id": 11679,
+        "text": "gimmanti"
+    },
+    {
+        "id": 11680,
+        "text": "gimmant-",
+        "gloss": "winter",
+        "pos": "N",
+        "classes": [
+            "C"
+        ]
+    },
+    {
+        "id": 11684,
+        "text": "mar-ta-ri-u̯a-ra-at-kán",
+        "syllabographic": true
+    },
+    {
+        "id": 11685,
+        "text": "mar-ta-ri"
+    },
+    {
+        "id": 11687,
+        "text": "u̯ar",
+        "gloss": "QUOT",
+        "pos": "CONJ"
+    },
+    {
+        "id": 11688,
+        "text": "mer-",
+        "gloss": "disappear",
+        "pos": "V",
+        "classes": [
+            "mi"
+        ]
+    },
+    {
+        "id": 11689,
+        "text": "nu-u̯a-ra-at-kán",
+        "syllabographic": true
+    },
+    {
+        "id": 11691,
+        "text": "a-aš-zi",
+        "syllabographic": true
+    },
+    {
+        "id": 11692,
+        "text": "āšzi"
+    },
+    {
+        "id": 11695,
+        "text": "^GIŠ^GIGIR-it",
+        "syllabographic": true
+    },
+    {
+        "id": 11696,
+        "text": "pa-iz-zi",
+        "syllabographic": true
+    },
+    {
+        "id": 11697,
+        "text": "paizzi"
+    },
+    {
+        "id": 11698,
+        "text": "an-da-an",
+        "syllabographic": true
+    },
+    {
+        "id": 11699,
+        "text": "andan",
+        "gloss": "inside",
+        "pos": "ADV"
+    },
+    {
+        "id": 11702,
+        "text": "DUMU.É.GAL",
+        "gloss": "palace servant",
+        "pos": "N",
+        "syllabographic": true
+    },
+    {
+        "id": 11703,
+        "text": "ŠU-it",
+        "syllabographic": true
+    },
+    {
+        "id": 11704,
+        "text": "DUMU.É.GAL-ma-aš",
+        "syllabographic": true
+    },
+    {
+        "id": 11706,
+        "text": "ki-iš-ša-ra-az",
+        "syllabographic": true
+    },
+    {
+        "id": 11707,
+        "text": "kiššaraz"
+    },
+    {
+        "id": 11708,
+        "text": "keššar",
+        "gloss": "hand",
+        "pos": "N",
+        "classes": [
+            "C"
+        ]
+    },
+    {
+        "id": 11711,
+        "text": "aš"
+    },
+    {
+        "id": 11712,
+        "text": "na-aš",
+        "syllabographic": true
+    },
+    {
+        "id": 11719,
+        "text": "e-eš-ḫar-šum-mi-it",
+        "syllabographic": true
+    },
+    {
+        "id": 11721,
+        "text": "ēšḫar",
+        "gloss": "blood",
+        "pos": "N"
+    },
+    {
+        "id": 11722,
+        "text": "šummit"
+    },
+    {
+        "id": 11723,
+        "text": "ti-i-e-er",
+        "syllabographic": true
+    },
+    {
+        "id": 11724,
+        "text": "tīēr"
+    },
+    {
+        "id": 11725,
+        "text": "^GIŠ^ŠUKUR^ḪI.A^",
+        "syllabographic": true
+    },
+    {
+        "id": 11726,
+        "text": "^GIŠ^ŠUKUR",
+        "gloss": "spear",
+        "pos": "N",
+        "syllabographic": true
+    },
+    {
+        "id": 11727,
+        "text": "pár-na-aš-ša",
+        "syllabographic": true
+    },
+    {
+        "id": 11728,
+        "text": "pár-na",
+        "syllabographic": true
+    },
+    {
+        "id": 11730,
+        "text": "šša",
+        "gloss": "POSS.3SG",
+        "pos": "PRON",
+        "classes": [
+            "clitic"
+        ]
+    },
+    {
+        "id": 11731,
+        "text": "parna"
+    },
+    {
+        "id": 11732,
+        "text": "per",
+        "gloss": "house",
+        "pos": "N"
+    },
+    {
+        "id": 11733,
+        "text": "^LÚ^ša-la-aš-ḫa-aš-ma",
+        "syllabographic": true
+    },
+    {
+        "id": 11734,
+        "text": "^LÚ^ša-la-aš-ḫa-aš",
+        "syllabographic": true
+    },
+    {
+        "id": 11736,
+        "text": "šalašḫaš"
+    },
+    {
+        "id": 11737,
+        "text": "šalašḫa-",
+        "gloss": "horse servant",
+        "pos": "N",
+        "classes": [
+            "C"
+        ]
+    },
+    {
+        "id": 11738,
+        "text": "^LÚ^Ì.DU8",
+        "gloss": "gatekeeper",
+        "pos": "N",
+        "syllabographic": true
+    },
+    {
+        "id": 11739,
+        "text": "me-mi-iš-ke-mi",
+        "syllabographic": true
+    },
+    {
+        "id": 11740,
+        "text": "memiškemi"
+    },
+    {
+        "id": 11741,
+        "text": "-ške",
+        "gloss": "imperfective suffix",
+        "pos": "AFF"
+    },
+    {
+        "id": 11743,
+        "text": "memi-",
+        "gloss": "speak",
+        "pos": "V",
+        "classes": [
+            "hi"
+        ]
+    },
+    {
+        "id": 11744,
+        "text": "taš",
+        "gloss": "POSS.2SG",
+        "pos": "PRON"
+    },
+    {
+        "id": 11745,
+        "text": "-u̯anzi",
+        "gloss": "inf. 1 suffix",
+        "pos": "AFF"
+    },
+    {
+        "id": 11747,
+        "text": "-u̯ar",
+        "gloss": "verbal noun suffix",
+        "pos": "AFF"
+    },
+    {
+        "id": 11750,
+        "text": "^m^at-ta-ri-iš-ši-i̯a-aš",
+        "syllabographic": true
+    },
+    {
+        "id": 11751,
+        "text": "attariššii̯aš"
+    },
+    {
+        "id": 11752,
+        "text": "attariššii̯a-",
+        "pos": "NP"
+    },
+    {
+        "id": 11753,
+        "text": "ú-et",
+        "syllabographic": true
+    },
+    {
+        "id": 11754,
+        "text": "u̯et"
+    },
+    {
+        "id": 11755,
+        "text": "uu̯e-",
+        "gloss": "come",
+        "pos": "V",
+        "classes": [
+            "mi"
+        ]
+    },
+    {
+        "id": 11756,
+        "text": "a-ap-pa-ma-kán",
+        "syllabographic": true
+    },
+    {
+        "id": 11759,
+        "text": "tu-uk-pát",
+        "syllabographic": true
+    },
+    {
+        "id": 11761,
+        "text": "^m^ma-ad-du-u̯a-at-ta-an",
+        "syllabographic": true
+    },
+    {
+        "id": 11762,
+        "text": "madduu̯attan"
+    },
+    {
+        "id": 11763,
+        "text": "madduu̯atta-",
+        "pos": "NP"
+    },
+    {
+        "id": 11764,
+        "text": "-anna",
+        "gloss": "inf. 2 ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 11766,
+        "text": "ku-na-an-na",
+        "syllabographic": true
+    },
+    {
+        "id": 11767,
+        "text": "kunanna"
+    },
+    {
+        "id": 11768,
+        "text": "ša-an-ḫi-iš-ke-et",
+        "syllabographic": true
+    },
+    {
+        "id": 11769,
+        "text": "šanḫišket"
+    },
+    {
+        "id": 11771,
+        "text": "ma-aḫ-ḫa-an",
+        "syllabographic": true
+    },
+    {
+        "id": 11772,
+        "text": "_IŠ-ME",
+        "gloss": "hear.PST.3SG",
+        "syllabographic": true
+    },
+    {
+        "id": 11773,
+        "text": "ERÍN^MEŠ^",
+        "gloss": "army",
+        "syllabographic": true
+    },
+    {
+        "id": 11774,
+        "text": "ANŠE.KUR.RA^ḪI.A^",
+        "syllabographic": true
+    },
+    {
+        "id": 11776,
+        "text": "za-aḫ-ḫi-i̯a",
+        "syllabographic": true
+    },
+    {
+        "id": 11777,
+        "text": "zaḫḫii̯a"
+    },
+    {
+        "id": 11778,
+        "text": "zaḫḫi-",
+        "gloss": "battle",
+        "pos": "N",
+        "classes": [
+            "C"
+        ]
+    },
+    {
+        "id": 11779,
+        "text": "na-iš",
+        "syllabographic": true
+    },
+    {
+        "id": 11780,
+        "text": "naiš"
+    },
+    {
+        "id": 11782,
+        "text": "^m^ma-ad-du-u̯a-at-ta-aš",
+        "syllabographic": true
+    },
+    {
+        "id": 11783,
+        "text": "madduu̯attaš"
+    },
+    {
+        "id": 11784,
+        "text": "^m^at-ta-ri-iš-ši-i̯a-an",
+        "syllabographic": true
+    },
+    {
+        "id": 11785,
+        "text": "attariššii̯an"
+    },
+    {
+        "id": 11786,
+        "text": "ma-az-za-aš-ta",
+        "syllabographic": true
+    },
+    {
+        "id": 11787,
+        "text": "mazzašta"
+    },
+    {
+        "id": 11788,
+        "text": "maz-",
+        "gloss": "withstand",
+        "fullGloss": "withstand, endure",
+        "pos": "V",
+        "classes": [
+            "hi"
+        ]
+    },
+    {
+        "id": 11790,
+        "text": "nu-uš-ši",
+        "syllabographic": true
+    },
+    {
+        "id": 11792,
+        "text": "tar-na-aš",
+        "syllabographic": true
+    },
+    {
+        "id": 11793,
+        "text": "tarnaš"
+    },
+    {
+        "id": 11795,
+        "text": "nu-ud-du-za",
+        "syllabographic": true
+    },
+    {
+        "id": 11797,
+        "text": "ddu",
+        "notes": "Variation that occurs before the reflexive clitic =za"
+    },
+    {
+        "id": 11799,
+        "text": "ḫu-i-nu-ut",
+        "syllabographic": true
+    },
+    {
+        "id": 11800,
+        "text": "ḫuinut"
+    },
+    {
+        "id": 11801,
+        "text": "ḫuinu-",
+        "gloss": "save",
+        "pos": "V",
+        "classes": [
+            "mi"
+        ]
+    },
+    {
+        "id": 11803,
+        "text": "pa-it",
+        "syllabographic": true
+    },
+    {
+        "id": 11804,
+        "text": "pait"
+    },
+    {
+        "id": 11806,
+        "text": "ME",
+        "gloss": "hundred",
+        "pos": "N",
+        "syllabographic": true
+    },
+    {
+        "id": 11807,
+        "text": "_LI-IM",
+        "gloss": "thousand",
+        "syllabographic": true
+    },
+    {
+        "id": 11810,
+        "text": "^LÚ^ŠIG5-in",
+        "syllabographic": true
+    },
+    {
+        "id": 11811,
+        "text": "^LÚ^ŠIG5",
+        "gloss": "officer",
+        "pos": "N",
+        "syllabographic": true
+    },
+    {
+        "id": 11812,
+        "text": "ku-e-ner",
+        "syllabographic": true
+    },
+    {
+        "id": 11813,
+        "text": "kuener"
+    },
+    {
+        "id": 11815,
+        "text": "an-ze-el-la-kán",
+        "syllabographic": true
+    },
+    {
+        "id": 11816,
+        "text": "an-ze-el",
+        "syllabographic": true
+    },
+    {
+        "id": 11818,
+        "text": "anzel"
+    },
+    {
+        "id": 11819,
+        "text": "u̯ēš",
+        "gloss": "1PL",
+        "pos": "PRON"
+    },
+    {
+        "id": 11820,
+        "text": "^m^zi-da-a-an-za-an",
+        "syllabographic": true
+    },
+    {
+        "id": 11821,
+        "text": "zidānzan"
+    },
+    {
+        "id": 11822,
+        "text": "zidānza-",
+        "pos": "NP"
+    },
+    {
+        "id": 11824,
+        "text": "ne-e-a-at",
+        "syllabographic": true
+    },
+    {
+        "id": 11825,
+        "text": "nēāt"
+    },
+    {
+        "id": 11826,
+        "text": "nē-",
+        "gloss": "turn away from",
+        "pos": "V",
+        "classes": [
+            "ari"
+        ]
+    },
+    {
+        "id": 11828,
+        "text": "na-aš-za",
+        "syllabographic": true
+    },
+    {
+        "id": 11830,
+        "text": "KUR-ŠU",
+        "syllabographic": true
+    },
+    {
+        "id": 11833,
+        "text": "ta-a-an",
+        "syllabographic": true
+    },
+    {
+        "id": 11834,
+        "text": "tān",
+        "gloss": "second",
+        "fullGloss": "second, for the second time"
+    },
+    {
+        "id": 11835,
+        "text": "pé-e-da-aš-ša-aḫ-ḫe-er",
+        "syllabographic": true
+    },
+    {
+        "id": 11836,
+        "text": "pēdaššaḫḫer"
+    },
+    {
+        "id": 11837,
+        "text": "pēdaššaḫḫ-",
+        "gloss": "install as a ruler",
+        "pos": "V",
+        "classes": [
+            "hi"
+        ]
+    },
+    {
+        "id": 11841,
+        "text": "ḫu-ur-nu-u̯a-an-zi",
+        "syllabographic": true
+    },
+    {
+        "id": 11842,
+        "text": "ḫurnu̯anzi"
+    },
+    {
+        "id": 11843,
+        "text": "ḫurna-",
+        "gloss": "hunt",
+        "pos": "V",
+        "classes": [
+            "hi"
+        ]
+    },
+    {
+        "id": 11844,
+        "text": "mu-un-na-a-er",
+        "syllabographic": true
+    },
+    {
+        "id": 11845,
+        "text": "munnāer"
+    },
+    {
+        "id": 11846,
+        "text": "munnae-",
+        "gloss": "hide",
+        "pos": "V",
+        "classes": [
+            "mi"
+        ]
+    },
+    {
+        "id": 11848,
+        "text": "ḫu-u-i-tar",
+        "syllabographic": true
+    },
+    {
+        "id": 11849,
+        "text": "ḫūitar",
+        "gloss": "animals",
+        "fullGloss": "game, animals",
+        "pos": "N",
+        "classes": [
+            "N"
+        ]
+    },
+    {
+        "id": 11851,
+        "text": "ú-e-ḫa-at-ta",
+        "syllabographic": true
+    },
+    {
+        "id": 11852,
+        "text": "ueḫatta"
+    },
+    {
+        "id": 11853,
+        "text": "ueḫa-",
+        "gloss": "spin",
+        "pos": "V",
+        "classes": [
+            "ttari"
+        ]
+    },
+    {
+        "id": 11855,
+        "text": "ḪUR.SAG^MEŠ^-aš",
+        "syllabographic": true
+    },
+    {
+        "id": 11856,
+        "text": "ḪUR.SAG^MEŠ^",
+        "syllabographic": true
+    },
+    {
+        "id": 11857,
+        "text": "nu-u-ma-an",
+        "syllabographic": true
+    },
+    {
+        "id": 11858,
+        "text": "nūman",
+        "gloss": "IRR.NEG",
+        "pos": "CONJ"
+    },
+    {
+        "id": 11859,
+        "text": "ša-an-na-pí-liš",
+        "syllabographic": true
+    },
+    {
+        "id": 11860,
+        "text": "šannapiliš"
+    },
+    {
+        "id": 11861,
+        "text": "šannapili-",
+        "gloss": "empty-handed",
+        "pos": "ADJ"
+    },
+    {
+        "id": 11862,
+        "text": "URU-ZU",
+        "syllabographic": true
+    },
+    {
+        "id": 11864,
+        "text": "_ZU",
+        "syllabographic": true
+    },
+    {
+        "id": 11865,
+        "text": "EGIR-pa-ma-aš-ša-an",
+        "syllabographic": true
+    },
+    {
+        "id": 11867,
+        "text": "-ššan",
+        "gloss": "-",
+        "pos": "CONJ"
+    },
+    {
+        "id": 11868,
+        "text": "ka-a-aš-ti",
+        "syllabographic": true
+    },
+    {
+        "id": 11869,
+        "text": "kāšti"
+    },
+    {
+        "id": 11870,
+        "text": "kašt-",
+        "gloss": "hunger",
+        "pos": "N",
+        "classes": [
+            "C"
+        ]
+    },
+    {
+        "id": 11871,
+        "text": "ka-ni-in-ti",
+        "syllabographic": true
+    },
+    {
+        "id": 11872,
+        "text": "kaninti"
+    },
+    {
+        "id": 11873,
+        "text": "kanint-",
+        "gloss": "thirst",
+        "pos": "N",
+        "classes": [
+            "C"
+        ]
+    },
+    {
+        "id": 11875,
+        "text": "i-da-a-la-u̯a-an-za",
+        "syllabographic": true
+    },
+    {
+        "id": 11876,
+        "text": "idālau̯anza"
+    },
+    {
+        "id": 11877,
+        "text": "idālu-",
+        "gloss": "evil",
+        "pos": "ADJ"
+    },
+    {
+        "id": 11878,
+        "text": "GIG-an-za",
+        "syllabographic": true
+    },
+    {
+        "id": 11879,
+        "text": "GIG",
+        "gloss": "ill",
+        "pos": "N",
+        "classes": [
+            "N"
+        ],
+        "syllabographic": true
+    },
+    {
+        "id": 11880,
+        "text": "^m^ke-eš-ši-in",
+        "syllabographic": true
+    },
+    {
+        "id": 11881,
+        "text": "keššin"
+    },
+    {
+        "id": 11882,
+        "text": "kešši-",
+        "pos": "NP"
+    },
+    {
+        "id": 11883,
+        "text": "^m^ke-eš-ši-iš",
+        "syllabographic": true
+    },
+    {
+        "id": 11884,
+        "text": "keššiš"
+    },
+    {
+        "id": 11885,
+        "text": "iš-pa-an-du-uz-zi",
+        "syllabographic": true
+    },
+    {
+        "id": 11886,
+        "text": "išpanduzzi",
+        "gloss": "libation vessel",
+        "pos": "N"
+    },
+    {
+        "id": 11887,
+        "text": "še-er",
+        "syllabographic": true
+    },
+    {
+        "id": 11888,
+        "text": "šer",
+        "gloss": "above",
+        "fullGloss": "above, on top; because, therefore",
+        "pos": "ADV"
+    },
+    {
+        "id": 11889,
+        "text": "kar-tim-mi-i̯a-u-u̯a-an-te-eš",
+        "syllabographic": true
+    },
+    {
+        "id": 11890,
+        "text": "kartimmii̯au̯anteš"
+    },
+    {
+        "id": 11891,
+        "text": "kartimmii̯au̯ant-",
+        "gloss": "angry",
+        "pos": "ADJ"
+    },
+    {
+        "id": 11893,
+        "text": "^URU^A-AḪ-ḪI-IA-A",
+        "gloss": "Achaea",
+        "syllabographic": true
+    },
+    {
+        "id": 11894,
+        "text": "^m^ki-iš-na-pí-li-in",
+        "syllabographic": true
+    },
+    {
+        "id": 11895,
+        "text": "kišnapilin"
+    },
+    {
+        "id": 11896,
+        "text": "kišnapili-",
+        "pos": "NP"
+    },
+    {
+        "id": 11897,
+        "text": "^m^ki-iš-na-pí-li-iš",
+        "syllabographic": true
+    },
+    {
+        "id": 11898,
+        "text": "kišnapiliš"
+    },
+    {
+        "id": 11899,
+        "text": "-š",
+        "gloss": "hi-conj. 3sg. ending",
+        "pos": "AFF"
+    },
+    {
+        "id": 11900,
+        "text": "^m^ki-iš-na-pí-li-ša",
+        "syllabographic": true
+    },
+    {
+        "id": 11903,
+        "text": "za-aḫ-ḫe-er",
+        "syllabographic": true
+    },
+    {
+        "id": 11904,
+        "text": "zaḫḫer"
+    },
+    {
+        "id": 11905,
+        "text": "a-ap-pa-ma",
+        "syllabographic": true
+    },
+    {
+        "id": 11907,
+        "text": "ku-u-ru-ur",
+        "syllabographic": true
+    },
+    {
+        "id": 11908,
+        "text": "kūrur",
+        "gloss": "enemy",
+        "pos": "N",
+        "classes": [
+            "N"
+        ]
+    },
+    {
+        "id": 11909,
+        "text": "^URU^da-la-u-u̯a-aš",
+        "syllabographic": true
+    },
+    {
+        "id": 11910,
+        "text": "dalauu̯aš"
+    },
+    {
+        "id": 11911,
+        "text": "dalauu̯a",
+        "pos": "NP"
+    },
+    {
+        "id": 11912,
+        "text": "_IṢ-BAT",
+        "gloss": "seized",
+        "syllabographic": true
+    },
+    {
+        "id": 11914,
+        "text": "ki-iš-ša-an",
+        "syllabographic": true
+    },
+    {
+        "id": 11915,
+        "text": "kiššan",
+        "gloss": "thus",
+        "pos": "ADV"
+    },
+    {
+        "id": 11916,
+        "text": "ḫa-at-ra-a-et",
+        "syllabographic": true
+    },
+    {
+        "id": 11917,
+        "text": "ḫatrāet"
+    },
+    {
+        "id": 11918,
+        "text": "ḫatrāe-",
+        "gloss": "send a message",
+        "pos": "V",
+        "classes": [
+            "mi"
+        ]
+    },
+    {
+        "id": 11920,
+        "text": "ú-uk-u̯a",
+        "syllabographic": true
+    },
+    {
+        "id": 11922,
+        "text": "u̯a"
+    },
+    {
+        "id": 11923,
+        "text": "u̯a-al-ḫu-u-an-zi",
+        "syllabographic": true
+    },
+    {
+        "id": 11924,
+        "text": "u̯alḫūanzi"
+    },
+    {
+        "id": 11925,
+        "text": "pa-i-mi",
+        "syllabographic": true
+    },
+    {
+        "id": 11926,
+        "text": "paimi"
+    },
+    {
+        "id": 11928,
+        "text": "šu-me-ša-u̯a",
+        "syllabographic": true
+    },
+    {
+        "id": 11929,
+        "text": "šu-me-š",
+        "syllabographic": true
+    },
+    {
+        "id": 11931,
+        "text": "šumeš"
+    },
+    {
+        "id": 11932,
+        "text": "i-it-ten",
+        "syllabographic": true
+    },
+    {
+        "id": 11933,
+        "text": "ītten"
+    },
+    {
+        "id": 11935,
+        "text": "nu-u̯a",
+        "syllabographic": true
+    },
+    {
+        "id": 11937,
+        "text": "u̯a-al-aḫ-mi",
+        "syllabographic": true
+    },
+    {
+        "id": 11938,
+        "text": "u̯alaḫmi"
+    },
+    {
+        "id": 11940,
+        "text": "šar-di-i̯a",
+        "syllabographic": true
+    },
+    {
+        "id": 11941,
+        "text": "šardii̯a"
+    },
+    {
+        "id": 11942,
+        "text": "šardi-",
+        "gloss": "help",
+        "pos": "N",
+        "classes": [
+            "C"
+        ]
+    },
+    {
+        "id": 11943,
+        "text": "ú-ez-zi",
+        "syllabographic": true
+    },
+    {
+        "id": 11944,
+        "text": "uezzi"
+    },
+    {
+        "id": 11946,
+        "text": "ḫar-ni-ik-te-ni",
+        "syllabographic": true
+    },
+    {
+        "id": 11947,
+        "text": "ḫarnikteni"
+    },
+    {
+        "id": 11948,
+        "text": "ḫarnik-",
+        "gloss": "destroy",
+        "pos": "V",
+        "classes": [
+            "mi"
+        ]
+    },
+    {
+        "id": 11950,
+        "text": "ERÍN^MEŠ^-an",
+        "syllabographic": true
+    },
+    {
+        "id": 11951,
+        "text": "pé-ḫu-te-et",
+        "syllabographic": true
+    },
+    {
+        "id": 11952,
+        "text": "peḫutet"
+    },
+    {
+        "id": 11953,
+        "text": "pēḫute-",
+        "gloss": "bring along",
+        "pos": "V",
+        "classes": [
+            "mi"
+        ]
+    },
+    {
+        "id": 11954,
+        "text": "^URU^ḫi-in-du-u̯a",
+        "syllabographic": true
+    },
+    {
+        "id": 11955,
+        "text": "ḫinduu̯a"
+    },
+    {
+        "id": 11956,
+        "text": "ḫinduu̯a-",
+        "gloss": "Hinduwa",
+        "pos": "NP"
+    },
+    {
+        "id": 11959,
+        "text": "kat-ta-an",
+        "syllabographic": true
+    },
+    {
+        "id": 11960,
+        "text": "kattan",
+        "gloss": "below",
+        "pos": "ADV"
+    },
+    {
+        "id": 11962,
+        "text": "ka-a-aš-ma-u̯a",
+        "syllabographic": true
+    },
+    {
+        "id": 11963,
+        "text": "ka-a-aš-ma",
+        "syllabographic": true
+    },
+    {
+        "id": 11965,
+        "text": "kāšma",
+        "gloss": "just now",
+        "pos": "ADV"
+    },
+    {
+        "id": 11967,
+        "text": "KAŠKAL-an",
+        "syllabographic": true
+    },
+    {
+        "id": 11968,
+        "text": "KAŠKAL",
+        "gloss": "way",
+        "pos": "N",
+        "syllabographic": true
+    },
+    {
+        "id": 11969,
+        "text": "e-ep-ten",
+        "syllabographic": true
+    },
+    {
+        "id": 11970,
+        "text": "ēpten"
+    },
+    {
+        "id": 11971,
+        "text": "nu-u̯a-aš-ma-aš",
+        "syllabographic": true
+    },
+    {
+        "id": 11974,
+        "text": "šmaš",
+        "gloss": "2PL.DAT/LOC/ACC",
+        "pos": "PRON",
+        "classes": [
+            "clitic"
+        ],
+        "syllabographic": true
+    },
+    {
+        "id": 11977,
+        "text": "nu-u̯a-ra-aš",
+        "syllabographic": true
+    },
+    {
+        "id": 11979,
+        "text": "u̯a-al-aḫ-ten",
+        "syllabographic": true
+    },
+    {
+        "id": 11980,
+        "text": "u̯alaḫten"
+    },
+    {
+        "id": 11982,
+        "text": "nu-uš-ša-an",
+        "syllabographic": true
+    },
+    {
+        "id": 11984,
+        "text": "KAŠKAL-ši",
+        "syllabographic": true
+    },
+    {
+        "id": 11986,
+        "text": "ú-u̯a-te-e-er",
+        "syllabographic": true
+    },
+    {
+        "id": 11987,
+        "text": "uu̯atēr"
+    },
+    {
+        "id": 11988,
+        "text": "uu̯ate-",
+        "gloss": "move",
+        "pos": "V",
+        "classes": [
+            "mi"
+        ]
+    },
+    {
+        "id": 11990,
+        "text": "ú-e-er",
+        "syllabographic": true
+    },
+    {
+        "id": 11991,
+        "text": "uēr"
+    },
+    {
+        "id": 11993,
+        "text": "ni-ni-in-ke-er",
+        "syllabographic": true
+    },
+    {
+        "id": 11994,
+        "text": "nininker"
+    },
+    {
+        "id": 11995,
+        "text": "ninink-",
+        "gloss": "mobilize",
+        "pos": "V",
+        "classes": [
+            "mi"
+        ]
+    },
+    {
+        "id": 11998,
+        "text": "^URU^da-la-u-u̯a",
+        "syllabographic": true
+    },
+    {
+        "id": 11999,
+        "text": "dalauu̯a"
+    },
+    {
+        "id": 12000,
+        "text": "^URU^da-la-u-u̯a-an",
+        "syllabographic": true
+    },
+    {
+        "id": 12001,
+        "text": "dalauu̯an"
+    },
+    {
+        "id": 12002,
+        "text": "^URU^DA-LA-U-U̯A",
+        "syllabographic": true
+    },
+    {
+        "id": 12003,
+        "text": "^URU^ḪI-IN-DU-U̯A",
+        "syllabographic": true
+    },
+    {
+        "id": 12004,
+        "text": "^URU^ḫi-in-du-u̯a-an",
+        "syllabographic": true
+    },
+    {
+        "id": 12005,
+        "text": "ḫinduu̯an"
+    },
+    {
+        "id": 12006,
+        "text": "^m^ma-ad-du-u̯a-at-ta-ša",
+        "syllabographic": true
+    },
+    {
+        "id": 12007,
+        "text": "^m^ma-ad-du-u̯a-at-ta-š",
+        "syllabographic": true
+    },
+    {
+        "id": 12009,
+        "text": "^m^ma-ad-du-u̯a-at-ta-aš-ma-aš-ma-aš-kán",
+        "syllabographic": true
+    },
+    {
+        "id": 12011,
+        "text": "ḫa-aḫ-ḫar-aš-ke-et",
+        "syllabographic": true
+    },
+    {
+        "id": 12012,
+        "text": "ḫaḫḫarašket"
+    },
+    {
+        "id": 12013,
+        "text": "ḫaḫḫarš-",
+        "gloss": "to make fun of",
+        "pos": "V",
+        "classes": [
+            "mi"
+        ]
+    },
+    {
+        "id": 12015,
+        "text": "ERÍN^MEŠ^-_ti",
+        "syllabographic": true
+    },
+    {
+        "id": 12016,
+        "text": "^m^pár-ta-ḫu-ul-la-an-na",
+        "syllabographic": true
+    },
+    {
+        "id": 12017,
+        "text": "^m^pár-ta-ḫu-ul-la-an",
+        "syllabographic": true
+    },
+    {
+        "id": 12019,
+        "text": "partaḫullan"
+    },
+    {
+        "id": 12020,
+        "text": "partaḫulla-",
+        "pos": "NP"
+    },
+    {
+        "id": 12027,
+        "text": "ešzi"
     }
 ]

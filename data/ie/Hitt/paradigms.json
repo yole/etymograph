@@ -330,7 +330,10 @@
         "name": "Verb Non-finite Forms",
         "rows": [
             "Participle",
-            "Supine"
+            "Supine",
+            "Infinitive I",
+            "Infinitive II",
+            "Verbal Noun"
         ],
         "columns": [
             {
@@ -344,6 +347,129 @@
                     {
                         "ruleAlternatives": [
                             11364
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            11746
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            11765
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            11748
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "V"
+        ]
+    },
+    {
+        "id": 63,
+        "name": "Verb Imperative",
+        "rows": [
+            "1",
+            "2",
+            "3"
+        ],
+        "columns": [
+            {
+                "title": "SG",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            11636
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            11639
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            11643
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "PL",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            11637
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            11641
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            11645
+                        ]
+                    }
+                ]
+            }
+        ],
+        "posList": [
+            "V"
+        ]
+    },
+    {
+        "id": 64,
+        "name": "Verb Medio-passive Imperative",
+        "rows": [
+            "1",
+            "2",
+            "3"
+        ],
+        "columns": [
+            {
+                "title": "SG",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            11648
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            11651
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            11655
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "PL",
+                "cells": [
+                    {
+                        "ruleAlternatives": [
+                            11649
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            11653
+                        ]
+                    },
+                    {
+                        "ruleAlternatives": [
+                            11657
                         ]
                     }
                 ]

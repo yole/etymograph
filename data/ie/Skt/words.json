@@ -160,7 +160,29 @@
         "text": "pr̥ccháti"
     },
     {
-        "id": 10816,
-        "text": "bhāti"
+        "id": 12026,
+        "text": "ásti",
+        "gloss": "be",
+        "pos": "V"
+    },
+    {
+        "id": 12032,
+        "text": "dhókṣi",
+        "gloss": "milk.PRES.2SG"
+    },
+    {
+        "id": 12033,
+        "text": "dógdhi",
+        "gloss": "milk.PRES.3SG"
+    },
+    {
+        "id": 12034,
+        "text": "duhánti",
+        "gloss": "milk.PRES.3PL"
+    },
+    {
+        "id": 12038,
+        "text": "ájati",
+        "gloss": "drive.PRES.3SG"
     }
 ]
