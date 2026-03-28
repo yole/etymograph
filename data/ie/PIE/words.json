@@ -782,7 +782,7 @@
     },
     {
         "id": 12063,
-        "text": "h₁espeḱieme"
+        "text": "h₁espeḱime"
     },
     {
         "id": 12065,
@@ -857,5 +857,73 @@
     {
         "id": 12078,
         "text": "h₁esteh₂m̥"
+    },
+    {
+        "id": 12080,
+        "text": "u̯eid-",
+        "gloss": "see",
+        "pos": "V"
+    },
+    {
+        "id": 12081,
+        "text": "h₁eu̯idem"
+    },
+    {
+        "id": 12083,
+        "text": "u̯ekʷ-",
+        "gloss": "speak",
+        "pos": "V"
+    },
+    {
+        "id": 12084,
+        "text": "-e-",
+        "gloss": "thematic vowel",
+        "pos": "AFF"
+    },
+    {
+        "id": 12086,
+        "text": "h₁eu̯eu̯kʷet"
+    },
+    {
+        "id": 12087,
+        "text": "teng-",
+        "gloss": "make wet",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 16,
+                "refText": "628"
+            }
+        ]
+    },
+    {
+        "id": 12088,
+        "text": "h₁etēngsm̥"
+    },
+    {
+        "id": 12089,
+        "text": "pelh₂-",
+        "gloss": "approach",
+        "pos": "V",
+        "sourceRefs": [
+            {
+                "pubId": 16,
+                "refText": "470"
+            }
+        ]
+    },
+    {
+        "id": 12090,
+        "text": "plneh₂m̥"
+    },
+    {
+        "id": 12091,
+        "text": "ḱleu-",
+        "gloss": "hear",
+        "pos": "V"
+    },
+    {
+        "id": 12092,
+        "text": "ḱluent"
     }
 ]

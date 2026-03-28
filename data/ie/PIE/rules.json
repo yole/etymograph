@@ -1014,7 +1014,7 @@
                     {
                         "type": "Prepend",
                         "args": [
-                            "first consonant"
+                            "second sound"
                         ]
                     }
                 ],
@@ -1315,6 +1315,12 @@
             {
                 "instructions": [
                     {
+                        "type": "ApplyRule",
+                        "args": [
+                            "10521"
+                        ]
+                    },
+                    {
                         "type": "AppendMorpheme",
                         "args": [
                             "11003"
@@ -1443,6 +1449,12 @@
             {
                 "instructions": [
                     {
+                        "type": "ApplyRule",
+                        "args": [
+                            "10521"
+                        ]
+                    },
+                    {
                         "type": "AppendMorpheme",
                         "args": [
                             "11013"
@@ -1487,7 +1499,8 @@
         ],
         "fromPOS": [
             "V"
-        ]
+        ],
+        "toPOS": "V"
     },
     {
         "id": 11550,
@@ -1725,7 +1738,7 @@
                     {
                         "type": "Spe",
                         "args": [
-                            "u̯ > u"
+                            "u̯ > u / _!i"
                         ]
                     }
                 ],
@@ -1804,5 +1817,75 @@
                 "refText": "253"
             }
         ]
+    },
+    {
+        "id": 12079,
+        "name": "pie-thematic-aor",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "10521"
+                        ]
+                    },
+                    {
+                        "type": "Append",
+                        "args": [
+                            "'e'"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".AOR",
+        "fromPOS": [
+            "V"
+        ],
+        "toPOS": "V"
+    },
+    {
+        "id": 12085,
+        "name": "pie-reduplicated-aor",
+        "fromLang": "PIE",
+        "toLang": "PIE",
+        "branches": [
+            {
+                "instructions": [
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "10521"
+                        ]
+                    },
+                    {
+                        "type": "ApplyRule",
+                        "args": [
+                            "10269"
+                        ]
+                    },
+                    {
+                        "type": "AppendMorpheme",
+                        "args": [
+                            "12084"
+                        ]
+                    }
+                ],
+                "condition": {
+                    "type": "otherwise"
+                }
+            }
+        ],
+        "addedCategories": ".AOR",
+        "fromPOS": [
+            "V"
+        ],
+        "toPOS": "V"
     }
 ]
