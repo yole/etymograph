@@ -4085,7 +4085,7 @@
     },
     {
         "id": 11839,
-        "text": "^m^ú-du-ub-šar-ri-i̯a-aš NIN-ZU ^m^ke-eš-ši-iš DAM-an-ni da-a-aš\nMUNUS-aš _ŠUM-še-et ^f^ŠI-IN-TA-LI-ME-NI mi-iš-ri-u̯a-an-za-aš ḫu-u-ma-an-da-az-zi-i̯a\naš-ša-nu-u̯a-an-za nu-uš-ša-an ^m^ke-eš-ši-iš pa-ra-a _A-NA DAM-ŠU-pát _IŠ-ME\nnu-za nam-ma ^m^ke-eš-ši-iš DINGIR^MEŠ^-uš ^NINDA^ḫar-ši-it iš-pa-an-du-uz-zi-it _Ú-UL kap-pu-ez-zi\nḪUR.SAG^MEŠ^-ša-aš nam-ma ḫu-ur-nu-u̯a-an-zi _Ú-UL pa-iz-zi na-aš-ša-an pa-ra-a _A-NA DAM-ŠU-pát _IŠ-ME\nAMA-ŠU _A-NA ^m^_KE-EŠ-ŠI me-mi-iš-ke-u-u̯a-an da-iš DAM-KA-pát-u̯a-ták-kán a-aš-ši-i̯a-at-ta-at\nnu-u̯a nam-ma ḪUR.SAG^MEŠ^-aš ḫu-ur-nu-u̯a-an-zi _Ú-UL pa-a-i-ši nu-u̯a-mu _Ú-UL ku-it-ki\nú-da-at-ti ^m^ke-eš-ši-iš-za ^GIŠ^ŠUKUR ša-ra-a da-a-aš UR.TUR^ḪI.A^-i̯a-za EGIR-an-še-et ḫal-za-iš\nna-aš _I-NA ^ḪUR.SAG^NA-TA-RA ḫu-ur-nu-u̯a-an-zi pa-it DINGIR^MEŠ^-eš-kán ^m^ke-eš-ši-i̯a\niš-pa-an-du-uz-zi še-er kar-tim-mi-i̯a-u-u̯a-an-te-eš nu-uš-ši ḫu-u-i-tar\nḫu-u-ma-an pé-ra-an ar-ḫa mu-un-na-a-er\n^m^ke-eš-ši-iš ITU.3.KAM-aš ḪUR.SAG^MEŠ^-aš an-da ú-e-ḫa-at-ta EGIR-pa-ma-aš-ša-an URU-ZU\nša-an-na-pí-liš nu-u-ma-an pa-iz-zi ka-a-aš-ti ka-ni-in-ti nu ^m^ke-eš-ši-in\ni-da-a-la-u̯a-an-za GIG-an-za ḫar-zi",
+        "text": "^m^ú-du-ub-šar-ri-i̯a-aš NIN-ZU ^m^ke-eš-ši-iš DAM-an-ni da-a-aš\nMUNUS-aš _ŠUM-še-et ^f^_ŠI-IN-TA-LI-ME-NI mi-iš-ri-u̯a-an-za-aš ḫu-u-ma-an-da-az-zi-i̯a\naš-ša-nu-u̯a-an-za nu-uš-ša-an ^m^ke-eš-ši-iš pa-ra-a _A-NA DAM-ŠU-pát _IŠ-ME\nnu-za nam-ma ^m^ke-eš-ši-iš DINGIR^MEŠ^-uš ^NINDA^ḫar-ši-it iš-pa-an-du-uz-zi-it _Ú-UL kap-pu-ez-zi\nḪUR.SAG^MEŠ^-ša-aš nam-ma ḫu-ur-nu-u̯a-an-zi _Ú-UL pa-iz-zi na-aš-ša-an pa-ra-a _A-NA DAM-ŠU-pát _IŠ-ME\nAMA-ŠU _A-NA ^m^_KE-EŠ-ŠI me-mi-iš-ke-u-u̯a-an da-iš DAM-KA-pát-u̯a-ták-kán a-aš-ši-i̯a-at-ta-at\nnu-u̯a nam-ma ḪUR.SAG^MEŠ^-aš ḫu-ur-nu-u̯a-an-zi _Ú-UL pa-a-i-ši nu-u̯a-mu _Ú-UL ku-it-ki\nú-da-at-ti ^m^ke-eš-ši-iš-za ^GIŠ^ŠUKUR ša-ra-a da-a-aš UR.TUR^ḪI.A^-i̯a-za EGIR-an-še-et ḫal-za-iš\nna-aš _I-NA ^ḪUR.SAG^_NA-TA-RA ḫu-ur-nu-u̯a-an-zi pa-it DINGIR^MEŠ^-eš-kán ^m^ke-eš-ši-i̯a\niš-pa-an-du-uz-zi še-er kar-tim-mi-i̯a-u-u̯a-an-te-eš nu-uš-ši ḫu-u-i-tar\nḫu-u-ma-an pé-ra-an ar-ḫa mu-un-na-a-er\n^m^ke-eš-ši-iš ITU.3.KAM-aš ḪUR.SAG^MEŠ^-aš an-da ú-e-ḫa-at-ta EGIR-pa-ma-aš-ša-an URU-ZU\nša-an-na-pí-liš nu-u-ma-an pa-iz-zi ka-a-aš-ti ka-ni-in-ti nu ^m^ke-eš-ši-in\ni-da-a-la-u̯a-an-za GIG-an-za ḫar-zi",
         "title": "The story of Hunter Kešši",
         "words": [
             {
@@ -4165,6 +4165,10 @@
                 "id": 12277
             },
             {
+                "index": 40,
+                "id": 12387
+            },
+            {
                 "index": 41,
                 "id": 12279
             },
@@ -4177,8 +4181,20 @@
                 "id": 12282
             },
             {
+                "index": 48,
+                "id": 12389
+            },
+            {
                 "index": 51,
                 "id": 12284
+            },
+            {
+                "index": 56,
+                "id": 12391
+            },
+            {
+                "index": 57,
+                "id": 12395
             },
             {
                 "index": 58,
@@ -4249,20 +4265,8 @@
                 "id": 11878
             },
             {
-                "index": 40,
-                "id": 12387
-            },
-            {
-                "index": 48,
-                "id": 12389
-            },
-            {
-                "index": 56,
-                "id": 12391
-            },
-            {
-                "index": 57,
-                "id": 12395
+                "index": 64,
+                "id": 12406
             }
         ],
         "translations": [
@@ -4384,9 +4388,13 @@
     },
     {
         "id": 12107,
-        "text": "nu ma-aḫ-ḫa-an KUR ^URU^_KAR-GA-MIŠ ta-ni-nu-nu-un\nnu-kán _IŠ-TU KUR ^URU^_KAR-GA-MIŠ ša-ra-a ú-u̯a-nu-un\nnu _I-NA KUR ^URU^_TE-GA-RA-AM-MA an-da-an ú-u̯a-nu-un nu ma-aḫ-ḫa-an\n_I-NA ^URU^_TE-GA-RA-AM-MA a-ar-aḫ-ḫu-un nu-mu ^m^nu-u̯a-an-za-aš GAL.GEŠTIN\nEN^MEŠ^-i̯a ḫu-u-ma-an-te-eš _I-NA ^URU^_TE-GA-RA-AM-MA me-na-aḫ-ḫa-an-da\nú-e-er nu-mu an-da ú-e-mi-i-e-er ma-an _I-NA ^URU^_ḪA-I̯A-ŠA\npa-a-un-pát nu-za MU.KAM-za še-er te-e-pa-u-e-eš-ša-an-za e-eš-ta\n_BE-LU^MEŠ^-i̯a-mu me-mi-er MU.KAM-za-u̯a-ta še-er te-e-pa-u-e-eš-ša-an-za\nnu-u̯a _BE-LÍ-NI _I-NA ^URU^_ḪA-I̯A-ŠA le-e pa-i-ši nu _I-NA ^URU^_ḪA-I̯A-ŠA\n_Ú-UL pa-a-un nu _I-NA ^URU^_ḪAR-RA-NA an-da-an pa-a-un\nnu-mu KARAŠ _I-NA ^URU^_ḪAR-RA-NA an-da a-ar-aš\nnu-za _A-NA KARAŠ ú-u̯a-a-tar a-pí-i̯a i-i̯a-nu-un \nnu-mu ^URU^i-i̯a-aḫ-re-eš-ša-aš ku-it KUR ^URU^_PÍ-IG-GA-I-NA-RE-EŠ-ŠA-i̯a\nku-u-ru-ur e-eš-ta nu _I-NA ^URU^_I-I̯A-AḪ-RE-EŠ-ŠA pa-a-un\nnu-za UD.KAM^ḪI.A^ iš-pa-an-ti-uš i-i̯a-nu-un  nu KARAŠ^ḪI.A^\npár-ḫe-eš-ni ḫu-it-ti-i̯a-nu-un  nu LUGAL.GAL _IŠ-TU ÉRIN^MEŠ^ ANŠE.KUR.RA^ḪI.A^\nmu-un-na-an-da i-i̯a-aḫ-ḫa-at nu-mu-kán ^d^U NIR.GÁL _BE-LÍ-I̯A\n^d^ḫa-ša-am-mi-li-in _BE-LÍ-I̯A ú-e-ri-i̯a-an ḫar-ta\nnu-mu mu-un-na-an-da ḫar-ta nu-mu _Ú-UL ku-iš-ki a-uš-ta\nnu-uš-ša-an pa-a-un KUR ^URU^_PÍ-IG-GA-I-NA-RE-EŠ-ŠA ša-aš-ti\nu̯a-al-aḫ-ḫu-un na-an _IŠ-TU NAM.RA^ḪI.A^ GU4 UDU EGIR-an ú-e-mi-i̯a-nu-un\nna-an an-da e-ep-pu-un KUR ^URU^_PÍ-IG-GA-I-NA-RE-EŠ-ŠA-ma\nar-ḫa u̯a-ar-nu-nu-un\nlu-uk-kat-ta-ma _I-NA ^URU^_I-I̯A-AḪ-RI-IŠ-ŠA EGIR-pa ú-u̯a-nu-un\nnu ^URU^i-i̯a-aḫ-ri-iš-ša-an URU-an ar-ḫa u̯a-ar-nu-nu-un\n_IŠ-TU NAM.RA^HI.A^-ma GU4 UDU an-da e-ep-pu-un\nlu-uk-kat-ti-ma _I-NA ^URU^_TAP-TI-NA pa-ra-a i-i̯a-aḫ-ḫa-at ma-aḫ-ḫa-an-ma\n_I-NA ^URU^_TAR-KU-MA a-ar-aḫ-ḫu-un nu ^URU^tar-ku-ma-an ar-ḫa u̯a-ar-nu-nu-un\nnu-mu LÚ^MEŠ^ ^URU^_TAP-TI-NA LÚ^MEŠ^ ^URU^_ḪAR-ŠA-MA LÚ^MEŠ^ ^URU^_PÍ-KUR-ZI\nme-na-aḫ-ḫa-an-da ú-e-er na-at-mu GÌR^MEŠ^-aš kat-ta-an\nḫa-a-li-i̯a-an-da-at nu ki-iš-ša-an me-mi-er _BE-LÍ-NI-u̯a-an-na-aš\nle-e ḫar-ni-ik-ti nu-u̯a-an-na-aš-za ÌR-an-ni da-a\nnu-u̯a-an-na-aš-za ÉRIN^MEŠ^ ANŠE.KUR.RA^ḪI.A^ i-i̯a nu-u̯a-ad-da la-aḫ-ḫi\nkat-ta-an la-aḫ-ḫi-i̯a-an-ni-iš-ga-u-e-ni na-aš-za ÌR-an-ni\nda-aḫ-ḫu-un na-aš-za ÉRIN^MEŠ^ ANŠE.KUR.RA^ḪI.A^ i-i̯a-nu-un\nlu-uk-kat-ta-ma pa-ra-a pa-a-un nu ^URU^ḫa-a-i-še-eḫ-la-an\n^URU^kán-ti-iš-ši-ša-an-na ar-ḫa u̯a-ar-nu-nu-un\nnam-ma _I-NA ^URU^_ḪA-AK-PÍ-IŠ-ŠA EGIR-pa ú-u̯a-nu-un\nnu _I-NA ^URU^ḫa-at-tu-ši EGIR-pa ú-u̯a-nu-un\nnu _I-NA ^URU^_A-AN-KU-U̯A gi-im-ma-an-ta-ri-i̯a-nu-un\n",
+        "text": "nu ma-aḫ-ḫa-an KUR ^URU^_KAR-GA-MIŠ ta-ni-nu-nu-un\nnu-kán _IŠ-TU KUR ^URU^_KAR-GA-MIŠ ša-ra-a ú-u̯a-nu-un\nnu _I-NA KUR ^URU^_TE-GA-RA-AM-MA an-da-an ú-u̯a-nu-un nu ma-aḫ-ḫa-an\n_I-NA ^URU^_TE-GA-RA-AM-MA a-ar-aḫ-ḫu-un nu-mu ^m^nu-u̯a-an-za-aš GAL.GEŠTIN\nEN^MEŠ^-i̯a ḫu-u-ma-an-te-eš _I-NA ^URU^_TE-GA-RA-AM-MA me-na-aḫ-ḫa-an-da\nú-e-er nu-mu an-da ú-e-mi-i-e-er ma-an _I-NA ^URU^_ḪA-I̯A-ŠA\npa-a-un-pát nu-za MU.KAM-za še-er te-e-pa-u-e-eš-ša-an-za e-eš-ta\n_BE-LU^MEŠ^-i̯a-mu me-mi-er MU.KAM-za-u̯a-ta še-er te-e-pa-u-e-eš-ša-an-za\nnu-u̯a _BE-LÍ-NI _I-NA ^URU^_ḪA-I̯A-ŠA le-e pa-i-ši nu _I-NA ^URU^_ḪA-I̯A-ŠA\n_Ú-UL pa-a-un nu _I-NA ^URU^_ḪAR-RA-NA an-da-an pa-a-un\nnu-mu KARAŠ _I-NA ^URU^_ḪAR-RA-NA an-da a-ar-aš\nnu-za _A-NA KARAŠ ú-u̯a-a-tar a-pí-i̯a i-i̯a-nu-un \nnu-mu ^URU^i-i̯a-aḫ-re-eš-ša-aš ku-it KUR ^URU^_PÍ-IG-GA-I-NA-RE-EŠ-ŠA-i̯a\nku-u-ru-ur e-eš-ta nu _I-NA ^URU^_I-I̯A-AḪ-RE-EŠ-ŠA pa-a-un\nnu-za UD.KAM^ḪI.A^ iš-pa-an-ti-uš i-i̯a-nu-un  nu KARAŠ^ḪI.A^\npár-ḫe-eš-ni ḫu-it-ti-i̯a-nu-un  nu LUGAL.GAL _IŠ-TU ÉRIN^MEŠ^ ANŠE.KUR.RA^ḪI.A^\nmu-un-na-an-da i-i̯a-aḫ-ḫa-at nu-mu-kán ^d^U NIR.GÁL _BE-LÍ-I̯A\n^d^ḫa-ša-am-mi-li-in _BE-LÍ-I̯A ú-e-ri-i̯a-an ḫar-ta\nnu-mu mu-un-na-an-da ḫar-ta nu-mu _Ú-UL ku-iš-ki a-uš-ta\nnu-uš-ša-an pa-a-un KUR ^URU^_PÍ-IG-GA-I-NA-RE-EŠ-ŠA ša-aš-ti\nu̯a-al-aḫ-ḫu-un na-an _IŠ-TU NAM.RA^ḪI.A^ GU4 UDU EGIR-an ú-e-mi-i̯a-nu-un\nna-an an-da e-ep-pu-un KUR ^URU^_PÍ-IG-GA-I-NA-RE-EŠ-ŠA-ma\nar-ḫa u̯a-ar-nu-nu-un\nlu-uk-kat-ta-ma _I-NA ^URU^_I-I̯A-AḪ-RI-IŠ-ŠA EGIR-pa ú-u̯a-nu-un\nnu ^URU^i-i̯a-aḫ-ri-iš-ša-an URU-an ar-ḫa u̯a-ar-nu-nu-un\n_IŠ-TU NAM.RA^ḪI.A^-ma GU4 UDU an-da e-ep-pu-un\nlu-uk-kat-ti-ma _I-NA ^URU^_TAP-TI-NA pa-ra-a i-i̯a-aḫ-ḫa-at ma-aḫ-ḫa-an-ma\n_I-NA ^URU^_TAR-KU-MA a-ar-aḫ-ḫu-un nu ^URU^tar-ku-ma-an ar-ḫa u̯a-ar-nu-nu-un\nnu-mu LÚ^MEŠ^ ^URU^_TAP-TI-NA LÚ^MEŠ^ ^URU^_ḪAR-ŠA-MA LÚ^MEŠ^ ^URU^_PÍ-KUR-ZI\nme-na-aḫ-ḫa-an-da ú-e-er na-at-mu GÌR^MEŠ^-aš kat-ta-an\nḫa-a-li-i̯a-an-da-at nu ki-iš-ša-an me-mi-er _BE-LÍ-NI-u̯a-an-na-aš\nle-e ḫar-ni-ik-ti nu-u̯a-an-na-aš-za ÌR-an-ni da-a\nnu-u̯a-an-na-aš-za ÉRIN^MEŠ^ ANŠE.KUR.RA^ḪI.A^ i-i̯a nu-u̯a-ad-da la-aḫ-ḫi\nkat-ta-an la-aḫ-ḫi-i̯a-an-ni-iš-ga-u-e-ni na-aš-za ÌR-an-ni\nda-aḫ-ḫu-un na-aš-za ÉRIN^MEŠ^ ANŠE.KUR.RA^ḪI.A^ i-i̯a-nu-un\nlu-uk-kat-ta-ma pa-ra-a pa-a-un nu ^URU^ḫa-a-i-še-eḫ-la-an\n^URU^kán-ti-iš-ši-ša-an-na ar-ḫa u̯a-ar-nu-nu-un\nnam-ma _I-NA ^URU^_ḪA-AK-PÍ-IŠ-ŠA EGIR-pa ú-u̯a-nu-un\nnu _I-NA ^URU^ḫa-at-tu-ši EGIR-pa ú-u̯a-nu-un\nnu _I-NA ^URU^_A-AN-KU-U̯A gi-im-ma-an-ta-ri-i̯a-nu-un\n",
         "title": "Annals of Muršili",
         "words": [
+            {
+                "index": 3,
+                "id": 12398
+            },
             {
                 "index": 4,
                 "id": 12155
@@ -4398,6 +4406,14 @@
             {
                 "index": 10,
                 "id": 12160
+            },
+            {
+                "index": 14,
+                "id": 12399
+            },
+            {
+                "index": 23,
+                "id": 12400
             },
             {
                 "index": 24,
@@ -4432,8 +4448,16 @@
                 "id": 12169
             },
             {
+                "index": 43,
+                "id": 12357
+            },
+            {
                 "index": 44,
                 "id": 12172
+            },
+            {
+                "index": 49,
+                "id": 12360
             },
             {
                 "index": 52,
@@ -4488,6 +4512,10 @@
                 "id": 12196
             },
             {
+                "index": 105,
+                "id": 12363
+            },
+            {
                 "index": 111,
                 "id": 12199
             },
@@ -4508,12 +4536,20 @@
                 "id": 12210
             },
             {
+                "index": 140,
+                "id": 12365
+            },
+            {
                 "index": 155,
                 "id": 12212
             },
             {
                 "index": 156,
                 "id": 12214
+            },
+            {
+                "index": 178,
+                "id": 12369
             },
             {
                 "index": 179,
@@ -4524,8 +4560,16 @@
                 "id": 12221
             },
             {
+                "index": 185,
+                "id": 12371
+            },
+            {
                 "index": 187,
                 "id": 12224
+            },
+            {
+                "index": 188,
+                "id": 12355
             },
             {
                 "index": 189,
@@ -4560,32 +4604,8 @@
                 "id": 12243
             },
             {
-                "index": 188,
-                "id": 12355
-            },
-            {
-                "index": 43,
-                "id": 12357
-            },
-            {
-                "index": 49,
-                "id": 12360
-            },
-            {
-                "index": 105,
-                "id": 12363
-            },
-            {
-                "index": 140,
-                "id": 12365
-            },
-            {
-                "index": 178,
-                "id": 12369
-            },
-            {
-                "index": 185,
-                "id": 12371
+                "index": 151,
+                "id": 12404
             }
         ],
         "translations": [
