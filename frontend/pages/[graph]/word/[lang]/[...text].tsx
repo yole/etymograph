@@ -266,11 +266,11 @@ function CompoundListComponent(
                 }
                 {allowEdit() && <>
                     {' '}
-                    {addToCompoundId !== m.compoundId && <button onClick={() => prepareAddToCompound(m.compoundId)}>Add component</button>}
+                    {addToCompoundId !== m.compoundId && <button className="uiButton" onClick={() => prepareAddToCompound(m.compoundId)}>Add component</button>}
                     {' '}
-                    {editCompound !== m.compoundId && <button onClick={() => setEditCompound(m.compoundId)}>Edit compound</button>}
+                    {editCompound !== m.compoundId && <button className="uiButton" onClick={() => setEditCompound(m.compoundId)}>Edit compound</button>}
                     {' '}
-                    <button onClick={() => deleteCompoundClicked(m.compoundId)}>Delete</button>
+                    <button className="uiButton" onClick={() => deleteCompoundClicked(m.compoundId)}>Delete</button>
                 </>}
             </div>
         )}
