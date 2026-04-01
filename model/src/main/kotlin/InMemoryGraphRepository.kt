@@ -147,8 +147,10 @@ open class InMemoryGraphRepository : GraphRepository() {
     }
 
     private fun Word.hasGrammarCategory(): Boolean {
-        val suffix = gloss?.substringAfterLast('.', "")
-        return !suffix.isNullOrEmpty() && suffix.all { it.isUpperCase() || it.isDigit() }
+        val gloss = gloss ?: return false
+        val suffix = gloss.substringAfterLast('.', "")
+        return (suffix.isNotEmpty() && suffix.all { it.isUpperCase() || it.isDigit() }) &&
+                !gloss.all { it.isUpperCase() || it.isDigit() || it == '.' }
     }
 
     override fun filteredWords(lang: Language, kind: WordKind): List<Word> {
