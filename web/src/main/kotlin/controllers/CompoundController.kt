@@ -3,6 +3,7 @@ package ru.yole.etymograph.web.controllers
 import org.springframework.web.bind.annotation.*
 import ru.yole.etymograph.Compound
 import ru.yole.etymograph.GraphRepository
+import ru.yole.etymograph.KnownClasses
 import ru.yole.etymograph.web.parseSourceRefs
 import ru.yole.etymograph.web.resolveWord
 
@@ -35,7 +36,7 @@ class CompoundController {
         val compound = repo.resolveCompound(id)
         val componentWord = repo.resolveWord(params.componentId)
         repo.addToCompound(compound, componentWord)
-        if (params.markHead) {
+        if (params.markHead && KnownClasses.clitic !in componentWord.classes) {
             compound.headIndex = compound.components.size - 1
         }
     }
