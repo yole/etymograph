@@ -124,8 +124,8 @@ open class InMemoryGraphRepository : GraphRepository() {
     private fun classifyWord(word: Word): WordKind {
         return when {
             word.reconstructed -> WordKind.RECONSTRUCTED
-            word.pos == "NP" -> WordKind.NAME
-            isCompound(word) -> WordKind.COMPOUND
+            word.pos == KnownPartsOfSpeech.properName.abbreviation -> WordKind.NAME
+            isCompound(word) -> if (isCliticChain(word)) WordKind.DERIVED else WordKind.COMPOUND
             word.gloss == null -> WordKind.DERIVED
             word.hasGrammarCategory() -> WordKind.DERIVED
             else -> WordKind.NORMAL
@@ -136,6 +136,13 @@ open class InMemoryGraphRepository : GraphRepository() {
         val compounds = compounds[word.id] ?: return false
         return compounds.any {
             it.components.any { c -> !c.isRoot() } && !it.isDerivation()
+        }
+    }
+
+    override fun isCliticChain(word: Word): Boolean {
+        val compounds = compounds[word.id] ?: return false
+        return compounds.any {
+            it.components.any { c -> KnownClasses.clitic in (c.baseWord(this) ?: c).classes }
         }
     }
 
@@ -294,7 +301,8 @@ open class InMemoryGraphRepository : GraphRepository() {
                 if (index + componentLength > word.text.length || word.text.substring(index, index + componentLength) != normalizedComponentText) {
                     break
                 }
-                segments.add(WordSegment(index, componentLength, null, component, null, "clitic" in component.classes))
+                segments.add(WordSegment(index, componentLength, null, component, null,
+                    KnownClasses.clitic in component.classes))
                 index += componentLength
             }
             word.segments = segments

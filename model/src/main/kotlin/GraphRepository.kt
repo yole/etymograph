@@ -47,6 +47,7 @@ abstract class GraphRepository {
     abstract fun findAttestations(word: Word): List<Attestation>
     abstract fun isHomonym(word: Word): Boolean
     abstract fun isCompound(word: Word): Boolean
+    abstract fun isCliticChain(word: Word): Boolean
     abstract fun findParseCandidates(word: Word): List<ParseCandidate>
     abstract fun restoreSegments(word: Word): Word
 

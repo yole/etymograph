@@ -263,7 +263,7 @@ class WordController(val dictionaryService: DictionaryService) {
             },
             stressData?.index,
             stressData?.length?.takeIf { accentType == null },
-            graph.isCompound(this),
+            graph.isCompound(this) && !graph.isCliticChain(this),
             hasParadigms,
             graph.suggestDeriveRuleSequences(this).map {
                 WordRuleSequenceViewModel(it.name, it.id)

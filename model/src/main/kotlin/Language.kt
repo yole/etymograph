@@ -14,6 +14,10 @@ object KnownPartsOfSpeech {
     val properName = WordCategoryValue("Proper Name", "NP")
 }
 
+object KnownClasses {
+    val clitic = "clitic"
+}
+
 class Phoneme(
     id: Int, var graphemes: List<String>, var sound: String?, var classes: Set<String>, var historical: Boolean = false,
     source: List<SourceRef> = emptyList(), notes: String? = null
