@@ -1,11 +1,11 @@
 import {Syllabogram, SyllabogramSequence} from "@/models";
 import WordWithStress from "@/components/WordWithStress";
 
-function SyllabogramView(params: {syllabogram: Syllabogram, prevSyllabogram?: Syllabogram}) {
+function SyllabogramView(params: {syllabogram: Syllabogram, index: number, prevSyllabogram?: Syllabogram}) {
     let syl = params.syllabogram
     const delimiter = (!params.prevSyllabogram ||
         syl.type.startsWith("Determinative") ||
-        params.prevSyllabogram.type.startsWith("Determinative")
+        (params.index == 1 && params.prevSyllabogram.type.startsWith("Determinative"))
     )
         ? ""
         : (syl.type == "Logogram" ? "." : "-")
@@ -38,6 +38,6 @@ export default function WordTextView(params: {
         return <WordWithStress {...params}/>
     }
     return <>{params.syllabograms.syllabograms.map((s, index) =>
-        <SyllabogramView syllabogram={s} prevSyllabogram={index > 0 ? params.syllabograms.syllabograms[index - 1] : undefined}/>)}
+        <SyllabogramView syllabogram={s} index={index} prevSyllabogram={index > 0 ? params.syllabograms.syllabograms[index - 1] : undefined}/>)}
     </>
 }
