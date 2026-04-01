@@ -308,7 +308,13 @@ class Word(
             }
         }
         if (pos == KnownPartsOfSpeech.properName.abbreviation) {
-            return text.replaceFirstChar { it.uppercase(Locale.FRANCE) }.removeSuffix("-")
+            val effectiveText = if (syllabographic) {
+                suggestTranscription(this)
+            }
+            else {
+                text
+            }
+            return effectiveText.replaceFirstChar { it.uppercase(Locale.FRANCE) }.removeSuffix("-")
         }
         return null
     }

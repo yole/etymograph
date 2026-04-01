@@ -167,7 +167,10 @@ fun suggestTranscription(word: Word): String {
             }
         }
     }
-    return Normalizer.normalize(result, Normalizer.Form.NFC)
+    if (result.isNotEmpty()) {
+        return Normalizer.normalize(result, Normalizer.Form.NFC)
+    }
+    return syllabograms.syllabograms.filter { it.type.isLogogram }.joinToString("") { it.text }.lowercase()
 }
 
 fun isHittiteVowel(c: Char) = c in hittiteVowels
