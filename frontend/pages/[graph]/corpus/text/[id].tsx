@@ -1,7 +1,7 @@
 import {useState} from "react";
 import WordForm, {WordFormData} from "@/forms/WordForm";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faEdit, faCheck, faCommentDots} from '@fortawesome/free-solid-svg-icons'
+import {faEdit, faCheck, faCommentDots, faEraser} from '@fortawesome/free-solid-svg-icons'
 import {
     fetchBackend,
     associateWord,
@@ -20,6 +20,7 @@ import WordGloss from "@/components/WordGloss";
 import {CorpusTextViewModel, CorpusWordCandidateViewModel, CorpusWordViewModel, TranslationViewModel, WordViewModel} from "@/models";
 import WordTextView from "@/components/WordTextView";
 import {Urls} from "@/components/Urls";
+import {ActionIcon} from "@mantine/core";
 
 export const config = {
     unstable_runtimeJS: true
@@ -179,12 +180,17 @@ function TranslationView(params: {translation: TranslationViewModel}) {
 
     return <>
         {(!showTranslationForm) && <>
-            <div>&quot;{t.text}&quot; <SourceRefs source={t.source}/></div>
-            {allowEdit() && <>
-                <button onClick={() => setShowTranslationForm(!showTranslationForm)}>Edit translation</button>
-                {' '}
-                <button onClick={() => deleteTranslationClicked(t.id)}>Delete translation</button>
-            </>}
+            <div>
+                &quot;{t.text}&quot; <SourceRefs source={t.source}/>
+                {allowEdit() && <>
+                    <ActionIcon type="button" variant="outline" onClick={() => setShowTranslationForm(!showTranslationForm)}>
+                        <FontAwesomeIcon icon={faEdit}/>
+                    </ActionIcon>
+                    <ActionIcon type="button" variant="outline" onClick={() => deleteTranslationClicked(t.id)}>
+                        <FontAwesomeIcon icon={faEraser}/>
+                    </ActionIcon>
+                </>}
+            </div>
         </>}
         {showTranslationForm &&
             <TranslationForm corpusTextId={Number.parseInt(router.query.id as string)}
