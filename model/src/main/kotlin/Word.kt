@@ -127,22 +127,14 @@ class Word(
         if (isPhonemic) return this
         val (phonemicText, newSegments) = language.cachePhonemicText(text, segments) {
             val pronunciationRule = language.pronunciationRule?.resolve()
+            val it = PhonemeIterator(this, null, resultPhonemic = true)
             if (pronunciationRule != null) {
-                val it = PhonemeIterator(this, null, resultPhonemic = true)
                 while (true) {
                     (pronunciationRule.logic as SpeRuleLogic).applyToPhoneme(this, it, InMemoryGraphRepository.EMPTY)
                     if (!it.advance()) break
                 }
-                it.result() to remapSegments(it, this.segments)
             }
-            else {
-                buildString {
-                    val lowerText = if (language.orthoPhonemeLookup.caseSensitiveGraphemes) text else text.lowercase(Locale.FRANCE)
-                    language.orthoPhonemeLookup.iteratePhonemes(lowerText) { startIndex, endIndex, phoneme, _ ->
-                        append(phoneme?.effectiveSound ?: lowerText.substring(startIndex, endIndex))
-                    }
-                } to this.segments
-            }
+            it.result() to remapSegments(it, this.segments)
         }
 
         if (language.accentTypes.isNotEmpty()) {
@@ -156,13 +148,20 @@ class Word(
         if (!isPhonemic && accentType == null) return this
         val orthoRule = language.orthographyRule?.resolve()
         var wordSegments = segments
-        val orthoText: String = if (orthoRule != null && isPhonemic) {
+        val orthoText: String = if (isPhonemic) {
             var refIt = referenceWord?.let { PhonemeIterator(it, null) }
-            var it = PhonemeIterator(this, null, resultPhonemic = false)
+            val it = PhonemeIterator(this, null, resultPhonemic = false)
             while (true) {
                 if (refIt?.current != it.current) {
-                    (orthoRule.logic as SpeRuleLogic).applyToPhoneme(this, it, InMemoryGraphRepository.EMPTY)
+                    if (orthoRule != null) {
+                        (orthoRule.logic as SpeRuleLogic).applyToPhoneme(this, it, InMemoryGraphRepository.EMPTY)
+                    }
                 }
+                val accent = accentType.takeIf { _ -> it.index == stressedPhonemeIndex }
+                if (accent != null) {
+                    it.replace(accent.combine(it.current))
+                }
+
                 if (refIt?.advance() == false) refIt = null
                 if (!it.advance()) break
             }
@@ -266,7 +265,7 @@ class Word(
                         throw IllegalArgumentException("Invalid segment start index: ${segment.firstCharacter}")
                     }
                     if (segment.firstCharacter + segment.length > text.length) {
-                        throw IllegalArgumentException("Invalid segment length: ${segment.length}")
+                        throw IllegalArgumentException("Segment exceeds word boundary: start ${segment.firstCharacter}, length: ${segment.length}, word '$text'")
                     }
                 }
             }

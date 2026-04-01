@@ -85,6 +85,29 @@ class OrthographyTest : QBaseTest() {
     }
 
     @Test
+    fun digraphRemapSegmentsPhonemic() {
+        ce.phonemes += phoneme(listOf("ts"), "z")
+        val ats = ce.word("ats").apply {
+            segments = listOf(WordSegment(1, 2, null, null, null, false))
+        }
+        val phono = ats.asPhonemic()
+        assertEquals("az", phono.text)
+        assertEquals(1, phono.segments!![0].length)
+    }
+
+    @Test
+    fun digraphRemapSegmentsOrthographic() {
+        ce.phonemes += phoneme(listOf("ts"), "z")
+        val ats = ce.word("az").apply {
+            isPhonemic = true
+            segments = listOf(WordSegment(1, 1, null, null, null, false))
+        }
+        val phono = ats.asOrthographic()
+        assertEquals("ats", phono.text)
+        assertEquals(2, phono.segments!![0].length)
+    }
+
+    @Test
     fun acuteAccent() {
         ce.accentTypes = mutableSetOf(AccentType.Acute)
         val aham = ce.word("ahám")

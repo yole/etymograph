@@ -167,7 +167,7 @@ class PhonemeIterator {
             this.language.orthoPhonemeLookup
 
         lookup.iteratePhonemes(text) { startIndex, endIndex, phoneme, stressType ->
-            val normalizedResultText = if (resultPhonemic ?: phonemic) phoneme?.sound else phoneme?.graphemes?.first()
+            val normalizedResultText = if (resultPhonemic ?: phonemic) phoneme?.effectiveSound else phoneme?.graphemes?.first()
             val normalizedText = if (phonemic) phoneme?.sound else phoneme?.graphemes?.first()
             if (mergeDiphthongs && sourcePhonemes.size > 0 && sourcePhonemes.last() + (phoneme?.sound ?: text.substring(startIndex, endIndex)) in language.diphthongs) {
                 sourcePhonemes[sourcePhonemes.size - 1] = sourcePhonemes[sourcePhonemes.size - 1] + (normalizedText ?: text.substring(startIndex, endIndex))
