@@ -154,7 +154,7 @@ fun suggestTranscription(word: Word): String {
                     .replace(AccentType.Grave.combiningMark.toString(), "")
                     .replace(number, "")
 
-                if (isHittiteVowel(text[0])) {
+                if (isHittiteVowel(text[0]) && (text.length == 1 || text[1] != '\u032F')) {
                     if (lastOrNull() == text[0] || lastOrNull() == longVowel(text[0])) {
                         if (text.length == 1 || prev?.text?.length == 1) {
                             this[length - 1] = longVowel(text[0])

@@ -3,6 +3,7 @@ package ru.yole.etymograph
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
+@Suppress("SpellCheckingInspection")
 class SyllabogramTest {
     @Test
     fun parseSyllabogramsSimple() {
@@ -130,6 +131,12 @@ class SyllabogramTest {
     fun transcribeRemoveNumbers() {
         val word = hittiteWord("le-en-ka4-nu-ut")
         assertEquals("lenkanut", suggestTranscription(word))
+    }
+
+    @Test
+    fun transcribeW() {
+        val word = hittiteWord("nu-u̯a-an-za-aš")
+        assertEquals("nuu̯anzaš", suggestTranscription(word))
     }
 
     private fun hittiteWord(transliteration: String): Word {
