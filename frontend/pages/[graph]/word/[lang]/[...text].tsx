@@ -185,6 +185,17 @@ function CompoundRefComponent(params: {baseWord: WordViewModel, linkWord: WordRe
     return <WordLink word={linkWord} baseLanguage={baseWord.language} gloss={true}/>
 }
 
+function CompoundSuggestionsComponent(params: {suggestions: WordRefViewModel[], acceptCompoundSuggestion: (id: number) => void}) {
+    return <>
+        {params.suggestions.map(c => <>
+            <button className="inlineButton" onClick={() => params.acceptCompoundSuggestion(c.id)}>
+                <WordTextView text={c.text} syllabograms={c.syllabogramSequence}/>{c.homonym && " '" + c.gloss + "'"}
+            </button>{' '}
+        </>)}
+        {params.suggestions.length > 0 && <br/>}
+    </>
+}
+
 function CompoundListComponent(
     {compounds, word, derivation}: {compounds: CompoundComponentsViewModel[], word: WordViewModel, derivation: boolean}
 ) {
@@ -237,12 +248,7 @@ function CompoundListComponent(
                 <SourceRefs source={m.source} span={true}/>
                 {addToCompoundId === m.compoundId && <>
                     {compoundSuggestions.length > 0 && <br/>}
-                    {compoundSuggestions.map(c => <>
-                        <button className="inlineButton" onClick={() => acceptCompoundSuggestion(c.id)}>
-                            {c.text}{c.homonym && " '" + c.gloss + "'"}
-                        </button>{' '}
-                    </>)}
-                    {compoundSuggestions.length > 0 && <br/>}
+                    <CompoundSuggestionsComponent suggestions={compoundSuggestions} acceptCompoundSuggestion={acceptCompoundSuggestion} />
                     <WordForm wordSubmitted={submitted} cancelled={() => setAddToCompoundId(undefined)}
                               showSyllabographic={word.syllabographic}
                               addToCompound={m.compoundId} linkTarget={word} defaultValues={{language: word.language}}/>
@@ -621,12 +627,7 @@ function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean 
 
             <button className="uiButton" onClick={defineAsCompoundClicked}>Compound</button>{' '}
             {showCompoundComponent && <>
-                {compoundSuggestions.map(c => <>
-                    <button className="inlineButton" onClick={() => acceptCompoundSuggestion(c.id)}>
-                        {c.text}{c.homonym && " '" + c.gloss + "'"}
-                    </button>{' '}
-                </>)}
-                {compoundSuggestions.length > 0 && <br/>}
+                <CompoundSuggestionsComponent suggestions={compoundSuggestions} acceptCompoundSuggestion={acceptCompoundSuggestion} />
                 <WordForm wordSubmitted={submitted} newCompound={true} linkTarget={word}
                           showSyllabographic={word.syllabographic}
                           defaultValues={{language: word.language}} cancelled={() => setShowCompoundComponent(false)}/>
