@@ -5,12 +5,11 @@ on:
       graphPath:
         required: true
         type: string
+    secrets:
       netlifyAuthToken:
         required: true
-        type: string
       siteId:
         required: true
-        type: string
 jobs:
   export-database:
     timeout-minutes: 60

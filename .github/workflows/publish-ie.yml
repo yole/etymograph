@@ -1,7 +1,7 @@
 name: Publish read-only database
 on: [push, workflow_dispatch]
 jobs:
-  publish-database:
+  checkout-data:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout JRRT
@@ -14,9 +14,11 @@ jobs:
         with:
           repository: yole/etymograph-ie
           path: data/ie
-      - name: publish
-        uses: ./.github/workflows/etymograph-build.yml
-        with:
-          graphPath: /app/data/ie,/app/data/jrrt
-          siteId: ${{ secrets.ETYMOGRAPH_SITE_ID }}
-          netlifyAuthToken: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+  publish-database:
+    needs: checkout-data
+    uses: ./.github/workflows/etymograph-build.yml
+    with:
+      graphPath: /app/data/ie,/app/data/jrrt
+    secrets:
+      siteId: ${{ secrets.ETYMOGRAPH_SITE_ID }}
+      netlifyAuthToken: ${{ secrets.NETLIFY_AUTH_TOKEN }}
