@@ -1,10 +1,6 @@
 name: Publish read-only database
 on:
   workflow_call:
-    inputs:
-      graphPath:
-        required: true
-        type: string
     secrets:
       netlifyAuthToken:
         required: true
@@ -17,12 +13,24 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
+
+      - name: Checkout JRRT
+        uses: actions/checkout@v6
+        with:
+          repository: yole/etymograph-jrrt
+          path: data/jrrt
+
+      - name: Checkout IE
+        uses: actions/checkout@v6
+        with:
+          repository: yole/etymograph-ie
+          path: data/ie
 
       - name: Start backend
         run: docker compose up backend --build --detach --wait
         env:
-          ETYMOGRAPH_GRAPH_PATH: ${{ inputs.graphPath }}
+          ETYMOGRAPH_GRAPH_PATH: data/jrrt,data/ie
 
       - name: Create export target directory
         run: mkdir export

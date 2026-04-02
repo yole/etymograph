@@ -1,27 +1,8 @@
 name: Publish read-only database
 on: [push, workflow_dispatch]
 jobs:
-  checkout-data:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout JRRT
-        uses: actions/checkout@v6
-        with:
-          repository: yole/etymograph-jrrt
-          path: data/jrrt
-      - name: Checkout IE
-        uses: actions/checkout@v6
-        with:
-          repository: yole/etymograph-ie
-          path: data/ie
-    outputs:
-      jrrt: data/jrrt
-      ie: data/ie
   publish-database:
-    needs: checkout-data
     uses: ./.github/workflows/etymograph-build.yml
-    with:
-      graphPath: ${{needs.checkout-data.outputs.ie}},${{needs.checkout-data.outputs.jrrt}}
     secrets:
       siteId: ${{ secrets.ETYMOGRAPH_SITE_ID }}
       netlifyAuthToken: ${{ secrets.NETLIFY_AUTH_TOKEN }}
