@@ -67,12 +67,12 @@ class PhonemeLookup(val accentTypes: Set<AccentType>) {
         }
     }
 
-    fun iteratePhonemes(text: String, callback: (Int, Int, Phoneme?, AccentType?) -> Unit) {
+    fun iteratePhonemes(text: String, callback: (String?, Phoneme?, AccentType?) -> Unit) {
         var offset = 0
         while (offset < text.length) {
             val digraph = digraphLookup[text[offset].code]?.keys?.firstOrNull { text.startsWith(it, offset) }
             if (digraph != null) {
-                callback(offset, offset + digraph.length, digraphs[digraph], null)
+                callback(null, digraphs[digraph], null)
                 offset += digraph.length
             }
 
@@ -81,12 +81,22 @@ class PhonemeLookup(val accentTypes: Set<AccentType>) {
                 if (offset + 1 < text.length) {
                     val nextGraphemeData = singleGraphemes[text[offset+1].code]
                     if (nextGraphemeData?.first == null && nextGraphemeData?.second != null) {
-                        callback(offset, offset + 1, graphemeData?.first, nextGraphemeData.second)
+                        if (graphemeData != null) {
+                            callback(null, graphemeData.first, nextGraphemeData.second)
+                        }
+                        else {
+                            callback(text.substring(offset, offset + 1), null, nextGraphemeData.second)
+                        }
                         offset += 2
                         continue
                     }
                 }
-                callback(offset, offset + 1, graphemeData?.first, graphemeData?.second)
+                if (graphemeData != null) {
+                    callback(null, graphemeData.first, graphemeData.second)
+                }
+                else {
+                    callback(text.substring(offset, offset + 1), null, null)
+                }
                 offset++
             }
         }
@@ -216,9 +226,9 @@ class Language(val name: String, val shortName: String) {
         return normalizeCache.getOrPut(cacheKey) {
             buildString {
                 val lowerText = if (orthoPhonemeLookup.caseSensitiveGraphemes) text else text.lowercase(Locale.FRANCE)
-                orthoPhonemeLookup.iteratePhonemes(lowerText) { startIndex, endIndex, phoneme, accentType ->
+                orthoPhonemeLookup.iteratePhonemes(lowerText) { phonemeText, phoneme, accentType ->
                     append(phoneme?.graphemes?.get(0)?.let { accentType?.takeIf { !removeAccent }?.combine(it) ?: it }
-                        ?: lowerText.substring(startIndex, endIndex))
+                        ?: phonemeText!!)
                 }
             }.removeSuffix("-")
         }

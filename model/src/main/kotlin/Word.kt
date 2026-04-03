@@ -172,14 +172,14 @@ class Word(
             buildString {
                 var index = 0
                 val lookup = if (isPhonemic) language.phonoPhonemeLookup else language.orthoPhonemeLookup
-                lookup.iteratePhonemes(text) { startIndex, endIndex, phoneme, _ ->
+                lookup.iteratePhonemes(text) { phonemeText, phoneme, _ ->
                     if (phoneme != null) {
                         val text = phoneme.graphemes[0]
                         val accent = accentType.takeIf { index == stressedPhonemeIndex }
                         append(accent?.combine(text) ?: text)
                     }
                     else {
-                        append(text.substring(startIndex, endIndex))
+                        append(phonemeText!!)
                     }
                     index++
                 }

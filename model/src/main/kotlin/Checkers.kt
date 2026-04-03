@@ -24,9 +24,9 @@ object WordTextChecker : ConsistencyChecker() {
         }
         val charactersNotInInventory = mutableSetOf<String>()
         val text = word.asPhonemic().text
-        word.language.phonoPhonemeLookup.iteratePhonemes(text) { startIndex, endIndex, phoneme, _ ->
+        word.language.phonoPhonemeLookup.iteratePhonemes(text) { phonemeText, phoneme, _ ->
             if (phoneme == null) {
-                val text = text.substring(startIndex, endIndex)
+                val text = phonemeText!!
                 if (text != "-") {
                     charactersNotInInventory.add(text)
                 }
