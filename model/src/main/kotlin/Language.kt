@@ -1,6 +1,8 @@
 package ru.yole.etymograph
 
+import java.text.Normalizer
 import java.util.*
+import kotlin.text.iterator
 
 class WordCategoryValue(val name: String, val abbreviation: String)
 
@@ -30,16 +32,18 @@ class Phoneme(
     }
 }
 
+data class CharCodeData(val phoneme: Phoneme?, val accentType: AccentType?, val textWithoutAccent: String?)
+
 class PhonemeLookup(val accentTypes: Set<AccentType>) {
     private val digraphLookup = arrayOfNulls<MutableMap<String, Phoneme>>(Char.MAX_VALUE.code)
     private var digraphs = mutableMapOf<String, Phoneme>()
-    private var singleGraphemes = arrayOfNulls<Pair<Phoneme?, AccentType?>>(Char.MAX_VALUE.code)
+    private var singleGraphemes = arrayOfNulls<CharCodeData>(Char.MAX_VALUE.code)
     var caseSensitiveGraphemes: Boolean = false
         private set
 
     init {
         for (type in accentTypes) {
-            singleGraphemes[type.combiningMark.code] = null to type
+            singleGraphemes[type.combiningMark.code] = CharCodeData(null, type, null)
         }
     }
 
@@ -57,46 +61,51 @@ class PhonemeLookup(val accentTypes: Set<AccentType>) {
             digraphLookup[c]!![key] = phoneme
         }
         else {
-            singleGraphemes[key[0].code] = phoneme to null
+            singleGraphemes[key[0].code] = CharCodeData(phoneme, null, null)
             for (type in accentTypes) {
                 val accented = type.combine(key)
                 if (accented.length == 1) {
-                    singleGraphemes[accented[0].code] = phoneme to type
+                    singleGraphemes[accented[0].code] = CharCodeData(phoneme, type, null)
                 }
             }
         }
     }
 
+    fun decomposeAccent(code: Int): CharCodeData {
+        val src = String(charArrayOf(code.toChar()))
+        val decomposed = Normalizer.normalize(src, Normalizer.Form.NFD)
+        for (ch in decomposed) {
+            val graphemeData = singleGraphemes[ch.code]
+            if (graphemeData?.accentType != null) {
+                val remaining = decomposed.filter { it != ch }
+                val remainingComposed = Normalizer.normalize(remaining, Normalizer.Form.NFC)
+                return CharCodeData(null, graphemeData.accentType, remainingComposed)
+            }
+        }
+        return CharCodeData(null, null, src)
+    }
+
     fun iteratePhonemes(text: String, callback: (String?, Phoneme?, AccentType?) -> Unit) {
         var offset = 0
         while (offset < text.length) {
-            val digraph = digraphLookup[text[offset].code]?.keys?.firstOrNull { text.startsWith(it, offset) }
+            val code = text[offset].code
+            val digraph = digraphLookup[code]?.keys?.firstOrNull { text.startsWith(it, offset) }
             if (digraph != null) {
                 callback(null, digraphs[digraph], null)
                 offset += digraph.length
             }
-
             else {
-                val graphemeData = singleGraphemes[text[offset].code]
+                val graphemeData = singleGraphemes[code]
+                    ?: decomposeAccent(code).also { singleGraphemes[code] = it }
                 if (offset + 1 < text.length) {
                     val nextGraphemeData = singleGraphemes[text[offset+1].code]
-                    if (nextGraphemeData?.first == null && nextGraphemeData?.second != null) {
-                        if (graphemeData != null) {
-                            callback(null, graphemeData.first, nextGraphemeData.second)
-                        }
-                        else {
-                            callback(text.substring(offset, offset + 1), null, nextGraphemeData.second)
-                        }
+                    if (nextGraphemeData?.phoneme == null && nextGraphemeData?.textWithoutAccent == null && nextGraphemeData?.accentType != null) {
+                        callback(graphemeData.textWithoutAccent, graphemeData.phoneme, nextGraphemeData.accentType)
                         offset += 2
                         continue
                     }
                 }
-                if (graphemeData != null) {
-                    callback(null, graphemeData.first, graphemeData.second)
-                }
-                else {
-                    callback(text.substring(offset, offset + 1), null, null)
-                }
+                callback(graphemeData.textWithoutAccent, graphemeData.phoneme, graphemeData.accentType)
                 offset++
             }
         }

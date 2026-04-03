@@ -3,6 +3,7 @@ package ru.yole.etymograph
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import java.text.Normalizer
 
 class OrthographyTest : QBaseTest() {
     @Test
@@ -140,5 +141,12 @@ class OrthographyTest : QBaseTest() {
     fun normalizedEqual() {
         ce.accentTypes = setOf(AccentType.Acute)
         assertTrue(ce.isNormalizedEqual(ce.word("ahám"), ce.word("aham")))
+    }
+
+    @Test
+    fun normalizedEqualComposed() {
+        ce.accentTypes = setOf(AccentType.Acute)
+        val text = Normalizer.normalize("ἔν", Normalizer.Form.NFC)
+        assertTrue(ce.isNormalizedEqual(ce.word(text), ce.word("ἐν")))
     }
 }
