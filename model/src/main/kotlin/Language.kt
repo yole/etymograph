@@ -236,8 +236,13 @@ class Language(val name: String, val shortName: String) {
             buildString {
                 val lowerText = if (orthoPhonemeLookup.caseSensitiveGraphemes) text else text.lowercase(Locale.FRANCE)
                 orthoPhonemeLookup.iteratePhonemes(lowerText) { phonemeText, phoneme, accentType ->
-                    append(phoneme?.graphemes?.get(0)?.let { accentType?.takeIf { !removeAccent }?.combine(it) ?: it }
-                        ?: phonemeText!!)
+                    val text = phoneme?.graphemes?.get(0) ?: phonemeText!!
+                    if (accentType != null && !removeAccent) {
+                        append(accentType.combine(text))
+                    }
+                    else {
+                        append(text)
+                    }
                 }
             }.removeSuffix("-")
         }

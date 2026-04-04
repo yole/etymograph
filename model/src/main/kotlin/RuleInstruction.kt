@@ -164,7 +164,10 @@ open class RuleInstruction(val type: InstructionType, val arg: String, val comme
 
 fun List<RuleInstruction>.apply(word: Word, context: RuleApplyContext): Word {
     if (isEmpty()) return word
-    val normalizedWord = word.derive(word.text.trimEnd('-'), id = word.id, phonemic = word.isPhonemic)
+    val normalizedWord = if (word.text.endsWith('-'))
+        word.derive(word.text.trimEnd('-'), id = word.id, phonemic = word.isPhonemic, keepStress = true)
+    else
+        word
     return fold(normalizedWord) { s, i -> i.apply(s, context) }
 }
 

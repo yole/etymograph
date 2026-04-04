@@ -288,7 +288,7 @@ sealed class RuleLogic {
             stressIndex = stressIndex,
             segments = if (normalizeSegments) Word.normalizeSegments(resultWord.segments) else resultWord.segments,
             newClasses = resultWord.classes,
-            accentType = resultWord.accentType
+            newAccentType = resultWord.accentType
         )
         trace?.logRuleResult(rule, result)
         return result

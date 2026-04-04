@@ -141,7 +141,7 @@ class Word(
             calcStressedPhonemeIndex(null)
         }
         return derive(phonemicText, id = id, phonemic = true, segments = newSegments,
-            accentType = accentType, stressIndex = if (accentType != null) stressedPhonemeIndex else null)
+            newAccentType = accentType, stressIndex = if (accentType != null) stressedPhonemeIndex else null)
     }
 
     fun asOrthographic(referenceWord: Word? = null): Word {
@@ -185,7 +185,7 @@ class Word(
                 }
             }
         }
-        return derive(orthoText, id = id, phonemic = false, segments = wordSegments, accentType = null)
+        return derive(orthoText, id = id, phonemic = false, segments = wordSegments, newAccentType = null)
     }
 
     fun asOrthographic(asLanguage: Language): Word {
@@ -208,26 +208,30 @@ class Word(
                newClasses: List<String>? = null,
                phonemic: Boolean? = null,
                stressIndex: Int? = null,
-               accentType: AccentType? = null,
+               newAccentType: AccentType? = null,
                keepStress: Boolean = true): Word {
         val sourceSegments = if (text == this.text || addSegment != null) this.segments else null
         return if (this.text == text && newClasses == null && phonemic == null && id == null)
             this
         else
             Word(id ?: -1, text, newLanguage ?: language, newGloss ?: gloss, fullGloss, pos, newClasses ?: classes).also {
-                if (accentType != null) {
+                if (newAccentType != null) {
                     if (stressIndex != null) {
                         it.stressedPhonemeIndex = stressIndex
                     }
-                    it.accentType = accentType
+                    it.accentType = newAccentType
                 }
                 else if (stressIndex != null) {
                    it.stressedPhonemeIndex = stressIndex
                    it.explicitStress = explicitStress
                }
                else if (keepStress) {
-                   it.stressedPhonemeIndex = stressedPhonemeIndex
-                   it.explicitStress = explicitStress
+                    if (language.accentTypes.isNotEmpty()) {
+                        calcStressedPhonemeIndex(null)
+                    }
+                    it.stressedPhonemeIndex = stressedPhonemeIndex
+                    it.explicitStress = explicitStress
+                    it.accentType = accentType
                }
                it.segments = appendSegments(segments ?: sourceSegments, addSegment)
                if (phonemic != null) it.isPhonemic = phonemic

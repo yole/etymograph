@@ -26,12 +26,17 @@ class ParadigmTest : QBaseTest() {
         ))
     }
 
-    @Test
-    fun paradigm() {
+    private fun setupNounParadigm(): Paradigm {
         val paradigm = repo.addParadigm("Noun", q, listOf("N"))
         paradigm.addRow("Nom")
         paradigm.addRow("Gen")
         paradigm.addColumn("Sg")
+        return paradigm
+    }
+
+    @Test
+    fun paradigm() {
+        val paradigm = setupNounParadigm()
 
         paradigm.setRule(0, 0, emptyList())
         val genRule = repo.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
@@ -79,10 +84,7 @@ class ParadigmTest : QBaseTest() {
 
     @Test
     fun paradigmPreRule() {
-        val paradigm = repo.addParadigm("Noun", q, listOf("N"))
-        paradigm.addRow("Nom")
-        paradigm.addRow("Gen")
-        paradigm.addColumn("Sg")
+        val paradigm = setupNounParadigm()
 
         val genRule = repo.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
         paradigm.setRule(1, 0, listOf(genRule))
@@ -96,11 +98,25 @@ class ParadigmTest : QBaseTest() {
     }
 
     @Test
+    fun paradigmPreRulePreservesAccent() {
+        q.accentTypes = setOf(AccentType.Grave)
+        val paradigm = setupNounParadigm()
+
+        val genRule = repo.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
+        paradigm.setRule(1, 0, listOf(genRule))
+
+        val preRule = repo.rule("word ends with 'a':\n- change ending to ''", name = "q-pre")
+        paradigm.preRule = preRule
+
+        val cirya = repo.findOrAddWord("cìrya", q, "ship", pos = "N")
+        val result = genRule.apply(cirya, repo)
+        assertEquals("cìryo", result.asOrthographic().text)
+    }
+
+
+    @Test
     fun paradigmPostRule() {
-        val paradigm = repo.addParadigm("Noun", q, listOf("N"))
-        paradigm.addRow("Nom")
-        paradigm.addRow("Gen")
-        paradigm.addColumn("Sg")
+        val paradigm = setupNounParadigm()
 
         val genRule = repo.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
         paradigm.setRule(1, 0, listOf(genRule))
@@ -115,10 +131,7 @@ class ParadigmTest : QBaseTest() {
 
     @Test
     fun paradigmPostRuleDelegation() {
-        val paradigm = repo.addParadigm("Noun", q, listOf("N"))
-        paradigm.addRow("Nom")
-        paradigm.addRow("Gen")
-        paradigm.addColumn("Sg")
+        val paradigm = setupNounParadigm()
         paradigm.addColumn("Pl")
 
         val genRule = repo.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
@@ -155,10 +168,7 @@ class ParadigmTest : QBaseTest() {
 
     @Test
     fun deleteRule() {
-        val paradigm = repo.addParadigm("Noun", q, listOf("N"))
-        paradigm.addRow("Nom")
-        paradigm.addRow("Gen")
-        paradigm.addColumn("Sg")
+        val paradigm = setupNounParadigm()
 
         val genRule = repo.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
         paradigm.setRule(1, 0, listOf(genRule))
@@ -166,4 +176,5 @@ class ParadigmTest : QBaseTest() {
         repo.deleteRule(genRule)
         assertEquals(0, paradigm.allRules.size)
     }
+
 }

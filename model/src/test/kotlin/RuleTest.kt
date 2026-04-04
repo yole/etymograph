@@ -963,6 +963,15 @@ class RuleTest : QBaseTest() {
         assertEquals("tulé", word.asOrthographic().text)
     }
 
+    @Test
+    fun rulePreserveAccent() {
+        q.accentTypes = setOf(AccentType.Grave)
+        val rule = parseRule(q, q, "word ends with 'e':\n- change ending to 'i'")
+        val word = rule.apply(q.word("tùle"), repo)
+        assertEquals("tùli", word.asOrthographic().text)
+    }
+
+
 
     /*
     @Test

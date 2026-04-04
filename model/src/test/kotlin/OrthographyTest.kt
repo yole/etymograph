@@ -149,4 +149,12 @@ class OrthographyTest : QBaseTest() {
         val text = Normalizer.normalize("ἔν", Normalizer.Form.NFC)
         assertTrue(ce.isNormalizedEqual(ce.word(text), ce.word("ἐν")))
     }
+
+    @Test
+    fun normalizeKeepStress() {
+        ce.accentTypes = setOf(AccentType.Acute)
+        val text = Normalizer.normalize("λύω", Normalizer.Form.NFC)
+        assertEquals("λυω", ce.normalizeWord(text, true))
+        assertEquals(text, ce.normalizeWord(text, false))
+    }
 }
