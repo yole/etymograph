@@ -211,8 +211,7 @@ class JsonGraphRepositoryTest {
     @Test
     fun serializeExplicitStress() {
         val word = repo.findOrAddWord("ea", q, null)
-        word.stressedPhonemeIndex = 1
-        word.explicitStress = true
+        word.setExplicitStress(1)
         val repo2 = repo.roundtrip()
         val word2 = repo2.wordsByText(repo2.languageByShortName("Q")!!, "ea").single()
         assertEquals(1, word2.stressedPhonemeIndex)

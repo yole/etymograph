@@ -682,8 +682,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     wordData.notes
                 )
                 if (wordData.stress != null) {
-                    word.stressedPhonemeIndex = wordData.stress
-                    word.explicitStress = true
+                    word.setExplicitStress(wordData.stress)
                 }
                 setLangEntity(word.id, word)
                 wordsByText.add(word)

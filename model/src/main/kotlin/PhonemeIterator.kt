@@ -427,7 +427,7 @@ class PhonemeIterator {
     }
 
     val stressedPhonemeIndex: Int?
-        get() = word?.calcStressedPhonemeIndex()
+        get() = word?.stressedPhonemeIndex
 
     val syllables: List<Syllable>?
         get() = word?.let { breakIntoSyllables(it) }

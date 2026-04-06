@@ -300,10 +300,9 @@ class ApplyStressInstruction(val language: Language, arg: String, val accentType
         val vowel = language.phonemeClassByName(PhonemeClass.vowelClassName) ?: return word
         val stressIndex = PhonemeIterator(word).findMatchInRange(syllable.startIndex, syllable.endIndex, vowel)
             ?: return word
-        word.stressedPhonemeIndex = stressIndex    // TODO create a copy of the word here?
+
         val effectiveAccentType = accentType ?: language.accentTypes.singleOrNull()
-        effectiveAccentType?.let { word.accentType = it }
-        return word
+        return word.derive(word.text, stressIndex = stressIndex, newAccentType = effectiveAccentType)
     }
 
     override fun toRichText(graph: GraphRepository): RichText {
@@ -576,24 +575,24 @@ class SpeInstruction(val pattern: SpePattern, val condition: RuleCondition? = nu
             else
                 null
             val segments = remapSegments(it, word.segments)
-            return phonemicWord.derive(it.result(), phonemic = true, segments = segments).also {
-                if (stress != null && stress >= 0) {
-                    val vowels = context.rule.toLanguage.phonemeClassByName(PhonemeClass.vowelClassName)
-                    val stressIt = PhonemeIterator(it)
-                    if (vowels != null && stressIt.advanceTo(stress) && !vowels.matchesCurrent(stressIt)) {
-                        val syllables = breakIntoSyllables(it)
-                        val syllableIndex = findSyllable(syllables, stress)
-                        if (syllableIndex >= 0) {
-                            it.stressedPhonemeIndex = syllables[syllableIndex].vowelIndex
-                        } else {
-                            it.stressedPhonemeIndex = stress
-                        }
+            var stressedPhonemeIndex: Int? = null
+            if (stress != null && stress >= 0) {
+                val vowels = context.rule.toLanguage.phonemeClassByName(PhonemeClass.vowelClassName)
+                val stressIt = PhonemeIterator(it.result(), word.language)
+                if (vowels != null && stressIt.advanceTo(stress) && !vowels.matchesCurrent(stressIt)) {
+                    stressIt.advanceTo(0)
+                    val syllables = breakIntoSyllables(stressIt)
+                    val syllableIndex = findSyllable(syllables, stress)
+                    if (syllableIndex >= 0) {
+                        stressedPhonemeIndex = syllables[syllableIndex].vowelIndex
                     } else {
-                        it.stressedPhonemeIndex = stress
+                        stressedPhonemeIndex = stress
                     }
-                    it.explicitStress = word.explicitStress
+                } else {
+                    stressedPhonemeIndex = stress
                 }
             }
+            return phonemicWord.derive(it.result(), phonemic = true, segments = segments, stressIndex = stressedPhonemeIndex)
         }
 
     }

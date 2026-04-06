@@ -394,7 +394,7 @@ class SpePattern(
     val following: List<SpeNode>
 )  {
     fun apply(language: Language, text: String, trace: RuleTrace? = null): String {
-        val it = PhonemeIterator(Word(-1, text, language), null)
+        val it = PhonemeIterator(Word(-1, text, language))
         apply(it, null, null, trace = trace)
         return it.result()
     }

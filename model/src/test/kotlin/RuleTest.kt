@@ -597,10 +597,10 @@ class RuleTest : QBaseTest() {
     @Test
     fun stressCondition() {
         val ciryali = q.word("ciryali")
-        ciryali.stressedPhonemeIndex = 1
+        ciryali.setExplicitStress(1)
         val condition = RuleCondition.parse(ParseBuffer("stress is on third to last syllable"), q)
         assertTrue(condition.matches(ciryali))
-        assertFalse(condition.matches(q.word("lasse").apply { stressedPhonemeIndex = 1 }))
+        assertFalse(condition.matches(q.word("lasse").apply { setExplicitStress(1) }))
         assertEquals("stress is on third to last syllable", condition.toEditableText())
     }
 
@@ -791,8 +791,7 @@ class RuleTest : QBaseTest() {
         val rule = parseRule(ce, q, """* ōj -> i""")
         val word = ce.word("grapōjan").apply {
             segments = listOf(WordSegment(4, 4, null, null, null, false))
-            stressedPhonemeIndex = 6
-            explicitStress = true
+            setExplicitStress(6)
         }
         val newWord = rule.apply(word)
         assertEquals(1, newWord.segments!!.size)
@@ -875,7 +874,7 @@ class RuleTest : QBaseTest() {
         q.stressRule = RuleRef.to(stressRule)
 
         val word = ce.word("krop")
-        assertEquals(2, word.calcStressedPhonemeIndex())
+        assertEquals(2, word.stressedPhonemeIndex)
         val rule = parseRule(q, q, "* kr > hr")
         val result = rule.apply(word)
         assertEquals(1, result.stressedPhonemeIndex)
@@ -892,7 +891,7 @@ class RuleTest : QBaseTest() {
         q.stressRule = RuleRef.to(stressRule)
 
         val word = q.word("krop")
-        assertEquals(2, word.calcStressedPhonemeIndex())
+        assertEquals(2, word.stressedPhonemeIndex)
         val rule = parseRule(q, q, "* kr > hr")
         val result = rule.apply(word)
         assertEquals(1, result.stressedPhonemeIndex)
@@ -908,7 +907,7 @@ class RuleTest : QBaseTest() {
         q.stressRule = RuleRef.to(stressRule)
 
         val word = q.word("krop")
-        assertEquals(2, word.calcStressedPhonemeIndex())
+        assertEquals(2, word.stressedPhonemeIndex)
         val rule = parseRule(q, q, "* Vp > pV")
         val result = rule.apply(word)
         assertEquals(3, result.stressedPhonemeIndex)

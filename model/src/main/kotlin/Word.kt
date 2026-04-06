@@ -81,7 +81,11 @@ class Word(
     source: List<SourceRef> = emptyList(),
     notes: String? = null
 ) : LangEntity(id, source, notes) {
-    var stressedPhonemeIndex: Int = -1
+    private var _stressedPhonemeIndex: Int? = null
+
+    val stressedPhonemeIndex: Int
+        get() = _stressedPhonemeIndex ?: calcStressedPhonemeIndex()
+
     var accentType: AccentType? = null
     var explicitStress: Boolean = false
     val graph: GraphRepository get() = language.graph
@@ -113,7 +117,7 @@ class Word(
     var text = text
         set(value) {
             field = value
-            stressedPhonemeIndex = -1
+            _stressedPhonemeIndex = null
         }
 
     val syllabogramSequence: SyllabogramSequence?
@@ -138,9 +142,6 @@ class Word(
             it.result() to remapSegments(it, this.segments)
         }
 
-        if (language.accentTypes.isNotEmpty()) {
-            calcStressedPhonemeIndex()
-        }
         return derive(phonemicText, id = id, phonemic = true, segments = newSegments,
             newAccentType = accentType, stressIndex = if (accentType != null) stressedPhonemeIndex else null)
     }
@@ -158,7 +159,7 @@ class Word(
                         (orthoRule.logic as SpeRuleLogic).applyToPhoneme(this, it)
                     }
                 }
-                val accent = accentType.takeIf { _ -> it.index == stressedPhonemeIndex }
+                val accent = accentType.takeIf { _ -> it.index == _stressedPhonemeIndex }
                 if (accent != null) {
                     it.replace(accent.combine(it.current))
                 }
@@ -212,25 +213,22 @@ class Word(
                newAccentType: AccentType? = null,
                keepStress: Boolean = true): Word {
         val sourceSegments = if (text == this.text || addSegment != null) this.segments else null
-        return if (this.text == text && newClasses == null && phonemic == null && id == null)
+        return if (this.text == text && newClasses == null && phonemic == null && id == null && stressIndex == null)
             this
         else
             Word(id ?: -1, text, newLanguage ?: language, newGloss ?: gloss, fullGloss, pos, newClasses ?: classes).also {
                 if (newAccentType != null) {
                     if (stressIndex != null) {
-                        it.stressedPhonemeIndex = stressIndex
+                        it._stressedPhonemeIndex = stressIndex
                     }
                     it.accentType = newAccentType
                 }
                 else if (stressIndex != null) {
-                   it.stressedPhonemeIndex = stressIndex
+                   it._stressedPhonemeIndex = stressIndex
                    it.explicitStress = explicitStress
                }
                else if (keepStress) {
-                    if (language.accentTypes.isNotEmpty()) {
-                        calcStressedPhonemeIndex()
-                    }
-                    it.stressedPhonemeIndex = stressedPhonemeIndex
+                    it._stressedPhonemeIndex =  if (language.accentTypes.isNotEmpty()) stressedPhonemeIndex else _stressedPhonemeIndex
                     it.explicitStress = explicitStress
                     it.accentType = accentType
                }
@@ -239,15 +237,20 @@ class Word(
            }
     }
 
-    fun calcStressedPhonemeIndex(): Int {
-        if (stressedPhonemeIndex < 0) {
+    fun setExplicitStress(index: Int) {
+        explicitStress = true
+        _stressedPhonemeIndex = index
+    }
+
+    private fun calcStressedPhonemeIndex(): Int {
+        if (_stressedPhonemeIndex == null) {
             if (language.accentTypes.isNotEmpty()) {
                 val it = PhonemeIterator(this)
                 while (!it.atEnd()) {
                     if (it.currentAccentType != null) {
-                        stressedPhonemeIndex = it.index
+                        _stressedPhonemeIndex = it.index
                         accentType = it.currentAccentType
-                        break
+                        return it.index
                     }
                     it.advance()
                 }
@@ -255,11 +258,13 @@ class Word(
             else {
                 val wordWithStress = language.stressRule?.resolve()?.apply(this)
                 if (wordWithStress != null) {
-                    stressedPhonemeIndex = wordWithStress.stressedPhonemeIndex
+                    _stressedPhonemeIndex = wordWithStress.stressedPhonemeIndex
+                    return wordWithStress.stressedPhonemeIndex
                 }
             }
         }
-        return stressedPhonemeIndex
+        _stressedPhonemeIndex = -1
+        return -1
     }
 
     var segments: List<WordSegment>? = null
@@ -458,7 +463,7 @@ data class Attestation(val word: Word, val corpusText: CorpusText)
 data class StressData(val index: Int, val length: Int)
 
 fun Word.calculateStress(): StressData? {
-    val index = calcStressedPhonemeIndex()
+    val index = stressedPhonemeIndex
     return if (index >= 0) {
         val phonemes = PhonemeIterator(this)
         phonemes.advanceTo(index)
@@ -475,8 +480,8 @@ data class PhonemeDelta(val before: String?, val after: String?) {
 }
 
 fun getSinglePhonemeDifference(word1: Word, word2: Word): PhonemeDelta? {
-    val phonemes1 = PhonemeIterator(word1, null, mergeDiphthongs = true)
-    val phonemes2 = PhonemeIterator(word2, null, mergeDiphthongs = true)
+    val phonemes1 = PhonemeIterator(word1, mergeDiphthongs = true)
+    val phonemes2 = PhonemeIterator(word2, mergeDiphthongs = true)
 
     if (phonemes1.size == phonemes2.size) {
         var result: PhonemeDelta? = null

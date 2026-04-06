@@ -18,7 +18,7 @@ abstract class SyllableClass(val name: String) {
 
         val stressedSyllable = object : SyllableClass("stressed syllable") {
             override fun matches(word: Word?, syllable: Syllable): Boolean {
-                val stress = word?.calcStressedPhonemeIndex() ?: return false
+                val stress = word?.stressedPhonemeIndex ?: return false
                 return stress in syllable.startIndex..<syllable.endIndex
             }
         }
@@ -38,12 +38,16 @@ abstract class SyllableClass(val name: String) {
 }
 
 fun breakIntoSyllables(word: Word): List<Syllable> {
-    val vowels = word.language.phonemeClassByName(PhonemeClass.vowelClassName)
+    return breakIntoSyllables(PhonemeIterator(word))
+}
+
+fun breakIntoSyllables(it: PhonemeIterator): List<Syllable> {
+    val vowels = it.language.phonemeClassByName(PhonemeClass.vowelClassName)
         ?: return emptyList()
 
-    val result = mutableListOf<MutableSyllable>()
-    val it = PhonemeIterator(word, null)
     if (it.size == 0) return emptyList()
+
+    val result = mutableListOf<MutableSyllable>()
 
     var currentSyllableStart = 0
     var index = 0
@@ -51,14 +55,14 @@ fun breakIntoSyllables(word: Word): List<Syllable> {
     var lastVowel: String? = null
     while (true) {
         if (it.current in vowels.matchingPhonemes) {
-            if (lastVowel != null && lastVowel + it.current in word.language.diphthongs) {
+            if (lastVowel != null && lastVowel + it.current in it.language.diphthongs) {
                 lastVowel = null
                 result.last().endIndex++
                 currentSyllableStart++
             }
             else {
                 lastVowel = it.current
-                result.add(MutableSyllable(currentSyllableStart, index + 1, index,false))
+                result.add(MutableSyllable(currentSyllableStart, index + 1, index, false))
                 currentSyllableStart = index + 1
                 consonants = 0
             }

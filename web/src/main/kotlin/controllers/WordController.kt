@@ -323,8 +323,7 @@ class WordController(val dictionaryService: DictionaryService) {
             )
         }
         if (stressedPhonemeIndex != null) {
-            word.stressedPhonemeIndex = stressedPhonemeIndex
-            word.explicitStress = true
+            word.setExplicitStress(stressedPhonemeIndex)
         }
         return word.toViewModel()
     }
@@ -361,8 +360,7 @@ class WordController(val dictionaryService: DictionaryService) {
                 repo.updateWordText(word, text, params.syllabographic ?: word.syllabographic)
             }
             if (stressedPhonemeIndex != null) {
-                word.stressedPhonemeIndex = stressedPhonemeIndex
-                word.explicitStress = true
+                word.setExplicitStress(stressedPhonemeIndex)
             }
         }
 

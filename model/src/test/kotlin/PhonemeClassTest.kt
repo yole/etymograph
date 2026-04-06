@@ -21,34 +21,34 @@ class PhonemeClassTest : QBaseTest() {
     @Test
     fun stressedSoundCondition() {
         val rule = parseRule(q, q, "* o > a if previous sound is 'w' and sound is stressed")
-        assertEquals("wawo", rule.apply(q.word("wowo").apply { stressedPhonemeIndex = 1 }).text)
+        assertEquals("wawo", rule.apply(q.word("wowo").apply { setExplicitStress(1) }).text)
     }
 
     @Test
     fun stressedSoundCombinedCondition() {
         val text = "* w > x if next sound is stressed 'o'"
         val rule = parseRule(q, q, text)
-        assertEquals("xowo", rule.apply(q.word("wowo").apply { stressedPhonemeIndex = 1 }).text)
-        assertEquals("wiwo", rule.apply(q.word("wiwo").apply { stressedPhonemeIndex = 1 }).text)
+        assertEquals("xowo", rule.apply(q.word("wowo").apply { setExplicitStress(1) }).text)
+        assertEquals("wiwo", rule.apply(q.word("wiwo").apply { setExplicitStress(1) }).text)
         assertEquals(text, rule.toEditableText(repo))
     }
 
     @Test
     fun stressedSoundConditionNegated() {
         val rule = parseRule(q, q, "* o > a if previous sound is 'w' and sound is not stressed")
-        assertEquals("wowa", rule.apply(q.word("wowo").apply { stressedPhonemeIndex = 1 }).text)
+        assertEquals("wowa", rule.apply(q.word("wowo").apply { setExplicitStress(1) }).text)
     }
 
     @Test
     fun unstressedSoundCondition() {
         val rule = parseRule(q, q, "* w > x if next sound is non-stressed 'o'")
-        assertEquals("woxo", rule.apply(q.word("wowo").apply { stressedPhonemeIndex = 1 }).text)
+        assertEquals("woxo", rule.apply(q.word("wowo").apply { setExplicitStress(1) }).text)
     }
 
     @Test
     fun stressedDiphthongCondition() {
         val rule = parseRule(q, q, "* e > i if previous vowel is stressed")
-        assertEquals("lairi", rule.apply(q.word("laire").apply { stressedPhonemeIndex = 1 }).text)
+        assertEquals("lairi", rule.apply(q.word("laire").apply { setExplicitStress(1) }).text)
     }
 
     @Test
