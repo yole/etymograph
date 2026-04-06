@@ -21,7 +21,7 @@ class SearchControllerTest {
         graph = fixture.graph
         q = fixture.q
         ce = fixture.ce
-        oe = Language("Old English", "OE")
+        oe = Language(graph, "Old English", "OE")
         graph.addLanguage(oe)
         controller = SearchController()
 

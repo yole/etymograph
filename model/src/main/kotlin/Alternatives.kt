@@ -3,10 +3,10 @@ package ru.yole.etymograph
 data class AlternativeModel(val gloss: String, val word: Word, val rule: Rule?)
 
 object Alternatives {
-    fun request(repo: GraphRepository, language: Language, wordText: String, word: Word?): List<AlternativeModel> {
-        val wordsWithMatchingText = repo.wordsByText(language, wordText)
+    fun request(language: Language, wordText: String, word: Word?): List<AlternativeModel> {
+        val wordsWithMatchingText = language.graph.wordsByText(language, wordText)
         val allVariants = wordsWithMatchingText.flatMap {
-            val gloss = it.getOrComputeGloss(repo)
+            val gloss = it.getOrComputeGloss()
             if (gloss == null)
                 emptyList()
             else {
@@ -14,21 +14,22 @@ object Alternatives {
                     emptyList()
                 else
                     listOf(AlternativeModel(gloss, it, null))
-                if (it.glossOrNP() == null && !repo.isCompound(it)) {
+                if (it.glossOrNP() == null && !language.graph.isCompound(it)) {
                     baseWord
                 }
                 else {
-                    baseWord + requestForms(repo, it, gloss)
+                    baseWord + requestForms(it, gloss)
                 }
             }
         }
         return allVariants.associateBy { it.gloss }.values.toList()
     }
 
-    private fun requestForms(repo: GraphRepository, word: Word, gloss: String): List<AlternativeModel> {
-        val pos = word.getOrComputePOS(repo)
+    private fun requestForms(word: Word, gloss: String): List<AlternativeModel> {
+        val repo = word.graph
+        val pos = word.getOrComputePOS()
         return repo.paradigmsForLanguage(word.language).filter { pos in it.pos }.flatMap { paradigm ->
-            val wordParadigm = paradigm.generate(word, repo)
+            val wordParadigm = paradigm.generate(word)
             wordParadigm.flatMap { column ->
                 column.flatMap { alts ->
                     alts?.mapNotNull {
@@ -42,23 +43,23 @@ object Alternatives {
         }
     }
 
-    fun accept(repo: GraphRepository, corpusText: CorpusText, index: Int, word: Word, rule: Rule?) {
+    fun accept(corpusText: CorpusText, index: Int, word: Word, rule: Rule?) {
         if (rule == null) {
             corpusText.associateWord(index, word)
         }
         else {
             val gloss = word.glossOrNP()
-                ?: (if (repo.isCompound(word)) word.getOrComputeGloss(repo) else null)
+                ?: (if (word.graph.isCompound(word)) word.getOrComputeGloss() else null)
                 ?: throw IllegalArgumentException("Accepting alternative with unglossed word ${word.id}")
 
-            val linkedWord = repo.getLinksTo(word).singleOrNull { it.rules == listOf(rule) }?.fromEntity as? Word
+            val linkedWord = word.graph.getLinksTo(word).singleOrNull { it.rules == listOf(rule) }?.fromEntity as? Word
             if (linkedWord != null) {
                 corpusText.associateWord(index, linkedWord)
             }
             else {
                 val newGloss = rule.applyCategories(gloss)
-                val newWord = repo.findOrAddWord(word.text, word.language, newGloss)
-                repo.addLink(newWord, word, Link.Derived, listOf(rule))
+                val newWord = word.graph.findOrAddWord(word.text, word.language, newGloss)
+                word.graph.addLink(newWord, word, Link.Derived, listOf(rule))
                 newWord.gloss = null
 
                 corpusText.associateWord(index, newWord)

@@ -19,13 +19,13 @@ class WiktionaryParserTest {
     fun setUp() {
         wiktionary = TestWiktionary(WiktionaryParserTest::class.java)
         repo = InMemoryGraphRepository()
-        oe = Language("Old English", "OE").withPartsOfSpeech()
+        oe = Language(repo, "Old English", "OE").withPartsOfSpeech()
         repo.addLanguage(oe)
 
-        on = Language("Old Norse", "ON").withPartsOfSpeech()
+        on = Language(repo, "Old Norse", "ON").withPartsOfSpeech()
         repo.addLanguage(on)
 
-        val pgmc = Language("Proto-Germanic", "PGmc")
+        val pgmc = Language(repo, "Proto-Germanic", "PGmc")
         repo.addLanguage(pgmc)
 
         pgmc.dictionarySettings = "wiktionary-id: gem-pro"

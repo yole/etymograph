@@ -99,7 +99,7 @@ class CorpusController {
             language.name,
             language.syllabographic,
             text,
-            mapToLines(repo).map { line ->
+            mapToLines().map { line ->
                 CorpusLineViewModel(line.corpusWords.map { cw ->
                     val wordUrlKey = (cw.word?.text ?: cw.wordCandidates?.firstOrNull()?.text)?.let {
                         urlKey(language, it, cw.word?.syllabographic ?: language.syllabographic)
@@ -112,7 +112,7 @@ class CorpusController {
                         cw.contextGloss,
                         cw.word?.id ?: cw.wordCandidates?.firstOrNull()?.id?.takeIf { wordUrlKey != null },
                         cw.word?.text, wordUrlKey,
-                        cw.wordCandidates?.map { CorpusWordCandidateViewModel(it.id, it.getOrComputeGloss(repo)) },
+                        cw.wordCandidates?.map { CorpusWordCandidateViewModel(it.id, it.getOrComputeGloss()) },
                         cw.stressIndex, cw.stressLength, cw.homonym)
                 })
             },
@@ -166,7 +166,7 @@ class CorpusController {
     @PostMapping("/text/{id}/lockAssociations")
     fun lockWordAssociations(repo: GraphRepository, @PathVariable id: Int) {
         val corpusText = repo.resolveCorpusText(id)
-        corpusText.lockWordAssociations(repo)
+        corpusText.lockWordAssociations()
     }
 
     data class AlternativeViewModel(val gloss: String, val wordId: Int, val ruleId: Int)
@@ -176,7 +176,7 @@ class CorpusController {
         val corpusText = repo.resolveCorpusText(id)
         val word = corpusText.wordByIndex(index)
         val wordText = word?.text ?: corpusText.normalizedWordTextAt(index)
-        val results = Alternatives.request(repo, corpusText.language, wordText, word)
+        val results = Alternatives.request(corpusText.language, wordText, word)
         return results.map {
             AlternativeViewModel(it.gloss, it.word.id, it.rule?.id ?: -1)
         }
@@ -190,7 +190,7 @@ class CorpusController {
         val word = repo.resolveWord(params.wordId)
         val rule = if (params.ruleId == -1) null else repo.resolveRule(params.ruleId)
 
-        Alternatives.accept(repo, corpusText, params.index, word, rule)
+        Alternatives.accept(corpusText, params.index, word, rule)
     }
 }
 

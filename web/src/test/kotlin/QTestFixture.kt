@@ -4,11 +4,12 @@ import ru.yole.etymograph.*
 import ru.yole.etymograph.web.controllers.RuleController
 
 class QTestFixture {
-    val ce = Language("Common Eldarin", "ce")
-    val q = Language("Quenya", "q")
-    val graph = InMemoryGraphRepository().apply {
-        addLanguage(ce)
-        addLanguage(q)
+    val graph = InMemoryGraphRepository()
+    val ce = Language(graph, "Common Eldarin", "ce").also {
+        graph.addLanguage(it)
+    }
+    val q = Language(graph, "Quenya", "q").also {
+        graph.addLanguage(it)
     }
 
     fun setupParadigm(): Rule {

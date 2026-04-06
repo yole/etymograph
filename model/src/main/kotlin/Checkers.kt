@@ -7,18 +7,18 @@ data class ConsistencyCheckerIssue(val description: String)
 abstract class ConsistencyChecker {
     open fun check(repo: GraphRepository, language: Language, report: (ConsistencyCheckerIssue) -> Unit) {
         for (word in repo.allWords(language)) {
-            checkWord(repo, word) {
+            checkWord(word) {
                 report(ConsistencyCheckerIssue("${it.description} for $word"))
             }
         }
     }
 
-    open fun checkWord(repo: GraphRepository, word: Word, report: (ConsistencyCheckerIssue) -> Unit) {
+    open fun checkWord(word: Word, report: (ConsistencyCheckerIssue) -> Unit) {
     }
 }
 
 object WordTextChecker : ConsistencyChecker() {
-    override fun checkWord(repo: GraphRepository, word: Word, report: (ConsistencyCheckerIssue) -> Unit) {
+    override fun checkWord(word: Word, report: (ConsistencyCheckerIssue) -> Unit) {
         if (word.syllabographic) {
             return
         }
@@ -40,12 +40,12 @@ object WordTextChecker : ConsistencyChecker() {
 }
 
 object PosChecker : ConsistencyChecker() {
-    override fun checkWord(repo: GraphRepository, word: Word, report: (ConsistencyCheckerIssue) -> Unit) {
-        val baseWord = word.baseWord(repo)
+    override fun checkWord(word: Word, report: (ConsistencyCheckerIssue) -> Unit) {
+        val baseWord = word.baseWord()
         if ((baseWord != null) && word.pos != null) {
             report(ConsistencyCheckerIssue("POS specified for derived word"))
         }
-        else if (baseWord == null && word.pos == null && repo.findCompoundsByCompoundWord(word).isEmpty()) {
+        else if (baseWord == null && word.pos == null && word.graph.findCompoundsByCompoundWord(word).isEmpty()) {
             report(ConsistencyCheckerIssue("No POS specified"))
         }
         else if (word.pos != null && word.language.pos.none { it.abbreviation == word.pos }) {
@@ -55,13 +55,13 @@ object PosChecker : ConsistencyChecker() {
 }
 
 object GlossChecker : ConsistencyChecker() {
-    override fun checkWord(repo: GraphRepository, word: Word, report: (ConsistencyCheckerIssue) -> Unit) {
-        val baseWord = word.baseWord(repo)
+    override fun checkWord(word: Word, report: (ConsistencyCheckerIssue) -> Unit) {
+        val baseWord = word.baseWord()
         if (baseWord != null  && word.gloss != null) {
             report(ConsistencyCheckerIssue("Gloss specified for derived word"))
         }
         else if (baseWord == null && word.gloss == null &&
-            word.pos != KnownPartsOfSpeech.properName.abbreviation && repo.findCompoundsByCompoundWord(word).isEmpty())
+            word.pos != KnownPartsOfSpeech.properName.abbreviation && word.graph.findCompoundsByCompoundWord(word).isEmpty())
         {
             report(ConsistencyCheckerIssue("No gloss specified for word"))
         }
@@ -69,7 +69,7 @@ object GlossChecker : ConsistencyChecker() {
 }
 
 object WordClassChecker : ConsistencyChecker() {
-    override fun checkWord(repo: GraphRepository, word: Word, report: (ConsistencyCheckerIssue) -> Unit) {
+    override fun checkWord(word: Word, report: (ConsistencyCheckerIssue) -> Unit) {
         for (cls in word.classes) {
             val wordClass = word.language.wordClasses.find { it.values.any { v -> v.abbreviation == cls } }
             if (wordClass == null) {
@@ -83,8 +83,8 @@ object WordClassChecker : ConsistencyChecker() {
 }
 
 object LinkChecker : ConsistencyChecker() {
-    override fun checkWord(repo: GraphRepository, word: Word, report: (ConsistencyCheckerIssue) -> Unit) {
-        val links = repo.getLinksFrom(word)
+    override fun checkWord(word: Word, report: (ConsistencyCheckerIssue) -> Unit) {
+        val links = word.graph.getLinksFrom(word)
         for (link in links) {
             if (link.type == Link.Derived && link.rules.isEmpty()) {
                 report(ConsistencyCheckerIssue("Derived link with no rules"))
@@ -92,7 +92,7 @@ object LinkChecker : ConsistencyChecker() {
             var expectedPOS = (link.toEntity as? Word)?.pos
             if (expectedPOS != null) {
                 for (rule in link.rules) {
-                    val rulePOS = (repo.paradigmForRule(rule)?.pos?.toSet() ?: emptySet()) + rule.fromPOS
+                    val rulePOS = (word.graph.paradigmForRule(rule)?.pos?.toSet() ?: emptySet()) + rule.fromPOS
                     if (rulePOS.isNotEmpty() && expectedPOS !in rulePOS) {
                         report(ConsistencyCheckerIssue("Word POS does not match rule POS for link from $word, rule ${rule.name}"))
                     }
@@ -106,7 +106,7 @@ object LinkChecker : ConsistencyChecker() {
 object CorpusTextChecker : ConsistencyChecker() {
     override fun check(repo: GraphRepository, language: Language, report: (ConsistencyCheckerIssue) -> Unit) {
         for (corpusText in repo.corpusTextsInLanguage(language)) {
-            for (line in corpusText.mapToLines(repo)) {
+            for (line in corpusText.mapToLines()) {
                 for (corpusWord in line.corpusWords) {
                     if (corpusWord.word != null &&
                         corpusWord.word.text.lowercase(Locale.FRANCE) != corpusWord.normalizedText.lowercase(Locale.FRANCE))

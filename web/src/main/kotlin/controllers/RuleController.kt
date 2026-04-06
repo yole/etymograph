@@ -281,8 +281,8 @@ class RuleController {
         for (sequence in sequences) {
             sequenceLinks.add(RuleSequenceLinkViewModel(
                 sequence.name,
-                sequence.previousRule(repo, this)?.toRefViewModel(),
-                sequence.nextRule(repo, this)?.toRefViewModel()
+                sequence.previousRule(this)?.toRefViewModel(),
+                sequence.nextRule(this)?.toRefViewModel()
             ))
         }
 
@@ -329,12 +329,12 @@ class RuleController {
                 val word = langEntity as? Word
                 word?.let {
                     RuleWordLinkViewModel(
-                        word.toRefViewModel(repo),
+                        word.toRefViewModel(),
                         link.type.id, link.source.toViewModel(repo), link.notes
                     )
                 }
             },
-            orphanExamples.map { exampleToViewModel(this, it, repo) },
+            orphanExamples.map { exampleToViewModel(this, it) },
             paradigms.map { ParadigmRefViewModel(it.first.id, it.first.name, it.second) }
         )
     }
@@ -368,7 +368,7 @@ class RuleController {
         }
     }
 
-    private fun exampleToViewModel(rule: Rule, example: RuleExampleData, graph: GraphRepository): RuleExampleViewModel {
+    private fun exampleToViewModel(rule: Rule, example: RuleExampleData): RuleExampleViewModel {
         val link = example.link
         val fromWord = link.fromEntity as Word
         val toWord = link.toEntity as Word
@@ -378,9 +378,9 @@ class RuleController {
         val wordAfterRule = if (ruleIndex < example.steps.size - 1) example.steps[ruleIndex].result else null
 
         return RuleExampleViewModel(
-            fromWord.toRefViewModel(graph),
-            toWord.toRefViewModel(graph),
-            link.applyRules(toWord, graph).asOrthographic(fromWord.language)
+            fromWord.toRefViewModel(),
+            toWord.toRefViewModel(),
+            link.applyRules(toWord).asOrthographic(fromWord.language)
                 .takeIf { !fromWord.language.isNormalizedEqual(it, fromWord) }?.text,
             wordBeforeRule,
             wordAfterRule
@@ -400,7 +400,7 @@ class RuleController {
             if (isUnconditional) RichText(emptyList()) else condition.toRichText(),
             instructions.map { it.toRichText(repo) },
             comment,
-            examples.map { exampleToViewModel(rule, it, repo) }
+            examples.map { exampleToViewModel(rule, it) }
         )
     }
 
@@ -464,7 +464,7 @@ class RuleController {
         repo: GraphRepository, fromLanguage: Language, toLanguage: Language,
         createUnresolvedEntities: Boolean = false
     ): RuleParseContext =
-        RuleParseContext(repo, fromLanguage, toLanguage, createUnresolvedEntities = createUnresolvedEntities) {
+        RuleParseContext(fromLanguage, toLanguage, createUnresolvedEntities = createUnresolvedEntities) {
             RuleRef.to(repo.resolveRule(it))
         }
 
@@ -616,9 +616,9 @@ class RuleController {
         val word = existingWord ?: Word(-1, params.word, lang)
         val trace = RuleTrace()
         val result = if (params.reverse)
-            rule.reverseApply(word, repo, trace).joinToString(", ")
+            rule.reverseApply(word, trace).joinToString(", ")
         else
-            rule.apply(word, repo, trace).text
+            rule.apply(word, trace).text
 
         return RuleTraceResult(trace.log(), result)
     }
@@ -643,9 +643,9 @@ class RuleController {
         if (params.newText.isBlank()) {
             badRequest("No rule text provided")
         }
-        val results = rule.previewChanges(repo, params.newText)
+        val results = rule.previewChanges(params.newText)
         return RulePreviewResultListViewModel(
-            results.map { RulePreviewResultViewModel(it.word.toRefViewModel(repo), it.oldResult, it.newResult) }
+            results.map { RulePreviewResultViewModel(it.word.toRefViewModel(), it.oldResult, it.newResult) }
         )
     }
 
@@ -678,18 +678,18 @@ class RuleController {
                     val sourceWord = firstLink.toEntity as Word
                     val resultWord = derivation.last().fromEntity as Word
                     val expectedWord = derivation.fold(firstLink.toEntity as Word) { word, link ->
-                        link.applyRules(word, repo).asOrthographic()
+                        link.applyRules(word).asOrthographic()
                     }.asOrthographic(resultWord.language)
                     val expectedText = resultWord.language.normalizeWord(expectedWord.text)
-                    val resultWordVariations = resultWord.getTextVariations(repo).map {
+                    val resultWordVariations = resultWord.getTextVariations().map {
                         resultWord.language.normalizeWord(it)
                     }
                     val steps = derivation.flatMap { buildIntermediateSteps(repo, it, false) }
                     val rules = derivation.flatMap { it.rules }
                     DerivationViewModel(
-                        sourceWord.toRefViewModel(repo),
+                        sourceWord.toRefViewModel(),
                         WordController.LinkWordViewModel(
-                            resultWord.toRefViewModel(repo),
+                            resultWord.toRefViewModel(),
                             rules.map { it.id },
                             rules.map { it.name },
                             steps.map { it.result },
@@ -707,7 +707,7 @@ class RuleController {
                             getSinglePhonemeDifference(expectedWord, resultWord)?.toString()
                         else
                             null,
-                        sourceWord.getOrComputePOS(repo) ?: resultWord.getOrComputePOS(repo)
+                        sourceWord.getOrComputePOS() ?: resultWord.getOrComputePOS()
                     )
                 }
                 models.firstOrNull { it.expectedWord == null } ?: models.firstOrNull { it.singlePhonemeDifference != null } ?: models.first()
@@ -729,8 +729,8 @@ class RuleController {
         val result = repo.reapplyRuleSequence(sequence)
         return ReapplyResultViewModel(
             result.getOrDefault(Consistency.CONSISTENT, emptyList()).size,
-            result.getOrDefault(Consistency.BECOMES_CONSISTENT, emptyList()).map { it.toRefViewModel(repo) },
-            result.getOrDefault(Consistency.BECOMES_INCONSISTENT, emptyList()).map { it.toRefViewModel(repo) },
+            result.getOrDefault(Consistency.BECOMES_CONSISTENT, emptyList()).map { it.toRefViewModel() },
+            result.getOrDefault(Consistency.BECOMES_INCONSISTENT, emptyList()).map { it.toRefViewModel() },
             result.getOrDefault(Consistency.INCONSISTENT, emptyList()).size
         )
     }
@@ -759,7 +759,7 @@ class RuleController {
     @ResponseBody
     fun sequenceRules(repo: GraphRepository, @PathVariable id: Int): SequenceReportViewModel {
         val sequence = repo.resolveRuleSequence(id)
-        val steps = sequence.resolveSteps(repo).withReferencedRules()
+        val steps = sequence.resolveSteps().withReferencedRules()
         val ruleViewModels = steps.map { step ->
             val rule = step.rule as Rule
             val examples = repo.findRuleExamples(rule).map { link -> rule.toExampleData(repo, link) }

@@ -140,9 +140,9 @@ class SyllabogramTest {
     }
 
     private fun hittiteWord(transliteration: String): Word {
-        val ht = Language("Hittite", "Ht")
-        ht.syllabographic = true
         val repo = InMemoryGraphRepository()
+        val ht = Language(repo, "Hittite", "Ht")
+        ht.syllabographic = true
         repo.addLanguage(ht)
         return ht.word(transliteration, syllabographic = true)
     }

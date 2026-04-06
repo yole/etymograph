@@ -36,7 +36,7 @@ class CorpusControllerTest {
         corpusController.acceptAlternative(graph, corpusTextViewModel.id,
             CorpusController.AcceptAlternativeParameters(0, alternatives[0].wordId, alternatives[0].ruleId))
         val word = graph.corpusTextById(corpusTextViewModel.id)!!.wordByIndex(0)!!
-        assertEquals("star.ACC", word.getOrComputeGloss(graph))
+        assertEquals("star.ACC", word.getOrComputeGloss())
     }
 
     @Test

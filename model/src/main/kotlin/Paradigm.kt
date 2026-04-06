@@ -5,10 +5,10 @@ data class WordAlternative(val word: Word, val expectedWord: Word, val rule: Rul
 typealias WordAlternatives = List<WordAlternative>
 
 class ParadigmCell(val ruleAlternatives: List<Rule?>) {
-    fun generate(word: Word, graph: GraphRepository): WordAlternatives {
+    fun generate(word: Word): WordAlternatives {
         return ruleAlternatives.mapTo(mutableSetOf()) { r ->
-            val link = graph.getLinksTo(word).find { it.rules == listOf(r) }
-            val expectedWord = r?.apply(word, graph)?.asOrthographic() ?: word
+            val link = word.graph.getLinksTo(word).find { it.rules == listOf(r) }
+            val expectedWord = r?.apply(word)?.asOrthographic() ?: word
             val resultWord = link?.fromEntity as? Word ?: expectedWord
             WordAlternative(resultWord, expectedWord, r)
         }.toList().ifEmpty { listOf(WordAlternative(word, word, null)) }
@@ -25,9 +25,9 @@ data class ParadigmColumn(val title: String) {
         cells[row] = ParadigmCell(rules)
     }
 
-    fun generate(word: Word, graph: GraphRepository): List<WordAlternatives?> {
+    fun generate(word: Word): List<WordAlternatives?> {
         return cells.map {
-            it?.generate(word, graph)
+            it?.generate(word)
         }
     }
 
@@ -90,9 +90,9 @@ data class Paradigm(
             .toSet()
     }
 
-    fun generate(word: Word, graph: GraphRepository): List<List<WordAlternatives?>> {
+    fun generate(word: Word): List<List<WordAlternatives?>> {
         return columns.map {
-            it.generate(word, graph)
+            it.generate(word)
         }
     }
 
@@ -162,7 +162,6 @@ data class Paradigm(
 }
 
 fun generateParadigm(
-    repo: GraphRepository,
     language: Language,
     name: String,
     pos: List<String>,
@@ -191,7 +190,7 @@ fun generateParadigm(
     val rowList = mapToGrammaticalCategories(rows)
     val colList = mapToGrammaticalCategories(columns)
 
-    val paradigm = repo.addParadigm(name, language, pos)
+    val paradigm = language.graph.addParadigm(name, language, pos)
     for (rowTitle in rowList) {
         paradigm.addRow(rowTitle)
     }
@@ -207,8 +206,8 @@ fun generateParadigm(
             val categorySeparator = if (rowTitle.all { it.isDigit() }) "" else "."
             val ruleName = "$prefix${rowTitle.lowercase()}$ruleNameSeparator${columnTitle.lowercase().replace(" ", "-")}"
             val addedCategories = addedCategories + "." + rowTitle.uppercase() + categorySeparator + columnTitle.uppercase().replace(" ", ".")
-            val rule = repo.ruleByName(ruleName)
-                ?: createParadigmRule(repo, name, ruleName, language, addedCategories, pos, endings.getOrNull(rowIndex + colIndex * rowList.size))
+            val rule = language.graph.ruleByName(ruleName)
+                ?: createParadigmRule(name, ruleName, language, addedCategories, pos, endings.getOrNull(rowIndex + colIndex * rowList.size))
 
             paradigm.setRule(rowIndex, colIndex, listOf(rule))
         }
@@ -217,7 +216,6 @@ fun generateParadigm(
 }
 
 private fun createParadigmRule(
-    repo: GraphRepository,
     name: String,
     ruleName: String,
     language: Language,
@@ -228,13 +226,13 @@ private fun createParadigmRule(
 
     val logic = if (!ending.isNullOrBlank()) {
         val endingGloss = "$name ${addedCategories.removePrefix(".").lowercase()}. ending"
-        repo.findOrAddWord(ending, language, endingGloss, pos = KnownPartsOfSpeech.affix.abbreviation)
-        MorphoRuleLogic.parse("- append morpheme '$ending: $endingGloss'", RuleParseContext.of(repo, language, language))
+        language.graph.findOrAddWord(ending, language, endingGloss, pos = KnownPartsOfSpeech.affix.abbreviation)
+        MorphoRuleLogic.parse("- append morpheme '$ending: $endingGloss'", RuleParseContext.of(language, language))
     }
     else {
         MorphoRuleLogic.empty()
     }
-    return repo.addRule(ruleName, language, language, logic, addedCategories, fromPOS = pos)
+    return language.graph.addRule(ruleName, language, language, logic, addedCategories, fromPOS = pos)
 }
 
 

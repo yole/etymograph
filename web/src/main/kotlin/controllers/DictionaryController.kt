@@ -80,9 +80,9 @@ class DictionaryController {
 
         val mapped = words.map {
             DictionaryWordViewModel(
-                it.toRefViewModel(repo),
+                it.toRefViewModel(),
                 it.fullGloss,
-                it.getOrComputePOS(repo)
+                it.getOrComputePOS()
             )
         }
 

@@ -8,7 +8,7 @@ fun createParseContext(
     toLanguage: Language,
     repo: GraphRepository?,
     vararg rules: Rule
-) = RuleParseContext(repo ?: InMemoryGraphRepository(), fromLanguage, toLanguage) { ruleName ->
+) = RuleParseContext(fromLanguage, toLanguage) { ruleName ->
     repo?.ruleByName(ruleName)?.let { RuleRef.to(it) }
         ?: rules.find { rule -> rule.name == ruleName }?.let { RuleRef.to(it) }
         ?: throw RuleParseException("no such rule")

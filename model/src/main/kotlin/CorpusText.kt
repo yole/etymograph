@@ -81,7 +81,7 @@ class CorpusText(
         return oldToNewWordIndices
     }
 
-    fun mapToLines(repo: GraphRepository): List<CorpusTextLine> {
+    fun mapToLines(): List<CorpusTextLine> {
         var currentIndex = 0
         var sentenceStart = true
         return text.split("\n").map { line ->
@@ -96,22 +96,22 @@ class CorpusText(
                 sentenceStart = tw.baseText.endsWith('.')
                 val syllabogramSequence = if (language.syllabographic) TlhDigSyllabogramSyntax.parse(tw.baseText) else null
                 if (word != null) {
-                    val stressData = word.calculateStress(repo)
+                    val stressData = word.calculateStress()
                     val leadingPunctuation = tw.baseText.takeWhile { it in leadingPunctuation }
                     val trailingPunctuation = tw.baseText.takeLastWhile { it in punctuation }
-                    val wordWithSegments = repo.restoreSegments(word)
+                    val wordWithSegments = word.graph.restoreSegments(word)
                     val segmentedText = leadingPunctuation + restoreCase(wordWithSegments.segmentedText(), tw.baseText) + trailingPunctuation
-                    val glossWithSegments = wordWithSegments.getOrComputeGloss(repo) ?: word.getOrComputeGloss(repo)
+                    val glossWithSegments = wordWithSegments.getOrComputeGloss() ?: word.getOrComputeGloss()
                     val stressIndex = adjustStressIndex(wordWithSegments, stressData?.index)?.plus(leadingPunctuation.length)
 
                     CorpusWord(currentIndex++, tw.baseText, normalizedText, segmentedText, syllabogramSequence, word, null,
-                        word.getOrComputeGloss(repo),
+                        word.getOrComputeGloss(),
                         assoc.contextGloss,
-                        glossWithSegments, stressIndex, stressData?.length, repo.isHomonym(word))
+                        glossWithSegments, stressIndex, stressData?.length, word.graph.isHomonym(word))
                 }
                 else {
-                    val wordCandidates = repo.wordsByText(language, tw.normalizedText, language.syllabographic)
-                    val gloss = wordCandidates.firstOrNull()?.getOrComputeGloss(repo)
+                    val wordCandidates = language.graph.wordsByText(language, tw.normalizedText, language.syllabographic)
+                    val gloss = wordCandidates.firstOrNull()?.getOrComputeGloss()
                     CorpusWord(currentIndex++, tw.baseText, normalizedText, tw.baseText, syllabogramSequence,null, wordCandidates,
                         gloss, null, gloss, null, null,false)
                 }
@@ -182,10 +182,10 @@ class CorpusText(
         _words.removeIf { it.word == word }
     }
 
-    fun lockWordAssociations(repo: GraphRepository) {
+    fun lockWordAssociations() {
         for (w in iterateWords()) {
             if (wordByIndex(w.index) == null) {
-                val candidate = repo.wordsByText(language, w.normalizedText).singleOrNull()
+                val candidate = language.graph.wordsByText(language, w.normalizedText).singleOrNull()
                 if (candidate != null) {
                     _words.add(CorpusWordAssociation(w.index, candidate, null))
                 }

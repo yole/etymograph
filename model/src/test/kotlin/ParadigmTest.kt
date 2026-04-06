@@ -6,12 +6,8 @@ import org.junit.Before
 import org.junit.Test
 
 class ParadigmTest : QBaseTest() {
-    lateinit var repo: GraphRepository
-
     @Before
     fun setup() {
-        repo = InMemoryGraphRepository().with(q)
-
         q.grammaticalCategories.add(WordCategory(
             "Case", listOf("N"), listOf(
                 WordCategoryValue("Nominative", "NOM"),
@@ -44,7 +40,7 @@ class ParadigmTest : QBaseTest() {
 
         val lasse = repo.findOrAddWord("lasse", q, "leaf", pos = "N")
 
-        val lasseParadigm = paradigm.generate(lasse, repo)
+        val lasseParadigm = paradigm.generate(lasse)
         assertEquals("lasse", lasseParadigm[0][0]?.get(0)?.word?.text)
         assertEquals("lasseo", lasseParadigm[0][1]?.get(0)?.word?.text)
     }
@@ -93,7 +89,7 @@ class ParadigmTest : QBaseTest() {
         paradigm.preRule = preRule
 
         val cirya = repo.findOrAddWord("cirya", q, "ship", pos = "N")
-        val result = genRule.apply(cirya, repo)
+        val result = genRule.apply(cirya)
         assertEquals("ciryo", result.text)
     }
 
@@ -109,7 +105,7 @@ class ParadigmTest : QBaseTest() {
         paradigm.preRule = preRule
 
         val cirya = repo.findOrAddWord("cìrya", q, "ship", pos = "N")
-        val result = genRule.apply(cirya, repo)
+        val result = genRule.apply(cirya)
         assertEquals("cìryo", result.asOrthographic().text)
     }
 
@@ -125,7 +121,7 @@ class ParadigmTest : QBaseTest() {
         paradigm.postRule = postRule
 
         val cirya = repo.findOrAddWord("cirya", q, "ship", pos = "N")
-        val result = genRule.apply(cirya, repo)
+        val result = genRule.apply(cirya)
         assertEquals("ciryo", result.text)
     }
 
@@ -143,13 +139,14 @@ class ParadigmTest : QBaseTest() {
         paradigm.postRule = postRule
 
         val cirya = repo.findOrAddWord("kiryamo", q, "mariner", pos = "N")
-        val result = genPlRule.apply(cirya, repo)
+        val result = genPlRule.apply(cirya)
         assertEquals("kiryamo", result.text)
     }
 
     @Test
     fun generateParadigm() {
-        val paradigm = generateParadigm(repo, q, "Noun", listOf("N"),
+        val paradigm = generateParadigm(
+            q, "Noun", listOf("N"),
             listOf("Case"), listOf("Number"), "q-", "", emptyList())
 
         assertNotNull(repo.ruleByName("q-nom-sg"))
@@ -157,13 +154,14 @@ class ParadigmTest : QBaseTest() {
 
     @Test
     fun generateParadigmWithEndings() {
-        val paradigm = generateParadigm(repo, q, "Noun", listOf("N"),
+        val paradigm = generateParadigm(
+            q, "Noun", listOf("N"),
             listOf("Case"), listOf("Number"), "q-", "", listOf("", "n"))
 
         val morpheme = repo.wordsByText(q, "n").single()
         assertEquals("Noun dat.sg. ending", morpheme.gloss)
         val rule = repo.ruleByName("q-dat-sg")!!
-        assertEquals("lassen", rule.apply(q.word("lasse"), repo).text)
+        assertEquals("lassen", rule.apply(q.word("lasse")).text)
     }
 
     @Test

@@ -90,7 +90,7 @@ class StarlingImporter(
         for (text in starlingWord.textVariants) {
             val words = repo.wordsByText(language, text)
             if (words.isNotEmpty()) {
-                return words.filter { isGlossSimilar(gloss, it.getOrComputeGloss(repo)) || isGlossSimilar(gloss, it.fullGloss) }
+                return words.filter { isGlossSimilar(gloss, it.getOrComputeGloss()) || isGlossSimilar(gloss, it.fullGloss) }
             }
             val fuzzyMatches = repo.allWords(language).filter {
                 val normText = it.text.replace('ċ', 'c').replace('ġ', 'g')
@@ -102,7 +102,7 @@ class StarlingImporter(
                 }
             }
             if (fuzzyMatches.isNotEmpty()) {
-                return fuzzyMatches.filter { isGlossSimilar(gloss, it.getOrComputeGloss(repo)) || isGlossSimilar(gloss, it.fullGloss) }
+                return fuzzyMatches.filter { isGlossSimilar(gloss, it.getOrComputeGloss()) || isGlossSimilar(gloss, it.fullGloss) }
             }
         }
         return emptyList()

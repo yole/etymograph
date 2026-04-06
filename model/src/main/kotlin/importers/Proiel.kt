@@ -94,6 +94,6 @@ fun main() {
 
     val ieRepo = JsonGraphRepository.fromJson(Path.of("data/ie"))
     val language = ieRepo.languageByShortName("OE")!!
-    importLemmatizedText(ieRepo, language, bosworthToller, proiel.title + " - " + div.title, sentence)
+    importLemmatizedText(language, bosworthToller, proiel.title + " - " + div.title, sentence)
     ieRepo.save()
 }

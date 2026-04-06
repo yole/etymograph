@@ -6,7 +6,8 @@ class LemmatizedWord(val form: String, val tokens: List<LemmatizedToken>)
 
 class LemmatizedText(val text: String, val words: List<LemmatizedWord>)
 
-fun importLemmatizedText(repo: GraphRepository, language: Language, dictionary: Dictionary, title: String, text: LemmatizedText): CorpusText {
+fun importLemmatizedText(language: Language, dictionary: Dictionary, title: String, text: LemmatizedText): CorpusText {
+    val repo = language.graph
     var relativeIndex = 0
     val corpusText = repo.corpusTextsInLanguage(language).find { it.title == title }
         ?.also { corpusText ->
@@ -19,7 +20,7 @@ fun importLemmatizedText(repo: GraphRepository, language: Language, dictionary: 
         var lemmaWords = repo.wordsByTextFuzzy(language, token.lemma)
             .filter {
                 repo.getLinksFrom(it).none { link -> link.type == Link.Variation } &&
-                it.grammaticalCategorySuffix(repo) == null
+                it.grammaticalCategorySuffix() == null
             }
         if (lemmaWords.isEmpty()) {
             if (token.pos == "proper noun") {
@@ -52,7 +53,7 @@ private fun createWordForForm(lemmaWord: Word, repo: GraphRepository, word: Lemm
     if (categories.isEmpty() || categories.all { isDefaultCategoryValue(lemmaWord.language, it) }) {
         return lemmaWord
     }
-    val rule = findMatchingRule(repo, lemmaWord, categories)
+    val rule = findMatchingRule(lemmaWord, categories)
 
     println("INT: ${lemmaWord.text} '${lemmaWord.gloss}', form ${word.form}, morphology ${word.categories}, rule: ${rule?.name ?: "none found"}")
 
@@ -75,8 +76,8 @@ private fun createWordForForm(lemmaWord: Word, repo: GraphRepository, word: Lemm
     return newWord
 }
 
-fun findMatchingRule(repo: GraphRepository, word: Word, categories: Set<String>): Rule? {
-    return repo.allRules().find { it.fromLanguage == word.language && it.addsCategories(categories) }
+fun findMatchingRule(word: Word, categories: Set<String>): Rule? {
+    return word.graph.allRules().find { it.fromLanguage == word.language && it.addsCategories(categories) }
 }
 
 private fun mapCategoryValues(word: Word, categories: List<String>): Set<String> {

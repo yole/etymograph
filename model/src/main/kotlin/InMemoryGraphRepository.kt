@@ -142,7 +142,7 @@ open class InMemoryGraphRepository : GraphRepository() {
     override fun isCliticChain(word: Word): Boolean {
         val compounds = compounds[word.id] ?: return false
         return compounds.any {
-            it.components.any { c -> KnownClasses.clitic in (c.baseWord(this) ?: c).classes }
+            it.components.any { c -> KnownClasses.clitic in (c.baseWord() ?: c).classes }
         }
     }
 
@@ -222,7 +222,7 @@ open class InMemoryGraphRepository : GraphRepository() {
                         rule.addedGrammaticalCategories().none { it in excludeGrammaticalCategories }
             }
             .flatMap { rule ->
-                rule.reverseApply(Word(-1, text, language, pos=pos), this)
+                rule.reverseApply(Word(-1, text, language, pos=pos))
                     .filter {
                         language.normalizeWord(it) != language.normalizeWord(text) &&
                                 (isAcceptableWord(language, it) || wordsByText(language, "$it-").isNotEmpty())
@@ -250,7 +250,7 @@ open class InMemoryGraphRepository : GraphRepository() {
     }
 
     private fun grammaticalCategoriesIntersect(w: Word, addedGrammaticalCategories: List<WordCategory>): Boolean {
-        val suffix = w.grammaticalCategorySuffix(this) ?: return false
+        val suffix = w.grammaticalCategorySuffix() ?: return false
         val gc = parseCategoryValues(w.language, suffix)
         return gc.any { it != null && it.category in addedGrammaticalCategories }
     }
@@ -277,7 +277,7 @@ open class InMemoryGraphRepository : GraphRepository() {
     }
 
     override fun restoreSegments(word: Word): Word {
-        val baseWordLink = word.baseWordLink(this)
+        val baseWordLink = word.baseWordLink()
         if (baseWordLink != null) {
             if (baseWordLink.rules.isEmpty()) {
                 return word
@@ -286,7 +286,7 @@ open class InMemoryGraphRepository : GraphRepository() {
             val baseWord = baseWordLink.toEntity as Word
             if (baseWord.language == word.language) {
                 val baseWordWithSegments = restoreSegments(baseWord)
-                val restoredWord = baseWordLink.applyRules(baseWordWithSegments, this)
+                val restoredWord = baseWordLink.applyRules(baseWordWithSegments)
                 if (word.language.isNormalizedEqual(restoredWord, word)) {
                     return restoredWord
                 }
@@ -317,7 +317,7 @@ open class InMemoryGraphRepository : GraphRepository() {
         if (wordText.isEmpty()) return false
         val word = Word(-1, wordText, language)
         val vowels = language.phonemeClassByName(PhonemeClass.vowelClassName)
-        val phonemes = PhonemeIterator(word, this)
+        val phonemes = PhonemeIterator(word)
         if (language.syllableStructures.isNotEmpty() && vowels != null) {
             val syllables = breakIntoSyllables(word)
             if (syllables.isEmpty()) {
@@ -335,7 +335,7 @@ open class InMemoryGraphRepository : GraphRepository() {
     override fun matchesPhonotactics(lang: Language, text: String): Boolean {
         val rule = lang.phonotacticsRule?.resolve()
         if (rule != null) {
-            val result = rule.apply(Word(-1, text, lang), this)
+            val result = rule.apply(Word(-1, text, lang))
             return DISALLOW_CLASS !in result.classes
         }
         return true
@@ -366,7 +366,7 @@ open class InMemoryGraphRepository : GraphRepository() {
         notes: String?
     ): Word {
         val wordsByText = mapOfWordsByText(language, text, syllabographic)
-        wordsByText.find { it.getOrComputeGloss(this) == gloss || gloss.isNullOrEmpty() }?.let {
+        wordsByText.find { it.getOrComputeGloss() == gloss || gloss.isNullOrEmpty() }?.let {
             return it
         }
         return addWord(text, language, gloss, fullGloss, pos, classes, reconstructed, syllabographic, source, notes)
@@ -500,7 +500,7 @@ open class InMemoryGraphRepository : GraphRepository() {
     override fun applyRuleSequence(link: Link, sequence: RuleSequence): Consistency {
         val word = (link.toEntity as Word).normalized
         val expectWord = (link.fromEntity as Word).normalized
-        val wasConsistent = expectWord.language.isNormalizedEqual(link.applyRules(word, this), expectWord)
+        val wasConsistent = expectWord.language.isNormalizedEqual(link.applyRules(word), expectWord)
 
         val applicableRules = mutableListOf<Rule>()
         var isConsistent = false
@@ -556,7 +556,7 @@ open class InMemoryGraphRepository : GraphRepository() {
     }
 
     override fun findSequencesContainingRule(rule: Rule): List<RuleSequence> {
-        return allLangEntities.filterIsInstance<RuleSequence>().filter { rule in it.resolveRules(this) }
+        return allLangEntities.filterIsInstance<RuleSequence>().filter { rule in it.resolveRules() }
     }
 
     override fun findSequencesContainingSequence(ruleSequence: RuleSequence): List<RuleSequence> {
@@ -611,12 +611,12 @@ open class InMemoryGraphRepository : GraphRepository() {
         if (expectWord != null) {
             data class RuleApplicationVariant(val word: Word, val rules: List<Rule>)
 
-            val steps = sequence.resolveSteps(this)
+            val steps = sequence.resolveSteps()
             var variants = listOf(RuleApplicationVariant(word, emptyList()))
             for (step in steps) {
                 variants = variants.flatMap {
                     val next = mutableListOf<RuleApplicationVariant>()
-                    val result = (step.rule as Rule).apply(it.word, this)
+                    val result = (step.rule as Rule).apply(it.word)
                     if ('?' !in result.text) {
                         if (step.optional || result.asPhonemic().text == it.word.asPhonemic().text) {
                             next.add(it)
@@ -625,7 +625,7 @@ open class InMemoryGraphRepository : GraphRepository() {
                             next.add(RuleApplicationVariant(result, it.rules + step.rule))
                         }
                         if (step.alternative != null) {
-                            val altResult = (step.alternative as Rule).apply(it.word, this)
+                            val altResult = (step.alternative as Rule).apply(it.word)
                             if (altResult.asPhonemic().text != it.word.asPhonemic().text) {
                                 next.add(RuleApplicationVariant(altResult, it.rules + step.alternative))
                             }
@@ -642,7 +642,7 @@ open class InMemoryGraphRepository : GraphRepository() {
                 return bestMatch.word
             }
         }
-        return applyRuleSequenceVariant(word, sequence.resolveRules(this), applicableRules)
+        return applyRuleSequenceVariant(word, sequence.resolveRules(), applicableRules)
     }
 
     private fun applyRuleSequenceVariant(
@@ -652,7 +652,7 @@ open class InMemoryGraphRepository : GraphRepository() {
     ): Word? {
         var targetWord = word
         for (rule in rules) {
-            val newWord = rule.apply(targetWord, this)
+            val newWord = rule.apply(targetWord)
             if ('?' in newWord.text) return null
             if (newWord.asPhonemic().text != targetWord.asPhonemic().text) {
                 applicableRules.add(rule)
@@ -721,7 +721,7 @@ open class InMemoryGraphRepository : GraphRepository() {
         for (link in links) {
             if (link.type == Link.Derived) {
                 val fromEntity = link.fromEntity
-                if (fromEntity is Word && fromEntity.getOrComputeGloss(this) == derivedWord.gloss) {
+                if (fromEntity is Word && fromEntity.getOrComputeGloss() == derivedWord.gloss) {
                     return fromEntity
                 }
             }
@@ -814,7 +814,7 @@ open class InMemoryGraphRepository : GraphRepository() {
 
         return allWords(compoundWord.language).filter {
             it != compoundWord && compoundWord.text.startsWith(longestPrefix + it.text) &&
-                    it.baseWordLink(this)?.toEntity != compoundWord
+                    it.baseWordLink()?.toEntity != compoundWord
         }
     }
 

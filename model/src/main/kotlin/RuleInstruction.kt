@@ -28,29 +28,29 @@ const val DISALLOW_CLASS = "disallow"
 open class RuleInstruction(val type: InstructionType, val arg: String, val comment: String?)  {
     open fun apply(word: Word, context: RuleApplyContext): Word = when(type) {
         InstructionType.NoChange -> word
-        InstructionType.ChangeEnding -> changeEnding(word, context.rule, context.branch, context.graph)
+        InstructionType.ChangeEnding -> changeEnding(word, context.rule, context.branch)
         InstructionType.ApplyClass -> word.derive(word.text, newClasses = (word.classes + arg).toSet().toList(), id = word.id)
         InstructionType.Disallow -> word.derive(word.text, newClasses = (word.classes + DISALLOW_CLASS).toSet().toList())
         else -> throw IllegalStateException("Can't apply phoneme instruction $type to full word")
     }
 
-    private fun changeEnding(word: Word, rule: Rule, branch: RuleBranch?, graph: GraphRepository): Word {
-        val phonemes = removeMatchedEnding(word, branch, graph)
+    private fun changeEnding(word: Word, rule: Rule, branch: RuleBranch?): Word {
+        val phonemes = removeMatchedEnding(word, branch)
             ?: return word
         return word.derive(phonemes.result() + arg,
             segments = remapSegments(phonemes, word.segments),
             addSegment = WordSegment.create(phonemes.result().length, arg.length, rule.addedCategories, null, rule))
     }
 
-    protected fun removeMatchedEnding(word: Word, branch: RuleBranch?, graph: GraphRepository): PhonemeIterator? {
+    protected fun removeMatchedEnding(word: Word, branch: RuleBranch?): PhonemeIterator? {
         val condition = branch?.condition?.findLeafConditions(ConditionType.EndsWith)
-            ?.firstOrNull { it.matches(word, graph) }
+            ?.firstOrNull { it.matches(word) }
             ?: return null
-        val phonemes = PhonemeIterator(word, graph)
+        val phonemes = PhonemeIterator(word)
         if (condition.phonemeClass != null) {
             phonemes.deleteAtRelative(phonemes.size - 1)
         } else {
-            val conditionPhonemes = PhonemeIterator(condition.parameter!!, word.language, repo = graph)
+            val conditionPhonemes = PhonemeIterator(condition.parameter!!, word.language)
             val phonemesToDelete = conditionPhonemes.size
             for (i in phonemes.size - 1 downTo phonemes.size - phonemesToDelete) {
                 phonemes.deleteAtRelative(i)
@@ -59,7 +59,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String, val comme
         return phonemes
     }
 
-    open fun reverseApply(rule: Rule, text: String, language: Language, graph: GraphRepository, trace: RuleTrace? = null): List<String> {
+    open fun reverseApply(rule: Rule, text: String, language: Language, trace: RuleTrace? = null): List<String> {
         return when (type) {
             InstructionType.ChangeEnding -> reverseChangeEnding(text, rule)
             InstructionType.NoChange -> listOf(text)
@@ -80,7 +80,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String, val comme
         return emptyList()
     }
 
-    open fun apply(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace? = null) {
+    open fun apply(word: Word, phonemes: PhonemeIterator, trace: RuleTrace? = null) {
         throw IllegalStateException("Can't apply word instruction to individual phoneme")
     }
 
@@ -148,13 +148,12 @@ open class RuleInstruction(val type: InstructionType, val arg: String, val comme
             rule: Rule,
             word: Word,
             ruleInstructions: List<RuleInstruction>,
-            graph: GraphRepository,
             trace: RuleTrace? = null
         ): List<String> {
             return ruleInstructions.reversed().fold(candidates) { c, instruction ->
                 c.flatMap { text ->
-                    instruction.reverseApply(rule, text, word.language, graph, trace).also {
-                        trace?.logReverseApplyInstruction(graph, instruction, text, it)
+                    instruction.reverseApply(rule, text, word.language, trace).also {
+                        trace?.logReverseApplyInstruction(word.graph, instruction, text, it)
                     }
                 }
             }
@@ -176,10 +175,10 @@ class ApplyRuleInstruction(val ruleRef: RuleRef, comment: String?)
 {
     override fun apply(word: Word, context: RuleApplyContext): Word {
         val targetRule = ruleRef.resolve()
-        val link = context.graph.getLinksTo(word).find { it.rules == listOf(targetRule) }
+        val link = word.graph.getLinksTo(word).find { it.rules == listOf(targetRule) }
         val existingFormText = (link?.fromEntity as? Word)?.text
-        val applyPrePostRules = context.graph.paradigmForRule(context.rule) != context.graph.paradigmForRule(targetRule)
-        val result = targetRule.apply(word, context.graph, context.trace, normalizeSegments = false, applyPrePostRules = applyPrePostRules)
+        val applyPrePostRules = word.graph.paradigmForRule(context.rule) != word.graph.paradigmForRule(targetRule)
+        val result = targetRule.apply(word, context.trace, normalizeSegments = false, applyPrePostRules = applyPrePostRules)
             .asOrthographic(context.originalWord)
         if (existingFormText != null && existingFormText != result.text) {
             return word.derive(existingFormText, word.id)
@@ -192,9 +191,9 @@ class ApplyRuleInstruction(val ruleRef: RuleRef, comment: String?)
         }
     }
 
-    override fun reverseApply(rule: Rule, text: String, language: Language, graph: GraphRepository, trace: RuleTrace?): List<String> {
+    override fun reverseApply(rule: Rule, text: String, language: Language, trace: RuleTrace?): List<String> {
         val targetRule = ruleRef.resolve()
-        return targetRule.reverseApply(Word(-1, text, language), graph, trace)
+        return targetRule.reverseApply(Word(-1, text, language), trace)
     }
 
     override fun toRichText(graph: GraphRepository): RichText {
@@ -220,25 +219,25 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
 {
     val seekTarget = arg?.let { SeekTarget.parse(it, language) }
 
-    override fun apply(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace?) {
+    override fun apply(word: Word, phonemes: PhonemeIterator, trace: RuleTrace?) {
         phonemes.commit()
         val targetIt = phonemes.clone()
         if (seekTarget != null && seekTarget.relative) {
             targetIt.seek(seekTarget)
         }
         val rule = ruleRef.resolve()
-        (rule.logic as SpeRuleLogic).applyToPhoneme(word, targetIt, graph, trace)
+        (rule.logic as SpeRuleLogic).applyToPhoneme(word, targetIt, trace)
     }
 
     override fun apply(word: Word, context: RuleApplyContext): Word {
         if (seekTarget == null) return word
-        val phonemes = PhonemeIterator(word.asPhonemic(), context.graph)
+        val phonemes = PhonemeIterator(word.asPhonemic())
 
         if (phonemes.seek(seekTarget)) {
-            val count = if (seekTarget.hasTargetRange()) (seekTarget.targetRange(word, context.graph)?.length ?: 1) else 1
+            val count = if (seekTarget.hasTargetRange()) (seekTarget.targetRange(word)?.length ?: 1) else 1
             val rule = ruleRef.resolve()
             for (i in 0..<count) {
-                (rule.logic as SpeRuleLogic).applyToPhoneme(word, phonemes, context.graph, context.trace)
+                (rule.logic as SpeRuleLogic).applyToPhoneme(word, phonemes, context.trace)
                 if (!phonemes.advance()) break
             }
             val segments = remapSegments(phonemes, word.segments)
@@ -248,9 +247,9 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
         return word
     }
 
-    override fun reverseApply(rule: Rule, text: String, language: Language, graph: GraphRepository, trace: RuleTrace?): List<String> {
+    override fun reverseApply(rule: Rule, text: String, language: Language, trace: RuleTrace?): List<String> {
         if (seekTarget == null) return listOf(text)
-        val phonemes = PhonemeIterator(text, language, repo = graph)
+        val phonemes = PhonemeIterator(text, language)
         if (phonemes.seek(seekTarget)) {
             val rule = ruleRef.resolve()
             return (rule.logic as SpeRuleLogic).reverseApplyToPhoneme(phonemes)
@@ -295,11 +294,11 @@ class ApplyStressInstruction(val language: Language, arg: String, val accentType
 
     override fun apply(word: Word, context: RuleApplyContext): Word {
         val syllables = breakIntoSyllables(word)
-        val matchingSyllables = syllables.filter { syllableClass.matches(word, it, context.graph) }
+        val matchingSyllables = syllables.filter { syllableClass.matches(word, it) }
         val syllable = Ordinals.at(matchingSyllables, syllableIndex) ?: return word
 
         val vowel = language.phonemeClassByName(PhonemeClass.vowelClassName) ?: return word
-        val stressIndex = PhonemeIterator(word, context.graph).findMatchInRange(syllable.startIndex, syllable.endIndex, vowel)
+        val stressIndex = PhonemeIterator(word).findMatchInRange(syllable.startIndex, syllable.endIndex, vowel)
             ?: return word
         word.stressedPhonemeIndex = stressIndex    // TODO create a copy of the word here?
         val effectiveAccentType = accentType ?: language.accentTypes.singleOrNull()
@@ -335,7 +334,7 @@ class PrependAppendInstruction(type: InstructionType, language: Language, arg: S
                 word.derive(word.text + literalArg,
                     addSegment = WordSegment(word.text.length, literalArg.length, context.rule.addedCategories, null, context.rule))
         }
-        val phonemes = PhonemeIterator(word, context.graph)
+        val phonemes = PhonemeIterator(word)
         if (phonemes.seek(seekTarget!!)) {
             val phoneme = phonemes.current
             if (type == InstructionType.Prepend) {
@@ -347,7 +346,7 @@ class PrependAppendInstruction(type: InstructionType, language: Language, arg: S
         return word
     }
 
-    override fun reverseApply(rule: Rule, text: String, language: Language, graph: GraphRepository, trace: RuleTrace?): List<String> {
+    override fun reverseApply(rule: Rule, text: String, language: Language, trace: RuleTrace?): List<String> {
         if (literalArg != null) {
             return when (type) {
                 InstructionType.Append -> if (text.endsWith(literalArg)) listOf(text.removeSuffix(literalArg)) else emptyList()
@@ -369,7 +368,7 @@ class InsertInstruction(arg: String, val relIndex: Int, val seekTarget: SeekTarg
     : RuleInstruction(InstructionType.Insert, arg, comment)
 {
     override fun apply(word: Word, context: RuleApplyContext): Word {
-        val phonemes = PhonemeIterator(word, context.graph)
+        val phonemes = PhonemeIterator(word)
         if (!phonemes.seek(seekTarget)) return word
         if (relIndex == -1) {
             phonemes.insertAtRelative(0, arg)
@@ -407,7 +406,7 @@ class MorphemeInstruction(type: InstructionType, val morphemeId: Int, comment: S
     }
 
     override fun apply(word: Word, context: RuleApplyContext): Word {
-        val morpheme = context.graph.wordById(morphemeId) ?: throw IllegalStateException("Target morpheme not found")
+        val morpheme = word.graph.wordById(morphemeId) ?: throw IllegalStateException("Target morpheme not found")
         return when (type) {
             InstructionType.PrependMorpheme -> {
                 val effectiveText = morpheme.text.trimEnd('-')
@@ -430,7 +429,7 @@ class MorphemeInstruction(type: InstructionType, val morphemeId: Int, comment: S
             }
 
             InstructionType.ChangeEndingToMorpheme -> {
-                val phonemes = removeMatchedEnding(word, context.branch, context.graph)
+                val phonemes = removeMatchedEnding(word, context.branch)
                     ?: return word
                 val effectiveText = morpheme.text.trimStart('-')
                 word.derive(phonemes.result() + effectiveText,
@@ -446,7 +445,7 @@ class MorphemeInstruction(type: InstructionType, val morphemeId: Int, comment: S
         val word = graph.wordById(morphemeId) ?: throw IllegalStateException("Target morpheme not found")
         return richText(
             (type.insnName + " '").rich(),
-            (word.text + ": " + word.getOrComputeGloss(graph)).rich(linkType = "word",
+            (word.text + ": " + word.getOrComputeGloss()).rich(linkType = "word",
                 linkId = word.id, linkData = word.text, linkLanguage = word.language.shortName),
             "'".rich()
         )
@@ -472,11 +471,12 @@ class MorphemeInstruction(type: InstructionType, val morphemeId: Int, comment: S
             comment: String?,
             context: RuleParseContext
         ): MorphemeInstruction {
-            var word = context.repo.wordsByText(context.fromLanguage, text)
-                .firstOrNull { it.getOrComputeGloss(context.repo) == gloss }
+            val graph = context.fromLanguage.graph
+            var word = graph.wordsByText(context.fromLanguage, text)
+                .firstOrNull { it.getOrComputeGloss() == gloss }
             if (word == null) {
                 if (context.createUnresolvedEntities) {
-                    word = context.repo.findOrAddWord(text, context.fromLanguage, gloss, pos = KnownPartsOfSpeech.affix.abbreviation)
+                    word = graph.findOrAddWord(text, context.fromLanguage, gloss, pos = KnownPartsOfSpeech.affix.abbreviation)
                 }
                 else {
                     throw RuleParseException("Cannot find word with text '$text' and gloss '$gloss'")
@@ -520,8 +520,8 @@ class SpeInstruction(val pattern: SpePattern, val condition: RuleCondition? = nu
 
         val anyChanges = pattern.apply(
             it,
-            { condition == null || condition.matches(phonemicWord, it, context.graph, trace).also { result -> trace?.logCondition(condition, result) } },
-            { postInstructions.forEach { insn -> insn.apply(word, it, context.graph, trace )} },
+            { condition == null || condition.matches(phonemicWord, it, trace).also { result -> trace?.logCondition(condition, result) } },
+            { postInstructions.forEach { insn -> insn.apply(word, it, trace)} },
             trace
         )
         if (anyChanges) {
@@ -531,10 +531,10 @@ class SpeInstruction(val pattern: SpePattern, val condition: RuleCondition? = nu
         return false
     }
 
-    override fun apply(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace?) {
+    override fun apply(word: Word, phonemes: PhonemeIterator, trace: RuleTrace?) {
         pattern.applyAtCurrent(
             phonemes,
-            { condition == null || condition.matches(word, it, graph, trace).also { result -> trace?.logCondition(condition, result) } },
+            { condition == null || condition.matches(word, it, trace).also { result -> trace?.logCondition(condition, result) } },
             null,
             trace
         )
@@ -560,9 +560,9 @@ class SpeInstruction(val pattern: SpePattern, val condition: RuleCondition? = nu
 
         fun createIterator(word: Word, context: RuleApplyContext): PhonemeIterator {
             return if (context.rule.fromLanguage != context.rule.toLanguage)
-                PhonemeIterator(word.asPhonemic(), context.graph, language2 = context.rule.fromLanguage)
+                PhonemeIterator(word.asPhonemic(), language2 = context.rule.fromLanguage)
             else
-                PhonemeIterator(word.asPhonemic(), context.graph)
+                PhonemeIterator(word.asPhonemic())
         }
 
         fun result(
@@ -579,7 +579,7 @@ class SpeInstruction(val pattern: SpePattern, val condition: RuleCondition? = nu
             return phonemicWord.derive(it.result(), phonemic = true, segments = segments).also {
                 if (stress != null && stress >= 0) {
                     val vowels = context.rule.toLanguage.phonemeClassByName(PhonemeClass.vowelClassName)
-                    val stressIt = PhonemeIterator(it, context.graph)
+                    val stressIt = PhonemeIterator(it)
                     if (vowels != null && stressIt.advanceTo(stress) && !vowels.matchesCurrent(stressIt)) {
                         val syllables = breakIntoSyllables(it)
                         val syllableIndex = findSyllable(syllables, stress)

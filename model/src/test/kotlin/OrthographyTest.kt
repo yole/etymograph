@@ -112,7 +112,7 @@ class OrthographyTest : QBaseTest() {
     fun acuteAccent() {
         ce.accentTypes = mutableSetOf(AccentType.Acute)
         val aham = ce.word("ahám")
-        assertEquals(2, aham.calcStressedPhonemeIndex(emptyRepo))
+        assertEquals(2, aham.calcStressedPhonemeIndex())
         assertEquals(AccentType.Acute, aham.accentType)
     }
 

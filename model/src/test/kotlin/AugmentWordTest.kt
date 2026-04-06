@@ -15,7 +15,7 @@ class AugmentWordTest {
     fun setUp() {
         wiktionary = TestWiktionary(AugmentWordTest::class.java)
         repo = InMemoryGraphRepository()
-        oe = Language("Old English", "OE")
+        oe = Language(repo, "Old English", "OE")
         oe.pos.addAll(
             listOf(
                 WordCategoryValue("Noun", "N"),
@@ -39,9 +39,9 @@ class AugmentWordTest {
     fun augmentInflection() {
         val bille = repo.findOrAddWord("bille", oe, null)
         val rule = repo.rule("- no change", oe, name = "oe-dat", addedCategories = ".DAT")
-        augmentWordWithDictionary(repo, wiktionary, bille)
+        augmentWordWithDictionary(wiktionary, bille)
         assertNull(bille.gloss)
-        val link = bille.baseWordLink(repo)
+        val link = bille.baseWordLink()
         assertEquals("bil", (link!!.toEntity as Word).text)
         assertEquals(rule, link.rules.single())
     }
@@ -50,11 +50,11 @@ class AugmentWordTest {
     fun augmentInflectionAmbiguous() {
         val wyrtum = repo.findOrAddWord("wyrtum", oe, null)
         val rule = repo.rule("- no change", oe, name = "oe-dat-pl", addedCategories = ".DAT.PL")
-        val result = augmentWordWithDictionary(repo, wiktionary, wyrtum)
+        val result = augmentWordWithDictionary(wiktionary, wyrtum)
         assertEquals(2, result.variants.size)
 
-        augmentWordWithDictionary(repo, wiktionary, wyrtum, result.variants[0].disambiguation)
-        val link = wyrtum.baseWordLink(repo)
+        augmentWordWithDictionary(wiktionary, wyrtum, result.variants[0].disambiguation)
+        val link = wyrtum.baseWordLink()
         assertEquals("wyrt", (link!!.toEntity as Word).text)
         assertEquals("plant", link.toEntity.gloss)
     }

@@ -23,7 +23,7 @@ class WordControllerTest {
         fixture = QTestFixture()
         graph = fixture.graph
 
-        oe = Language("Old English", "OE")
+        oe = Language(graph, "Old English", "OE")
         graph.addLanguage(oe)
 
         wordController = WordController(TestDictionaryService())
@@ -62,7 +62,7 @@ class WordControllerTest {
 
         wordController.updateWordParadigm(graph, elen.id, WordController.UpdateWordParadigmParameters(arrayOf(arrayOf(accRule.id, "elena"))))
         val elena = fixture.graph.wordsByText(fixture.q, "elena").single()
-        assertEquals("star.ACC", elena.getOrComputeGloss(fixture.graph))
+        assertEquals("star.ACC", elena.getOrComputeGloss())
     }
 
     @Test
@@ -145,7 +145,7 @@ class WordControllerTest {
 
     @Test
     fun addWordSequenceComma() {
-        val s = Language("Sindarin", "s")
+        val s = Language(graph, "Sindarin", "s")
         graph.addLanguage(s)
 
         wordController.addWordSequence(graph, WordController.WordSequenceParams("ce am 'smth, other' > q an; s ap", "PE xx"))

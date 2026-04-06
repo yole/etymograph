@@ -5,17 +5,10 @@ import org.junit.Assert.*
 import org.junit.Before
 
 class CorpusTextTest : QBaseTest() {
-    lateinit var repo: InMemoryGraphRepository
-
-    @Before
-    fun setup() {
-        repo = repoWithQ()
-    }
-
     @Test
     fun testWordIndex() {
         val corpusText = q.corpusText("ai laurie lantar\nyeni unotime")
-        val lines = corpusText.mapToLines(emptyRepo)
+        val lines = corpusText.mapToLines()
         assertEquals(0, lines[0].corpusWords[0].index)
         assertEquals(3, lines[1].corpusWords[0].index)
     }
@@ -25,7 +18,7 @@ class CorpusTextTest : QBaseTest() {
         val corpusText = q.corpusText("ai laurie lantar")
         val laurie = q.word("laurie")
         corpusText.associateWord(1, laurie)
-        val line = corpusText.mapToLines(repo).single()
+        val line = corpusText.mapToLines().single()
         assertEquals(laurie, line.corpusWords[1].word)
     }
 
@@ -36,7 +29,7 @@ class CorpusTextTest : QBaseTest() {
         corpusText.associateWord(1, laurie, "goldenly")
 
         corpusText.text = "laurie lantar"
-        val line = corpusText.mapToLines(repo).single()
+        val line = corpusText.mapToLines().single()
         assertEquals(laurie, line.corpusWords[0].word)
         assertEquals("goldenly", line.corpusWords[0].contextGloss)
     }
@@ -47,7 +40,7 @@ class CorpusTextTest : QBaseTest() {
 
         val laurie = q.word("laurie")
 
-        val lines = corpusText.mapToLines(repo)
+        val lines = corpusText.mapToLines()
         assertEquals("laurie", lines[0].corpusWords[1].normalizedText)
     }
 
@@ -55,7 +48,7 @@ class CorpusTextTest : QBaseTest() {
     fun testNormalizedTextDecapitalized() {
         val corpusText = q.corpusText("Ai Laurie. Lantar")
 
-        val lines = corpusText.mapToLines(repo)
+        val lines = corpusText.mapToLines()
         assertEquals("ai", lines[0].corpusWords[0].normalizedText)
         assertEquals("Laurie", lines[0].corpusWords[1].normalizedText)
         assertEquals("lantar", lines[0].corpusWords[2].normalizedText)
@@ -65,7 +58,7 @@ class CorpusTextTest : QBaseTest() {
     fun testNormalizedTextRemoveQuotes() {
         val corpusText = q.corpusText("quet \"Ai laurie lantar,\"")
 
-        val lines = corpusText.mapToLines(repo)
+        val lines = corpusText.mapToLines()
         assertEquals("ai", lines[0].corpusWords[1].normalizedText)
         assertEquals("lantar", lines[0].corpusWords[3].normalizedText)
     }
@@ -74,7 +67,7 @@ class CorpusTextTest : QBaseTest() {
     fun testNormalizedTextRemoveApostrophes() {
         val corpusText = q.corpusText("quet 'Ai laurie lantar,'")
 
-        val lines = corpusText.mapToLines(repo)
+        val lines = corpusText.mapToLines()
         assertEquals("ai", lines[0].corpusWords[1].normalizedText)
         assertEquals("lantar", lines[0].corpusWords[3].normalizedText)
     }
@@ -85,7 +78,7 @@ class CorpusTextTest : QBaseTest() {
 
         val ai = repo.addWord("ai")
         corpusText.associateWord(1, ai)
-        val lines = corpusText.mapToLines(repo)
+        val lines = corpusText.mapToLines()
         assertEquals("ai", lines[0].corpusWords[1].normalizedText)
         assertEquals("\"Ai", lines[0].corpusWords[1].segmentedText)
         assertEquals("lantar", lines[0].corpusWords[3].normalizedText)
@@ -101,7 +94,7 @@ class CorpusTextTest : QBaseTest() {
         val i = repo.addWord("i")
         corpusText.associateWord(1, i)
 
-        val lines = corpusText.mapToLines(repo)
+        val lines = corpusText.mapToLines()
         assertEquals("i", lines[0].corpusWords[1].normalizedText)
         assertEquals("(i", lines[0].corpusWords[1].segmentedText)
         assertEquals(1, lines[0].corpusWords[1].stressIndex)
@@ -135,7 +128,7 @@ class CorpusTextTest : QBaseTest() {
         val ct1 = repo.addCorpusText("ai laurie lantar", null, q)
         val laurie = q.word("laurie", "golden")
         ct1.associateWord(1, laurie, "goldenly")
-        val lines = ct1.mapToLines(repo)
+        val lines = ct1.mapToLines()
         assertEquals("goldenly", lines[0].corpusWords[1].contextGloss)
     }
 
@@ -143,7 +136,7 @@ class CorpusTextTest : QBaseTest() {
     fun testLockWordAssociations() {
         val ct1 = repo.addCorpusText("ai laurie lantar", null, q)
         val laurie = repo.addWord("laurie", "golden")
-        ct1.lockWordAssociations(repo)
+        ct1.lockWordAssociations()
         assertEquals(laurie, ct1.words.single().word)
     }
 }

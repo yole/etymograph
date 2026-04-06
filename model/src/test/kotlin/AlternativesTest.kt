@@ -6,12 +6,10 @@ import org.junit.Before
 import org.junit.Test
 
 class AlternativesTest : QBaseTest() {
-    lateinit var repo: InMemoryGraphRepository
     lateinit var accRule: Rule
 
     @Before
     fun setup() {
-        repo = InMemoryGraphRepository()
         accRule = setupNoChangeRule()
     }
 
@@ -20,7 +18,7 @@ class AlternativesTest : QBaseTest() {
         val ct1 = repo.addCorpusText("elen sila", null, q)
         val word = repo.addWord("elen", "star", "N")
 
-        val alts = Alternatives.request(repo, q, "elen", null)
+        val alts = Alternatives.request(q, "elen", null)
         assertEquals(1, alts.size)
         assertEquals(accRule, alts[0].rule)
     }
@@ -34,14 +32,14 @@ class AlternativesTest : QBaseTest() {
         val tari = repo.addWord("tari", "queen", pos = "N")
         repo.createCompound(elentari, listOf(elen, tari))
 
-        val alternatives = Alternatives.request(repo, q, "elentari", null)
+        val alternatives = Alternatives.request(q, "elentari", null)
         assertEquals(1, alternatives.size)
         assertEquals("star-queen.ACC", alternatives[0].gloss)
         assertEquals(accRule, alternatives[0].rule)
 
-        Alternatives.accept(repo, corpusText, 0, alternatives[0].word, alternatives[0].rule)
+        Alternatives.accept(corpusText, 0, alternatives[0].word, alternatives[0].rule)
         val word = corpusText.wordByIndex(0)!!
-        assertEquals("star-queen.ACC", word.getOrComputeGloss(repo))
+        assertEquals("star-queen.ACC", word.getOrComputeGloss())
     }
 
     @Test
@@ -52,7 +50,7 @@ class AlternativesTest : QBaseTest() {
         val elentari = repo.addWord("elentari")
         repo.createCompound(elentari, listOf(elen, tari), headIndex = 1)
 
-        val alts = Alternatives.request(repo, q, "elentari", null)
+        val alts = Alternatives.request(q, "elentari", null)
         assertEquals(1, alts.size)
         assertEquals(accRule, alts[0].rule)
     }
@@ -64,14 +62,14 @@ class AlternativesTest : QBaseTest() {
 
         val ct1 = repo.addCorpusText("elen sila", null, q)
 
-        val alternatives = Alternatives.request(repo, q, "elen", null)
+        val alternatives = Alternatives.request(q, "elen", null)
         assertEquals(1, alternatives.size)
         assertEquals("scar", alternatives[0].gloss)
         assertNull(alternatives[0].rule)
 
-        Alternatives.accept(repo, ct1, 0, alternatives[0].word, alternatives[0].rule)
+        Alternatives.accept(ct1, 0, alternatives[0].word, alternatives[0].rule)
         val word = ct1.wordByIndex(0)!!
-        assertEquals("scar", word.getOrComputeGloss(repo))
+        assertEquals("scar", word.getOrComputeGloss())
     }
 
     @Test
@@ -80,14 +78,14 @@ class AlternativesTest : QBaseTest() {
 
         repo.addWord("elen", null, pos = "NP")
 
-        val alternatives = Alternatives.request(repo, q, "elen", null)
+        val alternatives = Alternatives.request(q, "elen", null)
         assertEquals(1, alternatives.size)
         assertEquals("Elen.ACC", alternatives[0].gloss)
         assertEquals(accRule, alternatives[0].rule)
 
-        Alternatives.accept(repo, corpusText, 0, alternatives[0].word, alternatives[0].rule)
+        Alternatives.accept(corpusText, 0, alternatives[0].word, alternatives[0].rule)
         val word = corpusText.wordByIndex(0)!!
-        assertEquals("Elen.ACC", word.getOrComputeGloss(repo))
+        assertEquals("Elen.ACC", word.getOrComputeGloss())
     }
 
     @Test
@@ -99,11 +97,11 @@ class AlternativesTest : QBaseTest() {
         elenAcc.gloss = null
         repo.addLink(elenAcc, elen, Link.Derived, listOf(accRule))
 
-        val alternatives = Alternatives.request(repo, q, "elen", null)
+        val alternatives = Alternatives.request(q, "elen", null)
         assertEquals(1, alternatives.size)
         assertEquals("star.ACC", alternatives[0].gloss)
 
-        Alternatives.accept(repo, corpusText, 0, alternatives[0].word, alternatives[0].rule)
+        Alternatives.accept(corpusText, 0, alternatives[0].word, alternatives[0].rule)
 
         val word = corpusText.wordByIndex(0)!!
         assertEquals(elenAcc.id, word.id)
@@ -120,7 +118,7 @@ class AlternativesTest : QBaseTest() {
         byggjaAcc.gloss = null
         repo.addLink(byggjaAcc, byggjaInf, Link.Derived, listOf(accRule))
 
-        val alternatives = Alternatives.request(repo, q, "byggja", byggjaInf)
+        val alternatives = Alternatives.request(q, "byggja", byggjaInf)
         assertEquals(1, alternatives.size)
         assertEquals(byggjaAcc, alternatives[0].word)
     }

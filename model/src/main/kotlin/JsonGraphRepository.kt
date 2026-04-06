@@ -587,7 +587,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         _id = data.id
         _name = data.name
         for (languageData in data.languages) {
-            val language = Language(languageData.name, languageData.shortName)
+            val language = Language(this, languageData.name, languageData.shortName)
             language.reconstructed = languageData.reconstructed
             language.syllabographic = languageData.syllabographic
             addLanguage(language)

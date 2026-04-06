@@ -20,7 +20,7 @@ class RuleControllerTest {
         fixture = QTestFixture()
         q = fixture.q
         ce = fixture.ce
-        aq = Language("Ancient Quenya", "AQ").also { fixture.graph.addLanguage(it) }
+        aq = Language(fixture.graph, "Ancient Quenya", "AQ").also { fixture.graph.addLanguage(it) }
 
         ruleController = RuleController()
         graph = fixture.graph

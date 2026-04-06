@@ -17,7 +17,7 @@ class LemmatizedTextTest {
     @Before
     fun setup() {
         repo = InMemoryGraphRepository()
-        oe = Language("Old English", "OE")
+        oe = Language(repo, "Old English", "OE")
         repo.addLanguage(oe)
     }
 
@@ -27,7 +27,7 @@ class LemmatizedTextTest {
         val lWord = lemmatizedWord("mæg", "verb")
         val lText = LemmatizedText("mæg", listOf(lWord))
 
-        val text = importLemmatizedText(repo, oe, dictionary, "Test", lText)
+        val text = importLemmatizedText(oe, dictionary, "Test", lText)
         assertEquals("mæg", text.text)
         assertEquals(0, text.words.size)
     }
@@ -37,7 +37,7 @@ class LemmatizedTextTest {
         val dictionary = TestDictionary()
         val lWord = lemmatizedWord("Maria", "proper noun")
         val lText = LemmatizedText("Maria", listOf(lWord))
-        val text = importLemmatizedText(repo, oe, dictionary, "Test", lText)
+        val text = importLemmatizedText(oe, dictionary, "Test", lText)
         assertEquals("Maria", text.text)
         assertEquals(1, text.words.size)
         assertEquals("NP", text.wordByIndex(0)!!.pos)

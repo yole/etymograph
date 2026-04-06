@@ -6,14 +6,12 @@ import org.junit.Before
 import org.junit.Test
 
 class CompoundTest : QBaseTest() {
-    private lateinit var repo: GraphRepository
     private lateinit var fara: Word
     private lateinit var mir: Word
     private lateinit var faramir: Word
 
     @Before
     fun setup() {
-        repo = repoWithQ()
         fara = repo.addWord("fara")
         mir = repo.addWord("mir")
         faramir = repo.addWord("faramir")
@@ -87,7 +85,7 @@ class CompoundTest : QBaseTest() {
         val napan = repo.addWord("napan-")
         repo.createCompound(napan, listOf(na, pan))
 
-        assertEquals(3, napan.calculateStress(repo)!!.index)
+        assertEquals(3, napan.calculateStress()!!.index)
     }
 
     @Test
@@ -102,7 +100,7 @@ class CompoundTest : QBaseTest() {
         repo.createCompound(napan, listOf(na, pan))
 
         val soundRule = repo.rule("* a > e if sound is stressed")
-        val newWord = soundRule.apply(napan, repo)
+        val newWord = soundRule.apply(napan)
         assertEquals("napen", newWord.text)
     }
 

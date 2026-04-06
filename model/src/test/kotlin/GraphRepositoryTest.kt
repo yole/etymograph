@@ -5,13 +5,6 @@ import org.junit.Before
 import org.junit.Test
 
 class GraphRepositoryTest : QBaseTest() {
-    lateinit var repo: InMemoryGraphRepository
-
-    @Before
-    fun setup() {
-        repo = repoWithQ()
-    }
-
     @Test
     fun links() {
         val abc = repo.addWord("abc")
@@ -40,7 +33,7 @@ class GraphRepositoryTest : QBaseTest() {
 
     @Test
     fun wordByTextSyllabographic() {
-        val ht = Language("Hittite", "Ht")
+        val ht = Language(repo, "Hittite", "Ht")
         ht.syllabographic = true
         repo.addLanguage(ht)
         repo.addWord("_A-NA", language = ht, gloss = "on", syllabographic = true)
@@ -49,7 +42,7 @@ class GraphRepositoryTest : QBaseTest() {
 
     @Test
     fun wordByTextCaseInsensitive() {
-        val pie = Language("Proto-Indo-European", "PIE")
+        val pie = Language(repo, "Proto-Indo-European", "PIE")
         pie.phonemes += phoneme("H", "")
         repo.addLanguage(pie)
         repo.addWord("bheroH", language = pie, gloss = "carry.1SG")

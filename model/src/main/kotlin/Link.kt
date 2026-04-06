@@ -21,8 +21,8 @@ class Link(
         val allLinkTypes = listOf(Derived, Origin, Related, Variation, Transcription)
     }
 
-    fun applyRules(word: Word, graph: GraphRepository): Word {
-        return rules.fold(word) { w, r -> r.apply(w, graph) }
+    fun applyRules(word: Word): Word {
+        return rules.fold(word) { w, r -> r.apply(w) }
     }
 }
 

@@ -331,6 +331,6 @@ fun main() {
 
     val ieRepo = JsonGraphRepository.fromJson(Path.of("data/ie"))
     val oe = ieRepo.languageByShortName("OE")!!
-    augmentWithDictionary(ieRepo, oe, bosworthToller)
+    augmentWithDictionary(oe, bosworthToller)
     ieRepo.save()
 }

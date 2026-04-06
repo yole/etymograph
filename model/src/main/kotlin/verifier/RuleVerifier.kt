@@ -5,8 +5,8 @@ import java.nio.file.Path
 import kotlin.io.path.outputStream
 import kotlin.io.path.readLines
 
-fun processParadigm(repo: GraphRepository, word: Word, paradigm: Paradigm, callback: (WordAlternative, Rule) -> Unit) {
-    val generatedParadigm = paradigm.generate(word, repo)
+fun processParadigm(word: Word, paradigm: Paradigm, callback: (WordAlternative, Rule) -> Unit) {
+    val generatedParadigm = paradigm.generate(word)
     for (row in generatedParadigm) {
         for (col in row.filterNotNull()) {
             for (alt in col) {
@@ -25,7 +25,7 @@ fun processParadigms(repo: JsonGraphRepository, callback: (Word, String, Rule) -
         for (word in repo.dictionaryWords(language)) {
             val applicableParadigms = paradigms.filter { word.pos in it.pos }
             for (applicableParadigm in applicableParadigms) {
-                processParadigm(repo, word, applicableParadigm) { alt, rule ->
+                processParadigm(word, applicableParadigm) { alt, rule ->
                     callback(word, alt.expectedWord.text, rule)
                 }
             }

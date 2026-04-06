@@ -8,7 +8,6 @@ class ParseCandidatesTest : QBaseTest() {
 
     @Test
     fun parseCandidates() {
-        val repo = repoWithQ()
         val rule = repo.rule("- append 'llo'", name = "q-abl", addedCategories = ".ABL")
         val candidates = repo.findParseCandidates(q.word("hrestallo"))
         assertEquals(1, candidates.size)
@@ -19,7 +18,6 @@ class ParseCandidatesTest : QBaseTest() {
 
     @Test
     fun parseCandidatesWithWord() {
-        val repo = repoWithQ()
         val rule = repo.rule("- append 'llo'", name = "q-abl", addedCategories = ".ABL")
         val hresta = repo.addWord("hresta")
 
@@ -32,7 +30,6 @@ class ParseCandidatesTest : QBaseTest() {
 
     @Test
     fun parseCandidatesSameCategory() {
-        val repo = repoWithQ()
         q.grammaticalCategories.add(WordCategory("Tense", listOf("V"),
             listOf(WordCategoryValue("Present", "PRES"), WordCategoryValue("Aorist", "AOR"))))
         repo.rule("- append 'a'", name = "q-pres", addedCategories = ".PRES")
@@ -45,7 +42,6 @@ class ParseCandidatesTest : QBaseTest() {
 
     @Test
     fun sameCategoryExistingWord() {
-        val repo = repoWithQ()
         q.grammaticalCategories.add(WordCategory("Tense", listOf("V"),
             listOf(WordCategoryValue("Present", "PRES"), WordCategoryValue("Aorist", "AOR"))))
         repo.rule("- append 'a'", name = "q-pres", addedCategories = ".PRES")
@@ -61,7 +57,6 @@ class ParseCandidatesTest : QBaseTest() {
 
     @Test
     fun parseCandidatesExistingWordPOSMismatch() {
-        val repo = repoWithQ()
         val presRule = parseRule(q, q, "- append 'a'", name = "q-pres", addedCategories = ".PRES", fromPOS = listOf("V"), toPOS = "V")
         repo.addRule(presRule)
         val hresta = repo.addWord("hrest", pos = "N")
@@ -73,7 +68,6 @@ class ParseCandidatesTest : QBaseTest() {
 
     @Test
     fun parseCandidatesExistingWordPOSMismatch2() {
-        val repo = repoWithQ()
         val presRule = parseRule(q, q, "- append 'a'", name = "q-pres", addedCategories = ".PRES", fromPOS = listOf("V"))
         repo.addRule(presRule)
         val hresta = repo.addWord("hrest", pos = "N")
@@ -85,7 +79,6 @@ class ParseCandidatesTest : QBaseTest() {
 
     @Test
     fun parseCandidatesPOSMismatch() {
-        val repo = repoWithQ()
         val presRule = parseRule(q, q, "- append 'a'", name = "q-pres", addedCategories = ".PRES", fromPOS = listOf("V"))
         repo.addRule(presRule)
 
@@ -95,7 +88,6 @@ class ParseCandidatesTest : QBaseTest() {
 
     @Test
     fun parseCandidatesNotEmpty() {
-        val repo = repoWithQ()
         val rule = parseRule(q, q, "- append 'llo'", name = "q-abl")
         repo.addRule(rule)
         val candidates = repo.findParseCandidates(q.word("llo"))
@@ -104,7 +96,6 @@ class ParseCandidatesTest : QBaseTest() {
 
     @Test
     fun normalizeCase() {
-        val repo = repoWithQ()
         repo.rule("- append 'llo'", name = "q-abl", addedCategories = ".ABL")
         val candidates = repo.findParseCandidates(q.word("Hrestallo"))
         assertEquals(1, candidates.size)

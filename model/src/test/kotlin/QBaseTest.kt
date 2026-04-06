@@ -1,32 +1,23 @@
 package ru.yole.etymograph
 
 open class QBaseTest {
-    val q = Language("Quenya", "Q").also {
-        it.phonemes = listOf(
-            Phoneme(-1,listOf("e", "ë"), null, setOf("vowel"))
-        ) + listOf("a", "o", "u", "i").map { p ->
-            Phoneme(-1, listOf(p), null, setOf("short", "vowel"))
-        } + listOf("á", "ó", "ú", "í", "é").map { p ->
-            Phoneme(-1, listOf(p), null, setOf("long", "vowel"))
-        } + listOf("c", "h", "l", "q", "r", "w", "x", "z").map { p ->
-            Phoneme(-1, listOf(p), null, setOf("consonant"))
-        } + Phoneme(-1, listOf("y"), "j", setOf("consonant")) +
-            listOf("p", "t", "b", "d", "f", "m", "n", "k", "g", "s").map { p -> phoneme(p) } +
-            phoneme("hr", "voiceless alveolar trill consonant")
+    val repo = InMemoryGraphRepository()
 
-        it.diphthongs = listOf("ai", "oi", "ui", "au", "eu", "iu")
+    val q = quenya(repo).also {
+        repo.addLanguage(it)
     }
     val v = q.phonemeClassByName("vowel")!!
 
-    val ce = Language("Common Eldarin", "CE").also {
+    val ce = Language(repo, "Common Eldarin", "CE").also {
         it.phonemes = listOf(
             Phoneme(-1, listOf("kh"), null, setOf("voiceless", "consonant")),
             Phoneme(-1, listOf("th"), null, setOf("voiceless", "consonant"))
         ) + listOf("a", "o", "u", "i").map { p ->
             Phoneme(-1, listOf(p), null, setOf("short", "vowel"))
         }
+    }.also {
+        repo.addLanguage(it)
     }
-    val emptyRepo = InMemoryGraphRepository()
 
     fun GraphRepository.addWord(
         text: String,
@@ -37,10 +28,6 @@ open class QBaseTest {
     ) = findOrAddWord(text, language, gloss, pos = pos, classes = classes)
 
     fun GraphRepository.with(language: Language) = apply { addLanguage(language) }
-
-    fun repoWithQ() = InMemoryGraphRepository().apply {
-        addLanguage(q)
-    }
 
     fun GraphRepository.rule(
         text: String,
@@ -53,6 +40,22 @@ open class QBaseTest {
     }
 
     fun applyRule(rule: Rule, word: Word): String {
-        return rule.apply(word, emptyRepo).text
+        return rule.apply(word).text
     }
+}
+
+fun quenya(graph: GraphRepository): Language = Language(graph, "Quenya", "Q").also {
+    it.phonemes = listOf(
+        Phoneme(-1, listOf("e", "ë"), null, setOf("vowel"))
+    ) + listOf("a", "o", "u", "i").map { p ->
+        Phoneme(-1, listOf(p), null, setOf("short", "vowel"))
+    } + listOf("á", "ó", "ú", "í", "é").map { p ->
+        Phoneme(-1, listOf(p), null, setOf("long", "vowel"))
+    } + listOf("c", "h", "l", "q", "r", "w", "x", "z").map { p ->
+        Phoneme(-1, listOf(p), null, setOf("consonant"))
+    } + Phoneme(-1, listOf("y"), "j", setOf("consonant")) +
+            listOf("p", "t", "b", "d", "f", "m", "n", "k", "g", "s").map { p -> phoneme(p) } +
+            phoneme("hr", "voiceless alveolar trill consonant")
+
+    it.diphthongs = listOf("ai", "oi", "ui", "au", "eu", "iu")
 }

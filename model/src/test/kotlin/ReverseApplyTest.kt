@@ -9,7 +9,7 @@ class ReverseApplyTest : QBaseTest() {
     @Test
     fun reverseApply() {
         val rule = parseRule(q, q, "- append 'llo'")
-        val candidates = rule.reverseApply(q.word("hrestallo"), emptyRepo)
+        val candidates = rule.reverseApply(q.word("hrestallo"))
         assertEquals(1, candidates.size)
         assertEquals("hresta", candidates[0])
     }
@@ -17,7 +17,7 @@ class ReverseApplyTest : QBaseTest() {
     @Test
     fun reverseApplyAppend() {
         val rule = parseRule(q, q, "- append 'llo'")
-        val candidates = rule.reverseApply(q.word("hrestallo"), emptyRepo)
+        val candidates = rule.reverseApply(q.word("hrestallo"))
         assertEquals(1, candidates.size)
         assertEquals("hresta", candidates[0])
     }
@@ -25,7 +25,7 @@ class ReverseApplyTest : QBaseTest() {
     @Test
     fun reverseApplyNormalize() {
         val rule = parseRule(q, q, "- append 'sse'")
-        val candidates = rule.reverseApply(q.word("auressë"), emptyRepo)
+        val candidates = rule.reverseApply(q.word("auressë"))
         assertEquals(1, candidates.size)
         assertEquals("aure", candidates[0])
     }
@@ -33,14 +33,14 @@ class ReverseApplyTest : QBaseTest() {
     @Test
     fun reverseApplyMatch() {
         val rule = parseRule(q, q, "word ends with a consonant:\n- append 'i'")
-        val candidate = rule.reverseApply(q.word("nai"), emptyRepo)
+        val candidate = rule.reverseApply(q.word("nai"))
         assertEquals(0, candidate.size)
     }
 
     @Test
     fun reverseApplyChangeEnding() {
         val rule = parseRule(q, q, "word ends with 'ea':\n- change ending to 'ie'")
-        val candidate = rule.reverseApply(q.word("yaimie"), emptyRepo)
+        val candidate = rule.reverseApply(q.word("yaimie"))
         assertEquals("yaimea", candidate.single())
     }
 
@@ -48,7 +48,7 @@ class ReverseApplyTest : QBaseTest() {
     fun reverseApplyIgnoreClass() {
         q.wordClasses.add(WordCategory("gender", listOf("N"), listOf(WordCategoryValue("female", "f"))))
         val rule = parseRule(q, q, "word ends with 'ea' and word is f:\n- change ending to 'ie'")
-        val candidate = rule.reverseApply(q.word("yaimie"), emptyRepo)
+        val candidate = rule.reverseApply(q.word("yaimie"))
         assertEquals("yaimea", candidate.single())
     }
 
@@ -56,14 +56,14 @@ class ReverseApplyTest : QBaseTest() {
     fun reverseApplyIgnoreClassNegated() {
         q.wordClasses.add(WordCategory("gender", listOf("N"), listOf(WordCategoryValue("female", "f"))))
         val rule = parseRule(q, q, "word ends with 'ea' and word is not f:\n- change ending to 'ie'")
-        val candidate = rule.reverseApply(q.word("yaimie"), emptyRepo)
+        val candidate = rule.reverseApply(q.word("yaimie"))
         assertEquals("yaimea", candidate.single())
     }
 
     @Test
     fun reverseApplyChangeEndingOr() {
         val rule = parseRule(q, q, "word ends with 'ea' or word ends with 'ao':\n- change ending to 'ie'")
-        val candidates = rule.reverseApply(q.word("yaimie"), emptyRepo)
+        val candidates = rule.reverseApply(q.word("yaimie"))
         assertEquals(2, candidates.size)
         Assert.assertTrue("yaimao" in candidates)
     }
@@ -95,21 +95,21 @@ class ReverseApplyTest : QBaseTest() {
     @Test
     fun reverseApplyMultiple() {
         val rule = parseRule(q, q, "word ends with a consonant:\n- append 'ala'\notherwise:\n- append 'la'")
-        val candidates = rule.reverseApply(q.word("picala"), emptyRepo)
+        val candidates = rule.reverseApply(q.word("picala"))
         assertEquals(2, candidates.size)
     }
 
     @Test
     fun reverseApplyPreInstructions() {
         val rule = parseRule(q, q, "- prepend 'a'\nword ends with vowel:\n- append 'e'")
-        val candidates = rule.reverseApply(q.word("acirae"), emptyRepo)
+        val candidates = rule.reverseApply(q.word("acirae"))
         assertEquals("cira", candidates.single())
     }
 
     @Test
     fun reverseApplyNoChange() {
         val rule = parseRule(q, q, "word ends with vowel:\n- no change")
-        val candidates = rule.reverseApply(q.word("cira"), emptyRepo)
+        val candidates = rule.reverseApply(q.word("cira"))
         assertEquals("cira", candidates.single())
     }
 }

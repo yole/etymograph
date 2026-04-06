@@ -24,13 +24,13 @@ interface RuleConditionParser {
 sealed class RuleCondition(val negated: Boolean = false) {
     open fun isPhonemic(): Boolean = false
 
-    open fun matches(word: Word, graph: GraphRepository, trace: RuleTrace? = null): Boolean {
+    open fun matches(word: Word, trace: RuleTrace? = null): Boolean {
         if (isPhonemic()) throw IllegalStateException("Condition requires phonemic context")
         return false
     }
 
-    open fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace? = null): Boolean {
-        return matches(word, graph, trace)
+    open fun matches(word: Word, phonemes: PhonemeIterator, trace: RuleTrace? = null): Boolean {
+        return matches(word, trace)
     }
 
     fun toEditableText(): String {
@@ -105,26 +105,26 @@ class LeafRuleCondition(
 ) : RuleCondition(negated) {
     override fun isPhonemic(): Boolean = false
 
-    override fun matches(word: Word, graph: GraphRepository, trace: RuleTrace?): Boolean {
-        val matchWord = graph.findWordToMatch(word, baseLanguageShortName) ?: return false
+    override fun matches(word: Word, trace: RuleTrace?): Boolean {
+        val matchWord = word.graph.findWordToMatch(word, baseLanguageShortName) ?: return false
         return when (type) {
-            ConditionType.EndsWith -> (phonemeClass?.let { PhonemeIterator(matchWord, graph).last in it.matchingPhonemes }
+            ConditionType.EndsWith -> (phonemeClass?.let { PhonemeIterator(matchWord).last in it.matchingPhonemes }
                 ?: matchWord.text.trimEnd('-').endsWith(parameter!!)).negateIfNeeded()
-            ConditionType.BeginsWith -> (phonemeClass?.let { PhonemeIterator(word, graph).current in it.matchingPhonemes }
+            ConditionType.BeginsWith -> (phonemeClass?.let { PhonemeIterator(word).current in it.matchingPhonemes }
                 ?: word.text.startsWith(parameter!!)).negateIfNeeded()
-            ConditionType.StressIs -> matchStress(word, graph).negateIfNeeded()
+            ConditionType.StressIs -> matchStress(word).negateIfNeeded()
         }
     }
 
-    private fun matchStress(word: Word, graph: GraphRepository): Boolean {
+    private fun matchStress(word: Word): Boolean {
         val (expectedIndex, _) = parameter?.let { Ordinals.parse(it) } ?: return false
-        val stress = word.calculateStress(graph) ?: return false
+        val stress = word.calculateStress() ?: return false
         val syllables = breakIntoSyllables(word)
         val expectedStressSyllable = Ordinals.at(syllables, expectedIndex) ?: return false
         return stress.index >= expectedStressSyllable.startIndex && stress.index < expectedStressSyllable.endIndex
     }
 
-    override fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace?): Boolean {
+    override fun matches(word: Word, phonemes: PhonemeIterator, trace: RuleTrace?): Boolean {
         throw IllegalStateException("Trying to use a word condition for matching phonemes")
     }
 
@@ -229,26 +229,26 @@ class LeafRuleCondition(
 }
 
 class WordClassCondition(val wordClass: String, negated: Boolean) : RuleCondition(negated) {
-    override fun matches(word: Word, graph: GraphRepository, trace: RuleTrace?): Boolean {
-        return matchClass(word, graph)
+    override fun matches(word: Word, trace: RuleTrace?): Boolean {
+        return matchClass(word)
     }
 
-    override fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace?): Boolean {
-        return matchClass(word, graph)
+    override fun matches(word: Word, phonemes: PhonemeIterator, trace: RuleTrace?): Boolean {
+        return matchClass(word)
     }
 
-    private fun matchClass(word: Word, graph: GraphRepository): Boolean {
-        var classes = word.classes + listOf(word.getOrComputePOS(graph))
-        val variationOf = word.getVariationOf(graph)
+    private fun matchClass(word: Word): Boolean {
+        var classes = word.classes + listOf(word.getOrComputePOS())
+        val variationOf = word.getVariationOf()
         if (variationOf != null) {
             classes += variationOf.classes
-            classes += variationOf.getOrComputePOS(graph)
+            classes += variationOf.getOrComputePOS()
         }
         else {
-            val compound = graph.findCompoundsByCompoundWord(word).singleOrNull()
+            val compound = word.graph.findCompoundsByCompoundWord(word).singleOrNull()
             compound?.headComponent()?.let {
                 classes += it.classes
-                classes += it.getOrComputePOS(graph)
+                classes += it.getOrComputePOS()
             }
         }
 
@@ -294,10 +294,10 @@ class SyllableRuleCondition(
 ) : RuleCondition() {
     override fun isPhonemic(): Boolean = false
 
-    override fun matches(word: Word, graph: GraphRepository, trace: RuleTrace?): Boolean {
+    override fun matches(word: Word, trace: RuleTrace?): Boolean {
         val syllables = breakIntoSyllables(word)
         val syllable = Ordinals.at(syllables, index) ?: return false
-        val phonemes = PhonemeIterator(word, graph)
+        val phonemes = PhonemeIterator(word)
         if (matchType == SyllableMatchType.Contains) {
             if (phonemePattern.phonemeClass != null) {
                 return phonemes.findMatchInRange(syllable.startIndex, syllable.endIndex, phonemePattern.phonemeClass) != null
@@ -314,7 +314,7 @@ class SyllableRuleCondition(
         return false
     }
 
-    override fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace?): Boolean {
+    override fun matches(word: Word, phonemes: PhonemeIterator, trace: RuleTrace?): Boolean {
         throw IllegalStateException("This condition is not phonemic")
     }
 
@@ -352,7 +352,7 @@ fun GraphRepository.findWordToMatch(word: Word, baseLanguageShortName: String?):
 class SyllableCountRuleCondition(val condition: String?, negated: Boolean, val expectCount: Int)
     : RuleCondition(negated)
 {
-    override fun matches(word: Word, graph: GraphRepository, trace: RuleTrace?): Boolean {
+    override fun matches(word: Word, trace: RuleTrace?): Boolean {
         val compare = when (condition) {
             ">=" -> { a: Int, b: Int -> a >= b }
             "<=" -> { a: Int, b: Int -> a <= b }
@@ -393,7 +393,7 @@ class RelativeSyllableRuleCondition(val matchIndex: Int?, val matchClass: String
 {
     override fun isPhonemic(): Boolean = true
 
-    override fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace?): Boolean {
+    override fun matches(word: Word, phonemes: PhonemeIterator, trace: RuleTrace?): Boolean {
         val syllables = phonemes.syllables
         if (syllables.isNullOrEmpty()) return false.negateIfNeeded()
 
@@ -451,7 +451,7 @@ class RelativePhonemeRuleCondition(
 ) : RuleCondition(negated) {
     override fun isPhonemic(): Boolean = seekTarget?.relative ?: true
 
-    override fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace?): Boolean {
+    override fun matches(word: Word, phonemes: PhonemeIterator, trace: RuleTrace?): Boolean {
         val it = if (seekTarget == null)
             phonemes
         else {
@@ -462,13 +462,13 @@ class RelativePhonemeRuleCondition(
         return phonemePattern.matchesCurrent(it) xor negated
     }
 
-    override fun matches(word: Word, graph: GraphRepository, trace: RuleTrace?): Boolean {
+    override fun matches(word: Word, trace: RuleTrace?): Boolean {
         if (seekTarget == null) {
             throw IllegalStateException("This condition is phonemic")
         }
-        val matchWord = graph.findWordToMatch(word, baseLanguageShortName) ?: return false
+        val matchWord = word.graph.findWordToMatch(word, baseLanguageShortName) ?: return false
 
-        val phonemes = PhonemeIterator(matchWord, graph)
+        val phonemes = PhonemeIterator(matchWord)
         if (!phonemes.seek(seekTarget)) return negated
         return phonemePattern.matchesCurrent(phonemes) xor negated
     }
@@ -527,7 +527,7 @@ class PhonemeEqualsRuleCondition(val target: SeekTarget, val matchTarget: SeekTa
 {
     override fun isPhonemic(): Boolean = true
 
-    override fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace?): Boolean {
+    override fun matches(word: Word, phonemes: PhonemeIterator, trace: RuleTrace?): Boolean {
         val targetIterator = phonemes.clone()
         if (!targetIterator.seek(target)) return false
         val matchPhoneme = if (matchTarget != null) {
@@ -584,11 +584,11 @@ sealed class CompositeRuleCondition(val members: List<RuleCondition>) : RuleCond
 }
 
 class OrRuleCondition(members: List<RuleCondition>) : CompositeRuleCondition(members) {
-    override fun matches(word: Word, graph: GraphRepository, trace: RuleTrace?): Boolean =
-        members.any { c -> c.matches(word, graph, trace).also { trace?.logCondition(c, it) } }
+    override fun matches(word: Word, trace: RuleTrace?): Boolean =
+        members.any { c -> c.matches(word, trace).also { trace?.logCondition(c, it) } }
 
-    override fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace?): Boolean =
-        members.any { c -> c.matches(word, phonemes, graph, trace).also { trace?.logCondition(c, it) } }
+    override fun matches(word: Word, phonemes: PhonemeIterator, trace: RuleTrace?): Boolean =
+        members.any { c -> c.matches(word, phonemes, trace).also { trace?.logCondition(c, it) } }
 
     override fun toRichText(): RichText = members.joinToRichText(OR) {
         val et = it.toRichText()
@@ -601,11 +601,11 @@ class OrRuleCondition(members: List<RuleCondition>) : CompositeRuleCondition(mem
 }
 
 class AndRuleCondition(members: List<RuleCondition>) : CompositeRuleCondition(members) {
-    override fun matches(word: Word, graph: GraphRepository, trace: RuleTrace?): Boolean =
-        members.all { c -> c.matches(word, graph, trace).also { trace?.logCondition(c, it)} }
+    override fun matches(word: Word, trace: RuleTrace?): Boolean =
+        members.all { c -> c.matches(word, trace).also { trace?.logCondition(c, it)} }
 
-    override fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace?) =
-        members.all { c -> c.matches(word, phonemes, graph, trace).also { trace?.logCondition(c, it) } }
+    override fun matches(word: Word, phonemes: PhonemeIterator, trace: RuleTrace?) =
+        members.all { c -> c.matches(word, phonemes, trace).also { trace?.logCondition(c, it) } }
 
     override fun toRichText(): RichText = members.joinToRichText(AND) {
         val et = it.toRichText()
@@ -618,12 +618,12 @@ class AndRuleCondition(members: List<RuleCondition>) : CompositeRuleCondition(me
 }
 
 class NotRuleCondition(val arg: RuleCondition) : CompositeRuleCondition(listOf(arg)) {
-    override fun matches(word: Word, graph: GraphRepository, trace: RuleTrace?): Boolean {
-        return !arg.matches(word, graph, trace)
+    override fun matches(word: Word, trace: RuleTrace?): Boolean {
+        return !arg.matches(word, trace)
     }
 
-    override fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace?): Boolean {
-        return !arg.matches(word, phonemes, graph, trace)
+    override fun matches(word: Word, phonemes: PhonemeIterator, trace: RuleTrace?): Boolean {
+        return !arg.matches(word, phonemes, trace)
     }
 
     override fun toRichText(): RichText {
@@ -633,8 +633,8 @@ class NotRuleCondition(val arg: RuleCondition) : CompositeRuleCondition(listOf(a
 
 object OtherwiseCondition : RuleCondition() {
     override fun isPhonemic(): Boolean = false
-    override fun matches(word: Word, graph: GraphRepository, trace: RuleTrace?): Boolean = true
-    override fun matches(word: Word, phonemes: PhonemeIterator, graph: GraphRepository, trace: RuleTrace?) = true
+    override fun matches(word: Word, trace: RuleTrace?): Boolean = true
+    override fun matches(word: Word, phonemes: PhonemeIterator, trace: RuleTrace?) = true
     override fun toRichText(): RichText = OTHERWISE.richText()
 
     const val OTHERWISE = "otherwise"

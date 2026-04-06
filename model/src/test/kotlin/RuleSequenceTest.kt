@@ -7,12 +7,11 @@ import org.junit.Test
 
 class RuleSequenceTest : QBaseTest() {
     private lateinit var aq: Language
-    private lateinit var repo: GraphRepository
 
     @Before
     fun setup() {
-        aq = Language("Ancient Quenya", "AQ")
-        repo = repoWithQ().with(ce).with(aq)
+        aq = Language(repo, "Ancient Quenya", "AQ")
+        repo.addLanguage(aq)
     }
 
     @Test

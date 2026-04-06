@@ -18,7 +18,7 @@ class PhonemeIteratorTest : QBaseTest() {
 
     @Test
     fun seekToVowel() {
-        val it = PhonemeIterator("lasse", q, repo = null)
+        val it = PhonemeIterator("lasse", q)
         it.seek(SeekTarget(1, v))
         assertEquals("a", it.current)
         it.seek(SeekTarget(2, v))
@@ -48,7 +48,7 @@ class PhonemeIteratorTest : QBaseTest() {
 
     @Test
     fun seekToLastVowel() {
-        val it = PhonemeIterator("lasse", q, repo = null)
+        val it = PhonemeIterator("lasse", q)
         assertTrue(it.seek(SeekTarget(-1, v)))
         assertEquals("e", it.current)
     }
@@ -56,7 +56,7 @@ class PhonemeIteratorTest : QBaseTest() {
     @Test
     fun digraphs() {
         q.phonemes = listOf(phoneme("hy", "voiceless glide"))
-        val it = PhonemeIterator("hyarmen", q, repo = null)
+        val it = PhonemeIterator("hyarmen", q)
         assertEquals("hy", it.current)
     }
 

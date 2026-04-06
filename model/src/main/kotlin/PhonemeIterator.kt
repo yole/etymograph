@@ -73,9 +73,9 @@ class SeekTarget(val index: Int, val phonemeClass: PhonemeClass?, val syllableCl
 
     fun hasTargetRange() = syllableClass != null
 
-    fun targetRange(word: Word, repo: GraphRepository? = null): TargetRange? {
+    fun targetRange(word: Word): TargetRange? {
         val syllables = breakIntoSyllables(word)
-        val matchingSyllables = syllables.filter { syllableClass!!.matches(word, it, repo) }
+        val matchingSyllables = syllables.filter { syllableClass!!.matches(word, it) }
         val syllable = Ordinals.at(matchingSyllables, index) ?: return null
         return TargetRange(syllable.startIndex, syllable.endIndex - syllable.startIndex)
     }
@@ -113,7 +113,6 @@ class SeekTarget(val index: Int, val phonemeClass: PhonemeClass?, val syllableCl
 class PhonemeIterator {
     val language: Language
     private val word: Word?
-    private val repo: GraphRepository?
     private val phonemes: MutableList<String>
     private val accentTypes: MutableList<AccentType?>
     private val origPhonemes: List<String>
@@ -126,7 +125,6 @@ class PhonemeIterator {
 
     constructor(
         word: Word,
-        repo: GraphRepository?,
         resultPhonemic: Boolean? = null,
         mergeDiphthongs: Boolean = false,
         language2: Language? = null
@@ -134,7 +132,6 @@ class PhonemeIterator {
         if (word.isPhonemic) word.text else word.normalizedText.trimEnd('-'),
         word.language,
         language2,
-        repo,
         word,
         word.isPhonemic,
         resultPhonemic,
@@ -145,7 +142,6 @@ class PhonemeIterator {
         text: String,
         language: Language,
         language2: Language? = null,
-        repo: GraphRepository?,
         word: Word? = null,
         phonemic: Boolean = false,
         resultPhonemic: Boolean? = null,
@@ -153,7 +149,6 @@ class PhonemeIterator {
     ) {
         this.language = language
         this.word = word
-        this.repo = repo
 
         val sourcePhonemes = mutableListOf<String>()
         resultPhonemes = mutableListOf()
@@ -192,7 +187,6 @@ class PhonemeIterator {
         resultPhonemes: MutableList<String>,
         accentTypes: MutableList<AccentType?>,
         language: Language,
-        repo: GraphRepository?,
         word: Word?,
         phonemeToResultIndexMap: IntArray,
         touched: BitSet
@@ -202,7 +196,6 @@ class PhonemeIterator {
         this.resultPhonemes = resultPhonemes
         this.accentTypes = accentTypes
         this.language = language
-        this.repo = repo
         this.word = word
         this.phonemeToResultIndexMap = phonemeToResultIndexMap
         this.touched = touched
@@ -221,7 +214,7 @@ class PhonemeIterator {
 
     fun clone(): PhonemeIterator {
         return PhonemeIterator(
-            phonemes, origPhonemes, resultPhonemes, accentTypes, language, repo, word, phonemeToResultIndexMap, touched
+            phonemes, origPhonemes, resultPhonemes, accentTypes, language, word, phonemeToResultIndexMap, touched
         ).also {
             it.phonemeIndex = phonemeIndex
             it.atEnd = atEnd
@@ -294,7 +287,7 @@ class PhonemeIterator {
     fun seek(seekTarget: SeekTarget): Boolean {
         if (seekTarget.hasTargetRange()) {
             if (word == null) return false
-            val range = seekTarget.targetRange(word, repo) ?: return false
+            val range = seekTarget.targetRange(word) ?: return false
             advanceTo(range.startIndex)
             return true
         }
@@ -434,7 +427,7 @@ class PhonemeIterator {
     }
 
     val stressedPhonemeIndex: Int?
-        get() = word?.calcStressedPhonemeIndex(repo)
+        get() = word?.calcStressedPhonemeIndex()
 
     val syllables: List<Syllable>?
         get() = word?.let { breakIntoSyllables(it) }
@@ -442,6 +435,6 @@ class PhonemeIterator {
     val segments: List<WordSegment>?
         get() = word?.segments
 
-    val rootSegment: WordSegment? by lazy { word?.findRootSegment(repo) }
+    val rootSegment: WordSegment? by lazy { word?.findRootSegment() }
 }
 

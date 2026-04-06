@@ -7,19 +7,24 @@ import org.junit.Test
 import ru.yole.etymograph.JsonGraphRepository.Companion.ruleBranchesFromSerializedFormat
 import ru.yole.etymograph.JsonGraphRepository.Companion.ruleToSerializedFormat
 
-class JsonGraphRepositoryTest : QBaseTest() {
+class JsonGraphRepositoryTest {
     lateinit var repo: JsonGraphRepository
+    lateinit var q: Language
+    lateinit var ce: Language
 
     @Before
     fun setup() {
         repo = JsonGraphRepository(null)
+        q = quenya(repo)
         repo.addLanguage(q)
+        ce = Language(repo, "Common Eldarin", "CE")
+        repo.addLanguage(ce)
     }
 
     @Test
     fun deletedWords() {
-        val abc = repo.addWord("abc")
-        val def = repo.addWord("def")
+        val abc = repo.addWord("abc", q, null)
+        val def = repo.addWord("def", q, null)
         repo.deleteWord(abc)
 
         val repo2 = repo.roundtrip()
@@ -33,7 +38,7 @@ class JsonGraphRepositoryTest : QBaseTest() {
             "q-lengthen", q, q,
             Rule.parseLogic("* a > á", q.parseContext()))
 
-        val parseContext = RuleParseContext(repo, q, q) {
+        val parseContext = RuleParseContext(q, q) {
             if (it == "q-lengthen") RuleRef.to(soundRule) else throw RuleParseException("no such rule")
         }
         val applySoundRule = Rule(-1, "lengthen-first-vowel", q, q, Rule.parseLogic("""
@@ -181,7 +186,7 @@ class JsonGraphRepositoryTest : QBaseTest() {
         val repo2 = repo.roundtrip()
         val sequences = repo2.ruleSequencesForLanguage(repo2.languageByShortName("Q")!!)
         assertEquals(1, sequences.size)
-        assertEquals("i-disappears", sequences[0].resolveRules(repo2).single().name)
+        assertEquals("i-disappears", sequences[0].resolveRules().single().name)
     }
 
     private fun setupRuleSequence(): RuleSequence {
@@ -216,9 +221,9 @@ class JsonGraphRepositoryTest : QBaseTest() {
 
     @Test
     fun serializeCompound() {
-        val baseWord = repo.addWord("mann")
-        val prefix = repo.addWord("sæ")
-        val compoundWord = repo.addWord("sæmann")
+        val baseWord = repo.addWord("mann", q, null)
+        val prefix = repo.addWord("sæ", q, null)
+        val compoundWord = repo.addWord("sæmann", q, null)
         repo.createCompound(compoundWord, listOf(prefix, baseWord), headIndex = 1)
         val repo2 = repo.roundtrip()
         val compoundWord2 = repo2.wordsByText(repo2.languageByShortName("Q")!!, "sæmann").single()
@@ -229,8 +234,8 @@ class JsonGraphRepositoryTest : QBaseTest() {
     @Test
     fun serializeParadigmRules() {
         val paradigm = repo.addParadigm("Noun", q, listOf("N"))
-        val preRule = repo.rule("word ends with 'a':\n- change ending to ''", name = "q-pre")
-        val postRule = repo.rule("word ends with 'oo':\n - change ending to 'o'", name = "q-post")
+        val preRule = repo.rule("word ends with 'a':\n- change ending to ''", name = "q-pre", fromLanguage = q)
+        val postRule = repo.rule("word ends with 'oo':\n - change ending to 'o'", name = "q-post", fromLanguage = q)
         paradigm.preRule = preRule
         paradigm.postRule = postRule
         val repo2 = repo.roundtrip()
@@ -242,8 +247,8 @@ class JsonGraphRepositoryTest : QBaseTest() {
     @Test
     fun serializeLinkRuleSequence() {
         val seq = setupRuleSequence()
-        val lai = repo.addWord("lai", language = ce)
-        val la = repo.addWord("la", language = q)
+        val lai = repo.addWord("lai", language = ce, gloss = null)
+        val la = repo.addWord("la", language = q, gloss = null)
         val link = repo.addLink(la, lai, Link.Origin)
         repo.applyRuleSequence(link, seq)
         val repo2 = repo.roundtrip()
@@ -254,7 +259,6 @@ class JsonGraphRepositoryTest : QBaseTest() {
 
     @Test
     fun serializeProtoLanguage() {
-        repo.addLanguage(ce)
         val qLang = repo.languageByShortName("Q")!!
         qLang.protoLanguage = ce
 
@@ -274,7 +278,7 @@ class JsonGraphRepositoryTest : QBaseTest() {
 
     @Test
     fun serializeSyllabographic() {
-        val ht = Language("Hittite", "Ht")
+        val ht = Language(repo, "Hittite", "Ht")
         repo.addLanguage(ht)
         val word = repo.addWord("pé-ra-an", ht, gloss = null, syllabographic = true)
         val repo2 = repo.roundtrip()
@@ -284,7 +288,7 @@ class JsonGraphRepositoryTest : QBaseTest() {
 
     @Test
     fun serializeLanguageSyllabographic() {
-        val ht = Language("Hittite", "Ht")
+        val ht = Language(repo, "Hittite", "Ht")
         ht.syllabographic = true
         repo.addLanguage(ht)
         val repo2 = repo.roundtrip()

@@ -5,17 +5,10 @@ import org.junit.Before
 import org.junit.Test
 
 class SegmentTest : QBaseTest() {
-    lateinit var repo: InMemoryGraphRepository
-
-    @Before
-    fun setup() {
-        repo = InMemoryGraphRepository()
-    }
-
     @Test
     fun segment() {
         val rule = parseRule(q, q, "- append 'llo'")
-        val result = rule.apply(q.word("hresta"), emptyRepo)
+        val result = rule.apply(q.word("hresta"))
         assertEquals(1, result.segments!!.size)
         val segment = result.segments!![0]
         assertEquals(6, segment.firstCharacter)
@@ -26,7 +19,7 @@ class SegmentTest : QBaseTest() {
     @Test
     fun segmentAppend() {
         val rule = parseRule(q, q, "- append 'llo'")
-        val result = rule.apply(q.word("hresta"), emptyRepo)
+        val result = rule.apply(q.word("hresta"))
         assertEquals(1, result.segments!!.size)
         val segment = result.segments!![0]
         assertEquals(6, segment.firstCharacter)
@@ -38,7 +31,7 @@ class SegmentTest : QBaseTest() {
     fun multipleSegments() {
         val rule1 = parseRule(q, q, "- append 'llo'")
         val rule2 = parseRule(q, q, "- append 's'")
-        val result = rule2.apply(rule1.apply(q.word("hresta"), emptyRepo), emptyRepo)
+        val result = rule2.apply(rule1.apply(q.word("hresta")))
         assertEquals(2, result.segments!!.size)
         /*
         val segment = result.segments!![0]
@@ -57,7 +50,7 @@ class SegmentTest : QBaseTest() {
         val restored = repo.restoreSegments(hrestallo)
         assertEquals(1, restored.segments!!.size)
         assertEquals("hresta-llo", restored.segmentedText())
-        assertEquals("hresta-ABL", restored.getOrComputeGloss(repo))
+        assertEquals("hresta-ABL", restored.getOrComputeGloss())
     }
 
     @Test
@@ -67,7 +60,7 @@ class SegmentTest : QBaseTest() {
         val rule = parseRule(q, q, "word ends with 'a':\n- no change", addedCategories = ".ABL")
         repo.addLink(hresta2, hresta, Link.Derived, listOf(rule))
         val restored = repo.restoreSegments(hresta2)
-        assertEquals("hresta.ABL", restored.getOrComputeGloss(repo))
+        assertEquals("hresta.ABL", restored.getOrComputeGloss())
     }
 
     @Test
@@ -79,7 +72,7 @@ class SegmentTest : QBaseTest() {
         hresta2.gloss = null
         hresta.gloss = null
         val restored = repo.restoreSegments(hresta2)
-        assertEquals("Hresta.ABL", restored.getOrComputeGloss(repo))
+        assertEquals("Hresta.ABL", restored.getOrComputeGloss())
     }
 
     @Test
@@ -89,7 +82,7 @@ class SegmentTest : QBaseTest() {
         val rule = parseRule(q, q, "word ends with 'i':\n- no change", addedCategories = ".ABL")
         repo.addLink(hresta2, hresta, Link.Derived)
         val restored = repo.restoreSegments(hresta2)
-        assertEquals("hresta.ABL", restored.getOrComputeGloss(repo))
+        assertEquals("hresta.ABL", restored.getOrComputeGloss())
     }
 
     @Test
@@ -115,7 +108,7 @@ class SegmentTest : QBaseTest() {
             - apply rule 'q-nom-pl'
             - append 'on'
             """.trimIndent())
-        val result = qGenPl.apply(q.word("alda"), repo)
+        val result = qGenPl.apply(q.word("alda"))
         assertEquals(1, result.segments!!.size)
         val segment = result.segments!![0]
         assertEquals(4, segment.firstCharacter)
@@ -132,7 +125,7 @@ class SegmentTest : QBaseTest() {
             - apply rule 'q-all'
             - append 'r'
         """.trimIndent())
-        val result = qAllPpl.apply(q.word("falma"), repo)
+        val result = qAllPpl.apply(q.word("falma"))
         assertEquals("falmalinnar", result.text)
         assertEquals(1, result.segments!!.size)
     }
@@ -141,7 +134,7 @@ class SegmentTest : QBaseTest() {
     fun deleteCharacterAdjustSegments() {
         repo.rule("* e > 0", name = "oe-syncope")
         val oeAcc = repo.rule("- append 'a'\n- apply rule 'oe-syncope'\n")
-        val result = oeAcc.apply(q.word("swingel"), repo)
+        val result = oeAcc.apply(q.word("swingel"))
         assertEquals("swingla", result.text)
         assertEquals(1, result.segments!!.size)
         assertEquals(6, result.segments!![0].firstCharacter)
@@ -152,7 +145,7 @@ class SegmentTest : QBaseTest() {
     fun deleteCharacterAdjustSegmentsSpe() {
         repo.rule("* V > 0", name = "oe-syncope")
         val oeAcc = repo.rule("- append 'es'\n- apply sound rule 'oe-syncope' to second to last vowel\n")
-        val result = oeAcc.apply(q.word("biscop"), repo)
+        val result = oeAcc.apply(q.word("biscop"))
         assertEquals("biscpes", result.text)
         assertEquals(1, result.segments!!.size)
         assertEquals(5, result.segments!![0].firstCharacter)
@@ -162,7 +155,7 @@ class SegmentTest : QBaseTest() {
     @Test
     fun insertCharacterAdjustSegmentsSpe() {
         val breaking = repo.rule("* i > io", name = "oe-breaking")
-        val result = breaking.apply(q.word("lirnojan").also { it.segments = listOf(WordSegment(4, 4)) }, repo)
+        val result = breaking.apply(q.word("lirnojan").also { it.segments = listOf(WordSegment(4, 4)) })
         assertEquals("liornojan", result.text)
         assertEquals(1, result.segments!!.size)
         assertEquals(5, result.segments!![0].firstCharacter)
@@ -173,7 +166,7 @@ class SegmentTest : QBaseTest() {
     fun deleteCharacterAdjustSegmentsLongPhoneme() {
         repo.rule("* V > 0", name = "oe-syncope")
         val oeAcc = repo.rule("- append 'es'\n- apply sound rule 'oe-syncope' to second to last vowel\n")
-        val result = oeAcc.apply(ce.word("bikhop"), repo)
+        val result = oeAcc.apply(ce.word("bikhop"))
         assertEquals("bikhpes", result.text)
         assertEquals(1, result.segments!!.size)
         assertEquals(5, result.segments!![0].firstCharacter)
@@ -185,7 +178,7 @@ class SegmentTest : QBaseTest() {
         repo.rule("* ć > c", name = "oe-depalatalize")
         repo.rule("* e > 0\n= apply sound rule 'oe-depalatalize' to previous sound", name = "oe-syncope")
         val oeAcc = repo.rule("- append 'a'\n- apply rule 'oe-syncope'\n")
-        val result = oeAcc.apply(q.word("swingel"), repo)
+        val result = oeAcc.apply(q.word("swingel"))
         assertEquals("swingla", result.text)
         assertEquals(1, result.segments!!.size)
         assertEquals(6, result.segments!![0].firstCharacter)
@@ -196,7 +189,7 @@ class SegmentTest : QBaseTest() {
     fun normalizeSegmentsIntersecting() {
         repo.rule("word ends with 'a':\n- change ending to 'r'", name = "on-3sg")
         val onMid = repo.rule("- apply rule 'on-3sg'\nword ends with 'r':\n- change ending to 'sk'")
-        val result = onMid.apply(q.word("dreifa"), repo)
+        val result = onMid.apply(q.word("dreifa"))
         assertEquals(1, result.segments!!.size)
     }
 
@@ -205,7 +198,7 @@ class SegmentTest : QBaseTest() {
         repo.rule("* V > 0 if sound is morpheme-initial and previous sound is vowel",
             name = "on-article-vowel-deletion")
         val onDefDatDg = repo.rule("- append 'inu'\n= apply rule 'on-article-vowel-deletion'")
-        val result = onDefDatDg.apply(q.word("horni"), repo)
+        val result = onDefDatDg.apply(q.word("horni"))
         assertEquals(1, result.segments!!.size)
     }
 
@@ -213,7 +206,7 @@ class SegmentTest : QBaseTest() {
     fun segmentDisappears() {
         repo.rule("* a > 0 / a_", name = "on-vowel-assimilation")
         val onGenPl = repo.rule("- append 'a'\n= apply rule 'on-vowel-assimilation'")
-        val result = onGenPl.apply(q.word("a"), repo)
+        val result = onGenPl.apply(q.word("a"))
         assertEquals(0, result.segments!!.size)
     }
 }

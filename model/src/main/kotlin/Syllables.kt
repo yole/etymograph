@@ -7,26 +7,26 @@ class Syllable(val startIndex: Int, val endIndex: Int, val vowelIndex: Int, val 
 data class MutableSyllable(var startIndex: Int, var endIndex: Int, val vowelIndex: Int, var closed: Boolean)
 
 abstract class SyllableClass(val name: String) {
-    abstract fun matches(word: Word?, syllable: Syllable, repo: GraphRepository? = null): Boolean
+    abstract fun matches(word: Word?, syllable: Syllable): Boolean
 
     override fun toString(): String = name
 
     companion object {
         val syllable = object : SyllableClass("syllable") {
-            override fun matches(word: Word?, syllable: Syllable, repo: GraphRepository?) = true
+            override fun matches(word: Word?, syllable: Syllable) = true
         }
 
         val stressedSyllable = object : SyllableClass("stressed syllable") {
-            override fun matches(word: Word?, syllable: Syllable, repo: GraphRepository?): Boolean {
-                val stress = word?.calcStressedPhonemeIndex(null) ?: return false
+            override fun matches(word: Word?, syllable: Syllable): Boolean {
+                val stress = word?.calcStressedPhonemeIndex() ?: return false
                 return stress in syllable.startIndex..<syllable.endIndex
             }
         }
 
         val rootSyllable = object : SyllableClass("root syllable") {
-            override fun matches(word: Word?, syllable: Syllable, repo: GraphRepository?): Boolean {
+            override fun matches(word: Word?, syllable: Syllable): Boolean {
                 if (word == null) return false
-                val rootSegment = word.findRootSegment(repo) ?: return true
+                val rootSegment = word.findRootSegment() ?: return true
                 return syllable.startIndex >= rootSegment.firstCharacter
             }
         }

@@ -36,9 +36,9 @@ data class DictionaryWord(
     val compoundComponents: MutableList<DictionaryWord> = mutableListOf()
 )
 
-fun augmentWithDictionary(repo: GraphRepository, language: Language, dictionary: Dictionary) {
-    for (word in repo.dictionaryWords(language)) {
-        val result = augmentWordWithDictionary(repo, dictionary, word)
+fun augmentWithDictionary(language: Language, dictionary: Dictionary) {
+    for (word in language.graph.dictionaryWords(language)) {
+        val result = augmentWordWithDictionary(dictionary, word)
         if (result.message != null) {
             println(result.message)
         }
@@ -49,16 +49,16 @@ data class AugmentVariant(val text: String, val disambiguation: String?)
 data class AugmentResult(val message: String?, val variants: List<AugmentVariant>)
 
 fun augmentWordWithDictionary(
-    repo: GraphRepository, dictionary: Dictionary, word: Word,
+    dictionary: Dictionary, word: Word,
     disambiguation: String? = null
 ): AugmentResult {
-    val lookupResult = dictionary.lookup(repo, word.language, word.text, disambiguation)
+    val lookupResult = dictionary.lookup(word.graph, word.language, word.text, disambiguation)
     if (lookupResult.result.isEmpty()) {
         return AugmentResult("Found no matching word for ${word.text}", emptyList())
     } else if (lookupResult.result.size > 1) {
         val bestMatch = selectLookupResult(word, lookupResult, disambiguation)
         if (bestMatch != null) {
-            augmentWord(repo, word, bestMatch)
+            augmentWord(word, bestMatch)
         } else {
             return AugmentResult("Found multiple matching words for ${word.text}",
                 lookupResult.result.mapIndexed { index, it ->
@@ -67,7 +67,7 @@ fun augmentWordWithDictionary(
                 })
         }
     } else {
-        augmentWord(repo, word, lookupResult.result.single())
+        augmentWord(word, lookupResult.result.single())
     }
     return AugmentResult(
         lookupResult.messages.joinToString("\n").takeIf { it.isNotEmpty() },
@@ -132,7 +132,7 @@ fun findOrCreateWordFromDictionary(
     )
 }
 
-fun augmentWord(repo: GraphRepository, word: Word, dictionaryWord: DictionaryWord) {
+fun augmentWord(word: Word, dictionaryWord: DictionaryWord) {
     if (word.pos == null && dictionaryWord.pos != null) {
         word.pos = dictionaryWord.pos
     }
@@ -155,11 +155,11 @@ fun augmentWord(repo: GraphRepository, word: Word, dictionaryWord: DictionaryWor
     }
 
     for (relatedDictionaryWord in dictionaryWord.relatedWords) {
-        if (repo.getLinksFrom(word).filter { it.type == relatedDictionaryWord.linkType }.isEmpty()) {
-            val relatedWord = findOrCreateWordFromDictionary(repo, relatedDictionaryWord.relatedWord)
+        if (word.graph.getLinksFrom(word).filter { it.type == relatedDictionaryWord.linkType }.isEmpty()) {
+            val relatedWord = findOrCreateWordFromDictionary(word.graph, relatedDictionaryWord.relatedWord)
             var rules = emptyList<Rule>()
             if (relatedDictionaryWord.linkDetails.isNotEmpty() && relatedDictionaryWord.linkType == Link.Derived) {
-                val rule = findMatchingRule(repo, word, relatedDictionaryWord.linkDetails.toSet())
+                val rule = findMatchingRule(word, relatedDictionaryWord.linkDetails.toSet())
                 if (rule != null) {
                     rules = listOf(rule)
                 }
@@ -169,14 +169,14 @@ fun augmentWord(repo: GraphRepository, word: Word, dictionaryWord: DictionaryWor
                 word.gloss = null
             }
 
-            repo.addLink(word, relatedWord, relatedDictionaryWord.linkType, rules)
+            word.graph.addLink(word, relatedWord, relatedDictionaryWord.linkType, rules)
         }
     }
 
-    if (repo.findCompoundsByCompoundWord(word).isEmpty() && dictionaryWord.compoundComponents.isNotEmpty()) {
+    if (word.graph.findCompoundsByCompoundWord(word).isEmpty() && dictionaryWord.compoundComponents.isNotEmpty()) {
         val componentWords = dictionaryWord.compoundComponents.map {
-            findOrCreateWordFromDictionary(repo, it)
+            findOrCreateWordFromDictionary(word.graph, it)
         }
-        repo.createCompound(word, componentWords)
+        word.graph.createCompound(word, componentWords)
     }
 }

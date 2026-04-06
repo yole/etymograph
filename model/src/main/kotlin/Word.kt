@@ -84,6 +84,7 @@ class Word(
     var stressedPhonemeIndex: Int = -1
     var accentType: AccentType? = null
     var explicitStress: Boolean = false
+    val graph: GraphRepository get() = language.graph
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -127,10 +128,10 @@ class Word(
         if (isPhonemic) return this
         val (phonemicText, newSegments) = language.cachePhonemicText(text, segments) {
             val pronunciationRule = language.pronunciationRule?.resolve()
-            val it = PhonemeIterator(this, null, resultPhonemic = true)
+            val it = PhonemeIterator(this, resultPhonemic = true)
             if (pronunciationRule != null) {
                 while (true) {
-                    (pronunciationRule.logic as SpeRuleLogic).applyToPhoneme(this, it, InMemoryGraphRepository.EMPTY)
+                    (pronunciationRule.logic as SpeRuleLogic).applyToPhoneme(this, it)
                     if (!it.advance()) break
                 }
             }
@@ -138,7 +139,7 @@ class Word(
         }
 
         if (language.accentTypes.isNotEmpty()) {
-            calcStressedPhonemeIndex(null)
+            calcStressedPhonemeIndex()
         }
         return derive(phonemicText, id = id, phonemic = true, segments = newSegments,
             newAccentType = accentType, stressIndex = if (accentType != null) stressedPhonemeIndex else null)
@@ -149,12 +150,12 @@ class Word(
         val orthoRule = language.orthographyRule?.resolve()
         var wordSegments = segments
         val orthoText: String = if (isPhonemic) {
-            var refIt = referenceWord?.let { PhonemeIterator(it, null) }
-            val it = PhonemeIterator(this, null, resultPhonemic = false)
+            var refIt = referenceWord?.let { PhonemeIterator(it) }
+            val it = PhonemeIterator(this, resultPhonemic = false)
             while (true) {
                 if (refIt?.current != it.current) {
                     if (orthoRule != null) {
-                        (orthoRule.logic as SpeRuleLogic).applyToPhoneme(this, it, InMemoryGraphRepository.EMPTY)
+                        (orthoRule.logic as SpeRuleLogic).applyToPhoneme(this, it)
                     }
                 }
                 val accent = accentType.takeIf { _ -> it.index == stressedPhonemeIndex }
@@ -227,7 +228,7 @@ class Word(
                }
                else if (keepStress) {
                     if (language.accentTypes.isNotEmpty()) {
-                        calcStressedPhonemeIndex(null)
+                        calcStressedPhonemeIndex()
                     }
                     it.stressedPhonemeIndex = stressedPhonemeIndex
                     it.explicitStress = explicitStress
@@ -238,10 +239,10 @@ class Word(
            }
     }
 
-    fun calcStressedPhonemeIndex(repo: GraphRepository?): Int {
+    fun calcStressedPhonemeIndex(): Int {
         if (stressedPhonemeIndex < 0) {
             if (language.accentTypes.isNotEmpty()) {
-                val it = PhonemeIterator(this, repo)
+                val it = PhonemeIterator(this)
                 while (!it.atEnd()) {
                     if (it.currentAccentType != null) {
                         stressedPhonemeIndex = it.index
@@ -252,7 +253,7 @@ class Word(
                 }
             }
             else {
-                val wordWithStress = language.stressRule?.resolve()?.apply(this, repo ?: InMemoryGraphRepository.EMPTY)
+                val wordWithStress = language.stressRule?.resolve()?.apply(this)
                 if (wordWithStress != null) {
                     stressedPhonemeIndex = wordWithStress.stressedPhonemeIndex
                 }
@@ -276,34 +277,34 @@ class Word(
             field = value
         }
 
-    fun baseWord(graph: GraphRepository): Word? {
-        getTransliterationOf(graph)?.let { return it }
-        getVariationOf(graph)?.let { return it }
-        val derivation = baseWordLink(graph)
+    fun baseWord(): Word? {
+        getTransliterationOf()?.let { return it }
+        getVariationOf()?.let { return it }
+        val derivation = baseWordLink()
         if (derivation != null) {
             return derivation.toEntity as? Word
         }
         return null
     }
 
-    fun getOrComputeGloss(graph: GraphRepository): String? {
+    fun getOrComputeGloss(): String? {
         gloss?.let { return it }
-        getTransliterationOf(graph)?.let { return it.getOrComputeGloss(graph) }
+        getTransliterationOf()?.let { return it.getOrComputeGloss() }
 
-        val variationOf = getVariationOf(graph)
+        val variationOf = getVariationOf()
         if (variationOf != null) {
-            return variationOf.getOrComputeGloss(graph)
+            return variationOf.getOrComputeGloss()
         }
         val compound = graph.findCompoundsByCompoundWord(this).firstOrNull()
         if (compound != null) {
             return compound.components.joinToString("-") {
-                it.getOrComputeGloss(graph)?.substringBefore(", ")?.removePrefix("-")?.removeSuffix("-") ?: "?"
+                it.getOrComputeGloss()?.substringBefore(", ")?.removePrefix("-")?.removeSuffix("-") ?: "?"
             }
         }
-        val derivation = baseWordLink(graph)
+        val derivation = baseWordLink()
         if (derivation != null) {
             if (derivation.rules.any { it.addedCategories != null }) {
-                (derivation.toEntity as Word).getOrComputeGloss(graph)?.let { fromGloss ->
+                (derivation.toEntity as Word).getOrComputeGloss()?.let { fromGloss ->
                     return derivation.rules.fold(fromGloss) { gloss, rule ->
                         val segment = segments?.any { it.sourceRule == rule }
                         rule.applyCategories(gloss, segment != null)
@@ -331,21 +332,21 @@ class Word(
                     null
                 )
 
-    fun getVariationOf(graph: GraphRepository): Word? =
+    fun getVariationOf(): Word? =
         graph.getLinksFrom(this).singleOrNull { it.type == Link.Variation && it.toEntity is Word }?.toEntity as Word?
 
-    fun getTransliterationOf(graph: GraphRepository): Word? =
+    fun getTransliterationOf(): Word? =
         graph.getLinksFrom(this).singleOrNull { it.type == Link.Transcription && it.toEntity is Word }?.toEntity as Word?
 
-    fun getTextVariations(graph: GraphRepository): List<String> {
-        val baseWord = getVariationOf(graph) ?: this
+    fun getTextVariations(): List<String> {
+        val baseWord = getVariationOf() ?: this
         val variations = graph.getLinksTo(baseWord)
             .filter { it.type == Link.Variation }
             .mapNotNull { (it.fromEntity as? Word)?.text }
         return listOf(baseWord.text) + variations
     }
 
-    fun baseWordLink(graph: GraphRepository): Link? =
+    fun baseWordLink(): Link? =
         graph.getLinksFrom(this).singleOrNull { it.type == Link.Derived && it.toEntity is Word }
 
     fun segmentedText(): String {
@@ -370,8 +371,8 @@ class Word(
         }
     }
 
-    fun grammaticalCategorySuffix(graph: GraphRepository): String? {
-        val gloss = getOrComputeGloss(graph)
+    fun grammaticalCategorySuffix(): String? {
+        val gloss = getOrComputeGloss()
         val suffix = gloss?.substringAfterLast('.', "")
         return suffix.takeIf { !it.isNullOrEmpty() && it.all { c -> c.isUpperCase() || c.isDigit() } }
     }
@@ -381,23 +382,23 @@ class Word(
         return this
     }
 
-    fun remapViaCharacterIndex(index: Int, toLanguage: Language, graph: GraphRepository): Int {
+    fun remapViaCharacterIndex(index: Int, toLanguage: Language): Int {
         if (language == toLanguage || index < 0) {
             return index
         }
-        val fromIt = PhonemeIterator(this, graph)
+        val fromIt = PhonemeIterator(this)
         val fromIndex = fromIt.phonemeToCharacterIndex(index)
-        val toIt = PhonemeIterator(text, toLanguage, repo = graph)
+        val toIt = PhonemeIterator(text, toLanguage)
         return toIt.characterToPhonemeIndex(fromIndex)
     }
 
-    fun getOrComputePOS(graph: GraphRepository): String? {
+    fun getOrComputePOS(): String? {
         if (pos != null) {
             return pos
         }
-        val variationOf = getVariationOf(graph)
+        val variationOf = getVariationOf()
         if (variationOf != null) {
-            return variationOf.getOrComputePOS(graph)
+            return variationOf.getOrComputePOS()
         }
         for (compound in graph.findCompoundsByCompoundWord(this)) {
             compound.headComponent()?.pos?.let { return it }
@@ -405,9 +406,9 @@ class Word(
         return null
     }
 
-    fun findRootSegment(graph: GraphRepository?): WordSegment? {
+    fun findRootSegment(): WordSegment? {
         val orthoWord = asOrthographic()
-        val segments = (graph?.restoreSegments(orthoWord) ?: orthoWord).segments
+        val segments = language.graph.restoreSegments(orthoWord).segments
         return segments?.firstOrNull {
             it.sourceRule == null &&
                     (it.sourceWord == null ||
@@ -456,10 +457,10 @@ data class Attestation(val word: Word, val corpusText: CorpusText)
 
 data class StressData(val index: Int, val length: Int)
 
-fun Word.calculateStress(graph: GraphRepository): StressData? {
-    val index = calcStressedPhonemeIndex(graph)
+fun Word.calculateStress(): StressData? {
+    val index = calcStressedPhonemeIndex()
     return if (index >= 0) {
-        val phonemes = PhonemeIterator(this, graph)
+        val phonemes = PhonemeIterator(this)
         phonemes.advanceTo(index)
         val isDiphthong = PhonemeClass.diphthong.matchesCurrent(phonemes)
         StressData(phonemes.phonemeToCharacterIndex(index), (if (isDiphthong) 2 else 1))

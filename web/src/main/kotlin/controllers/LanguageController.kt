@@ -191,7 +191,7 @@ class LanguageController {
     fun addLanguage(repo: GraphRepository, @RequestBody params: UpdateLanguageParameters): LanguageViewModel {
         val name = params.name.takeIf { !it.isNullOrBlank() } ?: badRequest("Language name must be provided")
         val shortName = params.shortName.takeIf { !it.isNullOrBlank() } ?: badRequest("Language short name must be provided")
-        val language = Language(name, shortName)
+        val language = Language(repo, name, shortName)
         repo.addLanguage(language)
         updateLanguageDetails(repo, language, params)
         return language.toViewModel(repo)

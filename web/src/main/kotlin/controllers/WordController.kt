@@ -30,7 +30,7 @@ data class ParseCandidateViewModel(
     val wordId: Int?
 )
 
-fun Word.toRefViewModel(graph: GraphRepository): WordRefViewModel {
+fun Word.toRefViewModel(): WordRefViewModel {
     val urlKey = urlKey(language, text, syllabographic)
     return WordRefViewModel(
         id, text,
@@ -38,7 +38,7 @@ fun Word.toRefViewModel(graph: GraphRepository): WordRefViewModel {
         syllabogramSequence,
         language.shortName,
         if (reconstructed) "pre-" + language.shortName else language.shortName,
-        getOrComputeGloss(graph),
+        getOrComputeGloss(),
         graph.isHomonym(this) || urlKey != null,
         reconstructed || language.reconstructed
     )
@@ -148,15 +148,15 @@ class WordController(val dictionaryService: DictionaryService) {
         if (words.isEmpty())
             notFound("No word with text $text")
 
-        return words.map { it.toViewModel(repo) }
+        return words.map { it.toViewModel() }
     }
 
     @GetMapping("/{graph}/word/{lang}/{text}/{id}")
     fun singleWordJson(repo: GraphRepository, @PathVariable lang: String, @PathVariable text: String, @PathVariable id: Int): WordViewModel {
-        return repo.resolveWord(id).toViewModel(repo)
+        return repo.resolveWord(id).toViewModel()
     }
 
-    private fun Word.toViewModel(graph: GraphRepository): WordViewModel {
+    private fun Word.toViewModel(): WordViewModel {
         val linksFrom = graph.getLinksFrom(this).groupBy { it.type }
         val linksTo = graph.getLinksTo(this).groupBy { it.type }
         val ruleLinks = (linksFrom.values.flatten() + linksTo.values.flatten())
@@ -164,23 +164,23 @@ class WordController(val dictionaryService: DictionaryService) {
         val morphemeReferences = graph.findRulesReferencingMorpheme(this)
         val attestations = graph.findAttestations(this)
 
-        val stressData = calculateStress(graph)
+        val stressData = calculateStress()
         val textWithExplicitStress = if (explicitStress && stressData != null)
             text.substring(0, stressData.index) + explicitStressMark + text.substring(stressData.index)
         else
             text
 
-        val computedGloss = getOrComputeGloss(graph)
+        val computedGloss = getOrComputeGloss()
         val compoundsByComponent = graph.findCompoundsByComponent(this)
         val compoundsByCompoundWord = graph.findCompoundsByCompoundWord(this)
 
-        val effectivePOS = getOrComputePOS(graph)
-        val hasParadigms = baseWordLink(graph) == null && graph.paradigmsForLanguage(language).any { effectivePOS in it.pos }
+        val effectivePOS = getOrComputePOS()
+        val hasParadigms = baseWordLink() == null && graph.paradigmsForLanguage(language).any { effectivePOS in it.pos }
 
-        val baseWord = baseWord(graph)
+        val baseWord = baseWord()
         val consistencyIssues = buildList {
             for (checker in consistencyCheckers) {
-                checker.checkWord(graph, this@toViewModel) { issue ->
+                checker.checkWord(this@toViewModel) { issue ->
                     add(issue.description)
                 }
             }
@@ -240,12 +240,12 @@ class WordController(val dictionaryService: DictionaryService) {
                         }
                     )
             },
-            compoundsByComponent.filter { !it.isDerivation() }.map { it.compoundWord.toRefViewModel(graph) },
-            compoundsByComponent.filter { it.isDerivation() }.map { it.compoundWord.toRefViewModel(graph) },
+            compoundsByComponent.filter { !it.isDerivation() }.map { it.compoundWord.toRefViewModel() },
+            compoundsByComponent.filter { it.isDerivation() }.map { it.compoundWord.toRefViewModel() },
             compoundsByCompoundWord.map { compound ->
                 CompoundComponentsViewModel(
                     compound.id,
-                    compound.components.map { it.toRefViewModel(graph) },
+                    compound.components.map { it.toRefViewModel() },
                     compound.headIndex,
                     compound.isDerivation(),
                     compound.source.toViewModel(graph),
@@ -269,7 +269,7 @@ class WordController(val dictionaryService: DictionaryService) {
                 WordRuleSequenceViewModel(it.name, it.id)
             },
             consistencyIssues,
-            baseWord?.toViewModel(graph)
+            baseWord?.toViewModel()
         )
     }
 
@@ -326,14 +326,14 @@ class WordController(val dictionaryService: DictionaryService) {
             word.stressedPhonemeIndex = stressedPhonemeIndex
             word.explicitStress = true
         }
-        return word.toViewModel(repo)
+        return word.toViewModel()
     }
 
     private fun parseStress(text: String, repo: GraphRepository, language: Language): Pair<String, Int?> {
         val explicitStressIndex = text.indexOf(explicitStressMark)
         if (explicitStressIndex >= 0) {
             val textWithoutStress = text.removeRange(explicitStressIndex, explicitStressIndex + 1)
-            val phonemes = PhonemeIterator(textWithoutStress, language, repo = repo)
+            val phonemes = PhonemeIterator(textWithoutStress, language)
             return textWithoutStress to phonemes.characterToPhonemeIndex(explicitStressIndex)
         }
         return text to null
@@ -377,7 +377,7 @@ class WordController(val dictionaryService: DictionaryService) {
         }
         word.source = parseSourceRefs(repo, params.source)
         word.notes = params.notes.nullize()
-        return word.toViewModel(repo)
+        return word.toViewModel()
     }
 
     @PostMapping("/{graph}/word/{id}/delete", consumes = ["application/json"])
@@ -409,13 +409,13 @@ class WordController(val dictionaryService: DictionaryService) {
     @GetMapping("/{graph}/word/{id}/paradigms")
     fun wordParadigms(repo: GraphRepository, @PathVariable id: Int): WordParadigmListModel {
         val word = repo.resolveWord(id)
-        val pos = word.getOrComputePOS(repo)
+        val pos = word.getOrComputePOS()
         val paradigmModels = repo.paradigmsForLanguage(word.language).filter { pos in it.pos }.map { paradigm ->
-            val generatedParadigm = paradigm.generate(word, repo)
+            val generatedParadigm = paradigm.generate(word)
             val substitutedParadigm = generatedParadigm.map { colWords ->
                 colWords.map { cellWords ->
                     cellWords?.map { alt ->
-                        WordParadigmWordModel(alt.word.toRefViewModel(repo), alt.rule?.id)
+                        WordParadigmWordModel(alt.word.toRefViewModel(), alt.rule?.id)
                     } ?: emptyList()
                 }
             }
@@ -428,7 +428,7 @@ class WordController(val dictionaryService: DictionaryService) {
         }
         return WordParadigmListModel(
             word.language.shortName, word.language.name,
-            word.toRefViewModel(repo),
+            word.toRefViewModel(),
             paradigmModels
         )
     }
@@ -466,7 +466,7 @@ class WordController(val dictionaryService: DictionaryService) {
         val word = repo.resolveWord(id)
         val sequence = repo.resolveRuleSequence(params.sequenceId)
         val newWord = repo.deriveThroughRuleSequence(word, sequence)
-        return (newWord ?: word).toViewModel(repo)
+        return (newWord ?: word).toViewModel()
     }
 
     data class ParseCandidatesViewModel(
@@ -499,7 +499,7 @@ class WordController(val dictionaryService: DictionaryService) {
     fun lookup(repo: GraphRepository, @PathVariable id: Int, @RequestBody params: LookupParameters): LookupResultViewModel {
         val word = repo.resolveWord(id)
         val dictionary = dictionaryService.createDictionary(params.dictionaryId)
-        val status = augmentWordWithDictionary(repo, dictionary, word, params.disambiguation)
+        val status = augmentWordWithDictionary(dictionary, word, params.disambiguation)
         return LookupResultViewModel(
             status.message,
             status.variants.map { LookupVariantViewModel(it.text, it.disambiguation) }
@@ -514,7 +514,7 @@ class WordController(val dictionaryService: DictionaryService) {
         val word = repo.resolveWord(id)
         val compound = params.compoundId?.let { repo.resolveCompound(it) }
         val suggestions = repo.suggestCompound(word, compound)
-        return SuggestCompoundViewModel(suggestions.map { it.toRefViewModel(repo) })
+        return SuggestCompoundViewModel(suggestions.map { it.toRefViewModel() })
     }
 
     @PostMapping("/{graph}/word/{id}/suggestTranscription")
@@ -568,7 +568,7 @@ class WordController(val dictionaryService: DictionaryService) {
             }
 
             val word = repo.findOrAddWord(text, language, gloss, source = source, reconstructed = reconstructed)
-            resultWords.add(word.toRefViewModel(repo))
+            resultWords.add(word.toRefViewModel())
             lastWord?.let {
                 val existingLink = repo.findLink(word, it, Link.Origin)
                 if (existingLink == null) {
@@ -609,7 +609,7 @@ fun linkToViewModel(
     else
         emptyList()
     return WordController.LinkWordViewModel(
-        toWord.toRefViewModel(graph),
+        toWord.toRefViewModel(),
         link.rules.map { it.id },
         link.rules.map { it.name },
         steps,
@@ -633,7 +633,7 @@ fun buildIntermediateSteps(graph: GraphRepository, link: Link, traceMatchedBranc
     val result = mutableListOf<RuleStepData>()
     val trace = if (traceMatchedBranches) RuleTrace() else null
     for (rule in link.rules) {
-        val newWord = rule.apply(word, graph, trace)
+        val newWord = rule.apply(word, trace)
         val matchedBranches = trace?.findMatchedBranches(rule, word)?.ifEmpty {
             trace.findMatchedBranches(rule, newWord)
         }

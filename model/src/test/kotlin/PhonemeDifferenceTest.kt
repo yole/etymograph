@@ -5,11 +5,13 @@ import org.junit.Before
 import org.junit.Test
 
 class PhonemeDifferenceTest {
+    private lateinit var repo: InMemoryGraphRepository
     private lateinit var oe: Language
 
     @Before
     fun setup() {
-        oe = Language("Old English", "OE")
+        repo = InMemoryGraphRepository()
+        oe = Language(repo, "Old English", "OE")
         oe.phonemes = listOf(
             phoneme(listOf("þ", "ð"))
         )

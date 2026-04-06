@@ -6,7 +6,6 @@ import org.junit.Test
 class LinkTest : QBaseTest() {
     @Test
     fun testDuplicateLink() {
-        val repo = repoWithQ()
         val word1 = repo.addWord("elen")
         val word2 = repo.addWord("sila")
         repo.addLink(word1, word2, Link.Related)
@@ -17,7 +16,6 @@ class LinkTest : QBaseTest() {
 
     @Test
     fun testLinkCycle() {
-        val repo = repoWithQ()
         val word1 = repo.addWord("elen")
         val word2 = repo.addWord("sila")
         val word3 = repo.addWord("lumenn")
