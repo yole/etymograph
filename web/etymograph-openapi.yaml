@@ -3422,9 +3422,12 @@ components:
           type: "string"
         name:
           type: "string"
+        status:
+          type: "string"
       required:
         - "id"
         - "name"
+        - "status"
     TranslationParams:
       type: "object"
       properties:

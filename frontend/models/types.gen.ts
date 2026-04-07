@@ -178,6 +178,7 @@ export type GenerateParadigmParameters = {
 export type GraphViewModel = {
     id: string;
     name: string;
+    status: string;
 };
 
 export type InputAssistGraphemeViewModel = {

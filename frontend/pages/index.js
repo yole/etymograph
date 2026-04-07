@@ -14,7 +14,9 @@ export default function Home(props) {
     return <>
         <h2>Etymograph</h2>
         <ul>
-            {graphs.map(l => <li key={l.id}><Link href={`/${l.id}`}>{l.name}</Link></li>)}
+            {graphs.map(l =>
+                <li key={l.id}><Link href={`/${l.id}`}>{l.name}</Link>{l.status && " (" + l.status + ")"}</li>
+            )}
         </ul>
     </>
 }
