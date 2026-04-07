@@ -1151,6 +1151,21 @@ paths:
                 type: "array"
                 items:
                   $ref: "#/components/schemas/GraphViewModel"
+  /{graph}/syncChanges:
+    post:
+      summary: "POST {graph}/syncChanges"
+      operationId: "syncChanges"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/GraphViewModel"
   /{graph}/translation:
     post:
       summary: "POST {graph}/translation"

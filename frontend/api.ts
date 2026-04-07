@@ -57,6 +57,10 @@ export async function fetchGraphs() {
     return {props: {loaderData}}
 }
 
+export function syncChanges(graph: string): Promise<Response> {
+    return postToBackend(`${graph}/syncChanges`, {})
+}
+
 export async function fetchAllGraphs() {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}graphs`, { headers: { 'Accept': 'application/json'} })
     if (response.status !== 200) {
