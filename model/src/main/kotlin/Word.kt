@@ -256,6 +256,7 @@ class Word(
                 }
             }
             else {
+                _stressedPhonemeIndex = Int.MIN_VALUE // protect from SOE
                 val wordWithStress = language.stressRule?.resolve()?.apply(this)
                 if (wordWithStress != null) {
                     _stressedPhonemeIndex = wordWithStress.stressedPhonemeIndex
