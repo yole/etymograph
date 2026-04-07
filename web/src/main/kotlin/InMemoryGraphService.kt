@@ -41,12 +41,23 @@ class InMemoryGraphService(
         val writers: MutableSet<String>
     )
 
+    @Value("\${etymograph.path:}")
+    private var graphPath = ""
+
     private val registryFile = Path.of(graphRegistryPath)
     private val registryDir = registryFile.toAbsolutePath().parent ?: Path.of(".").toAbsolutePath()
     private val json = Json { prettyPrint = true }
 
     private val registeredGraphs: MutableMap<String, RegisteredGraph> by lazy {
         linkedMapOf<String, RegisteredGraph>().apply {
+            if (graphPath != "") {
+                for (graphName in graphPath.split(',')) {
+                    val path = Path.of(graphName)
+                    val graph = JsonGraphRepository.fromJson(path)
+                    put(graphName, RegisteredGraph(graph, graph.name, path.toString(), mutableSetOf()))
+                }
+            }
+
             if (!registryFile.exists()) return@apply
             val registry = json.decodeFromString<GraphRegistryData>(registryFile.readText())
 
