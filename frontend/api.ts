@@ -1,5 +1,5 @@
 import {
-    AddPublicationParameters, ComparePhonemesResult,
+    AddPublicationParameters, AuthStatusViewModel, ComparePhonemesResult,
     CorpusTextParams, GenerateParadigmParameters,
     LookupParameters,
     LookupResultViewModel,
@@ -12,6 +12,10 @@ import {
 
 export function allowEdit() {
     return process.env.NEXT_PUBLIC_READONLY !== "true";
+}
+
+export function backendUrl(path: string): string {
+    return `${process.env.NEXT_PUBLIC_BACKEND_URL}${path}`
 }
 
 export async function fetchBackend(graph: string, url: string, withGlobalState = false) {
@@ -55,6 +59,14 @@ export async function fetchGraphs() {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}graphs`, { headers: { 'Accept': 'application/json'} })
     const loaderData = await response.json()
     return {props: {loaderData}}
+}
+
+export async function fetchAuthStatus(): Promise<AuthStatusViewModel> {
+    const response = await fetch(backendUrl("auth/me"), {
+        headers: { 'Accept': 'application/json' },
+        credentials: 'include'
+    })
+    return await response.json()
 }
 
 export function syncChanges(graph: string): Promise<Response> {
@@ -359,7 +371,6 @@ export function deletePhoneme(graph: string, id: number) {
 
 export function comparePhonemes(graph: string, id: number, toPhoneme: string) {
     return postToBackendTyped<ComparePhonemesResult>(`${graph}/phoneme/${id}/compare`, {toPhoneme})
-
 }
 
 export function copyPhonemes(graph: string, toLang: string, fromLang: string) {
@@ -387,21 +398,4 @@ export async function callApiAndRefresh(
         const jr = await result.json()
         setErrorText(jr.message)
     }
-}
-
-
-export async function searchWords(graph: string, params: { q: string, lang?: string, limit?: number, offset?: number, mode?: 'auto'|'exact'|'prefix' }) {
-    const usp = new URLSearchParams()
-    usp.set('q', params.q)
-    if (params.lang) usp.set('lang', params.lang)
-    if (params.limit != null) usp.set('limit', String(params.limit))
-    if (params.offset != null) usp.set('offset', String(params.offset))
-    if (params.mode) usp.set('mode', params.mode)
-    const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}${graph}/search?${usp.toString()}`
-    const res = await fetch(url, { headers: { 'Accept': 'application/json'} })
-    if (res.status !== 200) {
-        return { props: { loaderData: { totalExact: 0, totalPrefix: 0, matches: [], usedMode: 'exact' } } }
-    }
-    const loaderData = await res.json()
-    return { props: { loaderData } }
 }

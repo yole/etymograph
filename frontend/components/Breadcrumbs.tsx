@@ -1,7 +1,7 @@
 import Link from "next/link";
 import {useContext, useEffect, useRef} from "react";
-import {GlobalStateContext, GraphContext} from "@/components/Contexts";
-import {allowEdit} from "@/api";
+import {AuthContext, GlobalStateContext, GraphContext} from "@/components/Contexts";
+import {allowEdit, backendUrl} from "@/api";
 import {useRouter} from "next/router";
 import {ActionIcon} from "@mantine/core";
 
@@ -21,6 +21,7 @@ interface BreadcrumbsProps {
 export default function Breadcrumbs(props: BreadcrumbsProps) {
     const graph = useContext(GraphContext)
     const globalState = useContext(GlobalStateContext)
+    const auth = useContext(AuthContext)
     const theGraph = globalState !== undefined ? globalState.graphs.find((g) => g.id === graph) : undefined
 
     const langName = props.langName !== undefined ? props.langName : (
@@ -38,6 +39,8 @@ export default function Breadcrumbs(props: BreadcrumbsProps) {
     const router = useRouter()
     const inputRef = useRef<HTMLInputElement>(null)
     const currentQ = typeof router.query.q === 'string' ? router.query.q : ''
+    const authStatus = auth?.authStatus
+    const displayUser = authStatus?.name || authStatus?.email
 
     function onSubmit(e: React.FormEvent) {
         e.preventDefault()
@@ -46,6 +49,20 @@ export default function Breadcrumbs(props: BreadcrumbsProps) {
         const langParam = props.langId ? `&lang=${encodeURIComponent(props.langId)}` : ''
         router.push(`/${graph}/search?q=${encodeURIComponent(q)}${langParam}`)
     }
+
+    const controls = <div style={{marginLeft: '1rem', display: 'flex', alignItems: 'center', gap: '0.75rem'}}>
+        {authStatus?.authEnabled === true && <>
+            {authStatus.authenticated
+                ? <span>{displayUser}</span>
+                : <a href={backendUrl("oauth2/authorization/google")}>Log in</a>}
+        </>}
+        {allowEdit() && <form onSubmit={onSubmit} style={{display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
+            <input ref={inputRef} type="search" name="q" aria-label="Search words" dir="auto"
+                   defaultValue={currentQ} placeholder="Search words…"
+                   style={{maxWidth: '24ch'}} />
+            <ActionIcon type="submit" aria-label="Search" variant="default">🔍</ActionIcon>
+        </form>}
+    </div>
 
     return <div style={{marginBottom: '0.75rem'}}><div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
         <h2 style={{marginBottom: '0', marginTop: '0.75rem'}}>
@@ -65,12 +82,6 @@ export default function Breadcrumbs(props: BreadcrumbsProps) {
             {props.title && ' > ' + props.title}
             {props.children && <>{' > '}{props.children}</>}
         </h2>
-        {allowEdit() && <form onSubmit={onSubmit} style={{marginLeft: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
-            <input ref={inputRef} type="search" name="q" aria-label="Search words" dir="auto"
-                   defaultValue={currentQ} placeholder="Search words…"
-                   style={{maxWidth: '24ch'}} />
-            <ActionIcon type="submit" aria-label="Search" variant="default">🔍</ActionIcon>
-        </form>
-        }
+        {controls}
     </div></div>
 }

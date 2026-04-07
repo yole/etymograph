@@ -17,7 +17,8 @@ class SaveGraphRequestFilter(val graphService: GraphService) : OncePerRequestFil
         if (request.method == "POST") {
             val requestPath = request.requestURI
             val graphId = requestPath.removePrefix("/").substringBefore('/')
-            graphService.resolveGraph(graphId).save()
+            val graph = graphService.allGraphs().find { it.id == graphId } ?: return
+            graph.save()
         }
     }
 }

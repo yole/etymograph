@@ -51,6 +51,17 @@ export type AttestationViewModel = {
     syllabogramSequence?: (SyllabogramSequence) | null;
 };
 
+export type AuthStatusViewModel = {
+    authEnabled: boolean;
+    authenticated: boolean;
+    email?: (string) | null;
+    name?: (string) | null;
+};
+
+export type CloneGraphParams = {
+    repoUrl: string;
+};
+
 export type ComparePhonemesParameters = {
     toPhoneme: string;
 };

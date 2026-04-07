@@ -6,6 +6,28 @@ info:
 servers:
   - url: "https://etymograph"
 paths:
+  /auth/me:
+    get:
+      summary: "GET /auth/me"
+      operationId: "authMe"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/AuthStatusViewModel"
+  /auth/logout:
+    post:
+      summary: "POST /auth/logout"
+      operationId: "authLogout"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/AuthStatusViewModel"
   /graphs/clone:
     post:
       summary: "POST /graphs/clone"
@@ -1790,6 +1812,22 @@ paths:
           description: "OK"
 components:
   schemas:
+    AuthStatusViewModel:
+      type: "object"
+      properties:
+        authEnabled:
+          type: "boolean"
+        authenticated:
+          type: "boolean"
+        email:
+          type: "string"
+          nullable: true
+        name:
+          type: "string"
+          nullable: true
+      required:
+        - "authEnabled"
+        - "authenticated"
     CloneGraphParams:
       type: "object"
       properties:
@@ -1797,19 +1835,6 @@ components:
           type: "string"
       required:
         - "repoUrl"
-    GraphViewModel:
-      type: "object"
-      properties:
-        id:
-          type: "string"
-        name:
-          type: "string"
-        status:
-          type: "string"
-      required:
-        - "id"
-        - "name"
-        - "status"
     CompoundParams:
       type: "object"
       properties:

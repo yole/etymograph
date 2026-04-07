@@ -2,12 +2,24 @@ import '@mantine/core/styles.css'
 import '@/styles/globals.css'
 import {MantineProvider} from "@mantine/core";
 import {useRouter} from "next/router";
-import {GlobalStateContext, GraphContext} from "@/components/Contexts";
-import {allowEdit} from "../api";
+import {AuthContext, GlobalStateContext, GraphContext} from "@/components/Contexts";
+import {allowEdit, fetchAuthStatus} from "../api";
+import {useEffect, useState} from "react";
 
 export default function App({ Component, pageProps }) {
   const router = useRouter()
   const generationDate = new Date()
+  const [authStatus, setAuthStatus] = useState()
+
+  useEffect(() => {
+    if (typeof window === "undefined" || allowEdit() === false) {
+      return
+    }
+
+    fetchAuthStatus()
+        .then(setAuthStatus)
+        .catch(() => setAuthStatus(undefined))
+  }, [])
 
   const content = <>
     <Component {...pageProps} />
@@ -16,10 +28,12 @@ export default function App({ Component, pageProps }) {
 
   return <MantineProvider>
     <GraphContext.Provider value={router.query.graph}>
-      {pageProps.globalState !== undefined && <GlobalStateContext.Provider value={pageProps.globalState}>
-        {content}
-      </GlobalStateContext.Provider>}
-      {pageProps.globalState === undefined && content}
+      <AuthContext.Provider value={{authStatus}}>
+        {pageProps.globalState !== undefined && <GlobalStateContext.Provider value={pageProps.globalState}>
+          {content}
+        </GlobalStateContext.Provider>}
+        {pageProps.globalState === undefined && content}
+      </AuthContext.Provider>
     </GraphContext.Provider>
   </MantineProvider>
 }

@@ -12,12 +12,20 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
     implementation "org.eclipse.jgit:org.eclipse.jgit:7.6.0.202603022253-r"
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3"
     testImplementation group: 'junit', name: 'junit', version: '4.13.1'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
     testImplementation testFixtures(project(":model"))
 }
 
 tasks.named('bootRun') {
     workingDir = rootProject.projectDir
+}
+
+tasks.named('test') {
+    systemProperty 'etymograph.projectRoot', rootProject.projectDir.absolutePath
 }
