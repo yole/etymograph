@@ -54,7 +54,7 @@ class InMemoryGraphService(
                 for (graphName in graphPath.split(',')) {
                     val path = Path.of(graphName)
                     val graph = JsonGraphRepository.fromJson(path)
-                    put(graphName, RegisteredGraph(graph, graph.name, path.toString(), mutableSetOf()))
+                    put(graph.id, RegisteredGraph(graph, graph.name, path.toString(), mutableSetOf()))
                 }
             }
 
