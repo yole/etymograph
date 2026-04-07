@@ -3,19 +3,19 @@ package ru.yole.etymograph.web
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
+import org.eclipse.jgit.api.Git
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
 import ru.yole.etymograph.*
 import ru.yole.etymograph.web.controllers.badRequest
 import ru.yole.etymograph.web.controllers.notFound
 import java.nio.file.Path
-import kotlin.io.path.createParentDirectories
-import kotlin.io.path.readText
-import kotlin.io.path.writeText
+import kotlin.io.path.*
 
 abstract class GraphService {
     abstract fun allGraphs(): List<GraphRepository>
     abstract fun resolveGraph(name: String): GraphRepository
+    abstract fun cloneGraph(repoUrl: String): GraphRepository
 }
 
 @Service
@@ -29,12 +29,14 @@ class InMemoryGraphService(
     @Serializable
     data class GraphRegistryEntry(
         val id: String,
+        val name: String,
         val path: String,
         val writers: List<String> = emptyList()
     )
 
     private data class RegisteredGraph(
         val repository: GraphRepository,
+        val name: String,
         val path: String,
         val writers: MutableSet<String>
     )
@@ -43,9 +45,11 @@ class InMemoryGraphService(
     private val registryDir = registryFile.toAbsolutePath().parent ?: Path.of(".").toAbsolutePath()
     private val json = Json { prettyPrint = true }
 
-    private val registeredGraphs: Map<String, RegisteredGraph> by lazy {
-        val registry = json.decodeFromString<GraphRegistryData>(registryFile.readText())
-        buildMap {
+    private val registeredGraphs: MutableMap<String, RegisteredGraph> by lazy {
+        linkedMapOf<String, RegisteredGraph>().apply {
+            if (!registryFile.exists()) return@apply
+            val registry = json.decodeFromString<GraphRegistryData>(registryFile.readText())
+
             for (entry in registry.graphs) {
                 val repositoryPath = resolveGraphPath(entry.path)
                 val graph = JsonGraphRepository.fromJson(repositoryPath)
@@ -54,7 +58,15 @@ class InMemoryGraphService(
                         "Graph ID mismatch for ${entry.path}: registry has ${entry.id}, graph.json has ${graph.id}"
                     )
                 }
-                put(entry.id, RegisteredGraph(graph, entry.path, entry.writers.toMutableSet()))
+                if (graph.name != entry.name) {
+                    throw IllegalStateException(
+                        "Graph name mismatch for ${entry.path}: registry has ${entry.name}, graph.json has ${graph.name}"
+                    )
+                }
+                if (containsKey(entry.id)) {
+                    throw IllegalStateException("Duplicate graph ID ${entry.id} in registry")
+                }
+                put(entry.id, RegisteredGraph(graph, entry.name, entry.path, entry.writers.toMutableSet()))
             }
         }
     }
@@ -68,6 +80,34 @@ class InMemoryGraphService(
 
     override fun resolveGraph(name: String): GraphRepository =
         registeredGraphs[name]?.repository ?: notFound("No graph with ID $name")
+
+    @OptIn(ExperimentalPathApi::class)
+    override fun cloneGraph(repoUrl: String): GraphRepository {
+        val clonePath = nextClonePath(repoUrl)
+        try {
+            Git.cloneRepository()
+                .setURI(repoUrl)
+                .setDirectory(clonePath.toFile())
+                .call()
+                .close()
+
+            val graph = JsonGraphRepository.fromJson(clonePath)
+            if (registeredGraphs.containsKey(graph.id)) {
+                clonePath.deleteRecursively()
+                badRequest("Graph with ID ${graph.id} already exists")
+            }
+
+            val storedPath = registryDir.relativize(clonePath).toString()
+            registeredGraphs[graph.id] = RegisteredGraph(graph, graph.name, storedPath, mutableSetOf())
+            saveRegistry()
+            return graph
+        } catch (e: Exception) {
+            if (clonePath.exists()) {
+                clonePath.deleteRecursively()
+            }
+            throw e
+        }
+    }
 
     fun canWrite(graphId: String, email: String?): Boolean {
         if (email == null) return false
@@ -90,12 +130,31 @@ class InMemoryGraphService(
             registeredGraphs.values.map { registeredGraph ->
                 GraphRegistryEntry(
                     registeredGraph.repository.id,
+                    registeredGraph.name,
                     registeredGraph.path,
                     registeredGraph.writers.sorted()
                 )
             }
         )
         registryFile.createParentDirectories().writeText(json.encodeToString(registry))
+    }
+
+    private fun nextClonePath(repoUrl: String): Path {
+        val repoName = repoUrl.substringAfterLast('/').removeSuffix(".git").ifBlank { "graph" }
+        val sanitizedRepoName = repoName.map { c ->
+            when {
+                c.isLetterOrDigit() || c == '-' || c == '_' || c == '.' -> c
+                else -> '-'
+            }
+        }.joinToString("").trim('-').ifBlank { "graph" }
+
+        var counter = 1
+        var candidate = registryDir.resolve(sanitizedRepoName)
+        while (candidate.exists()) {
+            counter++
+            candidate = registryDir.resolve("$sanitizedRepoName-$counter")
+        }
+        return candidate
     }
 }
 

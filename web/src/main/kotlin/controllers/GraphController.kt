@@ -5,6 +5,7 @@ import org.eclipse.jgit.transport.RemoteRefUpdate
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.server.ResponseStatusException
 import ru.yole.etymograph.GraphRepository
@@ -52,6 +53,25 @@ class GraphController(val graphService: GraphService) {
             throw e
         } catch (e: Exception) {
             throw ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.message ?: "Failed to sync changes", e)
+        }
+
+        return GraphViewModel(repo.id, repo.name, repo.status())
+    }
+
+    data class CloneGraphParams(val repoUrl: String = "")
+
+    @PostMapping("/graphs/clone")
+    fun clone(@RequestBody params: CloneGraphParams): GraphViewModel {
+        if (params.repoUrl.isBlank()) {
+            badRequest("Repository URL is not specified")
+        }
+
+        val repo = try {
+            graphService.cloneGraph(params.repoUrl)
+        } catch (e: ResponseStatusException) {
+            throw e
+        } catch (e: Exception) {
+            throw ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.message ?: "Failed to clone graph", e)
         }
 
         return GraphViewModel(repo.id, repo.name, repo.status())

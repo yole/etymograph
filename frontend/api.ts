@@ -61,6 +61,10 @@ export function syncChanges(graph: string): Promise<Response> {
     return postToBackend(`${graph}/syncChanges`, {})
 }
 
+export function cloneGraph(repoUrl: string): Promise<Response> {
+    return postToBackend(`graphs/clone`, {repoUrl})
+}
+
 export async function fetchAllGraphs() {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}graphs`, { headers: { 'Accept': 'application/json'} })
     if (response.status !== 200) {

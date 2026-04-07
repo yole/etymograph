@@ -6,6 +6,23 @@ info:
 servers:
   - url: "https://etymograph"
 paths:
+  /graphs/clone:
+    post:
+      summary: "POST /graphs/clone"
+      operationId: "cloneGraph"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CloneGraphParams"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/GraphViewModel"
   /{graph}/compound/:
     post:
       summary: "POST {graph}/compound/"
@@ -1773,6 +1790,26 @@ paths:
           description: "OK"
 components:
   schemas:
+    CloneGraphParams:
+      type: "object"
+      properties:
+        repoUrl:
+          type: "string"
+      required:
+        - "repoUrl"
+    GraphViewModel:
+      type: "object"
+      properties:
+        id:
+          type: "string"
+        name:
+          type: "string"
+        status:
+          type: "string"
+      required:
+        - "id"
+        - "name"
+        - "status"
     CompoundParams:
       type: "object"
       properties:
