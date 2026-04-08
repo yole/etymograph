@@ -1,4 +1,4 @@
-import {fetchAllLanguagePaths, fetchBackend, updateWordParadigm, allowEditGraph} from "@/api";
+import {fetchAllLanguagePaths, fetchBackend, updateWordParadigm, allowEditGraph, hasBackend} from "@/api";
 import {useRouter} from "next/router";
 import {useContext, useState} from "react";
 import WordLink from "@/components/WordLink";
@@ -27,7 +27,7 @@ export async function getStaticPaths() {
             paths.push({params: {graph: p.params.graph, lang: p.params.lang, id: word.ref.id.toString()}})
         }
     }
-    return {paths, fallback: allowEdit()}
+    return {paths, fallback: hasBackend()}
 }
 
 function WordParadigmCell(params) {

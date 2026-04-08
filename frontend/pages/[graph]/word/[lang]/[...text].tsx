@@ -18,7 +18,7 @@ import {
     callApiAndRefresh,
     addToCompound,
     updateWord,
-    refreshLinkSequence, suggestTranscription, allowEditGraph
+    refreshLinkSequence, suggestTranscription, allowEditGraph, hasBackend
 } from "@/api";
 import Link from "next/link";
 import {useRouter} from "next/router";
@@ -64,7 +64,7 @@ export async function getStaticPaths() {
             }
         }
     }
-    return {paths, fallback: allowEdit()}
+    return {paths, fallback: hasBackend()}
 }
 
 interface WordLinkProps {
