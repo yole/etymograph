@@ -1,4 +1,4 @@
-import {allowEdit, comparePhonemes, deletePhoneme, fetchBackend, fetchPathsForAllGraphs} from "@/api";
+import {comparePhonemes, deletePhoneme, fetchBackend, fetchPathsForAllGraphs, allowEditGraph} from "@/api";
 import {useState} from "react";
 import Link from "next/link";
 import {useRouter} from "next/router";
@@ -28,6 +28,7 @@ export default function Phoneme(props) {
     const [compareResult, setCompareResult] = useState('')
     const router = useRouter()
     const graph = router.query.graph as string;
+    const canEdit = allowEditGraph()
 
     function deletePhonemeClicked() {
         if (window.confirm("Delete this phoneme?")) {
@@ -84,7 +85,7 @@ export default function Phoneme(props) {
             />
         </EtymographFormView>
 
-        {allowEdit() && <>
+        {canEdit && <>
             {!showCompareForm && <button className="uiButton" onClick={() => setShowCompareForm(!showCompareForm)}>Compare</button>}
         </>}
 

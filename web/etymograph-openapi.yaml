@@ -1828,6 +1828,10 @@ components:
         pictureUrl:
           type: "string"
           nullable: true
+        editableGraphs:
+          type: "array"
+          items:
+            type: "string"
       required:
         - "authEnabled"
         - "authenticated"

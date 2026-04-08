@@ -1,5 +1,5 @@
 import Link from "next/link";
-import {allowEdit, fetchAllGraphs, fetchBackend} from "@/api";
+import {fetchAllGraphs, fetchBackend, allowEditGraph} from "@/api";
 import {useRouter} from "next/router";
 import {useContext} from "react";
 import {GlobalStateContext} from "@/components/Contexts";
@@ -30,12 +30,12 @@ export default function Home(props) {
   const languages = props.loaderData
   const router = useRouter()
   const graph = router.query.graph
-  const globalState = useContext(GlobalStateContext)
+  const canEdit = allowEditGraph()
   return <>
       <Breadcrumbs title="Languages"/>
       <LanguageList languages={languages} graph={graph} />
 
     <p><Link href={`${graph}/publications`}>Bibliography</Link></p>
-    {allowEdit() && <button onClick={() => router.push(`${graph}/languages/new`)}>Add language</button>}
+    {canEdit && <button onClick={() => router.push(`${graph}/languages/new`)}>Add language</button>}
   </>
 }

@@ -7,7 +7,6 @@ import {
     deleteLink,
     deleteWord,
     fetchBackend,
-    allowEdit,
     deleteCompound,
     applyRuleSequence,
     deriveThroughRuleSequence,
@@ -19,7 +18,7 @@ import {
     callApiAndRefresh,
     addToCompound,
     updateWord,
-    refreshLinkSequence, suggestTranscription
+    refreshLinkSequence, suggestTranscription, allowEditGraph
 } from "@/api";
 import Link from "next/link";
 import {useRouter} from "next/router";
@@ -85,6 +84,7 @@ export function WordLinkComponent(params: WordLinkProps) {
     const [errorText, setErrorText] = useState("")
     const router = useRouter()
     const graph = router.query.graph as string
+    const canEdit = allowEditGraph()
 
     async function deleteLinkClicked() {
         if (window.confirm("Delete this link?")) {
@@ -144,7 +144,7 @@ export function WordLinkComponent(params: WordLinkProps) {
         {params.showSequence && linkWord.ruleSequence && <>&nbsp;through {linkWord.ruleSequence.name}</>}
         {linkWord.notes && <> &ndash; {linkWord.notes}</>}
         <SourceRefs source={linkWord.source} span={true}/>
-        {allowEdit() && <>
+        {canEdit && <>
             &nbsp;<span className="inlineButtonLink">
                     (<button className="inlineButton" onClick={() => setEditMode(!editMode)}>edit</button>
                 </span>
@@ -206,6 +206,7 @@ function CompoundListComponent(
     const [editCompound, setEditCompound] = useState(undefined)
     const [compoundSuggestions, setCompoundSuggestions] = useState([] as WordRefViewModel[])
     const [errorText, setErrorText] = useState("")
+    const canEdit = allowEditGraph()
 
     async function prepareAddToCompound(compoundId: number) {
         setAddToCompoundId(compoundId)
@@ -264,7 +265,7 @@ function CompoundListComponent(
                                   }}
                                   cancelled={() => setEditCompound(undefined)}/>
                 }
-                {allowEdit() && <>
+                {canEdit && <>
                     {' '}
                     {addToCompoundId !== m.compoundId && <button className="uiButton" onClick={() => prepareAddToCompound(m.compoundId)}>Add component</button>}
                     {' '}
@@ -298,6 +299,7 @@ function WordLinkTypeComponent(params: WordLinkTypeProps) {
 
 function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean }) {
     const globalState = useContext(GlobalStateContext)
+    const canEdit = allowEditGraph()
 
     const router = useRouter()
     const graph = router.query.graph as string
@@ -524,7 +526,7 @@ function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean 
                 </Alert>
             ))}
 
-            {allowEdit() && dictionaries.includes("wiktionary") && <p>
+            {canEdit && dictionaries.includes("wiktionary") && <p>
                 <button className="inlineButton" onClick={() => lookupWordClicked()}>Look up in Wiktionary</button><br/>
                 {lookupErrorText !== "" && <span className="errorText">{lookupErrorText}</span>}
                 {lookupVariants.length > 0 && <ul>
@@ -556,7 +558,7 @@ function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean 
             wordSubmitted={editSubmitted}
             cancelled={() => setEditMode(false)}
             />}
-        {allowEdit() && !editMode && <>
+        {canEdit && !editMode && <>
             <p/>
             <button className="uiButton" onClick={() => setEditMode(true)}>{"Edit"}</button>&nbsp;
             <button className="uiButton" onClick={() => deleteWordClicked()}>Delete</button>
@@ -598,7 +600,7 @@ function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean 
                 {word.linkedRules.map(rl => <>
                     <Link href={`/${graph}/rule/${rl.ruleId}`}>{rl.ruleName}</Link>
                     <SourceRefs source={rl.source} span={true}/>
-                    {allowEdit() && rl.canDelete && <>
+                    {canEdit && rl.canDelete && <>
                         &nbsp;(<span className="inlineButtonLink">
                             <button className="inlineButton" onClick={() => deleteRuleLinkClicked(rl.ruleId, rl.linkType)}>delete</button>
                         </span>)</>
@@ -608,7 +610,7 @@ function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean 
             </>
         }
 
-        {allowEdit() && <Accordion defaultValue={word.baseWord || realGloss ? "" : "define"}>
+        {canEdit && <Accordion defaultValue={word.baseWord || realGloss ? "" : "define"}>
             <Accordion.Item value="define"><Accordion.Control><b>Define this word</b></Accordion.Control><Accordion.Panel>
             {canShowTranscription && <><button className="uiButton" onClick={showTranscriptionClicked}>Transcription</button>{' '}</>}
             {showTranscription &&

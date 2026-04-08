@@ -3,8 +3,6 @@ package ru.yole.etymograph.web
 import jakarta.servlet.FilterChain
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.context.annotation.Bean
@@ -12,41 +10,44 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.security.authentication.AnonymousAuthenticationToken
 import org.springframework.security.config.Customizer
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
-import org.springframework.security.core.Authentication
 import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.security.oauth2.core.user.OAuth2User
 import org.springframework.security.web.SecurityFilterChain
 import org.springframework.security.web.authentication.AnonymousAuthenticationFilter
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler
-import org.springframework.web.filter.OncePerRequestFilter
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.filter.OncePerRequestFilter
 
 data class AuthStatusViewModel(
     val authEnabled: Boolean,
     val authenticated: Boolean,
     val email: String? = null,
     val name: String? = null,
-    val pictureUrl: String? = null
+    val pictureUrl: String? = null,
+    val editableGraphs: Array<String>
 )
 
 @RestController
 @RequestMapping("/auth")
 class AuthController(
     @param:Value("\${etymograph.auth.enabled:false}")
-    private val authEnabled: Boolean
+    private val authEnabled: Boolean,
+    val graphService: GraphService
 ) {
     @GetMapping("/me")
     fun me(@AuthenticationPrincipal principal: OAuth2User?): AuthStatusViewModel {
+        val email = principal?.getAttribute<String?>("email")
         return AuthStatusViewModel(
             authEnabled = authEnabled,
             authenticated = principal != null,
-            email = principal?.getAttribute("email"),
+            email = email,
             name = principal?.getAttribute("name"),
-            pictureUrl = principal?.getAttribute("picture")
+            pictureUrl = principal?.getAttribute("picture"),
+            email?.let { graphService.getEditableGraphs(it) }?.toTypedArray() ?: arrayOf()
         )
     }
 
@@ -57,7 +58,7 @@ class AuthController(
     ): AuthStatusViewModel {
         val authentication = SecurityContextHolder.getContext().authentication
         SecurityContextLogoutHandler().logout(request, response, authentication)
-        return AuthStatusViewModel(authEnabled = authEnabled, authenticated = false)
+        return AuthStatusViewModel(authEnabled = authEnabled, authenticated = false, editableGraphs = arrayOf())
     }
 }
 

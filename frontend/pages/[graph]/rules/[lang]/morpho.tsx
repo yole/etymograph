@@ -1,6 +1,6 @@
 import {useRouter} from "next/router";
 import Link from "next/link";
-import {allowEdit, fetchAllLanguagePaths, fetchBackend, generateParadigm} from "@/api";
+import {fetchAllLanguagePaths, fetchBackend, generateParadigm, allowEditGraph} from "@/api";
 import {GenerateParadigmParameters, ParadigmViewModel, RuleListViewModel} from "@/models";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import LanguageNavBar from "@/components/LanguageNavBar";
@@ -43,13 +43,14 @@ export default function MorphoRuleList(params) {
     const router = useRouter()
     const graph = router.query.graph as string
     const lang = router.query.lang as string
+    const canEdit = allowEditGraph()
 
     return <>
         <Breadcrumbs langId={lang} langName={ruleList.toLangFullName} title="Morphology"/>
         <LanguageNavBar langId={lang}/>
         <p/>
         <RuleListView list={ruleList}/>
-        {allowEdit() && <p>
+        {canEdit && <p>
             <button className="uiButton" onClick={() => router.push(`/${graph}/rules/${lang}/new?type=morpho`)}>Add Rule</button>
             {' '}
             <button className="uiButton" onClick={() => router.push(`/${graph}/paradigms/${lang}/new`)}>Add Paradigm</button>

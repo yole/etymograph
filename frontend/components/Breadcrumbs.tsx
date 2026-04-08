@@ -1,7 +1,7 @@
 import Link from "next/link";
 import {useContext, useEffect, useRef} from "react";
 import {AuthContext, GlobalStateContext, GraphContext} from "@/components/Contexts";
-import {allowEdit, backendUrl, logout} from "@/api";
+import {hasBackend, backendUrl, logout} from "@/api";
 import {useRouter} from "next/router";
 import {ActionIcon, Avatar, Menu} from "@mantine/core";
 
@@ -74,7 +74,7 @@ export default function Breadcrumbs(props: BreadcrumbsProps) {
                 </Menu>
                 : <a href={backendUrl("oauth2/authorization/google")}>Log in</a>}
         </>}
-        {allowEdit() && graph && <form onSubmit={onSubmit} style={{display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
+        {hasBackend() && graph && <form onSubmit={onSubmit} style={{display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
             <input ref={inputRef} type="search" name="q" aria-label="Search words" dir="auto"
                    defaultValue={currentQ} placeholder="Search words…"
                    style={{maxWidth: '24ch'}} />

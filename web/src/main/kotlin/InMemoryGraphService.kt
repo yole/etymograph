@@ -16,6 +16,7 @@ abstract class GraphService {
     abstract fun allGraphs(): List<GraphRepository>
     abstract fun resolveGraph(name: String): GraphRepository
     abstract fun canWrite(graphId: String, email: String): Boolean
+    abstract fun getEditableGraphs(email: String): List<String>
     abstract fun cloneGraph(repoUrl: String): GraphRepository
 }
 
@@ -128,6 +129,10 @@ class InMemoryGraphService(
 
     override fun canWrite(graphId: String, email: String): Boolean {
         return registeredGraphs[graphId]?.writers?.contains(email) == true
+    }
+
+    override fun getEditableGraphs(email: String): List<String> {
+        return registeredGraphs.values.filter { email in it.writers }.map { it.repository.id }
     }
 
     fun writers(graphId: String): Set<String> {

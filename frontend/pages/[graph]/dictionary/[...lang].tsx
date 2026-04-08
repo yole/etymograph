@@ -1,4 +1,4 @@
-import {fetchBackend, allowEdit, fetchAllLanguagePaths} from "@/api";
+import {fetchBackend, fetchAllLanguagePaths, allowEditGraph} from "@/api";
 import {useRouter} from "next/router";
 import WordForm from "@/forms/WordForm";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -37,6 +37,7 @@ export default function Dictionary(params) {
     const router = useRouter()
     const graph = router.query.graph
     const filter = router.query.lang.length < 2 ? "" : router.query.lang[1]
+    const canEdit = allowEditGraph()
     const [showAddWord, setShowAddWord] = useState(false)
     const [showAddSequence, setShowAddSequence] = useState(false)
 
@@ -82,7 +83,7 @@ export default function Dictionary(params) {
         <LanguageNavBar langId={dict.language}/>
         <p/>
 
-        {allowEdit() && <>
+        {canEdit && <>
             {!showAddWord && <><button className="uiButton" onClick={() => setShowAddWord(!showAddWord)}>Add word</button>{' '}</>}
             {!showAddSequence && <><button className="uiButton" onClick={() => {
                 setShowAddSequence(!showAddSequence)

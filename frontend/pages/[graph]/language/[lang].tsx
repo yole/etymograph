@@ -1,6 +1,6 @@
 import Link from "next/link";
 import {useContext, useState} from "react";
-import {fetchBackend, updateLanguage, fetchAllLanguagePaths, allowEdit, copyPhonemes} from "@/api";
+import {fetchBackend, updateLanguage, fetchAllLanguagePaths, allowEditGraph, copyPhonemes} from "@/api";
 import {useRouter} from "next/router";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import EtymographFormView, {View} from "@/components/EtymographFormView";
@@ -34,6 +34,7 @@ export default function LanguageIndex(props) {
     const [copyPhonemesFrom, setCopyPhonemesFrom] = useState("")
     const router = useRouter()
     const graph = router.query.graph as string;
+    const canEdit = allowEditGraph()
 
     async function copyPhonemesClicked() {
         const r = await copyPhonemes(graph, langId, copyPhonemesFrom)
@@ -91,7 +92,7 @@ export default function LanguageIndex(props) {
                         </li>)}
                     </ul>)}
                 </>)}
-                {allowEdit() && <>
+                {canEdit && <>
                     <p/>
                     <button className="uiButton" onClick={() => router.push(Urls.Phonemes.newPhoneme(graph, langId))}>Add Phoneme</button>
                     {lang.phonemes.length === 0 &&<>

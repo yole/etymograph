@@ -1,10 +1,10 @@
 import {useState} from "react";
 import {
-    allowEdit,
     deleteLink,
     deleteRule,
     fetchPathsForAllGraphs,
-    traceRule
+    traceRule,
+    allowEditGraph
 } from "@/api";
 import WordLink from "@/components/WordLink";
 import {fetchBackend} from "@/api";
@@ -93,6 +93,7 @@ export default function Rule(params) {
     const [exampleUnmatched, setExampleUnmatched] = useState([])
     const router = useRouter()
     const graph = router.query.graph as string
+    const canEdit = allowEditGraph()
 
     const ruleStep = rule.shownOnMorphoPage ?
         ({title: "Morphology", url: `/${graph}/rules/${rule.toLang}/morpho`}) :
@@ -218,7 +219,7 @@ export default function Rule(params) {
             cancelled={() => setEditMode(false)}
         />}
 
-        {allowEdit() && <>
+        {canEdit && <>
             {!editMode && <button className="uiButton" onClick={() => setEditMode(true)}>Edit</button>}
             {!linkMode && <button className="uiButton" onClick={() => setLinkMode(true)}>Add Link</button>}
             <button className="uiButton" onClick={() => deleteRuleClicked()}>{"Delete"}</button>
@@ -229,7 +230,7 @@ export default function Rule(params) {
                 <Link href={`/${graph}/rule/${rl.toRuleId}`}>{rl.toRuleName}</Link>
                 {rl.notes && <> &ndash; {rl.notes}</>}
                 <SourceRefs source={rl.source} span={true}/>
-                {allowEdit() && <>
+                {canEdit && <>
                     &nbsp;(<span className="inlineButtonLink">
                             <button className="inlineButton"
                                     onClick={() => deleteLinkClicked(rl.toRuleId, rl.linkType)}>delete</button>
@@ -244,7 +245,7 @@ export default function Rule(params) {
             {rule.linkedWords.map(lw => <>
                 <WordLink word={lw.toWord} baseLanguage={rule.toLang}/>
                 <SourceRefs source={lw.source} span={true}/>
-                {allowEdit() && <>
+                {canEdit && <>
                     &nbsp;(<span className="inlineButtonLink">
                             <button className="inlineButton" onClick={() => deleteLinkClicked(lw.toWord.id, lw.linkType)}>delete</button>
                         </span>)</>
@@ -275,7 +276,7 @@ export default function Rule(params) {
         </>}
         {linkMode && <RuleLinkForm fromEntityId={rule.id} submitted={linkSubmitted} cancelled={() => setLinkMode(false)}/>}
         <p/>
-        {allowEdit() && !showExampleForm &&
+        {canEdit && !showExampleForm &&
             <button className="uiButton" onClick={() => {
                 setShowExampleForm(true)
             }}>Add Example</button>
@@ -295,7 +296,7 @@ export default function Rule(params) {
                 <WordLink word={w} baseLanguage={rule.toLang}/>
             </>)}</p>
         </>}
-        {allowEdit() && !showTraceForm &&
+        {canEdit && !showTraceForm &&
             <>
                 <button className="uiButton" onClick={() => prepareTrace(false)}>Trace</button>
                 <button className="uiButton" onClick={() => prepareTrace(true)}>Trace Reverse</button>

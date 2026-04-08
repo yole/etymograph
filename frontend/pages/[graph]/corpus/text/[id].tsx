@@ -5,10 +5,10 @@ import {faEdit, faCheck, faCommentDots, faEraser} from '@fortawesome/free-solid-
 import {
     fetchBackend,
     associateWord,
-    allowEdit,
+    hasBackend,
     fetchAlternatives,
     acceptAlternative,
-    fetchPathsForAllGraphs, callApiAndRefresh, lockWordAssociations, deleteTranslation
+    fetchPathsForAllGraphs, callApiAndRefresh, lockWordAssociations, deleteTranslation, allowEditGraph
 } from "@/api";
 import {useRouter} from "next/router";
 import Link from "next/link";
@@ -49,7 +49,7 @@ export function CorpusTextWordLink(params: CorpusTextWordLinkProps) {
     const [hovered, setHovered] = useState(false)
     const router = useRouter()
 
-    const renderActions = () => hovered && allowEdit() && <span className="iconWithMargin">
+    const renderActions = () => hovered && allowEditGraph() && <span className="iconWithMargin">
         <FontAwesomeIcon icon={faEdit} onClick={() => showWordForm(w.normalizedText, w.index)}/>
         {' '}
         <FontAwesomeIcon icon={faCommentDots} onClick={() => showTranslationFormAtWord(w.index)}/>
@@ -75,7 +75,7 @@ export function CorpusTextWordLink(params: CorpusTextWordLinkProps) {
     } else {
         return <span onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
             <span className="undefWord" onClick={() => {
-                if (allowEdit()) showWordForm(w.normalizedText, w.index)
+                if (allowEditGraph()) showWordForm(w.normalizedText, w.index)
             }}><WordTextView text={w.text} syllabograms={w.syllabogramSequence}/></span>
             {renderActions()}
         </span>
@@ -104,7 +104,7 @@ function CorpusTextGlossChoice(params: CorpusTextGlossChoiceProps) {
         <Link href={`/${graph}/word/${lang}/${params.word.text.toLowerCase()}/${c.id}`}>
             <WordGloss gloss={c.gloss}/>
         </Link>
-        {hovered && allowEdit() &&
+        {hovered && allowEditGraph() &&
             <span className="iconWithMargin"><FontAwesomeIcon icon={faCheck} onClick={() => acceptGloss()}/></span>}
     </span>
 }
@@ -182,7 +182,7 @@ function TranslationView(params: {translation: TranslationViewModel}) {
         {(!showTranslationForm) && <>
             <div>
                 &quot;{t.text}&quot; <SourceRefs source={t.source}/>
-                {allowEdit() && <>
+                {allowEditGraph() && <>
                     <ActionIcon type="button" variant="outline" onClick={() => setShowTranslationForm(!showTranslationForm)}>
                         <FontAwesomeIcon icon={faEdit}/>
                     </ActionIcon>
@@ -375,7 +375,7 @@ export default function CorpusText(params) {
                 <TranslationView translation={t}/>
             </>)}
         </>}
-        {allowEdit() && <p>
+        {allowEditGraph() && <p>
             {!editMode && <>
                 <button className="uiButton" onClick={() => setEditMode(true)}>Edit</button>
                 {' '}

@@ -3,6 +3,8 @@ package ru.yole.etymograph.web.controllers
 import org.eclipse.jgit.api.Git
 import org.eclipse.jgit.transport.RemoteRefUpdate
 import org.springframework.http.HttpStatus
+import org.springframework.security.core.annotation.AuthenticationPrincipal
+import org.springframework.security.oauth2.core.user.OAuth2User
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -13,12 +15,19 @@ import ru.yole.etymograph.JsonGraphRepository
 import ru.yole.etymograph.web.GraphService
 
 @RestController
-class GraphController(val graphService: GraphService) {
-    data class GraphViewModel(val id: String, val name: String, val status: String)
+class GraphController(
+    val graphService: GraphService,
+    @param:org.springframework.beans.factory.annotation.Value("\${etymograph.auth.enabled:false}")
+    private val authEnabled: Boolean
+) {
+    data class GraphViewModel(val id: String, val name: String, val status: String, val canWrite: Boolean)
 
     @GetMapping("/graphs")
-    fun list(): List<GraphViewModel> {
-        return graphService.allGraphs().map { GraphViewModel(it.id, it.name, it.status()) }
+    fun list(@AuthenticationPrincipal principal: OAuth2User?): List<GraphViewModel> {
+        val email = principal?.getAttribute<String>("email")
+        return graphService.allGraphs().map {
+            GraphViewModel(it.id, it.name, it.status(), !authEnabled || (email != null && graphService.canWrite(it.id, email)))
+        }
     }
 
     @PostMapping("/{graph}/syncChanges")
@@ -55,7 +64,7 @@ class GraphController(val graphService: GraphService) {
             throw ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.message ?: "Failed to sync changes", e)
         }
 
-        return GraphViewModel(repo.id, repo.name, repo.status())
+        return GraphViewModel(repo.id, repo.name, repo.status(), true)
     }
 
     data class CloneGraphParams(val repoUrl: String = "")
@@ -74,7 +83,7 @@ class GraphController(val graphService: GraphService) {
             throw ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.message ?: "Failed to clone graph", e)
         }
 
-        return GraphViewModel(repo.id, repo.name, repo.status())
+        return GraphViewModel(repo.id, repo.name, repo.status(), true)
     }
 
     private fun GraphRepository.status(): String {

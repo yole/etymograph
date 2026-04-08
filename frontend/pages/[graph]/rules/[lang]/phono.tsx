@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {useRouter} from "next/router";
 import Link from "next/link";
-import {allowEdit, fetchAllLanguagePaths, fetchBackend} from "@/api";
+import {fetchAllLanguagePaths, fetchBackend, allowEditGraph} from "@/api";
 import {RuleListViewModel, RuleSequenceViewModel, RuleShortViewModel} from "@/models";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import LanguageNavBar from "@/components/LanguageNavBar";
@@ -18,6 +18,7 @@ function RuleListView(params: {list: RuleListViewModel}) {
     const graph = router.query.graph as string
     const lang = router.query.lang as string
     const [sequenceEditId, setSequenceEditId] = useState(null)
+    const canEdit = allowEditGraph()
 
     function sequenceSubmitted(data: RuleSequenceViewModel) {
         setSequenceEditId(null)
@@ -51,7 +52,7 @@ function RuleListView(params: {list: RuleListViewModel}) {
                 </td>
             </tr>)}
             </tbody></table>
-            {allowEdit() && g.sequenceId !== null &&
+            {canEdit && g.sequenceId !== null &&
                 <><button onClick={() => setSequenceEditId(g.sequenceId)}>Edit Sequence</button>{' '}
                     <button onClick={() => router.push(`/${graph}/rules/${lang}/new?addToSequence=${g.sequenceId}&fromLang=${g.sequenceFromLang}`)}>Add Rule</button>{' '}</>
             }
@@ -79,12 +80,13 @@ export default function MorphoRuleList(params) {
     const router = useRouter()
     const lang = router.query.lang as string
     const graph = router.query.graph as string
+    const canEdit = allowEditGraph()
     return <>
         <Breadcrumbs langId={lang} langName={ruleList.toLangFullName} title="Historical Phonology"/>
         <LanguageNavBar langId={lang}/>
         <p/>
         <RuleListView list={ruleList}/>
-        {allowEdit() && <p>
+        {canEdit && <p>
             <button className="uiButton" onClick={() => router.push(`/${graph}/rules/${lang}/new?type=phono`)}>Add Rule</button>
             {' '}
             <button className="uiButton" onClick={() => router.push(`/${graph}/rules/sequence/new`)}>Add Rule Sequence</button>

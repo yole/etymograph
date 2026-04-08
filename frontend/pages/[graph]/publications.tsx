@@ -1,4 +1,4 @@
-import {allowEdit, fetchAllGraphs, fetchBackend} from "@/api";
+import {fetchAllGraphs, fetchBackend, allowEditGraph} from "@/api";
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import {useRouter} from "next/router";
@@ -19,6 +19,7 @@ export default function Publications(props) {
     const publications = props.loaderData as PublicationViewModel[];
     const router = useRouter()
     const graph = router.query.graph
+    const canEdit = allowEditGraph()
 
     return <>
         <Breadcrumbs title="Bibliography"/>
@@ -28,6 +29,6 @@ export default function Publications(props) {
             <br/>
         </>)}
 
-        <p>{allowEdit() && <button onClick={() => router.push(`/${graph}/publications/new`)}>Add publication</button>}</p>
+        <p>{canEdit && <button onClick={() => router.push(`/${graph}/publications/new`)}>Add publication</button>}</p>
     </>
 }

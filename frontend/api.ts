@@ -1,5 +1,6 @@
 import {
     AddPublicationParameters, AuthStatusViewModel, ComparePhonemesResult,
+    GraphViewModel,
     CorpusTextParams, GenerateParadigmParameters,
     LookupParameters,
     LookupResultViewModel,
@@ -9,8 +10,10 @@ import {
     UpdateRuleParameters,
     UpdateSequenceParams
 } from "@/models";
+import {useContext} from "react";
+import {AuthContext, GraphContext} from "@/components/Contexts";
 
-export function allowEdit() {
+export function hasBackend() {
     return process.env.NEXT_PUBLIC_READONLY !== "true";
 }
 
@@ -28,6 +31,7 @@ export async function fetchBackend(graph: string, url: string, withGlobalState =
     }
     const loaderData = await res.json()
     if (withGlobalState) {
+        const authStatus = await fetchAuthStatus()
         const allGraphs = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}graphs`, { headers: { 'Accept': 'application/json'} })
         const allGraphsJson = await allGraphs.json()
         const allLanguages = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}${graph}/language`, { headers: { 'Accept': 'application/json'} })
@@ -40,6 +44,7 @@ export async function fetchBackend(graph: string, url: string, withGlobalState =
             props: {
                 loaderData,
                 globalState: {
+                    authStatus,
                     graphs: allGraphsJson,
                     languages: allLanguagesJson,
                     rules: allRulesJson,
@@ -69,6 +74,12 @@ export async function fetchAuthStatus(): Promise<AuthStatusViewModel> {
     return await response.json()
 }
 
+export function allowEditGraph(graphId?: string): boolean {
+    const currentGraph = useContext(GraphContext)
+    const auth = useContext(AuthContext)
+    return auth?.authStatus?.editableGraphs?.includes(graphId ?? currentGraph) === true
+}
+
 export function logout(): Promise<Response> {
     return postToBackend("auth/logout", {})
 }
@@ -93,7 +104,7 @@ export async function fetchAllGraphs() {
 }
 
 export async function fetchAllLanguagePathsEditable() {
-    if (!allowEdit()) return { paths: [], fallback: false }
+    if (!hasBackend()) return { paths: [], fallback: false }
     return fetchAllLanguagePaths()
 }
 
@@ -111,7 +122,7 @@ export async function fetchPathsForAllGraphs(url, callback) {
         const data = callback(p)
         return ({params: {graph: p.graph, ...data}});
     })
-    return {paths, fallback: allowEdit()}
+    return {paths, fallback: hasBackend()}
 }
 
 export async function fetchAlternatives(graph: string, corpusTextId: number, index: number) {

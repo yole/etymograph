@@ -1,9 +1,10 @@
-import {allowEdit, cloneGraph, fetchGraphs, syncChanges} from "../api";
+import {hasBackend, cloneGraph, fetchGraphs, syncChanges} from "../api";
 import Link from "next/link";
-import {useState} from "react";
+import {useContext, useState} from "react";
 import {useRouter} from "next/router";
 import {Button, Modal, TextInput} from "@mantine/core";
 import Breadcrumbs from "../components/Breadcrumbs";
+import {AuthContext} from "../components/Contexts";
 
 export const config = {
     unstable_runtimeJS: true
@@ -19,6 +20,7 @@ export default function Home(props) {
     const [cloneModalOpened, setCloneModalOpened] = useState(false)
     const [cloneRepoUrl, setCloneRepoUrl] = useState("")
     const router = useRouter()
+    const auth = useContext(AuthContext)
 
     async function syncGraphChanges(graphId) {
         const response = await syncChanges(graphId)
@@ -57,7 +59,7 @@ export default function Home(props) {
             {graphs.map(l =>
                 <li key={l.id}>
                     <Link href={`/${l.id}`}>{l.name}</Link>{l.status && " (" + l.status + ")"}
-                    {allowEdit() && <>
+                    {auth?.authStatus?.editableGraphs?.includes(l.id) && <>
                         {' '}
                         <button className="uiButton" onClick={() => syncGraphChanges(l.id)}>Sync Changes</button>
                     </>}
@@ -65,7 +67,7 @@ export default function Home(props) {
             )}
         </ul>
         {errorText !== "" && <div className="errorText">{errorText}</div>}
-        {allowEdit() && <p>
+        {hasBackend() && auth?.authStatus?.authenticated === true && <p>
             <button className="uiButton" onClick={() => setCloneModalOpened(true)}>Clone Data Repository</button>
         </p>}
         <Modal

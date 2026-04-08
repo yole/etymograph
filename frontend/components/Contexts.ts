@@ -2,6 +2,7 @@ import {createContext} from "react";
 import {AuthStatusViewModel, GraphViewModel, InputAssistViewModel, LanguageShortViewModel, RuleShortViewModel} from "@/models";
 
 interface GlobalContextType {
+    authStatus?: AuthStatusViewModel;
     graphs: GraphViewModel[];
     languages: LanguageShortViewModel[];
     inputAssists: InputAssistViewModel;

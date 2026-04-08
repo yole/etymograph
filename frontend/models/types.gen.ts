@@ -57,6 +57,7 @@ export type AuthStatusViewModel = {
     email?: (string) | null;
     name?: (string) | null;
     pictureUrl?: (string) | null;
+    editableGraphs?: Array<(string)>;
 };
 
 export type CloneGraphParams = {
