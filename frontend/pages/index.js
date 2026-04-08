@@ -3,6 +3,7 @@ import Link from "next/link";
 import {useState} from "react";
 import {useRouter} from "next/router";
 import {Button, Modal, TextInput} from "@mantine/core";
+import Breadcrumbs from "../components/Breadcrumbs";
 
 export const config = {
     unstable_runtimeJS: true
@@ -51,7 +52,7 @@ export default function Home(props) {
     }
 
     return <>
-        <h2>Etymograph</h2>
+        <Breadcrumbs/>
         <ul>
             {graphs.map(l =>
                 <li key={l.id}>

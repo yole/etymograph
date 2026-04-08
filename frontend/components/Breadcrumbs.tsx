@@ -31,9 +31,9 @@ export default function Breadcrumbs(props: BreadcrumbsProps) {
     )
 
     useEffect(() => {
-        document.title = "Etymograph : " + (props.langName !== undefined ? props.langName + " : " : "") +
+        document.title = "Etymograph" + (graph !== undefined ? " : " : "") + (props.langName !== undefined ? props.langName + " : " : "") +
             (props.steps !== undefined ? props.steps.map(s => s.title).join(": ") + " : " : "") +
-            props.title
+            (props.title ?? "")
     })
 
     const router = useRouter()
@@ -61,7 +61,7 @@ export default function Breadcrumbs(props: BreadcrumbsProps) {
                 />
                 : <a href={backendUrl("oauth2/authorization/google")}>Log in</a>}
         </>}
-        {allowEdit() && <form onSubmit={onSubmit} style={{display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
+        {allowEdit() && graph && <form onSubmit={onSubmit} style={{display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
             <input ref={inputRef} type="search" name="q" aria-label="Search words" dir="auto"
                    defaultValue={currentQ} placeholder="Search words…"
                    style={{maxWidth: '24ch'}} />
@@ -72,7 +72,7 @@ export default function Breadcrumbs(props: BreadcrumbsProps) {
     return <div style={{marginBottom: '0.75rem'}}><div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
         <h2 style={{marginBottom: '0', marginTop: '0.75rem'}}>
             <small>
-                {theGraph === undefined && <><Link href={`/${graph}`}>Etymograph</Link> {'> '}</>}
+                {theGraph === undefined && <Link href={`/${graph}`}>Etymograph</Link>}
                 {theGraph !== undefined && <>
                     <Link href="/">Etymograph</Link>{' > '}
                     <Link href={`/${graph}`}>{theGraph.name}</Link>
