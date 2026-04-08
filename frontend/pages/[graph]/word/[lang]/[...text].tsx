@@ -525,19 +525,6 @@ function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean 
                     {issue}
                 </Alert>
             ))}
-
-            {canEdit && dictionaries.includes("wiktionary") && <p>
-                <button className="inlineButton" onClick={() => lookupWordClicked()}>Look up in Wiktionary</button><br/>
-                {lookupErrorText !== "" && <span className="errorText">{lookupErrorText}</span>}
-                {lookupVariants.length > 0 && <ul>
-                    {lookupVariants.map(variant => (
-                        <li><button className="inlineButton inlineButtonNormal"
-                                    onClick={() => lookupWordClicked(variant.disambiguation)}>
-                            {variant.text}
-                        </button></li>)
-                    )}
-                </ul>}
-            </p>}
         </>}
         {editMode && <WordForm
             updateId={word.id}
@@ -561,7 +548,21 @@ function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean 
         {canEdit && !editMode && <>
             <p/>
             <button className="uiButton" onClick={() => setEditMode(true)}>{"Edit"}</button>&nbsp;
-            <button className="uiButton" onClick={() => deleteWordClicked()}>Delete</button>
+            <button className="uiButton" onClick={() => deleteWordClicked()}>Delete</button>{' '}
+            {canEdit && dictionaries.includes("wiktionary") && <>
+                <button className="uiButton" onClick={() => lookupWordClicked()}>Look up in Wiktionary</button>
+                <p>
+                {lookupErrorText !== "" && <span className="errorText">{lookupErrorText}</span>}
+                {lookupVariants.length > 0 && <ul>
+                    {lookupVariants.map(variant => (
+                        <li><button className="inlineButton inlineButtonNormal"
+                                    onClick={() => lookupWordClicked(variant.disambiguation)}>
+                            {variant.text}
+                        </button></li>)
+                    )}
+                </ul>}
+                </p>
+            </>}
         </>}
 
         {!word.baseWord && word.attestations.length > 0 &&
