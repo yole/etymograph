@@ -1,5 +1,6 @@
 package ru.yole.etymograph.web
 
+import jakarta.servlet.FilterChain
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
 import kotlinx.serialization.SerialName
@@ -8,13 +9,17 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.security.authentication.AnonymousAuthenticationToken
 import org.springframework.security.config.Customizer
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
+import org.springframework.security.core.Authentication
 import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.security.oauth2.core.user.OAuth2User
 import org.springframework.security.web.SecurityFilterChain
+import org.springframework.security.web.authentication.AnonymousAuthenticationFilter
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler
+import org.springframework.web.filter.OncePerRequestFilter
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
@@ -59,6 +64,7 @@ class AuthController(
 @Configuration
 @ConditionalOnProperty(prefix = "etymograph.auth", name = ["enabled"], havingValue = "true")
 class AuthEnabledSecurityConfig(
+    private val graphService: GraphService,
     @param:Value("\${etymograph.frontendUrl:http://localhost:3000}")
     private val frontendUrl: String
 ) {
@@ -78,6 +84,7 @@ class AuthEnabledSecurityConfig(
             .logout { logout ->
                 logout.logoutSuccessUrl(frontendUrl)
             }
+            .addFilterAfter(GraphWriteAccessFilter(graphService), AnonymousAuthenticationFilter::class.java)
         return http.build()
     }
 }
@@ -94,5 +101,32 @@ class AuthDisabledSecurityConfig {
                 auth.anyRequest().permitAll()
             }
         return http.build()
+    }
+}
+
+private class GraphWriteAccessFilter(
+    private val graphService: GraphService
+) : OncePerRequestFilter() {
+    override fun doFilterInternal(
+        request: HttpServletRequest,
+        response: HttpServletResponse,
+        filterChain: FilterChain
+    ) {
+        val graph = graphService.graphByRequestPath(request.requestURI)
+        if (graph != null && request.method == "POST") {
+            val authentication = SecurityContextHolder.getContext().authentication
+            if (authentication == null || authentication is AnonymousAuthenticationToken || !authentication.isAuthenticated) {
+                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized")
+                return
+            }
+
+            val email = (authentication.principal as? OAuth2User)?.getAttribute<String>("email")
+            if (email == null || !graphService.canWrite(graph.id, email)) {
+                response.sendError(HttpServletResponse.SC_FORBIDDEN, "You do not have write access to this graph")
+                return
+            }
+        }
+
+        filterChain.doFilter(request, response)
     }
 }

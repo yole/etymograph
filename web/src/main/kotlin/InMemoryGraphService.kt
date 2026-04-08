@@ -15,7 +15,13 @@ import kotlin.io.path.*
 abstract class GraphService {
     abstract fun allGraphs(): List<GraphRepository>
     abstract fun resolveGraph(name: String): GraphRepository
+    abstract fun canWrite(graphId: String, email: String): Boolean
     abstract fun cloneGraph(repoUrl: String): GraphRepository
+}
+
+fun GraphService.graphByRequestPath(requestPath: String): GraphRepository? {
+    val graphId = requestPath.removePrefix("/").substringBefore('/')
+    return allGraphs().find { it.id == graphId }
 }
 
 @Service
@@ -120,8 +126,7 @@ class InMemoryGraphService(
         }
     }
 
-    fun canWrite(graphId: String, email: String?): Boolean {
-        if (email == null) return false
+    override fun canWrite(graphId: String, email: String): Boolean {
         return registeredGraphs[graphId]?.writers?.contains(email) == true
     }
 

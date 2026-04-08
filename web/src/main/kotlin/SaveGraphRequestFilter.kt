@@ -14,10 +14,8 @@ class SaveGraphRequestFilter(val graphService: GraphService) : OncePerRequestFil
         filterChain: FilterChain
     ) {
         filterChain.doFilter(request, response)
-        if (request.method == "POST") {
-            val requestPath = request.requestURI
-            val graphId = requestPath.removePrefix("/").substringBefore('/')
-            val graph = graphService.allGraphs().find { it.id == graphId } ?: return
+        if (request.method == "POST" && response.status < 400) {
+            val graph = graphService.graphByRequestPath(request.requestURI) ?: return
             graph.save()
         }
     }
