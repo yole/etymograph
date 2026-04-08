@@ -69,6 +69,10 @@ export async function fetchAuthStatus(): Promise<AuthStatusViewModel> {
     return await response.json()
 }
 
+export function logout(): Promise<Response> {
+    return postToBackend("auth/logout", {})
+}
+
 export function syncChanges(graph: string): Promise<Response> {
     return postToBackend(`${graph}/syncChanges`, {})
 }
@@ -124,6 +128,7 @@ function postToBackend(endpoint: string, data: any): Promise<Response> {
         headers: {
             'Content-Type': 'application/json'
         },
+        credentials: 'include',
         body: JSON.stringify(data)
     })
 }
