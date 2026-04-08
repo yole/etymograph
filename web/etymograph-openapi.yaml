@@ -1825,6 +1825,9 @@ components:
         name:
           type: "string"
           nullable: true
+        pictureUrl:
+          type: "string"
+          nullable: true
       required:
         - "authEnabled"
         - "authenticated"

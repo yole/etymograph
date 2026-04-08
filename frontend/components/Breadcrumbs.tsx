@@ -3,7 +3,7 @@ import {useContext, useEffect, useRef} from "react";
 import {AuthContext, GlobalStateContext, GraphContext} from "@/components/Contexts";
 import {allowEdit, backendUrl} from "@/api";
 import {useRouter} from "next/router";
-import {ActionIcon} from "@mantine/core";
+import {ActionIcon, Avatar} from "@mantine/core";
 
 interface BreadcrumbStep {
     title: string;
@@ -53,7 +53,12 @@ export default function Breadcrumbs(props: BreadcrumbsProps) {
     const controls = <div style={{marginLeft: '1rem', display: 'flex', alignItems: 'center', gap: '0.75rem'}}>
         {authStatus?.authEnabled === true && <>
             {authStatus.authenticated
-                ? <span>{displayUser}</span>
+                ? <Avatar
+                    src={authStatus.pictureUrl}
+                    alt={displayUser || "User"}
+                    radius="xl"
+                    size="sm"
+                />
                 : <a href={backendUrl("oauth2/authorization/google")}>Log in</a>}
         </>}
         {allowEdit() && <form onSubmit={onSubmit} style={{display: 'flex', alignItems: 'center', gap: '0.5rem'}}>

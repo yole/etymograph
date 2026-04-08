@@ -24,7 +24,8 @@ data class AuthStatusViewModel(
     val authEnabled: Boolean,
     val authenticated: Boolean,
     val email: String? = null,
-    val name: String? = null
+    val name: String? = null,
+    val pictureUrl: String? = null
 )
 
 @RestController
@@ -39,7 +40,8 @@ class AuthController(
             authEnabled = authEnabled,
             authenticated = principal != null,
             email = principal?.getAttribute("email"),
-            name = principal?.getAttribute("name")
+            name = principal?.getAttribute("name"),
+            pictureUrl = principal?.getAttribute("picture")
         )
     }
 
