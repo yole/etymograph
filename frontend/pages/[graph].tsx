@@ -1,8 +1,6 @@
 import Link from "next/link";
 import {fetchAllGraphs, fetchBackend, allowEditGraph} from "@/api";
 import {useRouter} from "next/router";
-import {useContext} from "react";
-import {GlobalStateContext} from "@/components/Contexts";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const config = {

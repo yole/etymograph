@@ -1,7 +1,7 @@
 import RuleSequenceForm from "@/forms/RuleSequenceForm";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import {useRouter} from "next/router";
-import {hasBackend, fetchAllGraphs, fetchAllLanguagePaths, fetchBackend} from "@/api";
+import {hasBackend, fetchAllGraphs, fetchBackend} from "@/api";
 import {Urls} from "@/components/Urls";
 
 export async function getStaticProps(context) {

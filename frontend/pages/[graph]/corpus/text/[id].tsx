@@ -5,7 +5,6 @@ import {faEdit, faCheck, faCommentDots, faEraser} from '@fortawesome/free-solid-
 import {
     fetchBackend,
     associateWord,
-    hasBackend,
     fetchAlternatives,
     acceptAlternative,
     fetchPathsForAllGraphs, callApiAndRefresh, lockWordAssociations, deleteTranslation, allowEditGraph

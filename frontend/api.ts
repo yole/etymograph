@@ -1,6 +1,5 @@
 import {
     AddPublicationParameters, AuthStatusViewModel, ComparePhonemesResult,
-    GraphViewModel,
     CorpusTextParams, GenerateParadigmParameters,
     LookupParameters,
     LookupResultViewModel,
