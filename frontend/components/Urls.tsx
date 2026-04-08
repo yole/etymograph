@@ -17,7 +17,8 @@ export const Urls = {
         }
     },
     Rules: {
-        phono: (graph: string, lang: string) => `/${graph}/rules/${lang}/phono`
+        phono: (graph: string, lang: string, sequence?: string) =>
+            sequence ? `/${graph}/rules/${lang}/phono#${sequence}` : `/${graph}/rules/${lang}/phono`
     },
     Phonemes: {
         newPhoneme: (graph: string, lang: string) => `/${graph}/phonemes/${lang}/new`

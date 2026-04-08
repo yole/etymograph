@@ -22,6 +22,7 @@ import RuleLink from "@/components/RuleLink";
 import {RuleExampleViewModel, RuleTraceResult, RuleViewModel} from "@/models";
 import LanguageSelect from "@/components/LanguageSelect";
 import WordSequenceForm from "@/forms/WordSequenceForm";
+import {Urls} from "@/components/Urls";
 
 export const config = {
     unstable_runtimeJS: true
@@ -267,7 +268,7 @@ export default function Rule(params) {
         {rule.sequenceLinks.length > 0 && <>
             <h3>Sequences</h3>
             {rule.sequenceLinks.map(sl => <>
-                {sl.sequenceName + ": "}
+                <Link href={Urls.Rules.phono(graph, rule.toLang, sl.sequenceName)}>{sl.sequenceName}</Link>{": "}
                 {sl.prev && <>previous <RuleLink rule={sl.prev}/></>}
                 {sl.prev && sl.next && ", "}
                 {sl.next && <>next <RuleLink rule={sl.next}/></>}

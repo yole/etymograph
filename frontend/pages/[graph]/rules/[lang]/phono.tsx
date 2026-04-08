@@ -32,7 +32,7 @@ function RuleListView(params: {list: RuleListViewModel}) {
 
     const ruleList = params.list
     return <>{ruleList.ruleGroups.map(g => <>
-        <h2 key={g.groupName}>{g.groupName}</h2>
+        <h2 id={g.sequenceName} key={g.groupName}>{g.groupName}</h2>
         {g.sequenceId !== null && <p>
             <Link href={`/${graph}/rules/sequence/${g.sequenceId}`}>Derivations</Link>{' | '}
             <Link href={`/${graph}/rules/sequence/report/${g.sequenceId}`}>Report</Link>
