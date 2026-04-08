@@ -1,4 +1,4 @@
-import {fetchBackend, fetchPathsForAllGraphs, reapplyRuleSequence} from "@/api";
+import {allowEditGraph, fetchBackend, fetchPathsForAllGraphs, reapplyRuleSequence} from "@/api";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import {DerivationViewModel, ReapplyResultViewModel, SequenceDerivationsViewModel} from "@/models";
 import WordLink from "@/components/WordLink";
@@ -72,6 +72,7 @@ export default function RuleSequence(params) {
     const [reapplyResult, setReapplyResult] = useState(null)
     const [posFilter, setPosFilter] = useState(null)
     const [showDerivations, setShowDerivations] = useState(true)
+    const canEdit = allowEditGraph()
 
     async function reapplySequenceClicked() {
         const result = await reapplyRuleSequence(graph, ruleSequence.sequence.id)
@@ -118,7 +119,7 @@ export default function RuleSequence(params) {
             steps={[{title: "Historical Phonology", url: `/${graph}/rules/${ruleSequence.sequence.toLang}/phono`}]}
         />
 
-        <button type="button" onClick={reapplySequenceClicked}>Reapply</button>
+        {canEdit && <p><button type="button" onClick={reapplySequenceClicked}>Reapply</button></p>}
 
         {reapplyResult && <div>
             Consistent: {reapplyResult.consistent};
