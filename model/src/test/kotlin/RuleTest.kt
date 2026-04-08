@@ -813,6 +813,21 @@ class RuleTest : QBaseTest() {
     }
 
     @Test
+    fun previewChangesSpeRule() {
+        val rule = repo.addRule("q-initial-d", q, q, Rule.parseLogic("* d > l / #_", q.parseContext()))
+        val changedWord = repo.addWord("danta")
+        repo.addWord("anta")
+        repo.addWord("anda")
+
+        val results = rule.previewChanges("* d > r / #_")
+
+        assertEquals(1, results.size)
+        assertEquals(changedWord, results.single().word)
+        assertEquals("lanta", results.single().oldResult)
+        assertEquals("ranta", results.single().newResult)
+    }
+
+    @Test
     fun speApplySoundRule() {
         val speRule = repo.rule("* e > i", name = "q-e-i")
         val baseRule = repo.rule("word ends with 'a':\n- apply sound rule 'q-e-i' to second vowel\notherwise:\n- no change")

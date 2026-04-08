@@ -585,7 +585,7 @@ class Rule(
         val newRule = Rule(-1, name, fromLanguage, toLanguage, newLogic)
         val results = mutableListOf<RuleChangeResult>()
         for (word in fromLanguage.graph.allWords(fromLanguage)) {
-            if (word.pos in fromPOS) {
+            if (fromPOS.isEmpty() || word.pos in fromPOS) {
                 val oldResult = apply(word)
                 val newResult = newRule.apply(word)
                 if (oldResult.text != newResult.text) {
