@@ -212,6 +212,7 @@ export type LanguageShortViewModel = {
     grammaticalCategories: Array<WordCategoryViewModel>;
     wordClasses: Array<WordCategoryViewModel>;
     dictionaries: Array<(string)>;
+    hasReconstructedWords?: boolean;
     descendantLanguages?: Array<LanguageShortViewModel> | null;
 };
 

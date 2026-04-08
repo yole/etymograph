@@ -66,6 +66,7 @@ class LanguageController {
         val grammaticalCategories: List<WordCategoryViewModel>,
         val wordClasses: List<WordCategoryViewModel>,
         val dictionaries: List<String>,
+        val hasReconstructedWords: Boolean,
         var descendantLanguages: List<LanguageShortViewModel>? = null
     )
 
@@ -123,6 +124,7 @@ class LanguageController {
                 })  
             },
             if ("wiktionary-id" in (dictionarySettings ?: "")) listOf("wiktionary") else emptyList(),
+            graph.allWords(this).any { it.reconstructed },
             null
         )
     

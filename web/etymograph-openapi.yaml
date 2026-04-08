@@ -3310,6 +3310,8 @@ components:
           type: "array"
           items:
             type: "string"
+        hasReconstructedWords:
+          type: "boolean"
         descendantLanguages:
           type: "array"
           nullable: true
