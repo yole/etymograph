@@ -10,6 +10,8 @@ services:
       retries: 10
     environment:
       - ETYMOGRAPH_GRAPH_PATH
+      - GOOGLE_CLIENT_ID
+      - GOOGLE_CLIENT_SECRET
   frontend-export:
     environment:
       - NEXT_PUBLIC_BACKEND_URL=http://backend:8080/

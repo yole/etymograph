@@ -3,6 +3,4 @@ on: [push, workflow_dispatch]
 jobs:
   publish-database:
     uses: ./.github/workflows/etymograph-build.yml
-    secrets:
-      siteId: ${{ secrets.ETYMOGRAPH_SITE_ID }}
-      netlifyAuthToken: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+    secrets: inherit
