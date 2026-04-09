@@ -287,6 +287,10 @@ class SpeAlternativeNode(val choices: List<List<SpeNode>>) : SpeTargetNode() {
     override fun insert(it: PhonemeIterator, relativeIndex: Int, context: SpeContext) {
         throw UnsupportedOperationException()
     }
+
+    override fun refersToPhoneme(phoneme: Phoneme): Boolean {
+        return choices.any { it.any { n -> n.refersToPhoneme(phoneme) } }
+    }
 }
 
 class SpeRepeatNode(private val base: SpeNode): SpeNode() {

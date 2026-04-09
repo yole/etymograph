@@ -1,6 +1,7 @@
 package ru.yole.etymograph
 
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class SpePatternTest : QBaseTest() {
@@ -170,6 +171,7 @@ class SpePatternTest : QBaseTest() {
     fun alternativeBefore() {
         val pattern = SpePattern.parse(q, q, "{w|v} > 0 / u_#")
         assertEquals("rau", pattern.apply(q, "rauw"))
+        assertTrue(pattern.before.any { it.refersToPhoneme(phoneme("v")) })
     }
 
     @Test
