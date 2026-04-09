@@ -2,9 +2,13 @@ name: Publish read-only database
 on:
   workflow_call:
     secrets:
-      netlifyAuthToken:
+      NETLIFY_AUTH_TOKEN:
         required: true
-      siteId:
+      ETYMOGRAPH_SITE_ID:
+        required: true
+      GOOGLE_CLIENT_ID:
+        required: true
+      GOOGLE_CLIENT_SECRET:
         required: true
 jobs:
   export-database:
