@@ -58,7 +58,7 @@ export default function Home(props) {
         <ul>
             {graphs.map(l =>
                 <li key={l.id}>
-                    <Link href={`/${l.id}`}>{l.name}</Link>{l.status && " (" + l.status + ")"}
+                    <Link href={`/${l.id}`}>{l.name}</Link>{hasBackend() && l.status && " (" + l.status + ")"}
                     {auth?.authStatus?.editableGraphs?.includes(l.id) && <>
                         {' '}
                         <button className="uiButton" onClick={() => syncGraphChanges(l.id)}>Sync Changes</button>
