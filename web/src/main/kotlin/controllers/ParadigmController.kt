@@ -109,7 +109,7 @@ class ParadigmController {
         val name: String,
         val lang: String,
         val pos: String,
-        val addedCategories: String,
+        val addedCategories: String?,
         val prefix: String,
         val rows: String,
         val columns: String,
@@ -125,7 +125,7 @@ class ParadigmController {
             params.pos.split(",").map { it.trim() },
             params.rows.split(",").map { it.trim() },
             params.columns.split(",").map { it.trim() },
-            params.prefix, params.addedCategories,
+            params.prefix, params.addedCategories.orEmpty(),
             params.endings.orEmpty().split(",").map { it.trim() }
         )
 
