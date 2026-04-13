@@ -2781,6 +2781,8 @@ components:
           $ref: "#/components/schemas/RuleRefViewModel"
         spe:
           type: "boolean"
+        coreRule:
+          type: "boolean"
         shownOnMorphoPage:
           type: "boolean"
         preInstructions:
@@ -2832,6 +2834,7 @@ components:
         - "source"
         - "sourceEditableText"
         - "spe"
+        - "coreRule"
         - "shownOnMorphoPage"
         - "preInstructions"
         - "branches"

@@ -87,6 +87,7 @@ class RuleController {
         val paradigmPreRule: RuleRefViewModel?,
         val paradigmPostRule: RuleRefViewModel?,
         val spe: Boolean,
+        val coreRule: Boolean,
         val shownOnMorphoPage: Boolean,
         val preInstructions: List<RichText>,
         val branches: List<RuleBranchViewModel>,
@@ -212,7 +213,7 @@ class RuleController {
         val grammarOtherGroup by lazy { RuleGroup("Grammar: Other", null, null).also { ruleGroups.add(it) } }
 
         for (rule in repo.allRules().filter { it.toLanguage == language }) {
-            if (rule in allParadigmRules || rule in allSequenceRules) continue
+            if (rule in allParadigmRules || rule in allSequenceRules || rule.isCoreRule()) continue
             val group = when {
                 rule in paradigmReferencedRules -> grammarAuxiliaryGroup
                 rule.isSPE() -> phoneticsGroup
@@ -313,6 +314,7 @@ class RuleController {
             paradigm?.preRule?.toRefViewModel(),
             paradigm?.postRule?.toRefViewModel(),
             isSPE(),
+            isCoreRule(),
             !isSPE() || isReferencedFromParadigms,
             (logic as? MorphoRuleLogic)?.preInstructions?.map { it.toRichText(repo) } ?: emptyList(),
             ruleBranchesToViewModel(repo, examples),

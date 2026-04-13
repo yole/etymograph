@@ -96,9 +96,12 @@ export default function Rule(params) {
     const graph = router.query.graph as string
     const canEdit = allowEditGraph()
 
-    const ruleStep = rule.shownOnMorphoPage ?
-        ({title: "Morphology", url: `/${graph}/rules/${rule.toLang}/morpho`}) :
-        ({title: "Historical Phonology", url: `/${graph}/rules/${rule.toLang}/phono`})
+    const ruleStep =
+        rule.coreRule
+            ? ({title: "Language", url: Urls.language(graph, rule.toLang)})
+            : (rule.shownOnMorphoPage
+                ? ({title: "Morphology", url: Urls.Rules.morpho(graph, rule.toLang)})
+                : ({title: "Historical Phonology", url: Urls.Rules.phono(graph, rule.toLang)}))
 
     function linkSubmitted() {
         setLinkMode(false)

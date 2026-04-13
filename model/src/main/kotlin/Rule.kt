@@ -530,6 +530,11 @@ class Rule(
     notes: String? = null
 ) : LangEntity(id, source, notes) {
     fun isSPE(): Boolean = logic is SpeRuleLogic
+    fun isCoreRule(): Boolean =
+        toLanguage.stressRule?.resolve() == this ||
+                toLanguage.phonotacticsRule?.resolve() == this ||
+                toLanguage.pronunciationRule?.resolve() == this ||
+                toLanguage.orthographyRule?.resolve() == this
 
     fun apply(word: Word, trace: RuleTrace? = null,
               normalizeSegments: Boolean = true,
