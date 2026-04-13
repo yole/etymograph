@@ -186,6 +186,7 @@ export type GenerateParadigmParameters = {
     rows: string;
     columns: string;
     endings: string;
+    source?: string;
 };
 
 export type GraphViewModel = {

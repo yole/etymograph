@@ -169,7 +169,8 @@ fun generateParadigm(
     columns: List<String>,
     prefix: String,
     addedCategories: String,
-    endings: List<String>
+    endings: List<String>,
+    source: List<SourceRef>
 ): Paradigm {
 
     fun crossProduct(c: List<List<String>>): List<String> {
@@ -207,7 +208,7 @@ fun generateParadigm(
             val ruleName = "$prefix${rowTitle.lowercase()}$ruleNameSeparator${columnTitle.lowercase().replace(" ", "-")}"
             val addedCategories = addedCategories + "." + rowTitle.uppercase() + categorySeparator + columnTitle.uppercase().replace(" ", ".")
             val rule = language.graph.ruleByName(ruleName)
-                ?: createParadigmRule(name, ruleName, language, addedCategories, pos, endings.getOrNull(rowIndex + colIndex * rowList.size))
+                ?: createParadigmRule(name, ruleName, language, addedCategories, pos, endings.getOrNull(rowIndex + colIndex * rowList.size), source)
 
             paradigm.setRule(rowIndex, colIndex, listOf(rule))
         }
@@ -221,18 +222,19 @@ private fun createParadigmRule(
     language: Language,
     addedCategories: String,
     pos: List<String>,
-    ending: String?
+    ending: String?,
+    source: List<SourceRef>
 ): Rule {
 
     val logic = if (!ending.isNullOrBlank()) {
         val endingGloss = "$name ${addedCategories.removePrefix(".").lowercase()}. ending"
-        language.graph.findOrAddWord(ending, language, endingGloss, pos = KnownPartsOfSpeech.affix.abbreviation)
+        language.graph.findOrAddWord(ending, language, endingGloss, pos = KnownPartsOfSpeech.affix.abbreviation, source = source)
         MorphoRuleLogic.parse("- append morpheme '$ending: $endingGloss'", RuleParseContext.of(language, language))
     }
     else {
         MorphoRuleLogic.empty()
     }
-    return language.graph.addRule(ruleName, language, language, logic, addedCategories, fromPOS = pos)
+    return language.graph.addRule(ruleName, language, language, logic, addedCategories, fromPOS = pos, source = source)
 }
 
 

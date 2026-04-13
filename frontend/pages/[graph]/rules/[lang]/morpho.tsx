@@ -69,6 +69,7 @@ export default function MorphoRuleList(params) {
                         <GrammaticalCategorySelect label="Rows" id="rows" language={lang} posProp="pos"/>
                         <GrammaticalCategorySelect label="Columns" id="columns" language={lang} posProp="pos"/>
                         <FormRow label="Endings" id="endings"/>
+                        <FormRow label="Source" id="source"/>
                         </tbody>
                     </table>
                 </EtymographForm>

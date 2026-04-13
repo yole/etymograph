@@ -3133,6 +3133,8 @@ components:
           type: "string"
         endings:
           type: "string"
+        source:
+          type: "string"
       required:
         - "name"
         - "lang"

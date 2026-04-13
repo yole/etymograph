@@ -2,6 +2,7 @@ package ru.yole.etymograph.web.controllers
 
 import org.springframework.web.bind.annotation.*
 import ru.yole.etymograph.*
+import ru.yole.etymograph.web.parseSourceRefs
 import ru.yole.etymograph.web.resolveLanguage
 import ru.yole.etymograph.web.resolveRule
 
@@ -113,20 +114,24 @@ class ParadigmController {
         val prefix: String,
         val rows: String,
         val columns: String,
-        val endings: String?
+        val endings: String?,
+        val source: String?
     )
 
     @PostMapping("/{graph}/paradigm/generate")
     @ResponseBody
-    fun generateParadigm(repo: GraphRepository, @RequestBody params: GenerateParadigmParameters): ParadigmViewModel {
+    fun generateParadigm(repo: GraphRepository, @RequestBody params: GenerateParadigmParameters, @PathVariable graph: String
+    ): ParadigmViewModel {
         val language = repo.resolveLanguage(params.lang)
+        val source = parseSourceRefs(repo, params.source)
         val paradigm = generateParadigm(
             language, params.name,
             params.pos.split(",").map { it.trim() },
             params.rows.split(",").map { it.trim() },
             params.columns.split(",").map { it.trim() },
             params.prefix, params.addedCategories.orEmpty(),
-            params.endings.orEmpty().split(",").map { it.trim() }
+            params.endings.orEmpty().split(",").map { it.trim() },
+            source
         )
 
         return paradigm.toViewModel(repo)
