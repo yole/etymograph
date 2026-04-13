@@ -169,8 +169,8 @@ fun generateParadigm(
     columns: List<String>,
     prefix: String,
     addedCategories: String,
-    endings: List<String>,
-    source: List<SourceRef>
+    endings: List<String> = emptyList(),
+    source: List<SourceRef> = emptyList()
 ): Paradigm {
 
     fun crossProduct(c: List<List<String>>): List<String> {
