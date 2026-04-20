@@ -41,13 +41,18 @@ class AuthController(
     @GetMapping("/me")
     fun me(@AuthenticationPrincipal principal: OAuth2User?): AuthStatusViewModel {
         val email = principal?.getAttribute<String?>("email")
+        val editableGraphs = if (authEnabled) {
+            email?.let { graphService.getEditableGraphs(it) }?.toTypedArray() ?: arrayOf()
+        } else {
+            graphService.allGraphs().map { it.id }.toTypedArray()
+        }
         return AuthStatusViewModel(
             authEnabled = authEnabled,
             authenticated = principal != null,
             email = email,
             name = principal?.getAttribute("name"),
             pictureUrl = principal?.getAttribute("picture"),
-            email?.let { graphService.getEditableGraphs(it) }?.toTypedArray() ?: arrayOf()
+            editableGraphs
         )
     }
 
