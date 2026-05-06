@@ -168,7 +168,9 @@ export type DictionaryViewModel = {
     languageFullName: string;
     languageSyllabographic: boolean;
     words: Array<DictionaryWordViewModel>;
-    wordsByLetter?: (string) | null;
+    wordsByLetter?: {
+        [key: string]: Array<DictionaryWordViewModel>;
+    } | null;
 };
 
 export type DictionaryWordViewModel = {

@@ -3652,7 +3652,11 @@ components:
           items:
             $ref: "#/components/schemas/DictionaryWordViewModel"
         wordsByLetter:
-          type: "string"
+          type: "object"
+          additionalProperties:
+            type: "array"
+            items:
+              $ref: "#/components/schemas/DictionaryWordViewModel"
           nullable: true
       required:
         - "language"
