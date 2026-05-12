@@ -47,8 +47,9 @@ export function CorpusTextWordLink(params: CorpusTextWordLinkProps) {
     const showTranslationFormAtWord = params.showTranslationFormAtWord
     const [hovered, setHovered] = useState(false)
     const router = useRouter()
+    const editable = allowEditGraph()
 
-    const renderActions = () => hovered && allowEditGraph() && <span className="iconWithMargin">
+    const renderActions = () => hovered && editable && <span className="iconWithMargin">
         <FontAwesomeIcon icon={faEdit} onClick={() => showWordForm(w.normalizedText, w.index)}/>
         {' '}
         <FontAwesomeIcon icon={faCommentDots} onClick={() => showTranslationFormAtWord(w.index)}/>
@@ -74,7 +75,7 @@ export function CorpusTextWordLink(params: CorpusTextWordLinkProps) {
     } else {
         return <span onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
             <span className="undefWord" onClick={() => {
-                if (allowEditGraph()) showWordForm(w.normalizedText, w.index)
+                if (editable) showWordForm(w.normalizedText, w.index)
             }}><WordTextView text={w.text} syllabograms={w.syllabogramSequence}/></span>
             {renderActions()}
         </span>
@@ -93,6 +94,7 @@ function CorpusTextGlossChoice(params: CorpusTextGlossChoiceProps) {
     const lang = params.corpusText.language
     const c = params.candidate
     const [hovered, setHovered] = useState(false)
+    const editable = allowEditGraph()
 
     async function acceptGloss() {
         await acceptAlternative(graph, params.corpusText.id, params.word.index, c.id, -1)
@@ -103,7 +105,7 @@ function CorpusTextGlossChoice(params: CorpusTextGlossChoiceProps) {
         <Link href={`/${graph}/word/${lang}/${params.word.text.toLowerCase()}/${c.id}`}>
             <WordGloss gloss={c.gloss}/>
         </Link>
-        {hovered && allowEditGraph() &&
+        {hovered && editable &&
             <span className="iconWithMargin"><FontAwesomeIcon icon={faCheck} onClick={() => acceptGloss()}/></span>}
     </span>
 }
@@ -219,6 +221,7 @@ export default function CorpusText(params) {
     const graph = router.query.graph as string;
     const allWords = corpusText.lines.flatMap(l => l.words)
     const {segments, unanchoredTranslations} = buildSegments(corpusText)
+    const editable = allowEditGraph()
 
     function textSubmitted() {
         setEditMode(false)
@@ -374,7 +377,7 @@ export default function CorpusText(params) {
                 <TranslationView translation={t}/>
             </>)}
         </>}
-        {allowEditGraph() && <p>
+        {editable && <p>
             {!editMode && <>
                 <button className="uiButton" onClick={() => setEditMode(true)}>Edit</button>
                 {' '}
