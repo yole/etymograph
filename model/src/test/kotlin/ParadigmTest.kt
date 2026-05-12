@@ -9,15 +9,21 @@ class ParadigmTest : QBaseTest() {
     @Before
     fun setup() {
         q.grammaticalCategories.add(WordCategory(
-            "Case", listOf("N"), listOf(
+            "Case", listOf("N", "ADJ"), listOf(
                 WordCategoryValue("Nominative", "NOM"),
                 WordCategoryValue("Dative", "DAT")
             )
         ))
         q.grammaticalCategories.add(WordCategory(
-            "Number", listOf("N"), listOf(
+            "Number", listOf("N", "ADJ"), listOf(
                 WordCategoryValue("Singular", "SG"),
                 WordCategoryValue("Plural", "PL")
+            )
+        ))
+        q.grammaticalCategories.add(WordCategory(
+            "Gender", listOf("ADJ"), listOf(
+                WordCategoryValue("Masculine", "M"),
+                WordCategoryValue("Feminine", "F")
             )
         ))
     }
@@ -150,6 +156,15 @@ class ParadigmTest : QBaseTest() {
             listOf("Case"), listOf("Number"), "q-", "", emptyList())
 
         assertNotNull(repo.ruleByName("q-nom-sg"))
+    }
+
+    @Test
+    fun generateProductParadigm() {
+        val paradigm = generateParadigm(
+            q, "Adjective", listOf("ADJ"),
+            listOf("Case"), listOf("Number", "Gender"), "q-", "", emptyList())
+
+        assertNotNull(repo.ruleByName("q-nom-sg-m"))
     }
 
     @Test

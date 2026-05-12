@@ -174,8 +174,17 @@ fun generateParadigm(
 ): Paradigm {
 
     fun crossProduct(c: List<List<String>>): List<String> {
-        // TODO
-        return c[0]
+        if (c.size == 1) {
+            return c[0]
+        }
+        val rest = crossProduct(c.drop(1))
+        val result = mutableListOf<String>()
+        for (first in c[0]) {
+            for (r in rest) {
+                result.add("$first $r")
+            }
+        }
+        return result
     }
 
     fun mapToGrammaticalCategories(list: List<String>): List<String> {
