@@ -96,7 +96,7 @@ class CorpusText(
                 sentenceStart = tw.baseText.endsWith('.')
                 val syllabogramSequence = if (language.syllabographic) TlhDigSyllabogramSyntax.parse(tw.baseText) else null
                 if (word != null) {
-                    val stressData = word.calculateStress()
+                    val stressData = if (language.accentTypes.isEmpty()) word.calculateStress() else null
                     val leadingPunctuation = tw.baseText.takeWhile { it in leadingPunctuation }
                     val trailingPunctuation = tw.baseText.takeLastWhile { it in punctuation }
                     val wordWithSegments = word.graph.restoreSegments(word)
