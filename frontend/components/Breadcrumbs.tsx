@@ -85,7 +85,7 @@ export default function Breadcrumbs(props: BreadcrumbsProps) {
     return <div style={{marginBottom: '0.75rem'}}><div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
         <h2 style={{marginBottom: '0', marginTop: '0.75rem'}}>
             <small>
-                {theGraph === undefined && <Link href={`/${graph}`}>Etymograph</Link>}
+                {theGraph === undefined && "Etymograph"}
                 {theGraph !== undefined && <>
                     <Link href="/">Etymograph</Link>{' > '}
                     <Link href={`/${graph}`}>{theGraph.name}</Link>
