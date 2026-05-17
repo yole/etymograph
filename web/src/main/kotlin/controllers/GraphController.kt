@@ -1,6 +1,7 @@
 package ru.yole.etymograph.web.controllers
 
 import org.eclipse.jgit.api.Git
+import org.eclipse.jgit.api.Status
 import org.eclipse.jgit.transport.RemoteRefUpdate
 import org.springframework.http.HttpStatus
 import org.springframework.security.core.annotation.AuthenticationPrincipal
@@ -40,9 +41,10 @@ class GraphController(
         try {
             Git.open(workTree).use { git ->
                 val status = git.status().call()
-                if (status.untracked.isNotEmpty()) {
+                val unversionedPaths = status.unversionedPaths()
+                if (unversionedPaths.isNotEmpty()) {
                     val add = git.add()
-                    status.untracked.forEach(add::addFilepattern)
+                    unversionedPaths.forEach(add::addFilepattern)
                     add.call()
                 }
                 git.add().addFilepattern(".").setUpdate(true).call()
@@ -96,10 +98,21 @@ class GraphController(
                     addAll(status.added)
                     addAll(status.changed)
                     addAll(status.modified)
+                    addAll(status.unversionedPaths())
                 }
                 "${changedFiles.size} changed files"
             }
         }.getOrDefault("")
+    }
+
+    private fun Status.unversionedPaths(): Set<String> {
+        val untrackedFiles = untracked
+        return buildSet {
+            addAll(untrackedFiles)
+            addAll(untrackedFolders.filter { folder ->
+                untrackedFiles.none { file -> file == folder || file.startsWith("$folder/") }
+            })
+        }
     }
 
     companion object {
