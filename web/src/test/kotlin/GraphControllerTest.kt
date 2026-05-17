@@ -23,21 +23,21 @@ class GraphControllerTest {
         val registryDir = Files.createTempDirectory("graph-controller-test")
         val registryFile = registryDir.resolve("graphs.json")
         registryFile.writeText("""{"graphs":[]}""")
-        val originRepo = createOriginRepo(findProjectRoot().resolve("data/etymograph-jrrt"))
+        val originRepo = createMinimalGraphRepo()
 
         val graphService = InMemoryGraphService(registryFile.toString())
         val controller = GraphController(graphService, false)
 
         val graph = controller.clone(GraphController.CloneGraphParams(originRepo.toUri().toString()))
 
-        assertEquals("jrrt", graph.id)
-        assertEquals("Tolkien's Languages", graph.name)
-        assertEquals(listOf("jrrt"), graphService.allGraphs().map { it.id })
+        assertEquals("test", graph.id)
+        assertEquals("Test Graph", graph.name)
+        assertEquals(listOf("test"), graphService.allGraphs().map { it.id })
 
         val persistedRegistry = json.decodeFromString<InMemoryGraphService.GraphRegistryData>(registryFile.readText())
         assertEquals(1, persistedRegistry.graphs.size)
-        assertEquals("jrrt", persistedRegistry.graphs.single().id)
-        assertEquals("Tolkien's Languages", persistedRegistry.graphs.single().name)
+        assertEquals("test", persistedRegistry.graphs.single().id)
+        assertEquals("Test Graph", persistedRegistry.graphs.single().name)
         assertTrue(registryDir.resolve(persistedRegistry.graphs.single().path).resolve("graph.json").exists())
     }
 
@@ -102,17 +102,6 @@ class GraphControllerTest {
         return originDir
     }
 
-    private fun createOriginRepo(sourceGraphDir: Path): Path {
-        val originDir = Files.createTempDirectory("graph-origin-repo")
-        copyDirectory(sourceGraphDir, originDir)
-        Git.init().setDirectory(originDir.toFile()).call().use { git ->
-            configureIdentity(git)
-            git.add().addFilepattern(".").call()
-            git.commit().setMessage("Initial graph").call()
-        }
-        return originDir
-    }
-
     private fun configureIdentity(git: Git) {
         git.repository.config.setString("user", null, "name", "Etymograph Test")
         git.repository.config.setString("user", null, "email", "test@example.com")
@@ -132,14 +121,6 @@ class GraphControllerTest {
                 }
             }
         }
-    }
-
-    private fun findProjectRoot(): Path {
-        val configuredRoot = System.getProperty("etymograph.projectRoot")
-        if (configuredRoot != null && Path.of(configuredRoot).resolve("data/etymograph-jrrt/graph.json").exists()) {
-            return Path.of(configuredRoot)
-        }
-        throw IllegalStateException("Cannot find project root")
     }
 
     private class SingleGraphService(private val repo: GraphRepository) : GraphService() {
