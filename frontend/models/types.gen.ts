@@ -275,6 +275,7 @@ export type LinkWordViewModel = {
     source: Array<SourceRefViewModel>;
     sourceEditableText: string;
     notes?: (string) | null;
+    attestations: Array<AttestationViewModel>;
     suggestedSequences: Array<WordRuleSequenceViewModel>;
 };
 

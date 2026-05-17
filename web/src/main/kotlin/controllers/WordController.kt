@@ -68,6 +68,7 @@ class WordController(val dictionaryService: DictionaryService) {
         val source: List<SourceRefViewModel>,
         val sourceEditableText: String,
         val notes: String?,
+        val attestations: List<AttestationViewModel>,
         val suggestedSequences: List<WordRuleSequenceViewModel>
     )
 
@@ -162,8 +163,6 @@ class WordController(val dictionaryService: DictionaryService) {
         val ruleLinks = (linksFrom.values.flatten() + linksTo.values.flatten())
             .filter { it.fromEntity is Rule || it.toEntity is Rule }
         val morphemeReferences = graph.findRulesReferencingMorpheme(this)
-        val attestations = graph.findAttestations(this)
-
         val stressData = calculateStress()
         val textWithExplicitStress = if (explicitStress && stressData != null)
             text.substring(0, stressData.index) + explicitStressMark + text.substring(stressData.index)
@@ -206,14 +205,7 @@ class WordController(val dictionaryService: DictionaryService) {
             source.toViewModel(graph),
             source.toEditableText(graph),
             notes,
-            attestations.map { attestation ->
-                AttestationViewModel(
-                    attestation.corpusText.id,
-                    attestation.corpusText.title ?: attestation.corpusText.text,
-                    attestation.word.text.takeIf { it != text },
-                    attestation.word.syllabogramSequence?.takeIf { attestation.word.text != text }
-                )
-            },
+            attestationsToViewModel(graph),
             linksFrom.mapNotNull {
                 val wordLinks = it.value.filter { link -> link.toEntity is Word }
                 if (wordLinks.isEmpty())
@@ -606,6 +598,10 @@ fun linkToViewModel(
         buildIntermediateSteps(graph, link).map { it.result }.takeIf { it.size > 1 } ?: emptyList()
     else
         emptyList()
+    val attestations = if (link.type == Link.Derived && !fromSide)
+        toWord.attestationsToViewModel(graph)
+    else
+        emptyList()
     return WordController.LinkWordViewModel(
         toWord.toRefViewModel(),
         link.rules.map { it.id },
@@ -615,9 +611,20 @@ fun linkToViewModel(
         link.source.toViewModel(graph),
         link.source.toEditableText(graph),
         link.notes,
+        attestations,
         suggestedSequences(graph, link)
     )
 }
+
+private fun Word.attestationsToViewModel(graph: GraphRepository): List<WordController.AttestationViewModel> =
+    graph.findAttestations(this).map { attestation ->
+        WordController.AttestationViewModel(
+            attestation.corpusText.id,
+            attestation.corpusText.title ?: attestation.corpusText.text,
+            attestation.word.text.takeIf { it != text },
+            attestation.word.syllabogramSequence?.takeIf { attestation.word.text != text }
+        )
+    }
 
 class RuleStepData(
     val result: String,

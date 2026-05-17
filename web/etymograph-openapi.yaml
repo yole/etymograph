@@ -2012,6 +2012,10 @@ components:
         notes:
           type: "string"
           nullable: true
+        attestations:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/AttestationViewModel"
         suggestedSequences:
           type: "array"
           items:
@@ -2023,6 +2027,7 @@ components:
         - "ruleResults"
         - "source"
         - "sourceEditableText"
+        - "attestations"
         - "suggestedSequences"
     LinkTypeViewModel:
       type: "object"

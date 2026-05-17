@@ -29,7 +29,7 @@ import {GlobalStateContext, GraphContext} from "@/components/Contexts";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import WordGloss, {WordFullGloss} from "@/components/WordGloss";
 import {
-    CompoundComponentsViewModel, DictionaryViewModel, LinkTypeViewModel, LinkWordViewModel,
+    AttestationViewModel, CompoundComponentsViewModel, DictionaryViewModel, LinkTypeViewModel, LinkWordViewModel,
     LookupVariantViewModel,
     ParseCandidateViewModel, WordRefViewModel,
     WordViewModel
@@ -75,6 +75,16 @@ interface WordLinkProps {
     showSequence?: boolean
     directionFrom: boolean
     linkClassName?: string
+}
+
+function InlineAttestations({attestations, graph}: {attestations: AttestationViewModel[], graph: string}) {
+    return <span>
+        {' '} in {attestations.map((att, i) => <span key={`${att.textId}-${i}`}>
+            {i > 0 && ", "}
+            <Link href={`/${graph}/corpus/text/${att.textId}`}>{att.textTitle}</Link>
+            {att.word && <>{' ('}<WordTextView text={att.word} syllabograms={att.syllabogramSequence}/>{')'}</>}
+        </span>)}
+    </span>
 }
 
 export function WordLinkComponent(params: WordLinkProps) {
@@ -144,6 +154,9 @@ export function WordLinkComponent(params: WordLinkProps) {
         {params.showSequence && linkWord.ruleSequence && <>&nbsp;through {linkWord.ruleSequence.name}</>}
         {linkWord.notes && <> &ndash; {linkWord.notes}</>}
         <SourceRefs source={linkWord.source} span={true}/>
+        {params.linkType.typeId === ">" && !params.directionFrom && linkWord.attestations.length > 0 &&
+            <InlineAttestations attestations={linkWord.attestations} graph={graph}/>
+        }
         {canEdit && <>
             &nbsp;<span className="inlineButtonLink">
                     (<button className="inlineButton" onClick={() => setEditMode(!editMode)}>edit</button>
@@ -566,13 +579,7 @@ function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean 
         </>}
 
         {!word.baseWord && word.attestations.length > 0 &&
-            <p>Attested in {word.attestations.map((att, i) => <>
-                    {i > 0 && ", "}
-                    <Link href={`/${graph}/corpus/text/${att.textId}`}>{att.textTitle}</Link>
-                    {att.word && <>{' ('}<WordTextView text={att.word} syllabograms={att.syllabogramSequence}/>{')'}</>}
-                </>
-            )}
-            </p>
+            <>Attested <InlineAttestations attestations={word.attestations} graph={graph}/></>
         }
 
         <WordLinkTypeComponent word={word} links={word.linksFrom} directionFrom={true}/>

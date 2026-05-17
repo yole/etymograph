@@ -110,6 +110,23 @@ class WordControllerTest {
     }
 
     @Test
+    fun derivedFormLinksIncludeAttestations() {
+        val lemma = graph.findOrAddWord("elen", fixture.q, "star")
+        val inflected = graph.findOrAddWord("elena", fixture.q, "star.ACC")
+        graph.addLink(inflected, lemma, Link.Derived)
+        val corpusText = graph.addCorpusText("elena sila", "Sample text", fixture.q)
+        corpusText.associateWord(0, inflected)
+
+        val wordViewModel = wordController.singleWordJson(graph, "q", lemma.text, lemma.id)
+        val linkViewModel = wordViewModel.linksTo.single { it.typeId == ">" }.words.single()
+        val attestation = linkViewModel.attestations.single()
+
+        assertEquals(corpusText.id, attestation.textId)
+        assertEquals("Sample text", attestation.textTitle)
+        assertNull(attestation.word)
+    }
+
+    @Test
     fun deriveThroughSequence() {
         val seq = fixture.setupRuleSequence()
         val cew = graph.findOrAddWord("am", fixture.ce, null)

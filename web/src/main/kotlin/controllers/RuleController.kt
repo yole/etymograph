@@ -699,6 +699,7 @@ class RuleController {
                             derivation.flatMap { it.source.toViewModel(repo) },
                             "",
                             derivation.firstNotNullOfOrNull { it.notes },
+                            emptyList(),
                             if (firstLink.sequence == null)
                                 listOf(WordController.WordRuleSequenceViewModel(sequence.name, sequence.id))
                             else
