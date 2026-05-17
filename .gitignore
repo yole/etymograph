@@ -1,18 +1,12 @@
-# Project exclude paths
 /.gradle/
-/model/build/
-/web/build/
 /model/out/
 /web/out/
-.settings
-.project
-.classpath
 .idea
 .kotlin
 build
 *.iml
 export
-elvish
 .fleet
 dictionaries
-corpus
+.junie
+data
