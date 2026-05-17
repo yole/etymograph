@@ -1,4 +1,4 @@
-import {hasBackend, cloneGraph, fetchGraphs, syncChanges} from "../api";
+import {hasBackend, cloneGraph, fetchGraphs, syncChanges, callApiAndRefresh} from "../api";
 import Link from "next/link";
 import {useContext, useState} from "react";
 import {useRouter} from "next/router";
@@ -23,14 +23,7 @@ export default function Home(props) {
     const auth = useContext(AuthContext)
 
     async function syncGraphChanges(graphId) {
-        const response = await syncChanges(graphId)
-        if (response.status === 200) {
-            router.replace(router.asPath)
-            return
-        }
-
-        const result = await response.json()
-        setErrorText(result.message)
+        callApiAndRefresh(() => syncChanges(graphId), router, setErrorText)
     }
 
     async function cloneExistingGraph() {

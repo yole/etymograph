@@ -11,6 +11,7 @@ import {
 } from "@/models";
 import {useContext} from "react";
 import {AuthContext, GraphContext} from "@/components/Contexts";
+import {NextRouter} from "next/router";
 
 export function hasBackend() {
     return process.env.NEXT_PUBLIC_READONLY !== "true";
@@ -402,7 +403,7 @@ export function updatePublication(graph: string, id: number, data: AddPublicatio
 
 export async function callApiAndRefresh(
     apiCall: () => Promise<Response>,
-    router,
+    router: NextRouter,
     setErrorText: (message: string) => void
 ){
     const result = await apiCall()
