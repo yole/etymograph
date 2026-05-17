@@ -60,7 +60,7 @@ export default function Home(props) {
             )}
         </ul>
         {errorText !== "" && <div className="errorText">{errorText}</div>}
-        {hasBackend() && auth?.authStatus?.authenticated === true && <p>
+        {hasBackend() && (auth?.authStatus?.authEnabled === false || auth?.authStatus?.authenticated === true) && <p>
             <button className="uiButton" onClick={() => setCloneModalOpened(true)}>Clone Data Repository</button>
         </p>}
         <Modal
