@@ -307,33 +307,34 @@ export default function CorpusText(params) {
                                         {w.contextGloss && <><br/><span className="contextGloss">{w.contextGloss}</span></>}
                                     </span>)}
                             </div>
+                            {wordIndex >= line.words[0].index && wordIndex < line.words[line.words.length-1].index &&
+                                wordIndex >= segment.start && wordIndex < segment.end && wordFormVisible &&
+                                <>
+                                    <div>{alternatives.map(alt => <>
+                                        <button className="inlineButton"
+                                                onClick={() => acceptAlternativeClicked(wordIndex, alt.wordId, alt.ruleId)}>
+                                            {alt.gloss + '?'}
+                                        </button>
+                                        {' '}
+                                    </>)}</div>
+                                    <WordForm key={predefWord} wordSubmitted={wordSubmitted}
+                                              defaultValues={{
+                                                  language: corpusText.language,
+                                                  text: predefWord,
+                                                  contextGloss: allWords.find(w => w.index === wordIndex)?.contextGloss,
+                                                  syllabographic: corpusText.syllabographic,
+                                              }}
+                                              languageReadOnly={true}
+                                              linkType=">"
+                                              reverseLink={true}
+                                              linkTargetText={predefWord}
+                                              showContextGloss={true}
+                                              showSyllabographic={true}
+                                              cancelled={() => setWordFormVisible(false)}/>
+                                </>
+                            }
                         </div>
                     })}
-                    {wordIndex >= segment.start && wordIndex < segment.end && wordFormVisible &&
-                        <>
-                            <div>{alternatives.map(alt => <>
-                                <button className="inlineButton"
-                                        onClick={() => acceptAlternativeClicked(wordIndex, alt.wordId, alt.ruleId)}>
-                                    {alt.gloss + '?'}
-                                </button>
-                                {' '}
-                            </>)}</div>
-                            <WordForm key={predefWord} wordSubmitted={wordSubmitted}
-                                      defaultValues={{
-                                          language: corpusText.language,
-                                          text: predefWord,
-                                          contextGloss: allWords.find(w => w.index === wordIndex)?.contextGloss,
-                                          syllabographic: corpusText.syllabographic,
-                                      }}
-                                      languageReadOnly={true}
-                                      linkType=">"
-                                      reverseLink={true}
-                                      linkTargetText={predefWord}
-                                      showContextGloss={true}
-                                      showSyllabographic={true}
-                                      cancelled={() => setWordFormVisible(false)}/>
-                        </>
-                    }
                     {segment.translations.length > 0 && <>
                         {segment.translations.length > 1 && <h4>Translations</h4>}
                         {segment.translations.map(t =>
