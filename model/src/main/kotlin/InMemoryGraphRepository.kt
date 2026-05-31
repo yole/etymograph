@@ -127,7 +127,7 @@ open class InMemoryGraphRepository : GraphRepository() {
             word.pos == KnownPartsOfSpeech.properName.abbreviation -> WordKind.NAME
             isCompound(word) -> if (isCliticChain(word)) WordKind.DERIVED else WordKind.COMPOUND
             word.gloss == null -> WordKind.DERIVED
-            word.hasGrammarCategory() -> WordKind.DERIVED
+            word.baseWordLink() != null -> WordKind.DERIVED
             else -> WordKind.NORMAL
         }
     }
@@ -144,13 +144,6 @@ open class InMemoryGraphRepository : GraphRepository() {
         return compounds.any {
             it.components.any { c -> KnownClasses.clitic in (c.baseWord() ?: c).classes }
         }
-    }
-
-    private fun Word.hasGrammarCategory(): Boolean {
-        val gloss = gloss ?: return false
-        val suffix = gloss.substringAfterLast('.', "")
-        return (suffix.isNotEmpty() && suffix.all { it.isUpperCase() || it.isDigit() }) &&
-                !gloss.all { it.isUpperCase() || it.isDigit() || it == '.' }
     }
 
     override fun filteredWords(lang: Language, kind: WordKind): List<Word> {

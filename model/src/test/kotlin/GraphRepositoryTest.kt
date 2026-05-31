@@ -32,6 +32,20 @@ class GraphRepositoryTest : QBaseTest() {
     }
 
     @Test
+    fun classifyWordWithGloss() {
+        val ek = repo.addWord("ek", "me.1SG")
+        assertEquals(1, repo.dictionaryWords(q).size)
+    }
+
+    @Test
+    fun classifyWordDerived() {
+        val ek = repo.addWord("ek", "me.1SG")
+        val derived = repo.addWord("och")
+        repo.addLink(derived, ek, Link.Derived)
+        assertEquals(1, repo.dictionaryWords(q).size)
+    }
+
+    @Test
     fun wordByTextSyllabographic() {
         val ht = Language(repo, "Hittite", "Ht")
         ht.syllabographic = true
