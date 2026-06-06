@@ -241,6 +241,7 @@ export default function CorpusText(params) {
     }
 
     async function showWordForm(text: string, index: number) {
+        console.log("Showing word form for index " + index)
         const r = await fetchAlternatives(graph, corpusText.id, index)
         setAlternatives(r)
         setWordFormVisible(true)
@@ -307,7 +308,7 @@ export default function CorpusText(params) {
                                         {w.contextGloss && <><br/><span className="contextGloss">{w.contextGloss}</span></>}
                                     </span>)}
                             </div>
-                            {wordIndex >= line.words[0].index && wordIndex < line.words[line.words.length-1].index &&
+                            {wordIndex >= line.words[0].index && wordIndex <= line.words[line.words.length-1].index &&
                                 wordIndex >= segment.start && wordIndex < segment.end && wordFormVisible &&
                                 <>
                                     <div>{alternatives.map(alt => <>
