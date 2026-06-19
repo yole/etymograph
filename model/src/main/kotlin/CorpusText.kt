@@ -133,9 +133,8 @@ class CorpusText(
 
     private fun splitIntoNormalizedWords(line: String, lineStartIndex: Int): List<WordText> {
         var currentIndex = lineStartIndex
-        return line.split(' ').map {
-            val cleanText = it.trimStart(*leadingPunctuation).trimEnd(*punctuation)
-                .replace("[", "").replace("]", "")
+        return line.trim().split(' ').map {
+            val cleanText = removePunctuation(it)
             WordText(it,
                 if (language.syllabographic) cleanText else language.normalizeWord(cleanText),
                 currentIndex++
@@ -194,9 +193,20 @@ class CorpusText(
     }
 
     companion object {
+        const val leftHalfBracket = '⸢'
+        const val rightHalfBracket = '⸣'
         val punctuation = charArrayOf('!', ',', '.', '?', ':', ';', '\"', '\'', '(', ')', '|', '·')
         val leadingPunctuation = charArrayOf('\"', '(', '\'')
+        val innerPunctuation = arrayOf('[', ']', leftHalfBracket, rightHalfBracket)
     }
+}
+
+fun removePunctuation(string: String): String {
+    var cleanText = string.trimStart(*CorpusText.leadingPunctuation).trimEnd(*CorpusText.punctuation)
+    for (c in CorpusText.innerPunctuation) {
+        cleanText = cleanText.replace(c.toString(), "")
+    }
+    return cleanText
 }
 
 fun restoreCase(normalizedText: String, baseText: String): String {

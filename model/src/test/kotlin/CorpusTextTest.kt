@@ -14,6 +14,14 @@ class CorpusTextTest : QBaseTest() {
     }
 
     @Test
+    fun testWordIndexTrailingSpace() {
+        val corpusText = q.corpusText("ai laurie lantar \nyeni unotime")
+        val lines = corpusText.mapToLines()
+        assertEquals(0, lines[0].corpusWords[0].index)
+        assertEquals(3, lines[1].corpusWords[0].index)
+    }
+
+    @Test
     fun testAssociateWord() {
         val corpusText = q.corpusText("ai laurie lantar")
         val laurie = q.word("laurie")
@@ -36,12 +44,11 @@ class CorpusTextTest : QBaseTest() {
 
     @Test
     fun testNormalizedText() {
-        val corpusText = q.corpusText("ai lau[rie] lantar")
-
-        val laurie = q.word("laurie")
+        val corpusText = q.corpusText("ai lau[rie] lant⸢a⸣r")
 
         val lines = corpusText.mapToLines()
         assertEquals("laurie", lines[0].corpusWords[1].normalizedText)
+        assertEquals("lantar", lines[0].corpusWords[2].normalizedText)
     }
 
     @Test
