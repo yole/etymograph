@@ -101,4 +101,19 @@ class PhonemeIteratorTest : QBaseTest() {
         assertEquals("kʰ", mixedIt[0])
         assertEquals("th", mixedIt[2])
     }
+
+    @Test
+    fun longPhoneme() {
+        q.phonemes += phoneme("gʷ", "")
+        q.phonemes += phoneme("gʷʰ", "")
+        val pieIt = PhonemeIterator("gʷʰen", q)
+        assertEquals("gʷʰ", pieIt[0])
+    }
+
+    @Test
+    fun nextPhonemeLongestMatch() {
+        q.phonemes += phoneme("gʷ", "")
+        q.phonemes += phoneme("gʷʰ", "")
+        assertEquals("gʷʰ", q.phonoPhonemeLookup.nextPhoneme("gʷʰen", 0))
+    }
 }

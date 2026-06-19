@@ -89,7 +89,9 @@ class PhonemeLookup(val accentTypes: Set<AccentType>) {
         var offset = 0
         while (offset < text.length) {
             val code = text[offset].code
-            val digraph = digraphLookup[code]?.keys?.firstOrNull { text.startsWith(it, offset) }
+            val digraph = digraphLookup[code]?.keys
+                ?.filter { text.startsWith(it, offset) }
+                ?.maxByOrNull { it.length }
             if (digraph != null) {
                 callback(null, digraphs[digraph], null)
                 offset += digraph.length
@@ -112,7 +114,9 @@ class PhonemeLookup(val accentTypes: Set<AccentType>) {
     }
 
     fun nextPhoneme(text: String, offset: Int): String {
-        val digraph = digraphLookup[text[offset].code]?.keys?.firstOrNull { text.startsWith(it, offset) }
+        val digraph = digraphLookup[text[offset].code]?.keys
+            ?.filter { text.startsWith(it, offset) }
+            ?.maxByOrNull { it.length }
         return digraph ?: text.substring(offset, offset + 1)
     }
 
