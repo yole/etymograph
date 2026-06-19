@@ -88,10 +88,20 @@ class PhonemeIteratorTest : QBaseTest() {
     @Test
     fun accentDecomposed() {
         ce.accentTypes = setOf(AccentType.Acute)
-        val decomposed = ce.word(Normalizer.normalize("áham", Normalizer.Form.NFKD))
+        val decomposed = ce.word("áham".decomposed())
         val dit = PhonemeIterator(decomposed, null)
         assertEquals(AccentType.Acute, dit.currentAccentType)
         assertEquals("a", dit.current)
+    }
+
+    @Test
+    fun consonantWithAccentMark() {
+        ce.accentTypes = setOf(AccentType.Acute)
+        ce.phonemes += phoneme("ḱ", "")
+        val decomposed = ce.word(Normalizer.normalize("ḱleu", Normalizer.Form.NFKD))
+        val dit = PhonemeIterator(decomposed, null)
+        assertNull(dit.currentAccentType)
+        assertEquals("ḱ", dit.current)
     }
 
     @Test

@@ -64,7 +64,7 @@ class PhonemeLookup(val accentTypes: Set<AccentType>) {
             singleGraphemes[key[0].code] = CharCodeData(phoneme, null, null)
             for (type in accentTypes) {
                 val accented = type.combine(key)
-                if (accented.length == 1) {
+                if (accented.length == 1 && singleGraphemes[accented[0].code] == null) {
                     singleGraphemes[accented[0].code] = CharCodeData(phoneme, type, null)
                 }
             }
@@ -102,6 +102,15 @@ class PhonemeLookup(val accentTypes: Set<AccentType>) {
                 if (offset + 1 < text.length) {
                     val nextGraphemeData = singleGraphemes[text[offset+1].code]
                     if (nextGraphemeData?.phoneme == null && nextGraphemeData?.textWithoutAccent == null && nextGraphemeData?.accentType != null) {
+                        val composed = text.subSequence(offset, offset + 2).composed()
+                        if (composed.length == 1) {
+                            val composedGrapheme = singleGraphemes[composed[0].code]
+                            if (composedGrapheme != null && composedGrapheme.phoneme != null) {
+                                callback(composed, composedGrapheme.phoneme, composedGrapheme.accentType)
+                                offset += 2
+                                continue
+                            }
+                        }
                         callback(graphemeData.textWithoutAccent, graphemeData.phoneme, nextGraphemeData.accentType)
                         offset += 2
                         continue
@@ -296,3 +305,6 @@ class Language(val graph: GraphRepository, val name: String, val shortName: Stri
         val unaryFeatures = listOf("nasal")
     }
 }
+
+fun CharSequence.decomposed() = Normalizer.normalize(this, Normalizer.Form.NFKD)
+fun CharSequence.composed() = Normalizer.normalize(this, Normalizer.Form.NFKC)
