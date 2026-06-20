@@ -34,6 +34,13 @@ class TlhDigImportTest {
         assertEquals("Awauwa", auaua.gloss)
     }
 
+    @Test
+    fun subscript() {
+        importWord("""<w trans="BE-EL-TI₄-NI" mrp0sel=" 1d" mrp1="BĒLTU@Herrin@{d → D/L.SG(UNM)_PPRO.1PL.GEN}@@ (MUNUS)"><aGr>BE-EL-TI₄-NI</aGr></w>""")
+        val corpusText = repo.allCorpusTexts().first()
+        assertEquals("_BE-EL-TI4-NI", corpusText.text.trim())
+    }
+
     private fun findWord(text: String): Word = repo.wordsByText(hittite, text, false).single()
 
     private fun importWord(@org.intellij.lang.annotations.Language("XML") element: String) {

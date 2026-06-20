@@ -115,9 +115,9 @@ private fun collectWordText(element: Element): String {
                 when (c.name) {
                     "aGr" -> {
                         append("_")
-                        append(collectWordText(c))
+                        append(convertSubscripts(collectWordText(c)))
                     }
-                    "sGr" -> append(collectWordText(c))
+                    "sGr" -> append(convertSubscripts(collectWordText(c)))
                     "d" -> append("^" + c.text + "^")
                     "del_in" -> append("[")
                     "del_fin" -> append("]")
@@ -127,4 +127,13 @@ private fun collectWordText(element: Element): String {
             }
         }
     }
+}
+
+const val subscriptZero = '₀'
+const val subscriptNine = '₉'
+
+private fun convertSubscripts(text: String): String {
+    return text.map { c ->
+        if (c in subscriptZero..subscriptNine) (c.code - subscriptZero.code + '0'.code).toChar() else c
+    }.joinToString("")
 }
