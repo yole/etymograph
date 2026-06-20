@@ -92,7 +92,11 @@ fun importTLHDig(ieRepo: GraphRepository, title: String, children: List<Element>
         val mrpElements = mrpAttr.split('@')
 
         val lemma = mrpElements[0]
-        val cleanLemma = lemma.removeSuffix("-").replace("=", "")
+        val cleanLemma = lemma.removeSuffix("-")
+            .replace("=", "")
+            .replace("°", "^")
+            .convertSubscripts()
+
         val gloss = mrpElements[1]
         val paradigm = mrpElements.getOrNull(3)?.trim()
         if (cleanLemma == trans) {
@@ -105,7 +109,8 @@ fun importTLHDig(ieRepo: GraphRepository, title: String, children: List<Element>
                 println("Skipping lemma with /: $lemma")
                 continue
             }
-            val lemmaWord = ieRepo.addWord(lemma, hittite, gloss)
+            val lemmaWord = ieRepo.addWord(cleanLemma, hittite, gloss,
+                syllabographic = lemma.any { it.isUpperCase() })
             ieRepo.addLink(transWord, lemmaWord, Link.Derived)
         }
     }
@@ -121,9 +126,9 @@ private fun collectWordText(element: Element): String {
                 when (c.name) {
                     "aGr" -> {
                         append("_")
-                        append(convertSubscripts(collectWordText(c)))
+                        append(collectWordText(c).convertSubscripts())
                     }
-                    "sGr" -> append(convertSubscripts(collectWordText(c)))
+                    "sGr" -> append(collectWordText(c).convertSubscripts())
                     "d" -> append("^" + c.text + "^")
                     "del_in" -> append("[")
                     "del_fin" -> append("]")
@@ -138,8 +143,8 @@ private fun collectWordText(element: Element): String {
 const val subscriptZero = '₀'
 const val subscriptNine = '₉'
 
-private fun convertSubscripts(text: String): String {
-    return text.map { c ->
+private fun String.convertSubscripts(): String {
+    return map { c ->
         if (c in subscriptZero..subscriptNine) (c.code - subscriptZero.code + '0'.code).toChar() else c
     }.joinToString("")
 }
