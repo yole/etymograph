@@ -76,8 +76,14 @@ fun importTLHDig(ieRepo: GraphRepository, title: String, children: List<Element>
         corpusText.associateWord(index, sylWord)
 
         if (trans == null) continue
-        val transWord = ieRepo.addWord(trans, hittite, gloss = null)
-        ieRepo.addLink(sylWord, transWord, Link.Transcription)
+        val transWord = if (trans.none { it.isUpperCase() }) {
+            ieRepo.addWord(trans, hittite, gloss = null).also {
+                ieRepo.addLink(sylWord, it, Link.Transcription)
+            }
+        }
+        else {
+            sylWord
+        }
 
         val mrpSel = wordElement.getAttributeValue("mrp0sel")?.trim()
         if (mrpSel.isNullOrBlank()) continue

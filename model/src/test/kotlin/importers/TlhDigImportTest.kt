@@ -1,11 +1,12 @@
 package ru.yole.etymograph.importers
 
 import org.jdom2.input.SAXBuilder
-import org.junit.Assert.assertEquals
+import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import ru.yole.etymograph.InMemoryGraphRepository
 import ru.yole.etymograph.Language
+import ru.yole.etymograph.Link
 import ru.yole.etymograph.Word
 import java.io.StringReader
 
@@ -39,9 +40,12 @@ class TlhDigImportTest {
         importWord("""<w trans="BE-EL-TI₄-NI" mrp0sel=" 1d" mrp1="BĒLTU@Herrin@{d → D/L.SG(UNM)_PPRO.1PL.GEN}@@ (MUNUS)"><aGr>BE-EL-TI₄-NI</aGr></w>""")
         val corpusText = repo.allCorpusTexts().first()
         assertEquals("_BE-EL-TI4-NI", corpusText.text.trim())
+        val word = findWord("_BE-EL-TI4-NI", true)
+        assertNull(repo.getLinksFrom(word).singleOrNull { it.type == Link.Transcription })
     }
 
-    private fun findWord(text: String): Word = repo.wordsByText(hittite, text, false).single()
+    private fun findWord(text: String, syllabographic: Boolean = false): Word =
+        repo.wordsByText(hittite, text, syllabographic).single()
 
     private fun importWord(@org.intellij.lang.annotations.Language("XML") element: String) {
         val doc = SAXBuilder().build(StringReader("<text>$element</text>"))
