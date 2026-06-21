@@ -1,9 +1,9 @@
-package ru.yole.etymograph.web
+package page.yole.etymograph.web
 
 import org.junit.Assert
 import org.junit.Test
-import ru.yole.etymograph.web.controllers.CorpusController
-import ru.yole.etymograph.web.controllers.TranslationController
+import page.yole.etymograph.web.controllers.CorpusController
+import page.yole.etymograph.web.controllers.TranslationController
 
 class TranslationControllerTest {
     @Test

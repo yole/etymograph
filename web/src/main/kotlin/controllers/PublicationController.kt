@@ -1,8 +1,8 @@
-package ru.yole.etymograph.web.controllers
+package page.yole.etymograph.web.controllers
 
 import org.springframework.web.bind.annotation.*
-import ru.yole.etymograph.Graph
-import ru.yole.etymograph.Publication
+import page.yole.etymograph.Graph
+import page.yole.etymograph.Publication
 
 data class PublicationViewModel(
     val id: Int,

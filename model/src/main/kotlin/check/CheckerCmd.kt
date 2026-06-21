@@ -1,9 +1,9 @@
-package ru.yole.etymograph.check
+package page.yole.etymograph.check
 
-import ru.yole.etymograph.ConsistencyCheckerIssue
-import ru.yole.etymograph.JsonGraph
-import ru.yole.etymograph.Language
-import ru.yole.etymograph.consistencyCheckers
+import page.yole.etymograph.ConsistencyCheckerIssue
+import page.yole.etymograph.JsonGraph
+import page.yole.etymograph.Language
+import page.yole.etymograph.consistencyCheckers
 import java.nio.file.Path
 
 fun printIssue(issue: ConsistencyCheckerIssue) {

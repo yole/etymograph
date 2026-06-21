@@ -1,4 +1,4 @@
-package ru.yole.etymograph
+package page.yole.etymograph
 
 data class LookupVariant(val text: String, val disambiguation: String)
 

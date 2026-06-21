@@ -1,11 +1,11 @@
-package ru.yole.etymograph.web.controllers
+package page.yole.etymograph.web.controllers
 
 import kotlinx.serialization.Serializable
 import org.springframework.web.bind.annotation.*
-import ru.yole.etymograph.Language
-import ru.yole.etymograph.Graph
-import ru.yole.etymograph.WordKind
-import ru.yole.etymograph.web.resolveLanguage
+import page.yole.etymograph.Language
+import page.yole.etymograph.Graph
+import page.yole.etymograph.WordKind
+import page.yole.etymograph.web.resolveLanguage
 
 @RestController
 @RequestMapping("/{graph}/dictionary")

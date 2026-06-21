@@ -1,4 +1,4 @@
-package ru.yole.etymograph.web
+package page.yole.etymograph.web
 
 import org.springframework.stereotype.Component
 import org.springframework.web.method.support.HandlerMethodArgumentResolver

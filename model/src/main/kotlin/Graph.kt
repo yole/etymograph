@@ -1,4 +1,4 @@
-package ru.yole.etymograph
+package page.yole.etymograph
 
 enum class WordKind { NAME, COMPOUND, DERIVED, RECONSTRUCTED, NORMAL }
 

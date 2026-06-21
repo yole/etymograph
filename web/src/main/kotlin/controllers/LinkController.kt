@@ -1,13 +1,13 @@
-package ru.yole.etymograph.web.controllers
+package page.yole.etymograph.web.controllers
 
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
-import ru.yole.etymograph.*
-import ru.yole.etymograph.web.parseSourceRefs
-import ru.yole.etymograph.web.resolveEntity
-import ru.yole.etymograph.web.resolveRule
+import page.yole.etymograph.*
+import page.yole.etymograph.web.parseSourceRefs
+import page.yole.etymograph.web.resolveEntity
+import page.yole.etymograph.web.resolveRule
 
 @RestController
 @RequestMapping("/{graph}/link")

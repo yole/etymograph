@@ -1,6 +1,6 @@
-package ru.yole.etymograph.verifier
+package page.yole.etymograph.verifier
 
-import ru.yole.etymograph.*
+import page.yole.etymograph.*
 import java.nio.file.Path
 import kotlin.io.path.outputStream
 import kotlin.io.path.readLines

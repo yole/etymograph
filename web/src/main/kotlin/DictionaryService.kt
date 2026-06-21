@@ -1,9 +1,9 @@
-package ru.yole.etymograph.web
+package page.yole.etymograph.web
 
 import org.springframework.stereotype.Service
-import ru.yole.etymograph.Dictionary
-import ru.yole.etymograph.importers.Wiktionary
-import ru.yole.etymograph.web.controllers.badRequest
+import page.yole.etymograph.Dictionary
+import page.yole.etymograph.importers.Wiktionary
+import page.yole.etymograph.web.controllers.badRequest
 
 @Service
 class DictionaryService {

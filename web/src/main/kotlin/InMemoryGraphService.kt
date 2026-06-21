@@ -1,4 +1,4 @@
-package ru.yole.etymograph.web
+package page.yole.etymograph.web
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
@@ -6,9 +6,9 @@ import kotlinx.serialization.json.Json
 import org.eclipse.jgit.api.Git
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
-import ru.yole.etymograph.*
-import ru.yole.etymograph.web.controllers.badRequest
-import ru.yole.etymograph.web.controllers.notFound
+import page.yole.etymograph.*
+import page.yole.etymograph.web.controllers.badRequest
+import page.yole.etymograph.web.controllers.notFound
 import java.nio.file.Path
 import kotlin.io.path.*
 

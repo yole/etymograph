@@ -1,6 +1,6 @@
-package ru.yole.etymograph.importers
+package page.yole.etymograph.importers
 
-import ru.yole.etymograph.*
+import page.yole.etymograph.*
 import java.io.File
 import java.nio.charset.Charset
 import java.nio.file.Files

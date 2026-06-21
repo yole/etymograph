@@ -1,6 +1,6 @@
-package ru.yole.etymograph.importers
+package page.yole.etymograph.importers
 
-import ru.yole.etymograph.Language
+import page.yole.etymograph.Language
 
 class TestWiktionary(val ownerClass: Class<*>) : Wiktionary() {
     override fun loadWiktionaryPageSource(language: Language, title: String): String? {

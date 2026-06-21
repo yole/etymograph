@@ -1,13 +1,13 @@
-package ru.yole.etymograph.web
+package page.yole.etymograph.web
 
 import kotlinx.serialization.json.Json
 import org.eclipse.jgit.api.Git
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
-import ru.yole.etymograph.Graph
-import ru.yole.etymograph.JsonGraph
-import ru.yole.etymograph.web.controllers.GraphController
+import page.yole.etymograph.Graph
+import page.yole.etymograph.JsonGraph
+import page.yole.etymograph.web.controllers.GraphController
 import java.nio.file.Files
 import java.nio.file.Path
 import kotlin.io.path.createDirectories

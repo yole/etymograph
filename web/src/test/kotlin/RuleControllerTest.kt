@@ -1,11 +1,11 @@
-package ru.yole.etymograph.web
+package page.yole.etymograph.web
 
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import org.springframework.web.server.ResponseStatusException
-import ru.yole.etymograph.*
-import ru.yole.etymograph.web.controllers.RuleController
+import page.yole.etymograph.*
+import page.yole.etymograph.web.controllers.RuleController
 
 class RuleControllerTest {
     private lateinit var fixture: QTestFixture

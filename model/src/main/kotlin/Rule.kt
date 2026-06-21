@@ -1,6 +1,6 @@
-package ru.yole.etymograph
+package page.yole.etymograph
 
-import ru.yole.etymograph.RuleBranch.Companion.parseComment
+import page.yole.etymograph.RuleBranch.Companion.parseComment
 import java.util.Locale
 import kotlin.collections.fold
 import kotlin.collections.plus

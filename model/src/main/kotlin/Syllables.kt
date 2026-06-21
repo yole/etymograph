@@ -1,4 +1,4 @@
-package ru.yole.etymograph
+package page.yole.etymograph
 
 class Syllable(val startIndex: Int, val endIndex: Int, val vowelIndex: Int, val closed: Boolean) {
     val length = endIndex - startIndex

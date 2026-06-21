@@ -1,9 +1,9 @@
-package ru.yole.etymograph.importers
+package page.yole.etymograph.importers
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
-import ru.yole.etymograph.*
-import ru.yole.etymograph.importers.WiktionaryEtymologySection.Companion.inflectionAttributesMap
+import page.yole.etymograph.*
+import page.yole.etymograph.importers.WiktionaryEtymologySection.Companion.inflectionAttributesMap
 import java.net.URI
 import java.net.URLEncoder
 import java.net.http.HttpClient

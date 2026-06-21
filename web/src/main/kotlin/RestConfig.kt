@@ -1,4 +1,4 @@
-package ru.yole.etymograph.web
+package page.yole.etymograph.web
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration

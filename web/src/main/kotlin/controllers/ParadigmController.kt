@@ -1,10 +1,10 @@
-package ru.yole.etymograph.web.controllers
+package page.yole.etymograph.web.controllers
 
 import org.springframework.web.bind.annotation.*
-import ru.yole.etymograph.*
-import ru.yole.etymograph.web.parseSourceRefs
-import ru.yole.etymograph.web.resolveLanguage
-import ru.yole.etymograph.web.resolveRule
+import page.yole.etymograph.*
+import page.yole.etymograph.web.parseSourceRefs
+import page.yole.etymograph.web.resolveLanguage
+import page.yole.etymograph.web.resolveRule
 
 @RestController
 class ParadigmController {

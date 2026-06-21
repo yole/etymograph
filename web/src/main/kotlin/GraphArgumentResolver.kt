@@ -1,4 +1,4 @@
-package ru.yole.etymograph.web
+package page.yole.etymograph.web
 
 import org.springframework.core.MethodParameter
 import org.springframework.web.bind.support.WebDataBinderFactory
@@ -6,7 +6,7 @@ import org.springframework.web.context.request.NativeWebRequest
 import org.springframework.web.context.request.ServletWebRequest
 import org.springframework.web.method.support.HandlerMethodArgumentResolver
 import org.springframework.web.method.support.ModelAndViewContainer
-import ru.yole.etymograph.Graph
+import page.yole.etymograph.Graph
 
 class GraphArgumentResolver(val graphService: GraphService) : HandlerMethodArgumentResolver {
     override fun supportsParameter(parameter: MethodParameter): Boolean {

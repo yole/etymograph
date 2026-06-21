@@ -1,13 +1,13 @@
-package ru.yole.etymograph.importers
+package page.yole.etymograph.importers
 
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Before
 import org.junit.Test
-import ru.yole.etymograph.Graph
-import ru.yole.etymograph.InMemoryGraph
-import ru.yole.etymograph.Language
-import ru.yole.etymograph.WordCategoryValue
+import page.yole.etymograph.Graph
+import page.yole.etymograph.InMemoryGraph
+import page.yole.etymograph.Language
+import page.yole.etymograph.WordCategoryValue
 
 class WiktionaryParserTest {
     lateinit var wiktionary: TestWiktionary

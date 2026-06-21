@@ -1,12 +1,12 @@
-package ru.yole.etymograph.importers
+package page.yole.etymograph.importers
 
 import com.opencsv.CSVParserBuilder
 import com.opencsv.CSVReaderBuilder
 import org.jdom2.Element
 import org.jdom2.Text
 import org.jdom2.input.SAXBuilder
-import ru.yole.etymograph.*
-import ru.yole.etymograph.Dictionary
+import page.yole.etymograph.*
+import page.yole.etymograph.Dictionary
 import java.io.FileReader
 import java.io.StringReader
 import java.nio.file.Path

@@ -1,4 +1,4 @@
-package ru.yole.etymograph
+package page.yole.etymograph
 
 import java.text.Collator
 import java.text.Normalizer

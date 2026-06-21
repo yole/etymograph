@@ -1,11 +1,11 @@
-package ru.yole.etymograph.web.controllers
+package page.yole.etymograph.web.controllers
 
 import kotlinx.serialization.Serializable
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
-import ru.yole.etymograph.*
-import ru.yole.etymograph.web.*
+import page.yole.etymograph.*
+import page.yole.etymograph.web.*
 
 const val explicitStressMark = 'ˈ'
 

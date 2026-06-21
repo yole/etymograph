@@ -1,8 +1,8 @@
-package ru.yole.etymograph.web
+package page.yole.etymograph.web
 
 import kotlinx.serialization.Serializable
-import ru.yole.etymograph.Graph
-import ru.yole.etymograph.SourceRef
+import page.yole.etymograph.Graph
+import page.yole.etymograph.SourceRef
 
 @Serializable
 class SourceRefViewModel(

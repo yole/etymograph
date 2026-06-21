@@ -1,7 +1,7 @@
-package ru.yole.etymograph.web
+package page.yole.etymograph.web
 
-import ru.yole.etymograph.*
-import ru.yole.etymograph.web.controllers.RuleController
+import page.yole.etymograph.*
+import page.yole.etymograph.web.controllers.RuleController
 
 class QTestFixture {
     val graph = InMemoryGraph()

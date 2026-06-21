@@ -1,4 +1,4 @@
-package ru.yole.etymograph
+package page.yole.etymograph
 
 import org.junit.Assert
 import org.junit.Assert.assertEquals

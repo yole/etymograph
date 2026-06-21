@@ -1,11 +1,11 @@
-package ru.yole.etymograph.web
+package page.yole.etymograph.web
 
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
-import ru.yole.etymograph.MorphoRuleLogic
-import ru.yole.etymograph.AccentType
-import ru.yole.etymograph.web.controllers.LanguageController
+import page.yole.etymograph.MorphoRuleLogic
+import page.yole.etymograph.AccentType
+import page.yole.etymograph.web.controllers.LanguageController
 
 class LanguageControllerTest {
     private lateinit var fixture: QTestFixture

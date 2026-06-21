@@ -1,4 +1,4 @@
-package ru.yole.etymograph
+package page.yole.etymograph
 
 data class LinkType(val id: String, val name: String, val reverseName: String)
 

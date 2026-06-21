@@ -1,4 +1,4 @@
-package ru.yole.etymograph
+package page.yole.etymograph
 
 import java.util.BitSet
 import kotlin.math.abs

@@ -1,9 +1,9 @@
-package ru.yole.etymograph.web.controllers
+package page.yole.etymograph.web.controllers
 
 import org.springframework.web.bind.annotation.*
-import ru.yole.etymograph.Graph
-import ru.yole.etymograph.Word
-import ru.yole.etymograph.removeDiacritics
+import page.yole.etymograph.Graph
+import page.yole.etymograph.Word
+import page.yole.etymograph.removeDiacritics
 import java.util.*
 
 @RestController

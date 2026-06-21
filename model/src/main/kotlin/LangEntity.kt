@@ -1,4 +1,4 @@
-package ru.yole.etymograph
+package page.yole.etymograph
 
 data class SourceRef(val pubId: Int?, val refText: String)
 

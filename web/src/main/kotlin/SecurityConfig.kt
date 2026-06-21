@@ -1,4 +1,4 @@
-package ru.yole.etymograph.web
+package page.yole.etymograph.web
 
 import jakarta.servlet.FilterChain
 import jakarta.servlet.http.HttpServletRequest

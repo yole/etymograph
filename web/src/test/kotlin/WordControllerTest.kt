@@ -1,16 +1,16 @@
-package ru.yole.etymograph.web
+package page.yole.etymograph.web
 
 import org.junit.Assert
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Before
 import org.junit.Test
-import ru.yole.etymograph.Graph
-import ru.yole.etymograph.Language
-import ru.yole.etymograph.Link
-import ru.yole.etymograph.WordCategory
-import ru.yole.etymograph.WordCategoryValue
-import ru.yole.etymograph.web.controllers.WordController
+import page.yole.etymograph.Graph
+import page.yole.etymograph.Language
+import page.yole.etymograph.Link
+import page.yole.etymograph.WordCategory
+import page.yole.etymograph.WordCategoryValue
+import page.yole.etymograph.web.controllers.WordController
 
 class WordControllerTest {
     private lateinit var fixture: QTestFixture

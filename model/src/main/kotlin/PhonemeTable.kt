@@ -1,4 +1,4 @@
-package ru.yole.etymograph
+package page.yole.etymograph
 
 class PhonemeTableCell {
     val phonemes = mutableListOf<Phoneme>()

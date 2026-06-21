@@ -1,13 +1,13 @@
-package ru.yole.etymograph.importers
+package page.yole.etymograph.importers
 
 import org.jdom2.input.SAXBuilder
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
-import ru.yole.etymograph.InMemoryGraph
-import ru.yole.etymograph.Language
-import ru.yole.etymograph.Link
-import ru.yole.etymograph.Word
+import page.yole.etymograph.InMemoryGraph
+import page.yole.etymograph.Language
+import page.yole.etymograph.Link
+import page.yole.etymograph.Word
 import java.io.StringReader
 
 class TlhDigImportTest {

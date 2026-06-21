@@ -1,11 +1,11 @@
-package ru.yole.etymograph
+package page.yole.etymograph
 
 import org.junit.Assert.*
 import org.junit.Test
-import ru.yole.etymograph.JsonGraph.Companion.ruleBranchesFromSerializedFormat
-import ru.yole.etymograph.JsonGraph.Companion.ruleInstructionFromSerializedFormat
-import ru.yole.etymograph.JsonGraph.Companion.ruleToSerializedFormat
-import ru.yole.etymograph.JsonGraph.Companion.toSerializedFormat
+import page.yole.etymograph.JsonGraph.Companion.ruleBranchesFromSerializedFormat
+import page.yole.etymograph.JsonGraph.Companion.ruleInstructionFromSerializedFormat
+import page.yole.etymograph.JsonGraph.Companion.ruleToSerializedFormat
+import page.yole.etymograph.JsonGraph.Companion.toSerializedFormat
 
 class RuleTest : QBaseTest() {
     private val dummyRule = parseRule(q, q, "- append 'a'")

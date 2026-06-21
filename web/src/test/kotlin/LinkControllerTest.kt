@@ -1,12 +1,12 @@
-package ru.yole.etymograph.web
+package page.yole.etymograph.web
 
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
-import ru.yole.etymograph.Link
-import ru.yole.etymograph.web.controllers.LinkController
-import ru.yole.etymograph.web.controllers.RuleController
-import ru.yole.etymograph.web.controllers.WordController
+import page.yole.etymograph.Link
+import page.yole.etymograph.web.controllers.LinkController
+import page.yole.etymograph.web.controllers.RuleController
+import page.yole.etymograph.web.controllers.WordController
 
 class LinkControllerTest {
     lateinit var fixture: QTestFixture

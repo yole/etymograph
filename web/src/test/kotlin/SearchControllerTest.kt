@@ -1,11 +1,11 @@
-package ru.yole.etymograph.web
+package page.yole.etymograph.web
 
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
-import ru.yole.etymograph.Graph
-import ru.yole.etymograph.Language
-import ru.yole.etymograph.web.controllers.SearchController
+import page.yole.etymograph.Graph
+import page.yole.etymograph.Language
+import page.yole.etymograph.web.controllers.SearchController
 
 class SearchControllerTest {
     private lateinit var fixture: QTestFixture

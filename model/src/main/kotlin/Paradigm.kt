@@ -1,4 +1,4 @@
-package ru.yole.etymograph
+package page.yole.etymograph
 
 data class WordAlternative(val word: Word, val expectedWord: Word, val rule: Rule?)
 

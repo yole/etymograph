@@ -1,10 +1,10 @@
-package ru.yole.etymograph
+package page.yole.etymograph
 
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Before
 import org.junit.Test
-import ru.yole.etymograph.importers.TestWiktionary
+import page.yole.etymograph.importers.TestWiktionary
 
 class AugmentWordTest {
     lateinit var wiktionary: TestWiktionary

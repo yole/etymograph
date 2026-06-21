@@ -1,4 +1,4 @@
-package ru.yole.etymograph
+package page.yole.etymograph
 
 class LemmatizedToken(val form: String, val lemma: String, val pos: String, val categories: List<String>)
 

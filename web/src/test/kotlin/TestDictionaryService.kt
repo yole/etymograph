@@ -1,7 +1,7 @@
-package ru.yole.etymograph.web
+package page.yole.etymograph.web
 
-import ru.yole.etymograph.Dictionary
-import ru.yole.etymograph.importers.TestWiktionary
+import page.yole.etymograph.Dictionary
+import page.yole.etymograph.importers.TestWiktionary
 
 class TestDictionaryService : DictionaryService() {
     override fun createDictionary(id: String): Dictionary {

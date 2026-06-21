@@ -1,8 +1,8 @@
-package ru.yole.etymograph.web.controllers
+package page.yole.etymograph.web.controllers
 
 import org.springframework.web.bind.annotation.*
-import ru.yole.etymograph.*
-import ru.yole.etymograph.web.*
+import page.yole.etymograph.*
+import page.yole.etymograph.web.*
 
 data class PhonemeRuleViewModel(
     val id: Int,

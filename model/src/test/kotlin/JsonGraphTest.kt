@@ -1,11 +1,11 @@
-package ru.yole.etymograph
+package page.yole.etymograph
 
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
-import ru.yole.etymograph.JsonGraph.Companion.ruleBranchesFromSerializedFormat
-import ru.yole.etymograph.JsonGraph.Companion.ruleToSerializedFormat
+import page.yole.etymograph.JsonGraph.Companion.ruleBranchesFromSerializedFormat
+import page.yole.etymograph.JsonGraph.Companion.ruleToSerializedFormat
 
 class JsonGraphTest {
     lateinit var graph: JsonGraph

@@ -1,4 +1,4 @@
-package ru.yole.etymograph
+package page.yole.etymograph
 
 class ParseBuffer(val s: String) {
     private var pos = 0

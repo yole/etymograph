@@ -1,4 +1,4 @@
-package ru.yole.etymograph
+package page.yole.etymograph
 
 fun Language.word(text: String, gloss: String? = null, pos: String? = null, syllabographic: Boolean = false) =
     Word(-1, text, this, gloss, pos = pos, syllabographic = syllabographic)

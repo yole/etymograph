@@ -1,15 +1,15 @@
-package ru.yole.etymograph.importers
+package page.yole.etymograph.importers
 
 import org.jdom2.Content
 import org.jdom2.Element
 import org.jdom2.input.SAXBuilder
-import ru.yole.etymograph.CorpusText
-import ru.yole.etymograph.Graph
-import ru.yole.etymograph.JsonGraph
-import ru.yole.etymograph.Language
-import ru.yole.etymograph.Link
-import ru.yole.etymograph.Word
-import ru.yole.etymograph.removePunctuation
+import page.yole.etymograph.CorpusText
+import page.yole.etymograph.Graph
+import page.yole.etymograph.JsonGraph
+import page.yole.etymograph.Language
+import page.yole.etymograph.Link
+import page.yole.etymograph.Word
+import page.yole.etymograph.removePunctuation
 import java.io.File
 import java.nio.file.Path
 

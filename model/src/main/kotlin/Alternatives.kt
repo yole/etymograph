@@ -1,4 +1,4 @@
-package ru.yole.etymograph
+package page.yole.etymograph
 
 data class AlternativeModel(val gloss: String, val word: Word, val rule: Rule?)
 

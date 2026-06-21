@@ -1,4 +1,4 @@
-package ru.yole.etymograph
+package page.yole.etymograph
 
 open class PhonemeClass(val name: String, var matchingPhonemes: List<String> = emptyList()) {
     open fun matchesCurrent(it: PhonemeIterator): Boolean {

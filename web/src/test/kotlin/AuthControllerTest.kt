@@ -1,4 +1,4 @@
-package ru.yole.etymograph.web
+package page.yole.etymograph.web
 
 import org.junit.Test
 import org.junit.runner.RunWith

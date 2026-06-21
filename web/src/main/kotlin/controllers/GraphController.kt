@@ -1,4 +1,4 @@
-package ru.yole.etymograph.web.controllers
+package page.yole.etymograph.web.controllers
 
 import org.eclipse.jgit.api.Git
 import org.eclipse.jgit.api.Status
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.server.ResponseStatusException
-import ru.yole.etymograph.Graph
-import ru.yole.etymograph.JsonGraph
-import ru.yole.etymograph.web.GraphService
+import page.yole.etymograph.Graph
+import page.yole.etymograph.JsonGraph
+import page.yole.etymograph.web.GraphService
 
 @RestController
 class GraphController(

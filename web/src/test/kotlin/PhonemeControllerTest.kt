@@ -1,4 +1,4 @@
-package ru.yole.etymograph.web
+package page.yole.etymograph.web
 
 import org.junit.Assert
 import org.junit.Assert.assertEquals
@@ -6,8 +6,8 @@ import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Test
 import org.springframework.web.server.ResponseStatusException
-import ru.yole.etymograph.*
-import ru.yole.etymograph.web.controllers.PhonemeController
+import page.yole.etymograph.*
+import page.yole.etymograph.web.controllers.PhonemeController
 
 class PhonemeControllerTest {
     private lateinit var fixture: QTestFixture

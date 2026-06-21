@@ -1,9 +1,9 @@
-package ru.yole.etymograph.importers
+package page.yole.etymograph.importers
 
 import org.jdom2.Document
 import org.jdom2.Element
 import org.jdom2.input.SAXBuilder
-import ru.yole.etymograph.*
+import page.yole.etymograph.*
 import java.io.File
 import java.nio.file.Path
 

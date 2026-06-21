@@ -1,11 +1,11 @@
-package ru.yole.etymograph.web.controllers
+package page.yole.etymograph.web.controllers
 
 import org.springframework.web.bind.annotation.*
-import ru.yole.etymograph.Compound
-import ru.yole.etymograph.Graph
-import ru.yole.etymograph.KnownClasses
-import ru.yole.etymograph.web.parseSourceRefs
-import ru.yole.etymograph.web.resolveWord
+import page.yole.etymograph.Compound
+import page.yole.etymograph.Graph
+import page.yole.etymograph.KnownClasses
+import page.yole.etymograph.web.parseSourceRefs
+import page.yole.etymograph.web.resolveWord
 
 @RestController
 @RequestMapping("/{graph}/compound")

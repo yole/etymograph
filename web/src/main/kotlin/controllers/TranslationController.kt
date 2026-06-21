@@ -1,13 +1,13 @@
-package ru.yole.etymograph.web.controllers
+package page.yole.etymograph.web.controllers
 
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
-import ru.yole.etymograph.Graph
-import ru.yole.etymograph.Translation
-import ru.yole.etymograph.web.parseSourceRefs
-import ru.yole.etymograph.web.resolveCorpusText
+import page.yole.etymograph.Graph
+import page.yole.etymograph.Translation
+import page.yole.etymograph.web.parseSourceRefs
+import page.yole.etymograph.web.resolveCorpusText
 
 @RestController
 class TranslationController {

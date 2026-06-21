@@ -1,4 +1,4 @@
-package ru.yole.etymograph
+package page.yole.etymograph
 
 import kotlinx.serialization.Serializable
 import java.text.Normalizer

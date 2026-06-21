@@ -1,4 +1,4 @@
-package ru.yole.etymograph
+package page.yole.etymograph
 
 open class QBaseTest {
     val graph = InMemoryGraph()
