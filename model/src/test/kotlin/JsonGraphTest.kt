@@ -138,7 +138,7 @@ class JsonGraphTest {
         val rule = parseRule(q, q, text)
         val serializedData = rule.ruleToSerializedFormat()
         val rule2 = graph.ruleFromSerializedFormat(serializedData, q, q)
-        assertEquals(text, rule2.toEditableText(graph))
+        assertEquals(text, rule2.toEditableText())
     }
 
     @Test
@@ -190,7 +190,7 @@ class JsonGraphTest {
     private fun setupRuleSequence(): RuleSequence {
         val rule = graph.addRule(
             "i-disappears", ce, q,
-            Rule.parseLogic("* i > 0 / a_ ", q.parseContext(graph))
+            Rule.parseLogic("* i > 0 / a_ ", q.parseContext())
         )
         return graph.addRuleSequence("ce-to-q", ce, q, listOf(RuleSequenceStep(rule, null,false, false)))
     }
@@ -198,7 +198,7 @@ class JsonGraphTest {
     @Test
     fun serializeOrthographyRule() {
         val rule = graph.addRule("q-ortho", q, q,
-            Rule.parseLogic("* u > j / #_", q.parseContext(graph)))
+            Rule.parseLogic("* u > j / #_", q.parseContext()))
         q.orthographyRule = RuleRef.to(rule)
 
         val repo2 = graph.roundtrip()

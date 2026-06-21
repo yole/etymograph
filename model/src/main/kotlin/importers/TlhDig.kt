@@ -26,7 +26,7 @@ fun main(args: Array<String>) {
     ieRepo.save()
 }
 
-fun importTLHDig(ieRepo: Graph, title: String, children: List<Element>) {
+fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
     val wordTexts = mutableListOf<String>()
     val wordElements = mutableListOf<Element>()
     val text = buildString {
@@ -52,8 +52,8 @@ fun importTLHDig(ieRepo: Graph, title: String, children: List<Element>) {
         }
     }
 
-    val hittite = ieRepo.languageByShortName("Hitt")!!
-    val corpusText = ieRepo.addCorpusText(text, title, hittite)
+    val hittite = graph.languageByShortName("Hitt")!!
+    val corpusText = graph.addCorpusText(text, title, hittite)
 
     for ((index, wordElement) in wordElements.withIndex()) {
         val wordText = wordTexts[index]
@@ -63,7 +63,7 @@ fun importTLHDig(ieRepo: Graph, title: String, children: List<Element>) {
             continue
         }
 
-        val existingWords = ieRepo.wordsByText(hittite, cleanText, true)
+        val existingWords = graph.wordsByText(hittite, cleanText, true)
         if (existingWords.isNotEmpty()) {
             println("Skipping existing word $wordText")
             continue
@@ -74,13 +74,13 @@ fun importTLHDig(ieRepo: Graph, title: String, children: List<Element>) {
             continue
         }
 
-        val sylWord = ieRepo.addWord(cleanText, hittite, null, syllabographic = true)
+        val sylWord = graph.addWord(cleanText, hittite, null, syllabographic = true)
         corpusText.associateWord(index, sylWord)
 
         if (trans == null) continue
         var transWord = if (trans.none { it.isUpperCase() }) {
-            ieRepo.addWord(trans, hittite, gloss = null).also {
-                ieRepo.addLink(sylWord, it, Link.Transcription)
+            graph.addWord(trans, hittite, gloss = null).also {
+                graph.addLink(sylWord, it, Link.Transcription)
             }
         }
         else {
@@ -109,7 +109,7 @@ fun importTLHDig(ieRepo: Graph, title: String, children: List<Element>) {
         }
 
         if (lemma.any { it.isUpperCase() } && '_' in selectedAnalysis) {
-            transWord = createAkkadianCompound(sylWord, selectedAnalysis, hittite, ieRepo, transWord)
+            transWord = createAkkadianCompound(sylWord, selectedAnalysis, hittite, graph, transWord)
         }
 
         val paradigm = mrpElements.getOrNull(3)?.trim()
@@ -123,9 +123,9 @@ fun importTLHDig(ieRepo: Graph, title: String, children: List<Element>) {
                 println("Skipping lemma with /: $lemma")
                 continue
             }
-            val lemmaWord = ieRepo.addWord(cleanLemma, hittite, gloss,
+            val lemmaWord = graph.addWord(cleanLemma, hittite, gloss,
                 syllabographic = lemma.any { it.isUpperCase() })
-            ieRepo.addLink(transWord, lemmaWord, Link.Derived)
+            graph.addLink(transWord, lemmaWord, Link.Derived)
         }
     }
 }
@@ -134,7 +134,7 @@ private fun createAkkadianCompound(
     sylWord: Word,
     selectedAnalysis: String,
     hittite: Language,
-    ieRepo: Graph,
+    graph: Graph,
     transWord: Word
 ): Word {
     var tail = sylWord.text
@@ -153,7 +153,7 @@ private fun createAkkadianCompound(
     val headWord = findOrAddWordByTextOnly(hittite, tail, null)
     compoundElements.add(0, headWord)
 
-    ieRepo.createCompound(transWord, compoundElements)
+    graph.createCompound(transWord, compoundElements)
     return headWord
 }
 

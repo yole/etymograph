@@ -33,36 +33,36 @@ class ParadigmController {
     )
 
     @GetMapping("/{graph}/paradigms")
-    fun allParadigms(repo: Graph): List<ParadigmViewModel> {
-        return repo.allParadigms().map { it.toViewModel(repo) }
+    fun allParadigms(graph: Graph): List<ParadigmViewModel> {
+        return graph.allParadigms().map { it.toViewModel() }
     }
 
-    private fun Paradigm.toViewModel(repo: Graph) =
+    private fun Paradigm.toViewModel() =
         ParadigmViewModel(
             id, name,
             language.shortName, language.name, pos, rowTitles,
-            columns.map { it.toViewModel(repo, rowTitles.size) },
+            columns.map { it.toViewModel(rowTitles.size) },
             toEditableText(),
             preRule?.toRefViewModel(),
             postRule?.toRefViewModel()
         )
 
-    private fun ParadigmColumn.toViewModel(repo: Graph, rows: Int) =
+    private fun ParadigmColumn.toViewModel(rows: Int) =
         ParadigmColumnViewModel(title, (0 until rows).map {
-            cells.getOrNull(it)?.toViewModel(repo) ?: ParadigmCellViewModel(emptyList(), emptyList(), emptyList())
+            cells.getOrNull(it)?.toViewModel() ?: ParadigmCellViewModel(emptyList(), emptyList(), emptyList())
         })
 
-    private fun ParadigmCell.toViewModel(repo: Graph) =
+    private fun ParadigmCell.toViewModel() =
         ParadigmCellViewModel(
             ruleAlternatives.map { it?.name ?: "." },
-            ruleAlternatives.map { it?.toSummaryText(repo) ?: "" },
+            ruleAlternatives.map { it?.toSummaryText() ?: "" },
             ruleAlternatives.map { it?.id },
         )
 
     @GetMapping("/{graph}/paradigm/{id}")
-    fun paradigm(repo: Graph, @PathVariable id: Int): ParadigmViewModel {
-        val paradigmById = repo.resolveParadigm(id)
-        return paradigmById.toViewModel(repo)
+    fun paradigm(graph: Graph, @PathVariable id: Int): ParadigmViewModel {
+        val paradigmById = graph.resolveParadigm(id)
+        return paradigmById.toViewModel()
     }
 
     private fun Graph.resolveParadigm(id: Int): Paradigm =
@@ -78,32 +78,32 @@ class ParadigmController {
 
     @PostMapping("/{graph}/paradigms/{lang}", consumes = ["application/json"])
     @ResponseBody
-    fun newParadigm(repo: Graph, @PathVariable lang: String, @RequestBody params: UpdateParadigmParameters): ParadigmViewModel {
-        val language = repo.resolveLanguage(lang)
+    fun newParadigm(graph: Graph, @PathVariable lang: String, @RequestBody params: UpdateParadigmParameters): ParadigmViewModel {
+        val language = graph.resolveLanguage(lang)
 
-        val p = repo.addParadigm(params.name, language, parseList(params.pos))
-        p.parse(params.text, repo::ruleByName)
-        p.preRule = params.preRuleName.nullize()?.let { repo.resolveRule(it) }
-        p.postRule = params.postRuleName.nullize()?.let { repo.resolveRule(it) }
-        return p.toViewModel(repo)
+        val p = graph.addParadigm(params.name, language, parseList(params.pos))
+        p.parse(params.text, graph::ruleByName)
+        p.preRule = params.preRuleName.nullize()?.let { graph.resolveRule(it) }
+        p.postRule = params.postRuleName.nullize()?.let { graph.resolveRule(it) }
+        return p.toViewModel()
     }
 
     @PostMapping("/{graph}/paradigm/{id}", consumes = ["application/json"])
     @ResponseBody
-    fun updateParadigm(repo: Graph, @PathVariable id: Int, @RequestBody params: UpdateParadigmParameters) {
-        val paradigm = repo.resolveParadigm(id)
-        paradigm.parse(params.text, repo::ruleByName)
+    fun updateParadigm(graph: Graph, @PathVariable id: Int, @RequestBody params: UpdateParadigmParameters) {
+        val paradigm = graph.resolveParadigm(id)
+        paradigm.parse(params.text, graph::ruleByName)
         paradigm.name = params.name
         paradigm.pos = parseList(params.pos)
-        paradigm.preRule = params.preRuleName.nullize()?.let { repo.resolveRule(it) }
-        paradigm.postRule = params.postRuleName.nullize()?.let { repo.resolveRule(it) }
+        paradigm.preRule = params.preRuleName.nullize()?.let { graph.resolveRule(it) }
+        paradigm.postRule = params.postRuleName.nullize()?.let { graph.resolveRule(it) }
     }
 
     @PostMapping("/{graph}/paradigm/{id}/delete")
     @ResponseBody
-    fun deleteParadigm(repo: Graph, @PathVariable id: Int) {
-        val paradigm = repo.resolveParadigm(id)
-        repo.deleteParadigm(paradigm)
+    fun deleteParadigm(graph: Graph, @PathVariable id: Int) {
+        val paradigm = graph.resolveParadigm(id)
+        graph.deleteParadigm(paradigm)
     }
 
     data class GenerateParadigmParameters(
@@ -120,10 +120,9 @@ class ParadigmController {
 
     @PostMapping("/{graph}/paradigm/generate")
     @ResponseBody
-    fun generateParadigm(repo: Graph, @RequestBody params: GenerateParadigmParameters, @PathVariable graph: String
-    ): ParadigmViewModel {
-        val language = repo.resolveLanguage(params.lang)
-        val source = parseSourceRefs(repo, params.source)
+    fun generateParadigm(graph: Graph, @RequestBody params: GenerateParadigmParameters): ParadigmViewModel {
+        val language = graph.resolveLanguage(params.lang)
+        val source = parseSourceRefs(graph, params.source)
         val paradigm = generateParadigm(
             language, params.name,
             params.pos.split(",").map { it.trim() },
@@ -134,6 +133,6 @@ class ParadigmController {
             source
         )
 
-        return paradigm.toViewModel(repo)
+        return paradigm.toViewModel()
     }
 }

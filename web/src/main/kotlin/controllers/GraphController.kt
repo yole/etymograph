@@ -32,10 +32,10 @@ class GraphController(
     }
 
     @PostMapping("/{graph}/syncChanges")
-    fun syncChanges(repo: Graph): GraphViewModel {
-        val jsonGraphRepository = repo as? JsonGraph
+    fun syncChanges(graph: Graph): GraphViewModel {
+        val jsonGraph = graph as? JsonGraph
             ?: badRequest("Sync Changes is only supported for JSON graph repositories")
-        val workTree = jsonGraphRepository.path?.toFile()
+        val workTree = jsonGraph.path?.toFile()
             ?: badRequest("JSON graph repository path is not specified")
 
         try {
@@ -66,7 +66,7 @@ class GraphController(
             throw ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.message ?: "Failed to sync changes", e)
         }
 
-        return GraphViewModel(repo.id, repo.name, repo.status(), true)
+        return GraphViewModel(graph.id, graph.name, graph.status(), true)
     }
 
     data class CloneGraphParams(val repoUrl: String = "")

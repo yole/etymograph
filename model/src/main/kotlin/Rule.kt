@@ -576,8 +576,8 @@ class Rule(
         return replacedGloss
     }
 
-    fun toEditableText(graph: Graph): String = logic.toEditableText(graph)
-    fun toSummaryText(graph: Graph): String = logic.toSummaryText(graph)
+    fun toEditableText(): String = logic.toEditableText(fromLanguage.graph)
+    fun toSummaryText(): String = logic.toSummaryText(fromLanguage.graph)
 
     fun addedGrammaticalCategories(): List<WordCategory> {
         return addedCategories?.let { cv -> parseCategoryValues(fromLanguage, cv).mapNotNull { it?.category } } ?: emptyList()

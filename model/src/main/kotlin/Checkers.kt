@@ -5,8 +5,8 @@ import java.util.*
 data class ConsistencyCheckerIssue(val description: String)
 
 abstract class ConsistencyChecker {
-    open fun check(repo: Graph, language: Language, report: (ConsistencyCheckerIssue) -> Unit) {
-        for (word in repo.allWords(language)) {
+    open fun check(graph: Graph, language: Language, report: (ConsistencyCheckerIssue) -> Unit) {
+        for (word in graph.allWords(language)) {
             checkWord(word) {
                 report(ConsistencyCheckerIssue("${it.description} for $word"))
             }
@@ -104,8 +104,8 @@ object LinkChecker : ConsistencyChecker() {
 }
 
 object CorpusTextChecker : ConsistencyChecker() {
-    override fun check(repo: Graph, language: Language, report: (ConsistencyCheckerIssue) -> Unit) {
-        for (corpusText in repo.corpusTextsInLanguage(language)) {
+    override fun check(graph: Graph, language: Language, report: (ConsistencyCheckerIssue) -> Unit) {
+        for (corpusText in graph.corpusTextsInLanguage(language)) {
             for (line in corpusText.mapToLines()) {
                 for (corpusWord in line.corpusWords) {
                     if (corpusWord.word != null &&
@@ -120,8 +120,8 @@ object CorpusTextChecker : ConsistencyChecker() {
 }
 
 object RuleChecker : ConsistencyChecker() {
-    override fun check(repo: Graph, language: Language, report: (ConsistencyCheckerIssue) -> Unit) {
-        for (rule in repo.allRules().filter { it.toLanguage == language }) {
+    override fun check(graph: Graph, language: Language, report: (ConsistencyCheckerIssue) -> Unit) {
+        for (rule in graph.allRules().filter { it.toLanguage == language }) {
             for (pos in rule.fromPOS) {
                 if (rule.fromLanguage.pos.none { it.abbreviation == pos }) {
                     report(ConsistencyCheckerIssue("Unknown rule from POS '$pos' in ${rule.name}"))

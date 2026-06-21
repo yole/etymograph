@@ -19,16 +19,16 @@ class TranslationController {
     )
 
     @PostMapping("/{graph}/translation")
-    fun addTranslation(repo: Graph, @RequestBody params: TranslationParams): CorpusController.TranslationViewModel {
-        val source = parseSourceRefs(repo, params.source)
-        val corpusText = repo.resolveCorpusText(params.corpusTextId)
-        val translation = repo.addTranslation(corpusText, params.text, source)
+    fun addTranslation(graph: Graph, @RequestBody params: TranslationParams): CorpusController.TranslationViewModel {
+        val source = parseSourceRefs(graph, params.source)
+        val corpusText = graph.resolveCorpusText(params.corpusTextId)
+        val translation = graph.addTranslation(corpusText, params.text, source)
         params.anchorStartIndex?.let { anchorStartIndex ->
             if (anchorStartIndex < 0 || anchorStartIndex >= corpusText.wordCount()) {
                 badRequest("Anchor index $anchorStartIndex is out of bounds")
             }
 
-            val translations = repo.translationsForText(corpusText)
+            val translations = graph.translationsForText(corpusText)
             val nextAnchorStartIndex = translations
                 .asSequence()
                 .mapNotNull { it.anchorStartIndex }
@@ -49,23 +49,23 @@ class TranslationController {
                     }
                 }
         }
-        return translationToViewModel(translation, repo)
+        return translationToViewModel(translation, graph)
     }
 
     @PostMapping("/{graph}/translations/{id}")
-    fun editTranslation(repo: Graph, @PathVariable id: Int, @RequestBody params: TranslationParams): CorpusController.TranslationViewModel {
-        val source = parseSourceRefs(repo, params.source)
-        val translation = repo.langEntityById(id) as? Translation
+    fun editTranslation(graph: Graph, @PathVariable id: Int, @RequestBody params: TranslationParams): CorpusController.TranslationViewModel {
+        val source = parseSourceRefs(graph, params.source)
+        val translation = graph.langEntityById(id) as? Translation
             ?: notFound("No translation with ID $id")
         translation.text = params.text
         translation.source = source
-        return translationToViewModel(translation, repo)
+        return translationToViewModel(translation, graph)
     }
 
     @PostMapping("/{graph}/translations/{id}/delete")
-    fun deleteTranslation(repo: Graph, @PathVariable id: Int) {
-        val translation = repo.langEntityById(id) as? Translation
+    fun deleteTranslation(graph: Graph, @PathVariable id: Int) {
+        val translation = graph.langEntityById(id) as? Translation
             ?: notFound("No translation with ID $id")
-        repo.deleteTranslation(translation)
+        graph.deleteTranslation(translation)
     }
 }

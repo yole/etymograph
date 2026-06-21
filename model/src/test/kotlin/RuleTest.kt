@@ -189,7 +189,7 @@ class RuleTest : QBaseTest() {
         val logic = rule.logic as SpeRuleLogic
         val speInstruction = logic.instructions.single()
         assertEquals("l", (speInstruction.pattern.after.single() as SpeLiteralNode).text)
-        assertEquals("* d > l / #_", rule.toEditableText(graph))
+        assertEquals("* d > l / #_", rule.toEditableText())
     }
 
     @Test
@@ -309,7 +309,7 @@ class RuleTest : QBaseTest() {
         assertEquals(1, (rule.logic as MorphoRuleLogic).postInstructions.size)
         assertEquals("laureae", applyRule(rule, q.word("laure")))
         assertEquals("lomire", applyRule(rule, q.word("lomi")))
-        assertEquals(text, rule.toEditableText(graph))
+        assertEquals(text, rule.toEditableText())
     }
 
     @Test
@@ -328,7 +328,7 @@ class RuleTest : QBaseTest() {
     @Test
     fun parseApplySoundRule() {
         val soundRule = parseRule(q, q, "* a > á", name = "q-lengthen")
-        val parseContext = q.parseContext(null, soundRule)
+        val parseContext = q.parseContext(soundRule)
         val applySoundRule = Rule(
             -1, "q-lengthen-first", q, q, Rule.parseLogic(
                 """
@@ -342,7 +342,7 @@ class RuleTest : QBaseTest() {
     @Test
     fun applySoundRuleToSound() {
         val soundRule = parseRule(q, q, "* a > á", name = "q-lengthen-sound")
-        val parseContext = q.parseContext(null, soundRule)
+        val parseContext = q.parseContext(soundRule)
         val applySoundRule = Rule(
             -1, "q-lengthen", q, q, Rule.parseLogic(
                 """
@@ -366,7 +366,7 @@ class RuleTest : QBaseTest() {
         val soundRule = parseRule(
             q, q, "* k > x", name = "q-lengthen-sound"
         )
-        val parseContext = q.parseContext(null, soundRule)
+        val parseContext = q.parseContext(soundRule)
         val applySoundRule = Rule(
             -1, "q-lengthen", q, q, Rule.parseLogic(
                 """
@@ -383,7 +383,7 @@ class RuleTest : QBaseTest() {
         val soundRule = parseRule(
             q, q, "* p > ph", name = "q-lengthen-sound"
         )
-        val parseContext = q.parseContext(null, soundRule)
+        val parseContext = q.parseContext(soundRule)
         val applySoundRule = Rule(
             -1, "q-lengthen", q, q, Rule.parseLogic(
                 """
@@ -556,7 +556,7 @@ class RuleTest : QBaseTest() {
         val word = rule.apply(q.word("sur"))
         assertEquals("asuri", word.text)
 
-        assertEquals(ruleText, rule.toEditableText(graph))
+        assertEquals(ruleText, rule.toEditableText())
     }
 
     @Test
@@ -725,7 +725,7 @@ class RuleTest : QBaseTest() {
         val lukeie = graph.addWord("lukeie", language = pie)
         val result = rule.apply(lukeie)
         assertEquals("lukeio", result.text)
-        assertEquals(text, rule.toEditableText(graph))
+        assertEquals(text, rule.toEditableText())
     }
 
     @Test
@@ -754,14 +754,14 @@ class RuleTest : QBaseTest() {
     fun speRuleComment() {
         val ruleText = "$ SPE rule\n* d > l / #_"
         val rule = parseRule(q, q, ruleText)
-        assertEquals(ruleText, rule.toEditableText(graph))
+        assertEquals(ruleText, rule.toEditableText())
     }
 
     @Test
     fun speRuleInstructionComment() {
         val ruleText = "$ SPE rule\n* d > l / #_\n$ second instruction comment\n* a > i"
         val rule = parseRule(q, q, ruleText)
-        assertEquals(ruleText, rule.toEditableText(graph))
+        assertEquals(ruleText, rule.toEditableText())
     }
 
     @Test
@@ -803,7 +803,7 @@ class RuleTest : QBaseTest() {
         assertNotNull(instruction.condition)
         assertEquals("mi", rule.apply(q.word("ma")).text)
         assertEquals("ama", rule.apply(q.word("ama")).text)
-        assertEquals(text, rule.toEditableText(graph))
+        assertEquals(text, rule.toEditableText())
         assertEquals(text.removePrefix("* "), instruction.toRichText(graph).toString())
     }
 
@@ -870,7 +870,7 @@ class RuleTest : QBaseTest() {
         val rule = parseRule(ce, q, text)
         assertEquals("mi", rule.apply(q.word("ma")).text)
         assertEquals("ca", rule.apply(q.word("ca")).text)
-        assertEquals(text, rule.toEditableText(graph))
+        assertEquals(text, rule.toEditableText())
     }
 
     @Test
@@ -926,11 +926,10 @@ class RuleTest : QBaseTest() {
     @Test
     fun applyRuleToSyllable() {
         val soundRule = parseRule(q, q, "* u > ú", "q-long")
-        val graph = InMemoryGraph()
         graph.addRule(soundRule)
 
         val text = "apply sound rule 'q-long' to first syllable"
-        val instruction = RuleInstruction.parse("- $text", q.parseContext(graph))
+        val instruction = RuleInstruction.parse("- $text", q.parseContext())
         val context = RuleApplyContext(soundRule, null)
         assertEquals("túl", instruction.apply(q.word("tul"), context).text)
         assertEquals(text, instruction.toEditableText(graph))
@@ -941,11 +940,10 @@ class RuleTest : QBaseTest() {
         val soundRule = parseRule(q, q, "* u > ú", "q-long")
         val stressRule = parseRule(q, q, "- stress is on last syllable")
         q.stressRule = RuleRef.to(stressRule)
-        val graph = InMemoryGraph()
         graph.addRule(soundRule)
 
         val text = "apply sound rule 'q-long' to first stressed syllable"
-        val instruction = RuleInstruction.parse("- $text", q.parseContext(graph))
+        val instruction = RuleInstruction.parse("- $text", q.parseContext())
         val context = RuleApplyContext(soundRule, null)
         assertEquals("tulún", instruction.apply(q.word("tulun"), context).text)
         assertEquals(text, instruction.toEditableText(graph))
@@ -992,15 +990,15 @@ class RuleTest : QBaseTest() {
      */
 }
 
-fun Language.parseContext(repo: Graph? = null, vararg rules: Rule): RuleParseContext =
-    createParseContext(this, this, repo, *rules)
+fun Language.parseContext(vararg rules: Rule): RuleParseContext =
+    createParseContext(this, this, *rules)
 
 fun parseRule(
-    fromLanguage: Language, toLanguage: Language, text: String, name: String = "q", repo: Graph? = null,
+    fromLanguage: Language, toLanguage: Language, text: String, name: String = "q",
     addedCategories: String? = null, fromPOS: List<String> = emptyList(), toPOS: String? = null,
     context: RuleParseContext? = null
 ): Rule = Rule(
     -1, name, fromLanguage, toLanguage,
-    Rule.parseLogic(text, context ?: createParseContext(fromLanguage, toLanguage, repo)),
+    Rule.parseLogic(text, context ?: createParseContext(fromLanguage, toLanguage)),
     addedCategories, null, fromPOS, toPOS, emptyList(), null
 )

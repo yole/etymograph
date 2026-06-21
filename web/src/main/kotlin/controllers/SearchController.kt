@@ -20,7 +20,7 @@ class SearchController {
 
     @GetMapping("")
     fun search(
-        repo: Graph,
+        graph: Graph,
         @RequestParam q: String,
         @RequestParam(required = false, defaultValue = "50") limit: Int,
         @RequestParam(required = false, defaultValue = "0") offset: Int,
@@ -33,7 +33,7 @@ class SearchController {
 
         val normQ = query.lowercase(Locale.FRANCE).removeDiacritics()
 
-        val allWords = repo.allLanguages().flatMap { l -> repo.allWords(l) }
+        val allWords = graph.allLanguages().flatMap { l -> graph.allWords(l) }
 
         val exactMatches = allWords.filter { w -> w.text.lowercase(Locale.FRANCE).removeDiacritics() == normQ }
 

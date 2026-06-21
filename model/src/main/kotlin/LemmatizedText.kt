@@ -28,7 +28,7 @@ fun importLemmatizedText(language: Language, dictionary: Dictionary, title: Stri
                 lemmaWords = listOf(baseWord)
             }
             else {
-                val dictionaryWords = dictionary.lookup(graph, language, token.lemma)
+                val dictionaryWords = dictionary.lookup(language, token.lemma)
                 lemmaWords = dictionaryWords.result.map {
                     findOrCreateWordFromDictionary(graph, it)
                 }
@@ -48,7 +48,7 @@ fun importLemmatizedText(language: Language, dictionary: Dictionary, title: Stri
     return corpusText
 }
 
-private fun createWordForForm(lemmaWord: Word, repo: Graph, word: LemmatizedToken): Word {
+private fun createWordForForm(lemmaWord: Word, graph: Graph, word: LemmatizedToken): Word {
     val categories = mapCategoryValues(lemmaWord, word.categories)
     if (categories.isEmpty() || categories.all { isDefaultCategoryValue(lemmaWord.language, it) }) {
         return lemmaWord
@@ -59,7 +59,7 @@ private fun createWordForForm(lemmaWord: Word, repo: Graph, word: LemmatizedToke
 
     val glossWithCategories = (lemmaWord.gloss ?: "?") + categories.joinToString("") { ".$it" }
     if (rule != null) {
-        val existingFormWord = repo.getLinksTo(lemmaWord)
+        val existingFormWord = graph.getLinksTo(lemmaWord)
             .find { it.type == Link.Derived && it.rules == listOf(rule) }
             ?.fromEntity as? Word
         if (existingFormWord != null) {
@@ -67,9 +67,9 @@ private fun createWordForForm(lemmaWord: Word, repo: Graph, word: LemmatizedToke
         }
     }
 
-    val newWord = repo.findOrAddWord(word.form, lemmaWord.language, glossWithCategories)
+    val newWord = graph.findOrAddWord(word.form, lemmaWord.language, glossWithCategories)
     if (rule != null) {
-        repo.addLink(newWord, lemmaWord, Link.Derived, listOf(rule))
+        graph.addLink(newWord, lemmaWord, Link.Derived, listOf(rule))
         newWord.gloss = null
     }
 

@@ -213,11 +213,11 @@ open class Wiktionary : Dictionary {
         return keyValue[0].trim() to keyValue[1].split(',').map { it.trim() }
     }
 
-    override fun lookup(repo: Graph, language: Language, word: String, disambiguation: String?): LookupResult {
-        return lookup(repo, language, word, disambiguation, true)
+    override fun lookup(language: Language, word: String, disambiguation: String?): LookupResult {
+        return lookup(language, word, disambiguation, true)
     }
 
-    fun lookup(repo: Graph, language: Language, word: String, disambiguation: String?, lookupRelatedWords: Boolean): LookupResult {
+    fun lookup(language: Language, word: String, disambiguation: String?, lookupRelatedWords: Boolean): LookupResult {
         val messages = mutableListOf<String>()
         val variants = mutableListOf<LookupVariant>()
 
@@ -227,7 +227,7 @@ open class Wiktionary : Dictionary {
         ): DictionaryWord? {
             if (!lookupRelatedWords) return null
 
-            val compoundResult = lookup(repo, language, string.trimStart('*'), disambiguation, false).result
+            val compoundResult = lookup(language, string.trimStart('*'), disambiguation, false).result
                 .filter(filterCallback)
             if (compoundResult.isEmpty()) {
                 messages.add("Can't find $wordKind '$string'")
@@ -242,8 +242,8 @@ open class Wiktionary : Dictionary {
             return compoundResult.singleOrNull()
         }
 
-        fun lookupInheritedWord(repo: Graph, word: InheritedWordTemplate): DictionaryRelatedWord? {
-            val originLanguage = repo.allLanguages().find { "wiktionary-id: ${word.language}" in (it.dictionarySettings ?: "") } ?: return null
+        fun lookupInheritedWord(graph: Graph, word: InheritedWordTemplate): DictionaryRelatedWord? {
+            val originLanguage = graph.allLanguages().find { "wiktionary-id: ${word.language}" in (it.dictionarySettings ?: "") } ?: return null
             val lookupResult = lookupSingle(originLanguage, word.word.trimStart('*'), "origin word") ?: return null
             return DictionaryRelatedWord(Link.Origin, lookupResult)
         }
@@ -259,7 +259,7 @@ open class Wiktionary : Dictionary {
         fun mapPos(section: WiktionaryPosSection): String? = language.pos.find { it.name == section.pos }?.abbreviation
 
         val result = wiktionaryPage.etymologySections.flatMap { etymologySection ->
-            val inheritedWords = etymologySection.inheritedWords.mapNotNull { lookupInheritedWord(repo, it) }
+            val inheritedWords = etymologySection.inheritedWords.mapNotNull { lookupInheritedWord(language.graph, it) }
             val compoundComponents = etymologySection.compoundComponents?.map {
                 lookupSingle(language, it, "compound member")
             }
@@ -365,7 +365,7 @@ fun main() {
     val ieRepo = JsonGraph.fromJson(Path.of("data/ie"))
     val oe = ieRepo.languageByShortName("OE")!!
     val wiktionary = Wiktionary()
-    val result = wiktionary.lookup(ieRepo, oe, "wer")
+    val result = wiktionary.lookup(oe, "wer")
     for (word in result.result) {
         println(word.fullGloss)
         println(word.pos)

@@ -5,7 +5,7 @@ import org.junit.Before
 import org.junit.Test
 
 class TestDictionary : Dictionary {
-    override fun lookup(repo: Graph, language: Language, word: String, disambiguation: String?): LookupResult {
+    override fun lookup(language: Language, word: String, disambiguation: String?): LookupResult {
         return LookupResult.empty
     }
 }

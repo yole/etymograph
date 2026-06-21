@@ -13,7 +13,7 @@ data class LookupResult(
 }
 
 interface Dictionary {
-    fun lookup(repo: Graph, language: Language, word: String, disambiguation: String? = null): LookupResult
+    fun lookup(language: Language, word: String, disambiguation: String? = null): LookupResult
 }
 
 data class DictionaryRelatedWord(
@@ -52,7 +52,7 @@ fun augmentWordWithDictionary(
     dictionary: Dictionary, word: Word,
     disambiguation: String? = null
 ): AugmentResult {
-    val lookupResult = dictionary.lookup(word.graph, word.language, word.text, disambiguation)
+    val lookupResult = dictionary.lookup(word.language, word.text, disambiguation)
     if (lookupResult.result.isEmpty()) {
         return AugmentResult("Found no matching word for ${word.text}", emptyList())
     } else if (lookupResult.result.size > 1) {
@@ -120,12 +120,12 @@ private fun wordSet(gloss: String): Set<String> =
         .toSet()
 
 fun findOrCreateWordFromDictionary(
-    repo: Graph,
+    graph: Graph,
     word: DictionaryWord,
 ): Word {
-    val existingWords = repo.wordsByText(word.language, word.text)
+    val existingWords = graph.wordsByText(word.language, word.text)
     return existingWords.find { isGlossSimilar(it.gloss, word.gloss) }
-        ?: repo.findOrAddWord(
+        ?: graph.findOrAddWord(
             word.text, word.language, word.gloss, word.fullGloss, word.pos, word.classes, word.reconstructed, word.syllabographic,
             listOf(SourceRef(null, word.source)
         )

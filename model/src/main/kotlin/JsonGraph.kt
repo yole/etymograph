@@ -1079,8 +1079,8 @@ class JsonGraph(val path: Path?) : InMemoryGraph() {
                     RuleInstruction(insnData.type, insnData.args.firstOrNull() ?: "", insnData.comment)
             }
 
-        private fun ruleRef(repo: Graph, ruleId: Int) =
-            RuleRef { repo.ruleById(ruleId) ?: throw IllegalStateException("Broken rule ID reference $ruleId") }
+        private fun ruleRef(graph: Graph, ruleId: Int) =
+            RuleRef { graph.ruleById(ruleId) ?: throw IllegalStateException("Broken rule ID reference $ruleId") }
     }
 }
 

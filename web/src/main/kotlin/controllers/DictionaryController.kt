@@ -27,55 +27,55 @@ class DictionaryController {
 
     @GetMapping("/{lang}")
     fun dictionary(
-        repo: Graph,
+        graph: Graph,
         @PathVariable lang: String,
         @RequestParam(required = false) letter: String?
     ): DictionaryViewModel {
-        return loadDictionary(repo, lang, WordKind.NORMAL, letter)
+        return loadDictionary(graph, lang, WordKind.NORMAL, letter)
     }
 
     @GetMapping("/{lang}/compounds")
     fun dictionaryCompound(
-        repo: Graph,
+        graph: Graph,
         @PathVariable lang: String,
         @RequestParam(required = false) letter: String?
     ): DictionaryViewModel {
-        return loadDictionary(repo, lang, WordKind.COMPOUND, letter)
+        return loadDictionary(graph, lang, WordKind.COMPOUND, letter)
     }
 
     @GetMapping("/{lang}/names")
     fun dictionaryNames(
-        repo: Graph,
+        graph: Graph,
         @PathVariable lang: String,
         @RequestParam(required = false) letter: String?
     ): DictionaryViewModel {
-        return loadDictionary(repo, lang, WordKind.NAME, letter)
+        return loadDictionary(graph, lang, WordKind.NAME, letter)
     }
 
     @GetMapping("/{lang}/reconstructed")
     fun dictionaryReconstructed(
-        repo: Graph,
+        graph: Graph,
         @PathVariable lang: String,
         @RequestParam(required = false) letter: String?
     ): DictionaryViewModel {
-        return loadDictionary(repo, lang, WordKind.RECONSTRUCTED, letter)
+        return loadDictionary(graph, lang, WordKind.RECONSTRUCTED, letter)
     }
 
     @GetMapping("/{lang}/all")
     fun allWords(
-        repo: Graph,
+        graph: Graph,
         @PathVariable lang: String,
         @RequestParam(required = false) letter: String?
     ): DictionaryViewModel {
-        return loadDictionary(repo, lang, null, letter)
+        return loadDictionary(graph, lang, null, letter)
     }
 
-    private fun loadDictionary(repo: Graph, lang: String, wordKind: WordKind?, letter: String?): DictionaryViewModel {
-        val language = repo.resolveLanguage(lang)
+    private fun loadDictionary(graph: Graph, lang: String, wordKind: WordKind?, letter: String?): DictionaryViewModel {
+        val language = graph.resolveLanguage(lang)
         val words = if (wordKind == null)
-            repo.allWords(language)
+            graph.allWords(language)
         else
-            repo.filteredWords(language, wordKind)
+            graph.filteredWords(language, wordKind)
 
         val mapped = words.map {
             DictionaryWordViewModel(
@@ -87,14 +87,14 @@ class DictionaryController {
 
         val filtered = letter?.let { l ->
             val key = normalizeLetter(l)
-            mapped.filter { groupName(repo, language, it) == key }
+            mapped.filter { groupName(language, it) == key }
         } ?: mapped
 
         return DictionaryViewModel(language.shortName, language.name, language.syllabographic,
-            filtered, groupWords(repo, language, filtered))
+            filtered, groupWords(language, filtered))
     }
 
-    private fun groupName(repo: Graph, language: Language, word: DictionaryWordViewModel): String {
+    private fun groupName(language: Language, word: DictionaryWordViewModel): String {
         val syllabograms = word.ref.syllabogramSequence?.syllabograms
         if (syllabograms != null) {
             val firstNonDeterminative = syllabograms.dropWhile { it.type.isDeterminative }.firstOrNull()
@@ -113,11 +113,11 @@ class DictionaryController {
         return input
     }
 
-    private fun groupWords(repo: Graph, language: Language, words: List<DictionaryWordViewModel>): Map<String, List<DictionaryWordViewModel>> {
+    private fun groupWords(language: Language, words: List<DictionaryWordViewModel>): Map<String, List<DictionaryWordViewModel>> {
         val comparator = compareBy<String> { it.lowercase() }
             .thenBy { it == it.uppercase() && it != it.lowercase() }
             .thenBy { it }
-        return words.groupBy { groupName(repo, language, it) }
+        return words.groupBy { groupName(language, it) }
             .mapValues { (_, list) ->
                 list.sortedWith(compareBy({ it.ref.text.lowercase() }, { it.ref.id }))
             }

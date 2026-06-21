@@ -24,12 +24,12 @@ class LinkController {
     data class ResolvedLinkParams(val fromEntity: LangEntity, val toEntity: LangEntity, val linkType: LinkType)
 
     @PostMapping("")
-    fun addLink(repo: Graph, @RequestBody params: LinkParams) {
-        val (fromEntity, toEntity, linkType) = resolveLinkParams(repo, params)
-        val rules = resolveRuleNames(repo, params)
-        val source = parseSourceRefs(repo, params.source)
+    fun addLink(graph: Graph, @RequestBody params: LinkParams) {
+        val (fromEntity, toEntity, linkType) = resolveLinkParams(graph, params)
+        val rules = resolveRuleNames(graph, params)
+        val source = parseSourceRefs(graph, params.source)
 
-        repo.addLink(fromEntity, toEntity, linkType, rules, null, source, params.notes.nullize())
+        graph.addLink(fromEntity, toEntity, linkType, rules, null, source, params.notes.nullize())
     }
 
     data class RuleLinkParams(
@@ -41,19 +41,19 @@ class LinkController {
     )
 
     @PostMapping("/rule")
-    fun addRuleLink(repo: Graph, @RequestBody params: RuleLinkParams) {
-        val fromEntity = repo.resolveEntity(params.fromEntity)
-        val toRule = repo.resolveRule(params.toRuleName)
+    fun addRuleLink(graph: Graph, @RequestBody params: RuleLinkParams) {
+        val fromEntity = graph.resolveEntity(params.fromEntity)
+        val toRule = graph.resolveRule(params.toRuleName)
         val linkType = resolveLinkType(params.linkType)
-        val source = parseSourceRefs(repo, params.source)
+        val source = parseSourceRefs(graph, params.source)
 
-        repo.addLink(fromEntity, toRule, linkType, emptyList(), null, source, params.notes.nullize())
+        graph.addLink(fromEntity, toRule, linkType, emptyList(), null, source, params.notes.nullize())
     }
 
-    private fun resolveLinkParams(repo: Graph, params: LinkParams): ResolvedLinkParams {
+    private fun resolveLinkParams(graph: Graph, params: LinkParams): ResolvedLinkParams {
         return ResolvedLinkParams(
-            repo.resolveEntity(params.fromEntity),
-            repo.resolveEntity(params.toEntity),
+            graph.resolveEntity(params.fromEntity),
+            graph.resolveEntity(params.toEntity),
             resolveLinkType(params.linkType),
         )
     }
@@ -62,46 +62,46 @@ class LinkController {
         (Link.allLinkTypes.find { it.id == linkType }
             ?: badRequest("No link type '$linkType'"))
 
-    private fun resolveRuleNames(repo: Graph, params: LinkParams): List<Rule> {
+    private fun resolveRuleNames(graph: Graph, params: LinkParams): List<Rule> {
         return params.ruleNames
             .takeIf { it.isNotBlank() }
             ?.split(',')
-            ?.map { repo.resolveRule(it) }
+            ?.map { graph.resolveRule(it) }
             ?: emptyList()
     }
 
     @PostMapping("/update")
-    fun updateLink(repo: Graph, @RequestBody params: LinkParams) {
-        val (fromEntity, toEntity, linkType) = resolveLinkParams(repo, params)
+    fun updateLink(graph: Graph, @RequestBody params: LinkParams) {
+        val (fromEntity, toEntity, linkType) = resolveLinkParams(graph, params)
 
-        val link = repo.findLink(fromEntity, toEntity, linkType)
+        val link = graph.findLink(fromEntity, toEntity, linkType)
             ?: badRequest("No such link")
-        val rules = resolveRuleNames(repo, params)
+        val rules = resolveRuleNames(graph, params)
 
         if (link.rules != rules) {
             link.sequence = null
         }
         link.rules = rules
-        link.source = parseSourceRefs(repo, params.source)
+        link.source = parseSourceRefs(graph, params.source)
         link.notes = params.notes.nullize()
     }
 
     @PostMapping("/delete")
-    fun deleteLink(repo: Graph, @RequestBody params: LinkParams): Boolean {
-        val (fromWord, toWord, linkType) = resolveLinkParams(repo, params)
+    fun deleteLink(graph: Graph, @RequestBody params: LinkParams): Boolean {
+        val (fromWord, toWord, linkType) = resolveLinkParams(graph, params)
 
-        return (repo.deleteLink(fromWord, toWord, linkType) || repo.deleteLink(toWord, fromWord, linkType))
+        return (graph.deleteLink(fromWord, toWord, linkType) || graph.deleteLink(toWord, fromWord, linkType))
     }
 
     @PostMapping("/refreshSequence")
-    fun refreshLinkSequence(repo: Graph, @RequestBody params: LinkParams) {
-        val (fromEntity, toEntity, linkType) = resolveLinkParams(repo, params)
+    fun refreshLinkSequence(graph: Graph, @RequestBody params: LinkParams) {
+        val (fromEntity, toEntity, linkType) = resolveLinkParams(graph, params)
 
-        val link = repo.findLink(fromEntity, toEntity, linkType)
+        val link = graph.findLink(fromEntity, toEntity, linkType)
             ?: badRequest("No such link")
 
         link.sequence?.let {
-            repo.applyRuleSequence(link, it)
+            graph.applyRuleSequence(link, it)
         }
     }
 }

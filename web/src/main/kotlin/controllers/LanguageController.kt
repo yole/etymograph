@@ -71,15 +71,15 @@ class LanguageController {
     )
 
     @GetMapping("/{graph}/language")
-    fun indexJson(repo: Graph): List<LanguageShortViewModel> {
-        return repo.allLanguages().sortedBy { it.name }.map { lang ->
+    fun indexJson(graph: Graph): List<LanguageShortViewModel> {
+        return graph.allLanguages().sortedBy { it.name }.map { lang ->
             lang.toShortViewModel()
         }
     }
 
     @GetMapping("/{graph}/languages")
-    fun treeJson(repo: Graph): List<LanguageShortViewModel> {
-        val languages = repo.allLanguages()
+    fun treeJson(graph: Graph): List<LanguageShortViewModel> {
+        val languages = graph.allLanguages()
         val shortViewModels = languages.associateBy(
             { it.shortName },
             { it.toShortViewModel() }
@@ -129,12 +129,12 @@ class LanguageController {
         )
     
     @GetMapping("/{graph}/language/{lang}")
-    fun language(repo: Graph, @PathVariable lang: String): LanguageViewModel {
-        val language = repo.resolveLanguage(lang)
-        return language.toViewModel(repo)
+    fun language(graph: Graph, @PathVariable lang: String): LanguageViewModel {
+        val language = graph.resolveLanguage(lang)
+        return language.toViewModel()
     }
 
-    private fun Language.toViewModel(repo: Graph): LanguageViewModel {
+    private fun Language.toViewModel(): LanguageViewModel {
         val stressRule = stressRule?.resolve()
         val phonotacticsRule = phonotacticsRule?.resolve()
         val pronunciationRule = pronunciationRule?.resolve()
@@ -149,7 +149,7 @@ class LanguageController {
             PhonemeTable.build(phonemes).map { table ->
                 PhonemeTableViewModel(table.title, table.columnTitles, table.rows.map { row ->
                     PhonemeTableRowViewModel(row.title, row.columns.map { cell ->
-                        PhonemeTableCellViewModel(cell.phonemes.map { it.toViewModel(repo, this)})
+                        PhonemeTableCellViewModel(cell.phonemes.map { it.toViewModel(this)})
                     })
                 })
             },
@@ -194,25 +194,25 @@ class LanguageController {
         val name = params.name.takeIf { !it.isNullOrBlank() } ?: badRequest("Language name must be provided")
         val shortName = params.shortName.takeIf { !it.isNullOrBlank() } ?: badRequest("Language short name must be provided")
         val language = graph.addLanguage(name, shortName)
-        updateLanguageDetails(graph, language, params)
-        return language.toViewModel(graph)
+        updateLanguageDetails(language, params)
+        return language.toViewModel()
     }
 
     @PostMapping("/{graph}/language/{lang}", consumes = ["application/json"])
-    fun updateLanguage(repo: Graph, @PathVariable lang: String, @RequestBody params: UpdateLanguageParameters) {
-        val language = repo.resolveLanguage(lang)
-        updateLanguageDetails(repo, language, params)
+    fun updateLanguage(graph: Graph, @PathVariable lang: String, @RequestBody params: UpdateLanguageParameters) {
+        val language = graph.resolveLanguage(lang)
+        updateLanguageDetails(language, params)
     }
 
     data class CopyPhonemesParams(val fromLang: String = "")
 
     @PostMapping("/{graph}/language/{lang}/copyPhonemes", consumes = ["application/json"])
-    fun copyPhonemes(repo: Graph, @PathVariable lang: String, @RequestBody params: CopyPhonemesParams) {
-        val toLanguage = repo.resolveLanguage(lang)
-        val fromLanguage = repo.resolveLanguage(params.fromLang)
+    fun copyPhonemes(graph: Graph, @PathVariable lang: String, @RequestBody params: CopyPhonemesParams) {
+        val toLanguage = graph.resolveLanguage(lang)
+        val fromLanguage = graph.resolveLanguage(params.fromLang)
         for (phoneme in fromLanguage.phonemes) {
             if (toLanguage.phonemes.none { phoneme.graphemes.intersect(it.graphemes).isNotEmpty() }) {
-                repo.addPhoneme(toLanguage, phoneme.graphemes, phoneme.sound, phoneme.classes)
+                graph.addPhoneme(toLanguage, phoneme.graphemes, phoneme.sound, phoneme.classes)
             }
         }
     }
@@ -221,9 +221,9 @@ class LanguageController {
     data class InputAssistViewModel(val graphemes: List<InputAssistGraphemeViewModel>)
 
     @GetMapping("/{graph}/inputAssist")
-    fun inputAssist(repo: Graph): InputAssistViewModel {
+    fun inputAssist(graph: Graph): InputAssistViewModel {
         val graphemes = mutableMapOf<String, MutableList<String>>()
-        for (language in repo.allLanguages()) {
+        for (language in graph.allLanguages()) {
             for (phoneme in language.phonemes) {
                 val grapheme = phoneme.graphemes.first()
                 if (grapheme.any { it !in 'a'..'z'}) {
@@ -241,10 +241,10 @@ class LanguageController {
     }
 
     private fun updateLanguageDetails(
-        repo: Graph,
         language: Language,
         params: UpdateLanguageParameters
     ) {
+        val gr = language.graph
         if (params.reconstructed != null) {
             language.reconstructed = params.reconstructed
         }
@@ -253,7 +253,7 @@ class LanguageController {
             language.syllabographic = params.syllabographic
         }
 
-        language.protoLanguage = params.protoLanguageShortName?.let { repo.resolveLanguage(it) }
+        language.protoLanguage = params.protoLanguageShortName?.let { gr.resolveLanguage(it) }
 
         language.diphthongs = parseList(params.diphthongs)
         language.syllableStructures = parseList(params.syllableStructures)
@@ -261,10 +261,10 @@ class LanguageController {
         language.grammaticalCategories = params.grammaticalCategories.nullize()?.let { parseWordCategories(it) } ?: mutableListOf()
         language.wordClasses = params.wordClasses.nullize()?.let { parseWordCategories(it) } ?: mutableListOf()
 
-        language.stressRule = parseRuleRef(repo, params.stressRuleName)
-        language.phonotacticsRule = parseRuleRef(repo, params.phonotacticsRuleName)
-        language.pronunciationRule = parseRuleRef(repo, params.pronunciationRuleName)
-        language.orthographyRule = parseRuleRef(repo, params.orthographyRuleName)
+        language.stressRule = parseRuleRef(gr, params.stressRuleName)
+        language.phonotacticsRule = parseRuleRef(gr, params.phonotacticsRuleName)
+        language.pronunciationRule = parseRuleRef(gr, params.pronunciationRuleName)
+        language.orthographyRule = parseRuleRef(gr, params.orthographyRuleName)
 
         language.dictionarySettings = params.dictionarySettings
         language.accentTypes = params.accentTypes?.mapTo(mutableSetOf()) {
@@ -272,8 +272,8 @@ class LanguageController {
         } ?: mutableSetOf()
     }
 
-    private fun parseRuleRef(repo: Graph, name: String?): RuleRef? {
-        val rule = name?.nullize()?.let { repo.resolveRule(it) }
+    private fun parseRuleRef(graph: Graph, name: String?): RuleRef? {
+        val rule = name?.nullize()?.let { graph.resolveRule(it) }
         return rule?.let { RuleRef.to(it) }
     }
 

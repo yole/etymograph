@@ -34,21 +34,21 @@ data class PhonemeViewModel(
 @RestController
 class PhonemeController {
     @GetMapping("/{graph}/phonemes")
-    fun phonemes(repo: Graph): List<PhonemeViewModel> {
-        return repo.allLanguages().flatMap { language ->
-            language.phonemes.map { it.toViewModel(repo, language) }
+    fun phonemes(graph: Graph): List<PhonemeViewModel> {
+        return graph.allLanguages().flatMap { language ->
+            language.phonemes.map { it.toViewModel(language) }
         }
     }
 
     @GetMapping("/{graph}/phoneme/{id}")
-    fun phoneme(repo: Graph, @PathVariable id: Int): PhonemeViewModel {
-        val phoneme = repo.resolvePhoneme(id)
-        val lang = findLanguage(repo, phoneme, id)
-        return phoneme.toViewModel(repo, lang)
+    fun phoneme(graph: Graph, @PathVariable id: Int): PhonemeViewModel {
+        val phoneme = graph.resolvePhoneme(id)
+        val lang = findLanguage(graph, phoneme, id)
+        return phoneme.toViewModel(lang)
     }
 
-    private fun findLanguage(repo: Graph, phoneme: Phoneme, id: Int): Language {
-        return repo.allLanguages().find { phoneme in it.phonemes }
+    private fun findLanguage(graph: Graph, phoneme: Phoneme, id: Int): Language {
+        return graph.allLanguages().find { phoneme in it.phonemes }
             ?: badRequest("Phoneme with id $id is not associated with any language")
     }
 
@@ -65,8 +65,8 @@ class PhonemeController {
     )
 
     @PostMapping("/{graph}/phonemes/{lang}", consumes = ["application/json"])
-    fun addPhoneme(repo: Graph, @PathVariable lang: String, @RequestBody params: UpdatePhonemeParameters): PhonemeViewModel {
-        val language = repo.resolveLanguage(lang)
+    fun addPhoneme(graph: Graph, @PathVariable lang: String, @RequestBody params: UpdatePhonemeParameters): PhonemeViewModel {
+        val language = graph.resolveLanguage(lang)
 
         val graphemes = parseList(params.graphemes)
         for (phoneme in language.phonemes) {
@@ -81,28 +81,28 @@ class PhonemeController {
             val effectiveSound = sound ?: graphemes.first()
             defaultPhonemeClasses[effectiveSound] ?: emptySet()
         }
-        val phoneme = repo.addPhoneme(
+        val phoneme = graph.addPhoneme(
             language,
             graphemes,
             sound,
             classes,
             params.historical,
-            parseSourceRefs(repo, params.source),
+            parseSourceRefs(graph, params.source),
             params.notes
         )
-        return phoneme.toViewModel(repo, language)
+        return phoneme.toViewModel(language)
     }
 
     @PostMapping("/{graph}/phoneme/{id}", consumes = ["application/json"])
-    fun updatePhoneme(repo: Graph, @PathVariable id: Int, @RequestBody params: UpdatePhonemeParameters) {
-        val phoneme = repo.resolvePhoneme(id)
+    fun updatePhoneme(graph: Graph, @PathVariable id: Int, @RequestBody params: UpdatePhonemeParameters) {
+        val phoneme = graph.resolvePhoneme(id)
         phoneme.graphemes = parseList(params.graphemes)
         phoneme.sound = params.sound.nullize()
         phoneme.classes = parseClasses(params)
         phoneme.historical = params.historical
-        phoneme.source = parseSourceRefs(repo, params.source)
+        phoneme.source = parseSourceRefs(graph, params.source)
         phoneme.notes = params.notes
-        val language = findLanguage(repo, phoneme, id)
+        val language = findLanguage(graph, phoneme, id)
         language.updatePhonemes()
     }
 
@@ -110,10 +110,10 @@ class PhonemeController {
         params.classes.orEmpty().trim().takeIf { it.isNotEmpty() }?.split(' ')?.toSet() ?: emptySet()
 
     @PostMapping("/{graph}/phoneme/{id}/delete")
-    fun deletePhoneme(repo: Graph, @PathVariable id: Int) {
-        val phoneme = repo.resolvePhoneme(id)
-        val language = findLanguage(repo, phoneme, id)
-        repo.deletePhoneme(language, phoneme)
+    fun deletePhoneme(graph: Graph, @PathVariable id: Int) {
+        val phoneme = graph.resolvePhoneme(id)
+        val language = findLanguage(graph, phoneme, id)
+        graph.deletePhoneme(language, phoneme)
     }
 
     data class ComparePhonemesParameters(
@@ -125,9 +125,9 @@ class PhonemeController {
     )
 
     @PostMapping("/{graph}/phoneme/{id}/compare", consumes = ["application/json"])
-    fun comparePhonemes(repo: Graph, @PathVariable id: Int, @RequestBody params: ComparePhonemesParameters): ComparePhonemesResult {
-        val phoneme = repo.resolvePhoneme(id)
-        val language = findLanguage(repo, phoneme, id)
+    fun comparePhonemes(graph: Graph, @PathVariable id: Int, @RequestBody params: ComparePhonemesParameters): ComparePhonemesResult {
+        val phoneme = graph.resolvePhoneme(id)
+        val language = findLanguage(graph, phoneme, id)
         val targetPhoneme = language.phonemes.find { it.effectiveSound == params.toPhoneme }
             ?: badRequest("Phoneme with sound ${params.toPhoneme} not found")
 
@@ -136,7 +136,7 @@ class PhonemeController {
     }
 }
 
-fun Phoneme.toViewModel(graph: Graph, language: Language): PhonemeViewModel {
+fun Phoneme.toViewModel(language: Language): PhonemeViewModel {
     val features = language.phonemeFeatures(this)
     return PhonemeViewModel(
         id,
@@ -148,22 +148,23 @@ fun Phoneme.toViewModel(graph: Graph, language: Language): PhonemeViewModel {
         (implicitPhonemeClasses(classes) - features).joinToString(" "),
         features.joinToString( " "),
         historical,
-        source.toViewModel(graph),
-        source.toEditableText(graph),
+        source.toViewModel(language.graph),
+        source.toEditableText(language.graph),
         notes,
-        findRelatedRules(graph, language, this)
+        findRelatedRules(language, this)
     )
 }
 
-fun findRelatedRules(graph: Graph, language: Language, phoneme: Phoneme): List<PhonemeRuleGroupViewModel> {
+fun findRelatedRules(language: Language, phoneme: Phoneme): List<PhonemeRuleGroupViewModel> {
+    val graph = language.graph
     val seqFromLanguage = graph.ruleSequencesFromLanguage(language)
     val seqToLanguage = graph.ruleSequencesForLanguage(language)
 
     val developmentGroups = seqFromLanguage.groupBy { it.toLanguage }.map { (language, sequences) ->
-        buildPhonemeRuleGroup(graph, "Development: ${language.name}", phoneme, sequences)
+        buildPhonemeRuleGroup("Development: ${language.name}", phoneme, sequences)
     }
     val groups = if (seqToLanguage.isNotEmpty()) {
-        listOf(buildPhonemeRuleGroup(graph, "Origin", phoneme, seqToLanguage)) + developmentGroups
+        listOf(buildPhonemeRuleGroup("Origin", phoneme, seqToLanguage)) + developmentGroups
     }
     else {
         developmentGroups
@@ -171,7 +172,7 @@ fun findRelatedRules(graph: Graph, language: Language, phoneme: Phoneme): List<P
     return groups.filter { it.rules.isNotEmpty() }
 }
 
-fun buildPhonemeRuleGroup(graph: Graph, title: String, phoneme: Phoneme, sequences: List<RuleSequence>): PhonemeRuleGroupViewModel {
+fun buildPhonemeRuleGroup(title: String, phoneme: Phoneme, sequences: List<RuleSequence>): PhonemeRuleGroupViewModel {
     val rules = sequences.flatMapTo(mutableSetOf()) {
         it.resolveRules().filter { rule ->
             rule.logic.refersToLangEntity(phoneme)
@@ -180,7 +181,7 @@ fun buildPhonemeRuleGroup(graph: Graph, title: String, phoneme: Phoneme, sequenc
     return PhonemeRuleGroupViewModel(
         title,
         rules.map {
-            PhonemeRuleViewModel(it.id, it.name, it.toSummaryText(graph))
+            PhonemeRuleViewModel(it.id, it.name, it.toSummaryText())
         }
     )
 }

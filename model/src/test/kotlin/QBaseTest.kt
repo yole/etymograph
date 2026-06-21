@@ -28,7 +28,7 @@ open class QBaseTest {
         name: String = "q", addedCategories: String? = null
     ): Rule {
         return addRule(name, q, q,
-            Rule.parseLogic(text, createParseContext(q, q, this)),
+            Rule.parseLogic(text, createParseContext(q, q)),
             addedCategories = addedCategories
         )
     }

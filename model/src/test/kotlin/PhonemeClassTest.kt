@@ -30,7 +30,7 @@ class PhonemeClassTest : QBaseTest() {
         val rule = parseRule(q, q, text)
         assertEquals("xowo", rule.apply(q.word("wowo").apply { setExplicitStress(1) }).text)
         assertEquals("wiwo", rule.apply(q.word("wiwo").apply { setExplicitStress(1) }).text)
-        assertEquals(text, rule.toEditableText(graph))
+        assertEquals(text, rule.toEditableText())
     }
 
     @Test

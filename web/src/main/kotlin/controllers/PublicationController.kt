@@ -24,8 +24,8 @@ data class AddPublicationParameters(
 @RestController
 class PublicationController {
     @GetMapping("/{graph}/publications")
-    fun publications(repo: Graph): List<PublicationViewModel> {
-        return repo.allPublications().sortedBy { it.refId }.map {
+    fun publications(graph: Graph): List<PublicationViewModel> {
+        return graph.allPublications().sortedBy { it.refId }.map {
             it.toViewModel()
         }
     }
@@ -33,8 +33,8 @@ class PublicationController {
     private fun Publication.toViewModel() = PublicationViewModel(id, name, author, date, publisher, refId)
 
     @GetMapping("/{graph}/publication/{id}")
-    fun publication(repo: Graph, @PathVariable id: Int): PublicationViewModel {
-        val publication = repo.resolvePublication(id)
+    fun publication(graph: Graph, @PathVariable id: Int): PublicationViewModel {
+        val publication = graph.resolvePublication(id)
         return publication.toViewModel()
     }
 
@@ -43,10 +43,10 @@ class PublicationController {
 
     @PostMapping("/{graph}/publications", consumes = ["application/json"])
     @ResponseBody
-    fun addPublication(repo: Graph, @RequestBody params: AddPublicationParameters): PublicationViewModel {
+    fun addPublication(graph: Graph, @RequestBody params: AddPublicationParameters): PublicationViewModel {
         val name = params.name.nullize() ?: badRequest("Name is required")
         val refId = params.refId.nullize() ?: badRequest("refID is required")
-        val publication = repo.addPublication(name, refId)
+        val publication = graph.addPublication(name, refId)
         updatePublicationParameters(publication, params)
         return publication.toViewModel()
     }
@@ -59,8 +59,8 @@ class PublicationController {
 
     @PostMapping("/{graph}/publication/{id}", consumes = ["application/json"])
     @ResponseBody
-    fun updatePublication(repo: Graph, @PathVariable id: Int, @RequestBody params: AddPublicationParameters): PublicationViewModel {
-        val publication = repo.resolvePublication(id)
+    fun updatePublication(graph: Graph, @PathVariable id: Int, @RequestBody params: AddPublicationParameters): PublicationViewModel {
+        val publication = graph.resolvePublication(id)
         publication.name = params.name.nullize() ?: badRequest("Name is required")
         publication.refId = params.refId.nullize() ?: badRequest("refID is required")
         updatePublicationParameters(publication, params)
