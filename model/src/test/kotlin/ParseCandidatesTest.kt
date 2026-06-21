@@ -30,8 +30,7 @@ class ParseCandidatesTest : QBaseTest() {
 
     @Test
     fun parseCandidatesSameCategory() {
-        q.grammaticalCategories.add(WordCategory("Tense", listOf("V"),
-            listOf(WordCategoryValue("Present", "PRES"), WordCategoryValue("Aorist", "AOR"))))
+        q.withGrammaticalCategory("Tense", "V", "Present" to "PRES", "Aorist" to  "AOR")
         graph.rule("- append 'a'", name = "q-pres", addedCategories = ".PRES")
         graph.rule("- append 'i'", name = "q-aor", addedCategories = ".AOR")
 
@@ -42,8 +41,7 @@ class ParseCandidatesTest : QBaseTest() {
 
     @Test
     fun sameCategoryExistingWord() {
-        q.grammaticalCategories.add(WordCategory("Tense", listOf("V"),
-            listOf(WordCategoryValue("Present", "PRES"), WordCategoryValue("Aorist", "AOR"))))
+        q.withGrammaticalCategory("Tense", "V", "Present" to "PRES", "Aorist" to  "AOR")
         graph.rule("- append 'a'", name = "q-pres", addedCategories = ".PRES")
         graph.rule("- append 'i'", name = "q-aor", addedCategories = ".AOR")
 

@@ -8,24 +8,10 @@ import org.junit.Test
 class ParadigmTest : QBaseTest() {
     @Before
     fun setup() {
-        q.grammaticalCategories.add(WordCategory(
-            "Case", listOf("N", "ADJ"), listOf(
-                WordCategoryValue("Nominative", "NOM"),
-                WordCategoryValue("Dative", "DAT")
-            )
-        ))
-        q.grammaticalCategories.add(WordCategory(
-            "Number", listOf("N", "ADJ"), listOf(
-                WordCategoryValue("Singular", "SG"),
-                WordCategoryValue("Plural", "PL")
-            )
-        ))
-        q.grammaticalCategories.add(WordCategory(
-            "Gender", listOf("ADJ"), listOf(
-                WordCategoryValue("Masculine", "M"),
-                WordCategoryValue("Feminine", "F")
-            )
-        ))
+        q
+            .withGrammaticalCategory("Case", "N,ADJ", "Nominative" to "NOM", "Dative" to "DAT")
+            .withGrammaticalCategory("Number", "N,ADJ", "Singular" to "SG", "Plural" to "PL")
+            .withGrammaticalCategory("Gender", "ADJ", "Masculine" to "M", "Feminine" to "F")
     }
 
     private fun setupNounParadigm(): Paradigm {

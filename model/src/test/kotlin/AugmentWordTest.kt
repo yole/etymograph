@@ -23,15 +23,9 @@ class AugmentWordTest {
                 WordCategoryValue("Verb", "V")
             )
         )
-        oe.grammaticalCategories.add(WordCategory(
-            "Case", listOf("N"), listOf(WordCategoryValue("Dative", "DAT"))
-        ))
-        oe.grammaticalCategories.add(WordCategory(
-            "Number", listOf("N"), listOf(
-                WordCategoryValue("Singular", "SG"),
-                WordCategoryValue("Plural", "PL")
-            )
-        ))
+        oe
+            .withGrammaticalCategory("Case", "N", "Dative" to "DAT")
+            .withGrammaticalCategory("Number", "N", "Singular" to "SG", "Plural" to  "PL")
     }
 
     @Test

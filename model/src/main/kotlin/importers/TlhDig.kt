@@ -9,6 +9,7 @@ import page.yole.etymograph.JsonGraph
 import page.yole.etymograph.Language
 import page.yole.etymograph.Link
 import page.yole.etymograph.Word
+import page.yole.etymograph.findMatchingRule
 import page.yole.etymograph.removePunctuation
 import java.io.File
 import java.nio.file.Path
@@ -101,7 +102,7 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
 
         val gloss = mrpElements[1]
         val analysis = mrpElements[2]
-        val selectedAnalysis = if (analysis.startsWith('{')) {
+        var selectedAnalysis = if (analysis.startsWith('{')) {
             findSelectedAnalysis(analysis, mrpSel.drop(1))
         }
         else {
@@ -110,6 +111,7 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
 
         if (lemma.any { it.isUpperCase() } && '_' in selectedAnalysis) {
             transWord = createAkkadianCompound(sylWord, selectedAnalysis, hittite, graph, transWord)
+            selectedAnalysis = selectedAnalysis.substringBefore('_')
         }
 
         val paradigm = mrpElements.getOrNull(3)?.trim()
@@ -123,9 +125,30 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
                 println("Skipping lemma with /: $lemma")
                 continue
             }
+
+            val rule = if (selectedAnalysis.isNotEmpty()) {
+                val categories = selectedAnalysis.split('.')
+                val categorySet = mutableSetOf<String>()
+                for (cat in categories) {
+                    if (cat.first().isDigit()) {
+                        categorySet.add(cat.take(1))
+                        categorySet.add(cat.drop(1))
+                    }
+                    else {
+                        categorySet.add(cat)
+                    }
+                }
+
+                findMatchingRule(hittite, categorySet)
+            }
+            else {
+                null
+            }
+
             val lemmaWord = graph.addWord(cleanLemma, hittite, gloss,
                 syllabographic = lemma.any { it.isUpperCase() })
-            graph.addLink(transWord, lemmaWord, Link.Derived)
+            graph.addLink(transWord, lemmaWord, Link.Derived,
+                rules = rule?.let { listOf(it) } ?: emptyList())
         }
     }
 }

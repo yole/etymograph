@@ -4,7 +4,9 @@ import java.text.Normalizer
 import java.util.*
 import kotlin.text.iterator
 
-class WordCategoryValue(val name: String, val abbreviation: String)
+class WordCategoryValue(val name: String, val abbreviation: String) {
+    override fun toString(): String = "$name ($abbreviation)"
+}
 
 class WordCategory(var name: String, var pos: List<String>, var values: List<WordCategoryValue>)
 

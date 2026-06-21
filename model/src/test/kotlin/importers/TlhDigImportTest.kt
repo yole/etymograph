@@ -8,6 +8,8 @@ import page.yole.etymograph.InMemoryGraph
 import page.yole.etymograph.Language
 import page.yole.etymograph.Link
 import page.yole.etymograph.Word
+import page.yole.etymograph.parseRule
+import page.yole.etymograph.withGrammaticalCategory
 import java.io.StringReader
 
 class TlhDigImportTest {
@@ -18,6 +20,10 @@ class TlhDigImportTest {
     fun setup() {
         graph = InMemoryGraph()
         hittite = graph.addLanguage("Hittite", "Hitt")
+        hittite
+            .withGrammaticalCategory("Person", "V", "First" to "1" , "Second" to "2", "Third" to "3")
+            .withGrammaticalCategory("Number", "V", "Singular" to "SG", "Plural" to "PL")
+            .withGrammaticalCategory("Mood", "V", "Indicative" to "IND", "Imperative" to "IMP")
     }
 
     @Test
@@ -35,7 +41,7 @@ class TlhDigImportTest {
     }
 
     @Test
-    fun subscript() {
+    fun akkadian() {
         importWord("""<w trans="BE-EL-TI₄-NI" mrp0sel=" 1d" mrp1="BĒLTU@Herrin@{d → D/L.SG(UNM)_PPRO.1PL.GEN}@@ (MUNUS)"><aGr>BE-EL-TI₄-NI</aGr></w>""")
         val corpusText = graph.allCorpusTexts().first()
         assertEquals("_BE-EL-TI4-NI", corpusText.text.trim())
@@ -60,6 +66,16 @@ class TlhDigImportTest {
         val lemma = word.lemma
         assertEquals("NU.^GIŠ^KIRI6", lemma.text)
 
+    }
+
+    @Test
+    fun findMatchingRule() {
+        val rule = parseRule(hittite, hittite, "", name = "hitt-imp-2dg", addedCategories = ".IMP.2SG")
+        graph.addRule(rule)
+        importWord("""<w trans="QÍ-BÍ-MA" mrp0sel=" 1" mrp1="QABÛ@sagen@2SG.IMP_CNJ@@ "><aGr>QÍ-B<del_in/>Í-M<del_fin/>A</aGr></w>""")
+        val word = findWord("_QÍ-BÍ", true)
+        val link = graph.getLinksFrom(word).single()
+        assertEquals(rule, link.rules.single())
     }
 
     private fun findWord(text: String, syllabographic: Boolean = false): Word =
