@@ -92,7 +92,7 @@ fun main() {
     val div = proiel.divs[0]
     val sentence = div.convertSentence(5)
 
-    val ieRepo = JsonGraphRepository.fromJson(Path.of("data/ie"))
+    val ieRepo = JsonGraph.fromJson(Path.of("data/ie"))
     val language = ieRepo.languageByShortName("OE")!!
     importLemmatizedText(language, bosworthToller, proiel.title + " - " + div.title, sentence)
     ieRepo.save()

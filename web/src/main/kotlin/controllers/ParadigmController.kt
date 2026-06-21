@@ -33,11 +33,11 @@ class ParadigmController {
     )
 
     @GetMapping("/{graph}/paradigms")
-    fun allParadigms(repo: GraphRepository): List<ParadigmViewModel> {
+    fun allParadigms(repo: Graph): List<ParadigmViewModel> {
         return repo.allParadigms().map { it.toViewModel(repo) }
     }
 
-    private fun Paradigm.toViewModel(repo: GraphRepository) =
+    private fun Paradigm.toViewModel(repo: Graph) =
         ParadigmViewModel(
             id, name,
             language.shortName, language.name, pos, rowTitles,
@@ -47,12 +47,12 @@ class ParadigmController {
             postRule?.toRefViewModel()
         )
 
-    private fun ParadigmColumn.toViewModel(repo: GraphRepository, rows: Int) =
+    private fun ParadigmColumn.toViewModel(repo: Graph, rows: Int) =
         ParadigmColumnViewModel(title, (0 until rows).map {
             cells.getOrNull(it)?.toViewModel(repo) ?: ParadigmCellViewModel(emptyList(), emptyList(), emptyList())
         })
 
-    private fun ParadigmCell.toViewModel(repo: GraphRepository) =
+    private fun ParadigmCell.toViewModel(repo: Graph) =
         ParadigmCellViewModel(
             ruleAlternatives.map { it?.name ?: "." },
             ruleAlternatives.map { it?.toSummaryText(repo) ?: "" },
@@ -60,12 +60,12 @@ class ParadigmController {
         )
 
     @GetMapping("/{graph}/paradigm/{id}")
-    fun paradigm(repo: GraphRepository, @PathVariable id: Int): ParadigmViewModel {
+    fun paradigm(repo: Graph, @PathVariable id: Int): ParadigmViewModel {
         val paradigmById = repo.resolveParadigm(id)
         return paradigmById.toViewModel(repo)
     }
 
-    private fun GraphRepository.resolveParadigm(id: Int): Paradigm =
+    private fun Graph.resolveParadigm(id: Int): Paradigm =
         paradigmById(id) ?: notFound("No paradigm with ID $id")
 
     data class UpdateParadigmParameters(
@@ -78,7 +78,7 @@ class ParadigmController {
 
     @PostMapping("/{graph}/paradigms/{lang}", consumes = ["application/json"])
     @ResponseBody
-    fun newParadigm(repo: GraphRepository, @PathVariable lang: String, @RequestBody params: UpdateParadigmParameters): ParadigmViewModel {
+    fun newParadigm(repo: Graph, @PathVariable lang: String, @RequestBody params: UpdateParadigmParameters): ParadigmViewModel {
         val language = repo.resolveLanguage(lang)
 
         val p = repo.addParadigm(params.name, language, parseList(params.pos))
@@ -90,7 +90,7 @@ class ParadigmController {
 
     @PostMapping("/{graph}/paradigm/{id}", consumes = ["application/json"])
     @ResponseBody
-    fun updateParadigm(repo: GraphRepository, @PathVariable id: Int, @RequestBody params: UpdateParadigmParameters) {
+    fun updateParadigm(repo: Graph, @PathVariable id: Int, @RequestBody params: UpdateParadigmParameters) {
         val paradigm = repo.resolveParadigm(id)
         paradigm.parse(params.text, repo::ruleByName)
         paradigm.name = params.name
@@ -101,7 +101,7 @@ class ParadigmController {
 
     @PostMapping("/{graph}/paradigm/{id}/delete")
     @ResponseBody
-    fun deleteParadigm(repo: GraphRepository, @PathVariable id: Int) {
+    fun deleteParadigm(repo: Graph, @PathVariable id: Int) {
         val paradigm = repo.resolveParadigm(id)
         repo.deleteParadigm(paradigm)
     }
@@ -120,7 +120,7 @@ class ParadigmController {
 
     @PostMapping("/{graph}/paradigm/generate")
     @ResponseBody
-    fun generateParadigm(repo: GraphRepository, @RequestBody params: GenerateParadigmParameters, @PathVariable graph: String
+    fun generateParadigm(repo: Graph, @RequestBody params: GenerateParadigmParameters, @PathVariable graph: String
     ): ParadigmViewModel {
         val language = repo.resolveLanguage(params.lang)
         val source = parseSourceRefs(repo, params.source)

@@ -138,7 +138,7 @@ class WordController(val dictionaryService: DictionaryService) {
 
     @GetMapping("/{graph}/word/{lang}/{text}")
     fun wordJson(
-        repo: GraphRepository,
+        repo: Graph,
         @PathVariable lang: String,
         @PathVariable text: String,
         @RequestParam(required = false, defaultValue = "false") syllabographic: Boolean
@@ -153,7 +153,7 @@ class WordController(val dictionaryService: DictionaryService) {
     }
 
     @GetMapping("/{graph}/word/{lang}/{text}/{id}")
-    fun singleWordJson(repo: GraphRepository, @PathVariable lang: String, @PathVariable text: String, @PathVariable id: Int): WordViewModel {
+    fun singleWordJson(repo: Graph, @PathVariable lang: String, @PathVariable text: String, @PathVariable id: Int): WordViewModel {
         return repo.resolveWord(id).toViewModel()
     }
 
@@ -280,7 +280,7 @@ class WordController(val dictionaryService: DictionaryService) {
 
     @PostMapping("/{graph}/word/{lang}", consumes = ["application/json"])
     @ResponseBody
-    fun addWord(repo: GraphRepository, @PathVariable lang: String, @RequestBody params: AddWordParameters): WordViewModel {
+    fun addWord(repo: Graph, @PathVariable lang: String, @RequestBody params: AddWordParameters): WordViewModel {
         val language = repo.resolveLanguage(lang)
         val (text, stressedPhonemeIndex) = parseStress(params.text?.nullize() ?: badRequest("No word text specified"),
             repo, language)
@@ -320,7 +320,7 @@ class WordController(val dictionaryService: DictionaryService) {
         return word.toViewModel()
     }
 
-    private fun parseStress(text: String, repo: GraphRepository, language: Language): Pair<String, Int?> {
+    private fun parseStress(text: String, repo: Graph, language: Language): Pair<String, Int?> {
         val explicitStressIndex = text.indexOf(explicitStressMark)
         if (explicitStressIndex >= 0) {
             val textWithoutStress = text.removeRange(explicitStressIndex, explicitStressIndex + 1)
@@ -344,7 +344,7 @@ class WordController(val dictionaryService: DictionaryService) {
 
     @PostMapping("/{graph}/word/{id}/update", consumes = ["application/json"])
     @ResponseBody
-    fun updateWord(repo: GraphRepository, @PathVariable id: Int, @RequestBody params: AddWordParameters): WordViewModel {
+    fun updateWord(repo: Graph, @PathVariable id: Int, @RequestBody params: AddWordParameters): WordViewModel {
         val word = repo.resolveWord(id)
         if (params.text != null || params.syllabographic != null) {
             val (text, stressedPhonemeIndex) = parseStress(params.text ?: word.text, repo, word.language)
@@ -372,7 +372,7 @@ class WordController(val dictionaryService: DictionaryService) {
 
     @PostMapping("/{graph}/word/{id}/delete", consumes = ["application/json"])
     @ResponseBody
-    fun deleteWord(repo: GraphRepository, @PathVariable id: Int) {
+    fun deleteWord(repo: Graph, @PathVariable id: Int) {
         val word = repo.resolveWord(id)
         repo.deleteWord(word)
     }
@@ -397,7 +397,7 @@ class WordController(val dictionaryService: DictionaryService) {
     )
 
     @GetMapping("/{graph}/word/{id}/paradigms")
-    fun wordParadigms(repo: GraphRepository, @PathVariable id: Int): WordParadigmListModel {
+    fun wordParadigms(repo: Graph, @PathVariable id: Int): WordParadigmListModel {
         val word = repo.resolveWord(id)
         val pos = word.getOrComputePOS()
         val paradigmModels = repo.paradigmsForLanguage(word.language).filter { pos in it.pos }.map { paradigm ->
@@ -426,7 +426,7 @@ class WordController(val dictionaryService: DictionaryService) {
     data class UpdateWordParadigmParameters(var items: Array<Array<Any>> = emptyArray())
 
     @PostMapping("/{graph}/word/{id}/paradigm", consumes = ["application/json"])
-    fun updateWordParadigm(repo: GraphRepository, @PathVariable id: Int, @RequestBody paradigm: UpdateWordParadigmParameters) {
+    fun updateWordParadigm(repo: Graph, @PathVariable id: Int, @RequestBody paradigm: UpdateWordParadigmParameters) {
         val word = repo.resolveWord(id)
         val gloss = word.glossOrNP() ?: badRequest("Trying to update paradigm for unglossed word ${word.text}")
         val derivedWordLinks = repo.getLinksTo(word).filter { it.type == Link.Derived && it.fromEntity is Word }
@@ -452,7 +452,7 @@ class WordController(val dictionaryService: DictionaryService) {
     data class DeriveThroughSequenceParams(val sequenceId: Int = -1)
 
     @PostMapping("/{graph}/word/{id}/derive", consumes = ["application/json"])
-    fun derive(repo: GraphRepository, @PathVariable id: Int, @RequestBody params: DeriveThroughSequenceParams): WordViewModel {
+    fun derive(repo: Graph, @PathVariable id: Int, @RequestBody params: DeriveThroughSequenceParams): WordViewModel {
         val word = repo.resolveWord(id)
         val sequence = repo.resolveRuleSequence(params.sequenceId)
         val newWord = repo.deriveThroughRuleSequence(word, sequence)
@@ -464,7 +464,7 @@ class WordController(val dictionaryService: DictionaryService) {
     )
 
     @PostMapping("/{graph}/word/{id}/parse", consumes = ["application/json"])
-    fun suggestParseCandidates(repo: GraphRepository, @PathVariable id: Int): ParseCandidatesViewModel {
+    fun suggestParseCandidates(repo: Graph, @PathVariable id: Int): ParseCandidatesViewModel {
         val word = repo.resolveWord(id)
         val candidates = repo.findParseCandidates(word)
         return ParseCandidatesViewModel(candidates.map { it.toViewModel() })
@@ -486,7 +486,7 @@ class WordController(val dictionaryService: DictionaryService) {
     )
 
     @PostMapping("/{graph}/word/{id}/lookup", consumes = ["application/json"])
-    fun lookup(repo: GraphRepository, @PathVariable id: Int, @RequestBody params: LookupParameters): LookupResultViewModel {
+    fun lookup(repo: Graph, @PathVariable id: Int, @RequestBody params: LookupParameters): LookupResultViewModel {
         val word = repo.resolveWord(id)
         val dictionary = dictionaryService.createDictionary(params.dictionaryId)
         val status = augmentWordWithDictionary(dictionary, word, params.disambiguation)
@@ -500,7 +500,7 @@ class WordController(val dictionaryService: DictionaryService) {
     data class SuggestCompoundParameters(val compoundId: Int? = null)
 
     @PostMapping("/{graph}/word/{id}/suggestCompound", consumes = ["application/json"])
-    fun suggestCompound(repo: GraphRepository, @PathVariable id: Int, @RequestBody params: SuggestCompoundParameters): SuggestCompoundViewModel {
+    fun suggestCompound(repo: Graph, @PathVariable id: Int, @RequestBody params: SuggestCompoundParameters): SuggestCompoundViewModel {
         val word = repo.resolveWord(id)
         val compound = params.compoundId?.let { repo.resolveCompound(it) }
         val suggestions = repo.suggestCompound(word, compound)
@@ -508,7 +508,7 @@ class WordController(val dictionaryService: DictionaryService) {
     }
 
     @PostMapping("/{graph}/word/{id}/suggestTranscription")
-    fun suggestTranscription(repo: GraphRepository, @PathVariable id: Int): String {
+    fun suggestTranscription(repo: Graph, @PathVariable id: Int): String {
         val word = repo.resolveWord(id)
         if (!word.syllabographic) {
             return ""
@@ -523,7 +523,7 @@ class WordController(val dictionaryService: DictionaryService) {
     )
 
     @PostMapping("/{graph}/wordSequence")
-    fun addWordSequence(repo: GraphRepository, @RequestBody params: WordSequenceParams): WordSequenceResults {
+    fun addWordSequence(repo: Graph, @RequestBody params: WordSequenceParams): WordSequenceResults {
         val stepText = params.sequence
         val source = parseSourceRefs(repo, params.source)
         val steps = stepText.split('>').map { it.trim() }
@@ -590,7 +590,7 @@ class WordController(val dictionaryService: DictionaryService) {
 
 fun linkToViewModel(
     link: Link,
-    graph: GraphRepository,
+    graph: Graph,
     fromSide: Boolean
 ): WordController.LinkWordViewModel {
     val toWord = if (fromSide) link.toEntity as Word else link.fromEntity as Word
@@ -616,7 +616,7 @@ fun linkToViewModel(
     )
 }
 
-private fun Word.attestationsToViewModel(graph: GraphRepository): List<WordController.AttestationViewModel> =
+private fun Word.attestationsToViewModel(graph: Graph): List<WordController.AttestationViewModel> =
     graph.findAttestations(this).map { attestation ->
         WordController.AttestationViewModel(
             attestation.corpusText.id,
@@ -633,7 +633,7 @@ class RuleStepData(
     val matchedInstructions: Set<RuleInstruction>?
 )
 
-fun buildIntermediateSteps(graph: GraphRepository, link: Link, traceMatchedBranches: Boolean = true): List<RuleStepData> {
+fun buildIntermediateSteps(graph: Graph, link: Link, traceMatchedBranches: Boolean = true): List<RuleStepData> {
     var word = link.toEntity as Word
     val result = mutableListOf<RuleStepData>()
     val trace = if (traceMatchedBranches) RuleTrace() else null
@@ -651,7 +651,7 @@ fun buildIntermediateSteps(graph: GraphRepository, link: Link, traceMatchedBranc
     return result
 }
 
-fun suggestedSequences(graph: GraphRepository, link: Link): List<WordController.WordRuleSequenceViewModel> {
+fun suggestedSequences(graph: Graph, link: Link): List<WordController.WordRuleSequenceViewModel> {
     if (link.type != Link.Origin || link.sequence != null) return emptyList()
     val word = link.fromEntity as Word
     val baseWord = link.toEntity as Word

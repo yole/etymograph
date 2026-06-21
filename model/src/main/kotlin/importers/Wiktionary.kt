@@ -213,11 +213,11 @@ open class Wiktionary : Dictionary {
         return keyValue[0].trim() to keyValue[1].split(',').map { it.trim() }
     }
 
-    override fun lookup(repo: GraphRepository, language: Language, word: String, disambiguation: String?): LookupResult {
+    override fun lookup(repo: Graph, language: Language, word: String, disambiguation: String?): LookupResult {
         return lookup(repo, language, word, disambiguation, true)
     }
 
-    fun lookup(repo: GraphRepository, language: Language, word: String, disambiguation: String?, lookupRelatedWords: Boolean): LookupResult {
+    fun lookup(repo: Graph, language: Language, word: String, disambiguation: String?, lookupRelatedWords: Boolean): LookupResult {
         val messages = mutableListOf<String>()
         val variants = mutableListOf<LookupVariant>()
 
@@ -242,7 +242,7 @@ open class Wiktionary : Dictionary {
             return compoundResult.singleOrNull()
         }
 
-        fun lookupInheritedWord(repo: GraphRepository, word: InheritedWordTemplate): DictionaryRelatedWord? {
+        fun lookupInheritedWord(repo: Graph, word: InheritedWordTemplate): DictionaryRelatedWord? {
             val originLanguage = repo.allLanguages().find { "wiktionary-id: ${word.language}" in (it.dictionarySettings ?: "") } ?: return null
             val lookupResult = lookupSingle(originLanguage, word.word.trimStart('*'), "origin word") ?: return null
             return DictionaryRelatedWord(Link.Origin, lookupResult)
@@ -362,7 +362,7 @@ open class Wiktionary : Dictionary {
 }
 
 fun main() {
-    val ieRepo = JsonGraphRepository.fromJson(Path.of("data/ie"))
+    val ieRepo = JsonGraph.fromJson(Path.of("data/ie"))
     val oe = ieRepo.languageByShortName("OE")!!
     val wiktionary = Wiktionary()
     val result = wiktionary.lookup(ieRepo, oe, "wer")

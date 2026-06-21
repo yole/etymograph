@@ -29,8 +29,8 @@ fun main(args: Array<String>) {
         println("Usage: EldamoReader <path>")
         return
     }
-    val repo = JsonGraphRepository.fromJson(Path.of("jrrt.json"))
-    val q = repo.languageByShortName("Q")!!
+    val graph = JsonGraph.fromJson(Path.of("jrrt.json"))
+    val q = graph.languageByShortName("Q")!!
     val vowels = q.phonemeClassByName(PhonemeClass.vowelClassName)!!
     val syllableStructures = mutableMapOf<String, String>()
     val codas = mutableMapOf<String, String>()

@@ -143,7 +143,7 @@ class PhonemeLookup(val accentTypes: Set<AccentType>) {
     }
 }
 
-class Language(val graph: GraphRepository, val name: String, val shortName: String) {
+class Language(val graph: Graph, val name: String, val shortName: String) {
     var reconstructed: Boolean = false
     var syllabographic: Boolean = false
     var protoLanguage: Language? = null

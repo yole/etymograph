@@ -5,7 +5,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Before
 import org.junit.Test
-import ru.yole.etymograph.GraphRepository
+import ru.yole.etymograph.Graph
 import ru.yole.etymograph.Language
 import ru.yole.etymograph.Link
 import ru.yole.etymograph.WordCategory
@@ -14,7 +14,7 @@ import ru.yole.etymograph.web.controllers.WordController
 
 class WordControllerTest {
     private lateinit var fixture: QTestFixture
-    private lateinit var graph: GraphRepository
+    private lateinit var graph: Graph
     private lateinit var wordController: WordController
     private lateinit var oe: Language
 

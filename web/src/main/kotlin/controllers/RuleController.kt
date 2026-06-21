@@ -126,17 +126,17 @@ class RuleController {
     )
 
     @GetMapping("/{graph}/rules")
-    fun allRules(repo: GraphRepository): List<RuleShortViewModel> {
+    fun allRules(repo: Graph): List<RuleShortViewModel> {
         return repo.allRules().map { it.toShortViewModel(repo) }
     }
 
     @GetMapping("/{graph}/rules/{lang}")
-    fun rules(repo: GraphRepository, @PathVariable lang: String): RuleListViewModel {
+    fun rules(repo: Graph, @PathVariable lang: String): RuleListViewModel {
         return fetchRules(repo, lang)
     }
 
     private fun fetchRules(
-        repo: GraphRepository,
+        repo: Graph,
         lang: String,
         showMorpho: Boolean = true,
         showPhono: Boolean = true
@@ -239,22 +239,22 @@ class RuleController {
     }
 
     @GetMapping("/{graph}/rules/{lang}/morpho")
-    fun morphoRules(repo: GraphRepository, @PathVariable lang: String): RuleListViewModel {
+    fun morphoRules(repo: Graph, @PathVariable lang: String): RuleListViewModel {
         return fetchRules(repo, lang, showPhono = false)
     }
 
     @GetMapping("/{graph}/rules/{lang}/phono")
-    fun phonoRules(repo: GraphRepository, @PathVariable lang: String): RuleListViewModel {
+    fun phonoRules(repo: Graph, @PathVariable lang: String): RuleListViewModel {
         return fetchRules(repo, lang, showMorpho = false)
     }
 
 
     @GetMapping("/{graph}/rule/{id}")
-    fun rule(repo: GraphRepository, @PathVariable id: Int): RuleViewModel {
+    fun rule(repo: Graph, @PathVariable id: Int): RuleViewModel {
         return repo.resolveRule(id).toViewModel(repo)
     }
 
-    private fun LangEntity.toShortViewModel(repo: GraphRepository, alternative: RuleRefViewModel? = null, optional: Boolean = false, dispreferred: Boolean = false): RuleShortViewModel {
+    private fun LangEntity.toShortViewModel(repo: Graph, alternative: RuleRefViewModel? = null, optional: Boolean = false, dispreferred: Boolean = false): RuleShortViewModel {
         return when (this) {
             is Rule -> RuleShortViewModel(id, name, toLanguage.shortName, alternative, toSummaryText(repo), optional, dispreferred)
             is RuleSequence -> RuleShortViewModel(id, "sequence: $name", toLanguage.shortName, null, "", optional, dispreferred)
@@ -269,7 +269,7 @@ class RuleController {
         val instructions: Set<RuleInstruction>
     )
 
-    private fun Rule.toViewModel(repo: GraphRepository): RuleViewModel {
+    private fun Rule.toViewModel(repo: Graph): RuleViewModel {
         val paradigm = repo.paradigmForRule(this)
         val links = (repo.getLinksFrom(this).map { it to it.toEntity } +
                 repo.getLinksTo(this).map { it to it.fromEntity })
@@ -342,7 +342,7 @@ class RuleController {
     }
 
     private fun Rule.toExampleData(
-        repo: GraphRepository,
+        repo: Graph,
         link: Link
     ): RuleExampleData {
         val steps = buildIntermediateSteps(repo, link)
@@ -355,7 +355,7 @@ class RuleController {
     }
 
     private fun Rule.ruleBranchesToViewModel(
-        repo: GraphRepository,
+        repo: Graph,
         examples: List<RuleExampleData>
     ): List<RuleBranchViewModel> {
         val logic = this.logic
@@ -397,7 +397,7 @@ class RuleController {
         }
     }
 
-    private fun RuleBranch.toViewModel(rule: Rule, isUnconditional: Boolean, examples: List<RuleExampleData>, repo: GraphRepository): RuleBranchViewModel {
+    private fun RuleBranch.toViewModel(rule: Rule, isUnconditional: Boolean, examples: List<RuleExampleData>, repo: Graph): RuleBranchViewModel {
         return RuleBranchViewModel(
             if (isUnconditional) RichText(emptyList()) else condition.toRichText(),
             instructions.map { it.toRichText(repo) },
@@ -423,7 +423,7 @@ class RuleController {
 
     @PostMapping("/{graph}/rule", consumes = ["application/json"])
     @ResponseBody
-    fun newRule(repo: GraphRepository, @RequestBody params: UpdateRuleParameters): RuleViewModel {
+    fun newRule(repo: Graph, @RequestBody params: UpdateRuleParameters): RuleViewModel {
         val fromLanguage = repo.resolveLanguage(params.fromLang)
         val toLanguage = repo.resolveLanguage(params.toLang)
 
@@ -463,7 +463,7 @@ class RuleController {
     }
 
     private fun parseContext(
-        repo: GraphRepository, fromLanguage: Language, toLanguage: Language,
+        repo: Graph, fromLanguage: Language, toLanguage: Language,
         createUnresolvedEntities: Boolean = false
     ): RuleParseContext =
         RuleParseContext(fromLanguage, toLanguage, createUnresolvedEntities = createUnresolvedEntities) {
@@ -472,7 +472,7 @@ class RuleController {
 
     @PostMapping("/{graph}/rule/{id}", consumes = ["application/json"])
     @ResponseBody
-    fun updateRule(repo: GraphRepository, @PathVariable id: Int, @RequestBody params: UpdateRuleParameters): RuleViewModel {
+    fun updateRule(repo: Graph, @PathVariable id: Int, @RequestBody params: UpdateRuleParameters): RuleViewModel {
         val fromLanguage = repo.resolveLanguage(params.fromLang)
         val toLanguage = repo.resolveLanguage(params.toLang)
         val rule = repo.resolveRule(id)
@@ -500,7 +500,7 @@ class RuleController {
 
     @PostMapping("/{graph}/rule/{id}/delete", consumes = ["application/json"])
     @ResponseBody
-    fun deleteRule(repo: GraphRepository, @PathVariable id: Int) {
+    fun deleteRule(repo: Graph, @PathVariable id: Int) {
         val rule = repo.resolveRule(id)
         repo.deleteRule(rule)
     }
@@ -521,12 +521,12 @@ class RuleController {
     )
 
     @GetMapping("/{graph}/rules/sequences")
-    fun allSequences(repo: GraphRepository): List<RuleSequenceViewModel> {
+    fun allSequences(repo: Graph): List<RuleSequenceViewModel> {
         return repo.allSequences().map { it.toViewModel() }
     }
 
     @PostMapping("/{graph}/rule/sequence", consumes = ["application/json"])
-    fun newSequence(repo: GraphRepository, @RequestBody params: UpdateSequenceParams): RuleSequenceViewModel {
+    fun newSequence(repo: Graph, @RequestBody params: UpdateSequenceParams): RuleSequenceViewModel {
         val (fromLanguage, toLanguage, rules) = resolveUpdateSequenceParams(repo, params)
         val sequence = repo.addRuleSequence(params.name, fromLanguage, toLanguage, rules)
         return sequence.toViewModel()
@@ -537,7 +537,7 @@ class RuleController {
     )
 
     private fun resolveUpdateSequenceParams(
-        repo: GraphRepository,
+        repo: Graph,
         params: UpdateSequenceParams
     ): Triple<Language, Language, List<RuleSequenceStep>> {
         val fromLanguage = repo.resolveLanguage(params.fromLang)
@@ -569,7 +569,7 @@ class RuleController {
     }
 
     @PostMapping("/{graph}/rule/sequence/{id}", consumes = ["application/json"])
-    fun updateSequence(repo: GraphRepository, @PathVariable id: Int, @RequestBody params: UpdateSequenceParams): RuleSequenceViewModel {
+    fun updateSequence(repo: Graph, @PathVariable id: Int, @RequestBody params: UpdateSequenceParams): RuleSequenceViewModel {
         val sequence = repo.resolveRuleSequence(id)
         val (fromLanguage, toLanguage, steps) = resolveUpdateSequenceParams(repo, params)
         sequence.name = params.name
@@ -586,7 +586,7 @@ class RuleController {
 
     @PostMapping("/{graph}/rule/sequence/{id}/apply", consumes = ["application/json"])
     @ResponseBody
-    fun applySequence(repo: GraphRepository, @PathVariable id: Int, @RequestBody params: ApplySequenceParams): WordController.LinkWordViewModel {
+    fun applySequence(repo: Graph, @PathVariable id: Int, @RequestBody params: ApplySequenceParams): WordController.LinkWordViewModel {
         val sequence = repo.resolveRuleSequence(id)
         val fromEntity = repo.resolveWord(params.linkFromId)
         val toEntity = repo.resolveWord(params.linkToId)
@@ -608,7 +608,7 @@ class RuleController {
     )
 
     @PostMapping("/{graph}/rule/{id}/trace", consumes = ["application/json"])
-    fun trace(repo: GraphRepository, @PathVariable id: Int, @RequestBody params: RuleTraceParams): RuleTraceResult {
+    fun trace(repo: Graph, @PathVariable id: Int, @RequestBody params: RuleTraceParams): RuleTraceResult {
         val rule = repo.resolveRule(id)
         if (params.word.isBlank()) {
             badRequest("Cannot trace rule for empty word")
@@ -640,7 +640,7 @@ class RuleController {
     )
 
     @PostMapping("/{graph}/rule/{id}/preview", consumes = ["application/json"])
-    fun preview(repo: GraphRepository, @PathVariable id: Int, @RequestBody params: RulePreviewParams): RulePreviewResultListViewModel {
+    fun preview(repo: Graph, @PathVariable id: Int, @RequestBody params: RulePreviewParams): RulePreviewResultListViewModel {
         val rule = repo.resolveRule(id)
         if (params.newText.isBlank()) {
             badRequest("No rule text provided")
@@ -668,7 +668,7 @@ class RuleController {
 
     @GetMapping("/{graph}/rule/sequence/{id}/derivations")
     @ResponseBody
-    fun sequenceDerivations(repo: GraphRepository, @PathVariable id: Int): SequenceDerivationsViewModel {
+    fun sequenceDerivations(repo: Graph, @PathVariable id: Int): SequenceDerivationsViewModel {
         val sequence = repo.resolveRuleSequence(id)
         val derivations = repo.findDerivationsWithSequence(sequence)
             .groupBy { it.last().fromEntity.id }
@@ -727,7 +727,7 @@ class RuleController {
 
     @PostMapping("/{graph}/rule/sequence/{id}/reapply")
     @ResponseBody
-    fun reapplySequence(repo: GraphRepository, @PathVariable id: Int): ReapplyResultViewModel {
+    fun reapplySequence(repo: Graph, @PathVariable id: Int): ReapplyResultViewModel {
         val sequence = repo.resolveRuleSequence(id)
         val result = repo.reapplyRuleSequence(sequence)
         return ReapplyResultViewModel(
@@ -760,7 +760,7 @@ class RuleController {
 
     @GetMapping("/{graph}/rule/sequence/{id}/rules")
     @ResponseBody
-    fun sequenceRules(repo: GraphRepository, @PathVariable id: Int): SequenceReportViewModel {
+    fun sequenceRules(repo: Graph, @PathVariable id: Int): SequenceReportViewModel {
         val sequence = repo.resolveRuleSequence(id)
         val steps = sequence.resolveSteps().withReferencedRules()
         val ruleViewModels = steps.map { step ->

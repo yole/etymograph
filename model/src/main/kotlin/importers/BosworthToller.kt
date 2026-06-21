@@ -277,7 +277,7 @@ class BosworthToller(dataPath: String) : Dictionary {
             .replace("ð", "þ")
             .replace("-", "")
 
-    override fun lookup(repo: GraphRepository, language: Language, word: String, disambiguation: String?): LookupResult {
+    override fun lookup(repo: Graph, language: Language, word: String, disambiguation: String?): LookupResult {
         val lookupText = word
             .replace("ġ", "g")
             .replace("ċ", "c")
@@ -329,7 +329,7 @@ class BosworthToller(dataPath: String) : Dictionary {
 fun main() {
     val bosworthToller = BosworthToller("dictionaries/bosworth_entries_export.csv")
 
-    val ieRepo = JsonGraphRepository.fromJson(Path.of("data/ie"))
+    val ieRepo = JsonGraph.fromJson(Path.of("data/ie"))
     val oe = ieRepo.languageByShortName("OE")!!
     augmentWithDictionary(oe, bosworthToller)
     ieRepo.save()

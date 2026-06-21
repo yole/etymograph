@@ -13,7 +13,7 @@ data class LookupResult(
 }
 
 interface Dictionary {
-    fun lookup(repo: GraphRepository, language: Language, word: String, disambiguation: String? = null): LookupResult
+    fun lookup(repo: Graph, language: Language, word: String, disambiguation: String? = null): LookupResult
 }
 
 data class DictionaryRelatedWord(
@@ -120,7 +120,7 @@ private fun wordSet(gloss: String): Set<String> =
         .toSet()
 
 fun findOrCreateWordFromDictionary(
-    repo: GraphRepository,
+    repo: Graph,
     word: DictionaryWord,
 ): Word {
     val existingWords = repo.wordsByText(word.language, word.text)

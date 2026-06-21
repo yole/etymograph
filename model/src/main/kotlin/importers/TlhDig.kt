@@ -4,8 +4,8 @@ import org.jdom2.Content
 import org.jdom2.Element
 import org.jdom2.input.SAXBuilder
 import ru.yole.etymograph.CorpusText
-import ru.yole.etymograph.GraphRepository
-import ru.yole.etymograph.JsonGraphRepository
+import ru.yole.etymograph.Graph
+import ru.yole.etymograph.JsonGraph
 import ru.yole.etymograph.Language
 import ru.yole.etymograph.Link
 import ru.yole.etymograph.Word
@@ -15,7 +15,7 @@ import java.nio.file.Path
 
 
 fun main(args: Array<String>) {
-    val ieRepo = JsonGraphRepository.fromJson(Path.of("data/etymograph-ie"))
+    val ieRepo = JsonGraph.fromJson(Path.of("data/etymograph-ie"))
     val tlhdigFile = File(args[0])
     val doc = SAXBuilder().build(tlhdigFile)
     val body = doc.rootElement.getChild("body").getChild("div1").getChild("text")
@@ -26,7 +26,7 @@ fun main(args: Array<String>) {
     ieRepo.save()
 }
 
-fun importTLHDig(ieRepo: GraphRepository, title: String, children: List<Element>) {
+fun importTLHDig(ieRepo: Graph, title: String, children: List<Element>) {
     val wordTexts = mutableListOf<String>()
     val wordElements = mutableListOf<Element>()
     val text = buildString {
@@ -134,7 +134,7 @@ private fun createAkkadianCompound(
     sylWord: Word,
     selectedAnalysis: String,
     hittite: Language,
-    ieRepo: GraphRepository,
+    ieRepo: Graph,
     transWord: Word
 ): Word {
     var tail = sylWord.text

@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.server.ResponseStatusException
-import ru.yole.etymograph.GraphRepository
-import ru.yole.etymograph.JsonGraphRepository
+import ru.yole.etymograph.Graph
+import ru.yole.etymograph.JsonGraph
 import ru.yole.etymograph.web.GraphService
 
 @RestController
@@ -32,8 +32,8 @@ class GraphController(
     }
 
     @PostMapping("/{graph}/syncChanges")
-    fun syncChanges(repo: GraphRepository): GraphViewModel {
-        val jsonGraphRepository = repo as? JsonGraphRepository
+    fun syncChanges(repo: Graph): GraphViewModel {
+        val jsonGraphRepository = repo as? JsonGraph
             ?: badRequest("Sync Changes is only supported for JSON graph repositories")
         val workTree = jsonGraphRepository.path?.toFile()
             ?: badRequest("JSON graph repository path is not specified")
@@ -88,8 +88,8 @@ class GraphController(
         return GraphViewModel(repo.id, repo.name, repo.status(), true)
     }
 
-    private fun GraphRepository.status(): String {
-        val jsonGraphRepository = this as? JsonGraphRepository ?: return ""
+    private fun Graph.status(): String {
+        val jsonGraphRepository = this as? JsonGraph ?: return ""
         val workTree = jsonGraphRepository.path?.toFile() ?: return ""
         return runCatching {
             Git.open(workTree).use { git ->

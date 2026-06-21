@@ -10,7 +10,7 @@ import ru.yole.etymograph.web.controllers.RuleController
 class RuleControllerTest {
     private lateinit var fixture: QTestFixture
     private lateinit var ruleController: RuleController
-    private lateinit var graph: GraphRepository
+    private lateinit var graph: Graph
     private lateinit var q: Language
     private lateinit var ce: Language
     private lateinit var aq: Language

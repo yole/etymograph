@@ -84,9 +84,9 @@ open class RuleInstruction(val type: InstructionType, val arg: String, val comme
         throw IllegalStateException("Can't apply word instruction to individual phoneme")
     }
 
-    open fun toEditableText(graph: GraphRepository): String = toRichText(graph).toString()
+    open fun toEditableText(graph: Graph): String = toRichText(graph).toString()
 
-    open fun toRichText(graph: GraphRepository): RichText {
+    open fun toRichText(graph: Graph): RichText {
         if (type.pattern != null) {
             val argIndex = type.pattern.indexOfAny(listOf("(.+)", "(.*)"))
             if (argIndex > 0) {
@@ -98,7 +98,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String, val comme
         return type.insnName.richText()
     }
 
-    open fun toSummaryText(graph: GraphRepository): String? = when(type) {
+    open fun toSummaryText(graph: Graph): String? = when(type) {
         InstructionType.ChangeEnding ->
             if (arg.isNotEmpty()) "-$arg" else ""
         else -> ""
@@ -196,7 +196,7 @@ class ApplyRuleInstruction(val ruleRef: RuleRef, comment: String?)
         return targetRule.reverseApply(Word(-1, text, language), trace)
     }
 
-    override fun toRichText(graph: GraphRepository): RichText {
+    override fun toRichText(graph: Graph): RichText {
         val rule = ruleRef.resolve()
         return InstructionType.ApplyRule.insnName.rich() +
                 " '".rich() +
@@ -204,7 +204,7 @@ class ApplyRuleInstruction(val ruleRef: RuleRef, comment: String?)
                 "'".rich()
     }
 
-    override fun toSummaryText(graph: GraphRepository): String {
+    override fun toSummaryText(graph: Graph): String {
         val rule = ruleRef.resolve()
         return rule.logic.toSummaryText(graph)
     }
@@ -257,7 +257,7 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
         return listOf(text)
     }
 
-    override fun toRichText(graph: GraphRepository): RichText {
+    override fun toRichText(graph: Graph): RichText {
         val rule = ruleRef.resolve()
         return InstructionType.ApplySoundRule.insnName.rich() + " '".rich() +
                 rule.name.rich(linkType = "rule", linkId = rule.id) + "'" +
@@ -305,7 +305,7 @@ class ApplyStressInstruction(val language: Language, arg: String, val accentType
         return word.derive(word.text, stressIndex = stressIndex, newAccentType = effectiveAccentType)
     }
 
-    override fun toRichText(graph: GraphRepository): RichText {
+    override fun toRichText(graph: Graph): RichText {
         if (accentType != null) {
             return "accent is ".rich() + accentType.name.lowercase().rich(emph = true) + " on ".rich() + arg.rich(emph = true) + " syllable".rich()
         }
@@ -355,7 +355,7 @@ class PrependAppendInstruction(type: InstructionType, language: Language, arg: S
         return emptyList()
     }
 
-    override fun toSummaryText(graph: GraphRepository): String? {
+    override fun toSummaryText(graph: Graph): String? {
         if (literalArg != null) {
             return if (type == InstructionType.Prepend) "$literalArg-" else "-$literalArg"
         }
@@ -378,7 +378,7 @@ class InsertInstruction(arg: String, val relIndex: Int, val seekTarget: SeekTarg
         return word.derive(phonemes.result())
     }
 
-    override fun toRichText(graph: GraphRepository): RichText {
+    override fun toRichText(graph: Graph): RichText {
         val relIndexWord = if (relIndex == -1) "before" else "after"
         return "insert '$arg' $relIndexWord ${seekTarget.toEditableText()}".richText()
     }
@@ -440,7 +440,7 @@ class MorphemeInstruction(type: InstructionType, val morphemeId: Int, comment: S
         }
     }
 
-    override fun toRichText(graph: GraphRepository): RichText {
+    override fun toRichText(graph: Graph): RichText {
         val word = graph.wordById(morphemeId) ?: throw IllegalStateException("Target morpheme not found")
         return richText(
             (type.insnName + " '").rich(),
@@ -450,7 +450,7 @@ class MorphemeInstruction(type: InstructionType, val morphemeId: Int, comment: S
         )
     }
 
-    override fun toSummaryText(graph: GraphRepository): String? {
+    override fun toSummaryText(graph: Graph): String? {
         val word = graph.wordById(morphemeId) ?: return null
         return if (type == InstructionType.PrependMorpheme)
             "${word.text.trimEnd('-')}-"
@@ -489,15 +489,15 @@ class MorphemeInstruction(type: InstructionType, val morphemeId: Int, comment: S
 class SpeInstruction(val pattern: SpePattern, val condition: RuleCondition? = null, comment: String?)
     : RuleInstruction(InstructionType.Spe, pattern.toString(), comment)
 {
-    override fun toRichText(graph: GraphRepository): RichText {
+    override fun toRichText(graph: Graph): RichText {
         return pattern.toRichText() + (condition?.let { " if ".richText() + it.toRichText() } ?: "".richText())
     }
 
-    override fun toEditableText(graph: GraphRepository): String {
+    override fun toEditableText(graph: Graph): String {
         return pattern.toString() + (condition?.let { " if " + it.toEditableText() } ?: "")
     }
 
-    override fun toSummaryText(graph: GraphRepository): String {
+    override fun toSummaryText(graph: Graph): String {
         return pattern.toRichText().toString()
     }
 

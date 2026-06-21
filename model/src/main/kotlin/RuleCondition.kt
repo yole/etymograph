@@ -340,7 +340,7 @@ class SyllableRuleCondition(
     }
 }
 
-fun GraphRepository.findWordToMatch(word: Word, baseLanguageShortName: String?): Word? {
+fun Graph.findWordToMatch(word: Word, baseLanguageShortName: String?): Word? {
     if (baseLanguageShortName != null) {
         val baseLang = languageByShortName(baseLanguageShortName) ?: return null
         val baseWords = getLinksFrom(word).filter { it.type == Link.Origin }.map { it.toEntity }

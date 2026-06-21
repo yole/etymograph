@@ -88,7 +88,7 @@ class Word(
 
     var accentType: AccentType? = null
     var explicitStress: Boolean = false
-    val graph: GraphRepository get() = language.graph
+    val graph: Graph get() = language.graph
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

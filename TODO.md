@@ -1,0 +1,2 @@
+- [ ] Append morpheme should remove trailing - of morpheme text
+- [ ] compare accent when comparing forms with expected

@@ -29,7 +29,7 @@ class ParadigmTest : QBaseTest() {
     }
 
     private fun setupNounParadigm(): Paradigm {
-        val paradigm = repo.addParadigm("Noun", q, listOf("N"))
+        val paradigm = graph.addParadigm("Noun", q, listOf("N"))
         paradigm.addRow("Nom")
         paradigm.addRow("Gen")
         paradigm.addColumn("Sg")
@@ -41,10 +41,10 @@ class ParadigmTest : QBaseTest() {
         val paradigm = setupNounParadigm()
 
         paradigm.setRule(0, 0, emptyList())
-        val genRule = repo.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
+        val genRule = graph.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
         paradigm.setRule(1, 0, listOf(genRule))
 
-        val lasse = repo.findOrAddWord("lasse", q, "leaf", pos = "N")
+        val lasse = graph.findOrAddWord("lasse", q, "leaf", pos = "N")
 
         val lasseParadigm = paradigm.generate(lasse)
         assertEquals("lasse", lasseParadigm[0][0]?.get(0)?.word?.text)
@@ -53,15 +53,15 @@ class ParadigmTest : QBaseTest() {
 
     @Test
     fun paradigmParse() {
-        val plRule = repo.addRule(
+        val plRule = graph.addRule(
             "q-nom-pl",
             q,
             q,
             Rule.parseLogic("- append 'r'", q.parseContext()),
             ".PL"
         )
-        val genRule = repo.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
-        val genPlRule = repo.addRule(
+        val genRule = graph.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
+        val genPlRule = graph.addRule(
             "q-gen-pl",
             q,
             q,
@@ -69,12 +69,12 @@ class ParadigmTest : QBaseTest() {
             ".GEN.PL"
         )
 
-        val paradigm = repo.addParadigm("Noun", q, listOf("N"))
+        val paradigm = graph.addParadigm("Noun", q, listOf("N"))
         val paradigmText = """Sg Pl
             |Nom - q-nom-pl
             |Gen q-gen q-gen-pl
         """.trimMargin()
-        paradigm.parse(paradigmText) { ruleName -> repo.ruleByName(ruleName) }
+        paradigm.parse(paradigmText) { ruleName -> graph.ruleByName(ruleName) }
         assertEquals("Sg", paradigm.columns[0].title)
         assertEquals("Gen", paradigm.rowTitles[1])
         assertEquals(plRule, paradigm.columns[1].cells[0]!!.ruleAlternatives[0])
@@ -88,13 +88,13 @@ class ParadigmTest : QBaseTest() {
     fun paradigmPreRule() {
         val paradigm = setupNounParadigm()
 
-        val genRule = repo.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
+        val genRule = graph.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
         paradigm.setRule(1, 0, listOf(genRule))
 
-        val preRule = repo.rule("word ends with 'a':\n- change ending to ''", name = "q-pre")
+        val preRule = graph.rule("word ends with 'a':\n- change ending to ''", name = "q-pre")
         paradigm.preRule = preRule
 
-        val cirya = repo.findOrAddWord("cirya", q, "ship", pos = "N")
+        val cirya = graph.findOrAddWord("cirya", q, "ship", pos = "N")
         val result = genRule.apply(cirya)
         assertEquals("ciryo", result.text)
     }
@@ -104,13 +104,13 @@ class ParadigmTest : QBaseTest() {
         q.accentTypes = setOf(AccentType.Grave)
         val paradigm = setupNounParadigm()
 
-        val genRule = repo.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
+        val genRule = graph.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
         paradigm.setRule(1, 0, listOf(genRule))
 
-        val preRule = repo.rule("word ends with 'a':\n- change ending to ''", name = "q-pre")
+        val preRule = graph.rule("word ends with 'a':\n- change ending to ''", name = "q-pre")
         paradigm.preRule = preRule
 
-        val cirya = repo.findOrAddWord("cìrya", q, "ship", pos = "N")
+        val cirya = graph.findOrAddWord("cìrya", q, "ship", pos = "N")
         val result = genRule.apply(cirya)
         assertEquals("cìryo", result.asOrthographic().text)
     }
@@ -120,13 +120,13 @@ class ParadigmTest : QBaseTest() {
     fun paradigmPostRule() {
         val paradigm = setupNounParadigm()
 
-        val genRule = repo.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
+        val genRule = graph.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
         paradigm.setRule(1, 0, listOf(genRule))
 
-        val postRule = repo.rule("word ends with 'ao':\n- change ending to 'o'", name = "q-post")
+        val postRule = graph.rule("word ends with 'ao':\n- change ending to 'o'", name = "q-post")
         paradigm.postRule = postRule
 
-        val cirya = repo.findOrAddWord("cirya", q, "ship", pos = "N")
+        val cirya = graph.findOrAddWord("cirya", q, "ship", pos = "N")
         val result = genRule.apply(cirya)
         assertEquals("ciryo", result.text)
     }
@@ -136,15 +136,15 @@ class ParadigmTest : QBaseTest() {
         val paradigm = setupNounParadigm()
         paradigm.addColumn("Pl")
 
-        val genRule = repo.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
+        val genRule = graph.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
         paradigm.setRule(1, 0, listOf(genRule))
-        val genPlRule = repo.rule("- apply rule 'q-gen'", name = "q-gen-pl")
+        val genPlRule = graph.rule("- apply rule 'q-gen'", name = "q-gen-pl")
         paradigm.setRule(1, 1, listOf(genPlRule))
 
-        val postRule = repo.rule("word ends with 'o':\n- change ending to ''", name = "q-post")
+        val postRule = graph.rule("word ends with 'o':\n- change ending to ''", name = "q-post")
         paradigm.postRule = postRule
 
-        val cirya = repo.findOrAddWord("kiryamo", q, "mariner", pos = "N")
+        val cirya = graph.findOrAddWord("kiryamo", q, "mariner", pos = "N")
         val result = genPlRule.apply(cirya)
         assertEquals("kiryamo", result.text)
     }
@@ -155,7 +155,7 @@ class ParadigmTest : QBaseTest() {
             q, "Noun", listOf("N"),
             listOf("Case"), listOf("Number"), "q-", "", emptyList())
 
-        assertNotNull(repo.ruleByName("q-nom-sg"))
+        assertNotNull(graph.ruleByName("q-nom-sg"))
     }
 
     @Test
@@ -164,7 +164,7 @@ class ParadigmTest : QBaseTest() {
             q, "Adjective", listOf("ADJ"),
             listOf("Case"), listOf("Number", "Gender"), "q-", "", emptyList())
 
-        assertNotNull(repo.ruleByName("q-nom-sg-m"))
+        assertNotNull(graph.ruleByName("q-nom-sg-m"))
     }
 
     @Test
@@ -173,9 +173,9 @@ class ParadigmTest : QBaseTest() {
             q, "Noun", listOf("N"),
             listOf("Case"), listOf("Number"), "q-", "", listOf("", "n"))
 
-        val morpheme = repo.wordsByText(q, "n").single()
+        val morpheme = graph.wordsByText(q, "n").single()
         assertEquals("Noun dat.sg. ending", morpheme.gloss)
-        val rule = repo.ruleByName("q-dat-sg")!!
+        val rule = graph.ruleByName("q-dat-sg")!!
         assertEquals("lassen", rule.apply(q.word("lasse")).text)
     }
 
@@ -183,10 +183,10 @@ class ParadigmTest : QBaseTest() {
     fun deleteRule() {
         val paradigm = setupNounParadigm()
 
-        val genRule = repo.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
+        val genRule = graph.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
         paradigm.setRule(1, 0, listOf(genRule))
 
-        repo.deleteRule(genRule)
+        graph.deleteRule(genRule)
         assertEquals(0, paradigm.allRules.size)
     }
 

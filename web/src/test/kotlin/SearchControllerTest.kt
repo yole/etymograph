@@ -3,13 +3,13 @@ package ru.yole.etymograph.web
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
-import ru.yole.etymograph.GraphRepository
+import ru.yole.etymograph.Graph
 import ru.yole.etymograph.Language
 import ru.yole.etymograph.web.controllers.SearchController
 
 class SearchControllerTest {
     private lateinit var fixture: QTestFixture
-    private lateinit var graph: GraphRepository
+    private lateinit var graph: Graph
     private lateinit var q: Language
     private lateinit var ce: Language
     private lateinit var oe: Language

@@ -1,7 +1,6 @@
 package ru.yole.etymograph
 
 import org.junit.Assert.*
-import org.junit.Before
 import org.junit.Test
 
 class PhonemeRuleTest : QBaseTest() {
@@ -44,7 +43,7 @@ class PhonemeRuleTest : QBaseTest() {
         val text = "* i > 0 if previous sound is not 'kh'"
         val rule = parseRule(ce, q, text)
         assertEquals("khith", rule.apply(ce.word("khithi")).text)
-        assertEquals(text, rule.toEditableText(repo))
+        assertEquals(text, rule.toEditableText(graph))
     }
 
     @Test
@@ -58,7 +57,7 @@ class PhonemeRuleTest : QBaseTest() {
         val text = "* i > 0 if next vowel is 'a'"
         val rule = parseRule(q, q, text)
         assertEquals("khtha", rule.apply(ce.word("khitha")).text)
-        assertEquals(text, rule.toEditableText(repo))
+        assertEquals(text, rule.toEditableText(graph))
     }
 
     @Test
@@ -66,7 +65,7 @@ class PhonemeRuleTest : QBaseTest() {
         val text = "* i > 0 if next short vowel is 'a'"
         val rule = parseRule(q, q, text)
         assertEquals("khtha", rule.apply(ce.word("khitha")).text)
-        assertEquals(text, rule.toEditableText(repo))
+        assertEquals(text, rule.toEditableText(graph))
     }
 
     @Test
@@ -80,7 +79,7 @@ class PhonemeRuleTest : QBaseTest() {
         val text = "* s > z if next sound is non-word-final 'p'"
         val rule = parseRule(q, q, text)
         assertEquals("zpisvosp", rule.apply(q.word("spisvosp")).text)
-        assertEquals(text, rule.toEditableText(repo))
+        assertEquals(text, rule.toEditableText(graph))
     }
 
     @Test
@@ -88,7 +87,7 @@ class PhonemeRuleTest : QBaseTest() {
         val text = "* i > e if syllable is second to last and next vowel is 'a'"
         val rule = parseRule(q, q, text)
         assertEquals("findela", rule.apply(q.word("findila")).text)
-        assertEquals(text, rule.toEditableText(repo))
+        assertEquals(text, rule.toEditableText(graph))
     }
 
     @Test
@@ -98,7 +97,7 @@ class PhonemeRuleTest : QBaseTest() {
             * o > y if syllable is last
         """.trimIndent())
         assertEquals("yrch", rule.apply(q.word("orch")).text)
-        assertEquals("o > e if syllable is not last", rule.firstInstruction.toEditableText(repo))
+        assertEquals("o > e if syllable is not last", rule.firstInstruction.toEditableText(graph))
     }
 
     @Test
@@ -186,7 +185,7 @@ class PhonemeRuleTest : QBaseTest() {
         val text = "* a > 0 if sound is same as previous vowel"
         val rule = parseRule(q, q, text)
         assertEquals("glawre", rule.apply(q.word("glaware")).text)
-        assertEquals(text, rule.toEditableText(repo))
+        assertEquals(text, rule.toEditableText(graph))
     }
 
     @Test
@@ -195,7 +194,7 @@ class PhonemeRuleTest : QBaseTest() {
         val rule = parseRule(q, q, text)
         assertEquals("glaware", applyRule(rule, q.word("glaware")))
         assertEquals("glewre", applyRule(rule, q.word("gleware")))
-        assertEquals(text, rule.toEditableText(repo))
+        assertEquals(text, rule.toEditableText(graph))
     }
 
     @Test
@@ -203,6 +202,6 @@ class PhonemeRuleTest : QBaseTest() {
         val text = "* a > o if next sound is same as second next sound"
         val rule = parseRule(q, q, text)
         assertEquals("ottale", rule.apply(q.word("attale")).text)
-        assertEquals(text, rule.toEditableText(repo))
+        assertEquals(text, rule.toEditableText(graph))
     }
 }

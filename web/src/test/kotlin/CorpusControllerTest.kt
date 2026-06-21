@@ -11,7 +11,7 @@ import ru.yole.etymograph.web.controllers.TranslationController
 class CorpusControllerTest {
     private lateinit var fixture: QTestFixture
     private lateinit var corpusController: CorpusController
-    private lateinit var graph: InMemoryGraphRepository
+    private lateinit var graph: InMemoryGraph
 
     @Before
     fun setup() {

@@ -8,14 +8,14 @@ import ru.yole.etymograph.importers.TestWiktionary
 
 class AugmentWordTest {
     lateinit var wiktionary: TestWiktionary
-    lateinit var repo: GraphRepository
+    lateinit var graph: Graph
     lateinit var oe: Language
 
     @Before
     fun setUp() {
         wiktionary = TestWiktionary(AugmentWordTest::class.java)
-        repo = InMemoryGraphRepository()
-        oe = Language(repo, "Old English", "OE")
+        graph = InMemoryGraph()
+        oe = Language(graph, "Old English", "OE")
         oe.pos.addAll(
             listOf(
                 WordCategoryValue("Noun", "N"),
@@ -32,13 +32,13 @@ class AugmentWordTest {
                 WordCategoryValue("Plural", "PL")
             )
         ))
-        repo.addLanguage(oe)
+        graph.addLanguage(oe)
     }
 
     @Test
     fun augmentInflection() {
-        val bille = repo.findOrAddWord("bille", oe, null)
-        val rule = repo.rule("- no change", oe, name = "oe-dat", addedCategories = ".DAT")
+        val bille = graph.findOrAddWord("bille", oe, null)
+        val rule = graph.rule("- no change", oe, name = "oe-dat", addedCategories = ".DAT")
         augmentWordWithDictionary(wiktionary, bille)
         assertNull(bille.gloss)
         val link = bille.baseWordLink()
@@ -48,8 +48,8 @@ class AugmentWordTest {
 
     @Test
     fun augmentInflectionAmbiguous() {
-        val wyrtum = repo.findOrAddWord("wyrtum", oe, null)
-        val rule = repo.rule("- no change", oe, name = "oe-dat-pl", addedCategories = ".DAT.PL")
+        val wyrtum = graph.findOrAddWord("wyrtum", oe, null)
+        val rule = graph.rule("- no change", oe, name = "oe-dat-pl", addedCategories = ".DAT.PL")
         val result = augmentWordWithDictionary(wiktionary, wyrtum)
         assertEquals(2, result.variants.size)
 

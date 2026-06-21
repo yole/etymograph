@@ -20,8 +20,8 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RestController
-import ru.yole.etymograph.GraphRepository
-import ru.yole.etymograph.InMemoryGraphRepository
+import ru.yole.etymograph.Graph
+import ru.yole.etymograph.InMemoryGraph
 
 @RunWith(SpringRunner::class)
 @SpringBootTest
@@ -40,7 +40,7 @@ class GraphWriteAccessFilterTest {
     @MockBean
     lateinit var graphService: GraphService
 
-    private val testGraph: GraphRepository = object : InMemoryGraphRepository() {
+    private val testGraph: Graph = object : InMemoryGraph() {
         override val id: String
             get() = "testgraph"
 

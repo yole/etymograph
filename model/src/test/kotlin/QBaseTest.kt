@@ -1,14 +1,14 @@
 package ru.yole.etymograph
 
 open class QBaseTest {
-    val repo = InMemoryGraphRepository()
+    val graph = InMemoryGraph()
 
-    val q = quenya(repo).also {
-        repo.addLanguage(it)
+    val q = quenya(graph).also {
+        graph.addLanguage(it)
     }
     val v = q.phonemeClassByName("vowel")!!
 
-    val ce = Language(repo, "Common Eldarin", "CE").also {
+    val ce = Language(graph, "Common Eldarin", "CE").also {
         it.phonemes = listOf(
             Phoneme(-1, listOf("kh"), null, setOf("voiceless", "consonant")),
             Phoneme(-1, listOf("th"), null, setOf("voiceless", "consonant"))
@@ -16,10 +16,10 @@ open class QBaseTest {
             Phoneme(-1, listOf(p), null, setOf("short", "vowel"))
         }
     }.also {
-        repo.addLanguage(it)
+        graph.addLanguage(it)
     }
 
-    fun GraphRepository.addWord(
+    fun Graph.addWord(
         text: String,
         gloss: String? = text,
         pos: String? = null,
@@ -27,9 +27,9 @@ open class QBaseTest {
         language: Language = q
     ) = findOrAddWord(text, language, gloss, pos = pos, classes = classes)
 
-    fun GraphRepository.with(language: Language) = apply { addLanguage(language) }
+    fun Graph.with(language: Language) = apply { addLanguage(language) }
 
-    fun GraphRepository.rule(
+    fun Graph.rule(
         text: String,
         name: String = "q", addedCategories: String? = null
     ): Rule {
@@ -44,7 +44,7 @@ open class QBaseTest {
     }
 }
 
-fun quenya(graph: GraphRepository): Language = Language(graph, "Quenya", "Q").also {
+fun quenya(graph: Graph): Language = Language(graph, "Quenya", "Q").also {
     it.phonemes = listOf(
         Phoneme(-1, listOf("e", "ë"), null, setOf("vowel"))
     ) + listOf("a", "o", "u", "i").map { p ->

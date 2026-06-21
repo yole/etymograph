@@ -12,140 +12,140 @@ class CompoundTest : QBaseTest() {
 
     @Before
     fun setup() {
-        fara = repo.addWord("fara")
-        mir = repo.addWord("mir")
-        faramir = repo.addWord("faramir")
+        fara = graph.addWord("fara")
+        mir = graph.addWord("mir")
+        faramir = graph.addWord("faramir")
     }
 
     @Test
     fun segmentedText() {
-        repo.createCompound(faramir, listOf(fara, mir))
-        val restored = repo.restoreSegments(faramir)
+        graph.createCompound(faramir, listOf(fara, mir))
+        val restored = graph.restoreSegments(faramir)
         assertEquals("fara-mir", restored.segmentedText())
     }
 
     @Test
     fun segmentedTextClitic() {
         fara.classes = listOf("clitic")
-        repo.createCompound(faramir, listOf(fara, mir))
-        val restored = repo.restoreSegments(faramir)
+        graph.createCompound(faramir, listOf(fara, mir))
+        val restored = graph.restoreSegments(faramir)
         assertEquals("fara=mir", restored.segmentedText())
     }
 
     @Test
     fun compoundsInDictionary() {
-        val fara = repo.addWord("fara", "fara.NOM")
-        repo.createCompound(faramir, listOf(fara, mir))
-        assertEquals(1, repo.filteredWords(q, WordKind.COMPOUND).size)
+        val fara = graph.addWord("fara", "fara.NOM")
+        graph.createCompound(faramir, listOf(fara, mir))
+        assertEquals(1, graph.filteredWords(q, WordKind.COMPOUND).size)
     }
 
     @Test
     fun deleteWordFromCompound() {
-        repo.createCompound(faramir, listOf(fara, mir))
+        graph.createCompound(faramir, listOf(fara, mir))
 
-        repo.deleteWord(mir)
-        assertEquals(1, repo.findCompoundsByCompoundWord(faramir).first().components.size)
+        graph.deleteWord(mir)
+        assertEquals(1, graph.findCompoundsByCompoundWord(faramir).first().components.size)
     }
 
     @Test
     fun deleteWordOfCompound() {
-        val compound = repo.createCompound(faramir, listOf(fara, mir))
+        val compound = graph.createCompound(faramir, listOf(fara, mir))
 
-        repo.deleteWord(faramir)
-        assertEquals(null, repo.langEntityById(compound.id))
+        graph.deleteWord(faramir)
+        assertEquals(null, graph.langEntityById(compound.id))
     }
 
     @Test
     fun segmentedTextDeleteCompound() {
-        val compound = repo.createCompound(faramir, listOf(fara, mir))
-        val restored = repo.restoreSegments(faramir)
+        val compound = graph.createCompound(faramir, listOf(fara, mir))
+        val restored = graph.restoreSegments(faramir)
         assertEquals("fara-mir", restored.segmentedText())
-        repo.deleteCompound(compound)
+        graph.deleteCompound(compound)
         assertEquals("faramir", faramir.segmentedText())
     }
 
     @Test
     fun segmentedTextPartialMatch() {
-        val fara = repo.addWord("anda")
-        val mir = repo.addWord("aurenya")
-        val faramir = repo.addWord("andaurenya")
-        repo.createCompound(faramir, listOf(fara, mir))
-        val restored = repo.restoreSegments(faramir)
+        val fara = graph.addWord("anda")
+        val mir = graph.addWord("aurenya")
+        val faramir = graph.addWord("andaurenya")
+        graph.createCompound(faramir, listOf(fara, mir))
+        val restored = graph.restoreSegments(faramir)
         assertEquals("andaurenya", restored.segmentedText())
     }
 
     @Test
     fun stressOnRootInCompound() {
-        val stressRule = repo.rule("- stress is on first root syllable")
-        assertEquals("stress is on first root syllable", stressRule.firstInstruction.toEditableText(repo))
+        val stressRule = graph.rule("- stress is on first root syllable")
+        assertEquals("stress is on first root syllable", stressRule.firstInstruction.toEditableText(graph))
         q.stressRule = RuleRef.to(stressRule)
 
-        val na = repo.addWord("na", pos = "PV")
-        val pan = repo.addWord("pan-", pos = "V")
-        val napan = repo.addWord("napan-")
-        repo.createCompound(napan, listOf(na, pan))
+        val na = graph.addWord("na", pos = "PV")
+        val pan = graph.addWord("pan-", pos = "V")
+        val napan = graph.addWord("napan-")
+        graph.createCompound(napan, listOf(na, pan))
 
         assertEquals(3, napan.calculateStress()!!.index)
     }
 
     @Test
     fun stressOnRootInCompoundWithRule() {
-        val stressRule = repo.rule("- stress is on first root syllable")
-        assertEquals("stress is on first root syllable", stressRule.firstInstruction.toEditableText(repo))
+        val stressRule = graph.rule("- stress is on first root syllable")
+        assertEquals("stress is on first root syllable", stressRule.firstInstruction.toEditableText(graph))
         q.stressRule = RuleRef.to(stressRule)
 
-        val na = repo.addWord("na", pos = "PV")
-        val pan = repo.addWord("pan", pos = "V")
-        val napan = repo.addWord("napan")
-        repo.createCompound(napan, listOf(na, pan))
+        val na = graph.addWord("na", pos = "PV")
+        val pan = graph.addWord("pan", pos = "V")
+        val napan = graph.addWord("napan")
+        graph.createCompound(napan, listOf(na, pan))
 
-        val soundRule = repo.rule("* a > e if sound is stressed")
+        val soundRule = graph.rule("* a > e if sound is stressed")
         val newWord = soundRule.apply(napan)
         assertEquals("napen", newWord.text)
     }
 
     @Test
     fun suggestCompound() {
-        val suggestions = repo.suggestCompound(faramir)
+        val suggestions = graph.suggestCompound(faramir)
         assertEquals(fara, suggestions.single())
-        val compound = repo.createCompound(faramir, listOf(fara))
-        val suggestions2 = repo.suggestCompound(faramir, compound)
+        val compound = graph.createCompound(faramir, listOf(fara))
+        val suggestions2 = graph.suggestCompound(faramir, compound)
         assertEquals(mir, suggestions2.single())
     }
 
     @Test
     fun suggestCompoundDash() {
-        val faramirDash = repo.addWord("fara-mir")
-        val suggestions = repo.suggestCompound(faramirDash)
+        val faramirDash = graph.addWord("fara-mir")
+        val suggestions = graph.suggestCompound(faramirDash)
         assertEquals(fara, suggestions.single())
-        val compound = repo.createCompound(faramirDash, listOf(fara))
-        val suggestions2 = repo.suggestCompound(faramirDash, compound)
+        val compound = graph.createCompound(faramirDash, listOf(fara))
+        val suggestions2 = graph.suggestCompound(faramirDash, compound)
         assertEquals(mir, suggestions2.single())
     }
 
     @Test
     fun suggestCompoundExcludeInflectedForm() {
-        val onAcc = repo.rule("word ends with 'r':\n- change ending to ''", name = "on-acc")
-        val stadr = repo.addWord("stadr", "city")
-        val stad = repo.addWord("stad")
-        repo.addLink(stad, stadr, Link.Derived, listOf(onAcc))
-        val suggestions = repo.suggestCompound(stadr)
+        val onAcc = graph.rule("word ends with 'r':\n- change ending to ''", name = "on-acc")
+        val stadr = graph.addWord("stadr", "city")
+        val stad = graph.addWord("stad")
+        graph.addLink(stad, stadr, Link.Derived, listOf(onAcc))
+        val suggestions = graph.suggestCompound(stadr)
         assertEquals(0, suggestions.size)
     }
 
     @Test
     fun createCompoundRejectsSelfReference() {
         assertThrows(IllegalArgumentException::class.java) {
-            repo.createCompound(faramir, listOf(faramir))
+            graph.createCompound(faramir, listOf(faramir))
         }
     }
 
     @Test
     fun addToCompoundRejectsSelfReference() {
-        val compound = repo.createCompound(faramir, listOf(fara))
+        val compound = graph.createCompound(faramir, listOf(fara))
 
         assertThrows(IllegalArgumentException::class.java) {
-            repo.addToCompound(compound, faramir)
+            graph.addToCompound(compound, faramir)
         }
     }
 }

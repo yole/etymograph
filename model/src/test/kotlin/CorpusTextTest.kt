@@ -2,7 +2,6 @@ package ru.yole.etymograph
 
 import org.junit.Test
 import org.junit.Assert.*
-import org.junit.Before
 
 class CorpusTextTest : QBaseTest() {
     @Test
@@ -83,7 +82,7 @@ class CorpusTextTest : QBaseTest() {
     fun testNormalizedTextRemoveQuotesAssociate() {
         val corpusText = q.corpusText("quet \"Ai laurie lantar,\"")
 
-        val ai = repo.addWord("ai")
+        val ai = graph.addWord("ai")
         corpusText.associateWord(1, ai)
         val lines = corpusText.mapToLines()
         assertEquals("ai", lines[0].corpusWords[1].normalizedText)
@@ -95,10 +94,10 @@ class CorpusTextTest : QBaseTest() {
     fun testNormalizedTextRemoveParentheses() {
         val corpusText = q.corpusText("Perhael (i sennui Panthael)")
 
-        val stressRule = repo.rule("- stress is on first syllable")
+        val stressRule = graph.rule("- stress is on first syllable")
         q.stressRule = RuleRef.to(stressRule)
 
-        val i = repo.addWord("i")
+        val i = graph.addWord("i")
         corpusText.associateWord(1, i)
 
         val lines = corpusText.mapToLines()
@@ -110,29 +109,29 @@ class CorpusTextTest : QBaseTest() {
 
     @Test
     fun testAttestations() {
-        val eaV = repo.addWord("ea", "be")
-        val eaN = repo.addWord("ea", "being")
-        val ct1 = repo.addCorpusText("ea", null, q)
+        val eaV = graph.addWord("ea", "be")
+        val eaN = graph.addWord("ea", "being")
+        val ct1 = graph.addCorpusText("ea", null, q)
         ct1.associateWord(0, eaV)
-        val ct2 = repo.addCorpusText("ea", null, q)
+        val ct2 = graph.addCorpusText("ea", null, q)
         ct2.associateWord(0, eaN)
 
-        val attestations = repo.findAttestations(eaV)
+        val attestations = graph.findAttestations(eaV)
         assertEquals(1, attestations.size)
     }
 
     @Test
     fun testAttestationsNotAssigned() {
         val eaV = q.word("lantar", "fall")
-        val ct1 = repo.addCorpusText("ai laurie lantar", null, q)
+        val ct1 = graph.addCorpusText("ai laurie lantar", null, q)
 
-        val attestations = repo.findAttestations(eaV)
+        val attestations = graph.findAttestations(eaV)
         assertEquals(1, attestations.size)
     }
 
     @Test
     fun testAssociateContextGloss() {
-        val ct1 = repo.addCorpusText("ai laurie lantar", null, q)
+        val ct1 = graph.addCorpusText("ai laurie lantar", null, q)
         val laurie = q.word("laurie", "golden")
         ct1.associateWord(1, laurie, "goldenly")
         val lines = ct1.mapToLines()
@@ -141,8 +140,8 @@ class CorpusTextTest : QBaseTest() {
 
     @Test
     fun testLockWordAssociations() {
-        val ct1 = repo.addCorpusText("ai laurie lantar", null, q)
-        val laurie = repo.addWord("laurie", "golden")
+        val ct1 = graph.addCorpusText("ai laurie lantar", null, q)
+        val laurie = graph.addWord("laurie", "golden")
         ct1.lockWordAssociations()
         assertEquals(laurie, ct1.words.single().word)
     }

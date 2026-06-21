@@ -6,11 +6,11 @@ import org.springframework.web.context.request.NativeWebRequest
 import org.springframework.web.context.request.ServletWebRequest
 import org.springframework.web.method.support.HandlerMethodArgumentResolver
 import org.springframework.web.method.support.ModelAndViewContainer
-import ru.yole.etymograph.GraphRepository
+import ru.yole.etymograph.Graph
 
 class GraphArgumentResolver(val graphService: GraphService) : HandlerMethodArgumentResolver {
     override fun supportsParameter(parameter: MethodParameter): Boolean {
-        return parameter.parameterType.isAssignableFrom(GraphRepository::class.java)
+        return parameter.parameterType.isAssignableFrom(Graph::class.java)
     }
 
     override fun resolveArgument(

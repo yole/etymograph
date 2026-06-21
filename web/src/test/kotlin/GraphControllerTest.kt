@@ -5,8 +5,8 @@ import org.eclipse.jgit.api.Git
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
-import ru.yole.etymograph.GraphRepository
-import ru.yole.etymograph.JsonGraphRepository
+import ru.yole.etymograph.Graph
+import ru.yole.etymograph.JsonGraph
 import ru.yole.etymograph.web.controllers.GraphController
 import java.nio.file.Files
 import java.nio.file.Path
@@ -51,8 +51,8 @@ class GraphControllerTest {
             .setDirectory(workTree.toFile())
             .call()
             .use { configureIdentity(it) }
-        val repo = JsonGraphRepository.fromJson(workTree)
-        val controller = GraphController(SingleGraphService(repo), false)
+        val graph = JsonGraph.fromJson(workTree)
+        val controller = GraphController(SingleGraphService(graph), false)
 
         workTree.resolve("foo").createDirectories()
         val unversionedFile = "foo/language.json"
@@ -60,7 +60,7 @@ class GraphControllerTest {
 
         assertEquals("1 changed files", controller.list(null).single().status)
 
-        controller.syncChanges(repo)
+        controller.syncChanges(graph)
 
         Git.open(workTree.toFile()).use { git ->
             assertTrue(git.status().call().isClean)
@@ -123,11 +123,11 @@ class GraphControllerTest {
         }
     }
 
-    private class SingleGraphService(private val repo: GraphRepository) : GraphService() {
-        override fun allGraphs(): List<GraphRepository> = listOf(repo)
-        override fun resolveGraph(name: String): GraphRepository = repo
+    private class SingleGraphService(private val graph: Graph) : GraphService() {
+        override fun allGraphs(): List<Graph> = listOf(graph)
+        override fun resolveGraph(name: String): Graph = graph
         override fun canWrite(graphId: String, email: String): Boolean = true
-        override fun getEditableGraphs(email: String): List<String> = listOf(repo.id)
-        override fun cloneGraph(repoUrl: String): GraphRepository = repo
+        override fun getEditableGraphs(email: String): List<String> = listOf(graph.id)
+        override fun cloneGraph(repoUrl: String): Graph = graph
     }
 }

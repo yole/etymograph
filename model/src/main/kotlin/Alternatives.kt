@@ -26,9 +26,8 @@ object Alternatives {
     }
 
     private fun requestForms(word: Word, gloss: String): List<AlternativeModel> {
-        val repo = word.graph
         val pos = word.getOrComputePOS()
-        return repo.paradigmsForLanguage(word.language).filter { pos in it.pos }.flatMap { paradigm ->
+        return word.graph.paradigmsForLanguage(word.language).filter { pos in it.pos }.flatMap { paradigm ->
             val wordParadigm = paradigm.generate(word)
             wordParadigm.flatMap { column ->
                 column.flatMap { alts ->

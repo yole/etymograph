@@ -5,7 +5,7 @@ import java.util.*
 data class ConsistencyCheckerIssue(val description: String)
 
 abstract class ConsistencyChecker {
-    open fun check(repo: GraphRepository, language: Language, report: (ConsistencyCheckerIssue) -> Unit) {
+    open fun check(repo: Graph, language: Language, report: (ConsistencyCheckerIssue) -> Unit) {
         for (word in repo.allWords(language)) {
             checkWord(word) {
                 report(ConsistencyCheckerIssue("${it.description} for $word"))
@@ -104,7 +104,7 @@ object LinkChecker : ConsistencyChecker() {
 }
 
 object CorpusTextChecker : ConsistencyChecker() {
-    override fun check(repo: GraphRepository, language: Language, report: (ConsistencyCheckerIssue) -> Unit) {
+    override fun check(repo: Graph, language: Language, report: (ConsistencyCheckerIssue) -> Unit) {
         for (corpusText in repo.corpusTextsInLanguage(language)) {
             for (line in corpusText.mapToLines()) {
                 for (corpusWord in line.corpusWords) {
@@ -120,7 +120,7 @@ object CorpusTextChecker : ConsistencyChecker() {
 }
 
 object RuleChecker : ConsistencyChecker() {
-    override fun check(repo: GraphRepository, language: Language, report: (ConsistencyCheckerIssue) -> Unit) {
+    override fun check(repo: Graph, language: Language, report: (ConsistencyCheckerIssue) -> Unit) {
         for (rule in repo.allRules().filter { it.toLanguage == language }) {
             for (pos in rule.fromPOS) {
                 if (rule.fromLanguage.pos.none { it.abbreviation == pos }) {

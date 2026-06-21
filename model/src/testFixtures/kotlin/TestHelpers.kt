@@ -6,7 +6,7 @@ fun Language.word(text: String, gloss: String? = null, pos: String? = null, syll
 fun createParseContext(
     fromLanguage: Language,
     toLanguage: Language,
-    repo: GraphRepository?,
+    repo: Graph?,
     vararg rules: Rule
 ) = RuleParseContext(fromLanguage, toLanguage) { ruleName ->
     repo?.ruleByName(ruleName)?.let { RuleRef.to(it) }
@@ -14,7 +14,7 @@ fun createParseContext(
         ?: throw RuleParseException("no such rule")
 }
 
-fun GraphRepository.rule(
+fun Graph.rule(
     text: String,
     fromLanguage: Language,
     toLanguage: Language = fromLanguage,

@@ -77,7 +77,7 @@ fun parseStarlingWord(word: String): StarlingWord? {
 }
 
 class StarlingImporter(
-    private val repo: GraphRepository,
+    private val graph: Graph,
     private val fromLang: Language,
     private val toLang: Language,
     private val skipList: Collection<String>,
@@ -88,11 +88,11 @@ class StarlingImporter(
 
     private fun findWord(language: Language, starlingWord: StarlingWord, gloss: String): List<Word> {
         for (text in starlingWord.textVariants) {
-            val words = repo.wordsByText(language, text)
+            val words = graph.wordsByText(language, text)
             if (words.isNotEmpty()) {
                 return words.filter { isGlossSimilar(gloss, it.getOrComputeGloss()) || isGlossSimilar(gloss, it.fullGloss) }
             }
-            val fuzzyMatches = repo.allWords(language).filter {
+            val fuzzyMatches = graph.allWords(language).filter {
                 val normText = it.text.replace('ċ', 'c').replace('ġ', 'g')
                 if (text.endsWith('-')) {
                     normText.startsWith(text.removeSuffix("-"))
@@ -111,7 +111,7 @@ class StarlingImporter(
     private fun findEtymology(word: Word): Word? {
         var targetWord = word
         while (true) {
-            val origin = repo.getLinksFrom(targetWord).singleOrNull { it.type == Link.Origin }?.toEntity as? Word ?: return null
+            val origin = graph.getLinksFrom(targetWord).singleOrNull { it.type == Link.Origin }?.toEntity as? Word ?: return null
             if (origin.language == fromLang) return origin
             targetWord = origin
         }
@@ -120,21 +120,21 @@ class StarlingImporter(
     private fun findDerivation(word: Word): Word? {
         var targetWord = word
         while (true) {
-            val origin = repo.getLinksTo(targetWord).singleOrNull { it.type == Link.Origin }?.fromEntity as? Word ?: return null
+            val origin = graph.getLinksTo(targetWord).singleOrNull { it.type == Link.Origin }?.fromEntity as? Word ?: return null
             if (origin.language == toLang) return origin
             targetWord = origin
         }
     }
 
     fun createWordWithVariants(baseWord: StarlingWord, language: Language, source: List<SourceRef>, gloss: String? = null): Word {
-        val newWord = repo.findOrAddWord(baseWord.textVariants[0], language, gloss ?: baseWord.gloss,
+        val newWord = graph.findOrAddWord(baseWord.textVariants[0], language, gloss ?: baseWord.gloss,
             source = source)
 
         for (variant in baseWord.textVariants.drop(1)) {
             if (variant != baseWord.textVariants[0] && variant.isNotBlank()) {
-                val pgmcVariant = repo.findOrAddWord(variant, language, null,
+                val pgmcVariant = graph.findOrAddWord(variant, language, null,
                     source = source)
-                repo.addLink(pgmcVariant, newWord, Link.Variation)
+                graph.addLink(pgmcVariant, newWord, Link.Variation)
             }
         }
         return newWord
@@ -200,16 +200,16 @@ class StarlingImporter(
         if (pgmcWord == null && oeWord == null) {
             val pgmcNewWord = createWordWithVariants(baseWord, fromLang, source)
             val oeNewWord = createWordWithVariants(translationWord, toLang, source, translationGloss)
-            val link = repo.addLink(oeNewWord, pgmcNewWord, Link.Origin, source = source)
-            repo.applyRuleSequence(link, sequence)
+            val link = graph.addLink(oeNewWord, pgmcNewWord, Link.Origin, source = source)
+            graph.applyRuleSequence(link, sequence)
         }
         else if (pgmcWord == null && oeEtymology != null) {
-            val pgmcNewWord = repo.findOrAddWord(baseWord.textVariants[0], fromLang, null,
+            val pgmcNewWord = graph.findOrAddWord(baseWord.textVariants[0], fromLang, null,
                 source = source)
             if (pgmcNewWord.id != oeEtymology.id) {
-                repo.addLink(pgmcNewWord, oeEtymology, Link.Variation)
-                val link = repo.addLink(oeWord, pgmcNewWord, Link.Origin, source = source)
-                repo.applyRuleSequence(link, sequence)
+                graph.addLink(pgmcNewWord, oeEtymology, Link.Variation)
+                val link = graph.addLink(oeWord, pgmcNewWord, Link.Origin, source = source)
+                graph.applyRuleSequence(link, sequence)
                 println("VARIANT ${baseWord.textVariants[0]} [${baseWord.classes}] '${baseWord.gloss}'$pgmcNew > ${translationWord.textVariants[0]}$oeNew '${translationGloss}'")
                 importLogged = true
             }
@@ -221,17 +221,17 @@ class StarlingImporter(
         else if (pgmcWord == null) {
             val pgmcNewWord = createWordWithVariants(baseWord, fromLang, source)
 
-            val link = repo.addLink(oeWord!!, pgmcNewWord, Link.Origin, source = source)
-            repo.applyRuleSequence(link, sequence)
+            val link = graph.addLink(oeWord!!, pgmcNewWord, Link.Origin, source = source)
+            graph.applyRuleSequence(link, sequence)
         }
         else {
             val oeDerivation = findDerivation(pgmcWord)
             if (oeDerivation != null) {
-                val oeVariant = repo.findOrAddWord(translationWord.textVariants[0], toLang,
+                val oeVariant = graph.findOrAddWord(translationWord.textVariants[0], toLang,
                     translationGloss, source = source)
-                repo.addLink(oeVariant, oeDerivation, Link.Variation)
-                val link = repo.addLink(oeVariant, pgmcWord, Link.Origin, source = source)
-                repo.applyRuleSequence(link, sequence)
+                graph.addLink(oeVariant, oeDerivation, Link.Variation)
+                val link = graph.addLink(oeVariant, pgmcWord, Link.Origin, source = source)
+                graph.applyRuleSequence(link, sequence)
                 println("VARIANT ${baseWord.textVariants[0]} [${baseWord.classes}] '${baseWord.gloss}'$pgmcNew > ${translationWord.textVariants[0]}$oeNew '${translationGloss}'")
                 importLogged = true
             }
@@ -290,7 +290,7 @@ class StarlingImporter(
 }
 
 fun main(args: Array<String>) {
-    val ieRepo = JsonGraphRepository.fromJson(Path.of("data/ie"))
+    val ieRepo = JsonGraph.fromJson(Path.of("data/ie"))
     val pgmc = ieRepo.languageByShortName("PGmc")!!
     val oe = ieRepo.languageByShortName("OE")!!
 

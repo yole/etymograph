@@ -1,7 +1,7 @@
 package ru.yole.etymograph.web.controllers
 
 import org.springframework.web.bind.annotation.*
-import ru.yole.etymograph.GraphRepository
+import ru.yole.etymograph.Graph
 import ru.yole.etymograph.Word
 import ru.yole.etymograph.removeDiacritics
 import java.util.*
@@ -20,7 +20,7 @@ class SearchController {
 
     @GetMapping("")
     fun search(
-        repo: GraphRepository,
+        repo: Graph,
         @RequestParam q: String,
         @RequestParam(required = false, defaultValue = "50") limit: Int,
         @RequestParam(required = false, defaultValue = "0") offset: Int,

@@ -4,37 +4,37 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
-import ru.yole.etymograph.JsonGraphRepository.Companion.ruleBranchesFromSerializedFormat
-import ru.yole.etymograph.JsonGraphRepository.Companion.ruleToSerializedFormat
+import ru.yole.etymograph.JsonGraph.Companion.ruleBranchesFromSerializedFormat
+import ru.yole.etymograph.JsonGraph.Companion.ruleToSerializedFormat
 
-class JsonGraphRepositoryTest {
-    lateinit var repo: JsonGraphRepository
+class JsonGraphTest {
+    lateinit var graph: JsonGraph
     lateinit var q: Language
     lateinit var ce: Language
 
     @Before
     fun setup() {
-        repo = JsonGraphRepository(null)
-        q = quenya(repo)
-        repo.addLanguage(q)
-        ce = Language(repo, "Common Eldarin", "CE")
-        repo.addLanguage(ce)
+        graph = JsonGraph(null)
+        q = quenya(graph)
+        graph.addLanguage(q)
+        ce = Language(graph, "Common Eldarin", "CE")
+        graph.addLanguage(ce)
     }
 
     @Test
     fun deletedWords() {
-        val abc = repo.addWord("abc", q, null)
-        val def = repo.addWord("def", q, null)
-        repo.deleteWord(abc)
+        val abc = graph.addWord("abc", q, null)
+        val def = graph.addWord("def", q, null)
+        graph.deleteWord(abc)
 
-        val repo2 = repo.roundtrip()
+        val repo2 = graph.roundtrip()
         assertEquals(null, repo2.wordById(abc.id))
         assertEquals("def", repo2.wordById(def.id)!!.text)
     }
 
     @Test
     fun serializeApplySoundRule() {
-        val soundRule = repo.addRule(
+        val soundRule = graph.addRule(
             "q-lengthen", q, q,
             Rule.parseLogic("* a > á", q.parseContext()))
 
@@ -48,7 +48,7 @@ class JsonGraphRepositoryTest {
         val serializedData = applySoundRule.ruleToSerializedFormat()
         assertEquals(2, serializedData.branches[0].instructions[0].args.size)
 
-        val branches = ruleBranchesFromSerializedFormat(repo, q, q, serializedData.branches)
+        val branches = ruleBranchesFromSerializedFormat(graph, q, q, serializedData.branches)
         val insn = branches[0].instructions[0] as ApplySoundRuleInstruction
         assertEquals("q-lengthen", insn.ruleRef.resolve().name)
         assertEquals("vowel", insn.seekTarget!!.phonemeClass!!.name)
@@ -60,8 +60,8 @@ class JsonGraphRepositoryTest {
         val rule = parseRule(q, q, "* $text")
 
         val serializedData = rule.ruleToSerializedFormat()
-        val branches = ruleBranchesFromSerializedFormat(repo, q, q, serializedData.branches)
-        assertEquals(text, branches[0].instructions[0].toEditableText(repo))
+        val branches = ruleBranchesFromSerializedFormat(graph, q, q, serializedData.branches)
+        assertEquals(text, branches[0].instructions[0].toEditableText(graph))
     }
 
     @Test
@@ -70,8 +70,8 @@ class JsonGraphRepositoryTest {
         val rule = parseRule(q, q, "* $text")
 
         val serializedData = rule.ruleToSerializedFormat()
-        val branches = ruleBranchesFromSerializedFormat(repo, q, q, serializedData.branches)
-        assertEquals(text, branches[0].instructions[0].toEditableText(repo))
+        val branches = ruleBranchesFromSerializedFormat(graph, q, q, serializedData.branches)
+        assertEquals(text, branches[0].instructions[0].toEditableText(graph))
     }
 
     @Test
@@ -79,10 +79,10 @@ class JsonGraphRepositoryTest {
         val rule = parseRule(q, q, "* d > l / #_ if number of syllables is 1")
 
         val serializedData = rule.ruleToSerializedFormat()
-        val branches = ruleBranchesFromSerializedFormat(repo, q, q, serializedData.branches)
+        val branches = ruleBranchesFromSerializedFormat(graph, q, q, serializedData.branches)
         val insn = branches[0].instructions[0]
         assertTrue(insn is SpeInstruction)
-        assertEquals("d > l / #_ if number of syllables is 1", insn.toEditableText(repo))
+        assertEquals("d > l / #_ if number of syllables is 1", insn.toEditableText(graph))
     }
 
     @Test
@@ -92,8 +92,8 @@ class JsonGraphRepositoryTest {
         """.trimIndent())
 
         val serializedData = rule.ruleToSerializedFormat()
-        val branches = ruleBranchesFromSerializedFormat(repo, q, q, serializedData.branches)
-        assertEquals("insert 'i' before last consonant", branches[0].instructions[0].toEditableText(repo))
+        val branches = ruleBranchesFromSerializedFormat(graph, q, q, serializedData.branches)
+        assertEquals("insert 'i' before last consonant", branches[0].instructions[0].toEditableText(graph))
     }
 
     @Test
@@ -104,7 +104,7 @@ class JsonGraphRepositoryTest {
         """.trimIndent())
 
         val serializedData = rule.ruleToSerializedFormat()
-        val branches = ruleBranchesFromSerializedFormat(repo, q, q, serializedData.branches)
+        val branches = ruleBranchesFromSerializedFormat(graph, q, q, serializedData.branches)
         assertEquals("This is a comment", branches[0].comment)
     }
 
@@ -118,7 +118,7 @@ class JsonGraphRepositoryTest {
         """.trimIndent())
 
         val serializedData = rule.ruleToSerializedFormat()
-        val branches = ruleBranchesFromSerializedFormat(repo, q, q, serializedData.branches)
+        val branches = ruleBranchesFromSerializedFormat(graph, q, q, serializedData.branches)
         assertEquals("This is an instruction comment", branches[0].instructions[1].comment)
     }
 
@@ -130,7 +130,7 @@ class JsonGraphRepositoryTest {
             = append 'e'
         """.trimIndent())
         val serializedData = rule.ruleToSerializedFormat()
-        val rule2 = repo.ruleFromSerializedFormat(serializedData, q, q)
+        val rule2 = graph.ruleFromSerializedFormat(serializedData, q, q)
         assertEquals(1, (rule2.logic as MorphoRuleLogic).postInstructions.size)
     }
 
@@ -139,36 +139,36 @@ class JsonGraphRepositoryTest {
         val text = "* a > i if not (previous sound is 'c')"
         val rule = parseRule(q, q, text)
         val serializedData = rule.ruleToSerializedFormat()
-        val rule2 = repo.ruleFromSerializedFormat(serializedData, q, q)
-        assertEquals(text, rule2.toEditableText(repo))
+        val rule2 = graph.ruleFromSerializedFormat(serializedData, q, q)
+        assertEquals(text, rule2.toEditableText(graph))
     }
 
     @Test
     fun serializeTranslation() {
-        val corpusText = repo.addCorpusText("abc", null, q)
-        val translation = repo.addTranslation(corpusText, "def", emptyList())
+        val corpusText = graph.addCorpusText("abc", null, q)
+        val translation = graph.addTranslation(corpusText, "def", emptyList())
         translation.anchorStartIndex = 0
         translation.anchorEndIndex = 1
-        val repo2 = repo.roundtrip()
+        val repo2 = graph.roundtrip()
         val corpusText2 = repo2.corpusTextById(corpusText.id)!!
         val translation2 = repo2.translationsForText(corpusText2).single()
         assertEquals(0, translation2.anchorStartIndex)
         assertEquals(1, translation2.anchorEndIndex)
     }
 
-    private fun JsonGraphRepository.roundtrip(): JsonGraphRepository {
+    private fun JsonGraph.roundtrip(): JsonGraph {
         val jsonFiles = mutableMapOf<String, String>()
         saveToJson { path, content -> jsonFiles[path] = content }
-        return JsonGraphRepository.fromJsonProvider { jsonFiles[it] }
+        return JsonGraph.fromJsonProvider { jsonFiles[it] }
     }
 
     @Test
     fun serializeDeleteParadigm() {
-        val np = repo.addParadigm("Noun", q, listOf("N"))
-        val vp = repo.addParadigm("Verb", q, listOf("V"))
-        repo.deleteParadigm(np)
-        assertEquals(1, repo.allParadigms().size)
-        val repo2 = repo.roundtrip()
+        val np = graph.addParadigm("Noun", q, listOf("N"))
+        val vp = graph.addParadigm("Verb", q, listOf("V"))
+        graph.deleteParadigm(np)
+        assertEquals(1, graph.allParadigms().size)
+        val repo2 = graph.roundtrip()
         assertEquals(1, repo2.allParadigms().size)
         assertEquals("Verb", repo2.paradigmById(vp.id)!!.name)
     }
@@ -176,43 +176,43 @@ class JsonGraphRepositoryTest {
     @Test
     fun serializePhonemes() {
         q.phonemes = mutableListOf(phoneme("a", "front open vowel"))
-        val repo2 = repo.roundtrip()
+        val repo2 = graph.roundtrip()
         assertEquals(1, repo2.languageByShortName("Q")!!.phonemes.size)
     }
 
     @Test
     fun serializeRuleSequence() {
         setupRuleSequence()
-        val repo2 = repo.roundtrip()
+        val repo2 = graph.roundtrip()
         val sequences = repo2.ruleSequencesForLanguage(repo2.languageByShortName("Q")!!)
         assertEquals(1, sequences.size)
         assertEquals("i-disappears", sequences[0].resolveRules().single().name)
     }
 
     private fun setupRuleSequence(): RuleSequence {
-        repo.addLanguage(ce)
-        val rule = repo.addRule(
+        graph.addLanguage(ce)
+        val rule = graph.addRule(
             "i-disappears", ce, q,
-            Rule.parseLogic("* i > 0 / a_ ", q.parseContext(repo))
+            Rule.parseLogic("* i > 0 / a_ ", q.parseContext(graph))
         )
-        return repo.addRuleSequence("ce-to-q", ce, q, listOf(RuleSequenceStep(rule, null,false, false)))
+        return graph.addRuleSequence("ce-to-q", ce, q, listOf(RuleSequenceStep(rule, null,false, false)))
     }
 
     @Test
     fun serializeOrthographyRule() {
-        val rule = repo.addRule("q-ortho", q, q,
-            Rule.parseLogic("* u > j / #_", q.parseContext(repo)))
+        val rule = graph.addRule("q-ortho", q, q,
+            Rule.parseLogic("* u > j / #_", q.parseContext(graph)))
         q.orthographyRule = RuleRef.to(rule)
 
-        val repo2 = repo.roundtrip()
+        val repo2 = graph.roundtrip()
         assertEquals("q-ortho", repo2.languageByShortName("Q")!!.orthographyRule!!.resolve().name)
     }
 
     @Test
     fun serializeExplicitStress() {
-        val word = repo.findOrAddWord("ea", q, null)
+        val word = graph.findOrAddWord("ea", q, null)
         word.setExplicitStress(1)
-        val repo2 = repo.roundtrip()
+        val repo2 = graph.roundtrip()
         val word2 = repo2.wordsByText(repo2.languageByShortName("Q")!!, "ea").single()
         assertEquals(1, word2.stressedPhonemeIndex)
         assertEquals(true, word2.explicitStress)
@@ -220,11 +220,11 @@ class JsonGraphRepositoryTest {
 
     @Test
     fun serializeCompound() {
-        val baseWord = repo.addWord("mann", q, null)
-        val prefix = repo.addWord("sæ", q, null)
-        val compoundWord = repo.addWord("sæmann", q, null)
-        repo.createCompound(compoundWord, listOf(prefix, baseWord), headIndex = 1)
-        val repo2 = repo.roundtrip()
+        val baseWord = graph.addWord("mann", q, null)
+        val prefix = graph.addWord("sæ", q, null)
+        val compoundWord = graph.addWord("sæmann", q, null)
+        graph.createCompound(compoundWord, listOf(prefix, baseWord), headIndex = 1)
+        val repo2 = graph.roundtrip()
         val compoundWord2 = repo2.wordsByText(repo2.languageByShortName("Q")!!, "sæmann").single()
         val compound2 = repo2.findCompoundsByCompoundWord(compoundWord2).single()
         assertEquals(1, compound2.headIndex)
@@ -232,12 +232,12 @@ class JsonGraphRepositoryTest {
 
     @Test
     fun serializeParadigmRules() {
-        val paradigm = repo.addParadigm("Noun", q, listOf("N"))
-        val preRule = repo.rule("word ends with 'a':\n- change ending to ''", name = "q-pre", fromLanguage = q)
-        val postRule = repo.rule("word ends with 'oo':\n - change ending to 'o'", name = "q-post", fromLanguage = q)
+        val paradigm = graph.addParadigm("Noun", q, listOf("N"))
+        val preRule = graph.rule("word ends with 'a':\n- change ending to ''", name = "q-pre", fromLanguage = q)
+        val postRule = graph.rule("word ends with 'oo':\n - change ending to 'o'", name = "q-post", fromLanguage = q)
         paradigm.preRule = preRule
         paradigm.postRule = postRule
-        val repo2 = repo.roundtrip()
+        val repo2 = graph.roundtrip()
         assertEquals(1, repo2.paradigmsForLanguage(repo2.languageByShortName("Q")!!).size)
         assertEquals("q-pre", repo2.paradigmById(paradigm.id)!!.preRule!!.name)
         assertEquals("q-post", repo2.paradigmById(paradigm.id)!!.postRule!!.name)
@@ -246,11 +246,11 @@ class JsonGraphRepositoryTest {
     @Test
     fun serializeLinkRuleSequence() {
         val seq = setupRuleSequence()
-        val lai = repo.addWord("lai", language = ce, gloss = null)
-        val la = repo.addWord("la", language = q, gloss = null)
-        val link = repo.addLink(la, lai, Link.Origin)
-        repo.applyRuleSequence(link, seq)
-        val repo2 = repo.roundtrip()
+        val lai = graph.addWord("lai", language = ce, gloss = null)
+        val la = graph.addWord("la", language = q, gloss = null)
+        val link = graph.addLink(la, lai, Link.Origin)
+        graph.applyRuleSequence(link, seq)
+        val repo2 = graph.roundtrip()
         val la2 = repo2.wordById(la.id)!!
         val link2 = repo2.getLinksFrom(la2).single()
         assertEquals(seq.name, link2.sequence!!.name)
@@ -258,10 +258,10 @@ class JsonGraphRepositoryTest {
 
     @Test
     fun serializeProtoLanguage() {
-        val qLang = repo.languageByShortName("Q")!!
+        val qLang = graph.languageByShortName("Q")!!
         qLang.protoLanguage = ce
 
-        val repo2 = repo.roundtrip()
+        val repo2 = graph.roundtrip()
         val q2 = repo2.languageByShortName("Q")!!
         assertEquals("CE", q2.protoLanguage?.shortName)
     }
@@ -270,28 +270,28 @@ class JsonGraphRepositoryTest {
     fun serializeAccentTypes() {
         val accentTypes = mutableSetOf(AccentType.Acute, AccentType.Circumflex)
         q.accentTypes = accentTypes
-        val repo2 = repo.roundtrip()
+        val repo2 = graph.roundtrip()
         val q2 = repo2.languageByShortName("Q")!!
         assertEquals(accentTypes, q2.accentTypes)
     }
 
     @Test
     fun serializeSyllabographic() {
-        val ht = Language(repo, "Hittite", "Ht")
-        repo.addLanguage(ht)
-        val word = repo.addWord("pé-ra-an", ht, gloss = null, syllabographic = true)
-        val repo2 = repo.roundtrip()
-        val word2 = repo2.wordById(word.id)!!
+        val ht = Language(graph, "Hittite", "Ht")
+        graph.addLanguage(ht)
+        val word = graph.addWord("pé-ra-an", ht, gloss = null, syllabographic = true)
+        val graph2 = graph.roundtrip()
+        val word2 = graph2.wordById(word.id)!!
         assertEquals(true, word2.syllabographic)
     }
 
     @Test
     fun serializeLanguageSyllabographic() {
-        val ht = Language(repo, "Hittite", "Ht")
+        val ht = Language(graph, "Hittite", "Ht")
         ht.syllabographic = true
-        repo.addLanguage(ht)
-        val repo2 = repo.roundtrip()
-        val ht2 = repo2.languageByShortName("Ht")!!
+        graph.addLanguage(ht)
+        val graph2 = graph.roundtrip()
+        val ht2 = graph2.languageByShortName("Ht")!!
         assertEquals(true, ht2.syllabographic)
     }
 }

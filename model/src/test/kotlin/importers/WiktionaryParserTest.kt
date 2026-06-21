@@ -4,29 +4,29 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Before
 import org.junit.Test
-import ru.yole.etymograph.GraphRepository
-import ru.yole.etymograph.InMemoryGraphRepository
+import ru.yole.etymograph.Graph
+import ru.yole.etymograph.InMemoryGraph
 import ru.yole.etymograph.Language
 import ru.yole.etymograph.WordCategoryValue
 
 class WiktionaryParserTest {
     lateinit var wiktionary: TestWiktionary
-    lateinit var repo: GraphRepository
+    lateinit var graph: Graph
     lateinit var oe: Language
     lateinit var on: Language
 
     @Before
     fun setUp() {
         wiktionary = TestWiktionary(WiktionaryParserTest::class.java)
-        repo = InMemoryGraphRepository()
-        oe = Language(repo, "Old English", "OE").withPartsOfSpeech()
-        repo.addLanguage(oe)
+        graph = InMemoryGraph()
+        oe = Language(graph, "Old English", "OE").withPartsOfSpeech()
+        graph.addLanguage(oe)
 
-        on = Language(repo, "Old Norse", "ON").withPartsOfSpeech()
-        repo.addLanguage(on)
+        on = Language(graph, "Old Norse", "ON").withPartsOfSpeech()
+        graph.addLanguage(on)
 
-        val pgmc = Language(repo, "Proto-Germanic", "PGmc")
-        repo.addLanguage(pgmc)
+        val pgmc = Language(graph, "Proto-Germanic", "PGmc")
+        graph.addLanguage(pgmc)
 
         pgmc.dictionarySettings = "wiktionary-id: gem-pro"
     }
@@ -44,7 +44,7 @@ class WiktionaryParserTest {
 
     @Test
     fun parseOrigin() {
-        val word = wiktionary.lookup(repo, oe, "bridel").result.single()
+        val word = wiktionary.lookup(graph, oe, "bridel").result.single()
         assertEquals("bridle", word.gloss)
         val origin = word.relatedWords.single()
         assertEquals("brigdilaz", origin.relatedWord.text)
@@ -55,7 +55,7 @@ class WiktionaryParserTest {
     fun parseAlternativeForm() {
         oe.dictionarySettings = "ang-decl-noun-o-f: fem, o-stem"
 
-        val word = wiktionary.lookup(repo, oe, "nytwyrþnes").result.single()
+        val word = wiktionary.lookup(graph, oe, "nytwyrþnes").result.single()
         val variation = word.relatedWords.single()
         assertEquals("nytwierþnes", variation.relatedWord.text)
         assertEquals(2, variation.relatedWord.classes.size)
@@ -63,13 +63,13 @@ class WiktionaryParserTest {
 
     @Test
     fun parseCompound() {
-        val word = wiktionary.lookup(repo, oe, "æþelboren").result.single()
+        val word = wiktionary.lookup(graph, oe, "æþelboren").result.single()
         assertEquals(2, word.compoundComponents.size)
     }
 
     @Test
     fun parseInflectionOf() {
-        val word = wiktionary.lookup(repo, oe, "byþ").result.single()
+        val word = wiktionary.lookup(graph, oe, "byþ").result.single()
         val baseWord = word.relatedWords.single()
         assertEquals(listOf("3", "sg", "pres"), baseWord.linkDetails)
         assertEquals("inflection of beon", word.gloss)
@@ -77,7 +77,7 @@ class WiktionaryParserTest {
 
     @Test
     fun parseInflectionOfMatchPOS() {
-        val word = wiktionary.lookup(repo, oe, "iserne").result
+        val word = wiktionary.lookup(graph, oe, "iserne").result
         val baseNoun = word[0].relatedWords.single()
         assertEquals("N", baseNoun.relatedWord.pos)
         val baseAdj = word[1].relatedWords.single()
@@ -86,7 +86,7 @@ class WiktionaryParserTest {
 
     @Test
     fun parseMultipleEtymologies() {
-        val words = wiktionary.lookup(repo, oe, "wesan").result
+        val words = wiktionary.lookup(graph, oe, "wesan").result
         assertEquals(3, words.size)
         val etymology1 = words[0].relatedWords
         assertEquals(1, etymology1.size)
@@ -98,33 +98,33 @@ class WiktionaryParserTest {
 
     @Test
     fun commaSeparatedGloss() {
-        val word = wiktionary.lookup(repo, oe, "werig").result.single()
+        val word = wiktionary.lookup(graph, oe, "werig").result.single()
         assertEquals("weary", word.gloss)
         assertEquals("weary, tired, exhausted, fatigued", word.fullGloss)
     }
 
     @Test
     fun languageLink() {
-        val word = wiktionary.lookup(repo, oe, "oft").result.single()
+        val word = wiktionary.lookup(graph, oe, "oft").result.single()
         assertEquals("often, oft", word.fullGloss)
     }
 
     @Test
     fun alternativeAndInflection() {
-        val result = wiktionary.lookup(repo, oe, "frecne").result
+        val result = wiktionary.lookup(graph, oe, "frecne").result
         assertEquals(3, result.size)
         assertEquals("variant of frēcn", result[1].gloss)
     }
 
     @Test
     fun lTag() {
-        val result = wiktionary.lookup(repo, oe, "hand").result.single()
+        val result = wiktionary.lookup(graph, oe, "hand").result.single()
         assertEquals("hand", result.gloss)
     }
 
     @Test
     fun fleira() {
-        val result = wiktionary.lookup(repo, on, "fleira").result.single()
+        val result = wiktionary.lookup(graph, on, "fleira").result.single()
         assertEquals(2, result.relatedWords.size)
         assertNull(result.fullGloss)
     }
@@ -132,7 +132,7 @@ class WiktionaryParserTest {
     @Test
     fun ikorni() {
         on.dictionarySettings = "non-decl-m-a: m, strong\nnon-decl-m-an: m, weak"
-        val result = wiktionary.lookup(repo, on, "ikorni").result.single()
+        val result = wiktionary.lookup(graph, on, "ikorni").result.single()
         assertEquals(listOf("m", "weak"), result.classes)
     }
 }

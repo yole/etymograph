@@ -5,20 +5,20 @@ import org.junit.Before
 import org.junit.Test
 
 class TestDictionary : Dictionary {
-    override fun lookup(repo: GraphRepository, language: Language, word: String, disambiguation: String?): LookupResult {
+    override fun lookup(repo: Graph, language: Language, word: String, disambiguation: String?): LookupResult {
         return LookupResult.empty
     }
 }
 
 class LemmatizedTextTest {
-    lateinit var repo: GraphRepository
+    lateinit var graph: Graph
     lateinit var oe: Language
 
     @Before
     fun setup() {
-        repo = InMemoryGraphRepository()
-        oe = Language(repo, "Old English", "OE")
-        repo.addLanguage(oe)
+        graph = InMemoryGraph()
+        oe = Language(graph, "Old English", "OE")
+        graph.addLanguage(oe)
     }
 
     @Test

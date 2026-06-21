@@ -19,7 +19,7 @@ fun processParadigm(word: Word, paradigm: Paradigm, callback: (WordAlternative, 
     }
 }
 
-fun processParadigms(repo: JsonGraphRepository, callback: (Word, String, Rule) -> Unit) {
+fun processParadigms(repo: JsonGraph, callback: (Word, String, Rule) -> Unit) {
     for (language in repo.allLanguages()) {
         val paradigms = repo.paradigmsForLanguage(language)
         for (word in repo.dictionaryWords(language)) {
@@ -33,7 +33,7 @@ fun processParadigms(repo: JsonGraphRepository, callback: (Word, String, Rule) -
     }
 }
 
-fun export(repo: JsonGraphRepository, outputPath: String) {
+fun export(repo: JsonGraph, outputPath: String) {
     Path.of(outputPath).outputStream().bufferedWriter().use { outWriter ->
         processParadigms(repo) { word, expected, rule ->
             outWriter.write("${word.id},${rule.name},${word.classes.joinToString(" ")},${expected}\n")
@@ -43,7 +43,7 @@ fun export(repo: JsonGraphRepository, outputPath: String) {
 
 data class Key(val wordId: Int, val ruleName: String)
 
-fun verify(repo: JsonGraphRepository, goldPath: String) {
+fun verify(repo: JsonGraph, goldPath: String) {
     val gold = mutableMapOf<Key, Pair<String, Set<String>>>()
     for (line in Path.of(goldPath).readLines()) {
         val (id, ruleName, classes, result) = line.split(',')
@@ -69,9 +69,9 @@ fun main(args: Array<String>) {
         println("Usage: verifier <export|verify> <repo dir> <result file>")
         return
     }
-    val repo = JsonGraphRepository.fromJson(Path.of(args[1]))
+    val graph = JsonGraph.fromJson(Path.of(args[1]))
     when(args[0]) {
-        "export" -> export(repo, args[2])
-        "verify" -> verify(repo, args[2])
+        "export" -> export(graph, args[2])
+        "verify" -> verify(graph, args[2])
     }
 }

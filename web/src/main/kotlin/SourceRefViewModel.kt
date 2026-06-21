@@ -1,7 +1,7 @@
 package ru.yole.etymograph.web
 
 import kotlinx.serialization.Serializable
-import ru.yole.etymograph.GraphRepository
+import ru.yole.etymograph.Graph
 import ru.yole.etymograph.SourceRef
 
 @Serializable
@@ -11,7 +11,7 @@ class SourceRefViewModel(
     val refText: String
 )
 
-fun List<SourceRef>.toViewModel(graph: GraphRepository): List<SourceRefViewModel>  {
+fun List<SourceRef>.toViewModel(graph: Graph): List<SourceRefViewModel>  {
     return map { ref ->
         SourceRefViewModel(
             ref.pubId,
@@ -21,7 +21,7 @@ fun List<SourceRef>.toViewModel(graph: GraphRepository): List<SourceRefViewModel
     }
 }
 
-fun List<SourceRef>.toEditableText(graph: GraphRepository): String {
+fun List<SourceRef>.toEditableText(graph: Graph): String {
     return joinToString(", ") { ref ->
         ref.pubId?.let { oubId ->
             graph.publicationById(oubId)?.let { "${it.refId}:${ref.refText}"}
@@ -29,7 +29,7 @@ fun List<SourceRef>.toEditableText(graph: GraphRepository): String {
     }
 }
 
-fun parseSourceRefs(graph: GraphRepository, source: String?): List<SourceRef> {
+fun parseSourceRefs(graph: Graph, source: String?): List<SourceRef> {
     if (source.isNullOrBlank()) return emptyList()
     return source.split(',').map { sourceRefText ->
         val text = sourceRefText.trim()

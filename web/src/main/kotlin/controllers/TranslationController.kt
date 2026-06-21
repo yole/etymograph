@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
-import ru.yole.etymograph.GraphRepository
+import ru.yole.etymograph.Graph
 import ru.yole.etymograph.Translation
 import ru.yole.etymograph.web.parseSourceRefs
 import ru.yole.etymograph.web.resolveCorpusText
@@ -19,7 +19,7 @@ class TranslationController {
     )
 
     @PostMapping("/{graph}/translation")
-    fun addTranslation(repo: GraphRepository, @RequestBody params: TranslationParams): CorpusController.TranslationViewModel {
+    fun addTranslation(repo: Graph, @RequestBody params: TranslationParams): CorpusController.TranslationViewModel {
         val source = parseSourceRefs(repo, params.source)
         val corpusText = repo.resolveCorpusText(params.corpusTextId)
         val translation = repo.addTranslation(corpusText, params.text, source)
@@ -53,7 +53,7 @@ class TranslationController {
     }
 
     @PostMapping("/{graph}/translations/{id}")
-    fun editTranslation(repo: GraphRepository, @PathVariable id: Int, @RequestBody params: TranslationParams): CorpusController.TranslationViewModel {
+    fun editTranslation(repo: Graph, @PathVariable id: Int, @RequestBody params: TranslationParams): CorpusController.TranslationViewModel {
         val source = parseSourceRefs(repo, params.source)
         val translation = repo.langEntityById(id) as? Translation
             ?: notFound("No translation with ID $id")
@@ -63,7 +63,7 @@ class TranslationController {
     }
 
     @PostMapping("/{graph}/translations/{id}/delete")
-    fun deleteTranslation(repo: GraphRepository, @PathVariable id: Int) {
+    fun deleteTranslation(repo: Graph, @PathVariable id: Int) {
         val translation = repo.langEntityById(id) as? Translation
             ?: notFound("No translation with ID $id")
         repo.deleteTranslation(translation)

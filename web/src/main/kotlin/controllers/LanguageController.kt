@@ -71,14 +71,14 @@ class LanguageController {
     )
 
     @GetMapping("/{graph}/language")
-    fun indexJson(repo: GraphRepository): List<LanguageShortViewModel> {
+    fun indexJson(repo: Graph): List<LanguageShortViewModel> {
         return repo.allLanguages().sortedBy { it.name }.map { lang ->
             lang.toShortViewModel()
         }
     }
 
     @GetMapping("/{graph}/languages")
-    fun treeJson(repo: GraphRepository): List<LanguageShortViewModel> {
+    fun treeJson(repo: Graph): List<LanguageShortViewModel> {
         val languages = repo.allLanguages()
         val shortViewModels = languages.associateBy(
             { it.shortName },
@@ -129,12 +129,12 @@ class LanguageController {
         )
     
     @GetMapping("/{graph}/language/{lang}")
-    fun language(repo: GraphRepository, @PathVariable lang: String): LanguageViewModel {
+    fun language(repo: Graph, @PathVariable lang: String): LanguageViewModel {
         val language = repo.resolveLanguage(lang)
         return language.toViewModel(repo)
     }
 
-    private fun Language.toViewModel(repo: GraphRepository): LanguageViewModel {
+    private fun Language.toViewModel(repo: Graph): LanguageViewModel {
         val stressRule = stressRule?.resolve()
         val phonotacticsRule = phonotacticsRule?.resolve()
         val pronunciationRule = pronunciationRule?.resolve()
@@ -190,7 +190,7 @@ class LanguageController {
     )
 
     @PostMapping("/{graph}/languages", consumes = ["application/json"])
-    fun addLanguage(repo: GraphRepository, @RequestBody params: UpdateLanguageParameters): LanguageViewModel {
+    fun addLanguage(repo: Graph, @RequestBody params: UpdateLanguageParameters): LanguageViewModel {
         val name = params.name.takeIf { !it.isNullOrBlank() } ?: badRequest("Language name must be provided")
         val shortName = params.shortName.takeIf { !it.isNullOrBlank() } ?: badRequest("Language short name must be provided")
         val language = Language(repo, name, shortName)
@@ -200,7 +200,7 @@ class LanguageController {
     }
 
     @PostMapping("/{graph}/language/{lang}", consumes = ["application/json"])
-    fun updateLanguage(repo: GraphRepository, @PathVariable lang: String, @RequestBody params: UpdateLanguageParameters) {
+    fun updateLanguage(repo: Graph, @PathVariable lang: String, @RequestBody params: UpdateLanguageParameters) {
         val language = repo.resolveLanguage(lang)
         updateLanguageDetails(repo, language, params)
     }
@@ -208,7 +208,7 @@ class LanguageController {
     data class CopyPhonemesParams(val fromLang: String = "")
 
     @PostMapping("/{graph}/language/{lang}/copyPhonemes", consumes = ["application/json"])
-    fun copyPhonemes(repo: GraphRepository, @PathVariable lang: String, @RequestBody params: CopyPhonemesParams) {
+    fun copyPhonemes(repo: Graph, @PathVariable lang: String, @RequestBody params: CopyPhonemesParams) {
         val toLanguage = repo.resolveLanguage(lang)
         val fromLanguage = repo.resolveLanguage(params.fromLang)
         for (phoneme in fromLanguage.phonemes) {
@@ -222,7 +222,7 @@ class LanguageController {
     data class InputAssistViewModel(val graphemes: List<InputAssistGraphemeViewModel>)
 
     @GetMapping("/{graph}/inputAssist")
-    fun inputAssist(repo: GraphRepository): InputAssistViewModel {
+    fun inputAssist(repo: Graph): InputAssistViewModel {
         val graphemes = mutableMapOf<String, MutableList<String>>()
         for (language in repo.allLanguages()) {
             for (phoneme in language.phonemes) {
@@ -242,7 +242,7 @@ class LanguageController {
     }
 
     private fun updateLanguageDetails(
-        repo: GraphRepository,
+        repo: Graph,
         language: Language,
         params: UpdateLanguageParameters
     ) {
@@ -273,7 +273,7 @@ class LanguageController {
         } ?: mutableSetOf()
     }
 
-    private fun parseRuleRef(repo: GraphRepository, name: String?): RuleRef? {
+    private fun parseRuleRef(repo: Graph, name: String?): RuleRef? {
         val rule = name?.nullize()?.let { repo.resolveRule(it) }
         return rule?.let { RuleRef.to(it) }
     }

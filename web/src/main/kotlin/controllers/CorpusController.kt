@@ -17,14 +17,14 @@ class CorpusController {
     )
 
     @GetMapping("")
-    fun allCorpusTexts(repo: GraphRepository): List<CorpusLangTextViewModel> {
+    fun allCorpusTexts(repo: Graph): List<CorpusLangTextViewModel> {
         return repo.allCorpusTexts()
             .sortedBy { it.title }
             .map { it.toLangViewModel() }
     }
 
     @GetMapping("/{lang}")
-    fun langIndexJson(repo: GraphRepository, @PathVariable lang: String): CorpusLangViewModel {
+    fun langIndexJson(repo: Graph, @PathVariable lang: String): CorpusLangViewModel {
         val language = repo.resolveLanguage(lang)
         return CorpusLangViewModel(
             language.shortName,
@@ -87,11 +87,11 @@ class CorpusController {
     )
 
     @GetMapping("/text/{id}")
-    fun textJson(repo: GraphRepository, @PathVariable id: Int): CorpusTextViewModel {
+    fun textJson(repo: Graph, @PathVariable id: Int): CorpusTextViewModel {
         return repo.resolveCorpusText(id).toViewModel(repo)
     }
 
-    private fun CorpusText.toViewModel(repo: GraphRepository): CorpusTextViewModel {
+    private fun CorpusText.toViewModel(repo: Graph): CorpusTextViewModel {
         return CorpusTextViewModel(
             id,
             title ?: "Untitled",
@@ -129,7 +129,7 @@ class CorpusController {
 
     @PostMapping("/{lang}/new", consumes = ["application/json"])
     @ResponseBody
-    fun newText(repo: GraphRepository, @PathVariable lang: String, @RequestBody params: CorpusTextParams): CorpusTextViewModel {
+    fun newText(repo: Graph, @PathVariable lang: String, @RequestBody params: CorpusTextParams): CorpusTextViewModel {
         val language = repo.resolveLanguage(lang)
         val text = repo.addCorpusText(
             params.text, params.title.nullize(), language,
@@ -139,7 +139,7 @@ class CorpusController {
     }
 
     @PostMapping("/text/{id}")
-    fun editText(repo: GraphRepository, @PathVariable id: Int, @RequestBody params: CorpusTextParams) {
+    fun editText(repo: Graph, @PathVariable id: Int, @RequestBody params: CorpusTextParams) {
         val corpusText = repo.resolveCorpusText(id)
         val oldToNewWordIndices = corpusText.updateText(params.text)
         repo.translationsForText(corpusText).forEach {
@@ -157,14 +157,14 @@ class CorpusController {
     )
 
     @PostMapping("/text/{id}/associate")
-    fun associateWord(repo: GraphRepository, @PathVariable id: Int, @RequestBody params: AssociateWordParameters) {
+    fun associateWord(repo: Graph, @PathVariable id: Int, @RequestBody params: AssociateWordParameters) {
         val corpusText = repo.resolveCorpusText(id)
         val word = repo.resolveWord(params.wordId)
         corpusText.associateWord(params.index, word, params.contextGloss)
     }
 
     @PostMapping("/text/{id}/lockAssociations")
-    fun lockWordAssociations(repo: GraphRepository, @PathVariable id: Int) {
+    fun lockWordAssociations(repo: Graph, @PathVariable id: Int) {
         val corpusText = repo.resolveCorpusText(id)
         corpusText.lockWordAssociations()
     }
@@ -172,7 +172,7 @@ class CorpusController {
     data class AlternativeViewModel(val gloss: String, val wordId: Int, val ruleId: Int)
 
     @GetMapping("/text/{id}/alternatives/{index}")
-    fun requestAlternatives(repo: GraphRepository, @PathVariable id: Int, @PathVariable index: Int): List<AlternativeViewModel> {
+    fun requestAlternatives(repo: Graph, @PathVariable id: Int, @PathVariable index: Int): List<AlternativeViewModel> {
         val corpusText = repo.resolveCorpusText(id)
         val word = corpusText.wordByIndex(index)
         val wordText = word?.text ?: corpusText.normalizedWordTextAt(index)
@@ -185,7 +185,7 @@ class CorpusController {
     data class AcceptAlternativeParameters(val index: Int, val wordId: Int, val ruleId: Int)
 
     @PostMapping("/text/{id}/accept")
-    fun acceptAlternative(repo: GraphRepository, @PathVariable id: Int, @RequestBody params: AcceptAlternativeParameters) {
+    fun acceptAlternative(repo: Graph, @PathVariable id: Int, @RequestBody params: AcceptAlternativeParameters) {
         val corpusText = repo.resolveCorpusText(id)
         val word = repo.resolveWord(params.wordId)
         val rule = if (params.ruleId == -1) null else repo.resolveRule(params.ruleId)
@@ -194,7 +194,7 @@ class CorpusController {
     }
 }
 
-fun translationToViewModel(t: Translation, repo: GraphRepository): TranslationViewModel =
+fun translationToViewModel(t: Translation, repo: Graph): TranslationViewModel =
     TranslationViewModel(
         t.id,
         t.text,

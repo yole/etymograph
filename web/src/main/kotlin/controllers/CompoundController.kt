@@ -2,7 +2,7 @@ package ru.yole.etymograph.web.controllers
 
 import org.springframework.web.bind.annotation.*
 import ru.yole.etymograph.Compound
-import ru.yole.etymograph.GraphRepository
+import ru.yole.etymograph.Graph
 import ru.yole.etymograph.KnownClasses
 import ru.yole.etymograph.web.parseSourceRefs
 import ru.yole.etymograph.web.resolveWord
@@ -24,7 +24,7 @@ class CompoundController {
     )
 
     @PostMapping("")
-    fun createCompound(repo: GraphRepository, @RequestBody params: CompoundParams) {
+    fun createCompound(repo: Graph, @RequestBody params: CompoundParams) {
         val compoundWord = repo.resolveWord(params.compoundId)
         val componentWord = repo.resolveWord(params.firstComponentId)
         val source = parseSourceRefs(repo, params.source)
@@ -32,7 +32,7 @@ class CompoundController {
     }
 
     @PostMapping("/{id}/add")
-    fun addToCompound(repo: GraphRepository, @PathVariable id: Int, @RequestBody params: UpdateCompoundParams) {
+    fun addToCompound(repo: Graph, @PathVariable id: Int, @RequestBody params: UpdateCompoundParams) {
         val compound = repo.resolveCompound(id)
         val componentWord = repo.resolveWord(params.componentId)
         repo.addToCompound(compound, componentWord)
@@ -42,7 +42,7 @@ class CompoundController {
     }
 
     @PostMapping("/{id}")
-    fun editCompound(repo: GraphRepository, @PathVariable id: Int, @RequestBody params: CompoundParams) {
+    fun editCompound(repo: Graph, @PathVariable id: Int, @RequestBody params: CompoundParams) {
         val compound = repo.resolveCompound(id)
         compound.source = parseSourceRefs(repo, params.source)
         compound.notes = params.notes
@@ -52,12 +52,12 @@ class CompoundController {
     }
 
     @PostMapping("/{id}/delete")
-    fun deleteCompound(repo: GraphRepository, @PathVariable id: Int) {
+    fun deleteCompound(repo: Graph, @PathVariable id: Int) {
         val compound = repo.resolveCompound(id)
         repo.deleteCompound(compound)
     }
 }
 
-fun GraphRepository.resolveCompound(id: Int): Compound {
+fun Graph.resolveCompound(id: Int): Compound {
     return langEntityById(id) as? Compound ?: notFound("No compound with ID $id")
 }

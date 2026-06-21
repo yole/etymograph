@@ -3,10 +3,9 @@ package ru.yole.etymograph.web.controllers
 import kotlinx.serialization.Serializable
 import org.springframework.web.bind.annotation.*
 import ru.yole.etymograph.Language
-import ru.yole.etymograph.GraphRepository
+import ru.yole.etymograph.Graph
 import ru.yole.etymograph.WordKind
 import ru.yole.etymograph.web.resolveLanguage
-import java.text.Normalizer
 
 @RestController
 @RequestMapping("/{graph}/dictionary")
@@ -28,7 +27,7 @@ class DictionaryController {
 
     @GetMapping("/{lang}")
     fun dictionary(
-        repo: GraphRepository,
+        repo: Graph,
         @PathVariable lang: String,
         @RequestParam(required = false) letter: String?
     ): DictionaryViewModel {
@@ -37,7 +36,7 @@ class DictionaryController {
 
     @GetMapping("/{lang}/compounds")
     fun dictionaryCompound(
-        repo: GraphRepository,
+        repo: Graph,
         @PathVariable lang: String,
         @RequestParam(required = false) letter: String?
     ): DictionaryViewModel {
@@ -46,7 +45,7 @@ class DictionaryController {
 
     @GetMapping("/{lang}/names")
     fun dictionaryNames(
-        repo: GraphRepository,
+        repo: Graph,
         @PathVariable lang: String,
         @RequestParam(required = false) letter: String?
     ): DictionaryViewModel {
@@ -55,7 +54,7 @@ class DictionaryController {
 
     @GetMapping("/{lang}/reconstructed")
     fun dictionaryReconstructed(
-        repo: GraphRepository,
+        repo: Graph,
         @PathVariable lang: String,
         @RequestParam(required = false) letter: String?
     ): DictionaryViewModel {
@@ -64,14 +63,14 @@ class DictionaryController {
 
     @GetMapping("/{lang}/all")
     fun allWords(
-        repo: GraphRepository,
+        repo: Graph,
         @PathVariable lang: String,
         @RequestParam(required = false) letter: String?
     ): DictionaryViewModel {
         return loadDictionary(repo, lang, null, letter)
     }
 
-    private fun loadDictionary(repo: GraphRepository, lang: String, wordKind: WordKind?, letter: String?): DictionaryViewModel {
+    private fun loadDictionary(repo: Graph, lang: String, wordKind: WordKind?, letter: String?): DictionaryViewModel {
         val language = repo.resolveLanguage(lang)
         val words = if (wordKind == null)
             repo.allWords(language)
@@ -95,7 +94,7 @@ class DictionaryController {
             filtered, groupWords(repo, language, filtered))
     }
 
-    private fun groupName(repo: GraphRepository, language: Language, word: DictionaryWordViewModel): String {
+    private fun groupName(repo: Graph, language: Language, word: DictionaryWordViewModel): String {
         val syllabograms = word.ref.syllabogramSequence?.syllabograms
         if (syllabograms != null) {
             val firstNonDeterminative = syllabograms.dropWhile { it.type.isDeterminative }.firstOrNull()
@@ -114,7 +113,7 @@ class DictionaryController {
         return input
     }
 
-    private fun groupWords(repo: GraphRepository, language: Language, words: List<DictionaryWordViewModel>): Map<String, List<DictionaryWordViewModel>> {
+    private fun groupWords(repo: Graph, language: Language, words: List<DictionaryWordViewModel>): Map<String, List<DictionaryWordViewModel>> {
         val comparator = compareBy<String> { it.lowercase() }
             .thenBy { it == it.uppercase() && it != it.lowercase() }
             .thenBy { it }

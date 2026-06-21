@@ -83,7 +83,7 @@ class RuleTrace {
         log.append("${condition.toEditableText()} candidates: [${candidates.joinToString(", ")}]\n")
     }
 
-    fun logReverseApplyInstruction(graph: GraphRepository, instruction: RuleInstruction, base: String, candidates: List<String>) {
+    fun logReverseApplyInstruction(graph: Graph, instruction: RuleInstruction, base: String, candidates: List<String>) {
         log.append("${instruction.toEditableText(graph)}: $base -> [${candidates.joinToString(", ")}]\n")
     }
 
@@ -180,14 +180,14 @@ class RuleBranch(val condition: RuleCondition, val instructions: List<RuleInstru
         return null
     }
 
-    fun toEditableText(graph: GraphRepository): String {
+    fun toEditableText(graph: Graph): String {
         return commentToString(comment) + condition.toEditableText() + ":\n" +
                 instructions.joinToString("\n") {
                     commentToString(it.comment) + (if (it is SpeInstruction) "* " else " - ") + it.toEditableText(graph)
                 }
     }
 
-    fun toSummaryText(graph: GraphRepository): String? {
+    fun toSummaryText(graph: Graph): String? {
         return instructions.map { it.toSummaryText(graph) ?: return null }.joinToString("")
     }
 
@@ -252,8 +252,8 @@ sealed class RuleLogic {
     ): Word
 
     abstract fun reverseApply(word: Word, rule: Rule, trace: RuleTrace? = null): List<String>
-    abstract fun toEditableText(graph: GraphRepository): String
-    abstract fun toSummaryText(graph: GraphRepository): String
+    abstract fun toEditableText(graph: Graph): String
+    abstract fun toSummaryText(graph: Graph): String
     open fun findConditionForInstruction(instruction: RuleInstruction): RuleCondition? = null
     open fun referencedRules(): Set<Rule> = emptySet()
     abstract fun refersToLangEntity(entity: LangEntity): Boolean
@@ -341,7 +341,7 @@ class MorphoRuleLogic(
         }
     }
 
-    override fun toEditableText(graph: GraphRepository): String {
+    override fun toEditableText(graph: Graph): String {
         if (isUnconditional()) {
             val branch = branches[0]
             val commentString = RuleBranch.commentToString(branch.comment)
@@ -355,7 +355,7 @@ class MorphoRuleLogic(
                 postInstructions.joinToString("\n") { " = " + it.toEditableText(graph) }
     }
 
-    override fun toSummaryText(graph: GraphRepository): String {
+    override fun toSummaryText(graph: Graph): String {
         val summaries = branches.map { it.toSummaryText(graph) }
         if (summaries.any { it == null }) return ""
         val filteredSummaries = summaries.filter { !it.isNullOrEmpty() }
@@ -474,7 +474,7 @@ class SpeRuleLogic(
         return emptyList()
     }
 
-    override fun toEditableText(graph: GraphRepository): String {
+    override fun toEditableText(graph: Graph): String {
         return instructions.joinToString("\n") {
             RuleBranch.commentToString(it.comment) + "* " + it.toEditableText(graph)
         } + postInstructions.joinToString("\n") {
@@ -482,7 +482,7 @@ class SpeRuleLogic(
         }
     }
 
-    override fun toSummaryText(graph: GraphRepository): String {
+    override fun toSummaryText(graph: Graph): String {
         val summaries = instructions.map { it.toSummaryText(graph)  }
         return summaries.joinToString(", ")
     }
@@ -576,8 +576,8 @@ class Rule(
         return replacedGloss
     }
 
-    fun toEditableText(graph: GraphRepository): String = logic.toEditableText(graph)
-    fun toSummaryText(graph: GraphRepository): String = logic.toSummaryText(graph)
+    fun toEditableText(graph: Graph): String = logic.toEditableText(graph)
+    fun toSummaryText(graph: Graph): String = logic.toSummaryText(graph)
 
     fun addedGrammaticalCategories(): List<WordCategory> {
         return addedCategories?.let { cv -> parseCategoryValues(fromLanguage, cv).mapNotNull { it?.category } } ?: emptyList()

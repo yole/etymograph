@@ -4,7 +4,7 @@ import ru.yole.etymograph.*
 import ru.yole.etymograph.web.controllers.RuleController
 
 class QTestFixture {
-    val graph = InMemoryGraphRepository()
+    val graph = InMemoryGraph()
     val ce = Language(graph, "Common Eldarin", "ce").also {
         graph.addLanguage(it)
     }

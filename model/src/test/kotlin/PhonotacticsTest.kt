@@ -9,8 +9,8 @@ class PhonotacticsTest : QBaseTest() {
     fun simple() {
         val phono = parseRule(q, q, "word ends with not vowel and word ends with not 'n':\n- disallow")
         q.phonotacticsRule = RuleRef.to(phono)
-        assertTrue(repo.matchesPhonotactics(q, "elen"))
-        assertTrue(repo.matchesPhonotactics(q, "sila"))
-        assertFalse(repo.matchesPhonotactics(q, "balrog"))
+        assertTrue(graph.matchesPhonotactics(q, "elen"))
+        assertTrue(graph.matchesPhonotactics(q, "sila"))
+        assertFalse(graph.matchesPhonotactics(q, "balrog"))
     }
 }

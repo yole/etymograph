@@ -4,7 +4,7 @@ import java.text.Collator
 import java.text.Normalizer
 import java.util.*
 
-open class InMemoryGraphRepository : GraphRepository() {
+open class InMemoryGraph : Graph() {
     protected val languages = mutableMapOf<String, Language>()
     protected val corpus = mutableListOf<CorpusText>()
     private val words = mutableMapOf<Language, MutableMap<String, MutableList<Word>>>()
@@ -899,7 +899,7 @@ open class InMemoryGraphRepository : GraphRepository() {
     }
 
     companion object {
-        val EMPTY = InMemoryGraphRepository()
+        val EMPTY = InMemoryGraph()
     }
 }
 

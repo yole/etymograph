@@ -4,7 +4,7 @@ enum class WordKind { NAME, COMPOUND, DERIVED, RECONSTRUCTED, NORMAL }
 
 enum class Consistency { CONSISTENT, INCONSISTENT, BECOMES_CONSISTENT, BECOMES_INCONSISTENT }
 
-abstract class GraphRepository {
+abstract class Graph {
     abstract val id: String
     abstract val name: String
 

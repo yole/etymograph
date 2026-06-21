@@ -66,7 +66,7 @@ data class LanguageDetailsData(
 
 @Serializable
 sealed class RuleConditionData {
-    abstract fun toRuntimeFormat(result: GraphRepository, fromLanguage: Language): RuleCondition
+    abstract fun toRuntimeFormat(result: Graph, fromLanguage: Language): RuleCondition
 }
 
 private fun requiredPhonemeClassByName(language: Language, phonemeClassName: String?): PhonemeClass? =
@@ -87,7 +87,7 @@ data class LeafRuleConditionData(
     val negated: Boolean = false,
     val baseLanguageShortName: String? = null
 ) : RuleConditionData() {
-    override fun toRuntimeFormat(result: GraphRepository, fromLanguage: Language): RuleCondition {
+    override fun toRuntimeFormat(result: Graph, fromLanguage: Language): RuleCondition {
         val phonemeClass = requiredPhonemeClassByName(fromLanguage, phonemeClassName)
         return LeafRuleCondition(type, phonemeClass, characters, negated, baseLanguageShortName)
     }
@@ -101,7 +101,7 @@ class SyllableRuleConditionData(
     @SerialName("cls") val phonemeClassName: String? = null,
     val parameter: String? = null
 ) : RuleConditionData() {
-    override fun toRuntimeFormat(result: GraphRepository, fromLanguage: Language): RuleCondition {
+    override fun toRuntimeFormat(result: Graph, fromLanguage: Language): RuleCondition {
         return SyllableRuleCondition(
             matchType,
             index,
@@ -117,7 +117,7 @@ class SyllableCountConditionData(
     val negated: Boolean = false,
     val expectCount: Int
 ) : RuleConditionData() {
-    override fun toRuntimeFormat(result: GraphRepository, fromLanguage: Language): RuleCondition {
+    override fun toRuntimeFormat(result: Graph, fromLanguage: Language): RuleCondition {
         return SyllableCountRuleCondition(condition, negated, expectCount)
     }
 }
@@ -130,7 +130,7 @@ class RelativeSyllableConditionData(
     val relativeIndex: Int? = null,
     val negated: Boolean = false
 ) : RuleConditionData() {
-    override fun toRuntimeFormat(result: GraphRepository, fromLanguage: Language): RuleCondition {
+    override fun toRuntimeFormat(result: Graph, fromLanguage: Language): RuleCondition {
         return RelativeSyllableRuleCondition(matchIndex, matchClass, relativeIndex, negated)
     }
 }
@@ -146,7 +146,7 @@ class RelativePhonemeRuleConditionData(
     val relative: Boolean = true,
     val baseLanguageShortName: String? = null
 ): RuleConditionData() {
-    override fun toRuntimeFormat(result: GraphRepository, fromLanguage: Language): RuleCondition {
+    override fun toRuntimeFormat(result: Graph, fromLanguage: Language): RuleCondition {
         val targetPhonemeClass = requiredPhonemeClassByName(fromLanguage, targetPhonemeClassName) ?: PhonemeClass.sound
         return RelativePhonemeRuleCondition(
             negated,
@@ -168,7 +168,7 @@ class PhonemeEqualsRuleConditionData(
     val matchRelative: Boolean? = null,
     val negated: Boolean = false
 ) : RuleConditionData() {
-    override fun toRuntimeFormat(result: GraphRepository, fromLanguage: Language): RuleCondition {
+    override fun toRuntimeFormat(result: Graph, fromLanguage: Language): RuleCondition {
         return PhonemeEqualsRuleCondition(
             SeekTarget(index, phonemeClassName?.let { fromLanguage.phonemeClassByName(it) } ?: PhonemeClass.sound, null,relative),
             matchIndex?.let {
@@ -186,7 +186,7 @@ class WordClassConditionData(
     val negated: Boolean = false
 ) : RuleConditionData() {
     override fun toRuntimeFormat(
-        result: GraphRepository,
+        result: Graph,
         fromLanguage: Language
     ): RuleCondition {
         return WordClassCondition(wordClass, negated)
@@ -198,7 +198,7 @@ class WordClassConditionData(
 data class OrRuleConditionData(
     val members: List<RuleConditionData>
 ) : RuleConditionData() {
-    override fun toRuntimeFormat(result: GraphRepository, fromLanguage: Language): RuleCondition =
+    override fun toRuntimeFormat(result: Graph, fromLanguage: Language): RuleCondition =
         OrRuleCondition(members.map { it.toRuntimeFormat(result, fromLanguage) })
 }
 
@@ -207,21 +207,21 @@ data class OrRuleConditionData(
 data class AndRuleConditionData(
     val members: List<RuleConditionData>
 ) : RuleConditionData() {
-    override fun toRuntimeFormat(result: GraphRepository, fromLanguage: Language): RuleCondition =
+    override fun toRuntimeFormat(result: Graph, fromLanguage: Language): RuleCondition =
         AndRuleCondition(members.map { it.toRuntimeFormat(result, fromLanguage) })
 }
 
 @Serializable
 @SerialName("not")
 class NotRuleConditionData(val arg: RuleConditionData) : RuleConditionData() {
-    override fun toRuntimeFormat(result: GraphRepository, fromLanguage: Language): RuleCondition =
+    override fun toRuntimeFormat(result: Graph, fromLanguage: Language): RuleCondition =
         NotRuleCondition(arg.toRuntimeFormat(result, fromLanguage))
 }
 
 @Serializable
 @SerialName("otherwise")
 class OtherwiseConditionData : RuleConditionData() {
-    override fun toRuntimeFormat(result: GraphRepository, fromLanguage: Language): RuleCondition = OtherwiseCondition
+    override fun toRuntimeFormat(result: Graph, fromLanguage: Language): RuleCondition = OtherwiseCondition
 }
 
 @Serializable
@@ -375,7 +375,7 @@ data class GraphRepositoryData(
     val links: List<LinkData>
 )
 
-class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
+class JsonGraph(val path: Path?) : InMemoryGraph() {
     private val allLinks = mutableListOf<Link>()
 
     private var _id: String = ""
@@ -890,8 +890,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
     companion object {
         val theJson = Json { prettyPrint = true }
 
-        fun fromJson(path: Path): JsonGraphRepository {
-            val result = JsonGraphRepository(path)
+        fun fromJson(path: Path): JsonGraph {
+            val result = JsonGraph(path)
             result.loadJson {
                 val filePath = path.resolve(it)
                 if (filePath.exists()) filePath.readText() else null
@@ -899,8 +899,8 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
             return result
         }
 
-        fun fromJsonProvider(jsonProvider: (String) -> String?): JsonGraphRepository {
-            val result = JsonGraphRepository(null)
+        fun fromJsonProvider(jsonProvider: (String) -> String?): JsonGraph {
+            val result = JsonGraph(null)
             result.loadJson(jsonProvider)
             return result
         }
@@ -1027,7 +1027,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         }
 
         fun ruleBranchesFromSerializedFormat(
-            result: InMemoryGraphRepository,
+            result: InMemoryGraph,
             fromLanguage: Language,
             toLanguage: Language,
             branches: List<RuleBranchData>
@@ -1042,7 +1042,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         }
 
         private fun ruleInstructionsFromSerializedFormat(
-            result: InMemoryGraphRepository,
+            result: InMemoryGraph,
             fromLanguage: Language,
             toLanguage: Language,
             ruleInstructionData: List<RuleInstructionData>,
@@ -1052,7 +1052,7 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
         }
 
         fun ruleInstructionFromSerializedFormat(
-            result: GraphRepository,
+            result: Graph,
             fromLanguage: Language,
             toLanguage: Language,
             insnData: RuleInstructionData,
@@ -1080,15 +1080,15 @@ class JsonGraphRepository(val path: Path?) : InMemoryGraphRepository() {
                     RuleInstruction(insnData.type, insnData.args.firstOrNull() ?: "", insnData.comment)
             }
 
-        private fun ruleRef(repo: GraphRepository, ruleId: Int) =
+        private fun ruleRef(repo: Graph, ruleId: Int) =
             RuleRef { repo.ruleById(ruleId) ?: throw IllegalStateException("Broken rule ID reference $ruleId") }
     }
 }
 
 fun main() {
-    val ieRepo = JsonGraphRepository.fromJson(Path.of("data/ie"))
+    val ieRepo = JsonGraph.fromJson(Path.of("data/ie"))
     ieRepo.save()
 
-    val jrrtRepo = JsonGraphRepository.fromJson(Path.of("data/jrrt"))
+    val jrrtRepo = JsonGraph.fromJson(Path.of("data/jrrt"))
     jrrtRepo.save()
 }

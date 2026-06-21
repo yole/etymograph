@@ -12,7 +12,7 @@ import ru.yole.etymograph.web.controllers.PhonemeController
 class PhonemeControllerTest {
     private lateinit var fixture: QTestFixture
     private lateinit var phonemeController: PhonemeController
-    private lateinit var graph: GraphRepository
+    private lateinit var graph: Graph
 
     @Before
     fun setup() {

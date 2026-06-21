@@ -13,14 +13,14 @@ import java.nio.file.Path
 import kotlin.io.path.*
 
 abstract class GraphService {
-    abstract fun allGraphs(): List<GraphRepository>
-    abstract fun resolveGraph(name: String): GraphRepository
+    abstract fun allGraphs(): List<Graph>
+    abstract fun resolveGraph(name: String): Graph
     abstract fun canWrite(graphId: String, email: String): Boolean
     abstract fun getEditableGraphs(email: String): List<String>
-    abstract fun cloneGraph(repoUrl: String): GraphRepository
+    abstract fun cloneGraph(repoUrl: String): Graph
 }
 
-fun GraphService.graphByRequestPath(requestPath: String): GraphRepository? {
+fun GraphService.graphByRequestPath(requestPath: String): Graph? {
     val graphId = requestPath.removePrefix("/").substringBefore('/')
     return allGraphs().find { it.id == graphId }
 }
@@ -42,7 +42,7 @@ class InMemoryGraphService(
     )
 
     private data class RegisteredGraph(
-        val repository: GraphRepository,
+        val graph: Graph,
         val name: String,
         val path: String,
         val writers: MutableSet<String>
@@ -60,7 +60,7 @@ class InMemoryGraphService(
             if (graphPath != "") {
                 for (graphName in graphPath.split(',')) {
                     val path = Path.of(graphName)
-                    val graph = JsonGraphRepository.fromJson(path)
+                    val graph = JsonGraph.fromJson(path)
                     put(graph.id, RegisteredGraph(graph, graph.name, path.toString(), mutableSetOf()))
                 }
             }
@@ -70,7 +70,7 @@ class InMemoryGraphService(
 
             for (entry in registry.graphs) {
                 val repositoryPath = resolveGraphPath(entry.path)
-                val graph = JsonGraphRepository.fromJson(repositoryPath)
+                val graph = JsonGraph.fromJson(repositoryPath)
                 if (graph.id != entry.id) {
                     throw IllegalStateException(
                         "Graph ID mismatch for ${entry.path}: registry has ${entry.id}, graph.json has ${graph.id}"
@@ -94,13 +94,13 @@ class InMemoryGraphService(
         return if (resolvedPath.isAbsolute) resolvedPath else registryDir.resolve(resolvedPath).normalize()
     }
 
-    override fun allGraphs(): List<GraphRepository> = registeredGraphs.values.map { it.repository }
+    override fun allGraphs(): List<Graph> = registeredGraphs.values.map { it.graph }
 
-    override fun resolveGraph(name: String): GraphRepository =
-        registeredGraphs[name]?.repository ?: notFound("No graph with ID $name")
+    override fun resolveGraph(name: String): Graph =
+        registeredGraphs[name]?.graph ?: notFound("No graph with ID $name")
 
     @OptIn(ExperimentalPathApi::class)
-    override fun cloneGraph(repoUrl: String): GraphRepository {
+    override fun cloneGraph(repoUrl: String): Graph {
         val clonePath = nextClonePath(repoUrl)
         try {
             Git.cloneRepository()
@@ -109,7 +109,7 @@ class InMemoryGraphService(
                 .call()
                 .close()
 
-            val graph = JsonGraphRepository.fromJson(clonePath)
+            val graph = JsonGraph.fromJson(clonePath)
             if (registeredGraphs.containsKey(graph.id)) {
                 clonePath.deleteRecursively()
                 badRequest("Graph with ID ${graph.id} already exists")
@@ -132,7 +132,7 @@ class InMemoryGraphService(
     }
 
     override fun getEditableGraphs(email: String): List<String> {
-        return registeredGraphs.values.filter { email in it.writers }.map { it.repository.id }
+        return registeredGraphs.values.filter { email in it.writers }.map { it.graph.id }
     }
 
     fun writers(graphId: String): Set<String> {
@@ -150,7 +150,7 @@ class InMemoryGraphService(
         val registry = GraphRegistryData(
             registeredGraphs.values.map { registeredGraph ->
                 GraphRegistryEntry(
-                    registeredGraph.repository.id,
+                    registeredGraph.graph.id,
                     registeredGraph.name,
                     registeredGraph.path,
                     registeredGraph.writers.sorted()
@@ -179,32 +179,32 @@ class InMemoryGraphService(
     }
 }
 
-fun GraphRepository.resolveLanguage(lang: String): Language {
+fun Graph.resolveLanguage(lang: String): Language {
     return languageByShortName(lang)
         ?: notFound("No language with short name $lang")
 }
 
-fun GraphRepository.resolveWord(id: Int): Word {
+fun Graph.resolveWord(id: Int): Word {
     return wordById(id) ?: notFound("No word with ID $id")
 }
 
-fun GraphRepository.resolveCorpusText(id: Int?): CorpusText {
+fun Graph.resolveCorpusText(id: Int?): CorpusText {
     if (id == null) badRequest("Corpus text ID not specified")
     return corpusTextById(id) ?: notFound("No corpus text with ID $id")
 }
 
-fun GraphRepository.resolveRule(id: Int): Rule {
+fun Graph.resolveRule(id: Int): Rule {
     return ruleById(id) ?: notFound("No rule with ID $id")
 }
 
-fun GraphRepository.resolveRule(name: String): Rule {
+fun Graph.resolveRule(name: String): Rule {
     return ruleByName(name) ?: notFound("No rule with name $name")
 }
 
-fun GraphRepository.resolveEntity(id: Int): LangEntity {
+fun Graph.resolveEntity(id: Int): LangEntity {
     return langEntityById(id) ?: notFound("No word or rule with ID $id")
 }
 
-fun GraphRepository.resolveRuleSequence(id: Int): RuleSequence {
+fun Graph.resolveRuleSequence(id: Int): RuleSequence {
     return langEntityById(id) as? RuleSequence ?: notFound("No sequence with ID $id")
 }

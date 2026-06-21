@@ -2,10 +2,10 @@ package ru.yole.etymograph
 
 import org.junit.Assert.*
 import org.junit.Test
-import ru.yole.etymograph.JsonGraphRepository.Companion.ruleBranchesFromSerializedFormat
-import ru.yole.etymograph.JsonGraphRepository.Companion.ruleInstructionFromSerializedFormat
-import ru.yole.etymograph.JsonGraphRepository.Companion.ruleToSerializedFormat
-import ru.yole.etymograph.JsonGraphRepository.Companion.toSerializedFormat
+import ru.yole.etymograph.JsonGraph.Companion.ruleBranchesFromSerializedFormat
+import ru.yole.etymograph.JsonGraph.Companion.ruleInstructionFromSerializedFormat
+import ru.yole.etymograph.JsonGraph.Companion.ruleToSerializedFormat
+import ru.yole.etymograph.JsonGraph.Companion.toSerializedFormat
 
 class RuleTest : QBaseTest() {
     private val dummyRule = parseRule(q, q, "- append 'a'")
@@ -121,7 +121,7 @@ class RuleTest : QBaseTest() {
         assertEquals("e", (b.condition as LeafRuleCondition).parameter)
         assertEquals("'a'", b.instructions[0].arg)
 
-        assertEquals(branchText, b.toEditableText(repo))
+        assertEquals(branchText, b.toEditableText(graph))
     }
 
     @Test
@@ -189,7 +189,7 @@ class RuleTest : QBaseTest() {
         val logic = rule.logic as SpeRuleLogic
         val speInstruction = logic.instructions.single()
         assertEquals("l", (speInstruction.pattern.after.single() as SpeLiteralNode).text)
-        assertEquals("* d > l / #_", rule.toEditableText(repo))
+        assertEquals("* d > l / #_", rule.toEditableText(graph))
     }
 
     @Test
@@ -202,93 +202,93 @@ class RuleTest : QBaseTest() {
     @Test
     fun wordIsPOS() {
         q.pos = mutableListOf(WordCategoryValue("Noun", "N"), WordCategoryValue("Verb", "V"))
-        val rule = repo.rule("word is V and word ends with 'ōn':\n- change ending to 'ōjan'\notherwise:\n- no change", q)
-        val baseWord = repo.addWord("bugōn-", language = q, pos = "V")
+        val rule = graph.rule("word is V and word ends with 'ōn':\n- change ending to 'ōjan'\notherwise:\n- no change", q)
+        val baseWord = graph.addWord("bugōn-", language = q, pos = "V")
         assertEquals("bugōjan", rule.apply(baseWord).text)
     }
 
     @Test
     fun wordIsInheritFromVariant() {
-        val repo = InMemoryGraphRepository()
-        val oe = Language(repo, "Old English", "OE").also { repo.addLanguage(it) }
+        val graph = InMemoryGraph()
+        val oe = Language(graph, "Old English", "OE").also { graph.addLanguage(it) }
         oe.wordClasses =
             mutableListOf(WordCategory("stem class", listOf("N"), listOf(WordCategoryValue("o-stem", "o-stem"))))
-        val rule = repo.rule("word is o-stem:\n- append 'es'", oe)
-        val baseWord = repo.addWord("mann", language = oe, classes = listOf("o-stem"))
-        val variant = repo.addWord("monn", language = oe)
-        repo.addLink(variant, baseWord, Link.Variation)
+        val rule = graph.rule("word is o-stem:\n- append 'es'", oe)
+        val baseWord = graph.addWord("mann", language = oe, classes = listOf("o-stem"))
+        val variant = graph.addWord("monn", language = oe)
+        graph.addLink(variant, baseWord, Link.Variation)
         val result = rule.apply(variant)
         assertEquals("monnes", result.text)
     }
 
     @Test
     fun wordIsInheritFromVariantWithPreActions() {
-        val repo = InMemoryGraphRepository()
-        val oe = Language(repo, "Old English", "OE").also { repo.addLanguage(it) }
+        val graph = InMemoryGraph()
+        val oe = Language(graph, "Old English", "OE").also { graph.addLanguage(it) }
         oe.wordClasses = mutableListOf(
             WordCategory(
                 "stem class", listOf("N"),
                 listOf(WordCategoryValue("o-stem", "o-stem"), WordCategoryValue("strong", "strong"))
             )
         )
-        val rule = repo.rule("- mark word as strong\nword is o-stem:\n- append 'es'", oe)
-        val baseWord = repo.addWord("mann", language = oe, classes = listOf("o-stem"))
-        val variant = repo.addWord("monn", language = oe)
-        repo.addLink(variant, baseWord, Link.Variation)
+        val rule = graph.rule("- mark word as strong\nword is o-stem:\n- append 'es'", oe)
+        val baseWord = graph.addWord("mann", language = oe, classes = listOf("o-stem"))
+        val variant = graph.addWord("monn", language = oe)
+        graph.addLink(variant, baseWord, Link.Variation)
         val result = rule.apply(variant)
         assertEquals("monnes", result.text)
     }
 
     @Test
     fun wordIsInheritFromVariantWithApplyRule() {
-        val repo = InMemoryGraphRepository()
-        val oe = Language(repo, "Old English", "OE").also { repo.addLanguage(it) }
+        val graph = InMemoryGraph()
+        val oe = Language(graph, "Old English", "OE").also { graph.addLanguage(it) }
         oe.wordClasses = mutableListOf(
             WordCategory(
                 "stem class", listOf("N"),
                 listOf(WordCategoryValue("o-stem", "o-stem"), WordCategoryValue("strong", "strong"))
             )
         )
-        repo.rule("- mark word as strong", oe, name = "oe-stem-class")
-        val rule = repo.rule("- apply rule 'oe-stem-class'\nword is o-stem:\n- append 'es'", oe)
-        val baseWord = repo.addWord("mann", language = oe, classes = listOf("o-stem"))
-        val variant = repo.addWord("monn", language = oe)
-        repo.addLink(variant, baseWord, Link.Variation)
+        graph.rule("- mark word as strong", oe, name = "oe-stem-class")
+        val rule = graph.rule("- apply rule 'oe-stem-class'\nword is o-stem:\n- append 'es'", oe)
+        val baseWord = graph.addWord("mann", language = oe, classes = listOf("o-stem"))
+        val variant = graph.addWord("monn", language = oe)
+        graph.addLink(variant, baseWord, Link.Variation)
         val result = rule.apply(variant)
         assertEquals("monnes", result.text)
     }
 
     @Test
     fun wordIsInheritFromCompound() {
-        val repo = InMemoryGraphRepository()
-        val oe = Language(repo, "Old English", "OE").also { repo.addLanguage(it) }
+        val graph = InMemoryGraph()
+        val oe = Language(graph, "Old English", "OE").also { graph.addLanguage(it) }
         oe.wordClasses = mutableListOf(
             WordCategory(
                 "stem class", listOf("N"),
                 listOf(WordCategoryValue("o-stem", "o-stem"), WordCategoryValue("strong", "strong"))
             )
         )
-        val rule = repo.rule("- mark word as strong\nword is o-stem:\n- append 'es'", oe)
-        val baseWord = repo.addWord("mann", language = oe, classes = listOf("o-stem"))
-        val prefix = repo.addWord("sæ", language = oe)
-        val compoundWord = repo.addWord("sæmann", language = oe)
-        repo.createCompound(compoundWord, listOf(prefix, baseWord), headIndex = 1)
+        val rule = graph.rule("- mark word as strong\nword is o-stem:\n- append 'es'", oe)
+        val baseWord = graph.addWord("mann", language = oe, classes = listOf("o-stem"))
+        val prefix = graph.addWord("sæ", language = oe)
+        val compoundWord = graph.addWord("sæmann", language = oe)
+        graph.createCompound(compoundWord, listOf(prefix, baseWord), headIndex = 1)
         val result = rule.apply(compoundWord)
         assertEquals("sæmannes", result.text)
     }
 
     @Test
     fun applyRuleToCompound() {
-        val repo = InMemoryGraphRepository()
-        val on = Language(repo, "Old Norse", "ON").also { repo.addLanguage(it) }
-        val rule = repo.rule("word ends with 'r':\n- change ending to 'ar'", name = "on-nom-pl")
-        val madr = repo.addWord("maðr", language = on, gloss = "man")
-        val menn = repo.addWord("menn", language = on)
-        repo.addLink(menn, madr, Link.Derived, listOf(rule))
+        val graph = InMemoryGraph()
+        val on = Language(graph, "Old Norse", "ON").also { graph.addLanguage(it) }
+        val rule = graph.rule("word ends with 'r':\n- change ending to 'ar'", name = "on-nom-pl")
+        val madr = graph.addWord("maðr", language = on, gloss = "man")
+        val menn = graph.addWord("menn", language = on)
+        graph.addLink(menn, madr, Link.Derived, listOf(rule))
 
-        val far = repo.addWord("go",  language = on, gloss = "go")
-        val farmadr = repo.addWord("farmaðr", language = on)
-        repo.createCompound(farmadr, listOf(far, madr), headIndex = 1)
+        val far = graph.addWord("go",  language = on, gloss = "go")
+        val farmadr = graph.addWord("farmaðr", language = on)
+        graph.createCompound(farmadr, listOf(far, madr), headIndex = 1)
 
         val result = rule.apply(farmadr)
         assertEquals("farmenn", result.text)
@@ -305,11 +305,11 @@ class RuleTest : QBaseTest() {
             
              = append 'e'
         """.trimIndent()
-        val rule = repo.rule(text, q)
+        val rule = graph.rule(text, q)
         assertEquals(1, (rule.logic as MorphoRuleLogic).postInstructions.size)
         assertEquals("laureae", applyRule(rule, q.word("laure")))
         assertEquals("lomire", applyRule(rule, q.word("lomi")))
-        assertEquals(text, rule.toEditableText(repo))
+        assertEquals(text, rule.toEditableText(graph))
     }
 
     @Test
@@ -353,7 +353,7 @@ class RuleTest : QBaseTest() {
         assertEquals("áire", applySoundRule.apply(q.word("aire")).text)
         assertEquals(
             "apply sound rule 'q-lengthen-sound' to first sound",
-            applySoundRule.firstInstruction.toEditableText(repo)
+            applySoundRule.firstInstruction.toEditableText(graph)
         )
     }
 
@@ -398,7 +398,7 @@ class RuleTest : QBaseTest() {
     fun soundRuleToEditableText() {
         val soundRule = parseRule(q, q, "* a > á", name = "q")
         val applySoundRuleInstruction = ApplySoundRuleInstruction(q, RuleRef.to(soundRule), "first vowel", null)
-        assertEquals("apply sound rule 'q' to first vowel", applySoundRuleInstruction.toEditableText(repo))
+        assertEquals("apply sound rule 'q' to first vowel", applySoundRuleInstruction.toEditableText(graph))
     }
 
     @Test
@@ -511,7 +511,7 @@ class RuleTest : QBaseTest() {
         val word = rule.apply(q.word("lasse"))
         assertEquals(1, word.stressedPhonemeIndex)
         assertEquals(AccentType.Acute, word.accentType)
-        assertEquals("accent is acute on first syllable", rule.firstInstruction.toEditableText(repo))
+        assertEquals("accent is acute on first syllable", rule.firstInstruction.toEditableText(graph))
     }
 
     @Test
@@ -524,7 +524,7 @@ class RuleTest : QBaseTest() {
         )
 
         val serializedRule = rule.ruleToSerializedFormat()
-        val branches = ruleBranchesFromSerializedFormat(repo, q, q, serializedRule.branches)
+        val branches = ruleBranchesFromSerializedFormat(graph, q, q, serializedRule.branches)
         val instruction =  branches[0].instructions[0] as ApplyStressInstruction
         assertEquals(AccentType.Acute, instruction.accentType)
     }
@@ -550,13 +550,13 @@ class RuleTest : QBaseTest() {
             |word ends with 'r':
             | - append 'i'
         """.trimMargin("|")
-        val rule = repo.rule(ruleText, q)
+        val rule = graph.rule(ruleText, q)
         assertEquals(1, (rule.logic as MorphoRuleLogic).preInstructions.size)
 
         val word = rule.apply(q.word("sur"))
         assertEquals("asuri", word.text)
 
-        assertEquals(ruleText, rule.toEditableText(repo))
+        assertEquals(ruleText, rule.toEditableText(graph))
     }
 
     @Test
@@ -565,9 +565,9 @@ class RuleTest : QBaseTest() {
         val instruction = rule.firstInstruction
         assertEquals("utul", instruction.apply(q.word("tul"), dummyContext).text)
         val data = instruction.toSerializedFormat()
-        val deserialized = ruleInstructionFromSerializedFormat(repo, q, q, data)
+        val deserialized = ruleInstructionFromSerializedFormat(graph, q, q, data)
         assertEquals("utul", deserialized.apply(q.word("tul"), dummyContext).text)
-        assertEquals("prepend first vowel", instruction.toEditableText(repo))
+        assertEquals("prepend first vowel", instruction.toEditableText(graph))
     }
 
     @Test
@@ -575,8 +575,8 @@ class RuleTest : QBaseTest() {
         val rule = parseRule(q, q, "word ends with 'ea':\n- change ending to ''")
         val result = rule.apply(q.word("yaimea"))
         assertEquals("yaim", result.text)
-        assertEquals("change ending to ''", rule.firstInstruction.toEditableText(repo))
-        assertEquals("", (rule.logic as MorphoRuleLogic).branches[0].toSummaryText(repo))
+        assertEquals("change ending to ''", rule.firstInstruction.toEditableText(graph))
+        assertEquals("", (rule.logic as MorphoRuleLogic).branches[0].toSummaryText(graph))
     }
 
     @Test
@@ -591,7 +591,7 @@ class RuleTest : QBaseTest() {
         val rule = parseRule(q, q, "word ends with 'r':\n- mark word as strong")
         val result = rule.apply(q.word("anar"))
         assertEquals("strong", result.classes.single())
-        assertEquals("mark word as strong", rule.firstInstruction.toEditableText(repo))
+        assertEquals("mark word as strong", rule.firstInstruction.toEditableText(graph))
     }
 
     @Test
@@ -608,7 +608,7 @@ class RuleTest : QBaseTest() {
     fun insert() {
         val rule = parseRule(q, q, "- insert 'i' before last consonant")
         assertEquals("adain", rule.apply(q.word("adan")).text)
-        assertEquals("insert 'i' before last consonant", rule.firstInstruction.toEditableText(repo))
+        assertEquals("insert 'i' before last consonant", rule.firstInstruction.toEditableText(graph))
     }
 
     @Test
@@ -637,9 +637,9 @@ class RuleTest : QBaseTest() {
          """.trimIndent()
         )
 
-        val mbar = repo.addWord("mbar", language = ce)
-        val bar = repo.addWord("bar")
-        repo.addLink(bar, mbar, Link.Origin)
+        val mbar = graph.addWord("mbar", language = ce)
+        val bar = graph.addWord("bar")
+        graph.addLink(bar, mbar, Link.Origin)
 
         assertEquals("mbar", rule.apply(bar).text)
         assertEquals("first sound of base word in CE is 'm'", rule.firstCondition.toEditableText())
@@ -654,9 +654,9 @@ class RuleTest : QBaseTest() {
          """.trimIndent()
         )
 
-        val talam = repo.addWord("talam", language = ce)
-        val talan = repo.addWord("talan")
-        repo.addLink(talan, talam, Link.Origin)
+        val talam = graph.addWord("talam", language = ce)
+        val talan = graph.addWord("talan")
+        graph.addLink(talan, talam, Link.Origin)
 
         assertEquals("talam", rule.apply(talan).text)
         assertEquals("base word in CE ends with 'm'", rule.firstCondition.toEditableText())
@@ -664,34 +664,34 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun prependMorpheme() {
-        val oe = Language(repo, "Old English", "OE")
-        repo.addLanguage(oe)
-        val gePrefix = repo.addWord("ge-", "Prefix: ge", language = oe)
-        val rule = repo.rule("- prepend morpheme 'ge-: Prefix: ge'", fromLanguage = oe)
-        val frignan = repo.addWord("frignan", language = oe)
+        val oe = Language(graph, "Old English", "OE")
+        graph.addLanguage(oe)
+        val gePrefix = graph.addWord("ge-", "Prefix: ge", language = oe)
+        val rule = graph.rule("- prepend morpheme 'ge-: Prefix: ge'", fromLanguage = oe)
+        val frignan = graph.addWord("frignan", language = oe)
         val result = rule.apply(frignan)
         assertEquals("gefrignan", result.text)
         assertEquals(2, result.segments!!.size)
         assertEquals(2, result.segments!![0].length)
         assertEquals(7, result.segments!![1].length)
 
-        assertEquals("prepend morpheme 'ge-: Prefix: ge'", rule.firstInstruction.toEditableText(repo))
-        assertEquals("ge-", rule.firstInstruction.toSummaryText(repo))
+        assertEquals("prepend morpheme 'ge-: Prefix: ge'", rule.firstInstruction.toEditableText(graph))
+        assertEquals("ge-", rule.firstInstruction.toSummaryText(graph))
 
         val instruction = rule.firstInstruction
         val data = instruction.toSerializedFormat()
-        val deserialized = ruleInstructionFromSerializedFormat(repo, oe, oe, data)
+        val deserialized = ruleInstructionFromSerializedFormat(graph, oe, oe, data)
         assertTrue(deserialized is MorphemeInstruction)
         assertEquals(gePrefix.id, (deserialized as MorphemeInstruction).morphemeId)
     }
 
     @Test
     fun appendMorpheme() {
-        val on = Language(repo, "Old Norse", "ON")
-        repo.addLanguage(on)
-        val inn = repo.addWord("inn", "the", language = on)
-        val rule = repo.rule("- append morpheme 'inn: the'", fromLanguage = on)
-        val hestr = repo.addWord("hestr", language = on)
+        val on = Language(graph, "Old Norse", "ON")
+        graph.addLanguage(on)
+        val inn = graph.addWord("inn", "the", language = on)
+        val rule = graph.rule("- append morpheme 'inn: the'", fromLanguage = on)
+        val hestr = graph.addWord("hestr", language = on)
         val result = rule.apply(hestr)
         assertEquals("hestrinn", result.text)
         assertEquals(1, result.segments!!.size)
@@ -701,14 +701,14 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun morphemeChainSegments() {
-        val repo = InMemoryGraphRepository()
-        val on = Language(repo, "Old Norse", "ON")
-        repo.addLanguage(on)
-        val inn = repo.addWord("inn", "the", language = on)
-        val gePrefix = repo.addWord("ge-", "Prefix: ge", language = on)
-        val rule = repo.rule("- append morpheme 'inn: the'", fromLanguage = on)
-        val rule2 = repo.rule("- prepend morpheme 'ge-: Prefix: ge'", fromLanguage = on)
-        val hestr = repo.addWord("hestr", language = on)
+        val graph = InMemoryGraph()
+        val on = Language(graph, "Old Norse", "ON")
+        graph.addLanguage(on)
+        val inn = graph.addWord("inn", "the", language = on)
+        val gePrefix = graph.addWord("ge-", "Prefix: ge", language = on)
+        val rule = graph.rule("- append morpheme 'inn: the'", fromLanguage = on)
+        val rule2 = graph.rule("- prepend morpheme 'ge-: Prefix: ge'", fromLanguage = on)
+        val hestr = graph.addWord("hestr", language = on)
         val result = rule2.apply(rule.apply(hestr))
         assertEquals("gehestrinn", result.text)
         val segments = result.segments!!
@@ -720,29 +720,29 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun changeEndingToMorpheme() {
-        val repo = InMemoryGraphRepository()
-        val pie = Language(repo, "Proto-Indo-European", "PIE")
-        repo.addLanguage(pie)
-        repo.addWord("o", "1sg thematic ending", language = pie)
+        val graph = InMemoryGraph()
+        val pie = Language(graph, "Proto-Indo-European", "PIE")
+        graph.addLanguage(pie)
+        graph.addWord("o", "1sg thematic ending", language = pie)
         val text = "word ends with 'e':\n - change ending to morpheme 'o: 1sg thematic ending'"
-        val rule = repo.rule(text, fromLanguage = pie)
-        val lukeie = repo.addWord("lukeie", language = pie)
+        val rule = graph.rule(text, fromLanguage = pie)
+        val lukeie = graph.addWord("lukeie", language = pie)
         val result = rule.apply(lukeie)
         assertEquals("lukeio", result.text)
-        assertEquals(text, rule.toEditableText(repo))
+        assertEquals(text, rule.toEditableText(graph))
     }
 
     @Test
     fun applyRuleUseExistingLink() {
-        val repo = InMemoryGraphRepository()
-        val on = Language(repo, "Old Norse", "ON")
+        val graph = InMemoryGraph()
+        val on = Language(graph, "Old Norse", "ON")
         on.wordClasses = mutableListOf(WordCategory("Gender", listOf("N"), listOf(WordCategoryValue("Neuter", "n"))))
-        repo.addLanguage(on)
-        val haust = repo.addWord("haust", "autumn", classes = listOf("n"), language = on)
-        val accRule = repo.rule("- no change", fromLanguage = on, name = "on-acc", addedCategories = ".ACC")
-        val haustAcc = repo.addWord("haust", "autumn.ACC", language = on)
-        repo.addLink(haustAcc, haust, Link.Derived, listOf(accRule))
-        val defRule = repo.rule("- apply rule 'on-acc'\nword is n:\n- append 'it'", fromLanguage = on)
+        graph.addLanguage(on)
+        val haust = graph.addWord("haust", "autumn", classes = listOf("n"), language = on)
+        val accRule = graph.rule("- no change", fromLanguage = on, name = "on-acc", addedCategories = ".ACC")
+        val haustAcc = graph.addWord("haust", "autumn.ACC", language = on)
+        graph.addLink(haustAcc, haust, Link.Derived, listOf(accRule))
+        val defRule = graph.rule("- apply rule 'on-acc'\nword is n:\n- append 'it'", fromLanguage = on)
         val result = defRule.apply(haust)
         assertEquals("haustit", result.text)
     }
@@ -759,14 +759,14 @@ class RuleTest : QBaseTest() {
     fun speRuleComment() {
         val ruleText = "$ SPE rule\n* d > l / #_"
         val rule = parseRule(q, q, ruleText)
-        assertEquals(ruleText, rule.toEditableText(repo))
+        assertEquals(ruleText, rule.toEditableText(graph))
     }
 
     @Test
     fun speRuleInstructionComment() {
         val ruleText = "$ SPE rule\n* d > l / #_\n$ second instruction comment\n* a > i"
         val rule = parseRule(q, q, ruleText)
-        assertEquals(ruleText, rule.toEditableText(repo))
+        assertEquals(ruleText, rule.toEditableText(graph))
     }
 
     @Test
@@ -808,16 +808,16 @@ class RuleTest : QBaseTest() {
         assertNotNull(instruction.condition)
         assertEquals("mi", rule.apply(q.word("ma")).text)
         assertEquals("ama", rule.apply(q.word("ama")).text)
-        assertEquals(text, rule.toEditableText(repo))
-        assertEquals(text.removePrefix("* "), instruction.toRichText(repo).toString())
+        assertEquals(text, rule.toEditableText(graph))
+        assertEquals(text.removePrefix("* "), instruction.toRichText(graph).toString())
     }
 
     @Test
     fun previewChangesSpeRule() {
-        val rule = repo.addRule("q-initial-d", q, q, Rule.parseLogic("* d > l / #_", q.parseContext()))
-        val changedWord = repo.addWord("danta")
-        repo.addWord("anta")
-        repo.addWord("anda")
+        val rule = graph.addRule("q-initial-d", q, q, Rule.parseLogic("* d > l / #_", q.parseContext()))
+        val changedWord = graph.addWord("danta")
+        graph.addWord("anta")
+        graph.addWord("anda")
 
         val results = rule.previewChanges("* d > r / #_")
 
@@ -829,43 +829,43 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun speApplySoundRule() {
-        val speRule = repo.rule("* e > i", name = "q-e-i")
-        val baseRule = repo.rule("word ends with 'a':\n- apply sound rule 'q-e-i' to second vowel\notherwise:\n- no change")
+        val speRule = graph.rule("* e > i", name = "q-e-i")
+        val baseRule = graph.rule("word ends with 'a':\n- apply sound rule 'q-e-i' to second vowel\notherwise:\n- no change")
         assertEquals("elina", baseRule.apply(q.word("elena")).text)
     }
 
     @Test
     fun speApplySoundRulePostInstruction() {
-        val postRule = repo.rule("* e > i", name = "q-e-i")
-        val baseRule = repo.rule("* a > 0\n= apply sound rule 'q-e-i' to previous vowel")
+        val postRule = graph.rule("* e > i", name = "q-e-i")
+        val baseRule = graph.rule("* a > 0\n= apply sound rule 'q-e-i' to previous vowel")
         assertEquals("elin", baseRule.apply(q.word("elena")).text)
     }
 
     @Test
     fun speRuleMultipleInstructions() {
-        val rule = repo.rule("* ei > e\n* eu > o")
+        val rule = graph.rule("* ei > e\n* eu > o")
         assertEquals("deuo", rule.apply(q.word("deiuo")).text)
     }
 
     @Test
     fun speRuleMultipleInstructionsApplyBoth() {
-        val rule = repo.rule("* eh₂ > ā\n*ē > ā")
+        val rule = graph.rule("* eh₂ > ā\n*ē > ā")
         assertEquals("mātār", rule.apply(q.word("meh₂tēr")).text)
     }
 
     @Test
     fun speRuleMultipleInstructionsOverlap() {
-        val rule = repo.rule("* eh₂ > ā\n*e > a")
+        val rule = graph.rule("* eh₂ > ā\n*e > a")
         assertEquals("mātēr", rule.apply(q.word("meh₂tēr")).text)
     }
 
     @Test
     fun multilanguagePhonemes() {
         q.phonemes += phoneme("kʰ", "aspirated consonant")
-        val rule = repo.rule("* kh > kʰ", fromLanguage = ce, toLanguage = q)
+        val rule = graph.rule("* kh > kʰ", fromLanguage = ce, toLanguage = q)
         val word1 = rule.apply(q.word("khith"))
         assertEquals("kʰith", word1.text)
-        val rule2 = repo.rule("* i > e / C_C", fromLanguage = ce, toLanguage = q)
+        val rule2 = graph.rule("* i > e / C_C", fromLanguage = ce, toLanguage = q)
         assertEquals("kʰeth", rule2.apply(word1).text)
     }
 
@@ -875,7 +875,7 @@ class RuleTest : QBaseTest() {
         val rule = parseRule(ce, q, text)
         assertEquals("mi", rule.apply(q.word("ma")).text)
         assertEquals("ca", rule.apply(q.word("ca")).text)
-        assertEquals(text, rule.toEditableText(repo))
+        assertEquals(text, rule.toEditableText(graph))
     }
 
     @Test
@@ -931,14 +931,14 @@ class RuleTest : QBaseTest() {
     @Test
     fun applyRuleToSyllable() {
         val soundRule = parseRule(q, q, "* u > ú", "q-long")
-        val repo = InMemoryGraphRepository()
-        repo.addRule(soundRule)
+        val graph = InMemoryGraph()
+        graph.addRule(soundRule)
 
         val text = "apply sound rule 'q-long' to first syllable"
-        val instruction = RuleInstruction.parse("- $text", q.parseContext(repo))
+        val instruction = RuleInstruction.parse("- $text", q.parseContext(graph))
         val context = RuleApplyContext(soundRule, null)
         assertEquals("túl", instruction.apply(q.word("tul"), context).text)
-        assertEquals(text, instruction.toEditableText(repo))
+        assertEquals(text, instruction.toEditableText(graph))
     }
 
     @Test
@@ -946,14 +946,14 @@ class RuleTest : QBaseTest() {
         val soundRule = parseRule(q, q, "* u > ú", "q-long")
         val stressRule = parseRule(q, q, "- stress is on last syllable")
         q.stressRule = RuleRef.to(stressRule)
-        val repo = InMemoryGraphRepository()
-        repo.addRule(soundRule)
+        val graph = InMemoryGraph()
+        graph.addRule(soundRule)
 
         val text = "apply sound rule 'q-long' to first stressed syllable"
-        val instruction = RuleInstruction.parse("- $text", q.parseContext(repo))
+        val instruction = RuleInstruction.parse("- $text", q.parseContext(graph))
         val context = RuleApplyContext(soundRule, null)
         assertEquals("tulún", instruction.apply(q.word("tulun"), context).text)
-        assertEquals(text, instruction.toEditableText(repo))
+        assertEquals(text, instruction.toEditableText(graph))
     }
 
     @Test
@@ -997,11 +997,11 @@ class RuleTest : QBaseTest() {
      */
 }
 
-fun Language.parseContext(repo: GraphRepository? = null, vararg rules: Rule): RuleParseContext =
+fun Language.parseContext(repo: Graph? = null, vararg rules: Rule): RuleParseContext =
     createParseContext(this, this, repo, *rules)
 
 fun parseRule(
-    fromLanguage: Language, toLanguage: Language, text: String, name: String = "q", repo: GraphRepository? = null,
+    fromLanguage: Language, toLanguage: Language, text: String, name: String = "q", repo: Graph? = null,
     addedCategories: String? = null, fromPOS: List<String> = emptyList(), toPOS: String? = null,
     context: RuleParseContext? = null
 ): Rule = Rule(

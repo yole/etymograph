@@ -7,48 +7,48 @@ class LemmatizedWord(val form: String, val tokens: List<LemmatizedToken>)
 class LemmatizedText(val text: String, val words: List<LemmatizedWord>)
 
 fun importLemmatizedText(language: Language, dictionary: Dictionary, title: String, text: LemmatizedText): CorpusText {
-    val repo = language.graph
+    val graph = language.graph
     var relativeIndex = 0
-    val corpusText = repo.corpusTextsInLanguage(language).find { it.title == title }
+    val corpusText = graph.corpusTextsInLanguage(language).find { it.title == title }
         ?.also { corpusText ->
             relativeIndex = corpusText.wordCount()
             corpusText.text += "\n${text.text}"
         }
-        ?: repo.addCorpusText(text.text, title, language)
+        ?: graph.addCorpusText(text.text, title, language)
     for ((index, word) in text.words.withIndex()) {
         val token = word.tokens.singleOrNull() ?: continue
-        var lemmaWords = repo.wordsByTextFuzzy(language, token.lemma)
+        var lemmaWords = graph.wordsByTextFuzzy(language, token.lemma)
             .filter {
-                repo.getLinksFrom(it).none { link -> link.type == Link.Variation } &&
+                graph.getLinksFrom(it).none { link -> link.type == Link.Variation } &&
                 it.grammaticalCategorySuffix() == null
             }
         if (lemmaWords.isEmpty()) {
             if (token.pos == "proper noun") {
-                val baseWord = repo.findOrAddWord(token.lemma, language, null, pos = "NP")
+                val baseWord = graph.findOrAddWord(token.lemma, language, null, pos = "NP")
                 lemmaWords = listOf(baseWord)
             }
             else {
-                val dictionaryWords = dictionary.lookup(repo, language, token.lemma)
+                val dictionaryWords = dictionary.lookup(graph, language, token.lemma)
                 lemmaWords = dictionaryWords.result.map {
-                    findOrCreateWordFromDictionary(repo, it)
+                    findOrCreateWordFromDictionary(graph, it)
                 }
             }
         }
 
         if (lemmaWords.size > 1) {
             for (lemmaWord in lemmaWords) {
-                createWordForForm(lemmaWord, repo, token)
+                createWordForForm(lemmaWord, graph, token)
             }
         }
         else if (lemmaWords.size == 1) {
-            val formWord = createWordForForm(lemmaWords.single(), repo, token)
+            val formWord = createWordForForm(lemmaWords.single(), graph, token)
             corpusText.associateWord(index + relativeIndex, formWord)
         }
     }
     return corpusText
 }
 
-private fun createWordForForm(lemmaWord: Word, repo: GraphRepository, word: LemmatizedToken): Word {
+private fun createWordForForm(lemmaWord: Word, repo: Graph, word: LemmatizedToken): Word {
     val categories = mapCategoryValues(lemmaWord, word.categories)
     if (categories.isEmpty() || categories.all { isDefaultCategoryValue(lemmaWord.language, it) }) {
         return lemmaWord
