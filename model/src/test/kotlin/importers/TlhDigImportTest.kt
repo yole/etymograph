@@ -41,8 +41,16 @@ class TlhDigImportTest {
         val corpusText = repo.allCorpusTexts().first()
         assertEquals("_BE-EL-TI4-NI", corpusText.text.trim())
         val word = findWord("_BE-EL-TI4-NI", true)
+
+        val ni = findWord("_NI", syllabographic = true)
+        assertEquals("PPRO.1PL.GEN", ni.gloss)
+
+        val compound = repo.findCompoundsByCompoundWord(word).first()
+        val headWord = compound.components[0]
+        assertEquals("_BE-EL-TI4", headWord.text)
+
         assertNull(repo.getLinksFrom(word).singleOrNull { it.type == Link.Transcription })
-        assertTrue(word.lemma.syllabographic)
+        assertTrue(headWord.lemma.syllabographic)
     }
 
     @Test

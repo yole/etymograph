@@ -6,7 +6,9 @@ import org.jdom2.input.SAXBuilder
 import ru.yole.etymograph.CorpusText
 import ru.yole.etymograph.GraphRepository
 import ru.yole.etymograph.JsonGraphRepository
+import ru.yole.etymograph.Language
 import ru.yole.etymograph.Link
+import ru.yole.etymograph.Word
 import ru.yole.etymograph.removePunctuation
 import java.io.File
 import java.nio.file.Path
@@ -76,7 +78,7 @@ fun importTLHDig(ieRepo: GraphRepository, title: String, children: List<Element>
         corpusText.associateWord(index, sylWord)
 
         if (trans == null) continue
-        val transWord = if (trans.none { it.isUpperCase() }) {
+        var transWord = if (trans.none { it.isUpperCase() }) {
             ieRepo.addWord(trans, hittite, gloss = null).also {
                 ieRepo.addLink(sylWord, it, Link.Transcription)
             }
@@ -98,6 +100,18 @@ fun importTLHDig(ieRepo: GraphRepository, title: String, children: List<Element>
             .convertSubscripts()
 
         val gloss = mrpElements[1]
+        val analysis = mrpElements[2]
+        val selectedAnalysis = if (analysis.startsWith('{')) {
+            findSelectedAnalysis(analysis, mrpSel.drop(1))
+        }
+        else {
+            analysis
+        }
+
+        if (lemma.any { it.isUpperCase() } && '_' in selectedAnalysis) {
+            transWord = createAkkadianCompound(sylWord, selectedAnalysis, hittite, ieRepo, transWord)
+        }
+
         val paradigm = mrpElements.getOrNull(3)?.trim()
         if (cleanLemma == trans) {
             if (transWord.gloss == null) {
@@ -114,8 +128,41 @@ fun importTLHDig(ieRepo: GraphRepository, title: String, children: List<Element>
             ieRepo.addLink(transWord, lemmaWord, Link.Derived)
         }
     }
-
 }
+
+private fun createAkkadianCompound(
+    sylWord: Word,
+    selectedAnalysis: String,
+    hittite: Language,
+    ieRepo: GraphRepository,
+    transWord: Word
+): Word {
+    var tail = sylWord.text
+    val elements = selectedAnalysis.split('_')
+    val compoundElements = mutableListOf<Word>()
+    for (i in elements.size - 1 downTo 1) {
+        if ('-' !in tail) break
+        val cliticAnalysis = elements[i]
+        val cliticText = '_' + tail.substringAfterLast('-')
+        tail = tail.substringBeforeLast('-')
+
+        val clitic = findOrAddWordByTextOnly(hittite, cliticText, cliticAnalysis)
+        compoundElements.add(0, clitic)
+    }
+
+    val headWord = findOrAddWordByTextOnly(hittite, tail, null)
+    compoundElements.add(0, headWord)
+
+    ieRepo.createCompound(transWord, compoundElements)
+    return headWord
+}
+
+private fun findOrAddWordByTextOnly(
+    language: Language,
+    text: String,
+    gloss: String?
+): Word = (language.graph.wordsByText(language, text, true).firstOrNull()
+    ?: language.graph.addWord(text, language, gloss, syllabographic = true))
 
 private fun collectWordText(element: Element): String {
     return buildString {
@@ -138,6 +185,18 @@ private fun collectWordText(element: Element): String {
             }
         }
     }
+}
+
+private fun findSelectedAnalysis(mrp: String, key: String): String {
+    if (key.isEmpty()) return ""
+    val options = mrp.split('}').filter { it.isNotEmpty() }
+    for (option in options) {
+        val (optionKey, optionValue) = option.removePrefix("{").trim().split("→")
+        if (optionKey.trim() == key) {
+            return optionValue.trim()
+        }
+    }
+    return ""
 }
 
 const val subscriptZero = '₀'
