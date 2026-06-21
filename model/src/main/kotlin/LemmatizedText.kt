@@ -37,25 +37,26 @@ fun importLemmatizedText(language: Language, dictionary: Dictionary, title: Stri
 
         if (lemmaWords.size > 1) {
             for (lemmaWord in lemmaWords) {
-                createWordForForm(lemmaWord, graph, token)
+                createWordForForm(lemmaWord, token.form, token.categories)
             }
         }
         else if (lemmaWords.size == 1) {
-            val formWord = createWordForForm(lemmaWords.single(), graph, token)
+            val formWord = createWordForForm(lemmaWords.single(), token.form, token.categories)
             corpusText.associateWord(index + relativeIndex, formWord)
         }
     }
     return corpusText
 }
 
-private fun createWordForForm(lemmaWord: Word, graph: Graph, word: LemmatizedToken): Word {
-    val categories = mapCategoryValues(lemmaWord, word.categories)
+fun createWordForForm(lemmaWord: Word, form: String, categories: List<String>): Word {
+    val graph = lemmaWord.graph
+    val categories = mapCategoryValues(lemmaWord, categories)
     if (categories.isEmpty() || categories.all { isDefaultCategoryValue(lemmaWord.language, it) }) {
         return lemmaWord
     }
-    val rule = findMatchingRule(lemmaWord, categories)
+    val rule = findMatchingRule(lemmaWord.language, categories)
 
-    println("INT: ${lemmaWord.text} '${lemmaWord.gloss}', form ${word.form}, morphology ${word.categories}, rule: ${rule?.name ?: "none found"}")
+    println("INT: ${lemmaWord.text} '${lemmaWord.gloss}', form ${form}, morphology ${categories}, rule: ${rule?.name ?: "none found"}")
 
     val glossWithCategories = (lemmaWord.gloss ?: "?") + categories.joinToString("") { ".$it" }
     if (rule != null) {
@@ -67,7 +68,7 @@ private fun createWordForForm(lemmaWord: Word, graph: Graph, word: LemmatizedTok
         }
     }
 
-    val newWord = graph.findOrAddWord(word.form, lemmaWord.language, glossWithCategories)
+    val newWord = graph.findOrAddWord(form, lemmaWord.language, glossWithCategories)
     if (rule != null) {
         graph.addLink(newWord, lemmaWord, Link.Derived, listOf(rule))
         newWord.gloss = null
@@ -76,8 +77,8 @@ private fun createWordForForm(lemmaWord: Word, graph: Graph, word: LemmatizedTok
     return newWord
 }
 
-fun findMatchingRule(word: Word, categories: Set<String>): Rule? {
-    return word.graph.allRules().find { it.fromLanguage == word.language && it.addsCategories(categories) }
+fun findMatchingRule(language: Language, categories: Set<String>): Rule? {
+    return language.graph.allRules().find { it.fromLanguage == language && it.addsCategories(categories) }
 }
 
 private fun mapCategoryValues(word: Word, categories: List<String>): Set<String> {
@@ -94,7 +95,7 @@ private fun mapCategoryValues(word: Word, categories: List<String>): Set<String>
     return addedCategories
 }
 
-fun Rule.addsCategories(categories: Set<String>): Boolean {
+private fun Rule.addsCategories(categories: Set<String>): Boolean {
     val ruleCategories = addedCategories ?: return false
     val parsedRuleCategories = parseCategoryValues(fromLanguage, ruleCategories).toMutableList()
     for (category in categories) {

@@ -159,7 +159,7 @@ fun augmentWord(word: Word, dictionaryWord: DictionaryWord) {
             val relatedWord = findOrCreateWordFromDictionary(word.graph, relatedDictionaryWord.relatedWord)
             var rules = emptyList<Rule>()
             if (relatedDictionaryWord.linkDetails.isNotEmpty() && relatedDictionaryWord.linkType == Link.Derived) {
-                val rule = findMatchingRule(word, relatedDictionaryWord.linkDetails.toSet())
+                val rule = findMatchingRule(word.language, relatedDictionaryWord.linkDetails.toSet())
                 if (rule != null) {
                     rules = listOf(rule)
                 }
