@@ -210,7 +210,7 @@ class RuleTest : QBaseTest() {
     @Test
     fun wordIsInheritFromVariant() {
         val graph = InMemoryGraph()
-        val oe = Language(graph, "Old English", "OE").also { graph.addLanguage(it) }
+        val oe = graph.addLanguage( "Old English", "OE")
         oe.wordClasses =
             mutableListOf(WordCategory("stem class", listOf("N"), listOf(WordCategoryValue("o-stem", "o-stem"))))
         val rule = graph.rule("word is o-stem:\n- append 'es'", oe)
@@ -224,7 +224,7 @@ class RuleTest : QBaseTest() {
     @Test
     fun wordIsInheritFromVariantWithPreActions() {
         val graph = InMemoryGraph()
-        val oe = Language(graph, "Old English", "OE").also { graph.addLanguage(it) }
+        val oe = graph.addLanguage("Old English", "OE")
         oe.wordClasses = mutableListOf(
             WordCategory(
                 "stem class", listOf("N"),
@@ -242,7 +242,7 @@ class RuleTest : QBaseTest() {
     @Test
     fun wordIsInheritFromVariantWithApplyRule() {
         val graph = InMemoryGraph()
-        val oe = Language(graph, "Old English", "OE").also { graph.addLanguage(it) }
+        val oe = graph.addLanguage("Old English", "OE")
         oe.wordClasses = mutableListOf(
             WordCategory(
                 "stem class", listOf("N"),
@@ -261,7 +261,7 @@ class RuleTest : QBaseTest() {
     @Test
     fun wordIsInheritFromCompound() {
         val graph = InMemoryGraph()
-        val oe = Language(graph, "Old English", "OE").also { graph.addLanguage(it) }
+        val oe = graph.addLanguage("Old English", "OE")
         oe.wordClasses = mutableListOf(
             WordCategory(
                 "stem class", listOf("N"),
@@ -280,7 +280,7 @@ class RuleTest : QBaseTest() {
     @Test
     fun applyRuleToCompound() {
         val graph = InMemoryGraph()
-        val on = Language(graph, "Old Norse", "ON").also { graph.addLanguage(it) }
+        val on = graph.addLanguage("Old Norse", "ON")
         val rule = graph.rule("word ends with 'r':\n- change ending to 'ar'", name = "on-nom-pl")
         val madr = graph.addWord("maðr", language = on, gloss = "man")
         val menn = graph.addWord("menn", language = on)
@@ -664,8 +664,7 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun prependMorpheme() {
-        val oe = Language(graph, "Old English", "OE")
-        graph.addLanguage(oe)
+        val oe = graph.addLanguage("Old English", "OE")
         val gePrefix = graph.addWord("ge-", "Prefix: ge", language = oe)
         val rule = graph.rule("- prepend morpheme 'ge-: Prefix: ge'", fromLanguage = oe)
         val frignan = graph.addWord("frignan", language = oe)
@@ -687,8 +686,7 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun appendMorpheme() {
-        val on = Language(graph, "Old Norse", "ON")
-        graph.addLanguage(on)
+        val on = graph.addLanguage("Old Norse", "ON")
         val inn = graph.addWord("inn", "the", language = on)
         val rule = graph.rule("- append morpheme 'inn: the'", fromLanguage = on)
         val hestr = graph.addWord("hestr", language = on)
@@ -702,8 +700,7 @@ class RuleTest : QBaseTest() {
     @Test
     fun morphemeChainSegments() {
         val graph = InMemoryGraph()
-        val on = Language(graph, "Old Norse", "ON")
-        graph.addLanguage(on)
+        val on = graph.addLanguage( "Old Norse", "ON")
         val inn = graph.addWord("inn", "the", language = on)
         val gePrefix = graph.addWord("ge-", "Prefix: ge", language = on)
         val rule = graph.rule("- append morpheme 'inn: the'", fromLanguage = on)
@@ -721,8 +718,7 @@ class RuleTest : QBaseTest() {
     @Test
     fun changeEndingToMorpheme() {
         val graph = InMemoryGraph()
-        val pie = Language(graph, "Proto-Indo-European", "PIE")
-        graph.addLanguage(pie)
+        val pie = graph.addLanguage("Proto-Indo-European", "PIE")
         graph.addWord("o", "1sg thematic ending", language = pie)
         val text = "word ends with 'e':\n - change ending to morpheme 'o: 1sg thematic ending'"
         val rule = graph.rule(text, fromLanguage = pie)
@@ -735,9 +731,8 @@ class RuleTest : QBaseTest() {
     @Test
     fun applyRuleUseExistingLink() {
         val graph = InMemoryGraph()
-        val on = Language(graph, "Old Norse", "ON")
+        val on = graph.addLanguage("Old Norse", "ON")
         on.wordClasses = mutableListOf(WordCategory("Gender", listOf("N"), listOf(WordCategoryValue("Neuter", "n"))))
-        graph.addLanguage(on)
         val haust = graph.addWord("haust", "autumn", classes = listOf("n"), language = on)
         val accRule = graph.rule("- no change", fromLanguage = on, name = "on-acc", addedCategories = ".ACC")
         val haustAcc = graph.addWord("haust", "autumn.ACC", language = on)

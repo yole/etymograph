@@ -15,7 +15,7 @@ class AugmentWordTest {
     fun setUp() {
         wiktionary = TestWiktionary(AugmentWordTest::class.java)
         graph = InMemoryGraph()
-        oe = Language(graph, "Old English", "OE")
+        oe = graph.addLanguage("Old English", "OE")
         oe.pos.addAll(
             listOf(
                 WordCategoryValue("Noun", "N"),
@@ -32,7 +32,6 @@ class AugmentWordTest {
                 WordCategoryValue("Plural", "PL")
             )
         ))
-        graph.addLanguage(oe)
     }
 
     @Test

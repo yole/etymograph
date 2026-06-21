@@ -17,8 +17,7 @@ class TlhDigImportTest {
     @Before
     fun setup() {
         graph = InMemoryGraph()
-        hittite = Language(graph, "Hittite", "Hitt")
-        graph.addLanguage(hittite)
+        hittite = graph.addLanguage("Hittite", "Hitt")
     }
 
     @Test

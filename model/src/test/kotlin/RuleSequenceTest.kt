@@ -10,8 +10,7 @@ class RuleSequenceTest : QBaseTest() {
 
     @Before
     fun setup() {
-        aq = Language(graph, "Ancient Quenya", "AQ")
-        graph.addLanguage(aq)
+        aq = graph.addLanguage("Ancient Quenya", "AQ")
     }
 
     @Test

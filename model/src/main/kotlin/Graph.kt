@@ -11,7 +11,7 @@ abstract class Graph {
     abstract fun allLanguages(): Iterable<Language>
     abstract fun languageByShortName(languageShortName: String): Language?
 
-    abstract fun addLanguage(language: Language)
+    abstract fun addLanguage(name: String, shortName: String): Language
 
     abstract fun addPhoneme(
         language: Language,

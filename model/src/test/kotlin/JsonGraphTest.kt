@@ -16,9 +16,7 @@ class JsonGraphTest {
     fun setup() {
         graph = JsonGraph(null)
         q = quenya(graph)
-        graph.addLanguage(q)
-        ce = Language(graph, "Common Eldarin", "CE")
-        graph.addLanguage(ce)
+        ce = graph.addLanguage("Common Eldarin", "CE")
     }
 
     @Test
@@ -190,7 +188,6 @@ class JsonGraphTest {
     }
 
     private fun setupRuleSequence(): RuleSequence {
-        graph.addLanguage(ce)
         val rule = graph.addRule(
             "i-disappears", ce, q,
             Rule.parseLogic("* i > 0 / a_ ", q.parseContext(graph))
@@ -277,8 +274,7 @@ class JsonGraphTest {
 
     @Test
     fun serializeSyllabographic() {
-        val ht = Language(graph, "Hittite", "Ht")
-        graph.addLanguage(ht)
+        val ht = graph.addLanguage("Hittite", "Ht")
         val word = graph.addWord("pé-ra-an", ht, gloss = null, syllabographic = true)
         val graph2 = graph.roundtrip()
         val word2 = graph2.wordById(word.id)!!
@@ -287,9 +283,8 @@ class JsonGraphTest {
 
     @Test
     fun serializeLanguageSyllabographic() {
-        val ht = Language(graph, "Hittite", "Ht")
+        val ht = graph.addLanguage("Hittite", "Ht")
         ht.syllabographic = true
-        graph.addLanguage(ht)
         val graph2 = graph.roundtrip()
         val ht2 = graph2.languageByShortName("Ht")!!
         assertEquals(true, ht2.syllabographic)

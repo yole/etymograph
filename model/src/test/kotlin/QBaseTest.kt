@@ -3,20 +3,16 @@ package ru.yole.etymograph
 open class QBaseTest {
     val graph = InMemoryGraph()
 
-    val q = quenya(graph).also {
-        graph.addLanguage(it)
-    }
+    val q = quenya(graph)
     val v = q.phonemeClassByName("vowel")!!
 
-    val ce = Language(graph, "Common Eldarin", "CE").also {
+    val ce = graph.addLanguage("Common Eldarin", "CE").also {
         it.phonemes = listOf(
             Phoneme(-1, listOf("kh"), null, setOf("voiceless", "consonant")),
             Phoneme(-1, listOf("th"), null, setOf("voiceless", "consonant"))
         ) + listOf("a", "o", "u", "i").map { p ->
             Phoneme(-1, listOf(p), null, setOf("short", "vowel"))
         }
-    }.also {
-        graph.addLanguage(it)
     }
 
     fun Graph.addWord(
@@ -26,8 +22,6 @@ open class QBaseTest {
         classes: List<String> = emptyList(),
         language: Language = q
     ) = findOrAddWord(text, language, gloss, pos = pos, classes = classes)
-
-    fun Graph.with(language: Language) = apply { addLanguage(language) }
 
     fun Graph.rule(
         text: String,
@@ -44,7 +38,7 @@ open class QBaseTest {
     }
 }
 
-fun quenya(graph: Graph): Language = Language(graph, "Quenya", "Q").also {
+fun quenya(graph: Graph): Language = graph.addLanguage("Quenya", "Q").also {
     it.phonemes = listOf(
         Phoneme(-1, listOf("e", "ë"), null, setOf("vowel"))
     ) + listOf("a", "o", "u", "i").map { p ->

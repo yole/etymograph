@@ -23,8 +23,7 @@ class WordControllerTest {
         fixture = QTestFixture()
         graph = fixture.graph
 
-        oe = Language(graph, "Old English", "OE")
-        graph.addLanguage(oe)
+        oe = graph.addLanguage("Old English", "OE")
 
         wordController = WordController(TestDictionaryService())
     }
@@ -162,8 +161,7 @@ class WordControllerTest {
 
     @Test
     fun addWordSequenceComma() {
-        val s = Language(graph, "Sindarin", "s")
-        graph.addLanguage(s)
+        val s = graph.addLanguage("Sindarin", "s")
 
         wordController.addWordSequence(graph, WordController.WordSequenceParams("ce am 'smth, other' > q an; s ap", "PE xx"))
         val ceWord = graph.wordsByText(fixture.ce, "am").single()

@@ -25,8 +25,10 @@ open class InMemoryGraph : Graph() {
     override val name: String
         get() = ""
 
-    override fun addLanguage(language: Language) {
+    override fun addLanguage(name: String, shortName: String): Language {
+        val language = Language(this, name, shortName)
         languages[language.shortName] = language
+        return language
     }
 
     override fun allLanguages(): Iterable<Language> {

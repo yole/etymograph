@@ -17,8 +17,7 @@ class LemmatizedTextTest {
     @Before
     fun setup() {
         graph = InMemoryGraph()
-        oe = Language(graph, "Old English", "OE")
-        graph.addLanguage(oe)
+        oe = graph.addLanguage("Old English", "OE")
     }
 
     @Test

@@ -21,8 +21,7 @@ class SearchControllerTest {
         graph = fixture.graph
         q = fixture.q
         ce = fixture.ce
-        oe = Language(graph, "Old English", "OE")
-        graph.addLanguage(oe)
+        oe = graph.addLanguage("Old English", "OE")
         controller = SearchController()
 
         // Seed some words across languages

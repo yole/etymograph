@@ -587,10 +587,9 @@ class JsonGraph(val path: Path?) : InMemoryGraph() {
         _id = data.id
         _name = data.name
         for (languageData in data.languages) {
-            val language = Language(this, languageData.name, languageData.shortName)
+            val language = addLanguage(languageData.name, languageData.shortName)
             language.reconstructed = languageData.reconstructed
             language.syllabographic = languageData.syllabographic
-            addLanguage(language)
         }
         loadLanguageDetails(contentProviderCallback)
         loadPublications(contentProviderCallback)

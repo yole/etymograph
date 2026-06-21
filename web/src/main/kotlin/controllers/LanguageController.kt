@@ -190,13 +190,12 @@ class LanguageController {
     )
 
     @PostMapping("/{graph}/languages", consumes = ["application/json"])
-    fun addLanguage(repo: Graph, @RequestBody params: UpdateLanguageParameters): LanguageViewModel {
+    fun addLanguage(graph: Graph, @RequestBody params: UpdateLanguageParameters): LanguageViewModel {
         val name = params.name.takeIf { !it.isNullOrBlank() } ?: badRequest("Language name must be provided")
         val shortName = params.shortName.takeIf { !it.isNullOrBlank() } ?: badRequest("Language short name must be provided")
-        val language = Language(repo, name, shortName)
-        repo.addLanguage(language)
-        updateLanguageDetails(repo, language, params)
-        return language.toViewModel(repo)
+        val language = graph.addLanguage(name, shortName)
+        updateLanguageDetails(graph, language, params)
+        return language.toViewModel(graph)
     }
 
     @PostMapping("/{graph}/language/{lang}", consumes = ["application/json"])

@@ -46,18 +46,16 @@ class GraphTest : QBaseTest() {
 
     @Test
     fun wordByTextSyllabographic() {
-        val ht = Language(graph, "Hittite", "Ht")
+        val ht = graph.addLanguage("Hittite", "Ht")
         ht.syllabographic = true
-        graph.addLanguage(ht)
         graph.addWord("_A-NA", language = ht, gloss = "on", syllabographic = true)
         assertEquals(1, graph.wordsByText(ht, "_A-NA", true).size)
     }
 
     @Test
     fun wordByTextCaseInsensitive() {
-        val pie = Language(graph, "Proto-Indo-European", "PIE")
+        val pie = graph.addLanguage("Proto-Indo-European", "PIE")
         pie.phonemes += phoneme("H", "")
-        graph.addLanguage(pie)
         graph.addWord("bheroH", language = pie, gloss = "carry.1SG")
         assertEquals(1, graph.wordsByText(pie, "bheroH").size)
         assertEquals(0, graph.wordsByText(pie, "bheroh").size)

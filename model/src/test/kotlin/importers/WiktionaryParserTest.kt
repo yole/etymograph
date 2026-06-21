@@ -19,14 +19,9 @@ class WiktionaryParserTest {
     fun setUp() {
         wiktionary = TestWiktionary(WiktionaryParserTest::class.java)
         graph = InMemoryGraph()
-        oe = Language(graph, "Old English", "OE").withPartsOfSpeech()
-        graph.addLanguage(oe)
-
-        on = Language(graph, "Old Norse", "ON").withPartsOfSpeech()
-        graph.addLanguage(on)
-
-        val pgmc = Language(graph, "Proto-Germanic", "PGmc")
-        graph.addLanguage(pgmc)
+        oe = graph.addLanguage("Old English", "OE").withPartsOfSpeech()
+        on = graph.addLanguage("Old Norse", "ON").withPartsOfSpeech()
+        val pgmc = graph.addLanguage("Proto-Germanic", "PGmc")
 
         pgmc.dictionarySettings = "wiktionary-id: gem-pro"
     }

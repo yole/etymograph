@@ -141,9 +141,8 @@ class SyllabogramTest {
 
     private fun hittiteWord(transliteration: String): Word {
         val graph = InMemoryGraph()
-        val ht = Language(graph, "Hittite", "Ht")
+        val ht = graph.addLanguage( "Hittite", "Ht")
         ht.syllabographic = true
-        graph.addLanguage(ht)
         return ht.word(transliteration, syllabographic = true)
     }
 }
