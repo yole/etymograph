@@ -94,7 +94,7 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
         if (mrpSel.isNullOrBlank()) continue
 
         val mrpAttr = wordElement.getAttributeValue("mrp" + mrpSel[0]) ?: continue
-        val mrpElements = mrpAttr.split('@')
+        val mrpElements = mrpAttr.split('@', limit = 4)
 
         val lemma = mrpElements[0]
         val cleanLemma = lemma.removeSuffix("-")
@@ -112,11 +112,16 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
         }
 
         if (lemma.any { it.isUpperCase() } && '_' in selectedAnalysis) {
-            transWord = createAkkadianCompound(sylWord, selectedAnalysis, hittite, graph, transWord)
+            transWord = createAkkadianCompound(sylWord, selectedAnalysis, transWord)
             selectedAnalysis = selectedAnalysis.substringBefore('_')
         }
 
-        val paradigm = mrpElements.getOrNull(3)?.trim()
+        val paradigmWithEnclitics = mrpElements[3].substringBeforeLast('@')
+        if ("+=" in paradigmWithEnclitics) {
+            val enclitics = paradigmWithEnclitics.substringAfter("+=").trim()
+            transWord = createEncliticCompound(transWord, enclitics)
+        }
+
         if (cleanLemma == trans) {
             if (transWord.gloss == null) {
                 transWord.gloss = gloss
@@ -168,13 +173,39 @@ private fun findRuleByMrp(mrp: String, hittite: Language, posMarkers: MutableLis
     return findMatchingRule(hittite, categorySet)
 }
 
-private val posMap = mapOf("PNm" to KnownPartsOfSpeech.properName.abbreviation)
+private val posMap = mapOf(
+    "PNm" to KnownPartsOfSpeech.properName.abbreviation,
+    "GN" to KnownPartsOfSpeech.properName.abbreviation
+)
+
+private fun createEncliticCompound(word: Word, enclitics: String): Word {
+    val (encliticText, encliticAnalysis) = enclitics.trimEnd('@').split('@', limit = 2)
+    val encliticTexts = encliticText.split('=')
+    val encliticAnalyses = encliticAnalysis.split('=')
+
+    var tail = word.text
+    val compoundElements = mutableListOf<Word>()
+    for (i in encliticTexts.size - 1 downTo 0) {
+        val clitic = findOrAddWordByTextOnly(word.language, encliticTexts[i], encliticAnalyses[i])
+        val len = longestCommonTail(tail, encliticTexts[i])
+        if (len == 0) break
+        tail = tail.substring(0, tail.length - len)
+        compoundElements.add(0, clitic)
+    }
+
+    val headWord = findOrAddWordByTextOnly(word.language, tail, null)
+    compoundElements.add(0, headWord)
+
+    word.graph.createCompound(word, compoundElements)
+    return headWord
+}
+
+private fun longestCommonTail(s1: String, s2: String): Int =
+    s1.reversed().zip(s2.reversed()).takeWhile { (c1, c2) -> c1 == c2 }.count()
 
 private fun createAkkadianCompound(
     sylWord: Word,
     selectedAnalysis: String,
-    hittite: Language,
-    graph: Graph,
     transWord: Word
 ): Word {
     var tail = sylWord.text
@@ -186,14 +217,14 @@ private fun createAkkadianCompound(
         val cliticText = '_' + tail.substringAfterLast('-')
         tail = tail.substringBeforeLast('-')
 
-        val clitic = findOrAddWordByTextOnly(hittite, cliticText, cliticAnalysis)
+        val clitic = findOrAddWordByTextOnly(sylWord.language, cliticText, cliticAnalysis)
         compoundElements.add(0, clitic)
     }
 
-    val headWord = findOrAddWordByTextOnly(hittite, tail, null)
+    val headWord = findOrAddWordByTextOnly(sylWord.language, tail, null)
     compoundElements.add(0, headWord)
 
-    graph.createCompound(transWord, compoundElements)
+    sylWord.graph.createCompound(transWord, compoundElements)
     return headWord
 }
 

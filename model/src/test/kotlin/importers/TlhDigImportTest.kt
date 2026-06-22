@@ -19,7 +19,7 @@ class TlhDigImportTest {
             .withGrammaticalCategory("Person", "V", "First" to "1" , "Second" to "2", "Third" to "3")
             .withGrammaticalCategory("Number", "V", "Singular" to "SG", "Plural" to "PL")
             .withGrammaticalCategory("Mood", "V", "Indicative" to "IND", "Imperative" to "IMP")
-            .withGrammaticalCategory("Case", "N", "Nominativew" to "NOM")
+            .withGrammaticalCategory("Case", "N", "Nominative" to "NOM", "Ablative" to "ABL")
     }
 
     @Test
@@ -56,12 +56,10 @@ class TlhDigImportTest {
 
     @Test
     fun superscriptInLemma() {
-        importWord("""<w trans="NU.KIRI₆" mrp0sel=" 1a" mrp1="NU.°GIŠ°KIRI₆=@NU.°GIŠ°KIRI₆@{a → PNm.NOM.SG(UNM)}@38.1@m"><d>m</d><sGr>NU.</sGr><d>GIŠ</d><sGr>KIRI₆</sGr></w>""")
-        val corpusText = graph.allCorpusTexts().first()
+        val corpusText = importWord("""<w trans="NU.KIRI₆" mrp0sel=" 1a" mrp1="NU.°GIŠ°KIRI₆=@NU.°GIŠ°KIRI₆@{a → PNm.NOM.SG(UNM)}@38.1@m"><d>m</d><sGr>NU.</sGr><d>GIŠ</d><sGr>KIRI₆</sGr></w>""")
         val word = corpusText.words[0].word
         val lemma = word.lemma
         assertEquals("NU.^GIŠ^KIRI6", lemma.text)
-
     }
 
     @Test
@@ -78,19 +76,33 @@ class TlhDigImportTest {
         val rule = hittite.rule("", addedCategories = ".NOM.SG")
         importWord("""<w trans="NU.KIRI₆" mrp0sel=" 1a" mrp1="NU.°GIŠ°KIRI₆=@NU.°GIŠ°KIRI₆@{a → PNm.NOM.SG(UNM)}@38.1@m"><d>m</d><sGr>NU.</sGr><d>GIŠ</d><sGr>KIRI₆</sGr></w>""")
         val word = findWord("^m^NU.^GIŠ^KIRI6", true)
-        val link = graph.getLinksFrom(word).single()
-        assertEquals(rule, link.rules.single())
-        val lemma = link.toEntity as Word
+        assertEquals(rule, word.lemmaLink.rules.single())
+        val lemma = word.lemmaLink.toEntity as Word
         assertEquals("NP", lemma.pos)
+    }
+
+    @Test
+    fun clitics() {
+        val rule = hittite.rule("", addedCategories = ".ABL")
+        val corpusText = importWord("""<w trans="ḫaittazakan" mrp0sel=" 2" mrp2="ḫaitt=a-@Ḫaitta@GN.ABL@39.2 += ma=kkan@CNJctr=OBPk@@ URU"><d>URU</d>ḫa-it-ta-z<del_in/>a-k<del_fin/>án</w>""")
+        val word = corpusText.words[0].word.transcription
+        val compound = graph.findCompoundsByCompoundWord(word).first()
+        assertEquals("ḫaittaz", compound.components[0].text)
+        assertEquals("ma", compound.components[1].text)
+        val lemmaLink = compound.components[0].lemmaLink
+        assertEquals(rule, lemmaLink.rules.single())
     }
 
     private fun findWord(text: String, syllabographic: Boolean = false): Word =
         graph.wordsByText(hittite, text, syllabographic).single()
 
-    private fun importWord(@org.intellij.lang.annotations.Language("XML") element: String) {
+    private fun importWord(@org.intellij.lang.annotations.Language("XML") element: String): CorpusText {
         val doc = SAXBuilder().build(StringReader("<text>$element</text>"))
         importTLHDig(graph, "doc", doc.rootElement.children)
+        return graph.allCorpusTexts().first()
     }
 
+    private val Word.transcription get() =  graph.getLinksFrom(this).single { it.type == Link.Transcription }.toEntity as Word
     private val Word.lemma get() =  graph.getLinksFrom(this).single { it.type == Link.Derived }.toEntity as Word
+    private val Word.lemmaLink get() =  graph.getLinksFrom(this).single { it.type == Link.Derived }
 }
