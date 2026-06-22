@@ -6,8 +6,10 @@ import org.jdom2.input.SAXBuilder
 import page.yole.etymograph.CorpusText
 import page.yole.etymograph.Graph
 import page.yole.etymograph.JsonGraph
+import page.yole.etymograph.KnownPartsOfSpeech
 import page.yole.etymograph.Language
 import page.yole.etymograph.Link
+import page.yole.etymograph.Rule
 import page.yole.etymograph.Word
 import page.yole.etymograph.findMatchingRule
 import page.yole.etymograph.removePunctuation
@@ -126,32 +128,47 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
                 continue
             }
 
+            val posMarkers = mutableListOf<String>()
             val rule = if (selectedAnalysis.isNotEmpty()) {
-                val categories = selectedAnalysis.split('.')
-                val categorySet = mutableSetOf<String>()
-                for (cat in categories) {
-                    if (cat.first().isDigit()) {
-                        categorySet.add(cat.take(1))
-                        categorySet.add(cat.drop(1))
-                    }
-                    else {
-                        categorySet.add(cat)
-                    }
-                }
-
-                findMatchingRule(hittite, categorySet)
+                findRuleByMrp(selectedAnalysis, hittite, posMarkers)
             }
             else {
                 null
             }
 
             val lemmaWord = graph.addWord(cleanLemma, hittite, gloss,
+                pos = posMarkers.singleOrNull(),
                 syllabographic = lemma.any { it.isUpperCase() })
             graph.addLink(transWord, lemmaWord, Link.Derived,
                 rules = rule?.let { listOf(it) } ?: emptyList())
         }
     }
 }
+
+private fun findRuleByMrp(mrp: String, hittite: Language, posMarkers: MutableList<String>): Rule? {
+    val analysis = mrp.removeSuffix("(UNM)")
+    val categories = analysis.split('.')
+    val categorySet = mutableSetOf<String>()
+    for (cat in categories) {
+        if (cat.first().isDigit()) {
+            categorySet.add(cat.take(1))
+            categorySet.add(cat.drop(1))
+        }
+        else {
+            val posMarker = posMap[cat]
+            if (posMarker != null) {
+                posMarkers.add(posMarker)
+            }
+            else {
+                categorySet.add(cat)
+            }
+        }
+    }
+
+    return findMatchingRule(hittite, categorySet)
+}
+
+private val posMap = mapOf("PNm" to KnownPartsOfSpeech.properName.abbreviation)
 
 private fun createAkkadianCompound(
     sylWord: Word,

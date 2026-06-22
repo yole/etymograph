@@ -4,12 +4,7 @@ import org.jdom2.input.SAXBuilder
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
-import page.yole.etymograph.InMemoryGraph
-import page.yole.etymograph.Language
-import page.yole.etymograph.Link
-import page.yole.etymograph.Word
-import page.yole.etymograph.parseRule
-import page.yole.etymograph.withGrammaticalCategory
+import page.yole.etymograph.*
 import java.io.StringReader
 
 class TlhDigImportTest {
@@ -24,6 +19,7 @@ class TlhDigImportTest {
             .withGrammaticalCategory("Person", "V", "First" to "1" , "Second" to "2", "Third" to "3")
             .withGrammaticalCategory("Number", "V", "Singular" to "SG", "Plural" to "PL")
             .withGrammaticalCategory("Mood", "V", "Indicative" to "IND", "Imperative" to "IMP")
+            .withGrammaticalCategory("Case", "N", "Nominativew" to "NOM")
     }
 
     @Test
@@ -70,12 +66,22 @@ class TlhDigImportTest {
 
     @Test
     fun findMatchingRule() {
-        val rule = parseRule(hittite, hittite, "", name = "hitt-imp-2dg", addedCategories = ".IMP.2SG")
-        graph.addRule(rule)
+        val rule = hittite.rule("", addedCategories = ".IMP.2SG")
         importWord("""<w trans="QÍ-BÍ-MA" mrp0sel=" 1" mrp1="QABÛ@sagen@2SG.IMP_CNJ@@ "><aGr>QÍ-B<del_in/>Í-M<del_fin/>A</aGr></w>""")
         val word = findWord("_QÍ-BÍ", true)
         val link = graph.getLinksFrom(word).single()
         assertEquals(rule, link.rules.single())
+    }
+
+    @Test
+    fun unmarkedCase() {
+        val rule = hittite.rule("", addedCategories = ".NOM.SG")
+        importWord("""<w trans="NU.KIRI₆" mrp0sel=" 1a" mrp1="NU.°GIŠ°KIRI₆=@NU.°GIŠ°KIRI₆@{a → PNm.NOM.SG(UNM)}@38.1@m"><d>m</d><sGr>NU.</sGr><d>GIŠ</d><sGr>KIRI₆</sGr></w>""")
+        val word = findWord("^m^NU.^GIŠ^KIRI6", true)
+        val link = graph.getLinksFrom(word).single()
+        assertEquals(rule, link.rules.single())
+        val lemma = link.toEntity as Word
+        assertEquals("NP", lemma.pos)
     }
 
     private fun findWord(text: String, syllabographic: Boolean = false): Word =

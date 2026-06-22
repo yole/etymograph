@@ -12,7 +12,7 @@ import java.io.StringReader
 import java.nio.file.Path
 import java.util.*
 
-val posMap = mapOf(
+private val posMap = mapOf(
     "noun" to "N",
     "verb" to "V",
     "adjective" to "ADJ",
