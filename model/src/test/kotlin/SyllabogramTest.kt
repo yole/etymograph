@@ -98,6 +98,12 @@ class SyllabogramTest {
     }
 
     @Test
+    fun squareBrackets() {
+        val syllabogramSequence = TlhDigSyllabogramSyntax.parse("_QÍ-B[Í-M]A")
+        assertEquals(Syllabogram("B[Í", SyllabogramType.LogogramAlt), syllabogramSequence.syllabograms[1])
+    }
+
+    @Test
     fun transcribe() {
         val word = hittiteWord("ki-it-ta-ri")
         assertEquals("kittari", suggestTranscription(word))

@@ -88,7 +88,10 @@ object TlhDigSyllabogramSyntax : SyllabogramSyntax() {
     }
 
     private fun createSyllabogram(text: String, isAlt: Boolean): Syllabogram {
-        val isLogogram = text.all { it.isUpperCase() || it.isDigit() || Character.getType(it) == Character.NON_SPACING_MARK.toInt() }
+        val isLogogram = text.all {
+            it.isUpperCase() || it.isDigit() || Character.getType(it) == Character.NON_SPACING_MARK.toInt() ||
+                    it in CorpusText.innerPunctuation
+        }
         val type = when {
             isLogogram && isAlt -> SyllabogramType.LogogramAlt
             isLogogram -> SyllabogramType.Logogram
