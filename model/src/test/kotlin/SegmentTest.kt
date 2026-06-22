@@ -96,14 +96,14 @@ class SegmentTest : QBaseTest() {
 
     @Test
     fun chainedSegments() {
-        graph.rule("""
+        q.rule("""
             word ends with a vowel:
             - append 'r'
             otherwise:
             - append 'i'
         """.trimIndent(), name = "q-nom-pl")
 
-        val qGenPl = graph.rule("""
+        val qGenPl = q.rule("""
             - apply rule 'q-nom-pl'
             - append 'on'
             """.trimIndent())
@@ -116,10 +116,10 @@ class SegmentTest : QBaseTest() {
 
     @Test
     fun testChainTwoSegments() {
-        graph.rule("- append 'li'", name = "q-ppl")
-        graph.rule("- append 'nna'", name = "q-all")
+        q.rule("- append 'li'", name = "q-ppl")
+        q.rule("- append 'nna'", name = "q-all")
 
-        val qAllPpl = graph.rule("""
+        val qAllPpl = q.rule("""
             - apply rule 'q-ppl'
             - apply rule 'q-all'
             - append 'r'
@@ -131,8 +131,8 @@ class SegmentTest : QBaseTest() {
 
     @Test
     fun deleteCharacterAdjustSegments() {
-        graph.rule("* e > 0", name = "oe-syncope")
-        val oeAcc = graph.rule("- append 'a'\n- apply rule 'oe-syncope'\n")
+        q.rule("* e > 0", name = "oe-syncope")
+        val oeAcc = q.rule("- append 'a'\n- apply rule 'oe-syncope'\n")
         val result = oeAcc.apply(q.word("swingel"))
         assertEquals("swingla", result.text)
         assertEquals(1, result.segments!!.size)
@@ -142,8 +142,8 @@ class SegmentTest : QBaseTest() {
 
     @Test
     fun deleteCharacterAdjustSegmentsSpe() {
-        graph.rule("* V > 0", name = "oe-syncope")
-        val oeAcc = graph.rule("- append 'es'\n- apply sound rule 'oe-syncope' to second to last vowel\n")
+        q.rule("* V > 0", name = "oe-syncope")
+        val oeAcc = q.rule("- append 'es'\n- apply sound rule 'oe-syncope' to second to last vowel\n")
         val result = oeAcc.apply(q.word("biscop"))
         assertEquals("biscpes", result.text)
         assertEquals(1, result.segments!!.size)
@@ -153,7 +153,7 @@ class SegmentTest : QBaseTest() {
 
     @Test
     fun insertCharacterAdjustSegmentsSpe() {
-        val breaking = graph.rule("* i > io", name = "oe-breaking")
+        val breaking = q.rule("* i > io", name = "oe-breaking")
         val result = breaking.apply(q.word("lirnojan").also { it.segments = listOf(WordSegment(4, 4)) })
         assertEquals("liornojan", result.text)
         assertEquals(1, result.segments!!.size)
@@ -163,8 +163,8 @@ class SegmentTest : QBaseTest() {
 
     @Test
     fun deleteCharacterAdjustSegmentsLongPhoneme() {
-        graph.rule("* V > 0", name = "oe-syncope")
-        val oeAcc = graph.rule("- append 'es'\n- apply sound rule 'oe-syncope' to second to last vowel\n")
+        q.rule("* V > 0", name = "oe-syncope")
+        val oeAcc = q.rule("- append 'es'\n- apply sound rule 'oe-syncope' to second to last vowel\n")
         val result = oeAcc.apply(ce.word("bikhop"))
         assertEquals("bikhpes", result.text)
         assertEquals(1, result.segments!!.size)
@@ -174,9 +174,9 @@ class SegmentTest : QBaseTest() {
 
     @Test
     fun deleteCharacterAdjustSegmentsWithApplySoundRule() {
-        graph.rule("* ć > c", name = "oe-depalatalize")
-        graph.rule("* e > 0\n= apply sound rule 'oe-depalatalize' to previous sound", name = "oe-syncope")
-        val oeAcc = graph.rule("- append 'a'\n- apply rule 'oe-syncope'\n")
+        q.rule("* ć > c", name = "oe-depalatalize")
+        q.rule("* e > 0\n= apply sound rule 'oe-depalatalize' to previous sound", name = "oe-syncope")
+        val oeAcc = q.rule("- append 'a'\n- apply rule 'oe-syncope'\n")
         val result = oeAcc.apply(q.word("swingel"))
         assertEquals("swingla", result.text)
         assertEquals(1, result.segments!!.size)
@@ -186,25 +186,25 @@ class SegmentTest : QBaseTest() {
 
     @Test
     fun normalizeSegmentsIntersecting() {
-        graph.rule("word ends with 'a':\n- change ending to 'r'", name = "on-3sg")
-        val onMid = graph.rule("- apply rule 'on-3sg'\nword ends with 'r':\n- change ending to 'sk'")
+        q.rule("word ends with 'a':\n- change ending to 'r'", name = "on-3sg")
+        val onMid = q.rule("- apply rule 'on-3sg'\nword ends with 'r':\n- change ending to 'sk'")
         val result = onMid.apply(q.word("dreifa"))
         assertEquals(1, result.segments!!.size)
     }
 
     @Test
     fun segmentsAfterDeleteVowel() {
-        graph.rule("* V > 0 if sound is morpheme-initial and previous sound is vowel",
+        q.rule("* V > 0 if sound is morpheme-initial and previous sound is vowel",
             name = "on-article-vowel-deletion")
-        val onDefDatDg = graph.rule("- append 'inu'\n= apply rule 'on-article-vowel-deletion'")
+        val onDefDatDg = q.rule("- append 'inu'\n= apply rule 'on-article-vowel-deletion'")
         val result = onDefDatDg.apply(q.word("horni"))
         assertEquals(1, result.segments!!.size)
     }
 
     @Test
     fun segmentDisappears() {
-        graph.rule("* a > 0 / a_", name = "on-vowel-assimilation")
-        val onGenPl = graph.rule("- append 'a'\n= apply rule 'on-vowel-assimilation'")
+        q.rule("* a > 0 / a_", name = "on-vowel-assimilation")
+        val onGenPl = q.rule("- append 'a'\n= apply rule 'on-vowel-assimilation'")
         val result = onGenPl.apply(q.word("a"))
         assertEquals(0, result.segments!!.size)
     }

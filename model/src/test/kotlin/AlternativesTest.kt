@@ -124,7 +124,7 @@ class AlternativesTest : QBaseTest() {
     }
 
     private fun setupNoChangeRule(): Rule {
-        val accRule = graph.rule("otherwise:\n - no change", name = "q-acc", addedCategories = ".ACC", fromLanguage = q)
+        val accRule = q.rule("otherwise:\n - no change", name = "q-acc", addedCategories = ".ACC")
 
         val paradigm = graph.addParadigm("Noun", q, listOf("N", "NP"))
         paradigm.addRow("Nom")

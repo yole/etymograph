@@ -8,7 +8,7 @@ class ParseCandidatesTest : QBaseTest() {
 
     @Test
     fun parseCandidates() {
-        val rule = graph.rule("- append 'llo'", name = "q-abl", addedCategories = ".ABL")
+        val rule = q.rule("- append 'llo'", name = "q-abl", addedCategories = ".ABL")
         val candidates = graph.findParseCandidates(q.word("hrestallo"))
         assertEquals(1, candidates.size)
         assertEquals("hresta", candidates[0].text)
@@ -18,7 +18,7 @@ class ParseCandidatesTest : QBaseTest() {
 
     @Test
     fun parseCandidatesWithWord() {
-        val rule = graph.rule("- append 'llo'", name = "q-abl", addedCategories = ".ABL")
+        val rule = q.rule("- append 'llo'", name = "q-abl", addedCategories = ".ABL")
         val hresta = graph.addWord("hresta")
 
         val candidates = graph.findParseCandidates(q.word("hrestallo"))
@@ -31,8 +31,8 @@ class ParseCandidatesTest : QBaseTest() {
     @Test
     fun parseCandidatesSameCategory() {
         q.withGrammaticalCategory("Tense", "V", "Present" to "PRES", "Aorist" to  "AOR")
-        graph.rule("- append 'a'", name = "q-pres", addedCategories = ".PRES")
-        graph.rule("- append 'i'", name = "q-aor", addedCategories = ".AOR")
+        q.rule("- append 'a'", name = "q-pres", addedCategories = ".PRES")
+        q.rule("- append 'i'", name = "q-aor", addedCategories = ".AOR")
 
         val candidates = graph.findParseCandidates(q.word("oia"))
         assertEquals(1, candidates.size)
@@ -42,8 +42,8 @@ class ParseCandidatesTest : QBaseTest() {
     @Test
     fun sameCategoryExistingWord() {
         q.withGrammaticalCategory("Tense", "V", "Present" to "PRES", "Aorist" to  "AOR")
-        graph.rule("- append 'a'", name = "q-pres", addedCategories = ".PRES")
-        graph.rule("- append 'i'", name = "q-aor", addedCategories = ".AOR")
+        q.rule("- append 'a'", name = "q-pres", addedCategories = ".PRES")
+        q.rule("- append 'i'", name = "q-aor", addedCategories = ".AOR")
 
         graph.addWord("oi", "be.PRES")
 
@@ -94,7 +94,7 @@ class ParseCandidatesTest : QBaseTest() {
 
     @Test
     fun normalizeCase() {
-        graph.rule("- append 'llo'", name = "q-abl", addedCategories = ".ABL")
+        q.rule("- append 'llo'", name = "q-abl", addedCategories = ".ABL")
         val candidates = graph.findParseCandidates(q.word("Hrestallo"))
         assertEquals(1, candidates.size)
         assertEquals("Hresta", candidates[0].text)

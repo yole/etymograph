@@ -13,14 +13,14 @@ fun createParseContext(
         ?: throw RuleParseException("no such rule")
 }
 
-fun Graph.rule(
+fun Language.rule(
     text: String,
-    fromLanguage: Language,
-    toLanguage: Language = fromLanguage,
-    name: String = "q", addedCategories: String? = null
+    toLanguage: Language = this,
+    name: String = "q",
+    addedCategories: String? = null
 ): Rule {
-    return addRule(name, fromLanguage, toLanguage,
-        Rule.parseLogic(text, createParseContext(fromLanguage, toLanguage)),
+    return graph.addRule(name, this, toLanguage,
+        Rule.parseLogic(text, createParseContext(this, toLanguage)),
         addedCategories = addedCategories
     )
 }

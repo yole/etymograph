@@ -94,7 +94,7 @@ class CorpusTextTest : QBaseTest() {
     fun testNormalizedTextRemoveParentheses() {
         val corpusText = q.corpusText("Perhael (i sennui Panthael)")
 
-        val stressRule = graph.rule("- stress is on first syllable")
+        val stressRule = q.rule("- stress is on first syllable")
         q.stressRule = RuleRef.to(stressRule)
 
         val i = graph.addWord("i")

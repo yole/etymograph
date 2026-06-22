@@ -76,7 +76,7 @@ class CompoundTest : QBaseTest() {
 
     @Test
     fun stressOnRootInCompound() {
-        val stressRule = graph.rule("- stress is on first root syllable")
+        val stressRule = q.rule("- stress is on first root syllable")
         assertEquals("stress is on first root syllable", stressRule.firstInstruction.toEditableText(graph))
         q.stressRule = RuleRef.to(stressRule)
 
@@ -90,7 +90,7 @@ class CompoundTest : QBaseTest() {
 
     @Test
     fun stressOnRootInCompoundWithRule() {
-        val stressRule = graph.rule("- stress is on first root syllable")
+        val stressRule = q.rule("- stress is on first root syllable")
         assertEquals("stress is on first root syllable", stressRule.firstInstruction.toEditableText(graph))
         q.stressRule = RuleRef.to(stressRule)
 
@@ -99,7 +99,7 @@ class CompoundTest : QBaseTest() {
         val napan = graph.addWord("napan")
         graph.createCompound(napan, listOf(na, pan))
 
-        val soundRule = graph.rule("* a > e if sound is stressed")
+        val soundRule = q.rule("* a > e if sound is stressed")
         val newWord = soundRule.apply(napan)
         assertEquals("napen", newWord.text)
     }
@@ -125,7 +125,7 @@ class CompoundTest : QBaseTest() {
 
     @Test
     fun suggestCompoundExcludeInflectedForm() {
-        val onAcc = graph.rule("word ends with 'r':\n- change ending to ''", name = "on-acc")
+        val onAcc = q.rule("word ends with 'r':\n- change ending to ''", name = "on-acc")
         val stadr = graph.addWord("stadr", "city")
         val stad = graph.addWord("stad")
         graph.addLink(stad, stadr, Link.Derived, listOf(onAcc))

@@ -23,16 +23,6 @@ open class QBaseTest {
         language: Language = q
     ) = findOrAddWord(text, language, gloss, pos = pos, classes = classes)
 
-    fun Graph.rule(
-        text: String,
-        name: String = "q", addedCategories: String? = null
-    ): Rule {
-        return addRule(name, q, q,
-            Rule.parseLogic(text, createParseContext(q, q)),
-            addedCategories = addedCategories
-        )
-    }
-
     fun applyRule(rule: Rule, word: Word): String {
         return rule.apply(word).text
     }

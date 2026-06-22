@@ -202,7 +202,7 @@ class RuleTest : QBaseTest() {
     @Test
     fun wordIsPOS() {
         q.pos = mutableListOf(WordCategoryValue("Noun", "N"), WordCategoryValue("Verb", "V"))
-        val rule = graph.rule("word is V and word ends with 'ōn':\n- change ending to 'ōjan'\notherwise:\n- no change", q)
+        val rule = q.rule("word is V and word ends with 'ōn':\n- change ending to 'ōjan'\notherwise:\n- no change")
         val baseWord = graph.addWord("bugōn-", language = q, pos = "V")
         assertEquals("bugōjan", rule.apply(baseWord).text)
     }
@@ -213,7 +213,7 @@ class RuleTest : QBaseTest() {
         val oe = graph.addLanguage( "Old English", "OE")
         oe.wordClasses =
             mutableListOf(WordCategory("stem class", listOf("N"), listOf(WordCategoryValue("o-stem", "o-stem"))))
-        val rule = graph.rule("word is o-stem:\n- append 'es'", oe)
+        val rule = oe.rule("word is o-stem:\n- append 'es'")
         val baseWord = graph.addWord("mann", language = oe, classes = listOf("o-stem"))
         val variant = graph.addWord("monn", language = oe)
         graph.addLink(variant, baseWord, Link.Variation)
@@ -231,7 +231,7 @@ class RuleTest : QBaseTest() {
                 listOf(WordCategoryValue("o-stem", "o-stem"), WordCategoryValue("strong", "strong"))
             )
         )
-        val rule = graph.rule("- mark word as strong\nword is o-stem:\n- append 'es'", oe)
+        val rule = oe.rule("- mark word as strong\nword is o-stem:\n- append 'es'")
         val baseWord = graph.addWord("mann", language = oe, classes = listOf("o-stem"))
         val variant = graph.addWord("monn", language = oe)
         graph.addLink(variant, baseWord, Link.Variation)
@@ -249,8 +249,8 @@ class RuleTest : QBaseTest() {
                 listOf(WordCategoryValue("o-stem", "o-stem"), WordCategoryValue("strong", "strong"))
             )
         )
-        graph.rule("- mark word as strong", oe, name = "oe-stem-class")
-        val rule = graph.rule("- apply rule 'oe-stem-class'\nword is o-stem:\n- append 'es'", oe)
+        oe.rule("- mark word as strong", name = "oe-stem-class")
+        val rule = oe.rule("- apply rule 'oe-stem-class'\nword is o-stem:\n- append 'es'")
         val baseWord = graph.addWord("mann", language = oe, classes = listOf("o-stem"))
         val variant = graph.addWord("monn", language = oe)
         graph.addLink(variant, baseWord, Link.Variation)
@@ -268,7 +268,7 @@ class RuleTest : QBaseTest() {
                 listOf(WordCategoryValue("o-stem", "o-stem"), WordCategoryValue("strong", "strong"))
             )
         )
-        val rule = graph.rule("- mark word as strong\nword is o-stem:\n- append 'es'", oe)
+        val rule = oe.rule("- mark word as strong\nword is o-stem:\n- append 'es'")
         val baseWord = graph.addWord("mann", language = oe, classes = listOf("o-stem"))
         val prefix = graph.addWord("sæ", language = oe)
         val compoundWord = graph.addWord("sæmann", language = oe)
@@ -281,7 +281,7 @@ class RuleTest : QBaseTest() {
     fun applyRuleToCompound() {
         val graph = InMemoryGraph()
         val on = graph.addLanguage("Old Norse", "ON")
-        val rule = graph.rule("word ends with 'r':\n- change ending to 'ar'", name = "on-nom-pl")
+        val rule = q.rule("word ends with 'r':\n- change ending to 'ar'", name = "on-nom-pl")
         val madr = graph.addWord("maðr", language = on, gloss = "man")
         val menn = graph.addWord("menn", language = on)
         graph.addLink(menn, madr, Link.Derived, listOf(rule))
@@ -305,7 +305,7 @@ class RuleTest : QBaseTest() {
             
              = append 'e'
         """.trimIndent()
-        val rule = graph.rule(text, q)
+        val rule = q.rule(text)
         assertEquals(1, (rule.logic as MorphoRuleLogic).postInstructions.size)
         assertEquals("laureae", applyRule(rule, q.word("laure")))
         assertEquals("lomire", applyRule(rule, q.word("lomi")))
@@ -550,7 +550,7 @@ class RuleTest : QBaseTest() {
             |word ends with 'r':
             | - append 'i'
         """.trimMargin("|")
-        val rule = graph.rule(ruleText, q)
+        val rule = q.rule(ruleText)
         assertEquals(1, (rule.logic as MorphoRuleLogic).preInstructions.size)
 
         val word = rule.apply(q.word("sur"))
@@ -666,7 +666,7 @@ class RuleTest : QBaseTest() {
     fun prependMorpheme() {
         val oe = graph.addLanguage("Old English", "OE")
         val gePrefix = graph.addWord("ge-", "Prefix: ge", language = oe)
-        val rule = graph.rule("- prepend morpheme 'ge-: Prefix: ge'", fromLanguage = oe)
+        val rule = oe.rule("- prepend morpheme 'ge-: Prefix: ge'")
         val frignan = graph.addWord("frignan", language = oe)
         val result = rule.apply(frignan)
         assertEquals("gefrignan", result.text)
@@ -688,7 +688,7 @@ class RuleTest : QBaseTest() {
     fun appendMorpheme() {
         val on = graph.addLanguage("Old Norse", "ON")
         val inn = graph.addWord("inn", "the", language = on)
-        val rule = graph.rule("- append morpheme 'inn: the'", fromLanguage = on)
+        val rule = on.rule("- append morpheme 'inn: the'")
         val hestr = graph.addWord("hestr", language = on)
         val result = rule.apply(hestr)
         assertEquals("hestrinn", result.text)
@@ -703,8 +703,8 @@ class RuleTest : QBaseTest() {
         val on = graph.addLanguage( "Old Norse", "ON")
         val inn = graph.addWord("inn", "the", language = on)
         val gePrefix = graph.addWord("ge-", "Prefix: ge", language = on)
-        val rule = graph.rule("- append morpheme 'inn: the'", fromLanguage = on)
-        val rule2 = graph.rule("- prepend morpheme 'ge-: Prefix: ge'", fromLanguage = on)
+        val rule = on.rule("- append morpheme 'inn: the'")
+        val rule2 = on.rule("- prepend morpheme 'ge-: Prefix: ge'")
         val hestr = graph.addWord("hestr", language = on)
         val result = rule2.apply(rule.apply(hestr))
         assertEquals("gehestrinn", result.text)
@@ -721,7 +721,7 @@ class RuleTest : QBaseTest() {
         val pie = graph.addLanguage("Proto-Indo-European", "PIE")
         graph.addWord("o", "1sg thematic ending", language = pie)
         val text = "word ends with 'e':\n - change ending to morpheme 'o: 1sg thematic ending'"
-        val rule = graph.rule(text, fromLanguage = pie)
+        val rule = pie.rule(text)
         val lukeie = graph.addWord("lukeie", language = pie)
         val result = rule.apply(lukeie)
         assertEquals("lukeio", result.text)
@@ -734,10 +734,10 @@ class RuleTest : QBaseTest() {
         val on = graph.addLanguage("Old Norse", "ON")
         on.wordClasses = mutableListOf(WordCategory("Gender", listOf("N"), listOf(WordCategoryValue("Neuter", "n"))))
         val haust = graph.addWord("haust", "autumn", classes = listOf("n"), language = on)
-        val accRule = graph.rule("- no change", fromLanguage = on, name = "on-acc", addedCategories = ".ACC")
+        val accRule = on.rule("- no change", name = "on-acc", addedCategories = ".ACC")
         val haustAcc = graph.addWord("haust", "autumn.ACC", language = on)
         graph.addLink(haustAcc, haust, Link.Derived, listOf(accRule))
-        val defRule = graph.rule("- apply rule 'on-acc'\nword is n:\n- append 'it'", fromLanguage = on)
+        val defRule = on.rule("- apply rule 'on-acc'\nword is n:\n- append 'it'")
         val result = defRule.apply(haust)
         assertEquals("haustit", result.text)
     }
@@ -824,43 +824,43 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun speApplySoundRule() {
-        val speRule = graph.rule("* e > i", name = "q-e-i")
-        val baseRule = graph.rule("word ends with 'a':\n- apply sound rule 'q-e-i' to second vowel\notherwise:\n- no change")
+        val speRule = q.rule("* e > i", name = "q-e-i")
+        val baseRule = q.rule("word ends with 'a':\n- apply sound rule 'q-e-i' to second vowel\notherwise:\n- no change")
         assertEquals("elina", baseRule.apply(q.word("elena")).text)
     }
 
     @Test
     fun speApplySoundRulePostInstruction() {
-        val postRule = graph.rule("* e > i", name = "q-e-i")
-        val baseRule = graph.rule("* a > 0\n= apply sound rule 'q-e-i' to previous vowel")
+        val postRule = q.rule("* e > i", name = "q-e-i")
+        val baseRule = q.rule("* a > 0\n= apply sound rule 'q-e-i' to previous vowel")
         assertEquals("elin", baseRule.apply(q.word("elena")).text)
     }
 
     @Test
     fun speRuleMultipleInstructions() {
-        val rule = graph.rule("* ei > e\n* eu > o")
+        val rule = q.rule("* ei > e\n* eu > o")
         assertEquals("deuo", rule.apply(q.word("deiuo")).text)
     }
 
     @Test
     fun speRuleMultipleInstructionsApplyBoth() {
-        val rule = graph.rule("* eh₂ > ā\n*ē > ā")
+        val rule = q.rule("* eh₂ > ā\n*ē > ā")
         assertEquals("mātār", rule.apply(q.word("meh₂tēr")).text)
     }
 
     @Test
     fun speRuleMultipleInstructionsOverlap() {
-        val rule = graph.rule("* eh₂ > ā\n*e > a")
+        val rule = q.rule("* eh₂ > ā\n*e > a")
         assertEquals("mātēr", rule.apply(q.word("meh₂tēr")).text)
     }
 
     @Test
     fun multilanguagePhonemes() {
         q.phonemes += phoneme("kʰ", "aspirated consonant")
-        val rule = graph.rule("* kh > kʰ", fromLanguage = ce, toLanguage = q)
+        val rule = ce.rule("* kh > kʰ", toLanguage = q)
         val word1 = rule.apply(q.word("khith"))
         assertEquals("kʰith", word1.text)
-        val rule2 = graph.rule("* i > e / C_C", fromLanguage = ce, toLanguage = q)
+        val rule2 = ce.rule("* i > e / C_C", toLanguage = q)
         assertEquals("kʰeth", rule2.apply(word1).text)
     }
 

@@ -27,7 +27,7 @@ class ParadigmTest : QBaseTest() {
         val paradigm = setupNounParadigm()
 
         paradigm.setRule(0, 0, emptyList())
-        val genRule = graph.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
+        val genRule = q.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
         paradigm.setRule(1, 0, listOf(genRule))
 
         val lasse = graph.findOrAddWord("lasse", q, "leaf", pos = "N")
@@ -46,7 +46,7 @@ class ParadigmTest : QBaseTest() {
             Rule.parseLogic("- append 'r'", q.parseContext()),
             ".PL"
         )
-        val genRule = graph.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
+        val genRule = q.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
         val genPlRule = graph.addRule(
             "q-gen-pl",
             q,
@@ -74,10 +74,10 @@ class ParadigmTest : QBaseTest() {
     fun paradigmPreRule() {
         val paradigm = setupNounParadigm()
 
-        val genRule = graph.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
+        val genRule = q.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
         paradigm.setRule(1, 0, listOf(genRule))
 
-        val preRule = graph.rule("word ends with 'a':\n- change ending to ''", name = "q-pre")
+        val preRule = q.rule("word ends with 'a':\n- change ending to ''", name = "q-pre")
         paradigm.preRule = preRule
 
         val cirya = graph.findOrAddWord("cirya", q, "ship", pos = "N")
@@ -90,10 +90,10 @@ class ParadigmTest : QBaseTest() {
         q.accentTypes = setOf(AccentType.Grave)
         val paradigm = setupNounParadigm()
 
-        val genRule = graph.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
+        val genRule = q.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
         paradigm.setRule(1, 0, listOf(genRule))
 
-        val preRule = graph.rule("word ends with 'a':\n- change ending to ''", name = "q-pre")
+        val preRule = q.rule("word ends with 'a':\n- change ending to ''", name = "q-pre")
         paradigm.preRule = preRule
 
         val cirya = graph.findOrAddWord("cìrya", q, "ship", pos = "N")
@@ -106,10 +106,10 @@ class ParadigmTest : QBaseTest() {
     fun paradigmPostRule() {
         val paradigm = setupNounParadigm()
 
-        val genRule = graph.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
+        val genRule = q.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
         paradigm.setRule(1, 0, listOf(genRule))
 
-        val postRule = graph.rule("word ends with 'ao':\n- change ending to 'o'", name = "q-post")
+        val postRule = q.rule("word ends with 'ao':\n- change ending to 'o'", name = "q-post")
         paradigm.postRule = postRule
 
         val cirya = graph.findOrAddWord("cirya", q, "ship", pos = "N")
@@ -122,12 +122,12 @@ class ParadigmTest : QBaseTest() {
         val paradigm = setupNounParadigm()
         paradigm.addColumn("Pl")
 
-        val genRule = graph.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
+        val genRule = q.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
         paradigm.setRule(1, 0, listOf(genRule))
-        val genPlRule = graph.rule("- apply rule 'q-gen'", name = "q-gen-pl")
+        val genPlRule = q.rule("- apply rule 'q-gen'", name = "q-gen-pl")
         paradigm.setRule(1, 1, listOf(genPlRule))
 
-        val postRule = graph.rule("word ends with 'o':\n- change ending to ''", name = "q-post")
+        val postRule = q.rule("word ends with 'o':\n- change ending to ''", name = "q-post")
         paradigm.postRule = postRule
 
         val cirya = graph.findOrAddWord("kiryamo", q, "mariner", pos = "N")
@@ -169,7 +169,7 @@ class ParadigmTest : QBaseTest() {
     fun deleteRule() {
         val paradigm = setupNounParadigm()
 
-        val genRule = graph.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
+        val genRule = q.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
         paradigm.setRule(1, 0, listOf(genRule))
 
         graph.deleteRule(genRule)

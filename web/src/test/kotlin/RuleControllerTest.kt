@@ -316,18 +316,16 @@ class RuleControllerTest {
     }
 
     private fun setupChainedSequenceDerivation(qWordText: String): Triple<RuleSequence, Word, Word> {
-        val qAiE = graph.rule(
+        val qAiE = ce.rule(
             "* a > e / _i",
-            name = "q-ai-e",
-            fromLanguage = ce,
-            toLanguage = aq
+            toLanguage = aq,
+            name = "q-ai-e"
         )
         val aqSeq = graph.addRuleSequence("ce-aq", ce, aq, listOf(qAiE.step()))
-        val qWV = graph.rule(
+        val qWV = aq.rule(
             "* w > v / #_",
-            name = "q-w-v",
-            fromLanguage = aq,
-            toLanguage = q
+            toLanguage = q,
+            name = "q-w-v"
         )
         val qSeq = graph.addRuleSequence("aq-q", aq, q, listOf(qWV.step()))
 

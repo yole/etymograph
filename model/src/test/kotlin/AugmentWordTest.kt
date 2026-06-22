@@ -31,7 +31,7 @@ class AugmentWordTest {
     @Test
     fun augmentInflection() {
         val bille = graph.findOrAddWord("bille", oe, null)
-        val rule = graph.rule("- no change", oe, name = "oe-dat", addedCategories = ".DAT")
+        val rule = oe.rule("- no change", name = "oe-dat", addedCategories = ".DAT")
         augmentWordWithDictionary(wiktionary, bille)
         assertNull(bille.gloss)
         val link = bille.baseWordLink()
@@ -42,7 +42,7 @@ class AugmentWordTest {
     @Test
     fun augmentInflectionAmbiguous() {
         val wyrtum = graph.findOrAddWord("wyrtum", oe, null)
-        val rule = graph.rule("- no change", oe, name = "oe-dat-pl", addedCategories = ".DAT.PL")
+        val rule = oe.rule("- no change", name = "oe-dat-pl", addedCategories = ".DAT.PL")
         val result = augmentWordWithDictionary(wiktionary, wyrtum)
         assertEquals(2, result.variants.size)
 

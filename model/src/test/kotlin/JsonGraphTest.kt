@@ -230,8 +230,8 @@ class JsonGraphTest {
     @Test
     fun serializeParadigmRules() {
         val paradigm = graph.addParadigm("Noun", q, listOf("N"))
-        val preRule = graph.rule("word ends with 'a':\n- change ending to ''", name = "q-pre", fromLanguage = q)
-        val postRule = graph.rule("word ends with 'oo':\n - change ending to 'o'", name = "q-post", fromLanguage = q)
+        val preRule = q.rule("word ends with 'a':\n- change ending to ''", name = "q-pre")
+        val postRule = q.rule("word ends with 'oo':\n - change ending to 'o'", name = "q-post")
         paradigm.preRule = preRule
         paradigm.postRule = postRule
         val repo2 = graph.roundtrip()
