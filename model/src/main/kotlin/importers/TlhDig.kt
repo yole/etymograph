@@ -104,6 +104,7 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
 
         val lemma = mrpElements[0]
         val cleanLemma = lemma
+            .substringBefore('/', lemma)
             .replace("y", "i̯")
             .trimEnd { it.isDigit() }
             .removeSuffix("-")
@@ -137,11 +138,6 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
             }
         }
         else {
-            if ('/' in lemma) {
-                println("Skipping lemma with /: $lemma")
-                continue
-            }
-
             val posMarkers = mutableListOf<String>()
             val rule = if (selectedAnalysis.isNotEmpty()) {
                 findRuleByMrp(selectedAnalysis, hittite, posMarkers)
@@ -151,7 +147,7 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
             }
 
             val lemmaWord = graph.addWord(cleanLemma, hittite, gloss,
-                pos = posMarkers.singleOrNull(),
+                pos = posMarkers.singleOrNull() ?: rule?.fromPOS?.firstOrNull(),
                 syllabographic = lemma.any { it.isUpperCase() })
             graph.addLink(transWord, lemmaWord, Link.Derived,
                 rules = rule?.let { listOf(it) } ?: emptyList())
@@ -193,7 +189,7 @@ private val posMap = mapOf(
 )
 
 private val ignoreCategories = setOf("LUW||HITT", "HITT")
-private val optionalIgnoreCategories = setOf("C", "N", "PRES")
+private val optionalIgnoreCategories = setOf("C", "N", "PRS")
 
 private fun createEncliticCompound(word: Word, enclitics: String): Word {
     val (encliticText, encliticAnalysis) = enclitics.trimEnd('@').split('@', limit = 2)

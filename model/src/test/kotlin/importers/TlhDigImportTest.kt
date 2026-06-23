@@ -5,6 +5,7 @@ import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import page.yole.etymograph.*
+import page.yole.etymograph.Link
 import java.io.StringReader
 
 class TlhDigImportTest {
@@ -76,9 +77,8 @@ class TlhDigImportTest {
         val rule = hittite.rule("", addedCategories = ".NOM.SG")
         importWord("""<w trans="NU.KIRI₆" mrp0sel=" 1a" mrp1="NU.°GIŠ°KIRI₆=@NU.°GIŠ°KIRI₆@{a → PNm.NOM.SG(UNM)}@38.1@m"><d>m</d><sGr>NU.</sGr><d>GIŠ</d><sGr>KIRI₆</sGr></w>""")
         val word = findWord("^m^NU.^GIŠ^KIRI6", true)
-        assertEquals(rule, word.lemmaLink.rules.single())
-        val lemma = word.lemmaLink.toEntity as Word
-        assertEquals("NP", lemma.pos)
+        assertEquals(rule, word.lemmaRule)
+        assertEquals("NP", word.lemma.pos)
     }
 
     @Test
@@ -89,8 +89,7 @@ class TlhDigImportTest {
         val compound = graph.findCompoundsByCompoundWord(word).first()
         assertEquals("ḫaittaz", compound.components[0].text)
         assertEquals("ma", compound.components[1].text)
-        val lemmaLink = compound.components[0].lemmaLink
-        assertEquals(rule, lemmaLink.rules.single())
+        assertEquals(rule, compound.components[0].lemmaRule)
     }
 
     @Test
@@ -99,7 +98,7 @@ class TlhDigImportTest {
         val corpusText = importWord("""<w trans="uriannieš" mrp0sel=" 1c" mrp1="uriyann=i-2@(Orakelvogel)@{c → LUW||HITT.NOM.SG.C}@30.1.1@">u-ri-an<corr c="(?)"/><del_fin/>-ni-eš<d>MUŠEN</d></w>""")
         val word = corpusText.words[0].word.transcription
         assertEquals("urii̯anni", word.lemma.text)
-        assertEquals(rule, word.lemmaLink.rules.single())
+        assertEquals(rule, word.lemmaRule)
     }
 
     @Test
@@ -110,7 +109,7 @@ class TlhDigImportTest {
         val word = corpusText.words[0].word.transcription
         val compound = graph.findCompoundsByCompoundWord(word).first()
         assertEquals("zulia", compound.components[0].lemma.text)
-        assertEquals(rule, compound.components[0].lemmaLink.rules.single())
+        assertEquals(rule, compound.components[0].lemmaRule)
     }
 
     @Test
@@ -124,7 +123,7 @@ class TlhDigImportTest {
         val rule = hittite.rule("", addedCategories = ".NOM.PL")
         val corpusText = importWord("""<w trans="GUNeš" mrp0sel=" 2 2b" mrp1="GUN@Talent@{ a → NOM.PL.C} { b → ACC.PL.C}@29.1.1@" mrp2="GUN-eš@(Orakelterminus)@{ a → NOM.SG.C(ABBR)} { b → NOM.PL.C(ABBR)}@@ "><sGr>GUN</sGr>-eš₁₇</w>""")
         val word = corpusText.words[0].word
-        assertEquals(rule, word.lemmaLink.rules.single())
+        assertEquals(rule, word.lemmaRule)
     }
 
     @Test
@@ -134,7 +133,17 @@ class TlhDigImportTest {
         val word = corpusText.words[0].word
         val compound = graph.findCompoundsByCompoundWord(word).first()
         assertEquals(4, compound.components.size)
-        assertEquals(rule, compound.components[0].lemmaLink.rules.single())
+        assertEquals(rule, compound.components[0].lemmaRule)
+    }
+
+    @Test
+    fun slashInLemma() {
+        val rule = hittite.rule("", addedCategories = ".1PL", fromPOS = "V")
+        val corpusText = importWord("""<w trans="ḫuekuani" mrp0sel=" 2" mrp1="ḫuek-/ḫuk-@schlachten@1PL.PRS@I.3.1@" mrp2="ḫuek-/ḫuk-2@beschwören@1PL.PRS@I.3.1@">ḫu-e-ku-wa-ni<note c="&lt;P_f_Footnote&gt;&lt;SP_f_AO_3a_-LIT&gt;Hagenbuchner A. 1989a&lt;/SP_f_AO_3a_-LIT&gt;, 84, restores and emends: &lt;del_in/&gt;&lt;SP_f_AO_3a_SumGRAM&gt;EGIR&lt;/SP_f_AO_3a_SumGRAM&gt;&lt;SP_f_AO_3a_Hittite&gt;-a&lt;del_fin/&gt;n-da&lt;/SP_f_AO_3a_Hittite&gt; &lt;SP_f_AO_3a_Hittite&gt;ḫu-e-〈iš〉-ku-wa-ni&lt;/SP_f_AO_3a_Hittite&gt;.&lt;/P_f_Footnote&gt;"/></w>""")
+        val word = corpusText.words[0].word.transcription
+        assertEquals("ḫuek", word.lemma.text)
+        assertEquals("V", word.lemma.pos)
+        assertEquals(rule, word.lemmaRule)
     }
 
     private fun findWord(text: String, syllabographic: Boolean = false): Word =
@@ -146,7 +155,7 @@ class TlhDigImportTest {
         return graph.allCorpusTexts().first()
     }
 
-    private val Word.transcription get() =  graph.getLinksFrom(this).single { it.type == Link.Transcription }.toEntity as Word
-    private val Word.lemma get() =  graph.getLinksFrom(this).single { it.type == Link.Derived }.toEntity as Word
-    private val Word.lemmaLink get() =  graph.getLinksFrom(this).single { it.type == Link.Derived }
+    private val Word.transcription get() = graph.getLinksFrom(this).single { it.type == Link.Transcription }.toEntity as Word
+    private val Word.lemma get() = graph.getLinksFrom(this).single { it.type == Link.Derived }.toEntity as Word
+    private val Word.lemmaRule get() = this.graph.getLinksFrom(this).single { it.type == Link.Derived }.rules.single()
 }
