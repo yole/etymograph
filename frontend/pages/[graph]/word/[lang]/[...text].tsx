@@ -480,7 +480,9 @@ function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean 
 
     function canClearGloss() {
         return (!word.glossComputed || word.pos !== null) &&
-            word.linksFrom.find(l => l.typeId === LinkTypes.Derived || l.typeId == LinkTypes.Variation)
+            word.linksFrom.find(l =>
+                l.typeId === LinkTypes.Derived || l.typeId == LinkTypes.Variation || l.typeId == LinkTypes.Transcription
+            )
     }
 
     function clearGloss() {
