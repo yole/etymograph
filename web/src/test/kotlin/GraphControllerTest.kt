@@ -77,6 +77,37 @@ class GraphControllerTest {
         assertEquals("0 changed files", controller.list(null).single().status)
     }
 
+    @Test
+    fun revertChangesReloadsGraphFromDisk() {
+        val registryDir = Files.createTempDirectory("graph-controller-revert-test")
+        val registryFile = registryDir.resolve("graphs.json")
+        registryFile.writeText("""{"graphs":[]}""")
+        val originRepo = createMinimalGraphRepo()
+
+        val graphService = InMemoryGraphService(registryFile.toString())
+        val controller = GraphController(graphService, false)
+        controller.clone(GraphController.CloneGraphParams(originRepo.toUri().toString()))
+
+        val clonedGraph = graphService.allGraphs().single() as JsonGraph
+        val workTree = clonedGraph.path!!
+
+        // Make a local modification and an unversioned file
+        workTree.resolve("graph.json").writeText(
+            """{"id":"test","name":"Modified Graph","languages":[],"links":[]}"""
+        )
+        val unversionedFile = workTree.resolve("extra.json")
+        unversionedFile.writeText("garbage")
+
+        assertEquals("2 changed files", controller.list(null).single().status)
+
+        val reverted = controller.revertChanges(clonedGraph)
+
+        assertEquals("Test Graph", reverted.name)
+        assertEquals("0 changed files", reverted.status)
+        assertTrue(!unversionedFile.exists())
+        assertEquals("Test Graph", graphService.allGraphs().single().name)
+    }
+
     private fun createMinimalGraphRepo(): Path {
         val repoDir = Files.createTempDirectory("graph-source-repo")
         repoDir.resolve("graph.json").writeText(
@@ -129,5 +160,6 @@ class GraphControllerTest {
         override fun canWrite(graphId: String, email: String): Boolean = true
         override fun getEditableGraphs(email: String): List<String> = listOf(graph.id)
         override fun cloneGraph(repoUrl: String): Graph = graph
+        override fun revertChanges(graphId: String): Graph = graph
     }
 }

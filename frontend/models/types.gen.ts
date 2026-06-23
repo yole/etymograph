@@ -82,17 +82,17 @@ export type CompoundComponentsViewModel = {
     notes?: (string) | null;
 };
 
-export type CompoundRefViewModel = {
-    word: WordRefViewModel;
-    attestations: Array<AttestationViewModel>;
-};
-
 export type CompoundParams = {
     compoundId: number;
     firstComponentId: number;
     head?: (number) | null;
     source?: (string) | null;
     notes?: (string) | null;
+};
+
+export type CompoundRefViewModel = {
+    word: WordRefViewModel;
+    attestations: Array<AttestationViewModel>;
 };
 
 export type CopyPhonemesParams = {

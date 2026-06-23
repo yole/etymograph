@@ -88,6 +88,10 @@ export function syncChanges(graph: string): Promise<Response> {
     return postToBackend(`${graph}/syncChanges`, {})
 }
 
+export function revertChanges(graph: string): Promise<Response> {
+    return postToBackend(`${graph}/revertChanges`, {})
+}
+
 export function cloneGraph(repoUrl: string): Promise<Response> {
     return postToBackend(`graphs/clone`, {repoUrl})
 }

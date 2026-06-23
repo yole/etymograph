@@ -4,6 +4,7 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.eclipse.jgit.api.Git
+import org.eclipse.jgit.api.ResetCommand
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
 import page.yole.etymograph.*
@@ -18,6 +19,7 @@ abstract class GraphService {
     abstract fun canWrite(graphId: String, email: String): Boolean
     abstract fun getEditableGraphs(email: String): List<String>
     abstract fun cloneGraph(repoUrl: String): Graph
+    abstract fun revertChanges(graphId: String): Graph
 }
 
 fun GraphService.graphByRequestPath(requestPath: String): Graph? {
@@ -125,6 +127,24 @@ class InMemoryGraphService(
             }
             throw e
         }
+    }
+
+    override fun revertChanges(graphId: String): Graph {
+        val registered = registeredGraphs[graphId] ?: notFound("No graph with ID $graphId")
+        val jsonGraph = registered.graph as? JsonGraph
+            ?: badRequest("Revert is only supported for JSON graph repositories")
+        val workTree = jsonGraph.path?.toFile()
+            ?: badRequest("JSON graph repository path is not specified")
+
+        Git.open(workTree).use { git ->
+            git.reset().setMode(ResetCommand.ResetType.HARD).call()
+            git.clean().setCleanDirectories(true).call()
+        }
+
+        val reloaded = JsonGraph.fromJson(jsonGraph.path!!)
+        val updated = registered.copy(graph = reloaded)
+        registeredGraphs[graphId] = updated
+        return reloaded
     }
 
     override fun canWrite(graphId: String, email: String): Boolean {

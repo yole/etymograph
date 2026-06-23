@@ -1205,6 +1205,21 @@ paths:
             '*/*':
               schema:
                 $ref: "#/components/schemas/GraphViewModel"
+  /{graph}/revertChanges:
+    post:
+      summary: "POST {graph}/revertChanges"
+      operationId: "revertChanges"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/GraphViewModel"
   /{graph}/translation:
     post:
       summary: "POST {graph}/translation"

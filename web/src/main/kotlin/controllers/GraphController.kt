@@ -69,6 +69,22 @@ class GraphController(
         return GraphViewModel(graph.id, graph.name, graph.status(), true)
     }
 
+    @PostMapping("/{graph}/revertChanges")
+    fun revertChanges(graph: Graph): GraphViewModel {
+        graph as? JsonGraph
+            ?: badRequest("Revert Changes is only supported for JSON graph repositories")
+
+        val reverted = try {
+            graphService.revertChanges(graph.id)
+        } catch (e: ResponseStatusException) {
+            throw e
+        } catch (e: Exception) {
+            throw ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.message ?: "Failed to revert changes", e)
+        }
+
+        return GraphViewModel(reverted.id, reverted.name, reverted.status(), true)
+    }
+
     data class CloneGraphParams(val repoUrl: String = "")
 
     @PostMapping("/graphs/clone")

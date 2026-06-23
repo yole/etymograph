@@ -1,4 +1,4 @@
-import {hasBackend, cloneGraph, fetchGraphs, syncChanges, callApiAndRefresh} from "../api";
+import {hasBackend, cloneGraph, fetchGraphs, syncChanges, revertChanges, callApiAndRefresh} from "../api";
 import Link from "next/link";
 import {useContext, useState} from "react";
 import {useRouter} from "next/router";
@@ -24,6 +24,10 @@ export default function Home(props) {
 
     async function syncGraphChanges(graphId) {
         callApiAndRefresh(() => syncChanges(graphId), router, setErrorText)
+    }
+
+    async function revertGraphChanges(graphId) {
+        callApiAndRefresh(() => revertChanges(graphId), router, setErrorText)
     }
 
     async function cloneExistingGraph() {
@@ -55,6 +59,8 @@ export default function Home(props) {
                     {auth?.authStatus?.editableGraphs?.includes(l.id) && <>
                         {' '}
                         <button className="uiButton" onClick={() => syncGraphChanges(l.id)}>Sync Changes</button>
+                        {' '}
+                        <button className="uiButton" onClick={() => revertGraphChanges(l.id)}>Revert Changes</button>
                     </>}
                 </li>
             )}
