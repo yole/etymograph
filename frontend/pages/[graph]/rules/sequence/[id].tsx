@@ -2,6 +2,7 @@ import {allowEditGraph, fetchBackend, fetchPathsForAllGraphs, reapplyRuleSequenc
 import Breadcrumbs from "@/components/Breadcrumbs";
 import {DerivationViewModel, ReapplyResultViewModel, SequenceDerivationsViewModel} from "@/models";
 import WordLink from "@/components/WordLink";
+import {LinkTypes} from "@/components/LinkTypes";
 import {useRouter} from "next/router";
 import Link from "next/link";
 import {WordLinkComponent} from "@/pages/[graph]/word/[lang]/[...text]";
@@ -172,7 +173,7 @@ export default function RuleSequence(params) {
                     <WordLinkComponent
                         baseWord={derivation.baseWord}
                         linkWord={derivation.derivation}
-                        linkType={{typeId: '^', type: 'originates from'}}
+                        linkType={{typeId: LinkTypes.Origin, type: 'originates from'}}
                         directionFrom={false}
                         showSequence={false}
                         linkClassName="derivationLinkChain"/>

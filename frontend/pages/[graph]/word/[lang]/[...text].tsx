@@ -1,6 +1,7 @@
 import {useContext, useEffect, useState} from "react";
 import WordForm from "@/forms/WordForm";
 import WordLink from "@/components/WordLink";
+import {LinkTypes} from "@/components/LinkTypes";
 import {
     addLink,
     addWord,
@@ -154,7 +155,7 @@ export function WordLinkComponent(params: WordLinkProps) {
         {params.showSequence && linkWord.ruleSequence && <>&nbsp;through {linkWord.ruleSequence.name}</>}
         {linkWord.notes && <> &ndash; {linkWord.notes}</>}
         <SourceRefs source={linkWord.source} span={true}/>
-        {params.linkType.typeId === ">" && !params.directionFrom && linkWord.attestations.length > 0 &&
+        {params.linkType.typeId === LinkTypes.Derived && !params.directionFrom && linkWord.attestations.length > 0 &&
             <InlineAttestations attestations={linkWord.attestations} graph={graph}/>
         }
         {canEdit && <>
@@ -412,7 +413,7 @@ function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean 
     }
 
     async function linkToParseCandidate(pc: ParseCandidateViewModel, wordId: number) {
-        const r = await addLink(graph, word.id, wordId, ">", pc.ruleNames.join(","))
+        const r = await addLink(graph, word.id, wordId, LinkTypes.Derived, pc.ruleNames.join(","))
         if (r.status !== 200) {
             const jr = await r.json()
             setErrorText(jr.message)
@@ -479,7 +480,7 @@ function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean 
 
     function canClearGloss() {
         return (!word.glossComputed || word.pos !== null) &&
-            word.linksFrom.find(l => l.typeId === '>' || l.typeId == '=')
+            word.linksFrom.find(l => l.typeId === LinkTypes.Derived || l.typeId == LinkTypes.Variation)
     }
 
     function clearGloss() {
@@ -628,14 +629,14 @@ function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean 
             {canShowTranscription && <><button className="uiButton" onClick={showTranscriptionClicked}>Transcription</button>{' '}</>}
             {showTranscription &&
                 <WordForm
-                    wordSubmitted={submitted} linkType='_' linkTarget={word} reverseLink={true} languageReadOnly={true}
+                    wordSubmitted={submitted} linkType={LinkTypes.Transcription} linkTarget={word} reverseLink={true} languageReadOnly={true}
                     defaultValues={{language: word.language, text: suggestedTranscription}}
                     cancelled={() => setShowTranscription(false)}
                 />
             }
 
             {!isCompound && <><button className="uiButton" onClick={() => setShowBaseWord(!showBaseWord)}>Lemma</button>{' '}</>}
-            {showBaseWord && <WordForm wordSubmitted={submitted} linkType='>' linkTarget={word} reverseLink={true}
+            {showBaseWord && <WordForm wordSubmitted={submitted} linkType={LinkTypes.Derived} linkTarget={word} reverseLink={true}
                                        languageReadOnly={true}
                                        showSyllabographic={word.syllabographic}
                                        defaultValues={{language: word.language}} cancelled={() => setShowBaseWord(false)}/>}
@@ -652,7 +653,7 @@ function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean 
             {!isCompound && <><button className="uiButton" onClick={() => setShowVariationOf(!showVariationOf)}>Variation</button><br/></>}
             {showVariationOf && <WordForm
                 wordSubmitted={submitted}
-                linkType='=' reverseLink={true} linkTarget={word}
+                linkType={LinkTypes.Variation} reverseLink={true} linkTarget={word}
                 defaultValues={{language: word.language}}
                 languageReadOnly={true}
                 showSyllabographic={word.syllabographic}
@@ -677,17 +678,17 @@ function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean 
             <Accordion.Item value="link"><Accordion.Control><b>Add linked words</b></Accordion.Control><Accordion.Panel>
 
             <button className="uiButton" onClick={() => setShowDerivedWord(!showDerivedWord)}>Add inflected form</button>{' '}
-            {showDerivedWord && <WordForm wordSubmitted={submitted} linkType='>' linkTarget={word}
+            {showDerivedWord && <WordForm wordSubmitted={submitted} linkType={LinkTypes.Derived} linkTarget={word}
                                           defaultValues={{language: word.language}} cancelled={() => setShowDerivedWord(false)} />}
 
             <button className="uiButton" onClick={() => setShowRelated(!showRelated)}>Add related word</button>{' '}
-            {showRelated && <WordForm wordSubmitted={submitted} linkType='~' linkTarget={word} defaultValues={{language: word.language}} languageReadOnly={true} cancelled={() => setShowRelated(false)}/>}
+            {showRelated && <WordForm wordSubmitted={submitted} linkType={LinkTypes.Related} linkTarget={word} defaultValues={{language: word.language}} languageReadOnly={true} cancelled={() => setShowRelated(false)}/>}
 
 
             {!isCompound && <><button className="uiButton" onClick={() => setShowVariation(!showVariation)}>Add variation</button>{' '}</>}
             {showVariation && <WordForm
                 wordSubmitted={submitted}
-                linkType='=' linkTarget={word}
+                linkType={LinkTypes.Variation} linkTarget={word}
                 defaultValues={{language: word.language}}
                 languageReadOnly={true}
                 showSyllabographic={word.syllabographic}
@@ -699,10 +700,10 @@ function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean 
             <Accordion.Item value="etymology"><Accordion.Control><b>Etymology</b></Accordion.Control><Accordion.Panel>
 
             <button className="uiButton"  onClick={() => setShowOriginWord(!showOriginWord)}>Add origin word</button>{' '}
-            {showOriginWord && <WordForm wordSubmitted={submitted} linkType='^' linkTarget={word} reverseLink={true}
+            {showOriginWord && <WordForm wordSubmitted={submitted} linkType={LinkTypes.Origin} linkTarget={word} reverseLink={true}
                                          defaultValues={{gloss: word.gloss}} cancelled={() => setShowOriginWord(false)}/>}
             <button className="uiButton"  onClick={() => setShowDerivativeWord(!showDerivativeWord)}>Add derivative word</button>
-            {showDerivativeWord && <WordForm wordSubmitted={submitted} linkType='^' linkTarget={word}
+            {showDerivativeWord && <WordForm wordSubmitted={submitted} linkType={LinkTypes.Origin} linkTarget={word}
                                              defaultValues={{gloss: word.gloss}} cancelled={() => setShowDerivativeWord(false)}/>}
             {word.suggestedDeriveSequences.map(seq => <>
                 {' '}

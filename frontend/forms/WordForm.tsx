@@ -9,6 +9,7 @@ import RuleListSelect from "@/components/RuleListSelect";
 import {useRouter} from "next/router";
 import PosSelect from "@/components/PosSelect";
 import WordClassSelect from "@/components/WordClassSelect";
+import {LinkTypes} from "@/components/LinkTypes";
 import {AddWordParameters, WordViewModel} from "@/models";
 
 export interface WordFormData extends AddWordParameters {
@@ -151,7 +152,7 @@ export default function WordForm(props: WordFormProps) {
         <FormRow id="gloss" label="Gloss"/>
         <FormRow id="fullGloss" label="Full gloss"/>
         {props.showContextGloss && <FormRow id="contextGloss" label="Context gloss"/>}
-        {(props.linkType === '>' || props.linkType === '^') &&
+        {(props.linkType === LinkTypes.Derived || props.linkType === LinkTypes.Origin) &&
             <RuleListSelect id="linkRuleNames" label="Link rule names" isMulti={true}
                             language={props.defaultValues.language} languageProp={props.languageReadOnly !== true ? 'language' : undefined}/>}
         <FormRow id="source" label="Source"/>

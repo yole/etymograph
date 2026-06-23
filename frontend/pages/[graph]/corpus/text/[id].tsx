@@ -15,6 +15,7 @@ import SourceRefs from "@/components/SourceRefs";
 import CorpusTextForm from "@/forms/CorpusTextForm";
 import TranslationForm from "@/forms/TranslationForm";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import {LinkTypes} from "@/components/LinkTypes";
 import WordGloss from "@/components/WordGloss";
 import {CorpusTextViewModel, CorpusWordCandidateViewModel, CorpusWordViewModel, TranslationViewModel, WordViewModel} from "@/models";
 import WordTextView from "@/components/WordTextView";
@@ -326,7 +327,7 @@ export default function CorpusText(params) {
                                                   syllabographic: corpusText.syllabographic,
                                               }}
                                               languageReadOnly={true}
-                                              linkType=">"
+                                              linkType={LinkTypes.Derived}
                                               reverseLink={true}
                                               linkTargetText={predefWord}
                                               showContextGloss={true}

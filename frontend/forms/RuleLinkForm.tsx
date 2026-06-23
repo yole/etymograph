@@ -1,6 +1,7 @@
 import {addRuleLink} from "@/api";
 import EtymographForm, {EtymographFormProps} from "@/components/EtymographForm";
 import FormRow from "@/components/FormRow";
+import {LinkTypes} from "@/components/LinkTypes";
 import {useRouter} from "next/router";
 
 interface RuleLinkFormProps extends EtymographFormProps<LinkRuleData>{
@@ -18,7 +19,7 @@ export default function RuleLinkForm(props: RuleLinkFormProps) {
     const graph = router.query.graph as string
 
     return <EtymographForm<LinkRuleData>
-        create={(data) => addRuleLink(graph, props.fromEntityId, data.linkRuleName, '~', data.source, data.notes)}
+        create={(data) => addRuleLink(graph, props.fromEntityId, data.linkRuleName, LinkTypes.Related, data.source, data.notes)}
         {...props}
     >
         <table><tbody>
