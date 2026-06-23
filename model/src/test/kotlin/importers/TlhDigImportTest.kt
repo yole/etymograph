@@ -146,6 +146,12 @@ class TlhDigImportTest {
         assertEquals(rule, word.lemmaRule)
     }
 
+    @Test
+    fun dontAssociateXWords() {
+        val corpusText = importWord("<w mrp0sel=\"DEL\"><del_fin/>x-<laes_in/>an<laes_fin/></w>")
+        assertEquals(0, corpusText.words.size)
+    }
+
     private fun findWord(text: String, syllabographic: Boolean = false): Word =
         graph.wordsByText(hittite, text, syllabographic).single()
 

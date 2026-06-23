@@ -68,6 +68,10 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
             println("Skipping empty word $wordText")
             continue
         }
+        if ('x' in cleanText) {
+            println("Skipping damaged word $wordText")
+            continue
+        }
 
         val existingWords = graph.wordsByText(hittite, cleanText, true)
         if (existingWords.isNotEmpty()) {
