@@ -12,6 +12,7 @@ import page.yole.etymograph.Link
 import page.yole.etymograph.Rule
 import page.yole.etymograph.Word
 import page.yole.etymograph.findMatchingRule
+import page.yole.etymograph.removeDiacritics
 import page.yole.etymograph.removePunctuation
 import java.io.File
 import java.nio.file.Path
@@ -180,16 +181,19 @@ private fun findRuleByMrp(mrp: String, hittite: Language, posMarkers: MutableLis
 
     findMatchingRule(hittite, categorySet)?.let { return it }
     categorySet.removeAll(optionalIgnoreCategories)
-    return findMatchingRule(hittite, categorySet)
+    return findMatchingRule(hittite, categorySet).also {
+        if (it == null) println("No rule for mrp $mrp")
+    }
 }
 
 private val posMap = mapOf(
     "PNm" to KnownPartsOfSpeech.properName.abbreviation,
-    "GN" to KnownPartsOfSpeech.properName.abbreviation
+    "GN" to KnownPartsOfSpeech.properName.abbreviation,
+    "ADV" to "ADV"
 )
 
-private val ignoreCategories = setOf("LUW||HITT")
-private val optionalIgnoreCategories = setOf("C")
+private val ignoreCategories = setOf("LUW||HITT", "HITT")
+private val optionalIgnoreCategories = setOf("C", "N", "PRES")
 
 private fun createEncliticCompound(word: Word, enclitics: String): Word {
     val (encliticText, encliticAnalysis) = enclitics.trimEnd('@').split('@', limit = 2)
@@ -200,9 +204,9 @@ private fun createEncliticCompound(word: Word, enclitics: String): Word {
     val compoundElements = mutableListOf<Word>()
     for (i in encliticTexts.size - 1 downTo 0) {
         val clitic = findOrAddWordByTextOnly(word.language, encliticTexts[i], encliticAnalyses[i])
-        val len = longestCommonTail(tail, encliticTexts[i])
+        val len = longestCommonTail(tail.removeDiacritics(), encliticTexts[i])
         if (len == 0) break
-        tail = tail.substring(0, tail.length - len)
+        tail = tail.substring(0, tail.length - len).removeSuffix("-")
         compoundElements.add(0, clitic)
     }
 
@@ -280,6 +284,7 @@ private fun findSelectedAnalysis(mrp: String, key: String): String {
             return optionValue.trim()
         }
     }
+    println("No matching analysis for $key in $mrp")
     return ""
 }
 

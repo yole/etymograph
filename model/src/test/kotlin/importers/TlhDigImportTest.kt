@@ -127,6 +127,16 @@ class TlhDigImportTest {
         assertEquals(rule, word.lemmaLink.rules.single())
     }
 
+    @Test
+    fun diacriticsInEnclitics() {
+        val rule = hittite.rule("", addedCategories = ".ABL")
+        val corpusText = importWord("""<w trans="SIG₅azmankan" mrp0sel=" 2" mrp1="SIG₅@(niederer) Offizier@ABL@29.1.2 += ma=an=kkan@CNJctr=PPRO.3SG.C.ACC=OBPk@@ LÚ" mrp2="SIG₅-az@von der guten Seite@HITT.ABL@+= ma=an=kkan@CNJctr=PPRO.3SG.C.ACC=OBPk@@ "><sGr>SIG₅</sGr>-az-ma-an-kán</w>""")
+        val word = corpusText.words[0].word
+        val compound = graph.findCompoundsByCompoundWord(word).first()
+        assertEquals(4, compound.components.size)
+        assertEquals(rule, compound.components[0].lemmaLink.rules.single())
+    }
+
     private fun findWord(text: String, syllabographic: Boolean = false): Word =
         graph.wordsByText(hittite, text, syllabographic).single()
 
