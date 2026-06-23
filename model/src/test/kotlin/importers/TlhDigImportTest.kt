@@ -21,6 +21,8 @@ class TlhDigImportTest {
             .withGrammaticalCategory("Number", "V", "Singular" to "SG", "Plural" to "PL")
             .withGrammaticalCategory("Mood", "V", "Indicative" to "IND", "Imperative" to "IMP")
             .withGrammaticalCategory("Case", "N", "Nominative" to "NOM", "Ablative" to "ABL", "Dative/Locative" to "D/L")
+            .withGrammaticalCategory("Non-finite form", "V", "Participle" to "PTCP")
+            .withGrammaticalCategory("Gender", "ADJ", "Common" to "C")
     }
 
     @Test
@@ -150,6 +152,21 @@ class TlhDigImportTest {
     fun dontAssociateXWords() {
         val corpusText = importWord("<w mrp0sel=\"DEL\"><del_fin/>x-<laes_in/>an<laes_fin/></w>")
         assertEquals(0, corpusText.words.size)
+    }
+
+    @Test
+    fun ptcp() {
+        val ptcpRule = hittite.rule("", addedCategories = ".PTCP", fromPOS = "V", toPOS = "ADJ")
+        val adjRule = hittite.rule("", addedCategories = ".NOM.SG.C", fromPOS = "ADJ")
+        val corpusText = importWord("""<w trans="taminkanza" mrp0sel=" 1a" mrp1="damenk=@anheften@{a → PTCP.NOM.SG.C}@I.1.10@"><laes_in/>ta<laes_fin/>-mi-in-kán-za</w>""")
+        val word = corpusText.words[0].word.transcription
+        val rules = graph.getLinksFrom(word).single { it.type == Link.Derived }.rules
+        assertEquals(listOf(ptcpRule, adjRule), rules)
+    }
+
+    @Test
+    fun noCategories() {
+        val corpusText = importWord("""<w trans="EGIRannakan" mrp0sel=" 1a" mrp1="EGIR-an@danach@{a → ADV}@@ += ya=kkan@CNJadd=OBPk@"><sGr>EGIR</sGr>-an-na-kán</w>""")
     }
 
     private fun findWord(text: String, syllabographic: Boolean = false): Word =

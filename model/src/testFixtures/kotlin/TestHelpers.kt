@@ -18,12 +18,14 @@ fun Language.rule(
     toLanguage: Language = this,
     name: String = "q",
     addedCategories: String? = null,
-    fromPOS: String? = null
+    fromPOS: String? = null,
+    toPOS: String? = null
 ): Rule {
     return graph.addRule(name, this, toLanguage,
         Rule.parseLogic(text, createParseContext(this, toLanguage)),
         addedCategories = addedCategories,
-        fromPOS = fromPOS?.let { listOf(it) } ?: emptyList()
+        fromPOS = fromPOS?.let { listOf(it) } ?: emptyList(),
+        toPOS = toPOS
     )
 }
 

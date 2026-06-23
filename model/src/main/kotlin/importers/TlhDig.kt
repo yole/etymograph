@@ -143,23 +143,23 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
         }
         else {
             val posMarkers = mutableListOf<String>()
-            val rule = if (selectedAnalysis.isNotEmpty()) {
-                findRuleByMrp(selectedAnalysis, hittite, posMarkers)
+            val rules = if (selectedAnalysis.isNotEmpty()) {
+                findRulesByMrp(selectedAnalysis, hittite, posMarkers)
             }
             else {
-                null
+                emptyList()
             }
 
             val lemmaWord = graph.addWord(cleanLemma, hittite, gloss,
-                pos = posMarkers.singleOrNull() ?: rule?.fromPOS?.firstOrNull(),
+                pos = posMarkers.singleOrNull() ?: rules?.firstOrNull()?.fromPOS?.firstOrNull(),
                 syllabographic = lemma.any { it.isUpperCase() })
             graph.addLink(transWord, lemmaWord, Link.Derived,
-                rules = rule?.let { listOf(it) } ?: emptyList())
+                rules = rules)
         }
     }
 }
 
-private fun findRuleByMrp(mrp: String, hittite: Language, posMarkers: MutableList<String>): Rule? {
+private fun findRulesByMrp(mrp: String, hittite: Language, posMarkers: MutableList<String>): List<Rule> {
     val analysis = mrp.removeSuffix("(UNM)").removeSuffix("(ABBR)").removePrefix("…:")
     val categories = analysis.split('.')
     val categorySet = mutableSetOf<String>()
@@ -179,11 +179,23 @@ private fun findRuleByMrp(mrp: String, hittite: Language, posMarkers: MutableLis
         }
     }
 
-    findMatchingRule(hittite, categorySet)?.let { return it }
+    if (categorySet.isEmpty()) {
+        return emptyList()
+    }
+
+    val step1Rule = findMatchingRule(hittite, setOf(categorySet.first()))
+    if (step1Rule != null) {
+        val step2Rule = findMatchingRule(hittite, categorySet.drop(1).toSet())
+        if (step2Rule != null) {
+            return listOf(step1Rule, step2Rule)
+        }
+    }
+
+    findMatchingRule(hittite, categorySet)?.let { return listOf(it) }
     categorySet.removeAll(optionalIgnoreCategories)
     return findMatchingRule(hittite, categorySet).also {
         if (it == null) println("No rule for mrp $mrp")
-    }
+    }?.let { listOf(it) } ?: emptyList()
 }
 
 private val posMap = mapOf(
