@@ -184,9 +184,6 @@ open class InMemoryGraph : Graph() {
                 }
             }
         }
-        for (compound in findCompoundsByComponent(word)) {
-            result.add(compound.compoundWord)
-        }
         return result
     }
 

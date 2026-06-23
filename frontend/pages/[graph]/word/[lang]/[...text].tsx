@@ -29,7 +29,7 @@ import {GlobalStateContext, GraphContext} from "@/components/Contexts";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import WordGloss, {WordFullGloss} from "@/components/WordGloss";
 import {
-    AttestationViewModel, CompoundComponentsViewModel, DictionaryViewModel, LinkTypeViewModel, LinkWordViewModel,
+    AttestationViewModel, CompoundComponentsViewModel, CompoundRefViewModel, DictionaryViewModel, LinkTypeViewModel, LinkWordViewModel,
     LookupVariantViewModel,
     ParseCandidateViewModel, WordRefViewModel,
     WordViewModel
@@ -193,9 +193,14 @@ export function WordLinkComponent(params: WordLinkProps) {
     </div>
 }
 
-function CompoundRefComponent(params: {baseWord: WordViewModel, linkWord: WordRefViewModel}) {
+function CompoundRefComponent(params: {baseWord: WordViewModel, linkWord: CompoundRefViewModel}) {
     const {baseWord, linkWord} = params
-    return <WordLink word={linkWord} baseLanguage={baseWord.language} gloss={true}/>
+    const router = useRouter()
+    const graph = router.query.graph as string
+    return <>
+        <WordLink word={linkWord.word} baseLanguage={baseWord.language} gloss={true}/>
+        {linkWord.attestations.length > 0 && <InlineAttestations attestations={linkWord.attestations} graph={graph}/>}
+    </>
 }
 
 function CompoundSuggestionsComponent(params: {suggestions: WordRefViewModel[], acceptCompoundSuggestion: (id: number) => void}) {
@@ -253,11 +258,11 @@ function CompoundListComponent(
         <div>{derivation ? "Derived with affix from:" : "Compound:"}</div>
         {compounds.map(m =>
             <div>
-                {m.components.map((mc, index) => <>
+                {m.components.map((mc, index) => <span key={mc.id}>
                     {index > 0 && " + "}
-                    <CompoundRefComponent key={mc.id} baseWord={word} linkWord={mc}/>
+                    <WordLink word={mc} baseLanguage={word.language} gloss={true}/>
                     {index === m.headIndex && " (head)"}
-                </>)}
+                </span>)}
                 {m.notes && <> &ndash; {m.notes}</>}
                 <SourceRefs source={m.source} span={true}/>
                 {addToCompoundId === m.compoundId && <>
@@ -588,14 +593,14 @@ function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean 
         {word.compounds.length > 0 &&
             <>
                 <div>Component of compounds</div>
-                {word.compounds.map(m => <div><CompoundRefComponent key={m.id} baseWord={word} linkWord={m}/></div>)}
+                {word.compounds.map(m => <div key={m.word.id}><CompoundRefComponent baseWord={word} linkWord={m}/></div>)}
                 <p/>
             </>
         }
         {word.derivationalCompounds.length > 0 &&
             <>
                 <div>{word.pos === "PV" ? "Affix in:" : "Words derived with affix:"}</div>
-                {word.derivationalCompounds.map(m => <div><CompoundRefComponent key={m.id} baseWord={word} linkWord={m}/></div>)}
+                {word.derivationalCompounds.map(m => <div key={m.word.id}><CompoundRefComponent baseWord={word} linkWord={m}/></div>)}
                 <p/>
             </>
         }

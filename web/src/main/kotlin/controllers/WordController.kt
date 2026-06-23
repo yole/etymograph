@@ -79,6 +79,12 @@ class WordController(val dictionaryService: DictionaryService) {
     data class AttestationViewModel(val textId: Int, val textTitle: String, val word: String?, val syllabogramSequence: SyllabogramSequence?)
 
     @Serializable
+    data class CompoundRefViewModel(
+        val word: WordRefViewModel,
+        val attestations: List<AttestationViewModel>
+    )
+
+    @Serializable
     data class CompoundComponentsViewModel(
         val compoundId: Int,
         val components: List<WordRefViewModel>,
@@ -123,8 +129,8 @@ class WordController(val dictionaryService: DictionaryService) {
         val attestations: List<AttestationViewModel>,
         val linksFrom: List<LinkTypeViewModel>,
         val linksTo: List<LinkTypeViewModel>,
-        val compounds: List<WordRefViewModel>,
-        val derivationalCompounds: List<WordRefViewModel>,
+        val compounds: List<CompoundRefViewModel>,
+        val derivationalCompounds: List<CompoundRefViewModel>,
         val components: List<CompoundComponentsViewModel>,
         val linkedRules: List<LinkedRuleViewModel>,
         val stressIndex: Int?,
@@ -232,8 +238,8 @@ class WordController(val dictionaryService: DictionaryService) {
                         }
                     )
             },
-            compoundsByComponent.filter { !it.isDerivation() }.map { it.compoundWord.toRefViewModel() },
-            compoundsByComponent.filter { it.isDerivation() }.map { it.compoundWord.toRefViewModel() },
+            compoundsByComponent.filter { !it.isDerivation() }.map { it.compoundWord.toCompoundRefViewModel(graph) },
+            compoundsByComponent.filter { it.isDerivation() }.map { it.compoundWord.toCompoundRefViewModel(graph) },
             compoundsByCompoundWord.map { compound ->
                 CompoundComponentsViewModel(
                     compound.id,
@@ -615,6 +621,9 @@ fun linkToViewModel(
         suggestedSequences(graph, link)
     )
 }
+
+private fun Word.toCompoundRefViewModel(graph: Graph): WordController.CompoundRefViewModel =
+    WordController.CompoundRefViewModel(toRefViewModel(), attestationsToViewModel(graph))
 
 private fun Word.attestationsToViewModel(graph: Graph): List<WordController.AttestationViewModel> =
     graph.findAttestations(this).map { attestation ->

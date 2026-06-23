@@ -82,6 +82,11 @@ export type CompoundComponentsViewModel = {
     notes?: (string) | null;
 };
 
+export type CompoundRefViewModel = {
+    word: WordRefViewModel;
+    attestations: Array<AttestationViewModel>;
+};
+
 export type CompoundParams = {
     compoundId: number;
     firstComponentId: number;
@@ -764,8 +769,8 @@ export type WordViewModel = {
     attestations: Array<AttestationViewModel>;
     linksFrom: Array<LinkTypeViewModel>;
     linksTo: Array<LinkTypeViewModel>;
-    compounds: Array<WordRefViewModel>;
-    derivationalCompounds: Array<WordRefViewModel>;
+    compounds: Array<CompoundRefViewModel>;
+    derivationalCompounds: Array<CompoundRefViewModel>;
     components: Array<CompoundComponentsViewModel>;
     linkedRules: Array<LinkedRuleViewModel>;
     stressIndex?: (number) | null;

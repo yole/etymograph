@@ -2075,6 +2075,18 @@ components:
         - "derivation"
         - "source"
         - "sourceEditableText"
+    CompoundRefViewModel:
+      type: "object"
+      properties:
+        word:
+          $ref: "#/components/schemas/WordRefViewModel"
+        attestations:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/AttestationViewModel"
+      required:
+        - "word"
+        - "attestations"
     LinkedRuleViewModel:
       type: "object"
       properties:
@@ -2166,11 +2178,11 @@ components:
         compounds:
           type: "array"
           items:
-            $ref: "#/components/schemas/WordRefViewModel"
+            $ref: "#/components/schemas/CompoundRefViewModel"
         derivationalCompounds:
           type: "array"
           items:
-            $ref: "#/components/schemas/WordRefViewModel"
+            $ref: "#/components/schemas/CompoundRefViewModel"
         components:
           type: "array"
           items:

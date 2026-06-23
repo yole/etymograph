@@ -253,4 +253,23 @@ class WordControllerTest {
         val result2 = wordController.suggestCompound(graph, laececynn.id, WordController.SuggestCompoundParameters(compound.id))
         assertEquals(cynn.id, result2.suggestions.single().id)
     }
+
+    @Test
+    fun compoundAttestationsShownInLinksNotOnComponent() {
+        val laece = graph.findOrAddWord("lǣċe", oe, "physician")
+        val cynn = graph.findOrAddWord("cynn", oe, "kind")
+        val laececynn = graph.findOrAddWord("lǣċecynn", oe, "medicine")
+        graph.createCompound(laececynn, listOf(laece, cynn))
+
+        val corpusText = graph.addCorpusText("lǣċecynn", "Sample text", oe)
+        corpusText.associateWord(0, laececynn)
+
+        val componentViewModel = wordController.singleWordJson(graph, "OE", laece.text, laece.id)
+        assertEquals(0, componentViewModel.attestations.size)
+        val compoundRef = componentViewModel.compounds.single()
+        assertEquals(laececynn.id, compoundRef.word.id)
+        val attestation = compoundRef.attestations.single()
+        assertEquals(corpusText.id, attestation.textId)
+        assertEquals("Sample text", attestation.textTitle)
+    }
 }
