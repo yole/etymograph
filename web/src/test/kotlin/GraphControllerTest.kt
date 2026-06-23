@@ -159,7 +159,8 @@ class GraphControllerTest {
         override fun resolveGraph(name: String): Graph = graph
         override fun canWrite(graphId: String, email: String): Boolean = true
         override fun getEditableGraphs(email: String): List<String> = listOf(graph.id)
-        override fun cloneGraph(repoUrl: String): Graph = graph
-        override fun revertChanges(graphId: String): Graph = graph
+        override fun nextClonePath(repoUrl: String): Path = throw UnsupportedOperationException()
+        override fun loadGraph(clonePath: Path): Graph = graph
+        override fun reload(graphId: String): Graph = graph
     }
 }

@@ -1,8 +1,5 @@
 package page.yole.etymograph.web.controllers
 
-import org.eclipse.jgit.api.Git
-import org.eclipse.jgit.api.Status
-import org.eclipse.jgit.transport.RemoteRefUpdate
 import org.springframework.http.HttpStatus
 import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.security.oauth2.core.user.OAuth2User
@@ -13,7 +10,12 @@ import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.server.ResponseStatusException
 import page.yole.etymograph.Graph
 import page.yole.etymograph.JsonGraph
+import page.yole.etymograph.web.GraphGitService
 import page.yole.etymograph.web.GraphService
+import java.io.File
+import kotlin.io.path.ExperimentalPathApi
+import kotlin.io.path.deleteRecursively
+import kotlin.io.path.exists
 
 @RestController
 class GraphController(
@@ -27,115 +29,63 @@ class GraphController(
     fun list(@AuthenticationPrincipal principal: OAuth2User?): List<GraphViewModel> {
         val email = principal?.getAttribute<String>("email")
         return graphService.allGraphs().map {
-            GraphViewModel(it.id, it.name, it.status(), !authEnabled || (email != null && graphService.canWrite(it.id, email)))
+            GraphViewModel(it.id, it.name, GraphGitService.status(it.workTree()),
+                !authEnabled || (email != null && graphService.canWrite(it.id, email)))
         }
+    }
+
+    fun Graph.workTree(): File {
+        val jsonGraph = this as? JsonGraph
+            ?: badRequest("Sync Changes is only supported for JSON graph repositories")
+        return jsonGraph.path?.toFile()
+            ?: badRequest("JSON graph repository path is not specified")
     }
 
     @PostMapping("/{graph}/syncChanges")
     fun syncChanges(graph: Graph): GraphViewModel {
-        val jsonGraph = graph as? JsonGraph
-            ?: badRequest("Sync Changes is only supported for JSON graph repositories")
-        val workTree = jsonGraph.path?.toFile()
-            ?: badRequest("JSON graph repository path is not specified")
-
+        val workTree = graph.workTree()
         try {
-            Git.open(workTree).use { git ->
-                val status = git.status().call()
-                val unversionedPaths = status.unversionedPaths()
-                if (unversionedPaths.isNotEmpty()) {
-                    val add = git.add()
-                    unversionedPaths.forEach(add::addFilepattern)
-                    add.call()
-                }
-                git.add().addFilepattern(".").setUpdate(true).call()
-                git.commit().setMessage("Sync changes").call()
-                val pushResults = git.push().call()
-                val failedUpdates = pushResults
-                    .flatMap { it.remoteUpdates }
-                    .filter { it.status !in successfulPushStatuses }
-                if (failedUpdates.isNotEmpty()) {
-                    val details = failedUpdates.joinToString(", ") { update ->
-                        "${update.remoteName}: ${update.status}"
-                    }
-                    throw ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Failed to push changes: $details")
-                }
-            }
-        } catch (e: ResponseStatusException) {
-            throw e
+            GraphGitService.sync(workTree)
         } catch (e: Exception) {
             throw ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.message ?: "Failed to sync changes", e)
         }
 
-        return GraphViewModel(graph.id, graph.name, graph.status(), true)
+        return GraphViewModel(graph.id, graph.name, GraphGitService.status(workTree), true)
     }
 
     @PostMapping("/{graph}/revertChanges")
     fun revertChanges(graph: Graph): GraphViewModel {
-        graph as? JsonGraph
-            ?: badRequest("Revert Changes is only supported for JSON graph repositories")
-
         val reverted = try {
-            graphService.revertChanges(graph.id)
-        } catch (e: ResponseStatusException) {
-            throw e
+            GraphGitService.revert(graph.workTree())
+            graphService.reload(graph.id)
         } catch (e: Exception) {
             throw ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.message ?: "Failed to revert changes", e)
         }
 
-        return GraphViewModel(reverted.id, reverted.name, reverted.status(), true)
+        return GraphViewModel(reverted.id, reverted.name, GraphGitService.status(reverted.workTree()), true)
     }
 
     data class CloneGraphParams(val repoUrl: String = "")
 
+    @OptIn(ExperimentalPathApi::class)
     @PostMapping("/graphs/clone")
     fun clone(@RequestBody params: CloneGraphParams): GraphViewModel {
         if (params.repoUrl.isBlank()) {
             badRequest("Repository URL is not specified")
         }
 
+        val clonePath = graphService.nextClonePath(params.repoUrl)
         val repo = try {
-            graphService.cloneGraph(params.repoUrl)
-        } catch (e: ResponseStatusException) {
-            throw e
-        } catch (e: Exception) {
+            GraphGitService.clone(params.repoUrl, clonePath.toFile())
+            graphService.loadGraph(clonePath)
+        }
+        catch(e: Exception) {
+            if (clonePath.exists()) {
+                clonePath.deleteRecursively()
+            }
             throw ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.message ?: "Failed to clone graph", e)
         }
 
-        return GraphViewModel(repo.id, repo.name, repo.status(), true)
-    }
-
-    private fun Graph.status(): String {
-        val jsonGraphRepository = this as? JsonGraph ?: return ""
-        val workTree = jsonGraphRepository.path?.toFile() ?: return ""
-        return runCatching {
-            Git.open(workTree).use { git ->
-                val status = git.status().call()
-                val changedFiles = buildSet {
-                    addAll(status.added)
-                    addAll(status.changed)
-                    addAll(status.modified)
-                    addAll(status.unversionedPaths())
-                }
-                "${changedFiles.size} changed files"
-            }
-        }.getOrDefault("")
-    }
-
-    private fun Status.unversionedPaths(): Set<String> {
-        val untrackedFiles = untracked
-        return buildSet {
-            addAll(untrackedFiles)
-            addAll(untrackedFolders.filter { folder ->
-                untrackedFiles.none { file -> file == folder || file.startsWith("$folder/") }
-            })
-        }
-    }
-
-    companion object {
-        private val successfulPushStatuses = setOf(
-            RemoteRefUpdate.Status.OK,
-            RemoteRefUpdate.Status.UP_TO_DATE,
-            RemoteRefUpdate.Status.NON_EXISTING
-        )
+        return GraphViewModel(repo.id, repo.name, GraphGitService.status(repo.workTree()), true)
     }
 }

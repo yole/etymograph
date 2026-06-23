@@ -18,8 +18,9 @@ abstract class GraphService {
     abstract fun resolveGraph(name: String): Graph
     abstract fun canWrite(graphId: String, email: String): Boolean
     abstract fun getEditableGraphs(email: String): List<String>
-    abstract fun cloneGraph(repoUrl: String): Graph
-    abstract fun revertChanges(graphId: String): Graph
+    abstract fun nextClonePath(repoUrl: String): Path
+    abstract fun loadGraph(clonePath: Path): Graph
+    abstract fun reload(graphId: String): Graph
 }
 
 fun GraphService.graphByRequestPath(requestPath: String): Graph? {
@@ -102,44 +103,23 @@ class InMemoryGraphService(
         registeredGraphs[name]?.graph ?: notFound("No graph with ID $name")
 
     @OptIn(ExperimentalPathApi::class)
-    override fun cloneGraph(repoUrl: String): Graph {
-        val clonePath = nextClonePath(repoUrl)
-        try {
-            Git.cloneRepository()
-                .setURI(repoUrl)
-                .setDirectory(clonePath.toFile())
-                .call()
-                .close()
-
-            val graph = JsonGraph.fromJson(clonePath)
-            if (registeredGraphs.containsKey(graph.id)) {
-                clonePath.deleteRecursively()
-                badRequest("Graph with ID ${graph.id} already exists")
-            }
-
-            val storedPath = registryDir.relativize(clonePath).toString()
-            registeredGraphs[graph.id] = RegisteredGraph(graph, graph.name, storedPath, mutableSetOf())
-            saveRegistry()
-            return graph
-        } catch (e: Exception) {
-            if (clonePath.exists()) {
-                clonePath.deleteRecursively()
-            }
-            throw e
+    override fun loadGraph(clonePath: Path): Graph {
+        val graph = JsonGraph.fromJson(clonePath)
+        if (registeredGraphs.containsKey(graph.id)) {
+            clonePath.deleteRecursively()
+            badRequest("Graph with ID ${graph.id} already exists")
         }
+
+        val storedPath = registryDir.relativize(clonePath).toString()
+        registeredGraphs[graph.id] = RegisteredGraph(graph, graph.name, storedPath, mutableSetOf())
+        saveRegistry()
+        return graph
     }
 
-    override fun revertChanges(graphId: String): Graph {
+    override fun reload(graphId: String): Graph {
         val registered = registeredGraphs[graphId] ?: notFound("No graph with ID $graphId")
         val jsonGraph = registered.graph as? JsonGraph
             ?: badRequest("Revert is only supported for JSON graph repositories")
-        val workTree = jsonGraph.path?.toFile()
-            ?: badRequest("JSON graph repository path is not specified")
-
-        Git.open(workTree).use { git ->
-            git.reset().setMode(ResetCommand.ResetType.HARD).call()
-            git.clean().setCleanDirectories(true).call()
-        }
 
         val reloaded = JsonGraph.fromJson(jsonGraph.path!!)
         val updated = registered.copy(graph = reloaded)
@@ -180,7 +160,7 @@ class InMemoryGraphService(
         registryFile.createParentDirectories().writeText(json.encodeToString(registry))
     }
 
-    private fun nextClonePath(repoUrl: String): Path {
+    override fun nextClonePath(repoUrl: String): Path {
         val repoName = repoUrl.substringAfterLast('/').removeSuffix(".git").ifBlank { "graph" }
         val sanitizedRepoName = repoName.map { c ->
             when {
