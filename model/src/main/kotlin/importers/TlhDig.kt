@@ -30,8 +30,9 @@ fun main(args: Array<String>) {
 }
 
 fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
-    val wordTexts = mutableListOf<String>()
-    val wordElements = mutableListOf<Element>()
+    class TlhDigWord(val text: String, val trans: String, val element: Element?)
+
+    val wordElements = mutableListOf<TlhDigWord>()
     val text = buildString {
         for (element in children) {
             if (element.name == "lb" && isNotEmpty()) {
@@ -43,13 +44,13 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
                 if (wordText.isEmpty()) {
                     continue
                 }
-                val transWords = element.getAttributeValue("trans")?.split(' ')?.size ?: 1
-                repeat(transWords) {
-                    wordElements.add(element)
-                    wordTexts.add(wordText)
+                val textWords = wordText.split(' ')
+                val transWords = element.getAttributeValue("trans")?.split(' ') ?: textWords
+                for(i in 0..<textWords.size-1) {
+                    wordElements.add(TlhDigWord(textWords[i], transWords[i], null))
                 }
+                wordElements.add(TlhDigWord(textWords.last(), transWords.last(), element))
                 append(wordText)
-                repeat(transWords)
                 append(" ")
             }
         }
@@ -58,8 +59,9 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
     val hittite = graph.languageByShortName("Hitt")!!
     val corpusText = graph.addCorpusText(text, title, hittite)
 
-    for ((index, wordElement) in wordElements.withIndex()) {
-        val wordText = wordTexts[index]
+    for ((index, w) in wordElements.withIndex()) {
+        val wordText = w.text
+        val wordElement = w.element
         val cleanText = removePunctuation(wordText)
         if (cleanText.isEmpty()) {
             println("Skipping empty word $wordText")
@@ -71,17 +73,16 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
             println("Skipping existing word $wordText")
             continue
         }
-        val trans = wordElement.getAttributeValue("trans")
-            ?.replace("y", "i̯")
-        if (trans != null && " " in trans) {
-            println("Skipping word with space in transcription: $trans")
+        if (w.element == null) {
+            println("Skipping Akkadian preposition")
             continue
         }
+        val trans = w.trans
+            .replace("y", "i̯")
 
         val sylWord = graph.addWord(cleanText, hittite, null, syllabographic = true)
         corpusText.associateWord(index, sylWord)
 
-        if (trans == null) continue
         var transWord = if (trans.none { it.isUpperCase() }) {
             graph.addWord(trans, hittite, gloss = null).also {
                 graph.addLink(sylWord, it, Link.Transcription)
@@ -155,7 +156,7 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
 }
 
 private fun findRuleByMrp(mrp: String, hittite: Language, posMarkers: MutableList<String>): Rule? {
-    val analysis = mrp.removeSuffix("(UNM)")
+    val analysis = mrp.removeSuffix("(UNM)").removePrefix("…:")
     val categories = analysis.split('.')
     val categorySet = mutableSetOf<String>()
     for (cat in categories) {

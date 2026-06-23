@@ -19,7 +19,7 @@ class TlhDigImportTest {
             .withGrammaticalCategory("Person", "V", "First" to "1" , "Second" to "2", "Third" to "3")
             .withGrammaticalCategory("Number", "V", "Singular" to "SG", "Plural" to "PL")
             .withGrammaticalCategory("Mood", "V", "Indicative" to "IND", "Imperative" to "IMP")
-            .withGrammaticalCategory("Case", "N", "Nominative" to "NOM", "Ablative" to "ABL")
+            .withGrammaticalCategory("Case", "N", "Nominative" to "NOM", "Ablative" to "ABL", "Dative/Locative" to "D/L")
     }
 
     @Test
@@ -100,6 +100,17 @@ class TlhDigImportTest {
         val word = corpusText.words[0].word.transcription
         assertEquals("urii̯anni", word.lemma.text)
         assertEquals(rule, word.lemmaLink.rules.single())
+    }
+
+    @Test
+    fun akkadianCaseForm() {
+        val rule = hittite.rule("", addedCategories = ".D/L.SG")
+        val corpusText = importWord("""<w trans="I-NA zuliaššan" mrp0sel=" 1a" mrp1="zuli=a-@Zuliya@{a → …:D/L.SG}@39.2 += ššan@OBPs@@ ÍD"><aGr>I-NA</aGr> <d>ÍD</d>zu-li-aš-ša-an</w>""")
+        assertEquals(1, corpusText.words[0].index)
+        val word = corpusText.words[0].word.transcription
+        val compound = graph.findCompoundsByCompoundWord(word).first()
+        assertEquals("zulia", compound.components[0].lemma.text)
+        assertEquals(rule, compound.components[0].lemmaLink.rules.single())
     }
 
     private fun findWord(text: String, syllabographic: Boolean = false): Word =
