@@ -92,7 +92,10 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
             sylWord
         }
 
-        val mrpSel = wordElement.getAttributeValue("mrp0sel")?.trim()
+        val mrpSel = wordElement.getAttributeValue("mrp0sel")
+            ?.trim()
+            ?.split(' ')
+            ?.maxBy { it.length }
         if (mrpSel.isNullOrBlank()) continue
 
         val mrpAttr = wordElement.getAttributeValue("mrp" + mrpSel[0]) ?: continue
@@ -156,7 +159,7 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
 }
 
 private fun findRuleByMrp(mrp: String, hittite: Language, posMarkers: MutableList<String>): Rule? {
-    val analysis = mrp.removeSuffix("(UNM)").removePrefix("…:")
+    val analysis = mrp.removeSuffix("(UNM)").removeSuffix("(ABBR)").removePrefix("…:")
     val categories = analysis.split('.')
     val categorySet = mutableSetOf<String>()
     for (cat in categories) {
@@ -272,7 +275,7 @@ private fun findSelectedAnalysis(mrp: String, key: String): String {
     if (key.isEmpty()) return ""
     val options = mrp.split('}').filter { it.isNotEmpty() }
     for (option in options) {
-        val (optionKey, optionValue) = option.removePrefix("{").trim().split("→")
+        val (optionKey, optionValue) = option.trim().removePrefix("{").trim().split("→")
         if (optionKey.trim() == key) {
             return optionValue.trim()
         }

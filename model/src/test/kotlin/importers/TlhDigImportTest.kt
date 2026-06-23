@@ -119,6 +119,14 @@ class TlhDigImportTest {
         assertEquals("^MUŠ]EN^", corpusText.text.trim())
     }
 
+    @Test
+    fun multipleMrp() {
+        val rule = hittite.rule("", addedCategories = ".NOM.PL")
+        val corpusText = importWord("""<w trans="GUNeš" mrp0sel=" 2 2b" mrp1="GUN@Talent@{ a → NOM.PL.C} { b → ACC.PL.C}@29.1.1@" mrp2="GUN-eš@(Orakelterminus)@{ a → NOM.SG.C(ABBR)} { b → NOM.PL.C(ABBR)}@@ "><sGr>GUN</sGr>-eš₁₇</w>""")
+        val word = corpusText.words[0].word
+        assertEquals(rule, word.lemmaLink.rules.single())
+    }
+
     private fun findWord(text: String, syllabographic: Boolean = false): Word =
         graph.wordsByText(hittite, text, syllabographic).single()
 
