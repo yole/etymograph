@@ -113,6 +113,12 @@ class TlhDigImportTest {
         assertEquals(rule, compound.components[0].lemmaLink.rules.single())
     }
 
+    @Test
+    fun bracketInDeterminant() {
+        val corpusText = importWord("""<w><d>MUŠ<del_fin/>EN</d></w>""")
+        assertEquals("^MUŠ]EN^", corpusText.text.trim())
+    }
+
     private fun findWord(text: String, syllabographic: Boolean = false): Word =
         graph.wordsByText(hittite, text, syllabographic).single()
 

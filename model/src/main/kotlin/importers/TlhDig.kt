@@ -257,7 +257,7 @@ private fun collectWordText(element: Element): String {
                         append(collectWordText(c).convertSubscripts())
                     }
                     "sGr" -> append(collectWordText(c).convertSubscripts())
-                    "d" -> append("^" + c.text + "^")
+                    "d" -> append("^" + collectWordText(c) + "^")
                     "del_in" -> append("[")
                     "del_fin" -> append("]")
                     "laes_in" -> append(CorpusText.leftHalfBracket)
