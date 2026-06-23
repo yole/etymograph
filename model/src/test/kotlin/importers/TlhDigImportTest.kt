@@ -93,6 +93,15 @@ class TlhDigImportTest {
         assertEquals(rule, lemmaLink.rules.single())
     }
 
+    @Test
+    fun cleanStemNumber() {
+        val rule = hittite.rule("", addedCategories = ".NOM.SG")
+        val corpusText = importWord("""<w trans="uriannieš" mrp0sel=" 1c" mrp1="uriyann=i-2@(Orakelvogel)@{c → LUW||HITT.NOM.SG.C}@30.1.1@">u-ri-an<corr c="(?)"/><del_fin/>-ni-eš<d>MUŠEN</d></w>""")
+        val word = corpusText.words[0].word.transcription
+        assertEquals("urii̯anni", word.lemma.text)
+        assertEquals(rule, word.lemmaLink.rules.single())
+    }
+
     private fun findWord(text: String, syllabographic: Boolean = false): Word =
         graph.wordsByText(hittite, text, syllabographic).single()
 

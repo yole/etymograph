@@ -72,6 +72,7 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
             continue
         }
         val trans = wordElement.getAttributeValue("trans")
+            ?.replace("y", "i̯")
         if (trans != null && " " in trans) {
             println("Skipping word with space in transcription: $trans")
             continue
@@ -97,7 +98,10 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
         val mrpElements = mrpAttr.split('@', limit = 4)
 
         val lemma = mrpElements[0]
-        val cleanLemma = lemma.removeSuffix("-")
+        val cleanLemma = lemma
+            .replace("y", "i̯")
+            .trimEnd { it.isDigit() }
+            .removeSuffix("-")
             .replace("=", "")
             .replace("°", "^")
             .convertSubscripts()
@@ -164,12 +168,14 @@ private fun findRuleByMrp(mrp: String, hittite: Language, posMarkers: MutableLis
             if (posMarker != null) {
                 posMarkers.add(posMarker)
             }
-            else {
+            else if (cat !in ignoreCategories) {
                 categorySet.add(cat)
             }
         }
     }
 
+    findMatchingRule(hittite, categorySet)?.let { return it }
+    categorySet.removeAll(optionalIgnoreCategories)
     return findMatchingRule(hittite, categorySet)
 }
 
@@ -177,6 +183,9 @@ private val posMap = mapOf(
     "PNm" to KnownPartsOfSpeech.properName.abbreviation,
     "GN" to KnownPartsOfSpeech.properName.abbreviation
 )
+
+private val ignoreCategories = setOf("LUW||HITT")
+private val optionalIgnoreCategories = setOf("C")
 
 private fun createEncliticCompound(word: Word, enclitics: String): Word {
     val (encliticText, encliticAnalysis) = enclitics.trimEnd('@').split('@', limit = 2)
