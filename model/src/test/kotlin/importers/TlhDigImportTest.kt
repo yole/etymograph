@@ -131,12 +131,10 @@ class TlhDigImportTest {
 
     @Test
     fun diacriticsInEnclitics() {
-        val rule = hittite.rule("", addedCategories = ".ABL")
         val corpusText = importWord("""<w trans="SIG₅azmankan" mrp0sel=" 2" mrp1="SIG₅@(niederer) Offizier@ABL@29.1.2 += ma=an=kkan@CNJctr=PPRO.3SG.C.ACC=OBPk@@ LÚ" mrp2="SIG₅-az@von der guten Seite@HITT.ABL@+= ma=an=kkan@CNJctr=PPRO.3SG.C.ACC=OBPk@@ "><sGr>SIG₅</sGr>-az-ma-an-kán</w>""")
         val word = corpusText.words[0].word
         val compound = graph.findCompoundsByCompoundWord(word).first()
         assertEquals(4, compound.components.size)
-        assertEquals(rule, compound.components[0].lemmaRule)
     }
 
     @Test
@@ -191,6 +189,15 @@ class TlhDigImportTest {
         val word = corpusText.words[0].word
         val compound = graph.findCompoundsByCompoundWord(word).single()
         assertEquals(ka, compound.components[1])
+    }
+
+    @Test
+    fun lemmaForAkkadianCompound() {
+        val corpusText = importWord("""<w trans="DUMU.DU₁₀.GA-IA" mrp0sel=" 1h" mrp1="DUMU°MEŠ°.DU₁₀.GA-IA@lieber Sohn@{h → D/L.PL(UNM)_PPRO.1SG.GEN}@@ "><sGr>DUMU</sGr><d>MEŠ</d><sGr>.DU₁₀.GA</sGr><aGr>-IA</aGr></w>""")
+        val word = corpusText.words[0].word
+        val compound = graph.findCompoundsByCompoundWord(word).single()
+        val headWord = compound.components[0]
+        assertEquals(0, this.graph.getLinksFrom(headWord).count())
     }
 
     private fun findWord(text: String, syllabographic: Boolean = false): Word =

@@ -110,9 +110,10 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
         val mrpElements = mrpAttr.split('@', limit = 4)
 
         val lemma = mrpElements[0]
-        val cleanLemma = lemma
+        var cleanLemma = lemma
             .substringBefore('/', lemma)
             .replace("y", "i̯")
+            .replace("IA", "I̯A")
             .trimEnd { it.isDigit() }
             .removeSuffix("-")
             .replace("=", "")
@@ -129,8 +130,13 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
         }
 
         if (lemma.any { it.isUpperCase() } && '_' in selectedAnalysis) {
+            val oldText = transWord.text
             transWord = createAkkadianCompound(sylWord, selectedAnalysis, transWord)
             selectedAnalysis = selectedAnalysis.substringBefore('_')
+            val tail = oldText.drop(transWord.text.length).replace("_", "")
+            if (cleanLemma.endsWith(tail)) {
+                cleanLemma = cleanLemma.removeSuffix(tail)
+            }
         }
 
         val paradigmWithEnclitics = mrpElements[3].substringBeforeLast('@')
@@ -139,7 +145,7 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
             transWord = createEncliticCompound(transWord, enclitics)
         }
 
-        if (cleanLemma == trans) {
+        if (cleanLemma == transWord.text) {
             if (transWord.gloss == null) {
                 transWord.gloss = gloss
             }
@@ -154,7 +160,7 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
             }
 
             val lemmaWord = graph.addWord(cleanLemma, hittite, gloss,
-                pos = posMarkers.singleOrNull() ?: rules?.firstOrNull()?.fromPOS?.firstOrNull(),
+                pos = posMarkers.singleOrNull() ?: rules.firstOrNull()?.fromPOS?.firstOrNull(),
                 syllabographic = lemma.any { it.isUpperCase() })
             graph.addLink(transWord, lemmaWord, Link.Derived,
                 rules = rules)
