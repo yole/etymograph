@@ -272,8 +272,15 @@ private fun collectWordText(element: Element): String {
             } else if (c is Element) {
                 when (c.name) {
                     "aGr" -> {
-                        append("_")
-                        append(collectWordText(c).convertSubscripts())
+                        val akkText = collectWordText(c).convertSubscripts()
+                        if (akkText.startsWith("-")) {
+                            append("-_")
+                            append(akkText.drop(1))
+                        }
+                        else {
+                            append("_")
+                            append(akkText)
+                        }
                     }
                     "sGr" -> append(collectWordText(c).convertSubscripts())
                     "d" -> append("^" + collectWordText(c) + "^")

@@ -176,6 +176,12 @@ class TlhDigImportTest {
         assertEquals(1, words.size)
     }
 
+    @Test
+    fun adjustAkkadogramBoundary() {
+        val corpusText = importWord("<w trans=\"A-NA tuttua-DINGIR-LIM\" mrp0sel=\" ???\"><aGr>A-NA</aGr> <d>m</d>tu-ut-tu-wa-<sGr>DINGIR</sGr><aGr>-LIM</aGr></w>")
+        assertEquals("_A-NA ^m^tu-ut-tu-wa-DINGIR-_LIM", corpusText.text.trim())
+    }
+
     private fun findWord(text: String, syllabographic: Boolean = false): Word =
         graph.wordsByText(hittite, text, syllabographic).single()
 
