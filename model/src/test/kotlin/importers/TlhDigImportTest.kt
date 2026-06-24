@@ -91,6 +91,7 @@ class TlhDigImportTest {
         val compound = graph.findCompoundsByCompoundWord(word).first()
         assertEquals("ḫaittaz", compound.components[0].text)
         assertEquals("ma", compound.components[1].text)
+        assertFalse(compound.components[1].syllabographic)
         assertEquals(rule, compound.components[0].lemmaRule)
     }
 
@@ -180,6 +181,15 @@ class TlhDigImportTest {
     fun adjustAkkadogramBoundary() {
         val corpusText = importWord("<w trans=\"A-NA tuttua-DINGIR-LIM\" mrp0sel=\" ???\"><aGr>A-NA</aGr> <d>m</d>tu-ut-tu-wa-<sGr>DINGIR</sGr><aGr>-LIM</aGr></w>")
         assertEquals("_A-NA ^m^tu-ut-tu-wa-DINGIR-_LIM", corpusText.text.trim())
+    }
+
+    @Test
+    fun existingClitic() {
+        val ka = graph.addWord("_KA", hittite, "your", syllabographic = true)
+        val corpusText = importWord("""<w trans="ARAD-KA-MA" mrp0sel=" 1c" mrp1="ARAD-KA-MA@Diener@{c → NOM.PL(UNM)_PPRO.2SG.GEN_QUOT}@@ "><sGr>ARAD</sGr><d>MEŠ</d><aGr>-KA-MA</aGr></w>""")
+        val word = corpusText.words[0].word
+        val compound = graph.findCompoundsByCompoundWord(word).single()
+        assertEquals(ka, compound.components[1])
     }
 
     private fun findWord(text: String, syllabographic: Boolean = false): Word =

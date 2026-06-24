@@ -243,14 +243,15 @@ private fun createAkkadianCompound(
     for (i in elements.size - 1 downTo 1) {
         if ('-' !in tail) break
         val cliticAnalysis = elements[i]
-        val cliticText = '_' + tail.substringAfterLast('-')
+        val cliticTail = tail.substringAfterLast('-')
+        val cliticText = if (cliticTail.startsWith('_')) cliticTail else "_$cliticTail"
         tail = tail.substringBeforeLast('-')
 
-        val clitic = findOrAddWordByTextOnly(sylWord.language, cliticText, cliticAnalysis)
+        val clitic = findOrAddWordByTextOnly(sylWord.language, cliticText, cliticAnalysis, syllabographic = true)
         compoundElements.add(0, clitic)
     }
 
-    val headWord = findOrAddWordByTextOnly(sylWord.language, tail, null)
+    val headWord = findOrAddWordByTextOnly(sylWord.language, tail, null, syllabographic = true)
     compoundElements.add(0, headWord)
 
     sylWord.graph.createCompound(transWord, compoundElements)
@@ -260,9 +261,10 @@ private fun createAkkadianCompound(
 private fun findOrAddWordByTextOnly(
     language: Language,
     text: String,
-    gloss: String?
-): Word = (language.graph.wordsByText(language, text, true).firstOrNull()
-    ?: language.graph.addWord(text, language, gloss, syllabographic = true))
+    gloss: String?,
+    syllabographic: Boolean = false
+): Word = (language.graph.wordsByText(language, text, syllabographic).firstOrNull()
+    ?: language.graph.addWord(text, language, gloss, syllabographic = syllabographic))
 
 private fun collectWordText(element: Element): String {
     return buildString {
