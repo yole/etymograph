@@ -85,7 +85,7 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
         val trans = w.trans
             .replace("y", "i̯")
 
-        val sylWord = graph.addWord(cleanText, hittite, null, syllabographic = true)
+        val sylWord = graph.findOrAddWord(cleanText, hittite, null, syllabographic = true)
         corpusText.associateWord(index, sylWord)
 
         var transWord = if (trans.none { it.isUpperCase() }) {

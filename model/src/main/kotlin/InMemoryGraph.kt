@@ -102,7 +102,7 @@ open class InMemoryGraph : Graph() {
 
     override fun wordsByText(lang: Language, text: String, syllabographic: Boolean): List<Word> {
         val wordsInLang = words[lang] ?: return emptyList()
-        return wordsInLang[if (syllabographic) text else lang.normalizeWord(text)] ?: emptyList()
+        return wordsInLang[if (syllabographic) text else lang.normalizeWord(text)]?.filter { it.syllabographic == syllabographic } ?: emptyList()
     }
 
     override fun wordsByTextFuzzy(lang: Language, text: String): List<Word> {
