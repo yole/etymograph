@@ -42,6 +42,9 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
             }
             else if (element.name == "w") {
                 val wordText = collectWordText(element)
+                    .replace("wa", "u̯a")
+                    .replace("ia", "i̯a")
+                    .replace("IA", "I̯A")
                 if (wordText.isEmpty()) {
                     continue
                 }

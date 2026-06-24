@@ -143,6 +143,7 @@ class TlhDigImportTest {
     fun slashInLemma() {
         val rule = hittite.rule("", addedCategories = ".1PL", fromPOS = "V")
         val corpusText = importWord("""<w trans="ḫuekuani" mrp0sel=" 2" mrp1="ḫuek-/ḫuk-@schlachten@1PL.PRS@I.3.1@" mrp2="ḫuek-/ḫuk-2@beschwören@1PL.PRS@I.3.1@">ḫu-e-ku-wa-ni<note c="&lt;P_f_Footnote&gt;&lt;SP_f_AO_3a_-LIT&gt;Hagenbuchner A. 1989a&lt;/SP_f_AO_3a_-LIT&gt;, 84, restores and emends: &lt;del_in/&gt;&lt;SP_f_AO_3a_SumGRAM&gt;EGIR&lt;/SP_f_AO_3a_SumGRAM&gt;&lt;SP_f_AO_3a_Hittite&gt;-a&lt;del_fin/&gt;n-da&lt;/SP_f_AO_3a_Hittite&gt; &lt;SP_f_AO_3a_Hittite&gt;ḫu-e-〈iš〉-ku-wa-ni&lt;/SP_f_AO_3a_Hittite&gt;.&lt;/P_f_Footnote&gt;"/></w>""")
+        assertEquals("ḫu-e-ku-u̯a-ni", corpusText.text.trim())
         val word = corpusText.words[0].word.transcription
         assertEquals("ḫuek", word.lemma.text)
         assertEquals("V", word.lemma.pos)
@@ -180,7 +181,7 @@ class TlhDigImportTest {
     @Test
     fun adjustAkkadogramBoundary() {
         val corpusText = importWord("<w trans=\"A-NA tuttua-DINGIR-LIM\" mrp0sel=\" ???\"><aGr>A-NA</aGr> <d>m</d>tu-ut-tu-wa-<sGr>DINGIR</sGr><aGr>-LIM</aGr></w>")
-        assertEquals("_A-NA ^m^tu-ut-tu-wa-DINGIR-_LIM", corpusText.text.trim())
+        assertEquals("_A-NA ^m^tu-ut-tu-u̯a-DINGIR-_LIM", corpusText.text.trim())
     }
 
     @Test
