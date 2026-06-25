@@ -145,6 +145,16 @@ class CorpusTextTest : QBaseTest() {
         ct1.lockWordAssociations()
         assertEquals(laurie, ct1.words.single().word)
     }
+
+    @Test
+    fun syllabographicCandidate() {
+        val hittite = graph.addLanguage("Hittite", "Hitt").also { it.syllabographic = true }
+        val nu = hittite.word("nu", "and", syllabographic = true)
+        val text = hittite.corpusText("nu")
+        val lines = text.mapToLines()
+        val word = lines[0].corpusWords[0]
+        assertEquals(nu, word.wordCandidates!!.single())
+    }
 }
 
 fun Language.corpusText(text: String) = CorpusText(-1, text, null, this)
