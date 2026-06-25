@@ -168,6 +168,11 @@ code {
   padding: 5px;
 }
 
+.corpusTextWord sub,
+.corpusTextWord sup {
+  line-height: 0;
+}
+
 .corpusTextLine {
   display: flex;
   flex-wrap: wrap;
