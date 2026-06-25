@@ -153,6 +153,7 @@ export type CorpusWordViewModel = {
     wordCandidates?: Array<CorpusWordCandidateViewModel> | null;
     stressIndex?: (number) | null;
     stressLength?: (number) | null;
+    glossable: boolean;
     homonym: boolean;
 };
 

@@ -55,6 +55,7 @@ class CorpusController {
         val wordCandidates: List<CorpusWordCandidateViewModel>? = null,
         val stressIndex: Int? = null,
         val stressLength: Int? = null,
+        val glossable: Boolean = false,
         val homonym: Boolean = false,
     )
 
@@ -114,7 +115,9 @@ class CorpusController {
                         cw.word?.id ?: cw.wordCandidates?.firstOrNull()?.id?.takeIf { wordUrlKey != null },
                         cw.word?.text, wordUrlKey,
                         cw.wordCandidates?.map { CorpusWordCandidateViewModel(it.id, it.getOrComputeGloss()) },
-                        cw.stressIndex, cw.stressLength, cw.homonym)
+                        cw.stressIndex, cw.stressLength,
+                        cw.glossable,
+                        cw.homonym)
                 })
             },
             source.toViewModel(graph),

@@ -15,7 +15,8 @@ class CorpusWord(
     val segmentedGloss: String?,
     val stressIndex: Int?,
     val stressLength: Int?,
-    val homonym: Boolean
+    val glossable: Boolean,
+    val homonym: Boolean,
 )
 
 class CorpusTextLine(val corpusWords: List<CorpusWord>)
@@ -107,13 +108,15 @@ class CorpusText(
                     CorpusWord(currentIndex++, tw.baseText, normalizedText, segmentedText, syllabogramSequence, word, null,
                         word.getOrComputeGloss(),
                         assoc.contextGloss,
-                        glossWithSegments, stressIndex, stressData?.length, word.graph.isHomonym(word))
+                        glossWithSegments, stressIndex, stressData?.length, true,word.graph.isHomonym(word))
                 }
                 else {
                     val wordCandidates = language.graph.wordsByText(language, tw.normalizedText, language.syllabographic)
                     val gloss = wordCandidates.firstOrNull()?.getOrComputeGloss()
                     CorpusWord(currentIndex++, tw.baseText, normalizedText, tw.baseText, syllabogramSequence,null, wordCandidates,
-                        gloss, null, gloss, null, null,false)
+                        gloss, null, gloss, null, null,
+                        glossable = tw.baseText.any { it !in innerPunctuation },
+                        homonym = false)
                 }
             })
         }

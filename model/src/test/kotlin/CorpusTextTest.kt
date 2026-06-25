@@ -155,6 +155,15 @@ class CorpusTextTest : QBaseTest() {
         val word = lines[0].corpusWords[0]
         assertEquals(nu, word.wordCandidates!!.single())
     }
+
+    @Test
+    fun punctuationUnglossable() {
+        val text = q.corpusText("[ ai")
+        val lines = text.mapToLines()
+        assertEquals(2, lines[0].corpusWords.size)
+        assertFalse(lines[0].corpusWords[0].glossable)
+        assertTrue(lines[0].corpusWords[1].glossable)
+    }
 }
 
 fun Language.corpusText(text: String) = CorpusText(-1, text, null, this)

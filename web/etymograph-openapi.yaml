@@ -3758,6 +3758,8 @@ components:
           type: "integer"
           format: "int32"
           nullable: true
+        glossable:
+          type: "boolean"
         homonym:
           type: "boolean"
       required:
@@ -3765,6 +3767,7 @@ components:
         - "text"
         - "normalizedText"
         - "gloss"
+        - "glossable"
         - "homonym"
     CorpusLineViewModel:
       type: "object"

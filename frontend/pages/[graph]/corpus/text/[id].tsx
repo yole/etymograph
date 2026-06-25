@@ -61,7 +61,11 @@ export function CorpusTextWordLink(params: CorpusTextWordLinkProps) {
             <WordTextView text={w.text} syllabograms={w.syllabogramSequence}/>
             {renderActions()}
         </span>
-    } else if (w.wordText || w.gloss) {
+    }
+    else if (!w.glossable) {
+        return <>{w.text}</>
+    }
+    else if (w.wordText || w.gloss) {
         let linkText = (w.wordUrlKey ?? w.wordText ?? w.normalizedText).toLowerCase()
         if (w.wordId !== null && (w.homonym || w.wordUrlKey)) {
             linkText += `/${w.wordId}`
@@ -73,7 +77,8 @@ export function CorpusTextWordLink(params: CorpusTextWordLinkProps) {
             </Link>
             {renderActions()}
         </span>
-    } else {
+    }
+    else {
         return <span onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
             <span className="undefWord" onClick={() => {
                 if (editable) showWordForm(w.normalizedText, w.index)
