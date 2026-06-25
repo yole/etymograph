@@ -16,7 +16,7 @@ class AlternativesTest : QBaseTest() {
     @Test
     fun simple() {
         val ct1 = graph.addCorpusText("elen sila", null, q)
-        val word = graph.addWord("elen", "star", "N")
+        val word = q.word("elen", "star", pos = "N")
 
         val alts = Alternatives.request(q, "elen", null)
         assertEquals(1, alts.size)
@@ -27,9 +27,9 @@ class AlternativesTest : QBaseTest() {
     fun compound() {
         val corpusText = graph.addCorpusText("elentari ortanen", null, q)
 
-        val elentari = graph.addWord("elentari", null, pos = "N")
-        val elen = graph.addWord("elen", "star", pos = "N")
-        val tari = graph.addWord("tari", "queen", pos = "N")
+        val elentari = q.word("elentari", pos = "N")
+        val elen = q.word("elen", "star", pos = "N")
+        val tari = q.word("tari", "queen", pos = "N")
         graph.createCompound(elentari, listOf(elen, tari))
 
         val alternatives = Alternatives.request(q, "elentari", null)
@@ -45,9 +45,9 @@ class AlternativesTest : QBaseTest() {
     @Test
     fun compoundNoPOS() {
         graph.addCorpusText("elentari sila", null, q)
-        val elen = graph.addWord("elen", "star", "N")
-        val tari = graph.addWord("tari", "queen", "N")
-        val elentari = graph.addWord("elentari")
+        val elen = q.word("elen", "star", pos = "N")
+        val tari = q.word("tari", "queen", pos = "N")
+        val elentari = q.word("elentari", "elentari")
         graph.createCompound(elentari, listOf(elen, tari), headIndex = 1)
 
         val alts = Alternatives.request(q, "elentari", null)
@@ -57,8 +57,8 @@ class AlternativesTest : QBaseTest() {
 
     @Test
     fun homonym() {
-        graph.addWord("elen", "star")
-        graph.addWord("elen", "scar")
+        q.word("elen", "star")
+        q.word("elen", "scar")
 
         val ct1 = graph.addCorpusText("elen sila", null, q)
 
@@ -76,7 +76,7 @@ class AlternativesTest : QBaseTest() {
     fun np() {
         val corpusText = graph.addCorpusText("Elen sila...", null, q)
 
-        graph.addWord("elen", null, pos = "NP")
+        q.word("elen", null, pos = "NP")
 
         val alternatives = Alternatives.request(q, "elen", null)
         assertEquals(1, alternatives.size)
@@ -92,8 +92,8 @@ class AlternativesTest : QBaseTest() {
     fun existingLink() {
         val corpusText = graph.addCorpusText("Elen sila...", null, q)
 
-        val elen = graph.addWord("elen","star", pos = "N")
-        val elenAcc =  graph.addWord("elen", "star.ACC", pos = "N")
+        val elen = q.word("elen", "star", pos = "N")
+        val elenAcc = q.word("elen", "star.ACC", pos = "N")
         elenAcc.gloss = null
         graph.addLink(elenAcc, elen, Link.Derived, listOf(accRule))
 
@@ -110,11 +110,11 @@ class AlternativesTest : QBaseTest() {
 
     @Test
     fun variantRule() {
-        val byggva = graph.addWord("byggva","settle", pos = "V")
-        val byggjaInf = graph.addWord("byggja", null)
+        val byggva = q.word("byggva", "settle", pos = "V")
+        val byggjaInf = q.word("byggja", null)
         graph.addLink(byggjaInf, byggva, Link.Variation)
 
-        val byggjaAcc = graph.addWord("byggja", "settle.ACC")
+        val byggjaAcc = q.word("byggja", "settle.ACC")
         byggjaAcc.gloss = null
         graph.addLink(byggjaAcc, byggjaInf, Link.Derived, listOf(accRule))
 

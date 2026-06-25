@@ -15,14 +15,6 @@ open class QBaseTest {
         }
     }
 
-    fun Graph.addWord(
-        text: String,
-        gloss: String? = text,
-        pos: String? = null,
-        classes: List<String> = emptyList(),
-        language: Language = q
-    ) = findOrAddWord(text, language, gloss, pos = pos, classes = classes)
-
     fun applyRule(rule: Rule, word: Word): String {
         return rule.apply(word).text
     }

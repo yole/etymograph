@@ -42,8 +42,8 @@ class SegmentTest : QBaseTest() {
 
     @Test
     fun restoreSegments() {
-        val hresta = graph.addWord("hresta")
-        val hrestallo = graph.addWord("hrestallo", gloss = null)
+        val hresta = q.word("hresta", "hresta")
+        val hrestallo = q.word("hrestallo", gloss = null)
         val rule = parseRule(q, q, "- append 'llo'", addedCategories = ".ABL")
         graph.addLink(hrestallo, hresta, Link.Derived, listOf(rule))
         val restored = graph.restoreSegments(hrestallo)
@@ -54,8 +54,8 @@ class SegmentTest : QBaseTest() {
 
     @Test
     fun restoreSegmentsNoChange() {
-        val hresta2 = graph.addWord("hresta", gloss = null)
-        val hresta = graph.addWord("hresta", gloss = "hresta")
+        val hresta2 = q.word("hresta", gloss = null)
+        val hresta = q.word("hresta", gloss = "hresta")
         val rule = parseRule(q, q, "word ends with 'a':\n- no change", addedCategories = ".ABL")
         graph.addLink(hresta2, hresta, Link.Derived, listOf(rule))
         val restored = graph.restoreSegments(hresta2)
@@ -64,8 +64,8 @@ class SegmentTest : QBaseTest() {
 
     @Test
     fun restoreSegmentsNoChangeNP() {
-        val hresta2 = graph.addWord("hresta", gloss = "hresta.ABL")
-        val hresta = graph.addWord("hresta", gloss = "hresta", pos = "NP")
+        val hresta2 = q.word("hresta", gloss = "hresta.ABL")
+        val hresta = q.word("hresta", gloss = "hresta", pos = "NP")
         val rule = parseRule(q, q, "word ends with 'a':\n- no change", addedCategories = ".ABL")
         graph.addLink(hresta2, hresta, Link.Derived, listOf(rule))
         hresta2.gloss = null
@@ -76,8 +76,8 @@ class SegmentTest : QBaseTest() {
 
     @Test
     fun restoreSegmentsNoChangeNoRule() {
-        val hresta2 = graph.addWord("hresta", gloss = "hresta.ABL")
-        val hresta = graph.addWord("hresta", gloss = "hresta")
+        val hresta2 = q.word("hresta", gloss = "hresta.ABL")
+        val hresta = q.word("hresta", gloss = "hresta")
         val rule = parseRule(q, q, "word ends with 'i':\n- no change", addedCategories = ".ABL")
         graph.addLink(hresta2, hresta, Link.Derived)
         val restored = graph.restoreSegments(hresta2)
@@ -86,8 +86,8 @@ class SegmentTest : QBaseTest() {
 
     @Test
     fun restoreSegmentsEmptyEnding() {
-        val hresta = graph.addWord("hresta")
-        val hrestallo = graph.addWord("hrestallo", gloss = null)
+        val hresta = q.word("hresta", "hresta")
+        val hrestallo = q.word("hrestallo", gloss = null)
         val rule = parseRule(q, q, "word ends with 'llo':\n- change ending to ''", addedCategories = ".ABL")
         graph.addLink(hresta, hrestallo, Link.Derived, listOf(rule))
         val restored = graph.restoreSegments(hresta)

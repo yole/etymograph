@@ -82,7 +82,7 @@ class CorpusTextTest : QBaseTest() {
     fun testNormalizedTextRemoveQuotesAssociate() {
         val corpusText = q.corpusText("quet \"Ai laurie lantar,\"")
 
-        val ai = graph.addWord("ai")
+        val ai = q.word("ai", "ai")
         corpusText.associateWord(1, ai)
         val lines = corpusText.mapToLines()
         assertEquals("ai", lines[0].corpusWords[1].normalizedText)
@@ -97,7 +97,7 @@ class CorpusTextTest : QBaseTest() {
         val stressRule = q.rule("- stress is on first syllable")
         q.stressRule = RuleRef.to(stressRule)
 
-        val i = graph.addWord("i")
+        val i = q.word("i", "i")
         corpusText.associateWord(1, i)
 
         val lines = corpusText.mapToLines()
@@ -109,8 +109,8 @@ class CorpusTextTest : QBaseTest() {
 
     @Test
     fun testAttestations() {
-        val eaV = graph.addWord("ea", "be")
-        val eaN = graph.addWord("ea", "being")
+        val eaV = q.word("ea", "be")
+        val eaN = q.word("ea", "being")
         val ct1 = graph.addCorpusText("ea", null, q)
         ct1.associateWord(0, eaV)
         val ct2 = graph.addCorpusText("ea", null, q)
@@ -141,7 +141,7 @@ class CorpusTextTest : QBaseTest() {
     @Test
     fun testLockWordAssociations() {
         val ct1 = graph.addCorpusText("ai laurie lantar", null, q)
-        val laurie = graph.addWord("laurie", "golden")
+        val laurie = q.word("laurie", "golden")
         ct1.lockWordAssociations()
         assertEquals(laurie, ct1.words.single().word)
     }

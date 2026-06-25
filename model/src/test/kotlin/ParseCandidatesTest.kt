@@ -19,7 +19,7 @@ class ParseCandidatesTest : QBaseTest() {
     @Test
     fun parseCandidatesWithWord() {
         val rule = q.rule("- append 'llo'", name = "q-abl", addedCategories = ".ABL")
-        val hresta = graph.addWord("hresta")
+        val hresta = q.word("hresta", "hresta")
 
         val candidates = graph.findParseCandidates(q.word("hrestallo"))
         assertEquals(1, candidates.size)
@@ -41,11 +41,11 @@ class ParseCandidatesTest : QBaseTest() {
 
     @Test
     fun sameCategoryExistingWord() {
-        q.withGrammaticalCategory("Tense", "V", "Present" to "PRES", "Aorist" to  "AOR")
+        q.withGrammaticalCategory("Tense", "V", "Present" to "PRES", "Aorist" to "AOR")
         q.rule("- append 'a'", name = "q-pres", addedCategories = ".PRES")
         q.rule("- append 'i'", name = "q-aor", addedCategories = ".AOR")
 
-        graph.addWord("oi", "be.PRES")
+        q.word("oi", "be.PRES")
 
         val candidates = graph.findParseCandidates(q.word("oia"))
         assertEquals(1, candidates.size)
@@ -57,7 +57,7 @@ class ParseCandidatesTest : QBaseTest() {
     fun parseCandidatesExistingWordPOSMismatch() {
         val presRule = parseRule(q, q, "- append 'a'", name = "q-pres", addedCategories = ".PRES", fromPOS = listOf("V"), toPOS = "V")
         graph.addRule(presRule)
-        val hresta = graph.addWord("hrest", pos = "N")
+        val hresta = q.word("hrest", "hrest", pos = "N")
 
         val candidates = graph.findParseCandidates(q.word("hresta"))
         assertEquals(1, candidates.size)
@@ -68,7 +68,7 @@ class ParseCandidatesTest : QBaseTest() {
     fun parseCandidatesExistingWordPOSMismatch2() {
         val presRule = parseRule(q, q, "- append 'a'", name = "q-pres", addedCategories = ".PRES", fromPOS = listOf("V"))
         graph.addRule(presRule)
-        val hresta = graph.addWord("hrest", pos = "N")
+        val hresta = q.word("hrest", "hrest", pos = "N")
 
         val candidates = graph.findParseCandidates(q.word("hresta"))
         assertEquals(1, candidates.size)

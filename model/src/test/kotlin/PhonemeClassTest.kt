@@ -77,33 +77,33 @@ class PhonemeClassTest : QBaseTest() {
 
     @Test
     fun morphemeInitial() {
-        val it = graph.addWord("it", "the", language = q)
+        val it = q.word("it", "the")
         val morphemeInitialRule = q.rule(
             "* V > 0 if sound is morpheme-initial",
             name = "on-sound-deletion"
         )
         val rule = q.rule("- append morpheme 'it: the'\n- apply rule 'on-sound-deletion'")
-        val hallæri = graph.addWord("hallæri", language = q)
+        val hallæri = q.word("hallæri", "hallæri")
         val result = rule.apply(hallæri)
         assertEquals("hallærit", result.text)
     }
 
     @Test
     fun morphemeFinal() {
-        val it = graph.addWord("it", "the", language = q)
+        val it = q.word("it", "the")
         q.rule(
             "* V > 0 if sound is morpheme-final and next sound is vowel",
             name = "on-sound-deletion"
         )
         val rule = q.rule("- append morpheme 'it: the'\n- apply rule 'on-sound-deletion'")
-        val hallæri = graph.addWord("hallæri", language = q)
+        val hallæri = q.word("hallæri", "hallæri")
         val result = rule.apply(hallæri)
         assertEquals("hallærit", result.text)
     }
 
     @Test
     fun morphemeInitialNotNormalized() {
-        val it = graph.addWord("it", "the", language = q)
+        val it = q.word("it", "the")
         val stemRule = q.rule("word ends with 'r':\n- change ending to 'i'", name = "on-stem")
         val morphemeInitialRule = q.rule(
             "* V > 0 if sound is morpheme-initial and previous sound is vowel",
@@ -113,17 +113,17 @@ class PhonemeClassTest : QBaseTest() {
             q.rule(
                 "- apply rule 'on-stem'\n- append morpheme 'it: the'\n- apply rule 'on-sound-deletion'"
             )
-        val hallæri = graph.addWord("herr", language = q)
+        val hallæri = q.word("herr", "herr")
         val result = rule.apply(hallæri)
         assertEquals("herit", result.text)
     }
 
     @Test
     fun rootVowel() {
-        val augment = graph.addWord("e", "augment", language = q)
+        val augment = q.word("e", "augment")
         val soundRule = q.rule("* e > o", name = "q-o-grade")
         val rule = q.rule("- prepend morpheme 'e: augment'\n- apply sound rule 'q-o-grade' to first root vowel")
-        val hallæri = graph.addWord("kes", language = q)
+        val hallæri = q.word("kes", "kes")
         val result = rule.apply(hallæri)
         assertEquals("ekos", result.text)
     }

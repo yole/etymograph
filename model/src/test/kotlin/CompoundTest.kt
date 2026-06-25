@@ -12,9 +12,9 @@ class CompoundTest : QBaseTest() {
 
     @Before
     fun setup() {
-        fara = graph.addWord("fara")
-        mir = graph.addWord("mir")
-        faramir = graph.addWord("faramir")
+        fara = q.word("fara", "fara")
+        mir = q.word("mir", "mir")
+        faramir = q.word("faramir", "faramir")
     }
 
     @Test
@@ -34,7 +34,7 @@ class CompoundTest : QBaseTest() {
 
     @Test
     fun compoundsInDictionary() {
-        val fara = graph.addWord("fara", "fara.NOM")
+        val fara = q.word("fara", "fara.NOM")
         graph.createCompound(faramir, listOf(fara, mir))
         assertEquals(1, graph.filteredWords(q, WordKind.COMPOUND).size)
     }
@@ -66,9 +66,9 @@ class CompoundTest : QBaseTest() {
 
     @Test
     fun segmentedTextPartialMatch() {
-        val fara = graph.addWord("anda")
-        val mir = graph.addWord("aurenya")
-        val faramir = graph.addWord("andaurenya")
+        val fara = q.word("anda", "anda")
+        val mir = q.word("aurenya", "aurenya")
+        val faramir = q.word("andaurenya", "andaurenya")
         graph.createCompound(faramir, listOf(fara, mir))
         val restored = graph.restoreSegments(faramir)
         assertEquals("andaurenya", restored.segmentedText())
@@ -80,9 +80,9 @@ class CompoundTest : QBaseTest() {
         assertEquals("stress is on first root syllable", stressRule.firstInstruction.toEditableText(graph))
         q.stressRule = RuleRef.to(stressRule)
 
-        val na = graph.addWord("na", pos = "PV")
-        val pan = graph.addWord("pan-", pos = "V")
-        val napan = graph.addWord("napan-")
+        val na = q.word("na", "na", pos = "PV")
+        val pan = q.word("pan-", "pan-", pos = "V")
+        val napan = q.word("napan-", "napan-")
         graph.createCompound(napan, listOf(na, pan))
 
         assertEquals(3, napan.calculateStress()!!.index)
@@ -94,9 +94,9 @@ class CompoundTest : QBaseTest() {
         assertEquals("stress is on first root syllable", stressRule.firstInstruction.toEditableText(graph))
         q.stressRule = RuleRef.to(stressRule)
 
-        val na = graph.addWord("na", pos = "PV")
-        val pan = graph.addWord("pan", pos = "V")
-        val napan = graph.addWord("napan")
+        val na = q.word("na", "na", pos = "PV")
+        val pan = q.word("pan", "pan", pos = "V")
+        val napan = q.word("napan", "napan")
         graph.createCompound(napan, listOf(na, pan))
 
         val soundRule = q.rule("* a > e if sound is stressed")
@@ -115,7 +115,7 @@ class CompoundTest : QBaseTest() {
 
     @Test
     fun suggestCompoundDash() {
-        val faramirDash = graph.addWord("fara-mir")
+        val faramirDash = q.word("fara-mir", "fara-mir")
         val suggestions = graph.suggestCompound(faramirDash)
         assertEquals(fara, suggestions.single())
         val compound = graph.createCompound(faramirDash, listOf(fara))
@@ -126,8 +126,8 @@ class CompoundTest : QBaseTest() {
     @Test
     fun suggestCompoundExcludeInflectedForm() {
         val onAcc = q.rule("word ends with 'r':\n- change ending to ''", name = "on-acc")
-        val stadr = graph.addWord("stadr", "city")
-        val stad = graph.addWord("stad")
+        val stadr = q.word("stadr", "city")
+        val stad = q.word("stad", "stad")
         graph.addLink(stad, stadr, Link.Derived, listOf(onAcc))
         val suggestions = graph.suggestCompound(stadr)
         assertEquals(0, suggestions.size)

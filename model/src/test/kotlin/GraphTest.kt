@@ -6,8 +6,8 @@ import org.junit.Test
 class GraphTest : QBaseTest() {
     @Test
     fun links() {
-        val abc = graph.addWord("abc")
-        val def = graph.addWord("def")
+        val abc = q.word("abc", "abc")
+        val def = q.word("def", "def")
         graph.addLink(abc, def, Link.Derived)
         assertEquals(1, graph.getLinksTo(def).count())
         assertTrue(graph.deleteLink(abc, def, Link.Derived))
@@ -16,8 +16,8 @@ class GraphTest : QBaseTest() {
 
     @Test
     fun deleteWord() {
-        val abc = graph.addWord("abc")
-        graph.addWord("def")
+        val abc = q.word("abc", "abc")
+        q.word("def", "def")
         graph.deleteWord(abc)
         assertEquals(1, graph.dictionaryWords(q).size)
         assertTrue(graph.wordById(abc.id) == null)
@@ -26,20 +26,20 @@ class GraphTest : QBaseTest() {
 
     @Test
     fun classifyWordI() {
-        val ek = graph.addWord("ek", "I")
+        val ek = q.word("ek", "I")
         assertEquals(1, graph.dictionaryWords(q).size)
     }
 
     @Test
     fun classifyWordWithGloss() {
-        val ek = graph.addWord("ek", "me.1SG")
+        val ek = q.word("ek", "me.1SG")
         assertEquals(1, graph.dictionaryWords(q).size)
     }
 
     @Test
     fun classifyWordDerived() {
-        val ek = graph.addWord("ek", "me.1SG")
-        val derived = graph.addWord("och")
+        val ek = q.word("ek", "me.1SG")
+        val derived = q.word("och", "och")
         graph.addLink(derived, ek, Link.Derived)
         assertEquals(1, graph.dictionaryWords(q).size)
     }

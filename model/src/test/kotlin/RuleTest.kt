@@ -203,7 +203,7 @@ class RuleTest : QBaseTest() {
     fun wordIsPOS() {
         q.pos = mutableListOf(WordCategoryValue("Noun", "N"), WordCategoryValue("Verb", "V"))
         val rule = q.rule("word is V and word ends with 'ōn':\n- change ending to 'ōjan'\notherwise:\n- no change")
-        val baseWord = graph.addWord("bugōn-", language = q, pos = "V")
+        val baseWord = q.word("bugōn-", pos = "V")
         assertEquals("bugōjan", rule.apply(baseWord).text)
     }
 
@@ -214,8 +214,8 @@ class RuleTest : QBaseTest() {
         oe.wordClasses =
             mutableListOf(WordCategory("stem class", listOf("N"), listOf(WordCategoryValue("o-stem", "o-stem"))))
         val rule = oe.rule("word is o-stem:\n- append 'es'")
-        val baseWord = graph.addWord("mann", language = oe, classes = listOf("o-stem"))
-        val variant = graph.addWord("monn", language = oe)
+        val baseWord = oe.word("mann", "mann", classes = listOf("o-stem"))
+        val variant = oe.word("monn", "monn")
         graph.addLink(variant, baseWord, Link.Variation)
         val result = rule.apply(variant)
         assertEquals("monnes", result.text)
@@ -232,8 +232,8 @@ class RuleTest : QBaseTest() {
             )
         )
         val rule = oe.rule("- mark word as strong\nword is o-stem:\n- append 'es'")
-        val baseWord = graph.addWord("mann", language = oe, classes = listOf("o-stem"))
-        val variant = graph.addWord("monn", language = oe)
+        val baseWord = oe.word("mann", "mann", classes = listOf("o-stem"))
+        val variant = oe.word("monn", "monn")
         graph.addLink(variant, baseWord, Link.Variation)
         val result = rule.apply(variant)
         assertEquals("monnes", result.text)
@@ -251,8 +251,8 @@ class RuleTest : QBaseTest() {
         )
         oe.rule("- mark word as strong", name = "oe-stem-class")
         val rule = oe.rule("- apply rule 'oe-stem-class'\nword is o-stem:\n- append 'es'")
-        val baseWord = graph.addWord("mann", language = oe, classes = listOf("o-stem"))
-        val variant = graph.addWord("monn", language = oe)
+        val baseWord = oe.word("mann", "mann", classes = listOf("o-stem"))
+        val variant = oe.word("monn", "monn")
         graph.addLink(variant, baseWord, Link.Variation)
         val result = rule.apply(variant)
         assertEquals("monnes", result.text)
@@ -269,9 +269,9 @@ class RuleTest : QBaseTest() {
             )
         )
         val rule = oe.rule("- mark word as strong\nword is o-stem:\n- append 'es'")
-        val baseWord = graph.addWord("mann", language = oe, classes = listOf("o-stem"))
-        val prefix = graph.addWord("sæ", language = oe)
-        val compoundWord = graph.addWord("sæmann", language = oe)
+        val baseWord = oe.word("mann", "mann", classes = listOf("o-stem"))
+        val prefix = oe.word("sæ", "sæ")
+        val compoundWord = oe.word("sæmann", "sæmann")
         graph.createCompound(compoundWord, listOf(prefix, baseWord), headIndex = 1)
         val result = rule.apply(compoundWord)
         assertEquals("sæmannes", result.text)
@@ -283,11 +283,11 @@ class RuleTest : QBaseTest() {
         val on = graph.addLanguage("Old Norse", "ON")
         val rule = q.rule("word ends with 'r':\n- change ending to 'ar'", name = "on-nom-pl")
         val madr = graph.addWord("maðr", language = on, gloss = "man")
-        val menn = graph.addWord("menn", language = on)
+        val menn = on.word("menn", "menn")
         graph.addLink(menn, madr, Link.Derived, listOf(rule))
 
         val far = graph.addWord("go",  language = on, gloss = "go")
-        val farmadr = graph.addWord("farmaðr", language = on)
+        val farmadr = on.word("farmaðr", "farmaðr")
         graph.createCompound(farmadr, listOf(far, madr), headIndex = 1)
 
         val result = rule.apply(farmadr)
@@ -637,8 +637,8 @@ class RuleTest : QBaseTest() {
          """.trimIndent()
         )
 
-        val mbar = graph.addWord("mbar", language = ce)
-        val bar = graph.addWord("bar")
+        val mbar = ce.word("mbar", "mbar")
+        val bar = q.word("bar", "bar")
         graph.addLink(bar, mbar, Link.Origin)
 
         assertEquals("mbar", rule.apply(bar).text)
@@ -654,8 +654,8 @@ class RuleTest : QBaseTest() {
          """.trimIndent()
         )
 
-        val talam = graph.addWord("talam", language = ce)
-        val talan = graph.addWord("talan")
+        val talam = ce.word("talam", "talam")
+        val talan = q.word("talan", "talan")
         graph.addLink(talan, talam, Link.Origin)
 
         assertEquals("talam", rule.apply(talan).text)
@@ -665,9 +665,9 @@ class RuleTest : QBaseTest() {
     @Test
     fun prependMorpheme() {
         val oe = graph.addLanguage("Old English", "OE")
-        val gePrefix = graph.addWord("ge-", "Prefix: ge", language = oe)
+        val gePrefix = oe.word("ge-", "Prefix: ge")
         val rule = oe.rule("- prepend morpheme 'ge-: Prefix: ge'")
-        val frignan = graph.addWord("frignan", language = oe)
+        val frignan = oe.word("frignan", "frignan")
         val result = rule.apply(frignan)
         assertEquals("gefrignan", result.text)
         assertEquals(2, result.segments!!.size)
@@ -687,9 +687,9 @@ class RuleTest : QBaseTest() {
     @Test
     fun appendMorpheme() {
         val on = graph.addLanguage("Old Norse", "ON")
-        val inn = graph.addWord("inn", "the", language = on)
+        val inn = on.word("inn", "the")
         val rule = on.rule("- append morpheme 'inn: the'")
-        val hestr = graph.addWord("hestr", language = on)
+        val hestr = on.word("hestr", "hestr")
         val result = rule.apply(hestr)
         assertEquals("hestrinn", result.text)
         assertEquals(1, result.segments!!.size)
@@ -701,11 +701,11 @@ class RuleTest : QBaseTest() {
     fun morphemeChainSegments() {
         val graph = InMemoryGraph()
         val on = graph.addLanguage( "Old Norse", "ON")
-        val inn = graph.addWord("inn", "the", language = on)
-        val gePrefix = graph.addWord("ge-", "Prefix: ge", language = on)
+        val inn = on.word("inn", "the")
+        val gePrefix = on.word("ge-", "Prefix: ge")
         val rule = on.rule("- append morpheme 'inn: the'")
         val rule2 = on.rule("- prepend morpheme 'ge-: Prefix: ge'")
-        val hestr = graph.addWord("hestr", language = on)
+        val hestr = on.word("hestr", "hestr")
         val result = rule2.apply(rule.apply(hestr))
         assertEquals("gehestrinn", result.text)
         val segments = result.segments!!
@@ -719,10 +719,10 @@ class RuleTest : QBaseTest() {
     fun changeEndingToMorpheme() {
         val graph = InMemoryGraph()
         val pie = graph.addLanguage("Proto-Indo-European", "PIE")
-        graph.addWord("o", "1sg thematic ending", language = pie)
+        pie.word("o", "1sg thematic ending")
         val text = "word ends with 'e':\n - change ending to morpheme 'o: 1sg thematic ending'"
         val rule = pie.rule(text)
-        val lukeie = graph.addWord("lukeie", language = pie)
+        val lukeie = pie.word("lukeie", "lukeie")
         val result = rule.apply(lukeie)
         assertEquals("lukeio", result.text)
         assertEquals(text, rule.toEditableText())
@@ -733,9 +733,9 @@ class RuleTest : QBaseTest() {
         val graph = InMemoryGraph()
         val on = graph.addLanguage("Old Norse", "ON")
         on.wordClasses = mutableListOf(WordCategory("Gender", listOf("N"), listOf(WordCategoryValue("Neuter", "n"))))
-        val haust = graph.addWord("haust", "autumn", classes = listOf("n"), language = on)
+        val haust = on.word("haust", "autumn", classes = listOf("n"))
         val accRule = on.rule("- no change", name = "on-acc", addedCategories = ".ACC")
-        val haustAcc = graph.addWord("haust", "autumn.ACC", language = on)
+        val haustAcc = on.word("haust", "autumn.ACC")
         graph.addLink(haustAcc, haust, Link.Derived, listOf(accRule))
         val defRule = on.rule("- apply rule 'on-acc'\nword is n:\n- append 'it'")
         val result = defRule.apply(haust)
@@ -810,9 +810,9 @@ class RuleTest : QBaseTest() {
     @Test
     fun previewChangesSpeRule() {
         val rule = graph.addRule("q-initial-d", q, q, Rule.parseLogic("* d > l / #_", q.parseContext()))
-        val changedWord = graph.addWord("danta")
-        graph.addWord("anta")
-        graph.addWord("anda")
+        val changedWord = q.word("danta", "danta")
+        q.word("anta", "anta")
+        q.word("anda", "anda")
 
         val results = rule.previewChanges("* d > r / #_")
 

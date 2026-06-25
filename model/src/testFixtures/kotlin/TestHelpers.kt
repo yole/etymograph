@@ -1,7 +1,7 @@
 package page.yole.etymograph
 
-fun Language.word(text: String, gloss: String? = null, pos: String? = null, syllabographic: Boolean = false) =
-    Word(-1, text, this, gloss, pos = pos, syllabographic = syllabographic)
+fun Language.word(text: String, gloss: String? = null, pos: String? = null, classes: List<String> = emptyList(), syllabographic: Boolean = false) =
+    graph.addWord(text, this, gloss, pos = pos, classes = classes, syllabographic = syllabographic)
 
 fun createParseContext(
     fromLanguage: Language,
