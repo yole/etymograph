@@ -223,3 +223,22 @@ h4 {
 .segment {
   margin-bottom: 10pt;
  }
+
+.wordText {
+  font-style: italic;
+  font-family: "Times New Roman", serif;
+  font-size: 13pt;
+}
+
+a:has(.wordText), a:has(.syllabogram) {
+  text-decoration: none;
+}
+
+h2 .wordText {
+  font-size: 20pt;
+}
+
+.syllabogram {
+  font-family: "Times New Roman", serif;
+  font-size: 13pt;
+}

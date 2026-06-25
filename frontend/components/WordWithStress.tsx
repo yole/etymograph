@@ -10,13 +10,13 @@ export default function WordWithStress(params: WordWithStressProps) {
     const stressIndex = params.stressIndex
     const stressLength = params.stressLength
     if (stressIndex != null) {
-        return <>
+        return <span className="wordText">
             {params.reconstructed === true && "*"}
             {text.substring(0, stressIndex)}
             <span className="stressed">{text.substring(stressIndex, stressIndex+stressLength)}</span>
             {text.substring(stressIndex+stressLength)}
-        </>
+        </span>
     }
     const result = params.reconstructed === true ? "*" + text : text
-    return <>{result}</>
+    return <span className="wordText">{result}</span>
 }

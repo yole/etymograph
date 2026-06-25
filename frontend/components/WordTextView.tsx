@@ -18,13 +18,13 @@ function SyllabogramView(params: {syllabogram: Syllabogram, index: number, prevS
         return <>{text}</>
     }
 
-    return <>
+    return <span className="syllabogram">
         {delimiter}
-        {syl.type == "LogogramAlt" && <i>{renderTextWithSubscript(syl.text)}</i>}
+        {syl.type == "LogogramAlt" && <span className="logogram"><i>{renderTextWithSubscript(syl.text)}</i></span>}
         {syl.type == "Determinative" && <sup>{syl.text}</sup>}
         {syl.type == "DeterminativeAlt" && <sup><i>{syl.text}</i></sup>}
-        {syl.type != "LogogramAlt" && syl.type != "Determinative" && syl.type != "DeterminativeAlt" && <>{renderTextWithSubscript(syl.text)}</>}
-    </>
+        {syl.type != "LogogramAlt" && syl.type != "Determinative" && syl.type != "DeterminativeAlt" && <span className="wordText">{renderTextWithSubscript(syl.text)}</span>}
+    </span>
 }
 
 export default function WordTextView(params: {
