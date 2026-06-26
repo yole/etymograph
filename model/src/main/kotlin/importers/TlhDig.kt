@@ -12,6 +12,7 @@ import page.yole.etymograph.Link
 import page.yole.etymograph.Rule
 import page.yole.etymograph.Word
 import page.yole.etymograph.findMatchingRule
+import page.yole.etymograph.isAnyGlossSimilar
 import page.yole.etymograph.removeDiacritics
 import page.yole.etymograph.removePunctuation
 import java.io.File
@@ -164,9 +165,13 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
             }
         }
         else {
-            val lemmaWord = graph.findOrAddWord(cleanLemma, hittite, gloss,
+            val matchingWord = graph.wordsByText(hittite, cleanLemma)
+                .firstOrNull { isAnyGlossSimilar(it, gloss) }
+
+            val lemmaWord = matchingWord ?: graph.findOrAddWord(cleanLemma, hittite, gloss,
                 pos = posMarkers.singleOrNull() ?: rules.firstOrNull()?.fromPOS?.firstOrNull(),
                 syllabographic = lemma.any { it.isUpperCase() })
+
             graph.addLink(transWord, lemmaWord, Link.Derived,
                 rules = rules)
         }

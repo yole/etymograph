@@ -185,6 +185,14 @@ class TlhDigImportTest {
     }
 
     @Test
+    fun duplicateLemmaMatchByFulGloss() {
+        hittite.word("ḫatrāe", "send a message", fullGloss = "send a message; mitteilen")
+        importWord("""<w trans="ḫatranun" mrp0sel=" 1" mrp1="ḫatr=ā(e)-@mitteilen@1SG.PST@I.9@">ḫa-at-ra-a-nu-un</w><w trans="ḫatratten" mrp0sel=" 2" mrp2="ḫatr=ā(e)-@mitteilen@2PL.IMP@I.9@">ḫa-at-r<del_in/>a-at-tén<del_fin/></w>""")
+        val words = graph.wordsByText(hittite, "ḫatrāe")
+        assertEquals(1, words.size)
+    }
+
+    @Test
     fun adjustAkkadogramBoundary() {
         val corpusText = importWord("<w trans=\"A-NA tuttua-DINGIR-LIM\" mrp0sel=\" ???\"><aGr>A-NA</aGr> <d>m</d>tu-ut-tu-wa-<sGr>DINGIR</sGr><aGr>-LIM</aGr></w>")
         assertEquals("_A-NA ^m^tu-ut-tu-u̯a-DINGIR-_LIM", corpusText.text.trim())

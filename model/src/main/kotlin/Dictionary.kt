@@ -112,6 +112,9 @@ fun isGlossSimilar(candidateGloss: String?, gloss: String?): Boolean {
             .isNotEmpty()
 }
 
+fun isAnyGlossSimilar(word: Word, gloss: String): Boolean =
+    isGlossSimilar(gloss, word.getOrComputeGloss()) || isGlossSimilar(gloss, word.fullGloss)
+
 private fun wordSet(gloss: String): Set<String> =
     gloss.lowercase()
         .split(' ')
