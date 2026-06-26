@@ -204,10 +204,10 @@ function TranslationView(params: {translation: TranslationViewModel}) {
 
     return <>
         {(!showTranslationForm) && <>
-            <div>
-                &quot;{t.text}&quot; <SourceRefs source={t.source}/>
+            <div className="translation">
+                &quot;{t.text}&quot; <SourceRefs source={t.source} span={true}/>
                 {allowEditGraph() && <>
-                    <ActionIcon type="button" variant="outline" onClick={() => setShowTranslationForm(!showTranslationForm)}>
+                    <ActionIcon className="iconWithMargin" type="button" variant="outline" onClick={() => setShowTranslationForm(!showTranslationForm)}>
                         <FontAwesomeIcon icon={faEdit}/>
                     </ActionIcon>
                     <ActionIcon type="button" variant="outline" onClick={() => deleteTranslationClicked(t.id)}>

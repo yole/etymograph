@@ -251,3 +251,11 @@ h2 .wordText {
 .glossChoice {
   text-decoration: underline dotted;
 }
+
+.translation {
+  padding-left: 20px;
+  border-left: black 2px solid;
+  background-color: lightcyan;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
