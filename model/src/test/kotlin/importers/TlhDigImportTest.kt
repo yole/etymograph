@@ -197,7 +197,14 @@ class TlhDigImportTest {
         val word = corpusText.words[0].word
         val compound = graph.findCompoundsByCompoundWord(word).single()
         val headWord = compound.components[0]
-        assertEquals(0, this.graph.getLinksFrom(headWord).count())
+        assertEquals(0, graph.getLinksFrom(headWord).count())
+    }
+
+    @Test
+    fun normalizeSpelling() {
+        val corpusText = importWord("""<w trans="ḫutak" mrp0sel=" 1 " mrp1="ḫudak@eilends@@ ADV@">ḫu-u-da-a-ak</w>""")
+        val word = corpusText.words[0].word
+        assertEquals(0, graph.getLinksFrom(word.transcription).count())
     }
 
     private fun findWord(text: String, syllabographic: Boolean = false): Word =

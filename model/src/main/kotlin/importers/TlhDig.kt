@@ -145,7 +145,7 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
             transWord = createEncliticCompound(transWord, enclitics)
         }
 
-        if (cleanLemma == transWord.text) {
+        if (cleanLemma.normalizeSpelling() == transWord.text.normalizeSpelling()) {
             if (transWord.gloss == null) {
                 transWord.gloss = gloss
             }
@@ -167,6 +167,11 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
         }
     }
 }
+
+private fun String.normalizeSpelling(): String = this
+    .replace("da", "ta")
+    .replace("bu", "pu")
+
 
 private fun findRulesByMrp(mrp: String, hittite: Language, posMarkers: MutableList<String>): List<Rule> {
     val analysis = mrp.removeSuffix("(UNM)").removeSuffix("(ABBR)").removePrefix("…:")
