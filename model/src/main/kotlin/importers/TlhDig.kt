@@ -112,7 +112,8 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
 
         val lemma = mrpElements[0]
         var cleanLemma = lemma
-            .substringBefore('/', lemma)
+            .substringBefore('/')
+            .substringBefore(',')
             .replace("(", "")
             .replace(")", "")
             .replace("y", "i̯")
