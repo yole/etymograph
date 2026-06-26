@@ -23,7 +23,9 @@ function SyllabogramView(params: {syllabogram: Syllabogram, index: number, prevS
         {syl.type == "LogogramAlt" && <span className="logogram"><i>{renderTextWithSubscript(syl.text)}</i></span>}
         {syl.type == "Determinative" && <sup>{syl.text}</sup>}
         {syl.type == "DeterminativeAlt" && <sup><i>{syl.text}</i></sup>}
-        {syl.type != "LogogramAlt" && syl.type != "Determinative" && syl.type != "DeterminativeAlt" && <span className="wordText">{renderTextWithSubscript(syl.text)}</span>}
+        {syl.type == "Logogram" && renderTextWithSubscript(syl.text)}
+        {syl.type != "LogogramAlt" && syl.type != "Determinative" && syl.type != "DeterminativeAlt" && syl.type != "Logogram" &&
+            <span className="wordText">{renderTextWithSubscript(syl.text)}</span>}
     </span>
 }
 
