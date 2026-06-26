@@ -37,6 +37,7 @@ class TlhDigImportTest {
         importWord("""<w trans="auaua" mrp0sel=" 1a" mrp1="auau=a-@Awauwa@{a → PNm.NOM.SG(UNM)}@38.2@m"><d>m</d>a-wa-u-wa-a</w>""")
         val auaua = findWord("auaua")
         assertEquals("Awauwa", auaua.gloss)
+        assertEquals("NP", auaua.pos)
     }
 
     @Test

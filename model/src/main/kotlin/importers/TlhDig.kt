@@ -147,20 +147,23 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
             transWord = createEncliticCompound(transWord, enclitics)
         }
 
+        val posMarkers = mutableListOf<String>()
+        val rules = if (selectedAnalysis.isNotEmpty()) {
+            findRulesByMrp(selectedAnalysis, hittite, posMarkers)
+        }
+        else {
+            emptyList()
+        }
+
         if (cleanLemma.normalizeSpelling() == transWord.text.normalizeSpelling()) {
             if (transWord.gloss == null) {
                 transWord.gloss = gloss
             }
+            if (transWord.pos == null) {
+                transWord.pos = posMarkers.singleOrNull()
+            }
         }
         else {
-            val posMarkers = mutableListOf<String>()
-            val rules = if (selectedAnalysis.isNotEmpty()) {
-                findRulesByMrp(selectedAnalysis, hittite, posMarkers)
-            }
-            else {
-                emptyList()
-            }
-
             val lemmaWord = graph.findOrAddWord(cleanLemma, hittite, gloss,
                 pos = posMarkers.singleOrNull() ?: rules.firstOrNull()?.fromPOS?.firstOrNull(),
                 syllabographic = lemma.any { it.isUpperCase() })
