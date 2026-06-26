@@ -20,7 +20,7 @@ import WordGloss from "@/components/WordGloss";
 import {CorpusTextViewModel, CorpusWordCandidateViewModel, CorpusWordViewModel, TranslationViewModel, WordViewModel} from "@/models";
 import WordTextView from "@/components/WordTextView";
 import {Urls} from "@/components/Urls";
-import {ActionIcon} from "@mantine/core";
+import {ActionIcon, Popover} from "@mantine/core";
 
 export const config = {
     unstable_runtimeJS: true
@@ -37,30 +37,15 @@ export async function getStaticPaths() {
 interface CorpusTextWordLinkProps {
     word: CorpusWordViewModel
     corpusText: CorpusTextViewModel
-    showWordForm: (text: string, index: number) => void
-    showTranslationFormAtWord: (index: number) => void
 }
 
 export function CorpusTextWordLink(params: CorpusTextWordLinkProps) {
     const w = params.word
     const corpusText = params.corpusText
-    const showWordForm = params.showWordForm
-    const showTranslationFormAtWord = params.showTranslationFormAtWord
-    const [hovered, setHovered] = useState(false)
     const router = useRouter()
-    const editable = allowEditGraph()
-
-    const renderActions = () => hovered && editable && <span className="iconWithMargin">
-        <FontAwesomeIcon icon={faEdit} onClick={() => showWordForm(w.normalizedText, w.index)}/>
-        {' '}
-        <FontAwesomeIcon icon={faCommentDots} onClick={() => showTranslationFormAtWord(w.index)}/>
-    </span>
 
     if (w.wordCandidates && w.wordCandidates.length > 1) {
-        return <span onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
-            <WordTextView text={w.text} syllabograms={w.syllabogramSequence}/>
-            {renderActions()}
-        </span>
+        return <WordTextView text={w.text} syllabograms={w.syllabogramSequence}/>
     }
     else if (!w.glossable) {
         return <>{w.text}</>
@@ -70,21 +55,15 @@ export function CorpusTextWordLink(params: CorpusTextWordLinkProps) {
         if (w.wordId !== null && (w.homonym || w.wordUrlKey)) {
             linkText += `/${w.wordId}`
         }
-        return <span onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+        return <span>
             <Link href={`/${router.query.graph}/word/${corpusText.language}/${linkText}`}>
                 <WordTextView text={w.text} syllabograms={w.syllabogramSequence}
                               stressIndex={w.stressIndex} stressLength={w.stressLength}/>
             </Link>
-            {renderActions()}
         </span>
     }
     else {
-        return <span onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
-            <span className="undefWord" onClick={() => {
-                if (editable) showWordForm(w.normalizedText, w.index)
-            }}><WordTextView text={w.text} syllabograms={w.syllabogramSequence}/></span>
-            {renderActions()}
-        </span>
+        return <WordTextView text={w.text} syllabograms={w.syllabogramSequence}/>
     }
 }
 
@@ -99,7 +78,6 @@ function CorpusTextGlossChoice(params: CorpusTextGlossChoiceProps) {
     const graph = router.query.graph as string
     const lang = params.corpusText.language
     const c = params.candidate
-    const [hovered, setHovered] = useState(false)
     const editable = allowEditGraph()
 
     async function acceptGloss() {
@@ -107,13 +85,52 @@ function CorpusTextGlossChoice(params: CorpusTextGlossChoiceProps) {
         router.replace(router.asPath)
     }
 
-    return <span onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+    return <span>
+        {editable &&
+            <span className="iconWithMarginRight"><FontAwesomeIcon icon={faCheck} onClick={() => acceptGloss()}/></span>}
         <Link href={`/${graph}/word/${lang}/${params.word.text.toLowerCase()}/${c.id}`}>
             <WordGloss gloss={c.gloss}/>
         </Link>
-        {hovered && editable &&
-            <span className="iconWithMargin"><FontAwesomeIcon icon={faCheck} onClick={() => acceptGloss()}/></span>}
     </span>
+}
+
+function GlossDropdown(params: {
+    corpusText: CorpusTextViewModel,
+    word: CorpusWordViewModel,
+    showWordForm: (text: string, index: number) => void,
+    showTranslationFormAtWord: (index: number) => void
+}) {
+    const [opened, setOpened] = useState(false)
+    let w = params.word
+    const candidates = w.wordCandidates
+    const showPlus = w.wordCandidates && w.wordCandidates.length > 1
+
+    if (!allowEditGraph()) {
+        return <WordGloss gloss={w.gloss}/>
+    }
+
+    return <Popover opened={opened} onChange={setOpened} position="bottom-start" withArrow shadow="md">
+        <Popover.Target>
+            <span className="glossChoice" style={{cursor: "pointer"}} onClick={() => setOpened(o => !o)}>
+                {showPlus && <><WordGloss gloss={candidates[0].gloss}/> &lt;+&gt;</>}
+                {!showPlus && <WordGloss gloss={w.gloss}/>}
+            </span>
+        </Popover.Target>
+        <Popover.Dropdown>
+            {candidates && candidates.map(c =>
+                <div key={c.id}>
+                    <CorpusTextGlossChoice corpusText={params.corpusText} word={w} candidate={c}/>
+                </div>)}
+            <div><span className="inlineButton" onClick={() => {
+                setOpened(false)
+                params.showWordForm(w.normalizedText, w.index)
+            }}>Define word</span></div>
+            <div><span className="inlineButton" onClick={() => {
+                setOpened(false)
+                params.showTranslationFormAtWord(w.index)
+            }}>Translate from here</span></div>
+        </Popover.Dropdown>
+    </Popover>;
 }
 
 interface TextSegment {
@@ -298,19 +315,13 @@ export default function CorpusText(params) {
                             <div className="corpusTextLine">
                                 {segmentWords.map((w, index) =>
                                     <span className="corpusTextWord" key={index}>
-                                        <CorpusTextWordLink
-                                            word={w}
-                                            corpusText={corpusText}
-                                            showWordForm={showWordForm}
-                                            showTranslationFormAtWord={(clickedWordIndex) => toggleTranslationForm(clickedWordIndex)}
-                                        />
+                                        <CorpusTextWordLink word={w} corpusText={corpusText}/>
                                         <br/>
-                                        {w.wordCandidates && w.wordCandidates.length > 1 &&
-                                            w.wordCandidates.map((c, i) => <>
-                                                {i > 0 && " | "}
-                                                <CorpusTextGlossChoice corpusText={corpusText} word={w} candidate={c}/>
-                                            </>)}
-                                        {(!w.wordCandidates || w.wordCandidates.length <= 1) && <WordGloss gloss={w.gloss}/>}
+                                        <GlossDropdown
+                                            corpusText={corpusText}
+                                            word={w}
+                                            showWordForm={showWordForm}
+                                            showTranslationFormAtWord={toggleTranslationForm}/>
                                         {w.contextGloss && <><br/><span className="contextGloss">{w.contextGloss}</span></>}
                                     </span>)}
                             </div>

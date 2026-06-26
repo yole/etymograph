@@ -247,3 +247,7 @@ h2 .wordText {
   font-family: "Times New Roman", serif;
   font-size: 13pt;
 }
+
+.glossChoice {
+  text-decoration: underline dotted;
+}

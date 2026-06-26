@@ -1,6 +1,6 @@
 export default function WordGloss(params: { gloss: string }) {
     let gloss = params.gloss
-    if (gloss === null) return <></>
+    if (gloss === null || gloss === "") return <>&lt;?&gt;</>
 
     let glossCategory = null
 
@@ -12,7 +12,7 @@ export default function WordGloss(params: { gloss: string }) {
         }
 
         glossCategory = gloss.substring(categoryStart).toLowerCase()
-        gloss =  gloss.substring(0, categoryStart)
+        gloss = gloss.substring(0, categoryStart)
     }
 
     return <>
