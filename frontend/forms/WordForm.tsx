@@ -1,5 +1,5 @@
 import {addLink, addToCompound, addWord, createCompound, fetchBackend, updateWord} from "@/api";
-import EtymographForm, {EtymographFormProps} from "@/components/EtymographForm";
+import EtymographForm, {EtymographFormProps, useEtymographFormContext} from "@/components/EtymographForm";
 import LanguageSelect from "@/components/LanguageSelect";
 import FormRow from "@/components/FormRow";
 import FormTextArea from "@/components/FormTextArea";
@@ -34,6 +34,25 @@ interface WordFormProps extends EtymographFormProps<WordFormData, WordViewModel>
     hideReconstructed?: boolean
     showSyllabographic?: boolean
     wordSubmitted?: (word: WordViewModel, baseWord: WordViewModel | undefined, formData: WordFormData) => any
+}
+
+function WordDefinitions(props: {definitions: string[]}) {
+    const form = useEtymographFormContext()
+
+    function setGloss(def: string) {
+        const inputField = document.getElementById("gloss") as HTMLInputElement | null
+        if (inputField !== null) inputField.value = def
+        form.setFieldValue("gloss", def)
+    }
+
+    return <span className="wordDefinitions">
+        {props.definitions.map((def, i) => <span key={i}>
+            {i > 0 && ", "}
+            <button type="button" className="inlineButton inlineButtonLink" onClick={() => setGloss(def)}>
+                {def}
+            </button>
+        </span>)}
+    </span>
 }
 
 export default function WordForm(props: WordFormProps) {
@@ -136,7 +155,7 @@ export default function WordForm(props: WordFormProps) {
                  handleBlur={updateWordStatus}>
             {isNewWord && <span className="newWord">New</span>}
             {wordDefinitions.length > 0 && <>
-                <span className="wordDefinitions">{wordDefinitions.join(", ")}</span>
+                <WordDefinitions definitions={wordDefinitions}/>
                 {' '}
                 <button type="button" className="inlineButton inlineButtonLink" onClick={() => setForceNew(!forceNew)}>
                     {forceNew ? <b>New</b> : "New"}
