@@ -171,8 +171,15 @@ class TlhDigImportTest {
 
     @Test
     fun duplicateWord() {
-        val corpusText = importWord("""<w trans="zi" mrp0sel=" 1" mrp1="zi@von dieser Seite@@ ADV(ABBR)@">zi</w><w trans="zi" mrp0sel=" 1" mrp1="zi@von dieser Seite@@ ADV(ABBR)@">zi</w>""")
+        importWord("""<w trans="zi" mrp0sel=" 1" mrp1="zi@von dieser Seite@@ ADV(ABBR)@">zi</w><w trans="zi" mrp0sel=" 1" mrp1="zi@von dieser Seite@@ ADV(ABBR)@">zi</w>""")
         val words = graph.wordsByText(hittite, "zi", true)
+        assertEquals(1, words.size)
+    }
+
+    @Test
+    fun duplicateLemma() {
+        importWord("""<w trans="ḫatranun" mrp0sel=" 1" mrp1="ḫatr=ā(e)-@mitteilen@1SG.PST@I.9@">ḫa-at-ra-a-nu-un</w><w trans="ḫatratten" mrp0sel=" 2" mrp2="ḫatr=ā(e)-@mitteilen@2PL.IMP@I.9@">ḫa-at-r<del_in/>a-at-tén<del_fin/></w>""")
+        val words = graph.wordsByText(hittite, "ḫatrāe")
         assertEquals(1, words.size)
     }
 

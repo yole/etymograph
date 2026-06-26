@@ -112,6 +112,8 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
         val lemma = mrpElements[0]
         var cleanLemma = lemma
             .substringBefore('/', lemma)
+            .replace("(", "")
+            .replace(")", "")
             .replace("y", "i̯")
             .replace("IA", "I̯A")
             .trimEnd { it.isDigit() }
@@ -159,7 +161,7 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
                 emptyList()
             }
 
-            val lemmaWord = graph.addWord(cleanLemma, hittite, gloss,
+            val lemmaWord = graph.findOrAddWord(cleanLemma, hittite, gloss,
                 pos = posMarkers.singleOrNull() ?: rules.firstOrNull()?.fromPOS?.firstOrNull(),
                 syllabographic = lemma.any { it.isUpperCase() })
             graph.addLink(transWord, lemmaWord, Link.Derived,
