@@ -105,50 +105,36 @@ class SyllabogramTest {
 
     @Test
     fun transcribe() {
-        val word = hittiteWord("ki-it-ta-ri")
-        assertEquals("kittari", suggestTranscription(word))
+        assertEquals("kittari", suggestTranscription("ki-it-ta-ri"))
     }
 
     @Test
     fun transcribeDifferentVowels() {
-        val word = hittiteWord("ku-it-ma-an")
-        assertEquals("kuitman", suggestTranscription(word))
+        assertEquals("kuitman", suggestTranscription("ku-it-ma-an"))
     }
 
     @Test
     fun transcribeLongVowel() {
-        val word = hittiteWord("ma-a-an")
-        assertEquals("mān", suggestTranscription(word))
+        assertEquals("mān", suggestTranscription("ma-a-an"))
     }
 
     @Test
     fun transcribeDifferentVowelsLong() {
-        val word = hittiteWord("ú-e-eš")
-        assertEquals("uēš", suggestTranscription(word))
+        assertEquals("uēš", suggestTranscription("ú-e-eš"))
     }
 
     @Test
     fun transcribeVowels2() {
-        val word = hittiteWord("u̯a-aš-ta-a-iš")
-        assertEquals("u̯aštāiš", suggestTranscription(word))
+        assertEquals("u̯aštāiš", suggestTranscription("u̯a-aš-ta-a-iš"))
     }
 
     @Test
     fun transcribeRemoveNumbers() {
-        val word = hittiteWord("le-en-ka4-nu-ut")
-        assertEquals("lenkanut", suggestTranscription(word))
+        assertEquals("lenkanut", suggestTranscription("le-en-ka4-nu-ut"))
     }
 
     @Test
     fun transcribeW() {
-        val word = hittiteWord("nu-u̯a-an-za-aš")
-        assertEquals("nuu̯anzaš", suggestTranscription(word))
-    }
-
-    private fun hittiteWord(transliteration: String): Word {
-        val graph = InMemoryGraph()
-        val ht = graph.addLanguage( "Hittite", "Ht")
-        ht.syllabographic = true
-        return ht.word(transliteration, syllabographic = true)
+        assertEquals("nuu̯anzaš", suggestTranscription("nu-u̯a-an-za-aš"))
     }
 }

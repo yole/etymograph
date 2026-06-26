@@ -15,6 +15,7 @@ import page.yole.etymograph.findMatchingRule
 import page.yole.etymograph.isAnyGlossSimilar
 import page.yole.etymograph.removeDiacritics
 import page.yole.etymograph.removePunctuation
+import page.yole.etymograph.suggestTranscription
 import java.io.File
 import java.nio.file.Path
 
@@ -86,8 +87,7 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
             println("Skipping Akkadian preposition")
             continue
         }
-        val trans = w.trans
-            .replace("y", "i̯")
+        val trans = if (cleanText.any { it.isUpperCase() }) w.trans else suggestTranscription(cleanText)
 
         val sylWord = graph.findOrAddWord(cleanText, hittite, null, syllabographic = true)
         corpusText.associateWord(index, sylWord)
@@ -157,7 +157,7 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
             emptyList()
         }
 
-        if (cleanLemma.normalizeSpelling() == transWord.text.normalizeSpelling()) {
+        if (cleanLemma.removeDiacritics().normalizeSpelling() == transWord.text.removeDiacritics().normalizeSpelling()) {
             if (transWord.gloss == null) {
                 transWord.gloss = gloss
             }

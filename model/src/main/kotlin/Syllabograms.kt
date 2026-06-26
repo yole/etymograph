@@ -144,8 +144,8 @@ object TlhDigSyllabogramSyntax : SyllabogramSyntax() {
 
 private val number = Regex("\\d$")
 
-fun suggestTranscription(word: Word): String {
-    val syllabograms = TlhDigSyllabogramSyntax.parse(word.text)
+fun suggestTranscription(text: String): String {
+    val syllabograms = TlhDigSyllabogramSyntax.parse(text)
     fun longVowel(c: Char): Char = hittiteLongVowels[hittiteVowels.indexOf(c)]
 
     val result = buildString {

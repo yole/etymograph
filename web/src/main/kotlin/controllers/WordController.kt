@@ -519,7 +519,7 @@ class WordController(val dictionaryService: DictionaryService) {
         if (!word.syllabographic) {
             return ""
         }
-        return suggestTranscription(word)
+        return suggestTranscription(word.text)
     }
 
     data class WordSequenceParams(val sequence: String = "", val source: String = "")

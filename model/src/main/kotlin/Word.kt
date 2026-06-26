@@ -320,7 +320,7 @@ class Word(
         }
         if (pos == KnownPartsOfSpeech.properName.abbreviation) {
             val effectiveText = if (syllabographic) {
-                suggestTranscription(this)
+                suggestTranscription(text)
             }
             else {
                 text
