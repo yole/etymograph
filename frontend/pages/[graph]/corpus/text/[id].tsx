@@ -189,6 +189,17 @@ function buildSegments(corpusText: CorpusTextViewModel): { segments: TextSegment
     return {segments, unanchoredTranslations}
 }
 
+function findPreviousTranslationSource(segments: TextSegment[], anchorStart: number): string | undefined {
+    let source: string | undefined = undefined
+    for (const segment of segments) {
+        if (segment.start >= anchorStart) break
+        if (segment.translations.length > 0) {
+            source = segment.translations[segment.translations.length - 1].sourceEditableText
+        }
+    }
+    return source
+}
+
 function TranslationView(params: {translation: TranslationViewModel}) {
     const router = useRouter()
     const graph = router.query.graph as string;
@@ -368,6 +379,7 @@ export default function CorpusText(params) {
                         <TranslationForm
                             corpusTextId={Number.parseInt(router.query.id as string)}
                             anchorStartIndex={newTranslationAnchorStart}
+                            defaultValues={{text: "", source: findPreviousTranslationSource(segments, newTranslationAnchorStart)}}
                             submitted={translationSubmitted}
                             cancelled={() => {
                                 setShowTranslationForm(false)
