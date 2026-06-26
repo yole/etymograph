@@ -248,6 +248,10 @@ h2 .wordText {
   font-size: 13pt;
 }
 
+h2 .syllabogram {
+  font-size: 20pt;
+}
+
 .glossChoice {
   text-decoration: underline dotted;
 }
