@@ -105,8 +105,12 @@ function GlossDropdown(params: {
     const candidates = w.wordCandidates
     const showPlus = w.wordCandidates && w.wordCandidates.length > 1
 
+    if (!w.glossable) {
+        return ""
+    }
+
     if (!allowEditGraph()) {
-        return <WordGloss gloss={w.gloss}/>
+        return <WordGloss gloss={w.gloss}/>;
     }
 
     return <Popover opened={opened} onChange={setOpened} position="bottom-start" withArrow shadow="md">
