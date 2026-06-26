@@ -223,6 +223,14 @@ class TlhDigImportTest {
         assertEquals(0, graph.getLinksFrom(word.transcription).count())
     }
 
+    @Test
+    fun posFromDeterminant() {
+        val corpusText = importWord("""<w trans="pazu" mrp0sel="???"><d>m</d>pa-az-zu</w>""")
+        val word = corpusText.words[0].word.transcription
+        assertEquals("NP", word.pos)
+        assertEquals("pazzu", word.text)
+    }
+
     private fun findWord(text: String, syllabographic: Boolean = false): Word =
         graph.wordsByText(hittite, text, syllabographic).single()
 

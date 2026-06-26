@@ -92,8 +92,9 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
         val sylWord = graph.findOrAddWord(cleanText, hittite, null, syllabographic = true)
         corpusText.associateWord(index, sylWord)
 
+        val posFromDeterminant = if (properNameDeterminants.any { sylWord.text.startsWith("^$it^") })"NP" else null
         var transWord = if (trans.none { it.isUpperCase() }) {
-            graph.addWord(trans, hittite, gloss = null).also {
+            graph.addWord(trans, hittite, gloss = null, pos = posFromDeterminant).also {
                 graph.addLink(sylWord, it, Link.Transcription)
             }
         }
@@ -156,13 +157,14 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
         else {
             emptyList()
         }
+        val pos = posMarkers.firstOrNull() ?: posFromDeterminant
 
         if (cleanLemma.removeDiacritics().normalizeSpelling() == transWord.text.removeDiacritics().normalizeSpelling()) {
             if (transWord.gloss == null) {
                 transWord.gloss = gloss
             }
             if (transWord.pos == null) {
-                transWord.pos = posMarkers.singleOrNull()
+                transWord.pos = pos
             }
         }
         else {
@@ -170,7 +172,7 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
                 .firstOrNull { isAnyGlossSimilar(it, gloss) }
 
             val lemmaWord = matchingWord ?: graph.findOrAddWord(cleanLemma, hittite, gloss,
-                pos = posMarkers.singleOrNull() ?: rules.firstOrNull()?.fromPOS?.firstOrNull(),
+                pos = pos ?: rules.firstOrNull()?.fromPOS?.firstOrNull(),
                 syllabographic = lemma.any { it.isUpperCase() })
 
             graph.addLink(transWord, lemmaWord, Link.Derived,
@@ -228,6 +230,8 @@ private val posMap = mapOf(
     "GN" to KnownPartsOfSpeech.properName.abbreviation,
     "ADV" to "ADV"
 )
+
+private val properNameDeterminants = setOf("m", "f", "URU")
 
 private val ignoreCategories = setOf("LUW||HITT", "HITT")
 private val optionalIgnoreCategories = setOf("C", "N", "PRS")
