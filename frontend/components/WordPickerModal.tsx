@@ -91,8 +91,7 @@ export default function WordPickerModal(props: WordPickerModalProps) {
         w.ref.id !== props.linkTarget.id &&
         !suggestionIds.has(w.ref.id) &&
         (searchLower === "" ||
-            w.ref.text.toLocaleLowerCase().includes(searchLower) ||
-            (w.ref.gloss ?? "").toLocaleLowerCase().includes(searchLower))
+            w.ref.text.toLocaleLowerCase().startsWith(searchLower))
     ).sort((a, b) => a.ref.text.localeCompare(b.ref.text))
 
     function wordItem(ref: WordRefViewModel) {
