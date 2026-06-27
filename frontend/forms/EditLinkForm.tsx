@@ -1,5 +1,6 @@
 import EtymographForm, {EtymographFormProps} from "@/components/EtymographForm";
 import FormRow from "@/components/FormRow";
+import SourceInput from "@/components/SourceInput";
 import RuleListSelect from "@/components/RuleListSelect";
 import {updateCompound, updateLink} from "@/api";
 import {useContext} from "react";
@@ -26,7 +27,7 @@ export default function EditLinkForm(props) {
             {props.compoundId === undefined &&
                 <RuleListSelect id="ruleNames" label="Rule names" isMulti={true} language={props.language}/>
             }
-            <FormRow id="source" label="Source"/>
+            <SourceInput id="source" label="Source"/>
             <FormRow id="notes" label="Notes"/>
             {props.compoundComponents !== undefined &&
                 <FormSelect id="head" label="Head" options={props.compoundComponents} selection={props.compoundHead}/>

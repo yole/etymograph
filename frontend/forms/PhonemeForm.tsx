@@ -1,6 +1,7 @@
 import {addPhoneme, updatePhoneme} from "@/api";
 import EtymographForm, {EtymographFormProps} from "@/components/EtymographForm";
 import FormRow from "@/components/FormRow";
+import SourceInput from "@/components/SourceInput";
 import FormCheckbox from "@/components/FormCheckbox";
 import {useContext} from "react";
 import {GraphContext} from "@/components/Contexts";
@@ -23,7 +24,7 @@ export default function PhonemeForm(props: PhonemeFormProps) {
             <FormRow label="Graphemes" id="graphemes"/>
             <FormRow label="Sound" id="sound"/>
             <FormRow label="Classes" id="classes"/>
-            <FormRow label="Source" id="source"/>
+            <SourceInput label="Source" id="source"/>
             <tr>
                 <td>Notes:</td>
                 <td><FormTextArea rows={3} cols={50} id="notes"/></td>

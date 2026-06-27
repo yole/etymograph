@@ -117,6 +117,39 @@ code {
   padding-left: 10pt;
 }
 
+.sourceInput {
+  position: relative;
+  display: inline-block;
+}
+
+.sourceSuggestions {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  z-index: 10;
+  background: white;
+  border: 1px solid #ccc;
+  max-height: 200px;
+  overflow-y: auto;
+  min-width: 100%;
+}
+
+.sourceSuggestion {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: none;
+  padding: 2pt 6pt;
+  font-size: medium;
+  cursor: pointer;
+}
+
+.sourceSuggestion:hover,
+.sourceSuggestionActive {
+  background: #def;
+}
+
 .inputAssistButton {
   font-size: medium;
   padding-left: 1pt;

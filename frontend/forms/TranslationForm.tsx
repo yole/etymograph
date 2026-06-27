@@ -1,7 +1,7 @@
 import {addTranslation, editTranslation} from "@/api";
 import EtymographForm, {EtymographFormProps} from "@/components/EtymographForm";
 import FormTextArea from "@/components/FormTextArea";
-import FormRow from "@/components/FormRow";
+import SourceInput from "@/components/SourceInput";
 import {useContext} from "react";
 import {GraphContext} from "@/components/Contexts";
 import {TranslationParams, TranslationViewModel} from "@/models";
@@ -21,7 +21,7 @@ export default function TranslationForm(props: TranslationFormProps) {
     >
         <FormTextArea rows={10} cols={50} id="text" className="uiTextArea"/>
         <table><tbody>
-            <FormRow label="Source" id="source"/>
+            <SourceInput label="Source" id="source"/>
         </tbody></table>
     </EtymographForm>
 }

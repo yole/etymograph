@@ -1,5 +1,6 @@
 import {addCorpusText, updateCorpusText} from "@/api";
 import FormRow from "@/components/FormRow";
+import SourceInput from "@/components/SourceInput";
 import EtymographForm, {EtymographFormProps} from "@/components/EtymographForm";
 import FormTextArea from "@/components/FormTextArea";
 import {useContext} from "react";
@@ -23,7 +24,7 @@ export default function CorpusTextForm(props: CorpusTextFormProps) {
         <FormTextArea rows={10} cols={50} id="text" inputAssist={true} inputAssistLang={props.lang} className="uiTextArea"/>
         <table>
             <tbody>
-            <FormRow id="source" label="Source" />
+            <SourceInput id="source" label="Source" />
             </tbody>
         </table>
         <h3>Notes</h3>

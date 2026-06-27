@@ -1,6 +1,7 @@
 import {addRuleLink} from "@/api";
 import EtymographForm, {EtymographFormProps} from "@/components/EtymographForm";
 import FormRow from "@/components/FormRow";
+import SourceInput from "@/components/SourceInput";
 import {LinkTypes} from "@/components/LinkTypes";
 import {useRouter} from "next/router";
 
@@ -24,7 +25,7 @@ export default function RuleLinkForm(props: RuleLinkFormProps) {
     >
         <table><tbody>
             <FormRow label="Link to rule name" id="linkRuleName"/>
-            <FormRow label="Source" id="source"/>
+            <SourceInput label="Source" id="source"/>
             <FormRow label="Notes" id="notes"/>
         </tbody></table>
     </EtymographForm>

@@ -2,6 +2,7 @@ import {addLink, addToCompound, addWord, createCompound, fetchBackend, updateWor
 import EtymographForm, {EtymographFormProps, useEtymographFormContext} from "@/components/EtymographForm";
 import LanguageSelect from "@/components/LanguageSelect";
 import FormRow from "@/components/FormRow";
+import SourceInput from "@/components/SourceInput";
 import FormTextArea from "@/components/FormTextArea";
 import FormCheckbox from "@/components/FormCheckbox";
 import {useState} from "react";
@@ -174,13 +175,13 @@ export default function WordForm(props: WordFormProps) {
         {(props.linkType === LinkTypes.Derived || props.linkType === LinkTypes.Origin) &&
             <RuleListSelect id="linkRuleNames" label="Link rule names" isMulti={true}
                             language={props.defaultValues.language} languageProp={props.languageReadOnly !== true ? 'language' : undefined}/>}
-        <FormRow id="source" label="Source"/>
+        <SourceInput id="source" label="Source"/>
         <tr>
             <td>Notes:</td>
             <td><FormTextArea rows={3} cols={50} id="notes"/></td>
         </tr>
         {(props.newCompound === true || isAddingLink) && <>
-            <FormRow id="linkSource" label={isAddingLink ? "Link source" : "Compound source"}/>
+            <SourceInput id="linkSource" label={isAddingLink ? "Link source" : "Compound source"}/>
             <FormRow id="linkNotes" label={isAddingLink ? "Link notes" : "Compound notes"}/>
         </>}
         </tbody></table>

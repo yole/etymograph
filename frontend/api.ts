@@ -40,6 +40,8 @@ export async function fetchBackend(graph: string, url: string, withGlobalState =
         const allRulesJson = await allRules.json()
         const allInputAssists = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}${graph}/inputAssist`, { headers: { 'Accept': 'application/json'} })
         const allInputAssistsJson = await allInputAssists.json()
+        const allPublications = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}${graph}/publications`, { headers: { 'Accept': 'application/json'} })
+        const allPublicationsJson = await allPublications.json()
         return {
             props: {
                 loaderData,
@@ -48,7 +50,8 @@ export async function fetchBackend(graph: string, url: string, withGlobalState =
                     graphs: allGraphsJson,
                     languages: allLanguagesJson,
                     rules: allRulesJson,
-                    inputAssists: allInputAssistsJson
+                    inputAssists: allInputAssistsJson,
+                    publications: allPublicationsJson
                 }
             }
         }

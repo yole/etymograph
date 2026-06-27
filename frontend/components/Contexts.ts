@@ -1,5 +1,5 @@
 import {createContext} from "react";
-import {AuthStatusViewModel, GraphViewModel, InputAssistViewModel, LanguageShortViewModel, RuleShortViewModel} from "@/models";
+import {AuthStatusViewModel, GraphViewModel, InputAssistViewModel, LanguageShortViewModel, PublicationViewModel, RuleShortViewModel} from "@/models";
 
 interface GlobalContextType {
     authStatus?: AuthStatusViewModel;
@@ -7,6 +7,7 @@ interface GlobalContextType {
     languages: LanguageShortViewModel[];
     inputAssists: InputAssistViewModel;
     rules: RuleShortViewModel[];
+    publications: PublicationViewModel[];
 }
 
 interface AuthContextType {

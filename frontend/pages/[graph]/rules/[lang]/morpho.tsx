@@ -7,6 +7,7 @@ import LanguageNavBar from "@/components/LanguageNavBar";
 import EtymographFormView from "@/components/EtymographFormView";
 import EtymographForm from "@/components/EtymographForm";
 import FormRow from "@/components/FormRow";
+import SourceInput from "@/components/SourceInput";
 import PosSelect from "@/components/PosSelect";
 import GrammaticalCategorySelect from "@/components/GrammaticalCategorySelect";
 
@@ -69,7 +70,7 @@ export default function MorphoRuleList(params) {
                         <GrammaticalCategorySelect label="Rows" id="rows" language={lang} posProp="pos"/>
                         <GrammaticalCategorySelect label="Columns" id="columns" language={lang} posProp="pos"/>
                         <FormRow label="Endings" id="endings"/>
-                        <FormRow label="Source" id="source"/>
+                        <SourceInput label="Source" id="source"/>
                         </tbody>
                     </table>
                 </EtymographForm>

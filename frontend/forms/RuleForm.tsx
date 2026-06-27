@@ -2,6 +2,7 @@ import {useContext, useState} from "react";
 import {addRule, previewRuleChanges, updateRule} from "@/api";
 import EtymographForm, {EtymographFormProps} from "@/components/EtymographForm";
 import FormRow from "@/components/FormRow";
+import SourceInput from "@/components/SourceInput";
 import FormTextArea from "@/components/FormTextArea";
 import LanguageSelect from "@/components/LanguageSelect";
 import {GraphContext} from "@/components/Contexts";
@@ -69,7 +70,7 @@ export default function RuleForm(props: RuleFormProps) {
                     <PosSelect label="From POS" id="fromPOS" languageProp="toLang" isMulti={true}/>
                     <PosSelect label="To POS" id="toPOS" languageProp="toLang" isMulti={false} showNone={true}/>
                 </>}
-                <FormRow label="Source" id="source"/>
+                <SourceInput label="Source" id="source"/>
             </tbody></table>
             <FormTextArea rows={10} cols={70} id="text" className="uiTextArea" inputAssist={true}/>
             <FormCheckbox id="createUnresolvedEntities" label="Create unresolved entities"/>
