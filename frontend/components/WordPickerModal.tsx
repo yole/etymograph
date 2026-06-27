@@ -1,5 +1,16 @@
 import {useContext, useEffect, useRef, useState} from "react";
-import {Button, Checkbox, Modal, MultiSelect, ScrollArea, Select, Stack, Tabs, Textarea, TextInput} from "@mantine/core";
+import {
+    Button,
+    Checkbox,
+    Modal,
+    MultiSelect,
+    ScrollArea,
+    Select,
+    Stack,
+    Tabs,
+    Textarea,
+    TextInput
+} from "@mantine/core";
 import {useRouter} from "next/router";
 import {addLink, addToCompound, createCompound, fetchBackend} from "@/api";
 import {GlobalStateContext} from "@/components/Contexts";
@@ -70,9 +81,9 @@ export default function WordPickerModal(props: WordPickerModalProps) {
             const dict = r?.props?.loaderData as DictionaryViewModel | undefined
             const loadedWords = dict?.words ?? []
             setWords(loadedWords)
-            let number = closestPrefixMatchId(loadedWords);
-            console.log("Setting selected word ID to " + number)
-            setSelectedWordId(number)
+            if (suggestions.length == 0) {
+                setSelectedWordId(closestPrefixMatchId(loadedWords))
+            }
         })
         return () => { cancelled = true }
     }, [props.opened, graph, language])
