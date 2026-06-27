@@ -59,6 +59,7 @@ export default function WordPickerModal(props: WordPickerModalProps) {
     const [activeTab, setActiveTab] = useState<string | null>(props.defaultTab ?? "existing")
     const selectedItemRef = useRef<HTMLButtonElement | null>(null)
     const newWordPanelRef = useRef<HTMLDivElement | null>(null)
+    const scrollViewportRef = useRef<HTMLDivElement | null>(null)
 
     useEffect(() => {
         if (props.opened) {
@@ -91,6 +92,12 @@ export default function WordPickerModal(props: WordPickerModalProps) {
         })
         return () => { cancelled = true }
     }, [props.opened, graph, language])
+
+    useEffect(() => {
+        if (props.opened && suggestions.length > 0) {
+            scrollViewportRef.current?.scrollTo({top: 0})
+        }
+    }, [props.opened, words])
 
     useEffect(() => {
         if (selectedWordId !== null) {
@@ -203,7 +210,7 @@ export default function WordPickerModal(props: WordPickerModalProps) {
                         <Select label="Language" data={languageOptions} value={language ?? null}
                                 onChange={(val) => setLanguage(val ?? "")} searchable={true} allowDeselect={false}/>}
                     <TextInput label="Search" value={search} onChange={(e) => setSearch(e.currentTarget.value)}/>
-                    <ScrollArea.Autosize mah={250} type="auto">
+                    <ScrollArea.Autosize mah={250} type="auto" viewportRef={scrollViewportRef}>
                         <Stack gap={0}>
                             {suggestions.length > 0 && <>
                                 <div className="wordPickerLabel">Suggested</div>
