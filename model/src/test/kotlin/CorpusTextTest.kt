@@ -164,6 +164,14 @@ class CorpusTextTest : QBaseTest() {
         assertFalse(lines[0].corpusWords[0].glossable)
         assertTrue(lines[0].corpusWords[1].glossable)
     }
+
+    @Test
+    fun separator() {
+        val text = q.corpusText("---")
+        val lines = text.mapToLines()
+        assertTrue(lines[0].separator)
+        assertEquals(0, text.wordCount())
+    }
 }
 
 fun Language.corpusText(text: String) = CorpusText(-1, text, null, this)

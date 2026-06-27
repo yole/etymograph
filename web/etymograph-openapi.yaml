@@ -3776,8 +3776,11 @@ components:
           type: "array"
           items:
             $ref: "#/components/schemas/CorpusWordViewModel"
+        separator:
+          type: "boolean"
       required:
         - "words"
+        - "separator"
     CorpusTextViewModel:
       type: "object"
       properties:

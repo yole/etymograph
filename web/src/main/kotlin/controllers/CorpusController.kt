@@ -70,7 +70,7 @@ class CorpusController {
     )
 
     @Serializable
-    data class CorpusLineViewModel(val words: List<CorpusWordViewModel>)
+    data class CorpusLineViewModel(val words: List<CorpusWordViewModel>, val separator: Boolean)
 
     @Serializable
     data class CorpusTextViewModel(
@@ -118,7 +118,7 @@ class CorpusController {
                         cw.stressIndex, cw.stressLength,
                         cw.glossable,
                         cw.homonym)
-                })
+                }, line.separator)
             },
             source.toViewModel(graph),
             source.toEditableText(graph),

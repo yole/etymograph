@@ -17,7 +17,7 @@ import TranslationForm from "@/forms/TranslationForm";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import {LinkTypes} from "@/components/LinkTypes";
 import WordGloss from "@/components/WordGloss";
-import {CorpusTextViewModel, CorpusWordCandidateViewModel, CorpusWordViewModel, TranslationViewModel, WordViewModel} from "@/models";
+import {CorpusLineViewModel, CorpusTextViewModel, CorpusWordCandidateViewModel, CorpusWordViewModel, TranslationViewModel, WordViewModel} from "@/models";
 import WordTextView from "@/components/WordTextView";
 import {Urls} from "@/components/Urls";
 import {ActionIcon, Popover} from "@mantine/core";
@@ -147,6 +147,20 @@ function segmentKey(start: number, end: number): string {
     return `${start}:${end}`
 }
 
+// Returns, for each line, the word index at which it sits: for a normal line the index of its
+// first word, for a separator line the number of words preceding it.
+function computeLinePositions(lines: CorpusLineViewModel[]): number[] {
+    let nextIndex = 0
+    return lines.map(line => {
+        if (line.words.length === 0) {
+            return nextIndex
+        }
+        const start = line.words[0].index
+        nextIndex = line.words[line.words.length - 1].index + 1
+        return start
+    })
+}
+
 function buildSegments(corpusText: CorpusTextViewModel): { segments: TextSegment[], unanchoredTranslations: TranslationViewModel[] } {
     const wordCount = corpusText.lines.flatMap(line => line.words).length
     const boundaries = new Set<number>([0, wordCount])
@@ -259,6 +273,7 @@ export default function CorpusText(params) {
     const graph = router.query.graph as string;
     const allWords = corpusText.lines.flatMap(l => l.words)
     const {segments, unanchoredTranslations} = buildSegments(corpusText)
+    const linePositions = computeLinePositions(corpusText.lines)
     const editable = allowEditGraph()
 
     function textSubmitted() {
@@ -322,7 +337,16 @@ export default function CorpusText(params) {
         {!editMode && <>
             {segments.map(segment => (
                 <div key={`segment-${segment.start}-${segment.end}`} className="segment">
-                    {corpusText.lines.map(line => {
+                    {corpusText.lines.map((line, lineIdx) => {
+                        if (line.separator) {
+                            // A separator within a segment is rendered inline, between the segment's lines.
+                            // Separators sitting on a segment boundary are rendered after the segment instead.
+                            const p = linePositions[lineIdx]
+                            if ((p > segment.start && p < segment.end) || (p === 0 && segment.start === 0)) {
+                                return <hr key={`separator-${lineIdx}`} className="corpusTextSeparator"/>
+                            }
+                            return null
+                        }
                         const segmentWords = line.words.filter(w => w.index >= segment.start && w.index < segment.end)
                         if (segmentWords.length === 0) return null
 
@@ -374,6 +398,11 @@ export default function CorpusText(params) {
                             <TranslationView translation={t}></TranslationView>
                         )}
                     </>}
+                    {corpusText.lines.map((line, lineIdx) =>
+                        line.separator && linePositions[lineIdx] === segment.end
+                            ? <hr key={`separator-${lineIdx}`} className="corpusTextSeparator"/>
+                            : null
+                    )}
                     {showTranslationForm && newTranslationAnchorStart !== undefined &&
                         newTranslationAnchorStart >= segment.start && newTranslationAnchorStart < segment.end &&
                         <TranslationForm
