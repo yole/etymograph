@@ -605,6 +605,7 @@ function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean 
             {canShowTranscription && <><button className="uiButton" onClick={showTranscriptionClicked}>Transcription</button>{' '}</>}
             <WordPickerModal opened={showTranscription} onClose={() => setShowTranscription(false)} title="Add transcription"
                              linkType={LinkTypes.Transcription} linkTarget={word} reverseLink={true} languageReadOnly={true}
+                             defaultTab="new"
                              defaultValues={{language: word.language, text: suggestedTranscription}}
                              wordSubmitted={submitted}/>
 

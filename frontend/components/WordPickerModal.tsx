@@ -31,6 +31,7 @@ interface WordPickerModalProps {
     suggestions?: WordRefViewModel[]
     languageReadOnly?: boolean
     showSyllabographic?: boolean
+    defaultTab?: string
     defaultValues: WordFormData
     wordSubmitted: (word: WordViewModel, baseWord: WordViewModel | undefined, formData: WordFormData) => any
 }
@@ -55,7 +56,7 @@ export default function WordPickerModal(props: WordPickerModalProps) {
     const [linkNotes, setLinkNotes] = useState("")
     const [markHead, setMarkHead] = useState(false)
     const [errorText, setErrorText] = useState("")
-    const [activeTab, setActiveTab] = useState<string | null>("existing")
+    const [activeTab, setActiveTab] = useState<string | null>(props.defaultTab ?? "existing")
     const selectedItemRef = useRef<HTMLButtonElement | null>(null)
     const newWordPanelRef = useRef<HTMLDivElement | null>(null)
 
@@ -69,9 +70,9 @@ export default function WordPickerModal(props: WordPickerModalProps) {
             setLinkNotes("")
             setMarkHead(false)
             setErrorText("")
-            setActiveTab("existing")
+            setActiveTab(props.defaultTab ?? "existing")
         }
-    }, [props.opened, props.defaultValues.language])
+    }, [props.opened, props.defaultValues.language, props.defaultTab])
 
     useEffect(() => {
         if (!props.opened || !language) {
