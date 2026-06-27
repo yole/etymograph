@@ -23,6 +23,6 @@ export default function WordLink(params: WordLinkProps) {
         <Link href={linkTarget}>
             <WordTextView text={wordText} syllabograms={word.syllabogramSequence} />
         </Link>
-        {params.gloss && word.gloss !== null && <>{' '}&quot;<WordGloss gloss={word.gloss}/>&quot;</>}
+        {params.gloss && word.gloss !== null && <>{' '}&apos;<WordGloss gloss={word.gloss}/>&apos;</>}
     </>
 }
