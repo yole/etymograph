@@ -1,4 +1,4 @@
-import {useContext, useEffect, useState} from "react";
+import {useContext, useEffect, useRef, useState} from "react";
 import {Button, Checkbox, Modal, MultiSelect, ScrollArea, Select, Stack, Tabs, Textarea, TextInput} from "@mantine/core";
 import {useRouter} from "next/router";
 import {addLink, addToCompound, createCompound, fetchBackend} from "@/api";
@@ -44,6 +44,7 @@ export default function WordPickerModal(props: WordPickerModalProps) {
     const [linkNotes, setLinkNotes] = useState("")
     const [markHead, setMarkHead] = useState(false)
     const [errorText, setErrorText] = useState("")
+    const selectedItemRef = useRef<HTMLButtonElement | null>(null)
 
     useEffect(() => {
         if (props.opened) {
@@ -67,11 +68,44 @@ export default function WordPickerModal(props: WordPickerModalProps) {
         fetchBackend(graph, `dictionary/${language}/all`).then(r => {
             if (cancelled) return
             const dict = r?.props?.loaderData as DictionaryViewModel | undefined
-            setWords(dict?.words ?? [])
-            setSelectedWordId(null)
+            const loadedWords = dict?.words ?? []
+            setWords(loadedWords)
+            let number = closestPrefixMatchId(loadedWords);
+            console.log("Setting selected word ID to " + number)
+            setSelectedWordId(number)
         })
         return () => { cancelled = true }
     }, [props.opened, graph, language])
+
+    useEffect(() => {
+        if (selectedWordId !== null) {
+            selectedItemRef.current?.scrollIntoView({block: "nearest"})
+        }
+    }, [selectedWordId, words])
+
+    function commonPrefixLength(a: string, b: string) {
+        let i = 0
+        while (i < a.length && i < b.length && a[i] === b[i]) i++
+        return i
+    }
+
+    function closestPrefixMatchId(candidates: DictionaryWordViewModel[]): number | null {
+        const target = props.linkTarget.text.toLocaleLowerCase()
+        let bestId: number | null = null
+        let bestText = ""
+        let bestLength = 0
+        for (const w of candidates) {
+            if (w.ref.id === props.linkTarget.id) continue
+            const text = w.ref.text.toLocaleLowerCase()
+            const length = commonPrefixLength(target, text)
+            if (length > bestLength || (length === bestLength && length > 0 && text.localeCompare(bestText) < 0)) {
+                bestId = w.ref.id
+                bestText = text
+                bestLength = length
+            }
+        }
+        return bestId
+    }
 
     const languageOptions = globalState.languages.map(
         (l) => ({value: l.shortName, label: `${l.name} (${l.shortName})`})
@@ -96,6 +130,7 @@ export default function WordPickerModal(props: WordPickerModalProps) {
 
     function wordItem(ref: WordRefViewModel) {
         return <button key={ref.id} type="button"
+                       ref={selectedWordId === ref.id ? selectedItemRef : undefined}
                        className={selectedWordId === ref.id ? "wordPickerItem wordPickerItemSelected" : "wordPickerItem"}
                        onClick={() => setSelectedWordId(ref.id)}>
             <WordTextView text={ref.text} syllabograms={ref.syllabogramSequence}/>
