@@ -231,6 +231,12 @@ class TlhDigImportTest {
         assertEquals("pazzu", word.text)
     }
 
+    @Test
+    fun parsep() {
+        val corpusText = importWord("""<w trans="arḫa" mrp0sel=" 2" mrp2="arḫa@weg@@ ADV@">ar-ḫa</w> <parsep/>""")
+        assertEquals("ar-ḫa\n---\n", corpusText.text)
+    }
+
     private fun findWord(text: String, syllabographic: Boolean = false): Word =
         graph.wordsByText(hittite, text, syllabographic).single()
 

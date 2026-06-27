@@ -39,8 +39,10 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
     val text = buildString {
         for (element in children) {
             if (element.name == "lb" && isNotEmpty()) {
-                removeSuffix(" ")
-                append("\n")
+                trimEnd()
+                if (!endsWith("\n")) {
+                    append("\n")
+                }
             }
             else if (element.name == "w") {
                 val wordText = collectWordText(element)
@@ -58,6 +60,13 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
                 wordElements.add(TlhDigWord(textWords.last(), transWords.last(), element))
                 append(wordText)
                 append(" ")
+            }
+            else if (element.name == "parsep") {
+                trimEnd()
+                if (!endsWith("\n")) {
+                    append("\n")
+                }
+                append("---\n")
             }
         }
     }
@@ -178,6 +187,12 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
             graph.addLink(transWord, lemmaWord, Link.Derived,
                 rules = rules)
         }
+    }
+}
+
+private fun StringBuilder.trimEnd() {
+    while (endsWith(' ')) {
+        setLength(length - 1)
     }
 }
 
