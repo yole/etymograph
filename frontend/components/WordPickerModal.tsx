@@ -1,4 +1,4 @@
-import {useContext, useEffect, useRef, useState} from "react";
+import {KeyboardEvent as ReactKeyboardEvent, useContext, useEffect, useRef, useState} from "react";
 import {
     Button,
     Checkbox,
@@ -55,7 +55,9 @@ export default function WordPickerModal(props: WordPickerModalProps) {
     const [linkNotes, setLinkNotes] = useState("")
     const [markHead, setMarkHead] = useState(false)
     const [errorText, setErrorText] = useState("")
+    const [activeTab, setActiveTab] = useState<string | null>("existing")
     const selectedItemRef = useRef<HTMLButtonElement | null>(null)
+    const newWordPanelRef = useRef<HTMLDivElement | null>(null)
 
     useEffect(() => {
         if (props.opened) {
@@ -67,6 +69,7 @@ export default function WordPickerModal(props: WordPickerModalProps) {
             setLinkNotes("")
             setMarkHead(false)
             setErrorText("")
+            setActiveTab("existing")
         }
     }, [props.opened, props.defaultValues.language])
 
@@ -173,8 +176,21 @@ export default function WordPickerModal(props: WordPickerModalProps) {
         props.wordSubmitted(undefined, undefined, props.defaultValues)
     }
 
-    return <Modal opened={props.opened} onClose={props.onClose} title={props.title} size="lg">
-        <Tabs defaultValue="existing">
+    function handleKeyDown(e: ReactKeyboardEvent) {
+        if (e.key !== "Enter" || e.defaultPrevented) return
+        const tag = (e.target as HTMLElement).tagName
+        if (tag === "TEXTAREA" || tag === "BUTTON") return
+        if (activeTab === "existing") {
+            addExistingClicked()
+        }
+        else {
+            e.preventDefault()
+            newWordPanelRef.current?.querySelector("form")?.requestSubmit()
+        }
+    }
+
+    return <Modal opened={props.opened} onClose={props.onClose} title={props.title} size="lg" onKeyDown={handleKeyDown}>
+        <Tabs value={activeTab} onChange={setActiveTab}>
             <Tabs.List>
                 <Tabs.Tab value="existing">Existing word</Tabs.Tab>
                 <Tabs.Tab value="new">New word</Tabs.Tab>
@@ -217,7 +233,7 @@ export default function WordPickerModal(props: WordPickerModalProps) {
                 </Stack>
             </Tabs.Panel>
 
-            <Tabs.Panel value="new" pt="sm">
+            <Tabs.Panel value="new" pt="sm" ref={newWordPanelRef}>
                 <WordForm
                     linkType={props.linkType}
                     linkTarget={props.linkTarget}
