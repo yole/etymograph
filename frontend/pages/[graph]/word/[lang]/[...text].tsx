@@ -15,9 +15,7 @@ import {
     lookupWord,
     suggestParseCandidates,
     suggestCompound,
-    createCompound,
     callApiAndRefresh,
-    addToCompound,
     updateWord,
     refreshLinkSequence, suggestTranscription, allowEditGraph, hasBackend
 } from "@/api";
@@ -36,6 +34,7 @@ import {
     WordViewModel
 } from "@/models";
 import WordTextView from "@/components/WordTextView";
+import WordPickerModal from "@/components/WordPickerModal";
 import {Urls} from "@/components/Urls";
 import {Accordion, Alert} from "@mantine/core";
 
@@ -204,17 +203,6 @@ function CompoundRefComponent(params: {baseWord: WordViewModel, linkWord: Compou
     </>
 }
 
-function CompoundSuggestionsComponent(params: {suggestions: WordRefViewModel[], acceptCompoundSuggestion: (id: number) => void}) {
-    return <>
-        {params.suggestions.map(c => <>
-            <button className="inlineButton" onClick={() => params.acceptCompoundSuggestion(c.id)}>
-                <WordTextView text={c.text} syllabograms={c.syllabogramSequence}/>{c.homonym && " '" + c.gloss + "'"}
-            </button>{' '}
-        </>)}
-        {params.suggestions.length > 0 && <br/>}
-    </>
-}
-
 function CompoundListComponent(
     {compounds, word, derivation}: {compounds: CompoundComponentsViewModel[], word: WordViewModel, derivation: boolean}
 ) {
@@ -224,7 +212,6 @@ function CompoundListComponent(
     const [addToCompoundId, setAddToCompoundId] = useState(undefined)
     const [editCompound, setEditCompound] = useState(undefined)
     const [compoundSuggestions, setCompoundSuggestions] = useState([] as WordRefViewModel[])
-    const [errorText, setErrorText] = useState("")
     const canEdit = allowEditGraph()
 
     async function prepareAddToCompound(compoundId: number) {
@@ -234,13 +221,6 @@ function CompoundListComponent(
             const jr = await r.result()
             setCompoundSuggestions(jr.suggestions)
         }
-    }
-
-    async function acceptCompoundSuggestion(id: number) {
-        const compoundId = addToCompoundId
-        setAddToCompoundId(undefined)
-        callApiAndRefresh(() => addToCompound(graph, compoundId, id, true),
-            router, setErrorText)
     }
 
     function deleteCompoundClicked(compoundId: number) {
@@ -266,13 +246,12 @@ function CompoundListComponent(
                 </span>)}
                 {m.notes && <> &ndash; {m.notes}</>}
                 <SourceRefs source={m.source} span={true}/>
-                {addToCompoundId === m.compoundId && <>
-                    {compoundSuggestions.length > 0 && <br/>}
-                    <CompoundSuggestionsComponent suggestions={compoundSuggestions} acceptCompoundSuggestion={acceptCompoundSuggestion} />
-                    <WordForm wordSubmitted={submitted} cancelled={() => setAddToCompoundId(undefined)}
-                              showSyllabographic={word.syllabographic}
-                              addToCompound={m.compoundId} linkTarget={word} defaultValues={{language: word.language}}/>
-                </>}
+                <WordPickerModal opened={addToCompoundId === m.compoundId} onClose={() => setAddToCompoundId(undefined)}
+                                 title="Add component"
+                                 addToCompound={m.compoundId} linkTarget={word}
+                                 suggestions={compoundSuggestions}
+                                 showSyllabographic={word.syllabographic}
+                                 defaultValues={{language: word.language}} wordSubmitted={submitted}/>
                 {editCompound === m.compoundId &&
                     <EditLinkForm compoundId={m.compoundId}
                                   compoundComponents={m.components}
@@ -451,11 +430,6 @@ function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean 
         }
     }
 
-    async function acceptCompoundSuggestion(id: number) {
-        setShowCompoundComponent(false)
-        callApiAndRefresh(() => createCompound(graph, word.id, id), router, setErrorText)
-    }
-
     async function deleteRuleLinkClicked(ruleId: number, linkType: string) {
         if (window.confirm("Delete this link?")) {
             const r = await deleteLink(graph, word.id, ruleId, linkType)
@@ -629,38 +603,32 @@ function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean 
         {canEdit && <Accordion defaultValue={word.baseWord || realGloss ? "" : "define"}>
             <Accordion.Item value="define"><Accordion.Control><b>Define this word</b></Accordion.Control><Accordion.Panel>
             {canShowTranscription && <><button className="uiButton" onClick={showTranscriptionClicked}>Transcription</button>{' '}</>}
-            {showTranscription &&
-                <WordForm
-                    wordSubmitted={submitted} linkType={LinkTypes.Transcription} linkTarget={word} reverseLink={true} languageReadOnly={true}
-                    defaultValues={{language: word.language, text: suggestedTranscription}}
-                    cancelled={() => setShowTranscription(false)}
-                />
-            }
+            <WordPickerModal opened={showTranscription} onClose={() => setShowTranscription(false)} title="Add transcription"
+                             linkType={LinkTypes.Transcription} linkTarget={word} reverseLink={true} languageReadOnly={true}
+                             defaultValues={{language: word.language, text: suggestedTranscription}}
+                             wordSubmitted={submitted}/>
 
             {!isCompound && <><button className="uiButton" onClick={() => setShowBaseWord(!showBaseWord)}>Lemma</button>{' '}</>}
-            {showBaseWord && <WordForm wordSubmitted={submitted} linkType={LinkTypes.Derived} linkTarget={word} reverseLink={true}
-                                       languageReadOnly={true}
-                                       showSyllabographic={word.syllabographic}
-                                       defaultValues={{language: word.language}} cancelled={() => setShowBaseWord(false)}/>}
+            <WordPickerModal opened={showBaseWord} onClose={() => setShowBaseWord(false)} title="Add lemma"
+                             linkType={LinkTypes.Derived} linkTarget={word} reverseLink={true} languageReadOnly={true}
+                             showSyllabographic={word.syllabographic}
+                             defaultValues={{language: word.language}} wordSubmitted={submitted}/>
 
             <button className="uiButton" onClick={defineAsCompoundClicked}>Compound</button>{' '}
-            {showCompoundComponent && <>
-                <CompoundSuggestionsComponent suggestions={compoundSuggestions} acceptCompoundSuggestion={acceptCompoundSuggestion} />
-                <WordForm wordSubmitted={submitted} newCompound={true} linkTarget={word}
-                          showSyllabographic={word.syllabographic}
-                          defaultValues={{language: word.language}} cancelled={() => setShowCompoundComponent(false)}/>
-            </>
-            }
+            <WordPickerModal opened={showCompoundComponent} onClose={() => setShowCompoundComponent(false)}
+                             title="Define compound"
+                             newCompound={true} linkTarget={word}
+                             suggestions={compoundSuggestions}
+                             showSyllabographic={word.syllabographic}
+                             defaultValues={{language: word.language}} wordSubmitted={submitted}/>
 
             {!isCompound && <><button className="uiButton" onClick={() => setShowVariationOf(!showVariationOf)}>Variation</button><br/></>}
-            {showVariationOf && <WordForm
-                wordSubmitted={submitted}
-                linkType={LinkTypes.Variation} reverseLink={true} linkTarget={word}
-                defaultValues={{language: word.language}}
-                languageReadOnly={true}
-                showSyllabographic={word.syllabographic}
-                cancelled={() => setShowVariationOf(false)}/>
-            }
+            <WordPickerModal opened={showVariationOf} onClose={() => setShowVariationOf(false)} title="Add variation"
+                             linkType={LinkTypes.Variation} reverseLink={true} linkTarget={word}
+                             defaultValues={{language: word.language}}
+                             languageReadOnly={true}
+                             showSyllabographic={word.syllabographic}
+                             wordSubmitted={submitted}/>
 
             {canSuggestParseCandidates && <>
                 <button className="inlineButton" onClick={() => suggestParseCandidatesClicked()}>Suggest lemma and derivation</button>
@@ -680,33 +648,36 @@ function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean 
             <Accordion.Item value="link"><Accordion.Control><b>Add linked words</b></Accordion.Control><Accordion.Panel>
 
             <button className="uiButton" onClick={() => setShowDerivedWord(!showDerivedWord)}>Add inflected form</button>{' '}
-            {showDerivedWord && <WordForm wordSubmitted={submitted} linkType={LinkTypes.Derived} linkTarget={word}
-                                          defaultValues={{language: word.language}} cancelled={() => setShowDerivedWord(false)} />}
+            <WordPickerModal opened={showDerivedWord} onClose={() => setShowDerivedWord(false)} title="Add inflected form"
+                             linkType={LinkTypes.Derived} linkTarget={word}
+                             defaultValues={{language: word.language}} wordSubmitted={submitted}/>
 
             <button className="uiButton" onClick={() => setShowRelated(!showRelated)}>Add related word</button>{' '}
-            {showRelated && <WordForm wordSubmitted={submitted} linkType={LinkTypes.Related} linkTarget={word} defaultValues={{language: word.language}} languageReadOnly={true} cancelled={() => setShowRelated(false)}/>}
+            <WordPickerModal opened={showRelated} onClose={() => setShowRelated(false)} title="Add related word"
+                             linkType={LinkTypes.Related} linkTarget={word}
+                             defaultValues={{language: word.language}} languageReadOnly={true} wordSubmitted={submitted}/>
 
 
             {!isCompound && <><button className="uiButton" onClick={() => setShowVariation(!showVariation)}>Add variation</button>{' '}</>}
-            {showVariation && <WordForm
-                wordSubmitted={submitted}
-                linkType={LinkTypes.Variation} linkTarget={word}
-                defaultValues={{language: word.language}}
-                languageReadOnly={true}
-                showSyllabographic={word.syllabographic}
-                cancelled={() => setShowVariation(false)}/>
-            }
+            <WordPickerModal opened={showVariation} onClose={() => setShowVariation(false)} title="Add variation"
+                             linkType={LinkTypes.Variation} linkTarget={word}
+                             defaultValues={{language: word.language}}
+                             languageReadOnly={true}
+                             showSyllabographic={word.syllabographic}
+                             wordSubmitted={submitted}/>
             <button className="uiButton" onClick={() => setShowRuleLink(!showRuleLink)}>Add related rule</button><br/>
             {showRuleLink && <RuleLinkForm submitted={ruleLinkSubmitted} fromEntityId={word.id}/>}
             </Accordion.Panel></Accordion.Item>
             <Accordion.Item value="etymology"><Accordion.Control><b>Etymology</b></Accordion.Control><Accordion.Panel>
 
             <button className="uiButton"  onClick={() => setShowOriginWord(!showOriginWord)}>Add origin word</button>{' '}
-            {showOriginWord && <WordForm wordSubmitted={submitted} linkType={LinkTypes.Origin} linkTarget={word} reverseLink={true}
-                                         defaultValues={{gloss: word.gloss}} cancelled={() => setShowOriginWord(false)}/>}
+            <WordPickerModal opened={showOriginWord} onClose={() => setShowOriginWord(false)} title="Add origin word"
+                             linkType={LinkTypes.Origin} linkTarget={word} reverseLink={true}
+                             defaultValues={{gloss: word.gloss}} wordSubmitted={submitted}/>
             <button className="uiButton"  onClick={() => setShowDerivativeWord(!showDerivativeWord)}>Add derivative word</button>
-            {showDerivativeWord && <WordForm wordSubmitted={submitted} linkType={LinkTypes.Origin} linkTarget={word}
-                                             defaultValues={{gloss: word.gloss}} cancelled={() => setShowDerivativeWord(false)}/>}
+            <WordPickerModal opened={showDerivativeWord} onClose={() => setShowDerivativeWord(false)} title="Add derivative word"
+                             linkType={LinkTypes.Origin} linkTarget={word}
+                             defaultValues={{gloss: word.gloss}} wordSubmitted={submitted}/>
             {word.suggestedDeriveSequences.map(seq => <>
                 {' '}
                 <button className="inlineButton" onClick={() => deriveThroughSequenceClicked(seq.id)}>Derive through {seq.name}</button>
