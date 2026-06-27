@@ -137,4 +137,9 @@ class SyllabogramTest {
     fun transcribeW() {
         assertEquals("nuu̯anzaš", suggestTranscription("nu-u̯a-an-za-aš"))
     }
+
+    @Test
+    fun transcribeAkkadograms() {
+        assertEquals("ii̯aḫrešša", suggestTranscription("^URU^_I-I̯A-AḪ-RE-EŠ-ŠA"))
+    }
 }

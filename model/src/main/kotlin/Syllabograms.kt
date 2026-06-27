@@ -146,18 +146,19 @@ private val number = Regex("\\d$")
 
 fun suggestTranscription(text: String): String {
     val syllabograms = TlhDigSyllabogramSyntax.parse(text)
-    fun longVowel(c: Char): Char = hittiteLongVowels[hittiteVowels.indexOf(c)]
+    fun longVowel(c: Char): Char = hittiteLongVowels[hittiteVowels.indexOf(c.lowercaseChar())]
 
     val result = buildString {
         for ((index, s) in syllabograms.syllabograms.withIndex()) {
-            if (s.type == SyllabogramType.Syllabogram) {
-                val prev = syllabograms.syllabograms.getOrNull(index - 1)?.takeIf { it.type == SyllabogramType.Syllabogram }
+            if (s.type == SyllabogramType.Syllabogram || s.type == SyllabogramType.LogogramAlt) {
+                val prev = syllabograms.syllabograms.getOrNull(index - 1)
+                    ?.takeIf { it.type == SyllabogramType.Syllabogram || s.type == SyllabogramType.LogogramAlt }
                 val text = Normalizer.normalize(s.text, Normalizer.Form.NFKD)
                     .replace(AccentType.Acute.combiningMark.toString(), "")
                     .replace(AccentType.Grave.combiningMark.toString(), "")
                     .replace(number, "")
 
-                if (isHittiteVowel(text[0]) && (text.length == 1 || text[1] != '\u032F')) {
+                if (isHittiteVowel(text[0].lowercaseChar()) && (text.length == 1 || text[1] != '\u032F')) {
                     if (lastOrNull() == text[0] || lastOrNull() == longVowel(text[0])) {
                         if (text.length == 1 || prev?.text?.length == 1) {
                             this[length - 1] = longVowel(text[0])
@@ -171,7 +172,7 @@ fun suggestTranscription(text: String): String {
         }
     }
     if (result.isNotEmpty()) {
-        return Normalizer.normalize(result, Normalizer.Form.NFC)
+        return Normalizer.normalize(result, Normalizer.Form.NFC).lowercase()
     }
     return syllabograms.syllabograms.filter { it.type.isLogogram }.joinToString("") { it.text }.lowercase()
 }
