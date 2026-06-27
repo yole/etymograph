@@ -86,7 +86,7 @@ export default function WordPickerModal(props: WordPickerModalProps) {
             const dict = r?.props?.loaderData as DictionaryViewModel | undefined
             const loadedWords = dict?.words ?? []
             setWords(loadedWords)
-            if (suggestions.length == 0) {
+            if (!isAddToCompound && !isNewCompound) {
                 setSelectedWordId(closestPrefixMatchId(loadedWords))
             }
         })
@@ -97,7 +97,7 @@ export default function WordPickerModal(props: WordPickerModalProps) {
         if (props.opened && suggestions.length > 0) {
             scrollViewportRef.current?.scrollTo({top: 0})
         }
-    }, [props.opened, words])
+    }, [props.opened, words, props.suggestions])
 
     useEffect(() => {
         if (selectedWordId !== null) {
@@ -154,25 +154,26 @@ export default function WordPickerModal(props: WordPickerModalProps) {
         return <button key={ref.id} type="button"
                        ref={selectedWordId === ref.id ? selectedItemRef : undefined}
                        className={selectedWordId === ref.id ? "wordPickerItem wordPickerItemSelected" : "wordPickerItem"}
-                       onClick={() => setSelectedWordId(ref.id)}>
+                       onClick={() => setSelectedWordId(ref.id)}
+                       onDoubleClick={() => { setSelectedWordId(ref.id); addExistingClicked(ref.id) }}>
             <WordTextView text={ref.text} syllabograms={ref.syllabogramSequence}/>
             {ref.gloss && <> &apos;{ref.gloss}&apos;</>}
         </button>
     }
 
-    async function addExistingClicked() {
-        if (selectedWordId === null) return
+    async function addExistingClicked(wordId: number | null = selectedWordId) {
+        if (wordId === null) return
         let r: Response
         if (isAddToCompound) {
-            r = await addToCompound(graph, props.addToCompound, selectedWordId, markHead)
+            r = await addToCompound(graph, props.addToCompound, wordId, markHead)
         }
         else if (isNewCompound) {
-            r = await createCompound(graph, props.linkTarget.id, selectedWordId, linkSource || null, linkNotes || null)
+            r = await createCompound(graph, props.linkTarget.id, wordId, linkSource || null, linkNotes || null)
         }
         else {
             const [fromId, toId] = props.reverseLink === true
-                ? [props.linkTarget.id, selectedWordId]
-                : [selectedWordId, props.linkTarget.id]
+                ? [props.linkTarget.id, wordId]
+                : [wordId, props.linkTarget.id]
             r = await addLink(graph, fromId, toId, props.linkType, ruleNames.join(","),
                 linkSource || null, linkNotes || null)
         }
@@ -235,7 +236,7 @@ export default function WordPickerModal(props: WordPickerModalProps) {
                                   onChange={(e) => setLinkNotes(e.currentTarget.value)}/>
                     </>}
                     {errorText !== "" && <div className="errorText">{errorText}</div>}
-                    <Button disabled={selectedWordId === null} onClick={addExistingClicked} style={{alignSelf: 'flex-start'}}>
+                    <Button disabled={selectedWordId === null} onClick={() => addExistingClicked()} style={{alignSelf: 'flex-start'}}>
                         {isAddToCompound ? "Add component" : isNewCompound ? "Create compound" : "Add link"}
                     </Button>
                 </Stack>
