@@ -515,11 +515,16 @@ function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean 
             </p>
             {word.notes && <p>{word.notes}</p>}
             <SourceRefs source={word.source}/>
-            {word.consistencyIssues.map((issue, index) => (
-                <Alert key={`${word.id}-${index}`} color="yellow" title="Consistency issue" mb="sm">
-                    {issue}
-                </Alert>
-            ))}
+            {word.consistencyIssues.length > 0 &&
+                <Alert color="yellow" title={word.consistencyIssues.length === 1 ? "Consistency issue" : "Consistency issues"} mb="sm">
+                    {word.consistencyIssues.length === 1
+                        ? word.consistencyIssues[0]
+                        : <ul style={{margin: 0, paddingLeft: "1.2em"}}>
+                            {word.consistencyIssues.map((issue, index) => (
+                                <li key={`${word.id}-${index}`}>{issue}</li>
+                            ))}
+                        </ul>}
+                </Alert>}
         </>}
         {editMode && <WordForm
             updateId={word.id}
