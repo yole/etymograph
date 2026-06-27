@@ -365,6 +365,7 @@ open class InMemoryGraph : Graph() {
     }
 
     override fun updateWordText(word: Word, text: String, syllabographic: Boolean) {
+        validateWordText(text)
         mapOfWordsByText(word.language, word.text, word.syllabographic).remove(word)
         word.text = text
         word.syllabographic = syllabographic
@@ -383,16 +384,20 @@ open class InMemoryGraph : Graph() {
         source: List<SourceRef>,
         notes: String?
     ): Word {
+        validateWordText(text)
+        val wordsByText = mapOfWordsByText(language, text, syllabographic)
+        return Word(allLangEntities.size, text, language, gloss, fullGloss, pos, classes, reconstructed, syllabographic, source, notes).also {
+            allLangEntities.add(it)
+            wordsByText.add(it)
+        }
+    }
+
+    private fun validateWordText(text: String) {
         if (text.isBlank()) {
             throw IllegalArgumentException("Cannot create word with empty text")
         }
         if ('?' in text || '/' in text) {
             throw IllegalArgumentException("Word text may not contain ? or /")
-        }
-        val wordsByText = mapOfWordsByText(language, text, syllabographic)
-        return Word(allLangEntities.size, text, language, gloss, fullGloss, pos, classes, reconstructed, syllabographic, source, notes).also {
-            allLangEntities.add(it)
-            wordsByText.add(it)
         }
     }
 
