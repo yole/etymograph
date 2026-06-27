@@ -205,13 +205,13 @@ export default function WordPickerModal(props: WordPickerModalProps) {
                     <ScrollArea.Autosize mah={250} type="auto">
                         <Stack gap={0}>
                             {suggestions.length > 0 && <>
-                                <div style={{color: '#888', padding: '4px 8px'}}>Suggested</div>
+                                <div className="wordPickerLabel">Suggested</div>
                                 {suggestions.map(s => wordItem(s))}
-                                <div style={{color: '#888', padding: '4px 8px'}}>All words</div>
+                                <div className="wordPickerLabel">All words</div>
                             </>}
                             {filteredWords.map(w => wordItem(w.ref))}
                             {filteredWords.length === 0 && suggestions.length === 0 &&
-                                <div style={{color: '#888', padding: '4px 8px'}}>No matching words</div>}
+                                <div className="wordPickerLabel">No matching words</div>}
                         </Stack>
                     </ScrollArea.Autosize>
                     {showRuleNames &&

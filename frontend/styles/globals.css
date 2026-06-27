@@ -254,11 +254,19 @@ thead {
   border-color: black;
 }
 
+.wordPickerLabel,
+.wordPickerItem {
+  padding: 4px 8px;
+}
+
+.wordPickerLabel {
+  color: #888;
+}
+
 .wordPickerItem {
   display: block;
   width: 100%;
   text-align: left;
-  padding: 4px 8px;
   border: 1px solid transparent;
   background-color: transparent;
   cursor: pointer;
