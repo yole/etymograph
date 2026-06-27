@@ -69,6 +69,7 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
                 append("---\n")
             }
         }
+        trimEnd()
     }
 
     val hittite = graph.languageByShortName("Hitt")!!
@@ -82,6 +83,11 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
             println("Skipping empty word $wordText")
             continue
         }
+        if (cleanText.all { it.isDigit() }) {
+            println("Skipping numeric word $wordText")
+            continue
+        }
+
         if ('x' in cleanText) {
             println("Skipping damaged word $wordText")
             continue
@@ -334,6 +340,7 @@ private fun collectWordText(element: Element): String {
                     "del_fin" -> append("]")
                     "laes_in" -> append(CorpusText.leftHalfBracket)
                     "laes_fin" -> append(CorpusText.rightHalfBracket)
+                    "num" -> append(collectWordText(c))
                 }
             }
         }

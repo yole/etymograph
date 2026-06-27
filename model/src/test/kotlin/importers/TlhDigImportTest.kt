@@ -44,7 +44,7 @@ class TlhDigImportTest {
     fun akkadian() {
         importWord("""<w trans="BE-EL-TI₄-NI" mrp0sel=" 1d" mrp1="BĒLTU@Herrin@{d → D/L.SG(UNM)_PPRO.1PL.GEN}@@ (MUNUS)"><aGr>BE-EL-TI₄-NI</aGr></w>""")
         val corpusText = graph.allCorpusTexts().first()
-        assertEquals("_BE-EL-TI4-NI", corpusText.text.trim())
+        assertEquals("_BE-EL-TI4-NI", corpusText.text)
         val word = findWord("_BE-EL-TI4-NI", true)
 
         val ni = findWord("_NI", syllabographic = true)
@@ -195,7 +195,7 @@ class TlhDigImportTest {
     @Test
     fun adjustAkkadogramBoundary() {
         val corpusText = importWord("<w trans=\"A-NA tuttua-DINGIR-LIM\" mrp0sel=\" ???\"><aGr>A-NA</aGr> <d>m</d>tu-ut-tu-wa-<sGr>DINGIR</sGr><aGr>-LIM</aGr></w>")
-        assertEquals("_A-NA ^m^tu-ut-tu-u̯a-DINGIR-_LIM", corpusText.text.trim())
+        assertEquals("_A-NA ^m^tu-ut-tu-u̯a-DINGIR-_LIM", corpusText.text)
     }
 
     @Test
@@ -235,6 +235,12 @@ class TlhDigImportTest {
     fun parsep() {
         val corpusText = importWord("""<w trans="arḫa" mrp0sel=" 2" mrp2="arḫa@weg@@ ADV@">ar-ḫa</w> <parsep/>""")
         assertEquals("ar-ḫa\n---\n", corpusText.text)
+    }
+
+    @Test
+    fun number() {
+        val corpusText = importWord("""<w trans="20" mrp0sel=" 1 " mrp1="20@20@@ QUANcar@"><num>20</num></w>""")
+        assertEquals("20", corpusText.text)
     }
 
     private fun findWord(text: String, syllabographic: Boolean = false): Word =
