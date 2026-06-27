@@ -121,7 +121,7 @@ function GlossDropdown(params: {
             </span>
         </Popover.Target>
         <Popover.Dropdown>
-            {candidates && candidates.map(c =>
+            {candidates && candidates.filter( c => c.gloss !== null).map(c =>
                 <div key={c.id}>
                     <CorpusTextGlossChoice corpusText={params.corpusText} word={w} candidate={c}/>
                 </div>)}
