@@ -605,8 +605,8 @@ function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean 
             </>
         }
 
-        {canEdit && <Accordion defaultValue={word.baseWord || realGloss ? "" : "define"}>
-            <Accordion.Item value="define"><Accordion.Control><b>Define this word</b></Accordion.Control><Accordion.Panel>
+        {canEdit && <Accordion defaultValue={word.baseWord || realGloss ? "" : "define"} classNames={{root: "linkAccordion"}}>
+            <Accordion.Item value="define"><Accordion.Control><b>Link</b></Accordion.Control><Accordion.Panel>
             {canShowTranscription && <><button className="uiButton" onClick={showTranscriptionClicked}>Transcription</button>{' '}</>}
             <WordPickerModal opened={showTranscription} onClose={() => setShowTranscription(false)} title="Add transcription"
                              linkType={LinkTypes.Transcription} linkTarget={word} reverseLink={true} languageReadOnly={true}
@@ -650,8 +650,6 @@ function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean 
                             <button onClick={() => acceptParseCandidate(pc)}>Accept</button>
                         </p>
                     </>))}</>}
-            </Accordion.Panel></Accordion.Item>
-            <Accordion.Item value="link"><Accordion.Control><b>Add linked words</b></Accordion.Control><Accordion.Panel>
 
             <button className="uiButton" onClick={() => setShowDerivedWord(!showDerivedWord)}>Add inflected form</button>{' '}
             <WordPickerModal opened={showDerivedWord} onClose={() => setShowDerivedWord(false)} title="Add inflected form"
@@ -673,8 +671,6 @@ function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean 
                              wordSubmitted={submitted}/>
             <button className="uiButton" onClick={() => setShowRuleLink(!showRuleLink)}>Add related rule</button><br/>
             {showRuleLink && <RuleLinkForm submitted={ruleLinkSubmitted} fromEntityId={word.id}/>}
-            </Accordion.Panel></Accordion.Item>
-            <Accordion.Item value="etymology"><Accordion.Control><b>Etymology</b></Accordion.Control><Accordion.Panel>
 
             <button className="uiButton"  onClick={() => setShowOriginWord(!showOriginWord)}>Add origin word</button>{' '}
             <WordPickerModal opened={showOriginWord} onClose={() => setShowOriginWord(false)} title="Add origin word"

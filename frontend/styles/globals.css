@@ -332,3 +332,7 @@ h2 .syllabogram {
   padding-top: 4px;
   padding-bottom: 4px;
 }
+
+.linkAccordion {
+  width: 600px;
+}
