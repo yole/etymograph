@@ -280,22 +280,27 @@ interface WordLinkTypeProps {
     word: WordViewModel
     links: LinkTypeViewModel[]
     directionFrom: boolean
+    excludeIds?: number[]
 }
 
 function WordLinkTypeComponent(params: WordLinkTypeProps) {
-    return <>{params.links.map(l => <>
-        {l.words.length === 1 && params.directionFrom &&
-            <WordLinkComponent key={l.words[0].word.id} baseWord={params.word} linkWord={l.words[0]} linkType={l}
-                               directionFrom={params.directionFrom} showType={true} showSequence={true}/>}
-        {(l.words.length !== 1 || !params.directionFrom) && <div>
-            <div>{l.type}</div>
-            {l.words.map(w => <WordLinkComponent key={w.word.id} baseWord={params.word} linkWord={w} linkType={l}
-                                                 directionFrom={params.directionFrom} showSequence={true}/>)}
-        </div>}
-    </>)}</>
+    const excludeIds = params.excludeIds || []
+    return <>{params.links.map(l => {
+        const words = l.words.filter(w => !excludeIds.includes(w.word.id))
+        return <>
+            {words.length === 1 && params.directionFrom &&
+                <WordLinkComponent key={words[0].word.id} baseWord={params.word} linkWord={words[0]} linkType={l}
+                                   directionFrom={params.directionFrom} showType={true} showSequence={true}/>}
+            {(words.length > 1 || (words.length == 1 && !params.directionFrom)) && <div>
+                <div>{l.type}</div>
+                {words.map(w => <WordLinkComponent key={w.word.id} baseWord={params.word} linkWord={w} linkType={l}
+                                                     directionFrom={params.directionFrom} showSequence={true}/>)}
+            </div>}
+        </>
+    })}</>
 }
 
-function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean }) {
+function SingleWord({word, embeddedInWordIds}: { word: WordViewModel, embeddedInWordIds?: number[] }) {
     const globalState = useContext(GlobalStateContext)
     const canEdit = allowEditGraph()
 
@@ -337,7 +342,7 @@ function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean 
         setEditMode(false)
         setLookupErrorText(null)
         setLookupVariants([])
-        if (!embedded && (r.text !== word.text || r.syllabographic !== word.syllabographic)) {
+        if (!embeddedInWordIds && (r.text !== word.text || r.syllabographic !== word.syllabographic)) {
             router.push(Urls.Words.fromWordForm(graph, r))
         }
         else {
@@ -375,7 +380,7 @@ function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean 
         if (window.confirm("Delete this word?")) {
             deleteWord(graph, word.id)
                 .then(() => {
-                    if (embedded) {
+                    if (embeddedInWordIds) {
                         router.replace(router.asPath)
                     }
                     else {
@@ -498,15 +503,15 @@ function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean 
     const realGloss = word.glossComputed ? undefined : word.gloss
 
     return <>
-        {!embedded && <Breadcrumbs langId={word.language} langName={word.languageFullName}
-                     steps={[{title: dictionaryTitle, url: `/${graph}/dictionary/${word.language}${dictionaryLink}`}]}>
+        {!embeddedInWordIds && <Breadcrumbs langId={word.language} langName={word.languageFullName}
+                                            steps={[{title: dictionaryTitle, url: `/${graph}/dictionary/${word.language}${dictionaryLink}`}]}>
             <WordTextView text={word.text} syllabograms={word.syllabogramSequence}
                     stressIndex={word.stressIndex} stressLength={word.stressLength}
                     reconstructed={word.reconstructed || word.languageReconstructed}/>
         </Breadcrumbs>}
-        {embedded && <h3><WordTextView text={word.text} syllabograms={word.syllabogramSequence}
-                                       stressIndex={word.stressIndex} stressLength={word.stressLength}
-                                       reconstructed={word.reconstructed || word.languageReconstructed}/></h3>}
+        {embeddedInWordIds && <h3><WordTextView text={word.text} syllabograms={word.syllabogramSequence}
+                                                stressIndex={word.stressIndex} stressLength={word.stressLength}
+                                                reconstructed={word.reconstructed || word.languageReconstructed}/></h3>}
 
         {!editMode && <>
             {word.pos && <div>{word.pos} {word.classes.length > 0 && "(" + word.classes.join(", ") + ")"}</div>}
@@ -565,12 +570,12 @@ function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean 
             </>}
         </>}
 
-        {(!word.baseWord || !embedded) && word.attestations.length > 0 &&
+        {(!word.baseWord || !embeddedInWordIds) && word.attestations.length > 0 &&
             <div>Attested <InlineAttestations attestations={word.attestations} graph={graph}/></div>
         }
 
         <WordLinkTypeComponent word={word} links={word.linksFrom} directionFrom={true}/>
-        <WordLinkTypeComponent word={word} links={word.linksTo} directionFrom={false}/>
+        <WordLinkTypeComponent word={word} links={word.linksTo} directionFrom={false} excludeIds={embeddedInWordIds}/>
 
         {word.compounds.length > 0 &&
             <>
@@ -690,7 +695,7 @@ function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean 
         </Accordion.Panel></Accordion.Item></Accordion>}
         {word.hasParadigms && <Link href={`/${graph}/paradigms/${word.language}/word/${word.id}`}>Paradigms</Link>}
 
-        {word.baseWord && <blockquote><SingleWord word={word.baseWord} embedded={true}/></blockquote>}
+        {word.baseWord && <blockquote><SingleWord word={word.baseWord} embeddedInWordIds={(embeddedInWordIds || []).concat([word.id])}/></blockquote>}
     </>
 }
 
