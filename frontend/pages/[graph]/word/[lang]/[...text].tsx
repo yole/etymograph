@@ -565,8 +565,8 @@ function SingleWord({word, embedded}: { word: WordViewModel, embedded?: boolean 
             </>}
         </>}
 
-        {!word.baseWord && word.attestations.length > 0 &&
-            <>Attested <InlineAttestations attestations={word.attestations} graph={graph}/></>
+        {(!word.baseWord || !embedded) && word.attestations.length > 0 &&
+            <div>Attested <InlineAttestations attestations={word.attestations} graph={graph}/></div>
         }
 
         <WordLinkTypeComponent word={word} links={word.linksFrom} directionFrom={true}/>
