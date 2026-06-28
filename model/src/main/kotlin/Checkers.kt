@@ -63,7 +63,12 @@ object GlossChecker : ConsistencyChecker() {
         else if (baseWord == null && word.gloss == null &&
             word.pos != KnownPartsOfSpeech.properName.abbreviation && word.graph.findCompoundsByCompoundWord(word).isEmpty())
         {
-            report(ConsistencyCheckerIssue("No gloss specified for word"))
+            if (word.graph.findAttestations(word).isEmpty() && word.graph.findCompoundsByComponent(word).isEmpty()) {
+                report(ConsistencyCheckerIssue("Orphan word (ID=${word.id})"))
+            }
+            else {
+                report(ConsistencyCheckerIssue("No gloss specified for word"))
+            }
         }
     }
 }
@@ -111,7 +116,7 @@ object CorpusTextChecker : ConsistencyChecker() {
                     if (corpusWord.word != null &&
                         corpusWord.word.text.lowercase(Locale.FRANCE) != corpusWord.normalizedText.lowercase(Locale.FRANCE))
                     {
-                        report(ConsistencyCheckerIssue("Corpus word text '${corpusWord.normalizedText}' doesn't match word text '${corpusWord.word.text}' in ${corpusText.title}"))
+                        report(ConsistencyCheckerIssue("Corpus word text '${corpusWord.normalizedText}' doesn't match word text '${corpusWord.word.text}', index ${corpusWord.index} in ${corpusText.title}"))
                     }
                 }
             }
