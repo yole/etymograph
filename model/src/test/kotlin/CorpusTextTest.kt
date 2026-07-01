@@ -172,6 +172,14 @@ class CorpusTextTest : QBaseTest() {
         assertTrue(lines[0].separator)
         assertEquals(0, text.wordCount())
     }
+
+    @Test
+    fun lineNumber() {
+        val text = q.corpusText("1# ai laurie")
+        val lines = text.mapToLines()
+        assertEquals("1", lines[0].lineNumber)
+        assertEquals(2, text.wordCount())
+    }
 }
 
 fun Language.corpusText(text: String) = CorpusText(-1, text, null, this)

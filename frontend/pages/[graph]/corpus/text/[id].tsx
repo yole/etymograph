@@ -352,6 +352,7 @@ export default function CorpusText(params) {
 
                         return <div key={`line-${segment.start}-${segment.end}-${line.words[0].index}`}>
                             <div className="corpusTextLine">
+                                {line.lineNumber && <span className="corpusTextLineNumber">{line.lineNumber} </span>}
                                 {segmentWords.map((w, index) =>
                                     <span className="corpusTextWord" key={index}>
                                         <CorpusTextWordLink word={w} corpusText={corpusText}/>

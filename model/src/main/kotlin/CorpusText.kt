@@ -19,7 +19,7 @@ class CorpusWord(
     val homonym: Boolean,
 )
 
-class CorpusTextLine(val corpusWords: List<CorpusWord>, val separator: Boolean = false)
+class CorpusTextLine(val corpusWords: List<CorpusWord>, val lineNumber: String? = null, val separator: Boolean = false)
 
 class CorpusWordAssociation(
     val index: Int,
@@ -86,8 +86,13 @@ class CorpusText(
         var currentIndex = 0
         var sentenceStart = true
         return text.split("\n").map { line ->
-            if (isSeparator(line)) return@map CorpusTextLine(emptyList(), true)
-            val textWords = splitIntoNormalizedWords(line, currentIndex)
+            if (isSeparator(line)) return@map CorpusTextLine(emptyList(), separator = true)
+            val (lineNumber, tail) = if ('#' in line)
+                line.substringBefore('#').trim() to line.substringAfter('#').trim()
+            else
+                null to line
+
+            val textWords = splitIntoNormalizedWords(tail, currentIndex)
             CorpusTextLine(textWords.map { tw ->
                 val assoc = words.find { it.index == currentIndex }
                 val word = assoc?.word
@@ -119,7 +124,7 @@ class CorpusText(
                         glossable = tw.baseText.any { it !in innerPunctuation },
                         homonym = false)
                 }
-            })
+            }, lineNumber)
         }
     }
 
@@ -161,7 +166,8 @@ class CorpusText(
         return sequence {
             for (line in text.split('\n')) {
                 if (isSeparator(line)) continue
-                for (wordText in splitIntoNormalizedWords(line, currentIndex)) {
+                val tail = line.substringAfter('#', line).trim()
+                for (wordText in splitIntoNormalizedWords(tail, currentIndex)) {
                     currentIndex++
                     yield(wordText)
                 }

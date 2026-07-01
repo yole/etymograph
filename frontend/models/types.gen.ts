@@ -112,6 +112,7 @@ export type CorpusLangViewModel = {
 
 export type CorpusLineViewModel = {
     words: Array<CorpusWordViewModel>;
+    lineNumber?: string;
     separator: boolean;
 };
 
