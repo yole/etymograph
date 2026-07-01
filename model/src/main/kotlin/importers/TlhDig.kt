@@ -38,10 +38,17 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
     val wordElements = mutableListOf<TlhDigWord>()
     val text = buildString {
         for (element in children) {
-            if (element.name == "lb" && isNotEmpty()) {
-                trimEnd()
-                if (!endsWith("\n")) {
-                    append("\n")
+            if (element.name == "lb") {
+                if (isNotEmpty()) {
+                    trimEnd()
+                    if (!endsWith("\n")) {
+                        append("\n")
+                    }
+                }
+                val lnr = element.getAttributeValue("lnr")
+                if (lnr != null) {
+                    append(lnr)
+                    append("# ")
                 }
             }
             else if (element.name == "w") {

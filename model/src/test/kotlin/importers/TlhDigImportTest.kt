@@ -243,6 +243,12 @@ class TlhDigImportTest {
         assertEquals("20", corpusText.text)
     }
 
+    @Test
+    fun lineNumber() {
+        val corpusText = importWord("""<lb txtid="HKM 3" lnr="Vs. 1" lg="Hit" cu="𒌝𒈠𒀭𒌓𒅆𒈠"/> <w trans="UM-MA" mrp0sel=" 1 " mrp1="UMMA@folgendermaßen@ADV@@ "><aGr>UM-MA</aGr></w>""")
+        assertEquals("Vs. 1# _UM-MA", corpusText.text)
+    }
+
     private fun findWord(text: String, syllabographic: Boolean = false): Word =
         graph.wordsByText(hittite, text, syllabographic).single()
 
