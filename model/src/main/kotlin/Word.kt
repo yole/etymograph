@@ -335,6 +335,8 @@ class Word(
         return null
     }
 
+    fun isClitic(): Boolean = KnownClasses.clitic in (baseWord() ?: this).classes
+
     fun getOrComputeGloss(): String? {
         gloss?.let { return it }
         getTransliterationOf()?.let { return it.getOrComputeGloss() }
@@ -345,8 +347,12 @@ class Word(
         }
         val compound = graph.findCompoundsByCompoundWord(this).firstOrNull()
         if (compound != null) {
-            return compound.components.joinToString("-") {
-                it.getOrComputeGloss()?.substringBefore(", ")?.removePrefix("-")?.removeSuffix("-") ?: "?"
+            return buildString {
+                append(compound.components[0].getOrComputeGloss()?.substringBefore(", ")?.removePrefix("-")?.removeSuffix("-") ?: "?")
+                for (i in 1..<compound.components.size) {
+                    append(if (compound.components[i].isClitic()) '=' else '-')
+                    append(compound.components[i].getOrComputeGloss()?.substringBefore(", ")?.removePrefix("-"))
+                }
             }
         }
         val derivation = baseWordLink()
@@ -401,13 +407,13 @@ class Word(
         val segments = segments.filter { it.length > 0 }.takeIf { it.isNotEmpty() } ?: return text
         return buildString {
             var index = 0
-            for ((segIndex, segment) in segments.withIndex()) {
+            for (segment in segments) {
                 if (index < segment.firstCharacter) {
                     append(text.substring(index, segment.firstCharacter))
                 }
                 index = segment.firstCharacter
                 if (index > 0) {
-                    if (segment.clitic || segments.getOrNull(segIndex-1)?.clitic == true) {
+                    if (segment.clitic) {
                         append("=")
                     }
                     else {

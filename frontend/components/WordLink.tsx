@@ -17,7 +17,8 @@ export default function WordLink(params: WordLinkProps) {
 
     const word = params.word
     let linkTarget = Urls.Words.fromRef(graph, word)
-    const wordText = word.reconstructed ? ("*" + word.text) : word.text
+    const textWithSegments = word.segmentedText ?? word.text
+    const wordText = word.reconstructed ? ("*" + textWithSegments) : textWithSegments
     return <>
         {params.baseLanguage !== undefined && word.language !== params.baseLanguage && word.displayLanguage + " "}
         <Link href={linkTarget}>

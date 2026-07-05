@@ -13,6 +13,7 @@ const val explicitStressMark = 'ˈ'
 data class WordRefViewModel(
     val id: Int,
     val text: String,
+    val segmentedText: String?,
     val urlKey: String?,
     val syllabogramSequence: SyllabogramSequence?,
     val language: String,
@@ -33,7 +34,9 @@ data class ParseCandidateViewModel(
 fun Word.toRefViewModel(): WordRefViewModel {
     val urlKey = urlKey(language, text, syllabographic)
     return WordRefViewModel(
-        id, text,
+        id,
+        text,
+        if (graph.isCliticChain(this)) segmentedText().takeIf { it != text } else text,
         urlKey,
         syllabogramSequence,
         language.shortName,
@@ -113,6 +116,7 @@ class WordController(val dictionaryService: DictionaryService) {
         val languageReconstructed: Boolean,
         val languageSyllabographic: Boolean,
         val text: String,
+        val segmentedText: String?,
         val textWithExplicitStress: String,
         val urlKey: String?,
         val syllabogramSequence: SyllabogramSequence?,
@@ -198,6 +202,7 @@ class WordController(val dictionaryService: DictionaryService) {
             language.reconstructed,
             language.syllabographic,
             text,
+            if (graph.isCliticChain(this)) segmentedText().takeIf { it != text } else text,
             textWithExplicitStress,
             urlKey(language, text, syllabographic),
             syllabogramSequence,

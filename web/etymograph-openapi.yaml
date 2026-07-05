@@ -1962,6 +1962,9 @@ components:
           format: "int32"
         text:
           type: "string"
+        segmentedText:
+          nullable: true
+          type: "string"
         urlKey:
           type: "string"
           nullable: true
@@ -2142,6 +2145,8 @@ components:
         languageSyllabographic:
           type: "boolean"
         text:
+          type: "string"
+        segmentedText:
           type: "string"
         textWithExplicitStress:
           type: "string"

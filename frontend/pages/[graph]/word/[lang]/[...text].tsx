@@ -509,7 +509,7 @@ function SingleWord({word, embeddedInWordIds}: { word: WordViewModel, embeddedIn
                     stressIndex={word.stressIndex} stressLength={word.stressLength}
                     reconstructed={word.reconstructed || word.languageReconstructed}/>
         </Breadcrumbs>}
-        {embeddedInWordIds && <h3><WordTextView text={word.text} syllabograms={word.syllabogramSequence}
+        {embeddedInWordIds && <h3><WordTextView text={word.segmentedText ?? word.text} syllabograms={word.syllabogramSequence}
                                                 stressIndex={word.stressIndex} stressLength={word.stressLength}
                                                 reconstructed={word.reconstructed || word.languageReconstructed}/></h3>}
 

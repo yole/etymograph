@@ -725,6 +725,7 @@ export type WordParadigmModel = {
 export type WordRefViewModel = {
     id: number;
     text: string;
+    segmentedText?: (string) | null;
     urlKey?: (string) | null;
     syllabogramSequence?: (SyllabogramSequence) | null;
     language: string;
@@ -756,6 +757,7 @@ export type WordViewModel = {
     languageReconstructed: boolean;
     languageSyllabographic: boolean;
     text: string;
+    segmentedText?: string;
     textWithExplicitStress: string;
     urlKey?: (string) | null;
     syllabogramSequence?: (SyllabogramSequence) | null;

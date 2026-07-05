@@ -144,7 +144,7 @@ open class InMemoryGraph : Graph() {
     override fun isCliticChain(word: Word): Boolean {
         val compounds = compounds[word.id] ?: return false
         return compounds.any {
-            it.components.any { c -> KnownClasses.clitic in (c.baseWord() ?: c).classes }
+            it.components.any { c -> c.isClitic() }
         }
     }
 

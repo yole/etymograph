@@ -25,9 +25,11 @@ class CompoundTest : QBaseTest() {
 
     @Test
     fun segmentedTextClitic() {
-        fara.classes = listOf("clitic")
+        faramir.gloss = null
+        mir.classes = listOf("clitic")
         graph.createCompound(faramir, listOf(fara, mir))
         assertEquals("fara=mir", faramir.segmentedText())
+        assertEquals("fara=mir", faramir.getOrComputeGloss())
     }
 
     @Test
