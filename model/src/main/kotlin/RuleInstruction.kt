@@ -38,7 +38,7 @@ open class RuleInstruction(val type: InstructionType, val arg: String, val comme
         val phonemes = removeMatchedEnding(word, branch)
             ?: return word
         return word.derive(phonemes.result() + arg,
-            segments = remapSegments(phonemes, word.segments),
+            segments = remapSegments(phonemes, word.cachedSegments),
             addSegment = WordSegment.create(phonemes.result().length, arg.length, rule.addedCategories, null, rule))
     }
 
@@ -240,7 +240,7 @@ class ApplySoundRuleInstruction(language: Language, val ruleRef: RuleRef, arg: S
                 (rule.logic as SpeRuleLogic).applyToPhoneme(word, phonemes, context.trace)
                 if (!phonemes.advance()) break
             }
-            val segments = remapSegments(phonemes, word.segments)
+            val segments = remapSegments(phonemes, word.cachedSegments)
             return word.derive(phonemes.result(), segments = segments, phonemic = true, keepStress = false)
                 .asOrthographic()
         }
@@ -409,7 +409,7 @@ class MorphemeInstruction(type: InstructionType, val morphemeId: Int, comment: S
         return when (type) {
             InstructionType.PrependMorpheme -> {
                 val effectiveText = morpheme.text.trimEnd('-')
-                var segments = word.segments?.takeIf { it.isNotEmpty() } ?: listOf(WordSegment(0, word.text.length))
+                var segments = word.cachedSegments?.takeIf { it.isNotEmpty() } ?: listOf(WordSegment(0, word.text.length))
                 if (segments.first().firstCharacter > 0) {
                     segments = listOf(WordSegment(0, segments.first().firstCharacter)) + segments
                 }
@@ -432,7 +432,7 @@ class MorphemeInstruction(type: InstructionType, val morphemeId: Int, comment: S
                     ?: return word
                 val effectiveText = morpheme.text.trimStart('-')
                 word.derive(phonemes.result() + effectiveText,
-                    segments = remapSegments(phonemes, word.segments),
+                    segments = remapSegments(phonemes, word.cachedSegments),
                     addSegment = WordSegment(phonemes.result().length, effectiveText.length, context.rule.addedCategories, morpheme, context.rule))
             }
 
@@ -574,7 +574,7 @@ class SpeInstruction(val pattern: SpePattern, val condition: RuleCondition? = nu
                 it.mapIndex(word.stressedPhonemeIndex)
             else
                 null
-            val segments = remapSegments(it, word.segments)
+            val segments = remapSegments(it, word.cachedSegments)
             var stressedPhonemeIndex: Int? = null
             if (stress != null && stress >= 0) {
                 val vowels = context.rule.toLanguage.phonemeClassByName(PhonemeClass.vowelClassName)

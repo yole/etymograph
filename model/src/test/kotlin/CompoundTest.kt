@@ -20,16 +20,14 @@ class CompoundTest : QBaseTest() {
     @Test
     fun segmentedText() {
         graph.createCompound(faramir, listOf(fara, mir))
-        val restored = graph.restoreSegments(faramir)
-        assertEquals("fara-mir", restored.segmentedText())
+        assertEquals("fara-mir", faramir.segmentedText())
     }
 
     @Test
     fun segmentedTextClitic() {
         fara.classes = listOf("clitic")
         graph.createCompound(faramir, listOf(fara, mir))
-        val restored = graph.restoreSegments(faramir)
-        assertEquals("fara=mir", restored.segmentedText())
+        assertEquals("fara=mir", faramir.segmentedText())
     }
 
     @Test
@@ -58,8 +56,7 @@ class CompoundTest : QBaseTest() {
     @Test
     fun segmentedTextDeleteCompound() {
         val compound = graph.createCompound(faramir, listOf(fara, mir))
-        val restored = graph.restoreSegments(faramir)
-        assertEquals("fara-mir", restored.segmentedText())
+        assertEquals("fara-mir", faramir.segmentedText())
         graph.deleteCompound(compound)
         assertEquals("faramir", faramir.segmentedText())
     }
@@ -70,8 +67,7 @@ class CompoundTest : QBaseTest() {
         val mir = q.word("aurenya", "aurenya")
         val faramir = q.word("andaurenya", "andaurenya")
         graph.createCompound(faramir, listOf(fara, mir))
-        val restored = graph.restoreSegments(faramir)
-        assertEquals("andaurenya", restored.segmentedText())
+        assertEquals("andaurenya", faramir.segmentedText())
     }
 
     @Test

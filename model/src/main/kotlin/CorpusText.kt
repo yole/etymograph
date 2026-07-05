@@ -106,10 +106,9 @@ class CorpusText(
                     val stressData = if (language.accentTypes.isEmpty()) word.calculateStress() else null
                     val leadingPunctuation = tw.baseText.takeWhile { it in leadingPunctuation }
                     val trailingPunctuation = tw.baseText.takeLastWhile { it in punctuation }
-                    val wordWithSegments = word.graph.restoreSegments(word)
-                    val segmentedText = leadingPunctuation + restoreCase(wordWithSegments.segmentedText(), tw.baseText) + trailingPunctuation
-                    val glossWithSegments = wordWithSegments.getOrComputeGloss() ?: word.getOrComputeGloss()
-                    val stressIndex = adjustStressIndex(wordWithSegments, stressData?.index)?.plus(leadingPunctuation.length)
+                    val segmentedText = leadingPunctuation + restoreCase(word.segmentedText(), tw.baseText) + trailingPunctuation
+                    val glossWithSegments = word.getOrComputeGloss() ?: word.getOrComputeGloss()
+                    val stressIndex = adjustStressIndex(word, stressData?.index)?.plus(leadingPunctuation.length)
 
                     CorpusWord(currentIndex++, tw.baseText, normalizedText, segmentedText, syllabogramSequence, word, null,
                         word.getOrComputeGloss(),
@@ -130,7 +129,7 @@ class CorpusText(
 
     private fun adjustStressIndex(wordWithSegments: Word?, stressIndex: Int?): Int? {
         if (stressIndex == null) return null
-        val segments = wordWithSegments?.segments ?: return stressIndex
+        val segments = wordWithSegments?.cachedSegments ?: return stressIndex
         var result = stressIndex
         for (segment in segments) {
             if (segment.firstCharacter > 0 && segment.firstCharacter <= stressIndex) {

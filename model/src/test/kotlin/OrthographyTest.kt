@@ -40,11 +40,11 @@ class OrthographyTest : QBaseTest() {
         ce.orthographyRule = RuleRef.to(rule)
         val ats = ce.word("ats").apply {
             isPhonemic = true
-            segments = listOf(WordSegment(1, 2, null, null, null, false))
+            cachedSegments = listOf(WordSegment(1, 2, null, null, null, false))
         }
         val ortho = ats.asOrthographic()
         assertEquals("az", ortho.text)
-        assertEquals(1, ortho.segments!![0].length)
+        assertEquals(1, ortho.cachedSegments!![0].length)
     }
 
     @Test
@@ -78,22 +78,22 @@ class OrthographyTest : QBaseTest() {
         val rule = parseRule(ce, ce, "* ts > z")
         ce.pronunciationRule = RuleRef.to(rule)
         val ats = ce.word("ats").apply {
-            segments = listOf(WordSegment(1, 2, null, null, null, false))
+            cachedSegments = listOf(WordSegment(1, 2, null, null, null, false))
         }
         val phono = ats.asPhonemic()
         assertEquals("az", phono.text)
-        assertEquals(1, phono.segments!![0].length)
+        assertEquals(1, phono.cachedSegments!![0].length)
     }
 
     @Test
     fun digraphRemapSegmentsPhonemic() {
         ce.phonemes += phoneme(listOf("ts"), "z")
         val ats = ce.word("ats").apply {
-            segments = listOf(WordSegment(1, 2, null, null, null, false))
+            cachedSegments = listOf(WordSegment(1, 2, null, null, null, false))
         }
         val phono = ats.asPhonemic()
         assertEquals("az", phono.text)
-        assertEquals(1, phono.segments!![0].length)
+        assertEquals(1, phono.cachedSegments!![0].length)
     }
 
     @Test
@@ -101,11 +101,11 @@ class OrthographyTest : QBaseTest() {
         ce.phonemes += phoneme(listOf("ts"), "z")
         val ats = ce.word("az").apply {
             isPhonemic = true
-            segments = listOf(WordSegment(1, 1, null, null, null, false))
+            cachedSegments = listOf(WordSegment(1, 1, null, null, null, false))
         }
         val phono = ats.asOrthographic()
         assertEquals("ats", phono.text)
-        assertEquals(2, phono.segments!![0].length)
+        assertEquals(2, phono.cachedSegments!![0].length)
     }
 
     @Test

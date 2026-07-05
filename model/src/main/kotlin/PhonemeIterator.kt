@@ -433,7 +433,7 @@ class PhonemeIterator {
         get() = word?.let { breakIntoSyllables(it) }
 
     val segments: List<WordSegment>?
-        get() = word?.segments
+        get() = word?.cachedSegments
 
     val rootSegment: WordSegment? by lazy { word?.findRootSegment() }
 }

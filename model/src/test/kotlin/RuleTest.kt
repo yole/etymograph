@@ -670,9 +670,9 @@ class RuleTest : QBaseTest() {
         val frignan = oe.word("frignan", "frignan")
         val result = rule.apply(frignan)
         assertEquals("gefrignan", result.text)
-        assertEquals(2, result.segments!!.size)
-        assertEquals(2, result.segments!![0].length)
-        assertEquals(7, result.segments!![1].length)
+        assertEquals(2, result.cachedSegments!!.size)
+        assertEquals(2, result.cachedSegments!![0].length)
+        assertEquals(7, result.cachedSegments!![1].length)
 
         assertEquals("prepend morpheme 'ge-: Prefix: ge'", rule.firstInstruction.toEditableText(graph))
         assertEquals("ge-", rule.firstInstruction.toSummaryText(graph))
@@ -692,9 +692,9 @@ class RuleTest : QBaseTest() {
         val hestr = on.word("hestr", "hestr")
         val result = rule.apply(hestr)
         assertEquals("hestrinn", result.text)
-        assertEquals(1, result.segments!!.size)
-        assertEquals(inn, result.segments!![0].sourceWord)
-        assertEquals(3, result.segments!![0].length)
+        assertEquals(1, result.cachedSegments!!.size)
+        assertEquals(inn, result.cachedSegments!![0].sourceWord)
+        assertEquals(3, result.cachedSegments!![0].length)
     }
 
     @Test
@@ -708,7 +708,7 @@ class RuleTest : QBaseTest() {
         val hestr = on.word("hestr", "hestr")
         val result = rule2.apply(rule.apply(hestr))
         assertEquals("gehestrinn", result.text)
-        val segments = result.segments!!
+        val segments = result.cachedSegments!!
         assertEquals(3, segments.size)
         assertEquals(0, segments[0].firstCharacter)
         assertEquals(2, segments[1].firstCharacter)
@@ -785,12 +785,12 @@ class RuleTest : QBaseTest() {
     fun speRuleSegments() {
         val rule = parseRule(ce, q, """* ōj -> i""")
         val word = ce.word("grapōjan").apply {
-            segments = listOf(WordSegment(4, 4, null, null, null, false))
+            cachedSegments = listOf(WordSegment(4, 4, null, null, null, false))
             setExplicitStress(6)
         }
         val newWord = rule.apply(word)
-        assertEquals(1, newWord.segments!!.size)
-        assertEquals(3, newWord.segments!![0].length)
+        assertEquals(1, newWord.cachedSegments!!.size)
+        assertEquals(3, newWord.cachedSegments!![0].length)
         assertEquals(5, newWord.stressedPhonemeIndex)
         assertTrue(newWord.explicitStress)
     }

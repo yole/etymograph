@@ -49,7 +49,6 @@ abstract class Graph {
     abstract fun isCompound(word: Word): Boolean
     abstract fun isCliticChain(word: Word): Boolean
     abstract fun findParseCandidates(word: Word): List<ParseCandidate>
-    abstract fun restoreSegments(word: Word): Word
 
     abstract fun matchesPhonotactics(lang: Language, text: String): Boolean
 

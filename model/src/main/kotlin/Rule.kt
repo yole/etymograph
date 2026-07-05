@@ -41,11 +41,11 @@ class RuleTrace {
     private val log = StringBuilder()
 
     fun logRule(rule: Rule, word: Word) {
-        log.append("Applying rule ${rule.name} to ${word.text} (language ${word.language.shortName}, phonemic ${word.isPhonemic}, segments ${word.segments}, stress ${word.stressedPhonemeIndex})\n")
+        log.append("Applying rule ${rule.name} to ${word.text} (language ${word.language.shortName}, phonemic ${word.isPhonemic}, segments ${word.cachedSegments}, stress ${word.stressedPhonemeIndex})\n")
     }
 
     fun logRuleResult(rule: Rule, word: Word) {
-        log.append("Applied rule ${rule.name}, result is ${word.text} (segments ${word.segments}, stress ${word.stressedPhonemeIndex})\n")
+        log.append("Applied rule ${rule.name}, result is ${word.text} (segments ${word.cachedSegments}, stress ${word.stressedPhonemeIndex})\n")
     }
 
     fun logMatchedBranch(rule: Rule, word: Word, phoneme: String?, branch: RuleBranch) {
@@ -273,7 +273,7 @@ sealed class RuleLogic {
             resultWord.text
         }
         val gloss = word.glossOrNP()?.let { baseGloss ->
-            rule.applyCategories(baseGloss, resultWord.segments?.any { it.sourceRule == rule } == true)
+            rule.applyCategories(baseGloss, resultWord.cachedSegments?.any { it.sourceRule == rule } == true)
         }
         val result = word.derive(
             resultText,
@@ -282,7 +282,7 @@ sealed class RuleLogic {
             newGloss = gloss,
             phonemic = resultWord.isPhonemic,
             stressIndex = stressIndex,
-            segments = if (normalizeSegments) Word.normalizeSegments(resultWord.segments) else resultWord.segments,
+            segments = if (normalizeSegments) Word.normalizeSegments(resultWord.cachedSegments) else resultWord.cachedSegments,
             newClasses = resultWord.classes,
             newAccentType = resultWord.accentType
         )

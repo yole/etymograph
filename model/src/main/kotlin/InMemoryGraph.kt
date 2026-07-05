@@ -268,43 +268,6 @@ open class InMemoryGraph : Graph() {
             .toSet()
     }
 
-    override fun restoreSegments(word: Word): Word {
-        val baseWordLink = word.baseWordLink()
-        if (baseWordLink != null) {
-            if (baseWordLink.rules.isEmpty()) {
-                return word
-            }
-
-            val baseWord = baseWordLink.toEntity as Word
-            if (baseWord.language == word.language) {
-                val baseWordWithSegments = restoreSegments(baseWord)
-                val restoredWord = baseWordLink.applyRules(baseWordWithSegments)
-                if (word.language.isNormalizedEqual(restoredWord, word)) {
-                    return restoredWord
-                }
-            }
-        }
-
-        val compound = findCompoundsByCompoundWord(word).singleOrNull()
-        if (compound != null) {
-            val segments = mutableListOf<WordSegment>()
-            var index = 0
-            for (component in compound.components) {
-                val normalizedComponentText = component.text.removeSuffix("-")
-                val componentLength = normalizedComponentText.length
-                if (index + componentLength > word.text.length || word.text.substring(index, index + componentLength) != normalizedComponentText) {
-                    break
-                }
-                segments.add(WordSegment(index, componentLength, null, component, null,
-                    KnownClasses.clitic in component.classes))
-                index += componentLength
-            }
-            word.segments = segments
-        }
-
-        return word
-    }
-
     fun isAcceptableWord(language: Language, wordText: String): Boolean {
         if (wordText.isEmpty()) return false
         val word = Word(-1, wordText, language)
@@ -790,7 +753,7 @@ open class InMemoryGraph : Graph() {
         if (compoundList?.isEmpty() == true) {
             compounds.remove(compound.compoundWord.id)
         }
-        compound.compoundWord.segments = null
+        compound.compoundWord.cachedSegments = null
         allLangEntities[compound.id] = null
     }
 

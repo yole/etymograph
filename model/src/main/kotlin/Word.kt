@@ -53,6 +53,40 @@ fun remapSegments(phonemes: PhonemeIterator, segments: List<WordSegment>?): List
     }
 }
 
+private fun restoreSegments(word: Word) {
+    val baseWordLink = word.baseWordLink()
+    if (baseWordLink != null) {
+        if (baseWordLink.rules.isEmpty()) {
+            return
+        }
+
+        val baseWord = baseWordLink.toEntity as Word
+        if (baseWord.language == word.language) {
+            val restoredWord = baseWordLink.applyRules(baseWord)
+            if (word.language.isNormalizedEqual(restoredWord, word)) {
+                word.cachedSegments = restoredWord.cachedSegments
+            }
+        }
+    }
+
+    val compound = word.graph.findCompoundsByCompoundWord(word).singleOrNull()
+    if (compound != null) {
+        val segments = mutableListOf<WordSegment>()
+        var index = 0
+        for (component in compound.components) {
+            val normalizedComponentText = component.text.removeSuffix("-")
+            val componentLength = normalizedComponentText.length
+            if (index + componentLength > word.text.length || word.text.substring(index, index + componentLength) != normalizedComponentText) {
+                break
+            }
+            segments.add(WordSegment(index, componentLength, null, component, null,
+                KnownClasses.clitic in component.classes))
+            index += componentLength
+        }
+        word.cachedSegments = segments
+    }
+}
+
 enum class AccentType(val combiningMark: Char) {
     None(0.toChar()),
     Acute('\u0301'),
@@ -130,7 +164,7 @@ class Word(
 
     fun asPhonemic(): Word {
         if (isPhonemic) return this
-        val (phonemicText, newSegments) = language.cachePhonemicText(text, segments) {
+        val (phonemicText, newSegments) = language.cachePhonemicText(text, cachedSegments) {
             val pronunciationRule = language.pronunciationRule?.resolve()
             val it = PhonemeIterator(this, resultPhonemic = true)
             if (pronunciationRule != null) {
@@ -139,7 +173,7 @@ class Word(
                     if (!it.advance()) break
                 }
             }
-            it.result() to remapSegments(it, this.segments)
+            it.result() to remapSegments(it, this.cachedSegments)
         }
 
         return derive(phonemicText, id = id, phonemic = true, segments = newSegments,
@@ -149,7 +183,7 @@ class Word(
     fun asOrthographic(referenceWord: Word? = null): Word {
         if (!isPhonemic && accentType == null) return this
         val orthoRule = language.orthographyRule?.resolve()
-        var wordSegments = segments
+        var wordSegments = cachedSegments
         val orthoText: String = if (isPhonemic) {
             var refIt = referenceWord?.let { PhonemeIterator(it) }
             val it = PhonemeIterator(this, resultPhonemic = false)
@@ -212,7 +246,7 @@ class Word(
                stressIndex: Int? = null,
                newAccentType: AccentType? = null,
                keepStress: Boolean = true): Word {
-        val sourceSegments = if (text == this.text || addSegment != null) this.segments else null
+        val sourceSegments = if (text == this.text || addSegment != null) this.cachedSegments else null
         return if (this.text == text && newClasses == null && phonemic == null && id == null && stressIndex == null)
             this
         else
@@ -232,7 +266,7 @@ class Word(
                     it.explicitStress = explicitStress
                     it.accentType = accentType
                }
-               it.segments = appendSegments(segments ?: sourceSegments, addSegment)
+               it.cachedSegments = appendSegments(segments ?: sourceSegments, addSegment)
                if (phonemic != null) it.isPhonemic = phonemic
            }
     }
@@ -268,7 +302,7 @@ class Word(
         return -1
     }
 
-    var segments: List<WordSegment>? = null
+    var cachedSegments: List<WordSegment>? = null
         set(value) {
             if (value != null) {
                 for (segment in value) {
@@ -281,6 +315,14 @@ class Word(
                 }
             }
             field = value
+        }
+
+    val segments: List<WordSegment>
+        get() {
+            if (cachedSegments == null) {
+                restoreSegments(this)
+            }
+            return cachedSegments ?: emptyList()
         }
 
     fun baseWord(): Word? {
@@ -312,8 +354,8 @@ class Word(
             if (derivation.rules.any { it.addedCategories != null }) {
                 (derivation.toEntity as Word).getOrComputeGloss()?.let { fromGloss ->
                     return derivation.rules.fold(fromGloss) { gloss, rule ->
-                        val segment = segments?.any { it.sourceRule == rule }
-                        rule.applyCategories(gloss, segment != null)
+                        val hasSourceRule = segments.any { it.sourceRule == rule }
+                        rule.applyCategories(gloss, hasSourceRule)
                     }
                 }
             }
@@ -356,7 +398,7 @@ class Word(
         graph.getLinksFrom(this).singleOrNull { it.type == Link.Derived && it.toEntity is Word }
 
     fun segmentedText(): String {
-        val segments = segments?.filter { it.length > 0 }?.takeIf { it.isNotEmpty() } ?: return text
+        val segments = segments.filter { it.length > 0 }.takeIf { it.isNotEmpty() } ?: return text
         return buildString {
             var index = 0
             for ((segIndex, segment) in segments.withIndex()) {
@@ -384,7 +426,7 @@ class Word(
     }
 
     fun remapSegments(mapper: (WordSegment) -> WordSegment): Word {
-        segments = segments?.map(mapper)
+        cachedSegments = cachedSegments?.map(mapper)
         return this
     }
 
@@ -414,12 +456,11 @@ class Word(
 
     fun findRootSegment(): WordSegment? {
         val orthoWord = asOrthographic()
-        val segments = language.graph.restoreSegments(orthoWord).segments
-        return segments?.firstOrNull {
+        return orthoWord.segments.firstOrNull {
             it.sourceRule == null &&
                     (it.sourceWord == null ||
                             (it.sourceWord.pos != KnownPartsOfSpeech.preverb.abbreviation &&
-                             it.sourceWord.pos != KnownPartsOfSpeech.affix.abbreviation))
+                                    it.sourceWord.pos != KnownPartsOfSpeech.affix.abbreviation))
         }
     }
 
