@@ -36,7 +36,7 @@ import {
 import WordTextView from "@/components/WordTextView";
 import WordPickerModal from "@/components/WordPickerModal";
 import {Urls} from "@/components/Urls";
-import {Accordion, Alert} from "@mantine/core";
+import {Alert, Menu} from "@mantine/core";
 
 export const config = {
     unstable_runtimeJS: true
@@ -554,6 +554,34 @@ function SingleWord({word, embeddedInWordIds}: { word: WordViewModel, embeddedIn
             <p/>
             <button className="uiButton" onClick={() => setEditMode(true)}>{"Edit"}</button>&nbsp;
             <button className="uiButton" onClick={() => deleteWordClicked()}>Delete</button>{' '}
+            <Menu>
+                <Menu.Target>
+                    <button className="uiButton">Define</button>
+                </Menu.Target>
+                <Menu.Dropdown>
+                    {canShowTranscription && <Menu.Item onClick={showTranscriptionClicked}>Transcription</Menu.Item>}
+                    {!isCompound && <Menu.Item onClick={() => setShowBaseWord(!showBaseWord)}>Lemma</Menu.Item>}
+                    <Menu.Item onClick={defineAsCompoundClicked}>Compound</Menu.Item>
+                    {!isCompound && <Menu.Item onClick={() => setShowVariationOf(!showVariationOf)}>Variation</Menu.Item>}
+                </Menu.Dropdown>
+            </Menu>{' '}
+            <Menu>
+                <Menu.Target>
+                    <button className="uiButton">Link</button>
+                </Menu.Target>
+                <Menu.Dropdown>
+                    <Menu.Item onClick={() => setShowDerivedWord(!showDerivedWord)}>Add inflected form</Menu.Item>
+                    <Menu.Item onClick={() => setShowRelated(!showRelated)}>Add related word</Menu.Item>
+                    {!isCompound && <Menu.Item onClick={() => setShowVariation(!showVariation)}>Add variation</Menu.Item>}
+                    <Menu.Item onClick={() => setShowRuleLink(!showRuleLink)}>Add related rule</Menu.Item>
+                    <Menu.Item onClick={() => setShowOriginWord(!showOriginWord)}>Add origin word</Menu.Item>
+                    <Menu.Item onClick={() => setShowDerivativeWord(!showDerivativeWord)}>Add derivative word</Menu.Item>
+                    {canSuggestParseCandidates &&
+                        <Menu.Item onClick={() => suggestParseCandidatesClicked()}>Suggest lemma and derivation</Menu.Item>}
+                    {word.suggestedDeriveSequences.map(seq =>
+                        <Menu.Item key={seq.id} onClick={() => deriveThroughSequenceClicked(seq.id)}>Derive through {seq.name}</Menu.Item>)}
+                </Menu.Dropdown>
+            </Menu>{' '}
             {canEdit && dictionaries.includes("wiktionary") && <>
                 <button className="uiButton" onClick={() => lookupWordClicked()}>Look up in Wiktionary</button>
                 <p>
@@ -610,22 +638,18 @@ function SingleWord({word, embeddedInWordIds}: { word: WordViewModel, embeddedIn
             </>
         }
 
-        {canEdit && <Accordion defaultValue={word.baseWord || realGloss ? "" : "define"} classNames={{root: "linkAccordion"}}>
-            <Accordion.Item value="define"><Accordion.Control><b>Link</b></Accordion.Control><Accordion.Panel>
-            {canShowTranscription && <><button className="uiButton" onClick={showTranscriptionClicked}>Transcription</button>{' '}</>}
+        {canEdit && <>
             <WordPickerModal opened={showTranscription} onClose={() => setShowTranscription(false)} title="Add transcription"
                              linkType={LinkTypes.Transcription} linkTarget={word} reverseLink={true} languageReadOnly={true}
                              defaultTab="new"
                              defaultValues={{language: word.language, text: suggestedTranscription}}
                              wordSubmitted={submitted}/>
 
-            {!isCompound && <><button className="uiButton" onClick={() => setShowBaseWord(!showBaseWord)}>Lemma</button>{' '}</>}
             <WordPickerModal opened={showBaseWord} onClose={() => setShowBaseWord(false)} title="Add lemma"
                              linkType={LinkTypes.Derived} linkTarget={word} reverseLink={true} languageReadOnly={true}
                              showSyllabographic={word.syllabographic}
                              defaultValues={{language: word.language}} wordSubmitted={submitted}/>
 
-            <button className="uiButton" onClick={defineAsCompoundClicked}>Compound</button>{' '}
             <WordPickerModal opened={showCompoundComponent} onClose={() => setShowCompoundComponent(false)}
                              title="Define compound"
                              newCompound={true} linkTarget={word}
@@ -633,7 +657,6 @@ function SingleWord({word, embeddedInWordIds}: { word: WordViewModel, embeddedIn
                              showSyllabographic={word.syllabographic}
                              defaultValues={{language: word.language}} wordSubmitted={submitted}/>
 
-            {!isCompound && <><button className="uiButton" onClick={() => setShowVariationOf(!showVariationOf)}>Variation</button><br/></>}
             <WordPickerModal opened={showVariationOf} onClose={() => setShowVariationOf(false)} title="Add variation"
                              linkType={LinkTypes.Variation} reverseLink={true} linkTarget={word}
                              defaultValues={{language: word.language}}
@@ -641,58 +664,43 @@ function SingleWord({word, embeddedInWordIds}: { word: WordViewModel, embeddedIn
                              showSyllabographic={word.syllabographic}
                              wordSubmitted={submitted}/>
 
-            {canSuggestParseCandidates && <>
-                <button className="inlineButton" onClick={() => suggestParseCandidatesClicked()}>Suggest lemma and derivation</button>
-                <br/>
-                {parseCandidates.map(pc => (
-                    <>
-                        <p>
-                            {pc.wordId !== null &&
-                                <Link href={`/${graph}/word/${word.language}/${pc.text}/${pc.wordId}`}>{pc.text}</Link>}
-                            {pc.wordId === null && <i>{pc.text}</i>}
-                            {pc.categories.length === 0 && ` (${pc.ruleNames.join(",")})`}
-                            {pc.categories}?{' '}
-                            <button onClick={() => acceptParseCandidate(pc)}>Accept</button>
-                        </p>
-                    </>))}</>}
-
-            <button className="uiButton" onClick={() => setShowDerivedWord(!showDerivedWord)}>Add inflected form</button>{' '}
             <WordPickerModal opened={showDerivedWord} onClose={() => setShowDerivedWord(false)} title="Add inflected form"
                              linkType={LinkTypes.Derived} linkTarget={word}
                              defaultValues={{language: word.language}} wordSubmitted={submitted}/>
 
-            <button className="uiButton" onClick={() => setShowRelated(!showRelated)}>Add related word</button>{' '}
             <WordPickerModal opened={showRelated} onClose={() => setShowRelated(false)} title="Add related word"
                              linkType={LinkTypes.Related} linkTarget={word}
                              defaultValues={{language: word.language}} languageReadOnly={true} wordSubmitted={submitted}/>
 
-
-            {!isCompound && <><button className="uiButton" onClick={() => setShowVariation(!showVariation)}>Add variation</button>{' '}</>}
             <WordPickerModal opened={showVariation} onClose={() => setShowVariation(false)} title="Add variation"
                              linkType={LinkTypes.Variation} linkTarget={word}
                              defaultValues={{language: word.language}}
                              languageReadOnly={true}
                              showSyllabographic={word.syllabographic}
                              wordSubmitted={submitted}/>
-            <button className="uiButton" onClick={() => setShowRuleLink(!showRuleLink)}>Add related rule</button><br/>
-            {showRuleLink && <RuleLinkForm submitted={ruleLinkSubmitted} fromEntityId={word.id}/>}
 
-            <button className="uiButton"  onClick={() => setShowOriginWord(!showOriginWord)}>Add origin word</button>{' '}
             <WordPickerModal opened={showOriginWord} onClose={() => setShowOriginWord(false)} title="Add origin word"
                              linkType={LinkTypes.Origin} linkTarget={word} reverseLink={true}
                              defaultValues={{gloss: word.gloss}} wordSubmitted={submitted}/>
-            <button className="uiButton"  onClick={() => setShowDerivativeWord(!showDerivativeWord)}>Add derivative word</button>
+
             <WordPickerModal opened={showDerivativeWord} onClose={() => setShowDerivativeWord(false)} title="Add derivative word"
                              linkType={LinkTypes.Origin} linkTarget={word}
                              defaultValues={{gloss: word.gloss}} wordSubmitted={submitted}/>
-            {word.suggestedDeriveSequences.map(seq => <>
-                {' '}
-                <button className="inlineButton" onClick={() => deriveThroughSequenceClicked(seq.id)}>Derive through {seq.name}</button>
-            </>)}
-            <br/>
-            <p/>
+
+            {showRuleLink && <RuleLinkForm submitted={ruleLinkSubmitted} fromEntityId={word.id}/>}
+
+            {parseCandidates.map(pc => (
+                <p key={pc.text}>
+                    {pc.wordId !== null &&
+                        <Link href={`/${graph}/word/${word.language}/${pc.text}/${pc.wordId}`}>{pc.text}</Link>}
+                    {pc.wordId === null && <i>{pc.text}</i>}
+                    {pc.categories.length === 0 && ` (${pc.ruleNames.join(",")})`}
+                    {pc.categories}?{' '}
+                    <button onClick={() => acceptParseCandidate(pc)}>Accept</button>
+                </p>))}
+
             {errorText !== "" && <div className="errorText">{errorText}</div>}
-        </Accordion.Panel></Accordion.Item></Accordion>}
+        </>}
         {word.hasParadigms && <Link href={`/${graph}/paradigms/${word.language}/word/${word.id}`}>Paradigms</Link>}
 
         {word.baseWord && <blockquote><SingleWord word={word.baseWord} embeddedInWordIds={(embeddedInWordIds || []).concat([word.id])}/></blockquote>}
