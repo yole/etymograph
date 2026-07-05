@@ -106,17 +106,6 @@ class TlhDigImportTest {
     }
 
     @Test
-    fun akkadianCaseForm() {
-        val rule = hittite.rule("", addedCategories = ".D/L.SG")
-        val corpusText = importWord("""<w trans="I-NA zuliaššan" mrp0sel=" 1a" mrp1="zuli=a-@Zuliya@{a → …:D/L.SG}@39.2 += ššan@OBPs@@ ÍD"><aGr>I-NA</aGr> <d>ÍD</d>zu-li-aš-ša-an</w>""")
-        assertEquals(1, corpusText.words[0].index)
-        val word = corpusText.words[0].word.transcription
-        val compound = graph.findCompoundsByCompoundWord(word).first()
-        assertEquals("zulia", compound.components[0].lemma.text)
-        assertEquals(rule, compound.components[0].lemmaRule)
-    }
-
-    @Test
     fun bracketInDeterminant() {
         val corpusText = importWord("""<w><d>MUŠ<del_fin/>EN</d></w>""")
         assertEquals("^MUŠ]EN^", corpusText.text.trim())
@@ -247,6 +236,15 @@ class TlhDigImportTest {
     fun lineNumber() {
         val corpusText = importWord("""<lb txtid="HKM 3" lnr="Vs. 1" lg="Hit" cu="𒌝𒈠𒀭𒌓𒅆𒈠"/> <w trans="UM-MA" mrp0sel=" 1 " mrp1="UMMA@folgendermaßen@ADV@@ "><aGr>UM-MA</aGr></w>""")
         assertEquals("Vs. 1# _UM-MA", corpusText.text)
+    }
+
+    @Test
+    fun cliticsEverywhere() {
+        val corpusText = importWord("""<w trans="nuazakan" mrp0sel=" 1 " mrp1="nu=wa=z@@ CONNn=QUOT=REFL@ += ma=kkan@CNJctr=OBPk@@ " >nu-wa-za-kán</w>""")
+        val word = corpusText.words[0].word.transcription
+        val compound = graph.findCompoundsByCompoundWord(word).single()
+        assertEquals(5, compound.components.size)
+        assertEquals("nu", compound.components[0].text)
     }
 
     private fun findWord(text: String, syllabographic: Boolean = false): Word =

@@ -3,6 +3,7 @@ package page.yole.etymograph.importers
 import org.jdom2.Content
 import org.jdom2.Element
 import org.jdom2.input.SAXBuilder
+import page.yole.etymograph.AccentType
 import page.yole.etymograph.CorpusText
 import page.yole.etymograph.Graph
 import page.yole.etymograph.JsonGraph
@@ -11,6 +12,8 @@ import page.yole.etymograph.Language
 import page.yole.etymograph.Link
 import page.yole.etymograph.Rule
 import page.yole.etymograph.Word
+import page.yole.etymograph.composed
+import page.yole.etymograph.decomposed
 import page.yole.etymograph.findMatchingRule
 import page.yole.etymograph.isAnyGlossSimilar
 import page.yole.etymograph.removeDiacritics
@@ -139,7 +142,7 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
             .substringBefore(',')
             .replace("(", "")
             .replace(")", "")
-            .replace("y", "i̯")
+            .normalizeSemivowels()
             .replace("IA", "I̯A")
             .trimEnd { it.isDigit() }
             .removeSuffix("-")
@@ -166,10 +169,23 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
             }
         }
 
+        val encliticTexts = mutableListOf<String>()
+        val encliticAnalyses = mutableListOf<String>()
         val paradigmWithEnclitics = mrpElements[3].substringBeforeLast('@')
         if ("+=" in paradigmWithEnclitics) {
             val enclitics = paradigmWithEnclitics.substringAfter("+=").trim()
-            transWord = createEncliticCompound(transWord, enclitics)
+            val (encliticText, encliticAnalysis) = enclitics.trimEnd('@').split('@', limit = 2)
+            encliticTexts.addAll(encliticText.split('='))
+            encliticAnalyses.addAll(encliticAnalysis.split('='))
+        }
+        if ('=' in lemma && '=' in selectedAnalysis) {
+            encliticTexts.addAll(0, lemma.normalizeSemivowels().substringAfter('=').split('='))
+            encliticAnalyses.addAll(0, selectedAnalysis.substringAfter('=').split('='))
+            selectedAnalysis = selectedAnalysis.substringBefore('=')
+            cleanLemma = lemma.substringBefore('=').normalizeSemivowels()
+        }
+        if (encliticTexts.isNotEmpty()) {
+            transWord = createEncliticCompound(transWord, encliticTexts, encliticAnalyses)
         }
 
         val posMarkers = mutableListOf<String>()
@@ -213,6 +229,10 @@ private fun String.normalizeSpelling(): String = this
     .replace("da", "ta")
     .replace("bu", "pu")
 
+
+private fun String.normalizeSemivowels() = this
+    .replace("y", "i̯")
+    .replace("w", "u̯")
 
 private fun findRulesByMrp(mrp: String, hittite: Language, posMarkers: MutableList<String>): List<Rule> {
     val analysis = mrp.removeSuffix("(UNM)").removeSuffix("(ABBR)").removePrefix("…:")
@@ -264,16 +284,12 @@ private val properNameDeterminants = setOf("m", "f", "URU")
 private val ignoreCategories = setOf("LUW||HITT", "HITT")
 private val optionalIgnoreCategories = setOf("C", "N", "PRS")
 
-private fun createEncliticCompound(word: Word, enclitics: String): Word {
-    val (encliticText, encliticAnalysis) = enclitics.trimEnd('@').split('@', limit = 2)
-    val encliticTexts = encliticText.split('=')
-    val encliticAnalyses = encliticAnalysis.split('=')
-
+private fun createEncliticCompound(word: Word, encliticTexts: List<String>, encliticAnalyses: List<String>): Word {
     var tail = word.text
     val compoundElements = mutableListOf<Word>()
     for (i in encliticTexts.size - 1 downTo 0) {
         val clitic = findOrAddWordByTextOnly(word.language, encliticTexts[i], encliticAnalyses[i])
-        val len = longestCommonTail(tail.removeDiacritics(), encliticTexts[i])
+        val len = longestCommonTail(tail.removeSignVariants(), encliticTexts[i])
         if (len == 0) break
         tail = tail.substring(0, tail.length - len).removeSuffix("-")
         compoundElements.add(0, clitic)
@@ -375,3 +391,9 @@ private fun String.convertSubscripts(): String {
         if (c in subscriptZero..subscriptNine) (c.code - subscriptZero.code + '0'.code).toChar() else c
     }.joinToString("")
 }
+
+private fun String.removeSignVariants() =
+    decomposed()
+        .replace(AccentType.Grave.combiningMark.toString(), "")
+        .replace(AccentType.Acute.combiningMark.toString(), "")
+        .composed()
