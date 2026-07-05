@@ -33,6 +33,17 @@ class CompoundTest : QBaseTest() {
     }
 
     @Test
+    fun segmentedTextCliticAppend() {
+        val faramiri = q.word("faramiri")
+        mir.classes = listOf("clitic")
+        val i = q.word("i", "PL", classes = listOf(KnownClasses.clitic))
+        val compound = graph.createCompound(faramiri, listOf(fara, mir))
+        assertEquals("fara=miri", faramiri.segmentedText())
+        graph.addToCompound(compound, i)
+        assertEquals("fara=mir=i", faramiri.segmentedText())
+    }
+
+    @Test
     fun compoundsInDictionary() {
         val fara = q.word("fara", "fara.NOM")
         graph.createCompound(faramir, listOf(fara, mir))

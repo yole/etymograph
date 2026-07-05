@@ -737,6 +737,7 @@ open class InMemoryGraph : Graph() {
             throw IllegalArgumentException("A word cannot be a compound member of itself")
         }
         compound.components.add(component)
+        compound.compoundWord.cachedSegments = null
     }
 
     override fun findCompoundsByComponent(component: Word): List<Compound> {
