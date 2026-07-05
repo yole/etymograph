@@ -173,7 +173,7 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
         val encliticAnalyses = mutableListOf<String>()
         val paradigmWithEnclitics = mrpElements[3].substringBeforeLast('@')
         if ("+=" in paradigmWithEnclitics) {
-            val enclitics = paradigmWithEnclitics.substringAfter("+=").trim()
+            val enclitics = paradigmWithEnclitics.substringAfter("+=").trim().normalizeSemivowels()
             val (encliticText, encliticAnalysis) = enclitics.trimEnd('@').split('@', limit = 2)
             encliticTexts.addAll(encliticText.split('='))
             encliticAnalyses.addAll(encliticAnalysis.split('='))

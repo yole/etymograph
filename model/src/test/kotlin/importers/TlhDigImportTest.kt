@@ -157,6 +157,10 @@ class TlhDigImportTest {
     @Test
     fun noCategories() {
         val corpusText = importWord("""<w trans="EGIRannakan" mrp0sel=" 1a" mrp1="EGIR-an@danach@{a → ADV}@@ += ya=kkan@CNJadd=OBPk@"><sGr>EGIR</sGr>-an-na-kán</w>""")
+        val word = corpusText.words[0].word
+        val compound = graph.findCompoundsByCompoundWord(word).single()
+        assertEquals(3, compound.components.size)
+        assertEquals("i̯a", compound.components[1].text)
     }
 
     @Test
