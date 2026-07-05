@@ -294,6 +294,9 @@ private fun createEncliticCompound(word: Word, encliticTexts: List<String>, encl
         tail = tail.substring(0, tail.length - len).removeSuffix("-")
         compoundElements.add(0, clitic)
     }
+    if (compoundElements.isEmpty()) {
+        return word
+    }
 
     val headWord = findOrAddWordByTextOnly(word.language, tail, null)
     compoundElements.add(0, headWord)

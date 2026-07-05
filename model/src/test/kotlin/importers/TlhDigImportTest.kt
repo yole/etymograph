@@ -247,6 +247,14 @@ class TlhDigImportTest {
         assertEquals("nu", compound.components[0].text)
     }
 
+    @Test
+    fun mismatchedClitics() {
+        val corpusText = importWord("""<w trans="tukaz" mrp0sel=" 1 " mrp1="zik@du@PPROa.2SG.DAT/ACC@32.3 += a=za@CNJctr=REFL@@ ">t<del_in/>u<del_fin/>-ga-az</w>""")
+        val word = corpusText.words[0].word.transcription
+        val compound = graph.findCompoundsByCompoundWord(word).firstOrNull()
+        assertNull(compound)
+    }
+
     private fun findWord(text: String, syllabographic: Boolean = false): Word =
         graph.wordsByText(hittite, text, syllabographic).single()
 
