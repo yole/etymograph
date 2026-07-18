@@ -51,6 +51,14 @@ class CorpusTextTest : QBaseTest() {
     }
 
     @Test
+    fun decapitalizeAfterParagram() {
+        val corpusText = q.corpusText("cave.\n\nNuper")
+
+        val lines = corpusText.mapToLines()
+        assertEquals("nuper", lines[2].corpusWords[0].normalizedText)
+    }
+
+    @Test
     fun testNormalizedTextDecapitalized() {
         val corpusText = q.corpusText("Ai Laurie. Lantar? Lassi")
 

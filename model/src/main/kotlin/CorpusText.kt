@@ -141,7 +141,11 @@ class CorpusText(
 
     private fun splitIntoNormalizedWords(line: String, lineStartIndex: Int): List<WordText> {
         var currentIndex = lineStartIndex
-        return line.trim().split(' ').map {
+        val trimmed = line.trim()
+        if (trimmed.isEmpty()) {
+            return emptyList()
+        }
+        return trimmed.split(' ').map {
             val cleanText = removePunctuation(it)
             WordText(it,
                 if (language.syllabographic) cleanText else language.normalizeWord(cleanText),
