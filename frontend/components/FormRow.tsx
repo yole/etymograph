@@ -24,7 +24,9 @@ export default function FormRow(props: FormRowProps) {
     }}>
         <td><label htmlFor={props.id}>{props.label}:</label></td>
         <td>
-            <input id={props.id} readOnly={props.readOnly} size={props.size} type="text" autoComplete="off" className="formRow" {...form.getInputProps(props.id)}/>
+            <input id={props.id} readOnly={props.readOnly} size={props.size} type="text" autoComplete="off"
+                   data-1p-ignore={true}
+                   className="formRow" {...form.getInputProps(props.id)}/>
             {props.inputAssist &&
                 <InputAssist id={props.id}
                              language={props.inputAssistLanguage}
