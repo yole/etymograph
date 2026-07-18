@@ -100,7 +100,7 @@ class CorpusText(
                     tw.normalizedText
                 else
                     restoreCase(tw.normalizedText, tw.baseText)
-                sentenceStart = tw.baseText.endsWith('.')
+                sentenceStart = sentenceEndPunctuation.any { tw.baseText.endsWith(it) }
                 val syllabogramSequence = if (language.syllabographic) TlhDigSyllabogramSyntax.parse(tw.baseText) else null
                 if (word != null) {
                     val stressData = if (language.accentTypes.isEmpty()) word.calculateStress() else null
@@ -208,6 +208,7 @@ class CorpusText(
         const val leftHalfBracket = '⸢'
         const val rightHalfBracket = '⸣'
         val punctuation = charArrayOf('!', ',', '.', '?', ':', ';', '\"', '\'', '(', ')', '|', '·', '〈', '〉')
+        val sentenceEndPunctuation = charArrayOf('.', '?', '!')
         val leadingPunctuation = charArrayOf('\"', '(', '\'', '〈')
         val innerPunctuation = arrayOf('[', ']', leftHalfBracket, rightHalfBracket)
     }

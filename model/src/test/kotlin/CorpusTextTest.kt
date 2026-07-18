@@ -52,12 +52,13 @@ class CorpusTextTest : QBaseTest() {
 
     @Test
     fun testNormalizedTextDecapitalized() {
-        val corpusText = q.corpusText("Ai Laurie. Lantar")
+        val corpusText = q.corpusText("Ai Laurie. Lantar? Lassi")
 
         val lines = corpusText.mapToLines()
         assertEquals("ai", lines[0].corpusWords[0].normalizedText)
         assertEquals("Laurie", lines[0].corpusWords[1].normalizedText)
         assertEquals("lantar", lines[0].corpusWords[2].normalizedText)
+        assertEquals("lassi", lines[0].corpusWords[3].normalizedText)
     }
 
     @Test
