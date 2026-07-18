@@ -110,7 +110,7 @@ class SegmentTest : QBaseTest() {
     }
 
     @Test
-    fun testChainTwoSegments() {
+    fun chainTwoSegments() {
         q.rule("- append 'li'", name = "q-ppl")
         q.rule("- append 'nna'", name = "q-all")
 

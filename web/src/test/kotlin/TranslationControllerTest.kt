@@ -7,7 +7,7 @@ import page.yole.etymograph.web.controllers.TranslationController
 
 class TranslationControllerTest {
     @Test
-    fun testSimple() {
+    fun simple() {
         val fixture = QTestFixture()
 
         val corpusController = CorpusController()
@@ -23,7 +23,7 @@ class TranslationControllerTest {
     }
 
     @Test
-    fun testAnchoredTranslationRange() {
+    fun anchoredTranslationRange() {
         val fixture = QTestFixture()
 
         val corpusController = CorpusController()
@@ -49,7 +49,7 @@ class TranslationControllerTest {
     }
 
     @Test
-    fun testDeleteTranslation() {
+    fun deleteTranslation() {
         val fixture = QTestFixture()
 
         val corpusController = CorpusController()

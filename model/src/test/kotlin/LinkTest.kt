@@ -5,7 +5,7 @@ import org.junit.Test
 
 class LinkTest : QBaseTest() {
     @Test
-    fun testDuplicateLink() {
+    fun duplicateLink() {
         val word1 = q.word("elen", "elen")
         val word2 = q.word("sila", "sila")
         graph.addLink(word1, word2, Link.Related)
@@ -15,7 +15,7 @@ class LinkTest : QBaseTest() {
     }
 
     @Test
-    fun testLinkCycle() {
+    fun linkCycle() {
         val word1 = q.word("elen", "elen")
         val word2 = q.word("sila", "sila")
         val word3 = q.word("lumenn", "lumenn")

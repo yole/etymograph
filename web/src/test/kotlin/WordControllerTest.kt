@@ -29,7 +29,7 @@ class WordControllerTest {
     }
 
     @Test
-    fun testEmptyPOS() {
+    fun emptyPOS() {
         val addWordParams = WordController.AddWordParameters("ea", "be", "", "", "",false, false,"", "")
         val wordViewModel = wordController.addWord(graph, "q", addWordParams)
 
@@ -40,7 +40,7 @@ class WordControllerTest {
     }
 
     @Test
-    fun testValidateWordClass() {
+    fun validateWordClass() {
         fixture.q.wordClasses.add(WordCategory("Gender", listOf("N"), listOf(WordCategoryValue("Male", "m"))))
 
         val addWordParams = WordController.AddWordParameters("ea", "be", "", "N", "m", false, false, "", "")

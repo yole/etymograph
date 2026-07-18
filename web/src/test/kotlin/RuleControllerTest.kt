@@ -27,7 +27,7 @@ class RuleControllerTest {
     }
 
     @Test
-    fun testGrammaticalCategories() {
+    fun grammaticalCategories() {
         q.grammaticalCategories.add(
             WordCategory("Case", listOf("N"),
                 listOf(WordCategoryValue("Genitive", "GEN"))))
@@ -40,7 +40,7 @@ class RuleControllerTest {
     }
 
     @Test
-    fun testGrammaticalCategoriesExtractNumber() {
+    fun grammaticalCategoriesExtractNumber() {
         q.grammaticalCategories.add(
             WordCategory("Person", listOf("V"),
                 listOf(WordCategoryValue("1st person", "1"))))
@@ -56,7 +56,7 @@ class RuleControllerTest {
     }
 
     @Test
-    fun testEmptyToPOS() {
+    fun emptyToPOS() {
         ruleController.newRule(
             fixture.graph,
             RuleController.UpdateRuleParameters(

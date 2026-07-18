@@ -5,7 +5,7 @@ import org.junit.Assert.*
 
 class CorpusTextTest : QBaseTest() {
     @Test
-    fun testWordIndex() {
+    fun wordIndex() {
         val corpusText = q.corpusText("ai laurie lantar\nyeni unotime")
         val lines = corpusText.mapToLines()
         assertEquals(0, lines[0].corpusWords[0].index)
@@ -13,7 +13,7 @@ class CorpusTextTest : QBaseTest() {
     }
 
     @Test
-    fun testWordIndexTrailingSpace() {
+    fun wordIndexTrailingSpace() {
         val corpusText = q.corpusText("ai laurie lantar \nyeni unotime")
         val lines = corpusText.mapToLines()
         assertEquals(0, lines[0].corpusWords[0].index)
@@ -21,7 +21,7 @@ class CorpusTextTest : QBaseTest() {
     }
 
     @Test
-    fun testAssociateWord() {
+    fun associateWord() {
         val corpusText = q.corpusText("ai laurie lantar")
         val laurie = q.word("laurie")
         corpusText.associateWord(1, laurie)
@@ -30,7 +30,7 @@ class CorpusTextTest : QBaseTest() {
     }
 
     @Test
-    fun testEditText() {
+    fun editText() {
         val corpusText = q.corpusText("ai laurie lantar")
         val laurie = q.word("laurie")
         corpusText.associateWord(1, laurie, "goldenly")
@@ -42,7 +42,7 @@ class CorpusTextTest : QBaseTest() {
     }
 
     @Test
-    fun testNormalizedText() {
+    fun normalizedText() {
         val corpusText = q.corpusText("ai lau[rie] lant⸢a⸣r")
 
         val lines = corpusText.mapToLines()
@@ -59,7 +59,7 @@ class CorpusTextTest : QBaseTest() {
     }
 
     @Test
-    fun testNormalizedTextDecapitalized() {
+    fun normalizedTextDecapitalized() {
         val corpusText = q.corpusText("Ai Laurie. Lantar? Lassi")
 
         val lines = corpusText.mapToLines()
@@ -70,7 +70,7 @@ class CorpusTextTest : QBaseTest() {
     }
 
     @Test
-    fun testNormalizedTextRemoveQuotes() {
+    fun normalizedTextRemoveQuotes() {
         val corpusText = q.corpusText("quet \"Ai laurie lantar,\"")
 
         val lines = corpusText.mapToLines()
@@ -79,7 +79,7 @@ class CorpusTextTest : QBaseTest() {
     }
 
     @Test
-    fun testNormalizedTextRemoveApostrophes() {
+    fun normalizedTextRemoveApostrophes() {
         val corpusText = q.corpusText("quet 'Ai laurie lantar,'")
 
         val lines = corpusText.mapToLines()
@@ -88,7 +88,7 @@ class CorpusTextTest : QBaseTest() {
     }
 
     @Test
-    fun testNormalizedTextRemoveQuotesAssociate() {
+    fun normalizedTextRemoveQuotesAssociate() {
         val corpusText = q.corpusText("quet \"Ai laurie lantar,\"")
 
         val ai = q.word("ai", "ai")
@@ -100,7 +100,7 @@ class CorpusTextTest : QBaseTest() {
     }
 
     @Test
-    fun testNormalizedTextRemoveParentheses() {
+    fun normalizedTextRemoveParentheses() {
         val corpusText = q.corpusText("Perhael (i sennui Panthael)")
 
         val stressRule = q.rule("- stress is on first syllable")
@@ -117,7 +117,7 @@ class CorpusTextTest : QBaseTest() {
     }
 
     @Test
-    fun testAttestations() {
+    fun attestations() {
         val eaV = q.word("ea", "be")
         val eaN = q.word("ea", "being")
         val ct1 = graph.addCorpusText("ea", null, q)
@@ -130,7 +130,7 @@ class CorpusTextTest : QBaseTest() {
     }
 
     @Test
-    fun testAttestationsNotAssigned() {
+    fun attestationsNotAssigned() {
         val eaV = q.word("lantar", "fall")
         val ct1 = graph.addCorpusText("ai laurie lantar", null, q)
 
@@ -139,7 +139,7 @@ class CorpusTextTest : QBaseTest() {
     }
 
     @Test
-    fun testAssociateContextGloss() {
+    fun associateContextGloss() {
         val ct1 = graph.addCorpusText("ai laurie lantar", null, q)
         val laurie = q.word("laurie", "golden")
         ct1.associateWord(1, laurie, "goldenly")
@@ -148,7 +148,7 @@ class CorpusTextTest : QBaseTest() {
     }
 
     @Test
-    fun testLockWordAssociations() {
+    fun lockWordAssociations() {
         val ct1 = graph.addCorpusText("ai laurie lantar", null, q)
         val laurie = q.word("laurie", "golden")
         ct1.lockWordAssociations()

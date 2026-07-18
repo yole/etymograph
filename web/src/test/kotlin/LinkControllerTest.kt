@@ -21,7 +21,7 @@ class LinkControllerTest {
     }
 
     @Test
-    fun testLinkSource() {
+    fun linkSource() {
         val word1 = fixture.graph.findOrAddWord("abc", fixture.q, "abc")
         val word2 = fixture.graph.findOrAddWord("def", fixture.q, "def")
 
