@@ -2,6 +2,7 @@ import {KeyboardEvent, useContext, useState} from "react";
 import {GlobalStateContext} from "@/components/Contexts";
 import {useEtymographFormContext} from "@/components/EtymographForm";
 import {FormFieldProps} from "@/components/FormRow";
+import {Input} from "@mantine/core";
 
 interface SourceInputProps extends FormFieldProps {
     readOnly?: boolean;
@@ -98,7 +99,7 @@ export default function SourceInput(props: SourceInputProps) {
     }
 
     return <tr>
-        <td><label htmlFor={props.id}>{props.label}:</label></td>
+        <td><Input.Label htmlFor={props.id}>{props.label}:</Input.Label></td>
         <td>
             <span className="sourceInput">
                 <input id={props.id} readOnly={props.readOnly} size={props.size} type="text" autoComplete="off"

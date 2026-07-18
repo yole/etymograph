@@ -12,6 +12,7 @@ import PosSelect from "@/components/PosSelect";
 import WordClassSelect from "@/components/WordClassSelect";
 import {LinkTypes} from "@/components/LinkTypes";
 import {AddWordParameters, WordViewModel} from "@/models";
+import {Input} from "@mantine/core";
 
 export interface WordFormData extends AddWordParameters {
     language?: string
@@ -181,7 +182,7 @@ export default function WordForm(props: WordFormProps) {
                             language={props.defaultValues.language} languageProp={props.languageReadOnly !== true ? 'language' : undefined}/>}
         <SourceInput id="source" label="Source"/>
         <tr>
-            <td>Notes:</td>
+            <td><Input.Label>Notes:</Input.Label></td>
             <td><FormTextArea rows={3} cols={50} id="notes"/></td>
         </tr>
         {(props.newCompound === true || isAddingLink) && <>

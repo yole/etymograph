@@ -3,6 +3,7 @@ import {useContext} from "react";
 import Select from "react-select";
 import {FormFieldProps} from "@/components/FormRow";
 import {useEtymographFormContext} from "@/components/EtymographForm";
+import {Input} from "@mantine/core";
 
 interface WordClassSelectProps extends FormFieldProps {
     languageProp?: string;
@@ -40,7 +41,7 @@ export default function WordClassSelect(props: WordClassSelectProps) {
         return <></>;
     }
     return <tr>
-        <td><label htmlFor={props.id}>{props.label}:</label></td>
+        <td><Input.Label htmlFor={props.id}>{props.label}:</Input.Label></td>
         <td>
             <Select options={wordClasses}
                     isMulti={true}

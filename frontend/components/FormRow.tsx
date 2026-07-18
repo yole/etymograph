@@ -1,5 +1,6 @@
 import InputAssist from "@/components/InputAssist";
 import {useEtymographFormContext} from "@/components/EtymographForm";
+import {Input} from "@mantine/core";
 
 export interface FormFieldProps {
     id: string;
@@ -22,7 +23,7 @@ export default function FormRow(props: FormRowProps) {
     return <tr onBlur={() => {
         if (props.handleBlur !== undefined) props.handleBlur(form.getValues())
     }}>
-        <td><label htmlFor={props.id}>{props.label}:</label></td>
+        <td><Input.Label htmlFor={props.id}>{props.label}:</Input.Label></td>
         <td>
             <input id={props.id} readOnly={props.readOnly} size={props.size} type="text" autoComplete="off"
                    data-1p-ignore={true}

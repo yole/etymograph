@@ -3,6 +3,7 @@ import {GlobalStateContext} from "@/components/Contexts";
 import Select from "react-select";
 import {FormFieldProps} from "@/components/FormRow";
 import {useEtymographFormContext} from "@/components/EtymographForm";
+import {Input} from "@mantine/core";
 
 interface RuleLisSelectProps extends FormFieldProps {
     languageProp?: string;
@@ -32,7 +33,7 @@ export default function RuleListSelect(props: RuleLisSelectProps) {
         : rules.find((r) => r.value === value) ?? null
 
     return <tr>
-        <td><label htmlFor={props.id}>{props.label}:</label></td>
+        <td><Input.Label htmlFor={props.id}>{props.label}:</Input.Label></td>
         <td>
             <Select options={rules}
                     isMulti={props.isMulti}
