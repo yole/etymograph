@@ -97,7 +97,8 @@ function CorpusTextGlossChoice(params: CorpusTextGlossChoiceProps) {
 function GlossDropdown(params: {
     corpusText: CorpusTextViewModel,
     word: CorpusWordViewModel,
-    showWordForm: (text: string, index: number) => void,
+    showDefineWordForm: (text: string, index: number) => void,
+    showDefineLemmaForm: (text: string, index: number) => void,
     showTranslationFormAtWord: (index: number) => void
 }) {
     const [opened, setOpened] = useState(false)
@@ -127,8 +128,12 @@ function GlossDropdown(params: {
                 </div>)}
             <div><span className="inlineButton" onClick={() => {
                 setOpened(false)
-                params.showWordForm(w.normalizedText, w.index)
+                params.showDefineWordForm(w.normalizedText, w.index)
             }}>Define word</span></div>
+            <div><span className="inlineButton" onClick={() => {
+                setOpened(false)
+                params.showDefineLemmaForm(w.normalizedText, w.index)
+            }}>Define lemma</span></div>
             <div><span className="inlineButton" onClick={() => {
                 setOpened(false)
                 params.showTranslationFormAtWord(w.index)
@@ -263,6 +268,7 @@ export default function CorpusText(params) {
     const corpusText = params.loaderData as CorpusTextViewModel
     const [editMode, setEditMode] = useState(false)
     const [wordFormVisible, setWordFormVisible] = useState(false);
+    const [wordFormMode, setWordFormMode] = useState<'word' | 'lemma'>('word')
     const [predefWord, setPredefWord] = useState("")
     const [wordIndex, setWordIndex] = useState(-1)
     const [showTranslationForm, setShowTranslationForm] = useState(false)
@@ -293,10 +299,14 @@ export default function CorpusText(params) {
         })
     }
 
-    async function showWordForm(text: string, index: number) {
-        console.log("Showing word form for index " + index)
-        const r = await fetchAlternatives(graph, corpusText.id, index)
-        setAlternatives(r)
+    async function showWordForm(text: string, index: number, mode: 'word' | 'lemma') {
+        if (mode === 'word') {
+            const r = await fetchAlternatives(graph, corpusText.id, index)
+            setAlternatives(r)
+        } else {
+            setAlternatives([])
+        }
+        setWordFormMode(mode)
         setWordFormVisible(true)
         setPredefWord(text)
         setWordIndex(index)
@@ -360,7 +370,8 @@ export default function CorpusText(params) {
                                         <GlossDropdown
                                             corpusText={corpusText}
                                             word={w}
-                                            showWordForm={showWordForm}
+                                            showDefineWordForm={(text, index) => showWordForm(text, index, 'word')}
+                                            showDefineLemmaForm={(text, index) => showWordForm(text, index, 'lemma')}
                                             showTranslationFormAtWord={toggleTranslationForm}/>
                                         {w.contextGloss && <><br/><span className="contextGloss">{w.contextGloss}</span></>}
                                     </span>)}
@@ -375,7 +386,7 @@ export default function CorpusText(params) {
                                         </button>
                                         {' '}
                                     </>)}</div>
-                                    <WordForm key={predefWord} wordSubmitted={wordSubmitted}
+                                    <WordForm key={`${wordFormMode}:${predefWord}`} wordSubmitted={wordSubmitted}
                                               defaultValues={{
                                                   language: corpusText.language,
                                                   text: predefWord,
@@ -383,9 +394,11 @@ export default function CorpusText(params) {
                                                   syllabographic: corpusText.syllabographic,
                                               }}
                                               languageReadOnly={true}
-                                              linkType={LinkTypes.Derived}
-                                              reverseLink={true}
-                                              linkTargetText={predefWord}
+                                              textReadOnly={wordFormMode === 'word'}
+                                              linkType={wordFormMode === 'lemma' ? LinkTypes.Derived : undefined}
+                                              reverseLink={wordFormMode === 'lemma'}
+                                              linkTargetText={wordFormMode === 'lemma' ? predefWord : undefined}
+                                              forceNewLinkTarget={wordFormMode === 'lemma'}
                                               showContextGloss={true}
                                               showSyllabographic={true}
                                               cancelled={() => setWordFormVisible(false)}/>

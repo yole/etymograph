@@ -30,6 +30,7 @@ interface WordFormProps extends EtymographFormProps<WordFormData, WordViewModel>
     newCompound?: boolean
     addToCompound?: number
     linkTargetText?: string
+    forceNewLinkTarget?: boolean
     textReadOnly?: boolean
     showContextGloss?: boolean
     hideReconstructed?: boolean
@@ -70,14 +71,17 @@ export default function WordForm(props: WordFormProps) {
         if (isAddingLink) {
             let linkTarget = props.linkTarget
             if (props.linkTargetText !== undefined) {
-                if (wordJson.text.toLocaleLowerCase('fr') === props.linkTargetText.toLocaleLowerCase('fr')) {
+                if (!props.forceNewLinkTarget &&
+                    wordJson.text.toLocaleLowerCase('fr') === props.linkTargetText.toLocaleLowerCase('fr')) {
                     if (props.wordSubmitted !== undefined) {
                         props.wordSubmitted(wordJson, undefined, data)
                     }
                     return
                 }
                 else {
-                    const addWordResponse = await addWord(graph, data.language, props.linkTargetText)
+                    const addWordResponse = await addWord(graph, data.language, props.linkTargetText,
+                        undefined, undefined, undefined, undefined, false, data.syllabographic,
+                        null, null, props.forceNewLinkTarget)
                     linkTarget = await addWordResponse.json()
                 }
             }
