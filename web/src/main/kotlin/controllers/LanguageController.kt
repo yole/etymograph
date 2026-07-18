@@ -225,7 +225,7 @@ class LanguageController {
         val graphemes = mutableMapOf<String, MutableList<String>>()
         for (language in graph.allLanguages()) {
             for (phoneme in language.phonemes) {
-                val grapheme = phoneme.graphemes.first()
+                val grapheme = phoneme.graphemes.firstOrNull() ?: continue
                 if (grapheme.any { it !in 'a'..'z'}) {
                     val langList = graphemes.getOrPut(grapheme) { mutableListOf() }
                     langList.add(language.shortName)

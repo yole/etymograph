@@ -93,6 +93,17 @@ class LanguageControllerTest {
     }
 
     @Test
+    fun inputAssistSkipsPhonemesWithoutGraphemes() {
+        val phonemeWithoutGraphemes = fixture.graph.addPhoneme(fixture.q, listOf("x"), null, emptySet())
+        fixture.graph.addPhoneme(fixture.q, listOf("ä"), null, emptySet())
+        phonemeWithoutGraphemes.graphemes = emptyList()
+
+        val viewModel = languageController.inputAssist(fixture.graph)
+
+        assertEquals(listOf("q"), viewModel.graphemes.single { it.text == "ä" }.languages)
+    }
+
+    @Test
     fun stressTypes() {
         val parameters = LanguageController.UpdateLanguageParameters(
             accentTypes = listOf(AccentType.Circumflex.name)
