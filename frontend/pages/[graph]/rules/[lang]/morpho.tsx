@@ -1,10 +1,11 @@
+import {useState} from "react";
 import {useRouter} from "next/router";
 import Link from "next/link";
+import {Modal} from "@mantine/core";
 import {fetchAllLanguagePaths, fetchBackend, generateParadigm, allowEditGraph} from "@/api";
 import {GenerateParadigmParameters, ParadigmViewModel, RuleListViewModel} from "@/models";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import LanguageNavBar from "@/components/LanguageNavBar";
-import EtymographFormView from "@/components/EtymographFormView";
 import EtymographForm from "@/components/EtymographForm";
 import FormRow from "@/components/FormRow";
 import SourceInput from "@/components/SourceInput";
@@ -45,26 +46,31 @@ export default function MorphoRuleList(params) {
     const graph = router.query.graph as string
     const lang = router.query.lang as string
     const canEdit = allowEditGraph()
+    const [generateParadigmOpened, setGenerateParadigmOpened] = useState(false)
 
     return <>
         <Breadcrumbs langId={lang} langName={ruleList.toLangFullName} title="Morphology"/>
         <LanguageNavBar langId={lang}/>
         <p/>
         <RuleListView list={ruleList}/>
-        {canEdit && <p>
-            <button className="uiButton" onClick={() => router.push(`/${graph}/rules/${lang}/new?type=morpho`)}>Add Rule</button>
-            {' '}
-            <button className="uiButton" onClick={() => router.push(`/${graph}/paradigms/${lang}/new`)}>Add Paradigm</button>
-            {' '}
-            <EtymographFormView editButtonTitle="Generate Paradigm">
+        {canEdit && <>
+            <p>
+                <button className="uiButton" onClick={() => router.push(`/${graph}/rules/${lang}/new?type=morpho`)}>Add Rule</button>
+                {' '}
+                <button className="uiButton" onClick={() => router.push(`/${graph}/paradigms/${lang}/new`)}>Add Paradigm</button>
+                {' '}
+                <button className="uiButton" onClick={() => setGenerateParadigmOpened(true)}>Generate Paradigm</button>
+            </p>
+            <Modal opened={generateParadigmOpened} onClose={() => setGenerateParadigmOpened(false)} title="Generate Paradigm" size="lg">
                 <EtymographForm<GenerateParadigmParameters, ParadigmViewModel>
                     create={(data) => generateParadigm(graph, lang, data)}
+                    setEditMode={setGenerateParadigmOpened}
                     redirectOnCreate={(r) => `/${graph}/paradigm/${r.id}`}>
 
                     <table>
                         <tbody>
                         <FormRow label="Name" id="name"/>
-                        <PosSelect label="POS" id="pos" language={lang}/>
+                        <PosSelect label="POS" id="pos" language={lang} isMulti={true}/>
                         <FormRow label="Added Categories" id="addedCategories"/>
                         <FormRow label="Prefix" id="prefix"/>
                         <GrammaticalCategorySelect label="Rows" id="rows" language={lang} posProp="pos"/>
@@ -74,7 +80,7 @@ export default function MorphoRuleList(params) {
                         </tbody>
                     </table>
                 </EtymographForm>
-            </EtymographFormView>
-        </p>}
+            </Modal>
+        </>}
     </>
 }

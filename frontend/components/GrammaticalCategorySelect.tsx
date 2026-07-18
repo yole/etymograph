@@ -22,12 +22,13 @@ export default function GrammaticalCategorySelect(props: GrammaticalCategorySele
     const pos = props.posProp !== undefined
         ? formValues[props.posProp]
         : props.pos
+    const selectedPos = pos?.split(",").map(p => p.trim()).filter(Boolean)
     const language = globalState.languages.find(l => l.shortName === lang)
 
     const grammaticalCategories = !language
         ? []
         : language.grammaticalCategories
-            .filter(gc => pos === undefined || gc.pos.includes(pos))
+            .filter(gc => selectedPos === undefined || selectedPos.some(p => gc.pos.includes(p)))
             .map((gc) => ({
                 value: gc.name,
                 label: gc.name

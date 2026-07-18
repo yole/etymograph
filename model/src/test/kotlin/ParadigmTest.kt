@@ -138,9 +138,10 @@ class ParadigmTest : QBaseTest() {
     @Test
     fun generateParadigm() {
         val paradigm = generateParadigm(
-            q, "Noun", listOf("N"),
+            q, "Noun", listOf("N", "ADJ"),
             listOf("Case"), listOf("Number"), "q-", "", emptyList())
 
+        assertEquals(listOf("N", "ADJ"), paradigm.pos)
         assertNotNull(graph.ruleByName("q-nom-sg"))
     }
 
