@@ -25,6 +25,6 @@ export default function ParadigmForm(props: ParadigmFormProps) {
             <RuleListSelect label="Pre rule" id="preRuleName" language={props.lang} isMulti={false} showNone={true}/>
             <RuleListSelect label="Post rule" id="postRuleName" language={props.lang} isMulti={false} showNone={true}/>
         </tbody></table>
-        <FormTextArea rows={10} cols={80} id="text"/>
+        <FormTextArea rows={10} cols={80} id="text" className="uiTextArea"/>
     </EtymographForm>
 }

@@ -166,6 +166,7 @@ code {
 
 .uiTextArea {
   font-size: medium;
+  margin-top: 8px;
 }
 
 .ruleComment {
