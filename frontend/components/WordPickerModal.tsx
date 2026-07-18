@@ -198,7 +198,7 @@ export default function WordPickerModal(props: WordPickerModalProps) {
         }
     }
 
-    return <Modal opened={props.opened} onClose={props.onClose} title={props.title} size="lg" onKeyDown={handleKeyDown}>
+    return <Modal opened={props.opened} onClose={props.onClose} title={props.title} size="xl" onKeyDown={handleKeyDown}>
         <Tabs value={activeTab} onChange={setActiveTab}>
             <Tabs.List>
                 <Tabs.Tab value="existing">Existing word</Tabs.Tab>
