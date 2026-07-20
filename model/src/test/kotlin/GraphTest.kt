@@ -25,6 +25,16 @@ class GraphTest : QBaseTest() {
     }
 
     @Test
+    fun updateWordTextRejectsInvalidText() {
+        val word = q.word("abc", "abc")
+
+        assertThrows(IllegalArgumentException::class.java) {
+            graph.updateWordText(word, "abc?", false)
+        }
+        assertEquals("abc", word.text)
+    }
+
+    @Test
     fun classifyWordI() {
         val ek = q.word("ek", "I")
         assertEquals(1, graph.dictionaryWords(q).size)
