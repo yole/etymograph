@@ -1,6 +1,6 @@
 import {describe, expect, it} from "vitest";
 import {CorpusLineViewModel, CorpusTextViewModel, CorpusWordViewModel, TranslationViewModel} from "@/models";
-import {buildSegments} from "./[id]";
+import {buildSegments} from "@/pages/[graph]/corpus/text/[id]";
 
 function word(index: number): CorpusWordViewModel {
     return {
