@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "paths": {
       "@/*": [
         "./*"
@@ -18,7 +18,7 @@
     "incremental": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "target": "ES6"
