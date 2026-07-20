@@ -1,5 +1,6 @@
 package page.yole.etymograph.web.controllers
 
+import kotlinx.serialization.Serializable
 import org.springframework.web.bind.annotation.*
 import page.yole.etymograph.*
 import page.yole.etymograph.web.resolveLanguage
@@ -23,11 +24,13 @@ class LanguageController {
         val rows: List<PhonemeTableRowViewModel>
     )
 
+    @Serializable
     data class WordCategoryValueViewModel(
         val name: String,
         val abbreviation: String
     )
 
+    @Serializable
     data class WordCategoryViewModel(
         val name: String,
         val pos: List<String>,
@@ -57,16 +60,17 @@ class LanguageController {
         val accentTypes: List<String>
     )
 
+    @Serializable
     data class LanguageShortViewModel(
         val name: String,
         val shortName: String,
-        val protoLanguageShortName: String?,
-        val reconstructed: Boolean,
+        val protoLanguageShortName: String? = null,
+        val reconstructed: Boolean = false,
         val pos: List<WordCategoryValueViewModel>,
         val grammaticalCategories: List<WordCategoryViewModel>,
         val wordClasses: List<WordCategoryViewModel>,
         val dictionaries: List<String>,
-        val hasReconstructedWords: Boolean,
+        val hasReconstructedWords: Boolean = false,
         var descendantLanguages: List<LanguageShortViewModel>? = null
     )
 

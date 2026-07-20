@@ -100,14 +100,15 @@ class RuleController {
         val referencingParadigms: List<ParadigmRefViewModel>
     )
 
+    @Serializable
     data class RuleShortViewModel(
         val id: Int,
         val name: String,
         val toLang: String,
-        val alternative: RuleRefViewModel?,
+        val alternative: RuleRefViewModel? = null,
         val summaryText: String,
-        val optional: Boolean,
-        val dispreferred: Boolean
+        val optional: Boolean = false,
+        val dispreferred: Boolean = false
     )
 
     data class RuleGroupViewModel(
