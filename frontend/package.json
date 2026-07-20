@@ -19,7 +19,7 @@
     "@mantine/hooks": "^8.3.16",
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.2",
-    "eslint": "10.7.0",
+    "eslint": "9.39.5",
     "eslint-config-next": "16.2.10",
     "next": "^16.2.10",
     "react": "19.2.7",
