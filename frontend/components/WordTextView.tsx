@@ -1,6 +1,14 @@
 import {Syllabogram, SyllabogramSequence} from "@/models";
 import WordWithStress from "@/components/WordWithStress";
 
+function renderTextWithSubscript(text: string) {
+    const match = text.match(/^(\D+)(\d+)$/)
+    if (match && match[1]) {
+        return <>{match[1]}<sub>{match[2]}</sub></>
+    }
+    return <>{text}</>
+}
+
 function SyllabogramView(params: {syllabogram: Syllabogram, index: number, prevSyllabogram?: Syllabogram}) {
     let syl = params.syllabogram
     const delimiter = (!params.prevSyllabogram ||
@@ -9,14 +17,6 @@ function SyllabogramView(params: {syllabogram: Syllabogram, index: number, prevS
     )
         ? ""
         : (syl.type == "Logogram" ? "." : "-")
-
-    const renderTextWithSubscript = (text: string) => {
-        const match = text.match(/^(\D+)(\d+)$/)
-        if (match && match[1]) {
-            return <>{match[1]}<sub>{match[2]}</sub></>
-        }
-        return <>{text}</>
-    }
 
     return <span className="syllabogram">
         {delimiter}

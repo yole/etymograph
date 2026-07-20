@@ -34,6 +34,14 @@ export async function getStaticPaths() {
     return {paths, fallback: false}
 }
 
+function renderWordItem(w: DictionaryWordViewModel) {
+    const gloss = w.fullGloss !== null && w.fullGloss !== "" ? w.fullGloss : w.ref.gloss;
+    return <li key={w.ref.id}>
+        <WordLink word={w.ref}/>
+        {w.pos ? <> <i>{w.pos.toLowerCase()}.</i></> : ""} - {gloss}
+    </li>
+}
+
 export default function Dictionary(params) {
     const dict = params.loaderData as DictionaryViewModel
     const router = useRouter()
@@ -87,14 +95,6 @@ export default function Dictionary(params) {
     function exampleSubmitted(r, data) {
         setShowAddSequence(false)
         router.replace(router.asPath)
-    }
-
-    function renderWordItem(w: DictionaryWordViewModel) {
-        const gloss = w.fullGloss !== null && w.fullGloss !== "" ? w.fullGloss : w.ref.gloss;
-        return <li key={w.ref.id}>
-            <WordLink word={w.ref}/>
-            {w.pos ? <> <i>{w.pos.toLowerCase()}.</i></> : ""} - {gloss}
-        </li>
     }
 
     const grouped = dict.wordsByLetter;

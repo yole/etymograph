@@ -9,6 +9,13 @@ interface SourceInputProps extends FormFieldProps {
     size?: number;
 }
 
+function segmentAt(value: string, cursor: number) {
+    const start = value.lastIndexOf(',', cursor - 1) + 1
+    let end = value.indexOf(',', cursor)
+    if (end < 0) end = value.length
+    return {start, end, text: value.substring(start, end)}
+}
+
 // A form row for source fields. Source fields hold a comma-separated list of
 // references, each shaped as "refId:refText" where refId points to a
 // publication. This component offers autocompletion of the publication refIds
@@ -22,13 +29,6 @@ export default function SourceInput(props: SourceInputProps) {
 
     const publications = globalState?.publications ?? []
     const inputProps = form.getInputProps(props.id)
-
-    function segmentAt(value: string, cursor: number) {
-        const start = value.lastIndexOf(',', cursor - 1) + 1
-        let end = value.indexOf(',', cursor)
-        if (end < 0) end = value.length
-        return {start, end, text: value.substring(start, end)}
-    }
 
     function updateSuggestions() {
         const input = document.getElementById(props.id) as HTMLInputElement | null

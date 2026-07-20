@@ -36,6 +36,12 @@ interface WordPickerModalProps {
     wordSubmitted: (word: WordViewModel, baseWord: WordViewModel | undefined, formData: WordFormData) => any
 }
 
+function commonPrefixLength(a: string, b: string) {
+    let i = 0
+    while (i < a.length && i < b.length && a[i] === b[i]) i++
+    return i
+}
+
 export default function WordPickerModal(props: WordPickerModalProps) {
     const router = useRouter()
     const graph = router.query.graph as string
@@ -104,12 +110,6 @@ export default function WordPickerModal(props: WordPickerModalProps) {
             selectedItemRef.current?.scrollIntoView({block: "nearest"})
         }
     }, [selectedWordId, words])
-
-    function commonPrefixLength(a: string, b: string) {
-        let i = 0
-        while (i < a.length && i < b.length && a[i] === b[i]) i++
-        return i
-    }
 
     function closestPrefixMatchId(candidates: DictionaryWordViewModel[]): number | null {
         const target = props.linkTarget.text.toLocaleLowerCase()

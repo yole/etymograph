@@ -13,6 +13,11 @@ export async function getStaticProps(context) {
 
 export const getStaticPaths = fetchAllLanguagePaths
 
+function editableRuleName(r: RuleShortViewModel) {
+    return r.name + (r.alternative ? ("|" + r.alternative.name) : "") +
+        (r.dispreferred ? "??" : (r.optional ? "?" : ""));
+}
+
 function RuleListView(params: {list: RuleListViewModel}) {
     const router = useRouter()
     const graph = router.query.graph as string
@@ -23,11 +28,6 @@ function RuleListView(params: {list: RuleListViewModel}) {
     function sequenceSubmitted(data: RuleSequenceViewModel) {
         setSequenceEditId(null)
         router.push(`/${graph}/rules/${data.toLang}/phono`)
-    }
-
-    function editableRuleName(r: RuleShortViewModel) {
-        return r.name + (r.alternative ? ("|" + r.alternative.name) : "") +
-            (r.dispreferred ? "??" : (r.optional ? "?" : ""));
     }
 
     const ruleList = params.list

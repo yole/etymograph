@@ -18,6 +18,14 @@ export async function getStaticPaths() {
     return fetchPathsForAllGraphs("paradigms", (p) => ({id: p.id.toString()}))
 }
 
+function ruleTitle(cell, index) {
+     const summary = cell.alternativeRuleSummaries[index]
+     if (summary.length > 0) {
+         return summary
+     }
+     return cell.alternativeRuleNames[index]
+}
+
 export default function Paradigm(params) {
     const paradigm = params.loaderData
 
@@ -29,14 +37,6 @@ export default function Paradigm(params) {
             deleteParadigm(graph, paradigm.id)
                 .then(() => router.push(`/${graph}/rules/${paradigm.language}/morpho`))
         }
-    }
-
-    function ruleTitle(cell, index) {
-         const summary = cell.alternativeRuleSummaries[index]
-         if (summary.length > 0) {
-             return summary
-         }
-         return cell.alternativeRuleNames[index]
     }
 
     return <>

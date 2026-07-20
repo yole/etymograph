@@ -11,15 +11,15 @@ interface FormTextAreaProps  {
     inputAssistLang?: string;
 }
 
+function onKeyDown(e: React.KeyboardEvent) {
+    if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
+        e.currentTarget.closest('form')?.requestSubmit()
+    }
+}
+
 export default function FormTextArea(props: FormTextAreaProps) {
     const form = useEtymographFormContext()
     const inputProps = form.getInputProps(props.id)
-
-    function onKeyDown(e: React.KeyboardEvent) {
-        if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
-            e.currentTarget.closest('form')?.requestSubmit()
-        }
-    }
 
     return <>
         <textarea rows={props.rows} cols={props.cols} id={props.id} {...inputProps}
