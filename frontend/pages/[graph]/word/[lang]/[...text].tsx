@@ -1,4 +1,4 @@
-import {useContext, useEffect, useState} from "react";
+import {type ComponentProps, useContext, useEffect, useState} from "react";
 import WordForm from "@/forms/WordForm";
 import WordLink from "@/components/WordLink";
 import {LinkTypes} from "@/components/LinkTypes";
@@ -314,21 +314,20 @@ function WordLinkTypeComponent(params: WordLinkTypeProps) {
     })}</>
 }
 
+type WordPickerAction =
+    "transcription" | "baseWord" | "compoundComponent" | "variationOf" |
+    "derivedWord" | "related" | "variation" | "originWord" | "derivativeWord"
+
+type WordPickerProperties = Omit<ComponentProps<typeof WordPickerModal>,
+    "opened" | "onClose" | "linkTarget" | "wordSubmitted">
+
 function SingleWord({word, embeddedInWordIds}: { word: WordViewModel, embeddedInWordIds?: number[] }) {
     const globalState = useContext(GlobalStateContext)
     const canEdit = useAllowEditGraph()
 
     const router = useRouter()
     const graph = router.query.graph as string
-    const [showTranscription, setShowTranscription] = useState(false)
-    const [showBaseWord, setShowBaseWord] = useState(false)
-    const [showDerivedWord, setShowDerivedWord] = useState(false)
-    const [showOriginWord, setShowOriginWord] = useState(false)
-    const [showDerivativeWord, setShowDerivativeWord] = useState(false)
-    const [showCompoundComponent, setShowCompoundComponent] = useState(false)
-    const [showRelated, setShowRelated] = useState(false)
-    const [showVariationOf, setShowVariationOf] = useState(false)
-    const [showVariation, setShowVariation] = useState(false)
+    const [wordPickerAction, setWordPickerAction] = useState<WordPickerAction | null>(null)
     const [showRuleLink, setShowRuleLink] = useState(false)
     const [editMode, setEditMode] = useState(false)
     const [errorText, setErrorText] = useState("")
@@ -340,15 +339,7 @@ function SingleWord({word, embeddedInWordIds}: { word: WordViewModel, embeddedIn
     useEffect(() => { document.title = "Etymograph : " + (word === undefined ? "Unknown Word" : word.text) })
 
     function submitted() {
-        setShowTranscription(false)
-        setShowBaseWord(false)
-        setShowDerivedWord(false)
-        setShowOriginWord(false)
-        setShowDerivativeWord(false)
-        setShowCompoundComponent(false)
-        setShowRelated(false)
-        setShowVariationOf(false)
-        setShowVariation(false)
+        setWordPickerAction(null)
         router.replace(router.asPath)
     }
 
@@ -438,14 +429,11 @@ function SingleWord({word, embeddedInWordIds}: { word: WordViewModel, embeddedIn
     }
 
     async function defineAsCompoundClicked() {
-        let newState = !showCompoundComponent
-        setShowCompoundComponent(newState)
-        if (newState) {
-            const r = await suggestCompound(graph, word.id)
-            if (r.ok()) {
-                const jr = await r.result()
-                setCompoundSuggestions(jr.suggestions)
-            }
+        setWordPickerAction("compoundComponent")
+        const r = await suggestCompound(graph, word.id)
+        if (r.ok()) {
+            const jr = await r.result()
+            setCompoundSuggestions(jr.suggestions)
         }
     }
 
@@ -486,12 +474,10 @@ function SingleWord({word, embeddedInWordIds}: { word: WordViewModel, embeddedIn
     }
 
     async function showTranscriptionClicked() {
-        if (!showBaseWord) {
-            const r = await suggestTranscription(graph, word.id)
-            const result = await r.text()
-            setSuggestedTranscription(result)
-        }
-        setShowTranscription(!showBaseWord)
+        const r = await suggestTranscription(graph, word.id)
+        const result = await r.text()
+        setSuggestedTranscription(result)
+        setWordPickerAction("transcription")
     }
 
     if (word === undefined) {
@@ -515,6 +501,43 @@ function SingleWord({word, embeddedInWordIds}: { word: WordViewModel, embeddedIn
     const canSuggestParseCandidates = !isCompound && !word.syllabogramSequence
 
     const realGloss = word.glossComputed ? undefined : word.gloss
+
+    const wordPickerProperties: WordPickerProperties | null = (() => {
+        switch (wordPickerAction) {
+            case "transcription":
+                return {title: "Add transcription", linkType: LinkTypes.Transcription, reverseLink: true,
+                    languageReadOnly: true, defaultTab: "new",
+                    defaultValues: {language: word.language, text: suggestedTranscription}}
+            case "baseWord":
+                return {title: "Add lemma", linkType: LinkTypes.Derived, reverseLink: true,
+                    languageReadOnly: true, showSyllabographic: word.syllabographic,
+                    defaultValues: {language: word.language}}
+            case "compoundComponent":
+                return {title: "Define compound", newCompound: true, suggestions: compoundSuggestions,
+                    showSyllabographic: word.syllabographic, defaultValues: {language: word.language}}
+            case "variationOf":
+                return {title: "Add variation", linkType: LinkTypes.Variation, reverseLink: true,
+                    languageReadOnly: true, showSyllabographic: word.syllabographic,
+                    defaultValues: {language: word.language}}
+            case "derivedWord":
+                return {title: "Add inflected form", linkType: LinkTypes.Derived,
+                    defaultValues: {language: word.language}}
+            case "related":
+                return {title: "Add related word", linkType: LinkTypes.Related, languageReadOnly: true,
+                    defaultValues: {language: word.language}}
+            case "variation":
+                return {title: "Add variation", linkType: LinkTypes.Variation, languageReadOnly: true,
+                    showSyllabographic: word.syllabographic, defaultValues: {language: word.language}}
+            case "originWord":
+                return {title: "Add origin word", linkType: LinkTypes.Origin, reverseLink: true,
+                    defaultValues: {gloss: word.gloss}}
+            case "derivativeWord":
+                return {title: "Add derivative word", linkType: LinkTypes.Origin,
+                    defaultValues: {gloss: word.gloss}}
+            default:
+                return null
+        }
+    })()
 
     return <>
         {!embeddedInWordIds && <Breadcrumbs langId={word.language} langName={word.languageFullName}
@@ -574,9 +597,9 @@ function SingleWord({word, embeddedInWordIds}: { word: WordViewModel, embeddedIn
                 </Menu.Target>
                 <Menu.Dropdown>
                     {canShowTranscription && <Menu.Item onClick={showTranscriptionClicked}>Transcription</Menu.Item>}
-                    {!isCompound && <Menu.Item onClick={() => setShowBaseWord(!showBaseWord)}>Lemma</Menu.Item>}
+                    {!isCompound && <Menu.Item onClick={() => setWordPickerAction("baseWord")}>Lemma</Menu.Item>}
                     <Menu.Item onClick={defineAsCompoundClicked}>Compound</Menu.Item>
-                    {!isCompound && <Menu.Item onClick={() => setShowVariationOf(!showVariationOf)}>Variation</Menu.Item>}
+                    {!isCompound && <Menu.Item onClick={() => setWordPickerAction("variationOf")}>Variation</Menu.Item>}
                 </Menu.Dropdown>
             </Menu>{' '}
             <Menu>
@@ -584,12 +607,12 @@ function SingleWord({word, embeddedInWordIds}: { word: WordViewModel, embeddedIn
                     <button type="button" className="uiButton">Link</button>
                 </Menu.Target>
                 <Menu.Dropdown>
-                    <Menu.Item onClick={() => setShowDerivedWord(!showDerivedWord)}>Add inflected form</Menu.Item>
-                    <Menu.Item onClick={() => setShowRelated(!showRelated)}>Add related word</Menu.Item>
-                    {!isCompound && <Menu.Item onClick={() => setShowVariation(!showVariation)}>Add variation</Menu.Item>}
+                    <Menu.Item onClick={() => setWordPickerAction("derivedWord")}>Add inflected form</Menu.Item>
+                    <Menu.Item onClick={() => setWordPickerAction("related")}>Add related word</Menu.Item>
+                    {!isCompound && <Menu.Item onClick={() => setWordPickerAction("variation")}>Add variation</Menu.Item>}
                     <Menu.Item onClick={() => setShowRuleLink(!showRuleLink)}>Add related rule</Menu.Item>
-                    <Menu.Item onClick={() => setShowOriginWord(!showOriginWord)}>Add origin word</Menu.Item>
-                    <Menu.Item onClick={() => setShowDerivativeWord(!showDerivativeWord)}>Add derivative word</Menu.Item>
+                    <Menu.Item onClick={() => setWordPickerAction("originWord")}>Add origin word</Menu.Item>
+                    <Menu.Item onClick={() => setWordPickerAction("derivativeWord")}>Add derivative word</Menu.Item>
                     {canSuggestParseCandidates &&
                         <Menu.Item onClick={() => suggestParseCandidatesClicked()}>Suggest lemma and derivation</Menu.Item>}
                     {word.suggestedDeriveSequences.map(seq =>
@@ -653,53 +676,10 @@ function SingleWord({word, embeddedInWordIds}: { word: WordViewModel, embeddedIn
         }
 
         {canEdit && <>
-            <WordPickerModal opened={showTranscription} onClose={() => setShowTranscription(false)} title="Add transcription"
-                             linkType={LinkTypes.Transcription} linkTarget={word} reverseLink={true} languageReadOnly={true}
-                             defaultTab="new"
-                             defaultValues={{language: word.language, text: suggestedTranscription}}
-                             wordSubmitted={submitted}/>
-
-            <WordPickerModal opened={showBaseWord} onClose={() => setShowBaseWord(false)} title="Add lemma"
-                             linkType={LinkTypes.Derived} linkTarget={word} reverseLink={true} languageReadOnly={true}
-                             showSyllabographic={word.syllabographic}
-                             defaultValues={{language: word.language}} wordSubmitted={submitted}/>
-
-            <WordPickerModal opened={showCompoundComponent} onClose={() => setShowCompoundComponent(false)}
-                             title="Define compound"
-                             newCompound={true} linkTarget={word}
-                             suggestions={compoundSuggestions}
-                             showSyllabographic={word.syllabographic}
-                             defaultValues={{language: word.language}} wordSubmitted={submitted}/>
-
-            <WordPickerModal opened={showVariationOf} onClose={() => setShowVariationOf(false)} title="Add variation"
-                             linkType={LinkTypes.Variation} reverseLink={true} linkTarget={word}
-                             defaultValues={{language: word.language}}
-                             languageReadOnly={true}
-                             showSyllabographic={word.syllabographic}
-                             wordSubmitted={submitted}/>
-
-            <WordPickerModal opened={showDerivedWord} onClose={() => setShowDerivedWord(false)} title="Add inflected form"
-                             linkType={LinkTypes.Derived} linkTarget={word}
-                             defaultValues={{language: word.language}} wordSubmitted={submitted}/>
-
-            <WordPickerModal opened={showRelated} onClose={() => setShowRelated(false)} title="Add related word"
-                             linkType={LinkTypes.Related} linkTarget={word}
-                             defaultValues={{language: word.language}} languageReadOnly={true} wordSubmitted={submitted}/>
-
-            <WordPickerModal opened={showVariation} onClose={() => setShowVariation(false)} title="Add variation"
-                             linkType={LinkTypes.Variation} linkTarget={word}
-                             defaultValues={{language: word.language}}
-                             languageReadOnly={true}
-                             showSyllabographic={word.syllabographic}
-                             wordSubmitted={submitted}/>
-
-            <WordPickerModal opened={showOriginWord} onClose={() => setShowOriginWord(false)} title="Add origin word"
-                             linkType={LinkTypes.Origin} linkTarget={word} reverseLink={true}
-                             defaultValues={{gloss: word.gloss}} wordSubmitted={submitted}/>
-
-            <WordPickerModal opened={showDerivativeWord} onClose={() => setShowDerivativeWord(false)} title="Add derivative word"
-                             linkType={LinkTypes.Origin} linkTarget={word}
-                             defaultValues={{gloss: word.gloss}} wordSubmitted={submitted}/>
+            {wordPickerProperties &&
+                <WordPickerModal {...wordPickerProperties} opened={true} onClose={() => setWordPickerAction(null)}
+                                 linkTarget={word} wordSubmitted={submitted}/>
+            }
 
             {showRuleLink && <RuleLinkForm submitted={ruleLinkSubmitted} fromEntityId={word.id}/>}
 
