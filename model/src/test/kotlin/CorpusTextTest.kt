@@ -117,6 +117,14 @@ class CorpusTextTest : QBaseTest() {
     }
 
     @Test
+    fun normalizedTextRemoveWideAngleBrackets() {
+        val corpusText = q.corpusText("〈Ai〉 laurie")
+
+        val lines = corpusText.mapToLines()
+        assertEquals("ai", lines[0].corpusWords[0].normalizedText)
+    }
+
+    @Test
     fun attestations() {
         val eaV = q.word("ea", "be")
         val eaN = q.word("ea", "being")
