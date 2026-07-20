@@ -57,10 +57,24 @@ export async function getStaticPaths() {
         let url = `dictionary/${path.params.lang}/all`
         const dictData = await fetchBackend(path.params.graph, url)
         const dictViewModel = dictData.props.loaderData as DictionaryViewModel
+        const wordsByLowercaseUrl = new Map<string, typeof dictViewModel.words>()
         for (const word of dictViewModel.words) {
-            paths.push({params: {...path.params, text: [word.ref.urlKey ?? word.ref.text.toLowerCase()]}})
-            if (word.ref.homonym) {
-                paths.push({params: {...path.params, text: [word.ref.urlKey ?? word.ref.text.toLowerCase(), word.ref.id.toString()]}})
+            const lowercaseUrl = (word.ref.urlKey ?? word.ref.text).toLowerCase()
+            wordsByLowercaseUrl.set(lowercaseUrl, [...(wordsByLowercaseUrl.get(lowercaseUrl) ?? []), word])
+        }
+        for (const [lowercaseUrl, words] of wordsByLowercaseUrl) {
+            const urls = new Set(words.map(word => word.ref.urlKey ?? word.ref.text.toLowerCase()))
+            const differsOnlyByCase = urls.size > 1
+            for (const word of words) {
+                const wordUrl = differsOnlyByCase
+                    ? lowercaseUrl
+                    : word.ref.urlKey ?? word.ref.text.toLowerCase()
+                if (!differsOnlyByCase) {
+                    paths.push({params: {...path.params, text: [wordUrl]}})
+                }
+                if (differsOnlyByCase || word.ref.homonym) {
+                    paths.push({params: {...path.params, text: [wordUrl, word.ref.id.toString()]}})
+                }
             }
         }
     }
