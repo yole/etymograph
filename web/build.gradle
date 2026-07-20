@@ -1,10 +1,10 @@
 plugins {
     id 'java'
     id 'org.jetbrains.kotlin.jvm'
-    id 'org.jetbrains.kotlin.plugin.spring' version '2.3.0'
-    id 'org.jetbrains.kotlin.plugin.serialization' version '2.3.0'
+    id 'org.jetbrains.kotlin.plugin.spring' version '2.4.10'
+    id 'org.jetbrains.kotlin.plugin.serialization' version '2.4.10'
     id 'org.springframework.boot' version '3.2.4'
-    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'io.spring.dependency-management' version '1.1.7'
 }
 
 dependencies {
@@ -16,7 +16,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3"
-    testImplementation group: 'junit', name: 'junit', version: '4.13.1'
+    testImplementation "junit:junit:4.13.1"
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
     testImplementation testFixtures(project(":model"))
