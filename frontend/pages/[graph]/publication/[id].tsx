@@ -6,10 +6,6 @@ import EtymographFormView, {View} from "@/components/EtymographFormView";
 import {GraphContext} from "@/components/Contexts";
 import {PublicationViewModel} from "@/models";
 
-export const config = {
-    unstable_runtimeJS: true
-}
-
 export async function getStaticProps(context) {
     return fetchBackend(context.params.graph, `publication/${context.params.id}`, true)
 }

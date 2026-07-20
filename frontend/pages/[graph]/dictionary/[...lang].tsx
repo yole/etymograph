@@ -10,10 +10,6 @@ import WordSequenceForm from "@/forms/WordSequenceForm";
 import {GlobalStateContext} from "@/components/Contexts";
 import {Select} from "@mantine/core";
 
-export const config = {
-    unstable_runtimeJS: true
-}
-
 export async function getStaticProps(context) {
     const graph = context.params.graph
     const lang = context.params.lang

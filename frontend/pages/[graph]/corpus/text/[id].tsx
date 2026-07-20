@@ -22,10 +22,6 @@ import WordTextView from "@/components/WordTextView";
 import {Urls} from "@/components/Urls";
 import {ActionIcon, Popover} from "@mantine/core";
 
-export const config = {
-    unstable_runtimeJS: true
-}
-
 export async function getStaticProps(context) {
     return fetchBackend(context.params.graph, `corpus/text/${context.params.id}`, true)
 }

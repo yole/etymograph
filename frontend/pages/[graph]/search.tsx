@@ -3,10 +3,6 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import {useRouter} from "next/router";
 import WordLink from "@/components/WordLink";
 
-export const config = {
-    unstable_runtimeJS: true
-}
-
 export async function getServerSideProps(context) {
     const graph = context.params.graph
     const q = String(context.query.q || "")

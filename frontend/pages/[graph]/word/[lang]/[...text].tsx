@@ -38,10 +38,6 @@ import WordPickerModal from "@/components/WordPickerModal";
 import {Urls} from "@/components/Urls";
 import {Alert, Menu} from "@mantine/core";
 
-export const config = {
-    unstable_runtimeJS: true
-}
-
 export async function getStaticProps(context) {
     const params = context.params.text
     if (params.length === 1) {

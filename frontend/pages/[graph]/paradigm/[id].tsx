@@ -6,10 +6,6 @@ import ParadigmForm from "@/forms/ParadigmForm";
 import RuleLink from "@/components/RuleLink";
 import EtymographFormView, {View} from "@/components/EtymographFormView";
 
-export const config = {
-    unstable_runtimeJS: true
-}
-
 export async function getStaticProps(context) {
     return fetchBackend(context.params.graph, `paradigm/${context.params.id}`, true)
 }

@@ -8,10 +8,6 @@ import Link from "next/link";
 import {DictionaryViewModel, WordParadigmListModel} from "@/models";
 import {Urls} from "@/components/Urls";
 
-export const config = {
-    unstable_runtimeJS: true
-}
-
 export async function getStaticProps(context){
     return fetchBackend(context.params.graph, `word/${context.params.id}/paradigms`, true)
 }

@@ -5,10 +5,6 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import {CorpusLangViewModel} from "@/models";
 import LanguageNavBar from "@/components/LanguageNavBar";
 
-export const config = {
-    unstable_runtimeJS: true
-}
-
 export async function getStaticProps(context) {
     return fetchBackend(context.params.graph, `corpus/${context.params.lang}`, true)
 }

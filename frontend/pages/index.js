@@ -6,10 +6,6 @@ import {Button, Modal, TextInput} from "@mantine/core";
 import Breadcrumbs from "../components/Breadcrumbs";
 import {AuthContext} from "../components/Contexts";
 
-export const config = {
-    unstable_runtimeJS: true
-}
-
 export async function getStaticProps() {
     return fetchGraphs()
 }

@@ -9,10 +9,6 @@ import EtymographFormView, {View} from "@/components/EtymographFormView";
 import {Urls} from "@/components/Urls";
 import {PhonemeViewModel} from "@/models";
 
-export const config = {
-    unstable_runtimeJS: true
-}
-
 export async function getStaticProps(context) {
     return fetchBackend(context.params.graph, `phoneme/${context.params.id}`, true)
 }

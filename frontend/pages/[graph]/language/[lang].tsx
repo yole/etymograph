@@ -16,10 +16,6 @@ import {LanguageViewModel, UpdateLanguageParameters} from "@/models";
 import LanguageNavBar from "@/components/LanguageNavBar";
 import {Urls} from "@/components/Urls";
 
-export const config = {
-    unstable_runtimeJS: true
-}
-
 export async function getStaticProps(context) {
     return fetchBackend(context.params.graph, `language/${context.params.lang}`, true)
 }

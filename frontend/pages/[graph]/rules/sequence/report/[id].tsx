@@ -5,10 +5,6 @@ import {RuleExampleViewModel, SequenceReportViewModel} from "@/models";
 import {useRouter} from "next/router";
 import RichText from "@/components/RichText";
 
-export const config = {
-    unstable_runtimeJS: true
-}
-
 export async function getStaticProps(context) {
     return fetchBackend(context.params.graph, `rule/sequence/${context.params.id}/rules`, true)
 }

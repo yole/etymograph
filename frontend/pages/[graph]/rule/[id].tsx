@@ -24,10 +24,6 @@ import LanguageSelect from "@/components/LanguageSelect";
 import WordSequenceForm from "@/forms/WordSequenceForm";
 import {Urls} from "@/components/Urls";
 
-export const config = {
-    unstable_runtimeJS: true
-}
-
 export async function getStaticProps(context) {
     return fetchBackend(context.params.graph, `rule/${context.params.id}`, true)
 }
