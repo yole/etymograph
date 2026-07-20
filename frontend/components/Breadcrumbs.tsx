@@ -4,6 +4,8 @@ import {AuthContext, GlobalStateContext, GraphContext} from "@/components/Contex
 import {hasBackend, backendUrl, logout} from "@/api";
 import {useRouter} from "next/router";
 import {ActionIcon, Avatar, Menu} from "@mantine/core";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
 
 interface BreadcrumbStep {
     title: string;
@@ -75,10 +77,12 @@ export default function Breadcrumbs(props: BreadcrumbsProps) {
                 : <a href={backendUrl("oauth2/authorization/google")}>Log in</a>}
         </>}
         {hasBackend() && graph && <form onSubmit={onSubmit} style={{display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
-            <input ref={inputRef} type="search" name="q" aria-label="Search words" dir="auto"
+            <input ref={inputRef} type="text" name="q" aria-label="Search words" dir="auto"
                    defaultValue={currentQ} placeholder="Search words…"
                    style={{maxWidth: '24ch'}} />
-            <ActionIcon type="submit" aria-label="Search" variant="default">🔍</ActionIcon>
+            <ActionIcon type="submit" aria-label="Search" variant="default">
+                <FontAwesomeIcon icon={faMagnifyingGlass}/>
+            </ActionIcon>
         </form>}
     </div>
 
