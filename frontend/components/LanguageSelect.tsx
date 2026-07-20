@@ -3,6 +3,7 @@ import {GlobalStateContext} from "@/components/Contexts";
 import Select from "react-select";
 import {FormFieldProps} from "@/components/FormRow";
 import {useEtymographFormContext} from "@/components/EtymographForm";
+import {Input} from "@mantine/core";
 
 export default function LanguageSelect(props: FormFieldProps) {
     const form = useEtymographFormContext()
@@ -14,9 +15,10 @@ export default function LanguageSelect(props: FormFieldProps) {
     const value = formValues[props.id]
 
     return <tr>
-        <td><label htmlFor={props.id}>{props.label}:</label></td>
+        <td><Input.Label htmlFor={props.id}>{props.label}:</Input.Label></td>
         <td>
             <Select
+                inputId={props.id}
                 options={languages}
                 value={languages.find((c) => c.value === value) ?? null}
                 onChange={(val) => form.setFieldValue(props.id, val?.value ?? "")}
