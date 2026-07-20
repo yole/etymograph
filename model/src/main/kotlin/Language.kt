@@ -179,9 +179,11 @@ class Language(val graph: Graph, val name: String, val shortName: String) {
 
     private val normalizeCache = mutableMapOf<String, String>()
     private val phonemicCache = mutableMapOf<String, String>()
+    private val phonemeFeaturesCache = mutableMapOf<Phoneme, Set<String>>()
 
     fun updatePhonemes() {
         phonemeClasses.update(phonemes)
+        phonemeFeaturesCache.clear()
         updateGraphemes()
     }
 
@@ -203,12 +205,14 @@ class Language(val graph: Graph, val name: String, val shortName: String) {
     }
 
     fun phonemeFeatures(phoneme: Phoneme): Set<String> {
-        return (phoneme.classes + implicitPhonemeClasses(phoneme.classes)).filterTo(mutableSetOf()) {
-            it.startsWith('+') ||
-                    it.startsWith('-') ||
-                    it in placeFeatures ||
-                    it in unaryFeatures ||
-                    (phonemeClassByName("-$it") != null && phonemeClassByName("+$it") == null)
+        return phonemeFeaturesCache.getOrPut(phoneme) {
+            (phoneme.classes + implicitPhonemeClasses(phoneme.classes)).filterTo(mutableSetOf()) {
+                it.startsWith('+') ||
+                        it.startsWith('-') ||
+                        it in placeFeatures ||
+                        it in unaryFeatures ||
+                        (phonemeClassByName("-$it") != null && phonemeClassByName("+$it") == null)
+            }
         }
     }
 
