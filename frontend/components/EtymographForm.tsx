@@ -1,4 +1,4 @@
-import {createContext, useContext, useEffect, useState} from "react";
+import {createContext, startTransition, useActionState, useContext, useEffect, useState} from "react";
 import {useRouter} from "next/router";
 import {EditModeContext, SetEditModeContext} from "@/components/EditModeContexts";
 import {useForm} from "@mantine/form";
@@ -38,7 +38,6 @@ export default function EtymographForm<Data, ResponseData=Data>(props: Etymograp
         mode: "uncontrolled",
         initialValues: (props.defaultValues ?? {}) as any
     });
-    const [errorText, setErrorText] = useState("")
     const router = useRouter()
     const editMode = useContext(EditModeContext)
     const setEditModeContext = useContext(SetEditModeContext)
@@ -53,45 +52,44 @@ export default function EtymographForm<Data, ResponseData=Data>(props: Etymograp
         }
     }, [focusTarget])
 
-    async function saveForm(data: Data) {
-        const r = props.updateId !== undefined ? await props.update(data) : await props.create(data)
-        if (r.status === 200) {
-            if (r.headers.get("content-type") === "application/json") {
-                const jr = await r.json() as ResponseData
-                if (props.redirectOnCreate !== undefined) {
-                    const url = props.redirectOnCreate(jr)
-                    router.push(url)
+    const [errorText, submitAction, isPending] = useActionState(
+        async (_previousError: string, data: Data) => {
+            const request = props.updateId !== undefined ? props.update : props.create
+            if (request === undefined) return "Form submission is not configured"
+
+            let responseData: ResponseData | undefined
+            try {
+                const response = await request(data)
+                if (response.status !== 200) {
+                    const error = await response.json()
+                    return error.message?.length > 0 ? error.message : "Failed to save form"
                 }
-                else if (props.submitted !== undefined) {
-                    const result = props.submitted(jr, data)
-                    if (result !== undefined) {
-                        if (result.message !== undefined) {
-                            setErrorText(result.message)
-                        }
-                        else if (result.then !== undefined) {
-                            result.then(r => {
-                                if (r !== undefined && r.message !== undefined) setErrorText(r.message)
-                            })
-                        }
-                    }
-                }
-                else if (setEditMode !== undefined) {
-                    router.replace(router.asPath)
-                    setEditMode(false)
-                }
+
+                const hasJsonResponse = response.headers.get("content-type")?.includes("application/json") === true
+                responseData = hasJsonResponse ? await response.json() as ResponseData : undefined
+            }
+            catch (error) {
+                return error instanceof Error ? error.message : "Failed to save form"
+            }
+
+            if (responseData !== undefined && props.redirectOnCreate !== undefined) {
+                void router.push(props.redirectOnCreate(responseData))
             }
             else if (props.submitted !== undefined) {
-                props.submitted(undefined, undefined)
+                const result = await props.submitted(responseData, data)
+                if (result?.message !== undefined) return result.message
             }
             else if (setEditMode !== undefined) {
-                router.replace(router.asPath)
+                await router.replace(router.asPath)
                 setEditMode(false)
             }
-        }
-        else {
-            const jr = await r.json()
-            setErrorText(jr.message.length > 0 ? jr.message : "Failed to save form")
-        }
+            return ""
+        },
+        ""
+    )
+
+    function saveForm(data: Data) {
+        startTransition(() => submitAction(data))
     }
 
     if (editMode === false) return <></>
@@ -101,11 +99,14 @@ export default function EtymographForm<Data, ResponseData=Data>(props: Etymograp
         <form onSubmit={form.onSubmit(saveForm)}>
             {props.children}
             <p>
-                <input type="submit" value={props.saveButtonText ?? "Save"} className="uiButtonSubmit"/>
+                <input type="submit" value={isPending ? "Saving…" : props.saveButtonText ?? "Save"}
+                       className="uiButtonSubmit" disabled={isPending}/>
                 {(props.cancelled !== undefined || setEditMode !== undefined) && <>{' '}
-                    <button className="uiButton" onClick={() => props.cancelled !== undefined ? props.cancelled() : setEditMode(false)}>Cancel</button>
+                    <button type="button" className="uiButton" disabled={isPending}
+                            onClick={() => props.cancelled !== undefined ? props.cancelled() : setEditMode(false)}>Cancel</button>
                 </>}
-                {buttons.map(b => <>{' '}<button type="button" className="uiButton" onClick={() => b.callback(form.getValues())}>{b.text}</button></>)}
+                {buttons.map(b => <>{' '}<button type="button" className="uiButton" disabled={isPending}
+                    onClick={() => b.callback(form.getValues())}>{b.text}</button></>)}
             </p>
             {errorText !== "" && <div className="errorText">{errorText}</div>}
         </form>
