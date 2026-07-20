@@ -4,7 +4,6 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import {RuleExampleViewModel, SequenceReportViewModel} from "@/models";
 import {useRouter} from "next/router";
 import RichText from "@/components/RichText";
-import {Rule} from "postcss";
 
 export const config = {
     unstable_runtimeJS: true

@@ -77,7 +77,7 @@ export async function fetchAuthStatus(): Promise<AuthStatusViewModel> {
     return await response.json()
 }
 
-export function allowEditGraph(graphId?: string): boolean {
+export function useAllowEditGraph(graphId?: string): boolean {
     const currentGraph = useContext(GraphContext)
     const auth = useContext(AuthContext)
     return auth?.authStatus?.editableGraphs?.includes(graphId ?? currentGraph) === true

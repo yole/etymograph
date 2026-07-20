@@ -7,7 +7,7 @@ import {
     associateWord,
     fetchAlternatives,
     acceptAlternative,
-    fetchPathsForAllGraphs, callApiAndRefresh, lockWordAssociations, deleteTranslation, allowEditGraph
+    fetchPathsForAllGraphs, callApiAndRefresh, lockWordAssociations, deleteTranslation, useAllowEditGraph
 } from "@/api";
 import {useRouter} from "next/router";
 import Link from "next/link";
@@ -78,7 +78,7 @@ function CorpusTextGlossChoice(params: CorpusTextGlossChoiceProps) {
     const graph = router.query.graph as string
     const lang = params.corpusText.language
     const c = params.candidate
-    const editable = allowEditGraph()
+    const editable = useAllowEditGraph()
 
     async function acceptGloss() {
         await acceptAlternative(graph, params.corpusText.id, params.word.index, c.id, -1)
@@ -102,6 +102,7 @@ function GlossDropdown(params: {
     showTranslationFormAtWord: (index: number) => void
 }) {
     const [opened, setOpened] = useState(false)
+    const editable = useAllowEditGraph()
     let w = params.word
     const candidates = w.wordCandidates
     const showPlus = w.wordCandidates && w.wordCandidates.length > 1
@@ -110,7 +111,7 @@ function GlossDropdown(params: {
         return ""
     }
 
-    if (!allowEditGraph()) {
+    if (!editable) {
         return <WordGloss gloss={w.gloss}/>;
     }
 
@@ -224,6 +225,7 @@ function TranslationView(params: {translation: TranslationViewModel}) {
     const graph = router.query.graph as string;
     const t = params.translation
     const [showTranslationForm, setShowTranslationForm] = useState(false)
+    const editable = useAllowEditGraph()
 
     function translationSubmitted() {
         setShowTranslationForm(false)
@@ -240,7 +242,7 @@ function TranslationView(params: {translation: TranslationViewModel}) {
         {(!showTranslationForm) && <>
             <div className="translation">
                 &quot;{t.text}&quot; <SourceRefs source={t.source} span={true}/>
-                {allowEditGraph() && <>
+                {editable && <>
                     <ActionIcon className="iconWithMargin" type="button" variant="outline" onClick={() => setShowTranslationForm(!showTranslationForm)}>
                         <FontAwesomeIcon icon={faEdit}/>
                     </ActionIcon>
@@ -280,7 +282,7 @@ export default function CorpusText(params) {
     const allWords = corpusText.lines.flatMap(l => l.words)
     const {segments, unanchoredTranslations} = buildSegments(corpusText)
     const linePositions = computeLinePositions(corpusText.lines)
-    const editable = allowEditGraph()
+    const editable = useAllowEditGraph()
 
     function textSubmitted() {
         setEditMode(false)

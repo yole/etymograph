@@ -17,7 +17,7 @@ import {
     suggestCompound,
     callApiAndRefresh,
     updateWord,
-    refreshLinkSequence, suggestTranscription, allowEditGraph, hasBackend
+    refreshLinkSequence, suggestTranscription, useAllowEditGraph, hasBackend
 } from "@/api";
 import Link from "next/link";
 import {useRouter} from "next/router";
@@ -94,7 +94,7 @@ export function WordLinkComponent(params: WordLinkProps) {
     const [errorText, setErrorText] = useState("")
     const router = useRouter()
     const graph = router.query.graph as string
-    const canEdit = allowEditGraph()
+    const canEdit = useAllowEditGraph()
 
     async function deleteLinkClicked() {
         if (window.confirm("Delete this link?")) {
@@ -159,19 +159,19 @@ export function WordLinkComponent(params: WordLinkProps) {
         }
         {canEdit && <>
             &nbsp;<span className="inlineButtonLink">
-                    (<button className="inlineButton" onClick={() => setEditMode(!editMode)}>edit</button>
+                    (<button type="button" className="inlineButton" onClick={() => setEditMode(!editMode)}>edit</button>
                 </span>
             &nbsp;|&nbsp;<span className="inlineButtonLink">
-                    <button className="inlineButton" onClick={() => deleteLinkClicked()}>delete</button>
+                    <button type="button" className="inlineButton" onClick={() => deleteLinkClicked()}>delete</button>
                 </span>
             {params.showSequence && linkWord.ruleSequence && <>
                 &nbsp;|&nbsp;<span className="inlineButtonLink">
-                    <button className="inlineButton" onClick={() => refreshSequenceClicked()}>refresh</button>
+                    <button type="button" className="inlineButton" onClick={() => refreshSequenceClicked()}>refresh</button>
                 </span>
             </>}
             {linkWord.suggestedSequences.map(seq => <>
                 &nbsp;|&nbsp;<span className="inlineButtonLink">
-                    <button className="inlineButton" onClick={() => applySequenceClicked(seq.id, baseWord.id, linkWord.word.id)}>apply sequence {seq.name}</button>
+                    <button type="button" className="inlineButton" onClick={() => applySequenceClicked(seq.id, baseWord.id, linkWord.word.id)}>apply sequence {seq.name}</button>
                 </span>
             </>)}
             )
@@ -212,7 +212,7 @@ function CompoundListComponent(
     const [addToCompoundId, setAddToCompoundId] = useState(undefined)
     const [editCompound, setEditCompound] = useState(undefined)
     const [compoundSuggestions, setCompoundSuggestions] = useState([] as WordRefViewModel[])
-    const canEdit = allowEditGraph()
+    const canEdit = useAllowEditGraph()
 
     async function prepareAddToCompound(compoundId: number) {
         setAddToCompoundId(compoundId)
@@ -302,7 +302,7 @@ function WordLinkTypeComponent(params: WordLinkTypeProps) {
 
 function SingleWord({word, embeddedInWordIds}: { word: WordViewModel, embeddedInWordIds?: number[] }) {
     const globalState = useContext(GlobalStateContext)
-    const canEdit = allowEditGraph()
+    const canEdit = useAllowEditGraph()
 
     const router = useRouter()
     const graph = router.query.graph as string
@@ -516,7 +516,7 @@ function SingleWord({word, embeddedInWordIds}: { word: WordViewModel, embeddedIn
         {!editMode && <>
             {word.pos && <div>{word.pos} {word.classes.length > 0 && "(" + word.classes.join(", ") + ")"}</div>}
             <p>{word.fullGloss !== null && word.fullGloss !== "" ? <WordFullGloss word={word}/> : <WordGloss gloss={word.gloss}/>}
-                {canClearGloss() && <>{' '}<button className="inlineButton" onClick={() => clearGloss()}>clear</button></>}
+                {canClearGloss() && <>{' '}<button type="button" className="inlineButton" onClick={() => clearGloss()}>clear</button></>}
             </p>
             {word.notes && <p>{word.notes}</p>}
             <SourceRefs source={word.source}/>
@@ -552,11 +552,11 @@ function SingleWord({word, embeddedInWordIds}: { word: WordViewModel, embeddedIn
             />}
         {canEdit && !editMode && <>
             <p/>
-            <button className="uiButton" onClick={() => setEditMode(true)}>{"Edit"}</button>&nbsp;
-            <button className="uiButton" onClick={() => deleteWordClicked()}>Delete</button>{' '}
+            <button type="button" className="uiButton" onClick={() => setEditMode(true)}>{"Edit"}</button>&nbsp;
+            <button type="button" className="uiButton" onClick={() => deleteWordClicked()}>Delete</button>{' '}
             <Menu>
                 <Menu.Target>
-                    <button className="uiButton">Define</button>
+                    <button type="button" className="uiButton">Define</button>
                 </Menu.Target>
                 <Menu.Dropdown>
                     {canShowTranscription && <Menu.Item onClick={showTranscriptionClicked}>Transcription</Menu.Item>}
@@ -567,7 +567,7 @@ function SingleWord({word, embeddedInWordIds}: { word: WordViewModel, embeddedIn
             </Menu>{' '}
             <Menu>
                 <Menu.Target>
-                    <button className="uiButton">Link</button>
+                    <button type="button" className="uiButton">Link</button>
                 </Menu.Target>
                 <Menu.Dropdown>
                     <Menu.Item onClick={() => setShowDerivedWord(!showDerivedWord)}>Add inflected form</Menu.Item>
@@ -583,12 +583,12 @@ function SingleWord({word, embeddedInWordIds}: { word: WordViewModel, embeddedIn
                 </Menu.Dropdown>
             </Menu>{' '}
             {canEdit && dictionaries.includes("wiktionary") && <>
-                <button className="uiButton" onClick={() => lookupWordClicked()}>Look up in Wiktionary</button>
+                <button type="button" className="uiButton" onClick={() => lookupWordClicked()}>Look up in Wiktionary</button>
                 <p>
                 {lookupErrorText !== "" && <span className="errorText">{lookupErrorText}</span>}
                 {lookupVariants.length > 0 && <ul>
                     {lookupVariants.map(variant => (
-                        <li><button className="inlineButton inlineButtonNormal"
+                        <li><button type="button" className="inlineButton inlineButtonNormal"
                                     onClick={() => lookupWordClicked(variant.disambiguation)}>
                             {variant.text}
                         </button></li>)
@@ -630,7 +630,7 @@ function SingleWord({word, embeddedInWordIds}: { word: WordViewModel, embeddedIn
                     <SourceRefs source={rl.source} span={true}/>
                     {canEdit && rl.canDelete && <>
                         &nbsp;(<span className="inlineButtonLink">
-                            <button className="inlineButton" onClick={() => deleteRuleLinkClicked(rl.ruleId, rl.linkType)}>delete</button>
+                            <button type="button" className="inlineButton" onClick={() => deleteRuleLinkClicked(rl.ruleId, rl.linkType)}>delete</button>
                         </span>)</>
                     }
                     <br/></>
@@ -696,7 +696,7 @@ function SingleWord({word, embeddedInWordIds}: { word: WordViewModel, embeddedIn
                     {pc.wordId === null && <i>{pc.text}</i>}
                     {pc.categories.length === 0 && ` (${pc.ruleNames.join(",")})`}
                     {pc.categories}?{' '}
-                    <button onClick={() => acceptParseCandidate(pc)}>Accept</button>
+                    <button type="button" onClick={() => acceptParseCandidate(pc)}>Accept</button>
                 </p>))}
 
             {errorText !== "" && <div className="errorText">{errorText}</div>}

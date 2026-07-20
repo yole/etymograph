@@ -1,4 +1,4 @@
-import {fetchBackend, fetchAllLanguagePaths, allowEditGraph} from "@/api";
+import {fetchBackend, fetchAllLanguagePaths, useAllowEditGraph} from "@/api";
 import {useRouter} from "next/router";
 import WordForm from "@/forms/WordForm";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -42,7 +42,7 @@ export default function Dictionary(params) {
     const filter = langPath.length < 2 ? "" : langPath[1]
     const selectedPos = typeof router.query.pos === "string" ? router.query.pos : ""
     const globalState = useContext(GlobalStateContext)
-    const canEdit = allowEditGraph()
+    const canEdit = useAllowEditGraph()
     const [showAddWord, setShowAddWord] = useState(false)
     const [showAddSequence, setShowAddSequence] = useState(false)
     const language = globalState?.languages.find(l => l.shortName === dict.language)

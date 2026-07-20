@@ -1,6 +1,6 @@
 import {createContext, useContext, useEffect, useState} from "react";
 import {useRouter} from "next/router";
-import {EditModeContext, SetEditModeContext} from "@/components/EtymographFormView";
+import {EditModeContext, SetEditModeContext} from "@/components/EditModeContexts";
 import {useForm} from "@mantine/form";
 
 export interface EtymographFormButton {

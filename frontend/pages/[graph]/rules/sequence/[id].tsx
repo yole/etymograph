@@ -1,4 +1,4 @@
-import {allowEditGraph, fetchBackend, fetchPathsForAllGraphs, reapplyRuleSequence} from "@/api";
+import {useAllowEditGraph, fetchBackend, fetchPathsForAllGraphs, reapplyRuleSequence} from "@/api";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import {DerivationViewModel, ReapplyResultViewModel, SequenceDerivationsViewModel} from "@/models";
 import WordLink from "@/components/WordLink";
@@ -7,11 +7,6 @@ import {useRouter} from "next/router";
 import Link from "next/link";
 import {WordLinkComponent} from "@/pages/[graph]/word/[lang]/[...text]";
 import {useState} from "react";
-
-// noinspection JSUnusedGlobalSymbols
-export const config = {
-    unstable_runtimeJS: true
-}
 
 export async function getStaticProps(context) {
     return fetchBackend(context.params.graph, `rule/sequence/${context.params.id}/derivations`, true)
@@ -73,7 +68,7 @@ export default function RuleSequence(params) {
     const [reapplyResult, setReapplyResult] = useState(null)
     const [posFilter, setPosFilter] = useState(null)
     const [showDerivations, setShowDerivations] = useState(true)
-    const canEdit = allowEditGraph()
+    const canEdit = useAllowEditGraph()
 
     async function reapplySequenceClicked() {
         const result = await reapplyRuleSequence(graph, ruleSequence.sequence.id)

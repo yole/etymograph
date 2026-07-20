@@ -4,7 +4,7 @@ import {
     deleteRule,
     fetchPathsForAllGraphs,
     traceRule,
-    allowEditGraph
+    useAllowEditGraph
 } from "@/api";
 import WordLink from "@/components/WordLink";
 import {fetchBackend} from "@/api";
@@ -94,7 +94,7 @@ export default function Rule(params) {
     const [exampleUnmatched, setExampleUnmatched] = useState([])
     const router = useRouter()
     const graph = router.query.graph as string
-    const canEdit = allowEditGraph()
+    const canEdit = useAllowEditGraph()
 
     const ruleStep =
         rule.coreRule

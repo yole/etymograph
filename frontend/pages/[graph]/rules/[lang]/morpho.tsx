@@ -2,7 +2,7 @@ import {useState} from "react";
 import {useRouter} from "next/router";
 import Link from "next/link";
 import {Modal} from "@mantine/core";
-import {fetchAllLanguagePaths, fetchBackend, generateParadigm, allowEditGraph} from "@/api";
+import {fetchAllLanguagePaths, fetchBackend, generateParadigm, useAllowEditGraph} from "@/api";
 import {GenerateParadigmParameters, ParadigmViewModel, RuleListViewModel} from "@/models";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import LanguageNavBar from "@/components/LanguageNavBar";
@@ -45,7 +45,7 @@ export default function MorphoRuleList(params) {
     const router = useRouter()
     const graph = router.query.graph as string
     const lang = router.query.lang as string
-    const canEdit = allowEditGraph()
+    const canEdit = useAllowEditGraph()
     const [generateParadigmOpened, setGenerateParadigmOpened] = useState(false)
 
     return <>

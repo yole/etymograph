@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {useRouter} from "next/router";
 import Link from "next/link";
-import {fetchAllLanguagePaths, fetchBackend, allowEditGraph} from "@/api";
+import {fetchAllLanguagePaths, fetchBackend, useAllowEditGraph} from "@/api";
 import {RuleListViewModel, RuleSequenceViewModel, RuleShortViewModel} from "@/models";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import LanguageNavBar from "@/components/LanguageNavBar";
@@ -18,7 +18,7 @@ function RuleListView(params: {list: RuleListViewModel}) {
     const graph = router.query.graph as string
     const lang = router.query.lang as string
     const [sequenceEditId, setSequenceEditId] = useState(null)
-    const canEdit = allowEditGraph()
+    const canEdit = useAllowEditGraph()
 
     function sequenceSubmitted(data: RuleSequenceViewModel) {
         setSequenceEditId(null)
@@ -80,7 +80,7 @@ export default function MorphoRuleList(params) {
     const router = useRouter()
     const lang = router.query.lang as string
     const graph = router.query.graph as string
-    const canEdit = allowEditGraph()
+    const canEdit = useAllowEditGraph()
     return <>
         <Breadcrumbs langId={lang} langName={ruleList.toLangFullName} title="Historical Phonology"/>
         <LanguageNavBar langId={lang}/>

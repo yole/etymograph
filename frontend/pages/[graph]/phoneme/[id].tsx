@@ -1,4 +1,4 @@
-import {comparePhonemes, deletePhoneme, fetchBackend, fetchPathsForAllGraphs, allowEditGraph} from "@/api";
+import {comparePhonemes, deletePhoneme, fetchBackend, fetchPathsForAllGraphs, useAllowEditGraph} from "@/api";
 import {useState} from "react";
 import Link from "next/link";
 import {useRouter} from "next/router";
@@ -28,7 +28,7 @@ export default function Phoneme(props) {
     const [compareResult, setCompareResult] = useState('')
     const router = useRouter()
     const graph = router.query.graph as string;
-    const canEdit = allowEditGraph()
+    const canEdit = useAllowEditGraph()
 
     function deletePhonemeClicked() {
         if (window.confirm("Delete this phoneme?")) {

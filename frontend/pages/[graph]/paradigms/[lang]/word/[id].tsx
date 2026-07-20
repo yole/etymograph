@@ -1,4 +1,4 @@
-import {fetchAllLanguagePaths, fetchBackend, updateWordParadigm, allowEditGraph, hasBackend} from "@/api";
+import {fetchAllLanguagePaths, fetchBackend, updateWordParadigm, useAllowEditGraph, hasBackend} from "@/api";
 import {useRouter} from "next/router";
 import {useContext, useState} from "react";
 import WordLink from "@/components/WordLink";
@@ -55,7 +55,7 @@ function WordParadigm(params) {
     const [editMode, setEditMode] = useState(false)
     const [editedParadigm, setEditedParadigm] = useState(new Map())
     const router = useRouter()
-    const canEdit = allowEditGraph()
+    const canEdit = useAllowEditGraph()
 
     function saveParadigm() {
         updateWordParadigm(router.query.graph as string, params.wordId, editedParadigm).then(r => {

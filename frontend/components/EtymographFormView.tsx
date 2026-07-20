@@ -1,9 +1,7 @@
-import {createContext, useContext, useState} from "react";
-import {allowEditGraph} from "@/api";
+import {useContext, useState} from "react";
+import {useAllowEditGraph} from "@/api";
 import {EtymographFormButton} from "@/components/EtymographForm";
-
-export const EditModeContext = createContext<boolean | undefined>(undefined)
-export const SetEditModeContext = createContext<((newState: boolean) => void) | undefined>(undefined)
+import {EditModeContext, SetEditModeContext} from "@/components/EditModeContexts";
 
 export function View(props) {
     const editMode = useContext(EditModeContext)
@@ -19,7 +17,7 @@ interface EtymographFormViewProps {
 export default function EtymographFormView(props: EtymographFormViewProps) {
     const editButtonTitle = props.editButtonTitle ?? "Edit"
     const [editMode, setEditMode] = useState(false)
-    const canEdit = allowEditGraph()
+    const canEdit = useAllowEditGraph()
 
     const buttons = props.buttons || []
 

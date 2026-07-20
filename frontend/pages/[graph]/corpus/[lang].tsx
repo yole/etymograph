@@ -1,4 +1,4 @@
-import {fetchAllLanguagePaths, fetchBackend, allowEditGraph} from "@/api";
+import {fetchAllLanguagePaths, fetchBackend, useAllowEditGraph} from "@/api";
 import {useRouter} from "next/router";
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -29,6 +29,6 @@ export default function CorpusLangIndex(props) {
                 )
             )}
         </ul>
-        {allowEditGraph() && <button className="uiButton" onClick={() => router.push(`/${graph}/corpus/${corpusForLanguage.language}/new`)}>Add</button>}
+        {useAllowEditGraph() && <button type="button" className="uiButton" onClick={() => router.push(`/${graph}/corpus/${corpusForLanguage.language}/new`)}>Add</button>}
     </>
 }

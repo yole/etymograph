@@ -1,5 +1,5 @@
 import Link from "next/link";
-import {fetchAllGraphs, fetchBackend, allowEditGraph} from "@/api";
+import {fetchAllGraphs, fetchBackend, useAllowEditGraph} from "@/api";
 import {useRouter} from "next/router";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
@@ -28,7 +28,7 @@ export default function Home(props) {
   const languages = props.loaderData
   const router = useRouter()
   const graph = router.query.graph
-  const canEdit = allowEditGraph()
+  const canEdit = useAllowEditGraph()
   return <>
       <Breadcrumbs title="Languages"/>
       <LanguageList languages={languages} graph={graph} />
