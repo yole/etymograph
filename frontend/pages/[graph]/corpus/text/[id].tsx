@@ -143,7 +143,7 @@ function GlossDropdown(params: {
     </Popover>;
 }
 
-interface TextSegment {
+export interface TextSegment {
     start: number
     end: number
     translations: TranslationViewModel[]
@@ -167,7 +167,7 @@ function computeLinePositions(lines: CorpusLineViewModel[]): number[] {
     })
 }
 
-function buildSegments(corpusText: CorpusTextViewModel): { segments: TextSegment[], unanchoredTranslations: TranslationViewModel[] } {
+export function buildSegments(corpusText: CorpusTextViewModel): { segments: TextSegment[], unanchoredTranslations: TranslationViewModel[] } {
     const wordCount = corpusText.lines.flatMap(line => line.words).length
     const boundaries = new Set<number>([0, wordCount])
     const translationsBySegment = new Map<string, TranslationViewModel[]>()
