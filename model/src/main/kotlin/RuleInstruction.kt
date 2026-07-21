@@ -175,20 +175,8 @@ class ApplyRuleInstruction(val ruleRef: RuleRef, comment: String?)
 {
     override fun apply(word: Word, context: RuleApplyContext): Word {
         val targetRule = ruleRef.resolve()
-        val link = word.graph.getLinksTo(word).find { it.rules == listOf(targetRule) }
-        val existingFormText = (link?.fromEntity as? Word)?.text
         val applyPrePostRules = word.graph.paradigmForRule(context.rule) != word.graph.paradigmForRule(targetRule)
-        val result = targetRule.apply(word, context.trace, normalizeSegments = false, applyPrePostRules = applyPrePostRules)
-            .asOrthographic(context.originalWord)
-        if (existingFormText != null && existingFormText != result.text) {
-            return word.derive(existingFormText, word.id)
-        }
-        return result.derive(result.text, word.id).remapSegments { s ->
-            if (s.sourceRule == targetRule) {
-                WordSegment(s.firstCharacter, s.length, context.rule.addedCategories, null, context.rule)}
-            else
-                s
-        }
+        return applyRuleOrLink(word, targetRule, context, applyPrePostRules)
     }
 
     override fun reverseApply(rule: Rule, text: String, language: Language, trace: RuleTrace?): List<String> {
@@ -211,6 +199,31 @@ class ApplyRuleInstruction(val ruleRef: RuleRef, comment: String?)
 
     override fun referencedRules(): Set<Rule> {
         return setOf(ruleRef.resolve())
+    }
+}
+
+fun applyRuleOrLink(
+    word: Word,
+    targetRule: Rule,
+    context: RuleApplyContext,
+    applyPrePostRules: Boolean,
+    preserveId: Boolean = false
+): Word {
+    val link = word.graph.getLinksTo(word).find { it.rules == listOf(targetRule) }
+    val existingFormText = (link?.fromEntity as? Word)?.text
+    val result = targetRule.apply(
+        word, context.trace,
+        normalizeSegments = false, applyPrePostRules = applyPrePostRules, preserveId = preserveId
+    ).asOrthographic(context.originalWord)
+
+    if (existingFormText != null && existingFormText != result.text) {
+        return word.derive(existingFormText, word.id)
+    }
+    return result.derive(result.text, word.id).remapSegments { s ->
+        if (s.sourceRule == targetRule) {
+            WordSegment(s.firstCharacter, s.length, context.rule.addedCategories, null, context.rule)
+        } else
+            s
     }
 }
 

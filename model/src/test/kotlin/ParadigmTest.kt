@@ -86,6 +86,24 @@ class ParadigmTest : QBaseTest() {
     }
 
     @Test
+    fun paradigmPreRuleLink() {
+        val paradigm = setupNounParadigm()
+
+        val genRule = q.rule("- append 'o'", name = "q-gen", addedCategories = ".GEN")
+        paradigm.setRule(1, 0, listOf(genRule))
+
+        val preRule = q.rule("word ends with 'a':\n- change ending to ''", name = "q-pre")
+        paradigm.preRule = preRule
+
+        val cirya = graph.findOrAddWord("cirya", q, "ship", pos = "N")
+        val cir = q.word("cir")
+        graph.addLink(cir, cirya, Link.Derived, listOf(preRule))
+
+        val result = genRule.apply(cirya)
+        assertEquals("ciro", result.text)
+    }
+
+    @Test
     fun paradigmPreRulePreservesAccent() {
         q.accentTypes = setOf(AccentType.Grave)
         val paradigm = setupNounParadigm()

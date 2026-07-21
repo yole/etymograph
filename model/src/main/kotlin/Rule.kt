@@ -308,8 +308,10 @@ class MorphoRuleLogic(
         preserveId: Boolean
     ): Word {
         val paradigm = word.graph.paradigmForRule(rule)
-        val paraPreWord = if (applyPrePostRules) (paradigm?.preRule?.apply(word, trace, preserveId = true) ?: word) else word
         val prePostApplyContext = RuleApplyContext(rule, null, word, trace)
+        val paraPreWord = paradigm?.preRule?.takeIf { applyPrePostRules }?.let {
+            applyRuleOrLink(word, it, prePostApplyContext, applyPrePostRules = false, preserveId = true)
+        } ?: word
         val preWord = preInstructions.apply(paraPreWord, prePostApplyContext)
         for (branch in branches) {
             if (branch.matches(preWord, trace)) {
