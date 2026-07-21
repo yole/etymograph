@@ -56,6 +56,26 @@ class LanguageControllerTest {
     }
 
     @Test
+    fun wordClassAndPartOfSpeechAbbreviationsMustBeUnique() {
+        assertBadRequest("Duplicate word class or part of speech abbreviation 'N'") {
+            languageController.updateLanguage(fixture.graph, "q", LanguageController.UpdateLanguageParameters(
+                pos = "Noun (N), Name (N)"
+            ))
+        }
+        assertBadRequest("Duplicate word class or part of speech abbreviation 'AN'") {
+            languageController.updateLanguage(fixture.graph, "q", LanguageController.UpdateLanguageParameters(
+                wordClasses = "Gender (N): Animate (AN)\nAnimacy (N): Inanimate (AN)"
+            ))
+        }
+        assertBadRequest("Duplicate word class or part of speech abbreviation 'N'") {
+            languageController.updateLanguage(fixture.graph, "q", LanguageController.UpdateLanguageParameters(
+                pos = "Noun (N)",
+                wordClasses = "Declension (N): First declension (N)"
+            ))
+        }
+    }
+
+    @Test
     fun diphthongs() {
         val parameters = LanguageController.UpdateLanguageParameters(
             diphthongs = ""

@@ -261,9 +261,12 @@ class LanguageController {
 
         language.diphthongs = parseList(params.diphthongs)
         language.syllableStructures = parseList(params.syllableStructures)
-        language.pos = params.pos.nullize()?.let { parseWordCategoryValues(it) } ?: mutableListOf()
+        val pos = params.pos.nullize()?.let { parseWordCategoryValues(it) } ?: mutableListOf()
+        val wordClasses = params.wordClasses.nullize()?.let { parseWordCategories(it) } ?: mutableListOf()
+        validateUniqueWordClassAndPosAbbreviations(pos, wordClasses)
+        language.pos = pos
         language.grammaticalCategories = params.grammaticalCategories.nullize()?.let { parseWordCategories(it) } ?: mutableListOf()
-        language.wordClasses = params.wordClasses.nullize()?.let { parseWordCategories(it) } ?: mutableListOf()
+        language.wordClasses = wordClasses
 
         language.stressRule = parseRuleRef(gr, params.stressRuleName)
         language.phonotacticsRule = parseRuleRef(gr, params.phonotacticsRuleName)
@@ -274,6 +277,19 @@ class LanguageController {
         language.accentTypes = params.accentTypes?.mapTo(mutableSetOf()) {
             AccentType.valueOf(it)
         } ?: mutableSetOf()
+    }
+
+    private fun validateUniqueWordClassAndPosAbbreviations(
+        pos: List<WordCategoryValue>,
+        wordClasses: List<WordCategory>
+    ) {
+        val abbreviations = mutableSetOf<String>()
+        val duplicateAbbreviation = (pos.asSequence() + wordClasses.asSequence().flatMap { it.values.asSequence() })
+            .firstOrNull { !abbreviations.add(it.abbreviation) }
+            ?.abbreviation
+        if (duplicateAbbreviation != null) {
+            badRequest("Duplicate word class or part of speech abbreviation '$duplicateAbbreviation'")
+        }
     }
 
     private fun parseRuleRef(graph: Graph, name: String?): RuleRef? {
