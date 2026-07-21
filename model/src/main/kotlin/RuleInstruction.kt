@@ -6,6 +6,7 @@ enum class InstructionType(
     val takesArgument: Boolean = false
 ) {
     NoChange("no change"),
+    UseBaseForm("use base form"),
     PrependMorpheme("prepend morpheme", "prepend morpheme '(.+?): (.+)'", true),
     AppendMorpheme("append morpheme", "append morpheme '(.+?): (.+)'", true),
     ChangeEndingToMorpheme("change ending to morpheme", "change ending to morpheme '(.+?): (.+)'", true),
@@ -28,6 +29,7 @@ const val DISALLOW_CLASS = "disallow"
 open class RuleInstruction(val type: InstructionType, val arg: String, val comment: String?)  {
     open fun apply(word: Word, context: RuleApplyContext): Word = when(type) {
         InstructionType.NoChange -> word
+        InstructionType.UseBaseForm -> context.originalWord ?: word
         InstructionType.ChangeEnding -> changeEnding(word, context.rule, context.branch)
         InstructionType.ApplyClass -> word.derive(word.text, newClasses = (word.classes + arg).toSet().toList(), id = word.id)
         InstructionType.Disallow -> word.derive(word.text, newClasses = (word.classes + DISALLOW_CLASS).toSet().toList())

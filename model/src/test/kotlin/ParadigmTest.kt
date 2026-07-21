@@ -85,6 +85,22 @@ class ParadigmTest : QBaseTest() {
         assertEquals("ciryo", result.text)
     }
 
+
+    @Test
+    fun paradigmPreRuleBaseForm() {
+        val paradigm = setupNounParadigm()
+
+        val genRule = q.rule("- use base form", name = "q-gen", addedCategories = ".GEN")
+        paradigm.setRule(1, 0, listOf(genRule))
+
+        val preRule = q.rule("word ends with 'a':\n- change ending to ''", name = "q-pre")
+        paradigm.preRule = preRule
+
+        val cirya = graph.findOrAddWord("cirya", q, "ship", pos = "N")
+        val result = genRule.apply(cirya)
+        assertEquals("cirya", result.text)
+    }
+
     @Test
     fun paradigmPreRuleLink() {
         val paradigm = setupNounParadigm()
