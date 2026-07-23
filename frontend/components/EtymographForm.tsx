@@ -80,7 +80,7 @@ export default function EtymographForm<Data, ResponseData=Data>(props: Etymograp
                 if (result?.message !== undefined) return result.message
             }
             else if (setEditMode !== undefined) {
-                await router.replace(router.asPath)
+                void router.replace(router.asPath)
                 setEditMode(false)
             }
             return ""
