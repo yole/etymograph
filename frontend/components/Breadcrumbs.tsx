@@ -86,9 +86,9 @@ export default function Breadcrumbs(props: BreadcrumbsProps) {
         </form>}
     </div>
 
-    return <div style={{marginBottom: '0.75rem'}}><div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-        <h2 style={{marginBottom: '0', marginTop: '0.75rem'}}>
-            <small>
+    return <div style={{marginBottom: '0.75rem'}}>
+        <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+            <h3 style={{marginBottom: '0', marginTop: '0.75rem'}}>
                 {theGraph === undefined && "Etymograph"}
                 {theGraph !== undefined && <>
                     <Link href="/">Etymograph</Link>{' > '}
@@ -100,10 +100,10 @@ export default function Breadcrumbs(props: BreadcrumbsProps) {
                 {props.steps !== undefined && props.steps.map(s => <>
                     {' > '}<Link href={s.url}>{s.title}</Link>
                 </>)}
-            </small>
-            {props.title && ' > ' + props.title}
-            {props.children && <>{' > '}{props.children}</>}
-        </h2>
-        {controls}
-    </div></div>
+            </h3>
+            {controls}
+        </div>
+        <h2>{props.title}</h2>
+        {props.children && <h2>{props.children}</h2>}
+    </div>
 }
