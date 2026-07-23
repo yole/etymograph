@@ -113,7 +113,6 @@ export default function Dictionary(params) {
 
         <div style={{maxWidth: '24rem', margin: '0.5rem 0 1rem'}}>
             <Select id="dictionary-pos-filter"
-                    label="Part of speech"
                     data={posOptions}
                     value={selectedPos}
                     onChange={(val) => updatePosFilter(val ?? "")}
