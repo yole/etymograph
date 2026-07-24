@@ -43,6 +43,7 @@ function corpusText(lines: CorpusLineViewModel[], translations: TranslationViewM
         source: [],
         sourceEditableText: "",
         translations,
+        consistencyIssues: [],
     };
 }
 

@@ -20,7 +20,7 @@ import WordGloss from "@/components/WordGloss";
 import {CorpusLineViewModel, CorpusTextViewModel, CorpusWordCandidateViewModel, CorpusWordViewModel, TranslationViewModel, WordViewModel} from "@/models";
 import WordTextView from "@/components/WordTextView";
 import {Urls} from "@/components/Urls";
-import {ActionIcon, Popover} from "@mantine/core";
+import {ActionIcon, Alert, Popover} from "@mantine/core";
 
 export async function getStaticProps(context) {
     return fetchBackend(context.params.graph, `corpus/text/${context.params.id}`, true)
@@ -343,6 +343,16 @@ export default function CorpusText(params) {
                          {title: "Corpus", url: `/${graph}/corpus/${corpusText.language}`}
                      ]}/>
         {!editMode && <>
+            {corpusText.consistencyIssues.length > 0 &&
+                <Alert color="yellow" title={corpusText.consistencyIssues.length === 1 ? "Consistency issue" : "Consistency issues"} mb="sm">
+                    {corpusText.consistencyIssues.length === 1
+                        ? corpusText.consistencyIssues[0]
+                        : <ul style={{margin: 0, paddingLeft: "1.2em"}}>
+                            {corpusText.consistencyIssues.map((issue, index) => (
+                                <li key={`${corpusText.id}-${index}`}>{issue}</li>
+                            ))}
+                        </ul>}
+                </Alert>}
             {segments.map(segment => (
                 <div key={`segment-${segment.start}-${segment.end}`} className="segment">
                     {corpusText.lines.map((line, lineIdx) => {

@@ -89,6 +89,19 @@ class CorpusControllerTest {
     }
 
     @Test
+    fun consistencyIssues() {
+        val corpusText = graph.addCorpusText("alda", "Test text", fixture.q)
+        val word = graph.findOrAddWord("elen", fixture.q, "star")
+        corpusText.associateWord(0, word)
+
+        val textJson = corpusController.textJson(graph, corpusText.id)
+
+        assertEquals(listOf(
+            "Corpus word text 'alda' doesn't match word text 'elen', index 0"
+        ), textJson.consistencyIssues)
+    }
+
+    @Test
     fun candidateUrlKey() {
         val corpusParams = CorpusController.CorpusTextParams(text = "^m^mur-si")
         val corpusTextViewModel = corpusController.newText(graph, "q", corpusParams)

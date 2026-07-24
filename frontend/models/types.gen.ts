@@ -741,6 +741,7 @@ export type CorpusTextViewModel = {
     sourceEditableText: string;
     notes?: string;
     translations: Array<TranslationViewModel>;
+    consistencyIssues: Array<string>;
 };
 
 export type CorpusTextParams = {

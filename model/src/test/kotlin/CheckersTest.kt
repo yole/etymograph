@@ -13,4 +13,18 @@ class CheckersTest : QBaseTest() {
 
         assertEquals(listOf(ConsistencyCheckerIssue("Orphan word (ID=${word.id})")), issues)
     }
+
+    @Test
+    fun reportsCorpusTextIssueWithTextTitle() {
+        val word = q.word("elen", "star")
+        val corpusText = graph.addCorpusText("alda", "Test text", q)
+        corpusText.associateWord(0, word)
+        val issues = mutableListOf<ConsistencyCheckerIssue>()
+
+        CorpusTextChecker.check(graph, q, issues::add)
+
+        assertEquals(listOf(ConsistencyCheckerIssue(
+            "Corpus word text 'alda' doesn't match word text 'elen', index 0 in Test text"
+        )), issues)
+    }
 }

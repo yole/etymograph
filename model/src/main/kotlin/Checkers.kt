@@ -11,9 +11,17 @@ abstract class ConsistencyChecker {
                 report(ConsistencyCheckerIssue("${it.description} for $word"))
             }
         }
+        for (corpusText in graph.corpusTextsInLanguage(language)) {
+            checkCorpusText(corpusText) {
+                report(ConsistencyCheckerIssue("${it.description} in ${corpusText.title}"))
+            }
+        }
     }
 
     open fun checkWord(word: Word, report: (ConsistencyCheckerIssue) -> Unit) {
+    }
+
+    open fun checkCorpusText(corpusText: CorpusText, report: (ConsistencyCheckerIssue) -> Unit) {
     }
 }
 
@@ -109,15 +117,13 @@ object LinkChecker : ConsistencyChecker() {
 }
 
 object CorpusTextChecker : ConsistencyChecker() {
-    override fun check(graph: Graph, language: Language, report: (ConsistencyCheckerIssue) -> Unit) {
-        for (corpusText in graph.corpusTextsInLanguage(language)) {
-            for (line in corpusText.mapToLines()) {
-                for (corpusWord in line.corpusWords) {
-                    if (corpusWord.word != null &&
-                        corpusWord.word.text.lowercase(Locale.FRANCE) != corpusWord.normalizedText.lowercase(Locale.FRANCE))
-                    {
-                        report(ConsistencyCheckerIssue("Corpus word text '${corpusWord.normalizedText}' doesn't match word text '${corpusWord.word.text}', index ${corpusWord.index} in ${corpusText.title}"))
-                    }
+    override fun checkCorpusText(corpusText: CorpusText, report: (ConsistencyCheckerIssue) -> Unit) {
+        for (line in corpusText.mapToLines()) {
+            for (corpusWord in line.corpusWords) {
+                if (corpusWord.word != null &&
+                    corpusWord.word.text.lowercase(Locale.FRANCE) != corpusWord.normalizedText.lowercase(Locale.FRANCE))
+                {
+                    report(ConsistencyCheckerIssue("Corpus word text '${corpusWord.normalizedText}' doesn't match word text '${corpusWord.word.text}', index ${corpusWord.index}"))
                 }
             }
         }

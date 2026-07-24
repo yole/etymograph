@@ -84,7 +84,8 @@ class CorpusController {
         val source: List<SourceRefViewModel>,
         val sourceEditableText: String,
         val notes: String?,
-        val translations: List<TranslationViewModel>
+        val translations: List<TranslationViewModel>,
+        val consistencyIssues: List<String>
     )
 
     @GetMapping("/text/{id}")
@@ -125,6 +126,13 @@ class CorpusController {
             notes,
             graph.translationsForText(this).map {
                 translationToViewModel(it, graph)
+            },
+            buildList {
+                for (checker in consistencyCheckers) {
+                    checker.checkCorpusText(this@toViewModel) { issue ->
+                        add(issue.description)
+                    }
+                }
             }
         )
     }

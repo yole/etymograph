@@ -3739,6 +3739,10 @@ components:
           type: "array"
           items:
             $ref: "#/components/schemas/TranslationViewModel"
+        consistencyIssues:
+          type: "array"
+          items:
+            type: "string"
       required:
         - "id"
         - "title"
@@ -3750,6 +3754,7 @@ components:
         - "source"
         - "sourceEditableText"
         - "translations"
+        - "consistencyIssues"
     CorpusTextParams:
       type: "object"
       properties:
