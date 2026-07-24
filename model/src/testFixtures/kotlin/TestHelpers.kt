@@ -41,7 +41,7 @@ fun RuleSequence.step() = RuleSequenceStep(this, null, optional = false, dispref
 
 fun phoneme(grapheme: String, classes: String? = null): Phoneme {
     return Phoneme(-1, listOf(grapheme), sound = null,
-        classes = classes?.split(' ')?.toSet() ?: defaultPhonemeClasses[grapheme]!!)
+        classes = classes?.split(' ')?.toSet() ?: defaultPhonemeClasses[grapheme] ?: emptySet())
 }
 
 fun phoneme(graphemes: List<String>, sound: String? = null, classes: String? = null): Phoneme {

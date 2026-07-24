@@ -27,4 +27,17 @@ class CheckersTest : QBaseTest() {
             "Corpus word text 'alda' doesn't match word text 'elen', index 0 in Test text"
         )), issues)
     }
+
+    @Test
+    fun acceptsSimplifiedCorpusWordSpelling() {
+        q.phonemes += phoneme("ã"). apply { simplifiedGrapheme = "a" }
+        val word = q.word("cãnem", "dog")
+        val corpusText = graph.addCorpusText("canem", "Test text", q)
+        corpusText.associateWord(0, word)
+        val issues = mutableListOf<ConsistencyCheckerIssue>()
+
+        CorpusTextChecker.checkCorpusText(corpusText, issues::add)
+
+        assertEquals(emptyList<ConsistencyCheckerIssue>(), issues)
+    }
 }

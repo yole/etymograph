@@ -120,10 +120,12 @@ object CorpusTextChecker : ConsistencyChecker() {
     override fun checkCorpusText(corpusText: CorpusText, report: (ConsistencyCheckerIssue) -> Unit) {
         for (line in corpusText.mapToLines()) {
             for (corpusWord in line.corpusWords) {
-                if (corpusWord.word != null &&
-                    corpusWord.word.text.lowercase(Locale.FRANCE) != corpusWord.normalizedText.lowercase(Locale.FRANCE))
-                {
-                    report(ConsistencyCheckerIssue("Corpus word text '${corpusWord.normalizedText}' doesn't match word text '${corpusWord.word.text}', index ${corpusWord.index}"))
+                val associatedWord = corpusWord.word ?: continue
+                val associatedText = associatedWord.text.lowercase(Locale.FRANCE)
+                val associatedSimplifiedText = associatedWord.asSimplified().text.lowercase(Locale.FRANCE)
+                val corpusWordText = corpusWord.normalizedText.lowercase(Locale.FRANCE)
+                if (associatedText != corpusWordText && associatedSimplifiedText != corpusWordText) {
+                    report(ConsistencyCheckerIssue("Corpus word text '${corpusWord.normalizedText}' doesn't match word text '${associatedWord.text}', index ${corpusWord.index}"))
                 }
             }
         }
