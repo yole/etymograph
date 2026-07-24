@@ -16,7 +16,7 @@ export async function getStaticProps(context) {
     if (lang.length === 2) {
         return fetchBackend(graph, `dictionary/${lang[0]}/${lang[1]}`, true)
     }
-    return fetchBackend(graph, `dictionary/${lang[0]}`, true)
+    return fetchBackend(graph, `dictionary/${lang[0]}/normal`, true)
 }
 
 export async function getStaticPaths() {
@@ -25,6 +25,7 @@ export async function getStaticPaths() {
         {params: {graph: p.params.graph, lang: [p.params.lang]}},
         {params: {graph: p.params.graph, lang: [p.params.lang, 'compounds']}},
         {params: {graph: p.params.graph, lang: [p.params.lang, 'names']}},
+        {params: {graph: p.params.graph, lang: [p.params.lang, 'affixes']}},
         {params: {graph: p.params.graph, lang: [p.params.lang, 'reconstructed']}}
     ])
     return {paths, fallback: false}
@@ -44,7 +45,8 @@ export default function Dictionary(params) {
     const graph = router.query.graph as string
     const langPath = Array.isArray(router.query.lang) ? router.query.lang : [dict.language]
     const filter = langPath.length < 2 ? "" : langPath[1]
-    const selectedPos = typeof router.query.pos === "string" ? router.query.pos : ""
+    const showPosFilter = filter !== "names" && filter !== "affixes"
+    const selectedPos = showPosFilter && typeof router.query.pos === "string" ? router.query.pos : ""
     const globalState = useContext(GlobalStateContext)
     const canEdit = useAllowEditGraph()
     const [showAddWord, setShowAddWord] = useState(false)
@@ -68,8 +70,9 @@ export default function Dictionary(params) {
     const posOptions = [{value: "", label: "All parts of speech"}].concat(definedPosOptions, wordPosOptions, selectedUrlPosOption)
 
     const filterText = filter === "names" ? "Names" :
+        (filter === "affixes" ? "Affixes" :
         (filter === "reconstructed" ? "Reconstructed" :
-        (filter === "compounds" ? "Compounds" : "Dictionary"))
+        (filter === "compounds" ? "Compounds" : "Dictionary")))
 
     function updatePosFilter(pos: string) {
         router.push({
@@ -111,7 +114,7 @@ export default function Dictionary(params) {
         <LanguageNavBar langId={dict.language}/>
         <p/>
 
-        <div style={{maxWidth: '24rem', margin: '0.5rem 0 1rem'}}>
+        {showPosFilter && <div style={{maxWidth: '24rem', margin: '0.5rem 0 1rem'}}>
             <Select id="dictionary-pos-filter"
                     data={posOptions}
                     value={selectedPos}
@@ -119,7 +122,7 @@ export default function Dictionary(params) {
                     searchable={true}
                     allowDeselect={false}
             />
-        </div>
+        </div>}
 
         {canEdit && <>
             {!showAddWord && <><button className="uiButton" onClick={() => setShowAddWord(!showAddWord)}>Add word</button>{' '}</>}

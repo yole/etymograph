@@ -1,6 +1,6 @@
 package page.yole.etymograph
 
-enum class WordKind { NAME, COMPOUND, DERIVED, RECONSTRUCTED, NORMAL }
+enum class WordKind { NAME, COMPOUND, DERIVED, RECONSTRUCTED, AFFIX, NORMAL }
 
 enum class Consistency { CONSISTENT, INCONSISTENT, BECOMES_CONSISTENT, BECOMES_INCONSISTENT }
 

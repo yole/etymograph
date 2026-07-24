@@ -4,6 +4,7 @@ import kotlinx.serialization.Serializable
 import org.springframework.web.bind.annotation.*
 import page.yole.etymograph.Language
 import page.yole.etymograph.Graph
+import page.yole.etymograph.KnownPartsOfSpeech
 import page.yole.etymograph.WordKind
 import page.yole.etymograph.web.resolveLanguage
 
@@ -25,49 +26,23 @@ class DictionaryController {
         val wordsByLetter: Map<String, List<DictionaryWordViewModel>>? = null
     )
 
-    @GetMapping("/{lang}")
+    @GetMapping("/{lang}/{kind}")
     fun dictionary(
         graph: Graph,
         @PathVariable lang: String,
+        @PathVariable kind: String,
         @RequestParam(required = false) letter: String?
     ): DictionaryViewModel {
-        return loadDictionary(graph, lang, WordKind.NORMAL, letter)
-    }
-
-    @GetMapping("/{lang}/compounds")
-    fun dictionaryCompound(
-        graph: Graph,
-        @PathVariable lang: String,
-        @RequestParam(required = false) letter: String?
-    ): DictionaryViewModel {
-        return loadDictionary(graph, lang, WordKind.COMPOUND, letter)
-    }
-
-    @GetMapping("/{lang}/names")
-    fun dictionaryNames(
-        graph: Graph,
-        @PathVariable lang: String,
-        @RequestParam(required = false) letter: String?
-    ): DictionaryViewModel {
-        return loadDictionary(graph, lang, WordKind.NAME, letter)
-    }
-
-    @GetMapping("/{lang}/reconstructed")
-    fun dictionaryReconstructed(
-        graph: Graph,
-        @PathVariable lang: String,
-        @RequestParam(required = false) letter: String?
-    ): DictionaryViewModel {
-        return loadDictionary(graph, lang, WordKind.RECONSTRUCTED, letter)
-    }
-
-    @GetMapping("/{lang}/all")
-    fun allWords(
-        graph: Graph,
-        @PathVariable lang: String,
-        @RequestParam(required = false) letter: String?
-    ): DictionaryViewModel {
-        return loadDictionary(graph, lang, null, letter)
+        val wordKind = when (kind) {
+            "normal" -> WordKind.NORMAL
+            "compounds" -> WordKind.COMPOUND
+            "names" -> WordKind.NAME
+            "affixes" -> WordKind.AFFIX
+            "reconstructed" -> WordKind.RECONSTRUCTED
+            "all" -> null
+            else -> badRequest("Unknown dictionary kind '$kind'")
+        }
+        return loadDictionary(graph, lang, wordKind, letter)
     }
 
     private fun loadDictionary(graph: Graph, lang: String, wordKind: WordKind?, letter: String?): DictionaryViewModel {
@@ -102,7 +77,12 @@ class DictionaryController {
                 return firstNonDeterminative.text[0].toString()
             }
         }
-        val firstGrapheme = language.orthoPhonemeLookup.nextPhoneme(word.ref.text, 0)
+        val text = if (word.pos == KnownPartsOfSpeech.affix.abbreviation)
+            word.ref.text.removePrefix("-")
+        else
+            word.ref.text
+        if (text.isEmpty()) return "#"
+        val firstGrapheme = language.orthoPhonemeLookup.nextPhoneme(text, 0)
         return normalizeLetter(firstGrapheme)
     }
 

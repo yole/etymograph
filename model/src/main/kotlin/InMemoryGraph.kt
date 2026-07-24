@@ -127,6 +127,7 @@ open class InMemoryGraph : Graph() {
         return when {
             word.reconstructed -> WordKind.RECONSTRUCTED
             word.pos == KnownPartsOfSpeech.properName.abbreviation -> WordKind.NAME
+            word.pos == KnownPartsOfSpeech.affix.abbreviation -> WordKind.AFFIX
             isCompound(word) -> if (isCliticChain(word)) WordKind.DERIVED else WordKind.COMPOUND
             word.gloss == null -> WordKind.DERIVED
             word.baseWordLink() != null -> WordKind.DERIVED

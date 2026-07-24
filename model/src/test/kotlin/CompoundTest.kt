@@ -1,6 +1,7 @@
 package page.yole.etymograph
 
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertThrows
 import org.junit.Before
 import org.junit.Test
@@ -48,6 +49,14 @@ class CompoundTest : QBaseTest() {
         val fara = q.word("fara", "fara.NOM")
         graph.createCompound(faramir, listOf(fara, mir))
         assertEquals(1, graph.filteredWords(q, WordKind.COMPOUND).size)
+    }
+
+    @Test
+    fun affixesInSeparateDictionary() {
+        val affix = q.word("-a", "suffix", pos = KnownPartsOfSpeech.affix.abbreviation)
+
+        assertEquals(listOf(affix), graph.filteredWords(q, WordKind.AFFIX))
+        assertFalse(graph.filteredWords(q, WordKind.NORMAL).contains(affix))
     }
 
     @Test

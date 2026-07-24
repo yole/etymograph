@@ -1413,9 +1413,9 @@ paths:
             '*/*':
               schema:
                 $ref: "#/components/schemas/SearchResponse"
-  /{graph}/dictionary/{lang}:
+  /{graph}/dictionary/{lang}/{kind}:
     get:
-      summary: "GET {graph}/dictionary/{lang}"
+      summary: "GET {graph}/dictionary/{lang}/{kind}"
       operationId: "dictionary"
       parameters:
         - name: "graph"
@@ -1426,106 +1426,18 @@ paths:
           required: true
           schema:
             type: "string"
-        - name: "letter"
-          in: "query"
-          required: false
-          schema:
-            type: "string"
-      responses:
-        "200":
-          description: "OK"
-          content:
-            '*/*':
-              schema:
-                $ref: "#/components/schemas/DictionaryViewModel"
-  /{graph}/dictionary/{lang}/all:
-    get:
-      summary: "GET {graph}/dictionary/{lang}/all"
-      operationId: "allWords"
-      parameters:
-        - name: "graph"
-          in: "path"
-          required: false
-        - name: "lang"
+        - name: "kind"
           in: "path"
           required: true
           schema:
             type: "string"
-        - name: "letter"
-          in: "query"
-          required: false
-          schema:
-            type: "string"
-      responses:
-        "200":
-          description: "OK"
-          content:
-            '*/*':
-              schema:
-                $ref: "#/components/schemas/DictionaryViewModel"
-  /{graph}/dictionary/{lang}/compounds:
-    get:
-      summary: "GET {graph}/dictionary/{lang}/compounds"
-      operationId: "dictionaryCompound"
-      parameters:
-        - name: "graph"
-          in: "path"
-          required: false
-        - name: "lang"
-          in: "path"
-          required: true
-          schema:
-            type: "string"
-        - name: "letter"
-          in: "query"
-          required: false
-          schema:
-            type: "string"
-      responses:
-        "200":
-          description: "OK"
-          content:
-            '*/*':
-              schema:
-                $ref: "#/components/schemas/DictionaryViewModel"
-  /{graph}/dictionary/{lang}/names:
-    get:
-      summary: "GET {graph}/dictionary/{lang}/names"
-      operationId: "dictionaryNames"
-      parameters:
-        - name: "graph"
-          in: "path"
-          required: false
-        - name: "lang"
-          in: "path"
-          required: true
-          schema:
-            type: "string"
-        - name: "letter"
-          in: "query"
-          required: false
-          schema:
-            type: "string"
-      responses:
-        "200":
-          description: "OK"
-          content:
-            '*/*':
-              schema:
-                $ref: "#/components/schemas/DictionaryViewModel"
-  /{graph}/dictionary/{lang}/reconstructed:
-    get:
-      summary: "GET {graph}/dictionary/{lang}/reconstructed"
-      operationId: "dictionaryReconstructed"
-      parameters:
-        - name: "graph"
-          in: "path"
-          required: false
-        - name: "lang"
-          in: "path"
-          required: true
-          schema:
-            type: "string"
+            enum:
+              - "normal"
+              - "all"
+              - "compounds"
+              - "names"
+              - "affixes"
+              - "reconstructed"
         - name: "letter"
           in: "query"
           required: false

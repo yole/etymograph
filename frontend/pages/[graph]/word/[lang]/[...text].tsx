@@ -481,12 +481,14 @@ function SingleWord({word, embeddedInWordIds}: { word: WordViewModel, embeddedIn
     }
 
     const isName = word.pos === "NP"
+    const isAffix = word.pos === "AFF"
     const isCompound = word.compound
     const classesEditable = word.classes.join(" ")
 
     const [dictionaryTitle, dictionaryLink] =
         isName ? ["Names", "/names"] :
-            (isCompound ? ["Compounds", "/compounds"] : ["Dictionary", ""])
+            (isAffix ? ["Affixes", "/affixes"] :
+                (isCompound ? ["Compounds", "/compounds"] : ["Dictionary", ""]))
 
     const componentsOfDerivational = word.components.filter(c => c.derivation)
     const componentsOfNonDerivational = word.components.filter(c => !c.derivation)
