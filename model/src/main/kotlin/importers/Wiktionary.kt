@@ -248,8 +248,8 @@ open class Wiktionary : Dictionary {
             return DictionaryRelatedWord(Link.Origin, lookupResult)
         }
 
-        val normalizedWord = word.normalizeWithDictionarySettings(language)
-        val source = loadWiktionaryPageSource(language, normalizedWord)
+        val simplifiedWord = Word(-1, word, language).asSimplified().text
+        val source = loadWiktionaryPageSource(language, simplifiedWord)
             ?: return LookupResult.empty
         val wiktionaryPage = WiktionaryPage(source)
         if (!wiktionaryPage.parse(language.name, parseDictionarySettings(language.dictionarySettings))) {
@@ -277,7 +277,7 @@ open class Wiktionary : Dictionary {
                         .takeIf { it.isNotBlank() && it != gloss },
                     pos = mapPos(section),
                     classes = section.classes,
-                    source = "https://en.wiktionary.org/wiki/${langPrefix(language)}$normalizedWord#${language.name.replace(' ', '_')}")
+                    source = "https://en.wiktionary.org/wiki/${langPrefix(language)}$simplifiedWord#${language.name.replace(' ', '_')}")
                     .apply {
                         relatedWords.addAll(inheritedWords)
                         section.alternativeOf?.let {
@@ -314,24 +314,8 @@ open class Wiktionary : Dictionary {
         return gloss
     }
 
-    private fun String.normalizeWithDictionarySettings(language: Language): String {
-        val setting = language.dictionarySettings
-            ?.split('\n')
-            ?.find { it.startsWith("wiktionary-orthography:") }
-            ?: return this
-
-        val settingValue = setting.substringAfter(':').trim().split(',').map { it.trim() }
-        return settingValue.fold(this) { s, rule ->
-            val kv = rule.split('=')
-            if (kv.size == 2)
-                s.replace(kv[0], kv[1])
-            else
-                s
-        }
-    }
-
-    protected open fun loadWiktionaryPageSource(language: Language, normalizedWord: String): String? {
-        val pageJson = loadWiktionaryPage(language, normalizedWord) ?: return null
+    protected open fun loadWiktionaryPageSource(language: Language, title: String): String? {
+        val pageJson = loadWiktionaryPage(language, title) ?: return null
         val pageData = json.decodeFromString<WiktionaryPageData>(pageJson)
         return pageData.source
     }

@@ -6,7 +6,7 @@ import org.junit.Test
 class PhonemeFeatureTest {
     private val graph = InMemoryGraph()
     private val language = graph.addLanguage("Test", "T")
-    private val phoneme = Phoneme(-1, listOf("p"), null, setOf("voiceless", "bilabial", "stop"))
+    private val phoneme = Phoneme(-1, listOf("p"), sound = null, classes = setOf("voiceless", "bilabial", "stop"))
 
     @Test
     fun phonemeFeaturesIncludesExplicitAndImplicitFeatures() {

@@ -42,9 +42,9 @@ class CorpusControllerTest {
     @Test
     fun stress() {
         fixture.q.phonemes = listOf(
-            Phoneme(-1, listOf("a"), null, setOf("vowel")),
-            Phoneme(-1, listOf("i"), null, setOf("vowel")),
-            Phoneme(-1, listOf("e"), null, setOf("vowel"))
+            Phoneme(-1, listOf("a"), sound = null, classes = setOf("vowel")),
+            Phoneme(-1, listOf("i"), sound = null, classes = setOf("vowel")),
+            Phoneme(-1, listOf("e"), sound = null, classes = setOf("vowel"))
         )
 
         val ruleController = RuleController()

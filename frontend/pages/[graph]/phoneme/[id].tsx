@@ -57,6 +57,7 @@ export default function Phoneme(props) {
                 <p>
                     Graphemes: {phoneme.graphemes.join(", ")}<br/>
                     {phoneme.sound.length > 0 && <>Sound: {phoneme.sound}<br/></>}
+                    {phoneme.simplifiedGrapheme.length > 0 && <>Simplified grapheme: {phoneme.simplifiedGrapheme}<br/></>}
                     {phoneme.classes.length > 0 && <>Classes: {phoneme.classes}<br/></>}
                     {phoneme.implicitClasses.length > 0 && <>Implicit classes: {phoneme.implicitClasses}<br/></>}
                     {phoneme.features.length > 0 && <>Features {phoneme.features}<br/></>}
@@ -73,6 +74,7 @@ export default function Phoneme(props) {
                 defaultValues={{
                     graphemes: phoneme.graphemes.join(", "),
                     sound: phoneme.sound,
+                    simplifiedGrapheme: phoneme.simplifiedGrapheme,
                     classes: phoneme.classes,
                     historical: phoneme.historical,
                     source: phoneme.sourceEditableText,

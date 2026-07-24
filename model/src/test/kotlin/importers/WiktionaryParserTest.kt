@@ -47,6 +47,29 @@ class WiktionaryParserTest {
     }
 
     @Test
+    fun requestUsesSimplifiedSpelling() {
+        graph.addPhoneme(
+            oe,
+            listOf("þ"),
+            simplifiedGrapheme = "th",
+            sound = null,
+            classes = emptySet()
+        )
+        oe.dictionarySettings = "wiktionary-orthography: þ=t"
+        var requestedTitle: String? = null
+        val dictionary = object : Wiktionary() {
+            override fun loadWiktionaryPageSource(language: Language, title: String): String? {
+                requestedTitle = title
+                return null
+            }
+        }
+
+        dictionary.lookup(oe, "þing")
+
+        assertEquals("thing", requestedTitle)
+    }
+
+    @Test
     fun parseAlternativeForm() {
         oe.dictionarySettings = "ang-decl-noun-o-f: fem, o-stem"
 

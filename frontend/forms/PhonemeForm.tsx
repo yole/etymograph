@@ -23,6 +23,7 @@ export default function PhonemeForm(props: PhonemeFormProps) {
         <table><tbody>
             <FormRow label="Graphemes" id="graphemes"/>
             <FormRow label="Sound" id="sound"/>
+            <FormRow label="Simplified grapheme" id="simplifiedGrapheme"/>
             <FormRow label="Classes" id="classes"/>
             <SourceInput label="Source" id="source"/>
             <tr>

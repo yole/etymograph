@@ -7,6 +7,16 @@ import java.text.Normalizer
 
 class OrthographyTest : QBaseTest() {
     @Test
+    fun simplifiedSpelling() {
+        ce.phonemes = listOf(
+            Phoneme(-1, listOf("ã"), simplifiedGrapheme = "a", sound = null, classes = emptySet()),
+            Phoneme(-1, listOf("c"), sound = null, classes = emptySet())
+        )
+
+        assertEquals("canem", ce.word("cãnem").asSimplified().text)
+    }
+
+    @Test
     fun simpleRoundtrip() {
         ce.phonemes = listOf(phoneme(listOf("y"), "j", "semivowel"))
         val yulma = ce.word("yulma")

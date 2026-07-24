@@ -45,13 +45,23 @@ open class InMemoryGraph : Graph() {
     override fun addPhoneme(
         language: Language,
         graphemes: List<String>,
+        simplifiedGrapheme: String?,
         sound: String?,
         classes: Set<String>,
         historical: Boolean,
         source: List<SourceRef>,
         notes: String?
     ): Phoneme {
-        return Phoneme(allLangEntities.size, graphemes, sound, classes, historical, source, notes).also {
+        return Phoneme(
+            id = allLangEntities.size,
+            graphemes = graphemes,
+            simplifiedGrapheme = simplifiedGrapheme,
+            sound = sound,
+            classes = classes,
+            historical = historical,
+            source = source,
+            notes = notes
+        ).also {
             language.phonemes += it
             allLangEntities += it
         }

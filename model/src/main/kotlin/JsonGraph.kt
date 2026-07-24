@@ -40,6 +40,7 @@ data class WordData(
 data class PhonemeData(
     val id: Int,
     val graphemes: List<String>,
+    val simplifiedGrapheme: String? = null,
     val sound: String? = null,
     val classes: List<String> = emptyList(),
     val historical: Boolean = false,
@@ -437,8 +438,14 @@ class JsonGraph(val path: Path?) : InMemoryGraph() {
         for (lang in languages.values) {
             val phonemes = lang.phonemes.map {
                 PhonemeData(
-                    it.id, it.graphemes, it.sound, it.classes.toList(), it.historical,
-                    it.source.sourceToSerializedFormat(), it.notes
+                    id = it.id,
+                    graphemes = it.graphemes,
+                    sound = it.sound,
+                    simplifiedGrapheme = it.simplifiedGrapheme,
+                    classes = it.classes.toList(),
+                    historical = it.historical,
+                    sourceRefs = it.source.sourceToSerializedFormat(),
+                    notes = it.notes
                 )
             }
             val languageDetailsData = LanguageDetailsData(
@@ -634,13 +641,14 @@ class JsonGraph(val path: Path?) : InMemoryGraph() {
             val data = Json.decodeFromString<LanguageDetailsData>(content)
             for (phonemeData in data.phonemes) {
                 val phoneme = Phoneme(
-                    phonemeData.id,
-                    phonemeData.graphemes,
-                    phonemeData.sound,
-                    phonemeData.classes.toSet(),
-                    phonemeData.historical,
-                    loadSource(phonemeData.sourceRefs),
-                    phonemeData.notes
+                    id = phonemeData.id,
+                    graphemes = phonemeData.graphemes,
+                    simplifiedGrapheme = phonemeData.simplifiedGrapheme,
+                    sound = phonemeData.sound,
+                    classes = phonemeData.classes.toSet(),
+                    historical = phonemeData.historical,
+                    source = loadSource(phonemeData.sourceRefs),
+                    notes = phonemeData.notes,
                 )
                 language.phonemes += phoneme
                 if (phoneme.id != -1) {

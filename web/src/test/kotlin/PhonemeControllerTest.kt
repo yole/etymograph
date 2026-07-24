@@ -23,64 +23,89 @@ class PhonemeControllerTest {
 
     @Test
     fun view() {
-        val phoneme = graph.addPhoneme(fixture.q, listOf("a"), null, setOf("vowel"))
+        val phoneme = graph.addPhoneme(
+            language = fixture.q,
+            graphemes = listOf("ā"),
+            simplifiedGrapheme = "a",
+            sound = null,
+            classes = setOf("vowel")
+        )
         val viewModel = phonemeController.phoneme(graph, phoneme.id)
         assertEquals("vowel", viewModel.classes)
         assertEquals("Quenya", viewModel.languageFullName)
+        assertEquals("a", viewModel.simplifiedGrapheme)
     }
 
     @Test
     fun new() {
         phonemeController.addPhoneme(graph, fixture.q.shortName, PhonemeController.UpdatePhonemeParameters(
-            "a", "", "vowel"
+            graphemes = "ā",
+            simplifiedGrapheme = "a",
+            sound = "",
+            classes = "vowel"
         ))
         val phoneme = fixture.q.phonemes.single()
-        assertEquals("a", phoneme.graphemes.single())
+        assertEquals("ā", phoneme.graphemes.single())
         assertEquals("vowel", phoneme.classes.single())
+        assertEquals("a", phoneme.simplifiedGrapheme)
     }
 
     @Test
     fun duplicateGrapheme() {
-        graph.addPhoneme(fixture.q, listOf("a"), null, setOf("vowel"))
+        graph.addPhoneme(fixture.q, listOf("a"), sound = null, classes = setOf("vowel"))
         assertBadRequest("Duplicate graphemes [a]") {
             phonemeController.addPhoneme(graph, fixture.q.shortName, PhonemeController.UpdatePhonemeParameters(
-                "a", "", "vowel"
+                graphemes = "a",
+                sound = "",
+                classes = "vowel"
             ))
         }
     }
 
     @Test
     fun update() {
-        val phoneme = graph.addPhoneme(fixture.q, listOf("a"), null, setOf("vowel"))
+        val phoneme = graph.addPhoneme(fixture.q, listOf("a"), sound = null, classes = setOf("vowel"))
         phonemeController.updatePhoneme(graph, phoneme.id, PhonemeController.UpdatePhonemeParameters(
-            "a, ǎ", "a", "short vowel newclass", false,"", ""
+            graphemes = "a, ǎ",
+            simplifiedGrapheme = "aa",
+            sound = "a",
+            classes = "short vowel newclass",
+            historical = false,
+            source = "",
+            notes = ""
         ))
         assertEquals(listOf("a", "ǎ"), phoneme.graphemes)
         assertEquals("a", phoneme.sound)
         assertEquals(setOf("short", "vowel", "newclass"), phoneme.classes)
+        assertEquals("aa", phoneme.simplifiedGrapheme)
         assertNotNull(fixture.q.phonemeClassByName("newclass"))
     }
 
     @Test
     fun updateTrim() {
-        val phoneme = graph.addPhoneme(fixture.q, listOf("a"), null, setOf("vowel"))
+        val phoneme = graph.addPhoneme(fixture.q, listOf("a"), sound = null, classes = setOf("vowel"))
         phonemeController.updatePhoneme(graph, phoneme.id, PhonemeController.UpdatePhonemeParameters(
-            "a, ǎ", "a", " short vowel ", false,"", ""
+            graphemes = "a, ǎ",
+            sound = "a",
+            classes = " short vowel ",
+            historical = false,
+            source = "",
+            notes = ""
         ))
         assertEquals(setOf("short", "vowel"), phoneme.classes)
     }
 
     @Test
     fun delete() {
-        val phoneme = graph.addPhoneme(fixture.q, listOf("a"), null, setOf("vowel"))
+        val phoneme = graph.addPhoneme(fixture.q, listOf("a"), sound = null, classes = setOf("vowel"))
         phonemeController.deletePhoneme(graph, phoneme.id)
         assertEquals(0, fixture.q.phonemes.size)
     }
 
     @Test
     fun relatedRules() {
-        val wPhoneme = graph.addPhoneme(fixture.q, listOf("w"), null, setOf())
-        val uPhoneme = graph.addPhoneme(fixture.q, listOf("u"), null, setOf())
+        val wPhoneme = graph.addPhoneme(fixture.q, listOf("w"), sound = null, classes = setOf())
+        val uPhoneme = graph.addPhoneme(fixture.q, listOf("u"), sound = null, classes = setOf())
         val rule = fixture.ce.rule("* w > u / _#", fixture.q, "q-gen")
         val seq = graph.addRuleSequence("ce-to-q", fixture.ce, fixture.q, listOf(rule.step()))
 

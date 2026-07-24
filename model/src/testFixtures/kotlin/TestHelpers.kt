@@ -40,12 +40,12 @@ fun Rule.step(alternative: Rule? = null, optional: Boolean = false, dispreferred
 fun RuleSequence.step() = RuleSequenceStep(this, null, optional = false, dispreferred = false)
 
 fun phoneme(grapheme: String, classes: String? = null): Phoneme {
-    return Phoneme(-1, listOf(grapheme), null,
-        classes?.split(' ')?.toSet() ?: defaultPhonemeClasses[grapheme]!!)
+    return Phoneme(-1, listOf(grapheme), sound = null,
+        classes = classes?.split(' ')?.toSet() ?: defaultPhonemeClasses[grapheme]!!)
 }
 
 fun phoneme(graphemes: List<String>, sound: String? = null, classes: String? = null): Phoneme {
-    return Phoneme(-1, graphemes, sound, classes?.split(' ')?.toSet() ?: emptySet())
+    return Phoneme(-1, graphemes, sound = sound, classes = classes?.split(' ')?.toSet() ?: emptySet())
 }
 
 val Rule.firstInstruction: RuleInstruction

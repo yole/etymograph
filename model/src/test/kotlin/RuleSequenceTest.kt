@@ -88,10 +88,10 @@ class RuleSequenceTest : QBaseTest() {
 
     @Test
     fun normalize() {
-        ce.phonemes += Phoneme(-1, listOf("c", "k"), null, setOf("voiceless", "velar", "stop", "consonant"))
-        ce.phonemes += Phoneme(-1, listOf("g"), null, setOf("voiced", "velar", "stop", "consonant"))
+        ce.phonemes += Phoneme(-1, listOf("c", "k"), sound = null, classes = setOf("voiceless", "velar", "stop", "consonant"))
+        ce.phonemes += Phoneme(-1, listOf("g"), sound = null, classes = setOf("voiced", "velar", "stop", "consonant"))
         q.phonemes = q.phonemes.filter { "c" !in it.graphemes && "k" !in it.graphemes } +
-                Phoneme(-1, listOf("c", "k"), null, setOf("voiceless", "velar", "stop", "consonant"))
+                Phoneme(-1, listOf("c", "k"), sound = null, classes = setOf("voiceless", "velar", "stop", "consonant"))
         val qVoiceless = q.rule("* [-sonorant,-continuant] > [+voice]", name = "q-voiceless")
         val seq = graph.addRuleSequence("ce-q", ce, q, listOf(qVoiceless.step()))
         val ceWord = ce.word("aklar", "aklar")

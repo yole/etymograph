@@ -257,7 +257,7 @@ class RuleControllerTest {
 
     @Test
     fun expectedWordOrtho() {
-        fixture.q.phonemes = listOf(Phoneme(-1, listOf("th"), "θ", setOf("consonant")))
+        fixture.q.phonemes = listOf(Phoneme(-1, listOf("th"), sound = "θ", classes = setOf("consonant")))
 
         ruleController.newRule(
             fixture.graph,

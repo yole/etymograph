@@ -23,8 +23,14 @@ object KnownClasses {
 }
 
 class Phoneme(
-    id: Int, var graphemes: List<String>, var sound: String?, var classes: Set<String>, var historical: Boolean = false,
-    source: List<SourceRef> = emptyList(), notes: String? = null
+    id: Int,
+    var graphemes: List<String>,
+    var simplifiedGrapheme: String? = null,
+    var sound: String?,
+    var classes: Set<String>,
+    var historical: Boolean = false,
+    source: List<SourceRef> = emptyList(),
+    notes: String? = null
 ) : LangEntity(id, source, notes) {
     val effectiveSound: String
         get() = sound ?: graphemes.first()

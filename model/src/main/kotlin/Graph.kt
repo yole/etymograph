@@ -16,6 +16,7 @@ abstract class Graph {
     abstract fun addPhoneme(
         language: Language,
         graphemes: List<String>,
+        simplifiedGrapheme: String? = null,
         sound: String?,
         classes: Set<String>,
         historical: Boolean = false,

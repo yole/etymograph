@@ -216,7 +216,13 @@ class LanguageController {
         val fromLanguage = graph.resolveLanguage(params.fromLang)
         for (phoneme in fromLanguage.phonemes) {
             if (toLanguage.phonemes.none { phoneme.graphemes.intersect(it.graphemes).isNotEmpty() }) {
-                graph.addPhoneme(toLanguage, phoneme.graphemes, phoneme.sound, phoneme.classes)
+                graph.addPhoneme(
+                    language = toLanguage,
+                    graphemes = phoneme.graphemes,
+                    simplifiedGrapheme = phoneme.simplifiedGrapheme,
+                    sound = phoneme.sound,
+                    classes = phoneme.classes
+                )
             }
         }
     }

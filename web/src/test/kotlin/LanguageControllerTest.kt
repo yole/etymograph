@@ -103,19 +103,30 @@ class LanguageControllerTest {
 
     @Test
     fun copyPhonemes() {
-        fixture.graph.addPhoneme(fixture.q, listOf("a"), null, setOf("open", "back", "vowel"))
+        fixture.graph.addPhoneme(
+            language = fixture.q,
+            graphemes = listOf("ā"),
+            simplifiedGrapheme = "a",
+            sound = null,
+            classes = setOf("open", "back", "vowel")
+        )
         languageController.addLanguage(fixture.graph, LanguageController.UpdateLanguageParameters(
             "Sindarin", "S"
         ))
         languageController.copyPhonemes(fixture.graph, "S", LanguageController.CopyPhonemesParams("q"))
         val s = fixture.graph.languageByShortName("S")!!
-        assertEquals(1, s.phonemes.size)
+        assertEquals("a", s.phonemes.single().simplifiedGrapheme)
     }
 
     @Test
     fun inputAssistSkipsPhonemesWithoutGraphemes() {
-        val phonemeWithoutGraphemes = fixture.graph.addPhoneme(fixture.q, listOf("x"), null, emptySet())
-        fixture.graph.addPhoneme(fixture.q, listOf("ä"), null, emptySet())
+        val phonemeWithoutGraphemes = fixture.graph.addPhoneme(
+            fixture.q,
+            listOf("x"),
+            sound = null,
+            classes = emptySet()
+        )
+        fixture.graph.addPhoneme(fixture.q, listOf("ä"), sound = null, classes = emptySet())
         phonemeWithoutGraphemes.graphemes = emptyList()
 
         val viewModel = languageController.inputAssist(fixture.graph)

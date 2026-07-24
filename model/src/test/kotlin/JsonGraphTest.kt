@@ -173,9 +173,12 @@ class JsonGraphTest {
 
     @Test
     fun serializePhonemes() {
-        q.phonemes = mutableListOf(phoneme("a", "front open vowel"))
+        q.phonemes = mutableListOf(phoneme("ā", "long front open vowel").apply {
+            simplifiedGrapheme = "a"
+        })
         val repo2 = graph.roundtrip()
-        assertEquals(1, repo2.languageByShortName("Q")!!.phonemes.size)
+        val phoneme = repo2.languageByShortName("Q")!!.phonemes.single()
+        assertEquals("a", phoneme.simplifiedGrapheme)
     }
 
     @Test

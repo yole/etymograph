@@ -180,6 +180,20 @@ class Word(
             newAccentType = accentType, stressIndex = if (accentType != null) stressedPhonemeIndex else null)
     }
 
+    fun asSimplified(): Word {
+        val simplifiedText = buildString {
+            val lookup = if (isPhonemic) language.phonoPhonemeLookup else language.orthoPhonemeLookup
+            lookup.iteratePhonemes(text) { phonemeText, phoneme, _ ->
+                append(
+                    phoneme?.simplifiedGrapheme?.takeIf { it.isNotEmpty() }
+                        ?: phoneme?.graphemes?.firstOrNull()
+                        ?: phonemeText
+                )
+            }
+        }
+        return derive(simplifiedText)
+    }
+
     fun asOrthographic(referenceWord: Word? = null): Word {
         if (!isPhonemic && accentType == null) return this
         val orthoRule = language.orthographyRule?.resolve()

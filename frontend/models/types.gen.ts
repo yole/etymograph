@@ -247,6 +247,7 @@ export type PhonemeViewModel = {
     languageFullName: string;
     graphemes: Array<string>;
     sound: string;
+    simplifiedGrapheme: string;
     classes: string;
     implicitClasses: string;
     features: string;
@@ -260,6 +261,7 @@ export type PhonemeViewModel = {
 export type UpdatePhonemeParameters = {
     graphemes: string;
     sound: string;
+    simplifiedGrapheme?: string;
     classes: string;
     historical: boolean;
     source?: string;

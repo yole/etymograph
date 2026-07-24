@@ -20,6 +20,7 @@ data class PhonemeViewModel(
     val languageShortName: String,
     val languageFullName: String,
     val graphemes: List<String>,
+    val simplifiedGrapheme: String,
     val sound: String,
     val classes: String,
     val implicitClasses: String,
@@ -57,6 +58,7 @@ class PhonemeController {
 
     data class UpdatePhonemeParameters(
         val graphemes: String,
+        val simplifiedGrapheme: String? = null,
         val sound: String,
         val classes: String? = null,
         val historical: Boolean = false,
@@ -82,13 +84,14 @@ class PhonemeController {
             defaultPhonemeClasses[effectiveSound] ?: emptySet()
         }
         val phoneme = graph.addPhoneme(
-            language,
-            graphemes,
-            sound,
-            classes,
-            params.historical,
-            parseSourceRefs(graph, params.source),
-            params.notes
+            language = language,
+            graphemes = graphemes,
+            simplifiedGrapheme = params.simplifiedGrapheme.nullize(),
+            sound = sound,
+            classes = classes,
+            historical = params.historical,
+            source = parseSourceRefs(graph, params.source),
+            notes = params.notes
         )
         return phoneme.toViewModel(language)
     }
@@ -98,6 +101,7 @@ class PhonemeController {
         val phoneme = graph.resolvePhoneme(id)
         phoneme.graphemes = parseList(params.graphemes)
         phoneme.sound = params.sound.nullize()
+        phoneme.simplifiedGrapheme = params.simplifiedGrapheme.nullize()
         phoneme.classes = parseClasses(params)
         phoneme.historical = params.historical
         phoneme.source = parseSourceRefs(graph, params.source)
@@ -139,19 +143,20 @@ class PhonemeController {
 fun Phoneme.toViewModel(language: Language): PhonemeViewModel {
     val features = language.phonemeFeatures(this)
     return PhonemeViewModel(
-        id,
-        language.shortName,
-        language.name,
-        graphemes,
-        sound ?: "",
-        classes.joinToString(" "),
-        (implicitPhonemeClasses(classes) - features).joinToString(" "),
-        features.joinToString( " "),
-        historical,
-        source.toViewModel(language.graph),
-        source.toEditableText(language.graph),
-        notes,
-        findRelatedRules(language, this)
+        id = id,
+        languageShortName = language.shortName,
+        languageFullName = language.name,
+        graphemes = graphemes,
+        simplifiedGrapheme = simplifiedGrapheme ?: "",
+        sound = sound ?: "",
+        classes = classes.joinToString(" "),
+        implicitClasses = (implicitPhonemeClasses(classes) - features).joinToString(" "),
+        features = features.joinToString( " "),
+        historical = historical,
+        source = source.toViewModel(language.graph),
+        sourceEditableText = source.toEditableText(language.graph),
+        notes = notes,
+        relatedRules = findRelatedRules(language, this)
     )
 }
 
