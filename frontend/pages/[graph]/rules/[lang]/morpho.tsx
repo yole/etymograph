@@ -52,7 +52,6 @@ export default function MorphoRuleList(params) {
         <Breadcrumbs langId={lang} langName={ruleList.toLangFullName} title="Morphology"/>
         <LanguageNavBar langId={lang}/>
         <p/>
-        <RuleListView list={ruleList}/>
         {canEdit && <>
             <p>
                 <button className="uiButton" onClick={() => router.push(`/${graph}/rules/${lang}/new?type=morpho`)}>Add Rule</button>
@@ -82,5 +81,6 @@ export default function MorphoRuleList(params) {
                 </EtymographForm>
             </Modal>
         </>}
+        <RuleListView list={ruleList}/>
     </>
 }
