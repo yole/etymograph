@@ -262,19 +262,12 @@ class RuleController {
         }
     }
 
-    private class RuleExampleData(
-        val link: Link,
-        val steps: List<RuleStepData>,
-        val branches: Set<RuleBranch>,
-        val instructions: Set<RuleInstruction>
-    )
-
     private fun Rule.toViewModel(): RuleViewModel {
         val graph = fromLanguage.graph
         val paradigm = graph.paradigmForRule(this)
         val links = (graph.getLinksFrom(this).map { it to it.toEntity } +
                 graph.getLinksTo(this).map { it to it.fromEntity })
-        val examples = graph.findRuleExamples(this).map { link -> toExampleData(link) }
+        val examples = collectRuleExamples(this)
         val references = graph.findReferencingRules(this)
         val paradigms = graph.findReferencingParadigms(this)
 
@@ -339,18 +332,6 @@ class RuleController {
             },
             orphanExamples.map { exampleToViewModel(this, it) },
             paradigms.map { ParadigmRefViewModel(it.first.id, it.first.name, it.second) }
-        )
-    }
-
-    private fun Rule.toExampleData(
-        link: Link
-    ): RuleExampleData {
-        val steps = buildIntermediateSteps(link)
-        val theStep = steps.find { it.rule == this }
-        return RuleExampleData(
-            link, steps,
-            theStep?.matchedBranches ?: setOf(),
-            theStep?.matchedInstructions ?: setOf()
         )
     }
 
@@ -762,7 +743,7 @@ class RuleController {
         val steps = sequence.resolveSteps().withReferencedRules()
         val ruleViewModels = steps.map { step ->
             val rule = step.rule as Rule
-            val examples = graph.findRuleExamples(rule).map { link -> rule.toExampleData(link) }
+            val examples = collectRuleExamples(rule)
             val examplesToShow = examples.firstOrNull {
                 it.steps.last().result == (it.link.fromEntity as Word).text && (it.link.fromEntity as Word).pos == "V"
             }?.let { listOf(it) }

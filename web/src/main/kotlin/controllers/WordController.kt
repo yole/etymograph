@@ -640,31 +640,6 @@ private fun Word.attestationsToViewModel(graph: Graph): List<WordController.Atte
         )
     }
 
-class RuleStepData(
-    val result: String,
-    val rule: Rule,
-    val matchedBranches: Set<RuleBranch>?,
-    val matchedInstructions: Set<RuleInstruction>?
-)
-
-fun buildIntermediateSteps(link: Link, traceMatchedBranches: Boolean = true): List<RuleStepData> {
-    var word = link.toEntity as Word
-    val result = mutableListOf<RuleStepData>()
-    val trace = if (traceMatchedBranches) RuleTrace() else null
-    for (rule in link.rules) {
-        val newWord = rule.apply(word, trace)
-        val matchedBranches = trace?.findMatchedBranches(rule, word)?.ifEmpty {
-            trace.findMatchedBranches(rule, newWord)
-        }
-        val matchedInstructions = trace?.findMatchedInstructions(rule, word)?.ifEmpty {
-            trace.findMatchedInstructions(rule, newWord)
-        }
-        word = newWord
-        result.add(RuleStepData(word.text, rule, matchedBranches, matchedInstructions))
-    }
-    return result
-}
-
 fun suggestedSequences(graph: Graph, link: Link): List<WordController.WordRuleSequenceViewModel> {
     if (link.type != Link.Origin || link.sequence != null) return emptyList()
     val word = link.fromEntity as Word
