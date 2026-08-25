@@ -42,7 +42,7 @@ function WordParadigmCell(params) {
         />
     }
     return <>
-        {alt?.word?.id > 0 ? <WordLink word={alt.word}></WordLink> : alt?.word?.text}
+        {alt?.word?.id > 0 ? <WordLink word={alt.word}></WordLink> : <span className="wordText">{alt?.word?.text}</span>}
         {alt.ruleId && <span className="paradigmRuleLink">  (<Link href={`/${graph}/rule/${alt.ruleId}`}>rule</Link>)</span>}
     </>
 }
