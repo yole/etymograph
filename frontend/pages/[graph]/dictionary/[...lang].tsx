@@ -52,10 +52,12 @@ export default function Dictionary(params) {
     const [showAddWord, setShowAddWord] = useState(false)
     const [showAddSequence, setShowAddSequence] = useState(false)
     const language = globalState?.languages.find(l => l.shortName === dict.language)
-    const definedPosOptions = language?.pos.map((p) => ({
-        value: p.abbreviation,
-        label: `${p.name} (${p.abbreviation})`
-    })) ?? []
+    const definedPosOptions = language?.pos
+        .filter(p => p.abbreviation != 'AFF' && p.abbreviation != 'NP')
+        .map((p) => ({
+            value: p.abbreviation,
+            label: `${p.name} (${p.abbreviation})`
+        })) ?? []
     const definedPosValues = new Set(definedPosOptions.map((p) => p.value))
     const wordPosOptions = Array.from(new Set(dict.words
         .map((w) => w.pos)
