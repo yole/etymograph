@@ -520,7 +520,7 @@ open class InMemoryGraph : Graph() {
             sequence.toLanguage,
             word.gloss,
             pos = word.pos,
-            classes = word.classes
+            classes = word.classes.filter { sequence.toLanguage.findWordClass(it) != null }
         )
         addLink(newWord, word, Link.Origin, applicableRules, sequence = sequence)
         return newWord

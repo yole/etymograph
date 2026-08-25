@@ -15,10 +15,7 @@ class RuleSequenceTest : QBaseTest() {
 
     @Test
     fun simpleSequence() {
-        val qAiE = q.rule("* a > e / _i", name = "q-ai-e")
-        val qSfF = q.rule("* s > 0 / _f") // inapplicable for this test
-        val qWV = q.rule("* w > v / #_", name = "q-w-v")
-        val seq = graph.addRuleSequence("ce-q", ce, q, listOf(qAiE.step(), qSfF.step(), qWV.step()))
+        val seq = setupRuleSequence()
         val ceWord = ce.word("waiwai", "waiwai")
         val qWord = q.word("vaiwe", "vaiwe")
         val link = graph.addLink(qWord, ceWord, Link.Origin)
@@ -27,17 +24,12 @@ class RuleSequenceTest : QBaseTest() {
         assertEquals(seq, link.sequence)
     }
 
-    @Test
-    fun simpleSequenceSPE() {
+    private fun setupRuleSequence(): RuleSequence {
         val qAiE = q.rule("* a > e / _i", name = "q-ai-e")
         val qSfF = q.rule("* s > 0 / _f") // inapplicable for this test
         val qWV = q.rule("* w > v / #_", name = "q-w-v")
         val seq = graph.addRuleSequence("ce-q", ce, q, listOf(qAiE.step(), qSfF.step(), qWV.step()))
-        val ceWord = ce.word("waiwai", "waiwai")
-        val qWord = q.word("vaiwe", "vaiwe")
-        val link = graph.addLink(qWord, ceWord, Link.Origin)
-        graph.applyRuleSequence(link, seq)
-        assertEquals(2, link.rules.size)
+        return seq
     }
 
     @Test
@@ -139,5 +131,16 @@ class RuleSequenceTest : QBaseTest() {
         val emptySeq = graph.addRuleSequence("ce-q-empty", ce, q, emptyList())
         val links = graph.findDerivationsWithSequence(emptySeq)
         assertTrue(links.isEmpty())
+    }
+
+    @Test
+    fun deriveClass() {
+        val seq = setupRuleSequence()
+        q.pos.add(WordCategoryValue("Noun", "N"))
+        ce.pos.add(WordCategoryValue("Noun", "N"))
+        ce.wordClasses.add(WordCategory("gender", listOf("N"), listOf(WordCategoryValue("female", "f"))))
+        val ceWord = ce.word("waiwai", "waiwai", pos = "N", classes = listOf("f"))
+        val qWord = graph.deriveThroughRuleSequence(ceWord, seq)!!
+        assertEquals(0, qWord.classes.size)
     }
 }
