@@ -5,21 +5,30 @@ import {FormFieldProps} from "@/components/FormRow";
 import {useEtymographFormContext} from "@/components/EtymographForm";
 import {Input} from "@mantine/core";
 
-interface RuleLisSelectProps extends FormFieldProps {
+interface RuleListSelectProps extends FormFieldProps {
     languageProp?: string;
     language?: string;
+    posProp?: string;
+    pos?: string;
     showNone?: boolean;
     isMulti?: boolean;
 }
 
-export default function RuleListSelect(props: RuleLisSelectProps) {
+export default function RuleListSelect(props: RuleListSelectProps) {
     const form = useEtymographFormContext()
     const formValues = form.getValues()
     const globalState = useContext(GlobalStateContext)
     const lang = props.languageProp !== undefined
         ? formValues[props.languageProp]
         : props.language
-    let rules = globalState.rules.filter(r => !lang || lang === r.toLang).map((r) => ({
+    const pos = props.posProp !== undefined
+        ? formValues[props.posProp]
+        : props.pos
+    const selectedPos = pos?.split(",").map(p => p.trim()).filter(Boolean)
+    let rules = globalState.rules
+        .filter(r => (!lang || lang === r.toLang) &&
+            (selectedPos === undefined || selectedPos.some(p => r.fromPOS.includes(p))))
+        .map((r) => ({
         value: r.name,
         label: r.summaryText === null || r.summaryText === "" || r.summaryText.length > 15 ? r.name :`${r.name} (${r.summaryText})`})
     )

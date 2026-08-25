@@ -3015,6 +3015,10 @@ components:
           type: "string"
         toLang:
           type: "string"
+        fromPOS:
+          type: "array"
+          items:
+            type: "string"
         alternative:
           nullable: true
           $ref: "#/components/schemas/RuleRefViewModel"
@@ -3028,6 +3032,7 @@ components:
         - "id"
         - "name"
         - "toLang"
+        - "fromPOS"
         - "summaryText"
         - "optional"
         - "dispreferred"

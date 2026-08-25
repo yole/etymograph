@@ -474,6 +474,7 @@ export type RuleShortViewModel = {
     id: number;
     name: string;
     toLang: string;
+    fromPOS: Array<string>;
     alternative?: RuleRefViewModel;
     summaryText: string;
     optional: boolean;

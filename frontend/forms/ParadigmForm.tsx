@@ -22,7 +22,7 @@ export default function ParadigmForm(props: ParadigmFormProps) {
         <table><tbody>
             <FormRow label="Name" id="name"/>
             <PosSelect label="POS" id="pos" language={props.lang} isMulti={true}/>
-            <RuleListSelect label="Pre rule" id="preRuleName" language={props.lang} isMulti={false} showNone={true}/>
+            <RuleListSelect label="Pre rule" id="preRuleName" language={props.lang} posProp="pos" isMulti={false} showNone={true}/>
             <RuleListSelect label="Post rule" id="postRuleName" language={props.lang} isMulti={false} showNone={true}/>
         </tbody></table>
         <FormTextArea rows={10} cols={80} id="text" className="uiTextArea"/>
