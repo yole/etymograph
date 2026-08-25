@@ -459,6 +459,7 @@ class RelativePhonemeRuleCondition(
                 if (!it.seek(seekTarget)) return negated
             }
         }
+        trace?.logMatch(it.current, phonemePattern.toEditableText())
         return phonemePattern.matchesCurrent(it) xor negated
     }
 

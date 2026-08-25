@@ -75,6 +75,10 @@ class RuleTrace {
         }
     }
 
+    fun logMatch(current: String, expected: String) {
+        log.append("Matching $current, expected $expected\n")
+    }
+
     fun logInstruction(callback: () -> String) {
         log.append(callback()).append("\n")
     }
