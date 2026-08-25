@@ -150,10 +150,10 @@ export function WordLinkComponent(params: WordLinkProps) {
         <WordLink word={linkWord.word} baseLanguage={baseWord.language} gloss={true}/>
         {linkWord.ruleIds.length > 0 && <>&nbsp;(
             {linkWord.ruleResults.length > 0 && <>
-                {params.directionFrom ? linkWord.word.text : baseWord.text}
+                <span className="wordText">{params.directionFrom ? linkWord.word.text : baseWord.text}</span>
                 {linkWord.ruleIds.map((ruleId, index) => <>
                     {' '}<Link href={`/${graph}/rule/${ruleId}`} title={linkWord.ruleNames[index]}>{'>'}</Link>{' '}
-                    {linkWord.ruleResults[index]}
+                    <span className="wordText">{linkWord.ruleResults[index]}</span>
                 </>)}
             </>}
             {linkWord.ruleResults.length === 0 && linkWord.ruleIds.map((ruleId, index) => <>
