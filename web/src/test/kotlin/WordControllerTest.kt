@@ -53,7 +53,7 @@ class WordControllerTest {
 
     @Test
     fun updateWordParadigm() {
-        val accRule = fixture.setupParadigm()
+        val (_, accRule) = fixture.setupParadigm()
         val elen = fixture.graph.findOrAddWord("elen", fixture.q, "star", pos = "N")
 
         val wordParadigms = wordController.wordParadigms(graph, elen.id)
@@ -66,7 +66,7 @@ class WordControllerTest {
 
     @Test
     fun updateWordParadigmChangeText() {
-        val accRule = fixture.setupParadigm()
+        val (_, accRule) = fixture.setupParadigm()
         val elen = graph.findOrAddWord("elen", fixture.q, "star", pos = "N")
         val elena = graph.findOrAddWord("elena", fixture.q, null, pos = "N")
         graph.addLink(elena, elen, Link.Derived, listOf(accRule))

@@ -26,7 +26,7 @@ class CorpusControllerTest {
         val corpusTextViewModel = corpusController.newText(graph, "q", corpusParams)
 
         graph.findOrAddWord("elen", fixture.q, "star", pos = "N")
-        val accRule = fixture.setupParadigm()
+        val (_, accRule) = fixture.setupParadigm()
 
         val alternatives = corpusController.requestAlternatives(graph, corpusTextViewModel.id, 0)
         assertEquals(1, alternatives.size)

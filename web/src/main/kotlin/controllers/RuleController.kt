@@ -136,6 +136,11 @@ class RuleController {
         return fetchRules(graph, lang)
     }
 
+    data class RuleGroup(
+        val name: String, val paradigm: Paradigm?, val sequence: RuleSequence?,
+        val rules: MutableList<RuleShortViewModel> = mutableListOf()
+    )
+
     private fun fetchRules(
         graph: Graph,
         lang: String,
@@ -144,11 +149,30 @@ class RuleController {
     ): RuleListViewModel {
         val language = graph.resolveLanguage(lang)
 
-        data class RuleGroup(
-            val name: String, val paradigm: Paradigm?, val sequence: RuleSequence?,
-            val rules: MutableList<RuleShortViewModel> = mutableListOf()
-        )
+        val ruleGroups = groupRules(graph, language, showMorpho, showPhono)
 
+        return RuleListViewModel(
+            language.name,
+            ruleGroups.map {
+                RuleGroupViewModel(
+                    it.name,
+                    it.rules,
+                    it.sequence?.id,
+                    it.sequence?.name,
+                    it.sequence?.fromLanguage?.shortName,
+                    it.sequence?.toLanguage?.shortName,
+                    it.paradigm?.id
+                )
+            }
+        )
+    }
+
+    fun groupRules(
+        graph: Graph,
+        language: Language,
+        showMorpho: Boolean,
+        showPhono: Boolean
+    ): List<RuleGroup> {
         val ruleGroups = mutableListOf<RuleGroup>()
 
         val paradigms = graph.paradigmsForLanguage(language)
@@ -174,6 +198,8 @@ class RuleController {
                 )
             }
             addReferencedRules(rules)
+            paradigm.preRule?.let { paradigmReferencedRules.add(it) }
+            paradigm.postRule?.let { paradigmReferencedRules.add(it) }
         }
         ruleGroups.sortBy { group ->
             language.pos.indexOfFirst { pos -> pos.abbreviation == group.paradigm!!.pos.firstOrNull() }
@@ -207,9 +233,11 @@ class RuleController {
         }
 
         val phoneticsGroup by lazy { RuleGroup("Phonetics", null, null).also { ruleGroups.add(it) } }
-        val grammarAuxiliaryGroup by lazy { RuleGroup("Grammar: Auxiliary Rules", null, null).also {
-            if (showMorpho) ruleGroups.add(it)
-        } }
+        val grammarAuxiliaryGroup by lazy {
+            RuleGroup("Grammar: Auxiliary Rules", null, null).also {
+                if (showMorpho) ruleGroups.add(it)
+            }
+        }
         val grammarOtherGroup by lazy { RuleGroup("Grammar: Other", null, null).also { ruleGroups.add(it) } }
 
         for (rule in graph.allRules().filter { it.toLanguage == language }) {
@@ -221,21 +249,7 @@ class RuleController {
             }
             group.rules.add(rule.toShortViewModel())
         }
-
-        return RuleListViewModel(
-            language.name,
-            ruleGroups.map {
-                RuleGroupViewModel(
-                    it.name,
-                    it.rules,
-                    it.sequence?.id,
-                    it.sequence?.name,
-                    it.sequence?.fromLanguage?.shortName,
-                    it.sequence?.toLanguage?.shortName,
-                    it.paradigm?.id
-                )
-            }
-        )
+        return ruleGroups
     }
 
     @GetMapping("/{graph}/rules/{lang}/morpho")

@@ -366,4 +366,15 @@ class RuleControllerTest {
         val d = derivationViewModel.derivations.single()
         assertNull(d.expectedWord)
     }
+
+    @Test
+    fun ruleGroupParadigmPreRule() {
+        val (paradigm, _) = fixture.setupParadigm()
+        val preRule = q.rule("word ends with 'a':\n- change ending to ''", name = "q-pre")
+        paradigm.preRule = preRule
+
+        val groups = ruleController.groupRules(graph, q, showMorpho = true, showPhono = false)
+        val auxRules = groups.find { it.name == "Grammar: Auxiliary Rules" }!!
+        assertEquals("q-pre", auxRules.rules[0].name)
+    }
 }

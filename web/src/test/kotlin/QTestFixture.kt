@@ -8,7 +8,7 @@ class QTestFixture {
     val ce = graph.addLanguage("Common Eldarin", "ce")
     val q = graph.addLanguage("Quenya", "q")
 
-    fun setupParadigm(): Rule {
+    fun setupParadigm(): Pair<Paradigm, Rule> {
         val accRule = graph.addRule(
             "q-acc", q, q,
             MorphoRuleLogic(
@@ -24,7 +24,7 @@ class QTestFixture {
         paradigm.addRow("Acc")
         paradigm.addColumn("Sg")
         paradigm.setRule(1, 0, listOf(accRule))
-        return accRule
+        return paradigm to accRule
     }
 
     fun setupRuleSequence(): RuleSequence {
