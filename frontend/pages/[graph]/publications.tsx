@@ -20,11 +20,11 @@ export default function Publications(props) {
     return <>
         <Breadcrumbs title="Bibliography"/>
 
+        <p>{canEdit && <button className="uiButton" onClick={() => router.push(`/${graph}/publications/new`)}>Add publication</button>}</p>
+
         {publications.map(p => <>
             <Link href={`/${graph}/publication/${p.id}`}>{p.refId}</Link>: <PublicationText publication={p}/>
             <br/>
         </>)}
-
-        <p>{canEdit && <button onClick={() => router.push(`/${graph}/publications/new`)}>Add publication</button>}</p>
     </>
 }
