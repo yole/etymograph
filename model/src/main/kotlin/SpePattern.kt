@@ -182,7 +182,7 @@ class SpePhonemeClassNode(val language: Language, val phonemeClass: PhonemeClass
             else {
                 null
             }
-        }.joinToString(", ")
+        }.joinToString(", ").ifEmpty { "no replacements" }
 
         val name = if (afterClass is NegatedPhonemeClass)
             "-" + afterClass.baseClass.name.trimStart('+')

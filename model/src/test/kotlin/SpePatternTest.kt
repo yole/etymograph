@@ -271,6 +271,12 @@ class SpePatternTest : QBaseTest() {
     }
 
     @Test
+    fun shorten() {
+        val pattern = SpePattern.parse(q, q, "[+syllabic,+long] > [-long]")
+        assertEquals("tule", pattern.apply(q, "túle"))
+    }
+
+    @Test
     fun deleteMultiple() {
         val pattern = SpePattern.parse(q, q, "i > 0")
         assertEquals("bar", pattern.apply(q, "baiir"))

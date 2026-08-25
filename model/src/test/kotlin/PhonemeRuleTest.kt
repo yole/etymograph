@@ -154,7 +154,7 @@ class PhonemeRuleTest : QBaseTest() {
         val parseContext = q.parseContext(soundRule)
         val rule = parseRule(q, q, """
             * s > s
-            = apply sound rule 'q-lengthen' to next short vowel
+             = apply sound rule 'q-lengthen' to next short vowel
         """.trimIndent(), context = parseContext)
         assertEquals("sílá", rule.apply(q.word("síla")).text)
     }

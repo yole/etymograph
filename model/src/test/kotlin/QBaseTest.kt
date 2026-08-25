@@ -24,9 +24,9 @@ fun quenya(graph: Graph): Language = graph.addLanguage("Quenya", "Q").also {
     it.phonemes = listOf(
         Phoneme(-1, listOf("e", "ë"), sound = null, classes = setOf("vowel"))
     ) + listOf("a", "o", "u", "i").map { p ->
-        Phoneme(-1, listOf(p), sound = null, classes = setOf("short", "vowel"))
+        Phoneme(-1, listOf(p), sound = null, classes = defaultPhonemeClasses[p]!! + "short")
     } + listOf("á", "ó", "ú", "í", "é").map { p ->
-        Phoneme(-1, listOf(p), sound = null, classes = setOf("long", "vowel"))
+        Phoneme(-1, listOf(p), sound = null, classes = defaultPhonemeClasses[p.removeDiacritics()]!! + "long")
     } + listOf("c", "h", "l", "q", "r", "w", "x", "z").map { p ->
         Phoneme(-1, listOf(p), sound = null, classes = setOf("consonant"))
     } + Phoneme(-1, listOf("y"), sound = "j", classes = setOf("consonant")) +
