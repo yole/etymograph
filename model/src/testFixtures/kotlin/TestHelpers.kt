@@ -49,6 +49,8 @@ val Rule.firstInstruction: RuleInstruction
 
 val Rule.firstCondition get() = (logic as MorphoRuleLogic).branches[0].condition
 
+operator fun Rule.invoke(text: String): String = apply(fromLanguage.word(text)).text
+
 fun Language.withGrammaticalCategory(name: String, pos: String, vararg values: Pair<String, String>): Language {
     grammaticalCategories.add(WordCategory(name, pos.split(','), values.map { WordCategoryValue(it.first, it.second) }))
     return this

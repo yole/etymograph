@@ -7,15 +7,15 @@ class PhonemeClassTest : QBaseTest() {
     @Test
     fun diphthong() {
         val rule = parseRule(q, q, "* a > o if sound is not diphthong")
-        assertEquals("ainu", rule.apply(q.word("ainu")).text)
-        assertEquals("omo", rule.apply(q.word("ama")).text)
+        assertEquals("ainu", rule("ainu"))
+        assertEquals("omo", rule("ama"))
     }
 
     @Test
     fun diphthongSecondVowel() {
         val rule = parseRule(q, q, "* i > 0 if sound is not diphthong")
-        assertEquals("ainu", rule.apply(q.word("ainu")).text)
-        assertEquals("sla", rule.apply(q.word("sila")).text)
+        assertEquals("ainu", rule("ainu"))
+        assertEquals("sla", rule("sila"))
     }
 
     @Test
@@ -26,11 +26,9 @@ class PhonemeClassTest : QBaseTest() {
 
     @Test
     fun stressedSoundCombinedCondition() {
-        val text = "* w > x if next sound is stressed 'o'"
-        val rule = parseRule(q, q, text)
+        val rule = parseRule(q, q, "* w > x if next sound is stressed 'o'", assertTextRoundtrip = true)
         assertEquals("xowo", rule.apply(q.word("wowo").apply { setExplicitStress(1) }).text)
         assertEquals("wiwo", rule.apply(q.word("wiwo").apply { setExplicitStress(1) }).text)
-        assertEquals(text, rule.toEditableText())
     }
 
     @Test
@@ -54,25 +52,25 @@ class PhonemeClassTest : QBaseTest() {
     @Test
     fun wordFinal() {
         val rule = parseRule(q, q, "* a > 0 if next sound is word-final")
-        assertEquals("glawr", rule.apply(q.word("glawar")).text)
+        assertEquals("glawr", rule("glawar"))
     }
 
     @Test
     fun nonWordInitial() {
         val rule = parseRule(q, q, "* w > 0 / _i if sound is non-word-initial")
-        assertEquals("wii", applyRule(rule, q.word("wiwi")))
+        assertEquals("wii", rule("wiwi"))
     }
 
     @Test
     fun syllableFinal() {
         val rule = parseRule(q, q, "* n > m if sound is syllable-final")
-        assertEquals("inomdem", applyRule(rule, q.word("inonden")))
+        assertEquals("inomdem", rule("inonden"))
     }
 
     @Test
     fun nucleus() {
         val rule = parseRule(q, q, "* i > j if sound is nucleus")
-        assertEquals("jkjukuik", applyRule(rule, q.word("ikiukuik")))
+        assertEquals("jkjukuik", rule("ikiukuik"))
     }
 
     @Test

@@ -197,7 +197,7 @@ class ParadigmTest : QBaseTest() {
         val morpheme = graph.wordsByText(q, "n").single()
         assertEquals("Noun dat.sg. ending", morpheme.gloss)
         val rule = graph.ruleByName("q-dat-sg")!!
-        assertEquals("lassen", rule.apply(q.word("lasse")).text)
+        assertEquals("lassen", rule("lasse"))
     }
 
     @Test
