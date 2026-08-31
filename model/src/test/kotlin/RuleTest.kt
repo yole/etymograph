@@ -327,29 +327,15 @@ class RuleTest : QBaseTest() {
 
     @Test
     fun parseApplySoundRule() {
-        val soundRule = parseRule(q, q, "* a > á", name = "q-lengthen")
-        val parseContext = q.parseContext(soundRule)
-        val applySoundRule = Rule(
-            -1, "q-lengthen-first", q, q, Rule.parseLogic(
-                """
-            - apply sound rule 'q-lengthen' to first vowel
-        """.trimIndent(), parseContext
-            )
-        )
+        q.rule("* a > á", name = "q-lengthen")
+        val applySoundRule = q.rule("- apply sound rule 'q-lengthen' to first vowel")
         assertEquals("lásse", applySoundRule.apply(q.word("lasse")).text)
     }
 
     @Test
     fun applySoundRuleToSound() {
-        val soundRule = parseRule(q, q, "* a > á", name = "q-lengthen-sound")
-        val parseContext = q.parseContext(soundRule)
-        val applySoundRule = Rule(
-            -1, "q-lengthen", q, q, Rule.parseLogic(
-                """
-            - apply sound rule 'q-lengthen-sound' to first sound
-        """.trimIndent(), parseContext
-            )
-        )
+        q.rule("* a > á", name = "q-lengthen-sound")
+        val applySoundRule = q.rule("- apply sound rule 'q-lengthen-sound' to first sound")
         assertEquals("áire", applySoundRule.apply(q.word("aire")).text)
         assertEquals(
             "apply sound rule 'q-lengthen-sound' to first sound",
@@ -363,34 +349,16 @@ class RuleTest : QBaseTest() {
             phoneme(listOf("c", "k"), "k", ""),
             phoneme(listOf("ch"), "x", "")
         )
-        val soundRule = parseRule(
-            q, q, "* k > x", name = "q-lengthen-sound"
-        )
-        val parseContext = q.parseContext(soundRule)
-        val applySoundRule = Rule(
-            -1, "q-lengthen", q, q, Rule.parseLogic(
-                """
-            - apply sound rule 'q-lengthen-sound' to first sound
-        """.trimIndent(), parseContext
-            )
-        )
+        q.rule("* k > x", name = "q-lengthen-sound")
+        val applySoundRule = q.rule("- apply sound rule 'q-lengthen-sound' to first sound")
         assertEquals("chaered", applySoundRule.apply(q.word("caered")).text)
     }
 
     @Test
     fun applySoundRuleCase() {
         q.phonemes = listOf(phoneme(listOf("c", "k"), "k", ""), phoneme(listOf("ch"), "x", ""))
-        val soundRule = parseRule(
-            q, q, "* p > ph", name = "q-lengthen-sound"
-        )
-        val parseContext = q.parseContext(soundRule)
-        val applySoundRule = Rule(
-            -1, "q-lengthen", q, q, Rule.parseLogic(
-                """
-            - apply sound rule 'q-lengthen-sound' to first sound
-        """.trimIndent(), parseContext
-            )
-        )
+        q.rule("* p > ph", name = "q-lengthen-sound")
+        val applySoundRule = q.rule("""- apply sound rule 'q-lengthen-sound' to first sound""")
         assertEquals("Pherian", applySoundRule.apply(q.word("Perian")).text)
     }
 
@@ -990,15 +958,14 @@ class RuleTest : QBaseTest() {
      */
 }
 
-fun Language.parseContext(vararg rules: Rule): RuleParseContext =
-    createParseContext(this, this, *rules)
+fun Language.parseContext(): RuleParseContext =
+    RuleParseContext.of(this, this)
 
 fun parseRule(
     fromLanguage: Language, toLanguage: Language, text: String, name: String = "q",
-    addedCategories: String? = null, fromPOS: List<String> = emptyList(), toPOS: String? = null,
-    context: RuleParseContext? = null
+    addedCategories: String? = null, fromPOS: List<String> = emptyList(), toPOS: String? = null
 ): Rule = Rule(
     -1, name, fromLanguage, toLanguage,
-    Rule.parseLogic(text, context ?: createParseContext(fromLanguage, toLanguage)),
+    Rule.parseLogic(text, RuleParseContext.of(fromLanguage, toLanguage)),
     addedCategories, null, fromPOS, toPOS, emptyList(), null
 )

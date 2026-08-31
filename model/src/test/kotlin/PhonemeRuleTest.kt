@@ -128,55 +128,50 @@ class PhonemeRuleTest : QBaseTest() {
 
     @Test
     fun applySoundRulePhonemic() {
-        val soundRule = parseRule(q, q, "* a > á", name = "q-lengthen")
-        val parseContext = q.parseContext(soundRule)
-        val rule = parseRule(q, q, """
+        q.rule("* a > á", name = "q-lengthen")
+        val rule = q.rule("""
             * V > V
             = apply sound rule 'q-lengthen'
-        """.trimIndent(), context = parseContext)
+        """.trimIndent())
         assertEquals("silá", rule.apply(q.word("sila")).text)
     }
 
     @Test
     fun applySoundRulePhonemicNext() {
-        val soundRule = parseRule(q, q, "* a > á", name = "q-lengthen")
-        val parseContext = q.parseContext(soundRule)
-        val rule = parseRule(q, q, """
+        q.rule("* a > á", name = "q-lengthen")
+        val rule = q.rule("""
             * l > l
             = apply sound rule 'q-lengthen' to next vowel
-        """.trimIndent(), context = parseContext)
+        """.trimIndent())
         assertEquals("silá", rule.apply(q.word("sila")).text)
     }
 
     @Test
     fun applySoundRulePhonemicNextComplexClass() {
-        val soundRule = parseRule(q, q, "* a > á", name = "q-lengthen")
-        val parseContext = q.parseContext(soundRule)
-        val rule = parseRule(q, q, """
+        q.rule("* a > á", name = "q-lengthen")
+        val rule = q.rule("""
             * s > s
              = apply sound rule 'q-lengthen' to next short vowel
-        """.trimIndent(), context = parseContext)
+        """.trimIndent())
         assertEquals("sílá", rule.apply(q.word("síla")).text)
     }
 
     @Test
     fun applySoundRuleSpecialClass() {
-        val soundRule = parseRule(q, q, "* V > x", name = "q-lengthen")
-        val parseContext = q.parseContext(soundRule)
-        val rule = parseRule(q, q, """
+        q.rule("* V > x", name = "q-lengthen")
+        val rule = q.rule("""
             - apply sound rule 'q-lengthen' to second to last nucleus vowel
-        """.trimIndent(), context = parseContext)
+        """.trimIndent())
         assertEquals("lxita", rule.apply(q.word("laita")).text)
     }
 
     @Test
     fun applySoundRuleSeesResultOfPreviousInstructions() {
-        val soundRule = parseRule(q, q, "* t > d / _C", name = "q-voicing")
-        val parseContext = q.parseContext(soundRule)
-        val rule = parseRule(q, q, """
+        q.rule("* t > d / _C", name = "q-voicing")
+        val rule = q.rule("""
             * a > 0
             = apply sound rule 'q-voicing' to previous sound
-        """.trimIndent(), context = parseContext)
+        """.trimIndent())
         assertEquals("dmo", applyRule(rule, q.word("tamo")))
     }
 

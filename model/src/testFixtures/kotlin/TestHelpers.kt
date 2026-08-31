@@ -9,16 +9,6 @@ fun Language.word(
     syllabographic: Boolean = false
 ) = graph.addWord(text, this, gloss, fullGloss = fullGloss, pos = pos, classes = classes, syllabographic = syllabographic)
 
-fun createParseContext(
-    fromLanguage: Language,
-    toLanguage: Language,
-    vararg rules: Rule
-) = RuleParseContext(fromLanguage, toLanguage) { ruleName ->
-    fromLanguage.graph.ruleByName(ruleName)?.let { RuleRef.to(it) }
-        ?: rules.find { rule -> rule.name == ruleName }?.let { RuleRef.to(it) }
-        ?: throw RuleParseException("no such rule")
-}
-
 fun Language.rule(
     text: String,
     toLanguage: Language = this,
@@ -28,7 +18,7 @@ fun Language.rule(
     toPOS: String? = null
 ): Rule {
     return graph.addRule(name, this, toLanguage,
-        Rule.parseLogic(text, createParseContext(this, toLanguage)),
+        Rule.parseLogic(text, RuleParseContext.of(this, toLanguage)),
         addedCategories = addedCategories,
         fromPOS = fromPOS?.let { listOf(it) } ?: emptyList(),
         toPOS = toPOS
