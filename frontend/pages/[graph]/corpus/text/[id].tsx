@@ -1,7 +1,7 @@
 import {useState} from "react";
 import WordForm, {WordFormData} from "@/forms/WordForm";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faEdit, faCheck, faCommentDots, faEraser} from '@fortawesome/free-solid-svg-icons'
+import {faEdit, faCheck, faEraser} from '@fortawesome/free-solid-svg-icons'
 import {
     fetchBackend,
     associateWord,
