@@ -2,8 +2,8 @@ import {KeyboardEvent as ReactKeyboardEvent, useContext, useEffect, useRef, useS
 import {
     Button,
     Checkbox,
+    Input,
     Modal,
-    MultiSelect,
     ScrollArea,
     Select,
     Stack,
@@ -12,6 +12,7 @@ import {
     TextInput
 } from "@mantine/core";
 import {useRouter} from "next/router";
+import ReactSelect from "react-select";
 import {addLink, addToCompound, createCompound, fetchBackend} from "@/api";
 import {GlobalStateContext} from "@/components/Contexts";
 import {LinkTypes} from "@/components/LinkTypes";
@@ -224,8 +225,16 @@ export default function WordPickerModal(props: WordPickerModalProps) {
                         </Stack>
                     </ScrollArea.Autosize>
                     {showRuleNames &&
-                        <MultiSelect label="Link rule names" data={ruleOptions} value={ruleNames}
-                                     onChange={setRuleNames} searchable={true} clearable={true}/>}
+                        <div>
+                            <Input.Label htmlFor="word-picker-rule-names">Link rule names</Input.Label>
+                            <ReactSelect inputId="word-picker-rule-names"
+                                         options={ruleOptions}
+                                         isMulti={true}
+                                         value={ruleOptions.filter(option => ruleNames.includes(option.value))}
+                                         onChange={(selected) => setRuleNames(selected.map(option => option.value))}
+                                         isSearchable={true}
+                                         isClearable={true}/>
+                        </div>}
                     {isAddToCompound &&
                         <Checkbox label="Mark as head" checked={markHead}
                                   onChange={(e) => setMarkHead(e.currentTarget.checked)}/>}
