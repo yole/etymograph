@@ -512,7 +512,7 @@ function SingleWord({word, embeddedInWordIds}: { word: WordViewModel, embeddedIn
                     defaultValues: {language: word.language}}
             case "compoundComponent":
                 return {title: "Define compound", newCompound: true, suggestions: compoundSuggestions,
-                    showSyllabographic: word.syllabographic, defaultValues: {language: word.language}}
+                    showSyllabographic: word.syllabographic, defaultValues: {language: word.language, text: word.text}}
             case "variationOf":
                 return {title: "Add variation", linkType: LinkTypes.Variation, reverseLink: true,
                     languageReadOnly: true, showSyllabographic: word.syllabographic,
