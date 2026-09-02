@@ -140,7 +140,7 @@ class CorpusTextTest : QBaseTest() {
     @Test
     fun attestationsNotAssigned() {
         val eaV = q.word("lantar", "fall")
-        val ct1 = graph.addCorpusText("ai laurie lantar", null, q)
+        graph.addCorpusText("ai laurie lantar", null, q)
 
         val attestations = graph.findAttestations(eaV)
         assertEquals(1, attestations.size)
@@ -180,6 +180,15 @@ class CorpusTextTest : QBaseTest() {
         assertEquals(2, lines[0].corpusWords.size)
         assertFalse(lines[0].corpusWords[0].glossable)
         assertTrue(lines[0].corpusWords[1].glossable)
+    }
+
+    @Test
+    fun numbersUnglossable() {
+        val text = q.corpusText("ai 30")
+        val lines = text.mapToLines()
+        assertEquals(2, lines[0].corpusWords.size)
+        assertTrue(lines[0].corpusWords[0].glossable)
+        assertFalse(lines[0].corpusWords[1].glossable)
     }
 
     @Test

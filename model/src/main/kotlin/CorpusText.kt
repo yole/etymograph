@@ -120,7 +120,7 @@ class CorpusText(
                     val gloss = wordCandidates.firstOrNull()?.getOrComputeGloss()
                     CorpusWord(currentIndex++, tw.baseText, normalizedText, tw.baseText, syllabogramSequence,null, wordCandidates,
                         gloss, null, gloss, null, null,
-                        glossable = tw.baseText.any { it !in innerPunctuation },
+                        glossable = tw.baseText.any { it !in innerPunctuation && !it.isDigit() },
                         homonym = false)
                 }
             }, lineNumber)
