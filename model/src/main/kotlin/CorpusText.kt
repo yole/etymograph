@@ -214,7 +214,7 @@ class CorpusText(
         val punctuation = charArrayOf('!', ',', '.', '?', ':', ';', '\"', '\'', '(', ')', '|', '·', '〈', '〉')
         val sentenceEndPunctuation = charArrayOf('.', '?', '!')
         val leadingPunctuation = charArrayOf('\"', '(', '\'', '〈')
-        val innerPunctuation = arrayOf('[', ']', leftHalfBracket, rightHalfBracket)
+        val innerPunctuation = arrayOf('[', ']', leftHalfBracket, rightHalfBracket, '〈', '〉')
     }
 }
 

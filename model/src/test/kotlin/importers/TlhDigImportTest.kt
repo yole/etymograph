@@ -259,6 +259,13 @@ class TlhDigImportTest {
         assertNull(compound)
     }
 
+    @Test
+    fun angleBrackets() {
+        val corpusText = importWord("""<w trans="A-NA kaššu" mrp0sel=" " mrp1="kašš=u-@Kaš(š)u@{ a → …:D/L.SG} { b → …:D/L.PL} { c → …:ALL}@38.4@m"><aGr>A-NA</aGr> <d>m</d>ga-〈aš〉-šu-ú</w>""")
+        val word = corpusText.words[0].word
+        assertEquals("^m^ga-aš-šu-ú", word.text)
+    }
+
     private fun findWord(text: String, syllabographic: Boolean = false): Word =
         graph.wordsByText(hittite, text, syllabographic).single()
 
