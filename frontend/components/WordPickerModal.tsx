@@ -43,6 +43,10 @@ function commonPrefixLength(a: string, b: string) {
     return i
 }
 
+export function normalizeSearchText(text: string) {
+    return text.toLocaleLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+}
+
 export default function WordPickerModal(props: WordPickerModalProps) {
     const router = useRouter()
     const graph = router.query.graph as string
@@ -143,12 +147,12 @@ export default function WordPickerModal(props: WordPickerModalProps) {
 
     const suggestions = props.suggestions ?? []
     const suggestionIds = new Set(suggestions.map(s => s.id))
-    const searchLower = search.toLocaleLowerCase()
+    const searchLower = normalizeSearchText(search)
     const filteredWords = words.filter(w =>
         w.ref.id !== props.linkTarget.id &&
         !suggestionIds.has(w.ref.id) &&
         (searchLower === "" ||
-            w.ref.text.toLocaleLowerCase().startsWith(searchLower))
+            normalizeSearchText(w.ref.text).startsWith(searchLower))
         && (props.showSyllabographic || !w.ref.syllabogramSequence)
     ).sort((a, b) => a.ref.text.localeCompare(b.ref.text))
 
