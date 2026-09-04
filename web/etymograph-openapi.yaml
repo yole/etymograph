@@ -1585,6 +1585,23 @@ paths:
       responses:
         "200":
           description: "OK"
+  /{graph}/corpus/text/{id}/delete:
+    post:
+      summary: "POST {graph}/corpus/text/{id}/delete"
+      operationId: "deleteText"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
   /{graph}/corpus/text/{id}/lockAssociations:
     post:
       summary: "POST {graph}/corpus/text/{id}/lockAssociations"

@@ -7,7 +7,7 @@ import {
     associateWord,
     fetchAlternatives,
     acceptAlternative,
-    fetchPathsForAllGraphs, callApiAndRefresh, lockWordAssociations, deleteTranslation, useAllowEditGraph
+    fetchPathsForAllGraphs, callApiAndRefresh, lockWordAssociations, deleteTranslation, deleteCorpusText, useAllowEditGraph
 } from "@/api";
 import {useRouter} from "next/router";
 import Link from "next/link";
@@ -337,6 +337,13 @@ export default function CorpusText(params) {
             router, setErrorText)
     }
 
+    function deleteTextClicked() {
+        if (window.confirm("Delete this text?")) {
+            deleteCorpusText(graph, corpusText.id)
+                .then(() => router.push(`/${graph}/corpus/${corpusText.language}`))
+        }
+    }
+
     return <>
         <Breadcrumbs langId={corpusText.language} langName={corpusText.languageFullName} title={corpusText.title}
                      steps={[
@@ -469,6 +476,8 @@ export default function CorpusText(params) {
                 {' '}
             </>}
             <button className="uiButton" onClick={() => lockAssociationsClicked()}>Lock associations</button>
+            {' '}
+            <button className="uiButton" onClick={() => deleteTextClicked()}>Delete</button>
         </p>}
         {errorText !== "" && <div className="errorText">{errorText}</div>}
     </>

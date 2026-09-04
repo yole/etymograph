@@ -25,6 +25,21 @@ class GraphTest : QBaseTest() {
     }
 
     @Test
+    fun deleteCorpusText() {
+        val text1 = graph.addCorpusText("abc", "ABC", q)
+        val text2 = graph.addCorpusText("def", "DEF", q)
+        val translation = graph.addTranslation(text1, "ghi", emptyList())
+        graph.deleteCorpusText(text1)
+
+        assertEquals(1, graph.allCorpusTexts().count())
+        assertNull(graph.corpusTextById(text1.id))
+        assertNull(graph.langEntityById(text1.id))
+        assertNull(graph.langEntityById(translation.id))
+        assertEquals(emptyList<Translation>(), graph.translationsForText(text1))
+        assertEquals("def", graph.corpusTextById(text2.id)!!.text)
+    }
+
+    @Test
     fun updateWordTextRejectsInvalidText() {
         val word = q.word("abc", "abc")
 

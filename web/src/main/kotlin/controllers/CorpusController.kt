@@ -162,6 +162,12 @@ class CorpusController {
         corpusText.notes = params.notes.nullize()
     }
 
+    @PostMapping("/text/{id}/delete")
+    fun deleteText(graph: Graph, @PathVariable id: Int) {
+        val corpusText = graph.resolveCorpusText(id)
+        graph.deleteCorpusText(corpusText)
+    }
+
     data class AssociateWordParameters(
         val index: Int,
         val wordId: Int = -1,

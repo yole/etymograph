@@ -2126,6 +2126,23 @@ export type AssociateWordResponses = {
     200: unknown;
 };
 
+export type DeleteTextData = {
+    body?: never;
+    path: {
+        graph?: unknown;
+        id: number;
+    };
+    query?: never;
+    url: '/{graph}/corpus/text/{id}/delete';
+};
+
+export type DeleteTextResponses = {
+    /**
+     * OK
+     */
+    200: unknown;
+};
+
 export type LockWordAssociationsData = {
     body?: never;
     path: {

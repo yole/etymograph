@@ -155,4 +155,12 @@ class CorpusControllerTest {
         assertEquals(null, updated.translations[0].anchorStartIndex)
         assertEquals(null, updated.translations[0].anchorEndIndex)
     }
+
+    @Test
+    fun deleteText() {
+        val corpusParams = CorpusController.CorpusTextParams(text = "Ai laurie")
+        val corpusText = corpusController.newText(graph, "q", corpusParams)
+        corpusController.deleteText(graph, corpusText.id)
+        assertEquals(0, graph.allCorpusTexts().count())
+    }
 }

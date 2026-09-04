@@ -89,6 +89,17 @@ open class InMemoryGraph : Graph() {
         return allLangEntities.getOrNull(id) as? CorpusText
     }
 
+    override fun deleteCorpusText(corpusText: CorpusText) {
+        corpus.remove(corpusText)
+        val textTranslations = translations.remove(corpusText.id)
+        if (textTranslations != null) {
+            for (translation in textTranslations) {
+                deleteLangEntity(translation)
+            }
+        }
+        deleteLangEntity(corpusText)
+    }
+
     override fun addTranslation(corpusText: CorpusText, text: String, source: List<SourceRef>): Translation {
         val translation = Translation(allLangEntities.size, corpusText, text, source, null)
         allLangEntities += translation

@@ -290,6 +290,10 @@ export function updateCorpusText(graph: string, id: number, data: CorpusTextPara
     return postToBackend(`${graph}/corpus/text/${id}`, data)
 }
 
+export function deleteCorpusText(graph: string, id: number) {
+    return postToBackend(`${graph}/corpus/text/${id}/delete`, {})
+}
+
 export function addTranslation(graph: string, corpusTextId: number, data: TranslationParams, anchorStartIndex?: number) {
     return postToBackend(`${graph}/translation`, {corpusTextId: corpusTextId, ...data, anchorStartIndex})
 }

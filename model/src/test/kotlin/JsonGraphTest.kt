@@ -31,6 +31,20 @@ class JsonGraphTest {
     }
 
     @Test
+    fun deleteCorpusText() {
+        val text1 = graph.addCorpusText("abc", "Text 1", q)
+        val text2 = graph.addCorpusText("def", "Text 2", q)
+        val tr = graph.addTranslation(text1, "ghi", emptyList())
+        graph.deleteCorpusText(text1)
+
+        assertEquals(1, graph.allCorpusTexts().count())
+        val repo2 = graph.roundtrip()
+        assertEquals(1, repo2.allCorpusTexts().count())
+        assertEquals(null, repo2.corpusTextById(text1.id))
+        assertEquals("Text 2", repo2.corpusTextById(text2.id)!!.title)
+    }
+
+    @Test
     fun serializeApplySoundRule() {
         val soundRule = graph.addRule(
             "q-lengthen", q, q,

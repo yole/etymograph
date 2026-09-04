@@ -31,6 +31,7 @@ abstract class Graph {
     abstract fun allCorpusTexts(): Iterable<CorpusText>
     abstract fun corpusTextsInLanguage(lang: Language): Iterable<CorpusText>
     abstract fun corpusTextById(id: Int): CorpusText?
+    abstract fun deleteCorpusText(corpusText: CorpusText)
 
     abstract fun addTranslation(corpusText: CorpusText, text: String, source: List<SourceRef>): Translation
     abstract fun translationsForText(corpusText: CorpusText): List<Translation>
