@@ -51,7 +51,7 @@ class GraphTest : QBaseTest() {
 
     @Test
     fun classifyWordI() {
-        val ek = q.word("ek", "I")
+        q.word("ek", "I")
         assertEquals(1, graph.dictionaryWords(q).size)
     }
 

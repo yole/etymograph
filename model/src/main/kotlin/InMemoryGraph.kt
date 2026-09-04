@@ -887,10 +887,6 @@ open class InMemoryGraph : Graph() {
         publications.add(publication)
         return publication
     }
-
-    companion object {
-        val EMPTY = InMemoryGraph()
-    }
 }
 
 val diacriticPattern = Regex("\\p{M}")

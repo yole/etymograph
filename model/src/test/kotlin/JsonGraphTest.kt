@@ -34,7 +34,7 @@ class JsonGraphTest {
     fun deleteCorpusText() {
         val text1 = graph.addCorpusText("abc", "Text 1", q)
         val text2 = graph.addCorpusText("def", "Text 2", q)
-        val tr = graph.addTranslation(text1, "ghi", emptyList())
+        graph.addTranslation(text1, "ghi", emptyList())
         graph.deleteCorpusText(text1)
 
         assertEquals(1, graph.allCorpusTexts().count())
