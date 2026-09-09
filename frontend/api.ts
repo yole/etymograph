@@ -348,6 +348,14 @@ export function addToCompound(graph: string, compoundId: number, componentWord: 
     return postToBackend(`${graph}/compound/${compoundId}/add`,{componentId: componentWord, markHead})
 }
 
+export function replaceCompoundMember(graph: string, compoundId: number, memberIndex: number, componentWord: number) {
+    return postToBackend(`${graph}/compound/${compoundId}/component/${memberIndex}`, {componentId: componentWord})
+}
+
+export function removeCompoundMember(graph: string, compoundId: number, memberIndex: number) {
+    return postToBackend(`${graph}/compound/${compoundId}/component/${memberIndex}/delete`, {})
+}
+
 export function updateCompound(graph: string, compoundId: number, source?: string, notes?: string, head?: boolean) {
     return postToBackend(`${graph}/compound/${compoundId}`, {source, notes, head})
 }

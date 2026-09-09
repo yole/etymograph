@@ -23,6 +23,8 @@ class CompoundController {
         val markHead: Boolean = false,
     )
 
+    data class ReplaceCompoundMemberParams(val componentId: Int)
+
     @PostMapping("")
     fun createCompound(graph: Graph, @RequestBody params: CompoundParams) {
         val compoundWord = graph.resolveWord(params.compoundId)
@@ -39,6 +41,18 @@ class CompoundController {
         if (params.markHead && KnownClasses.clitic !in componentWord.classes) {
             compound.headIndex = compound.components.size - 1
         }
+    }
+
+    @PostMapping("/{id}/component/{memberIndex}")
+    fun replaceCompoundMember(graph: Graph, @PathVariable id: Int, @PathVariable memberIndex: Int,
+                              @RequestBody params: ReplaceCompoundMemberParams) {
+        val compound = graph.resolveCompound(id)
+        graph.replaceCompoundMember(compound, memberIndex, graph.resolveWord(params.componentId))
+    }
+
+    @PostMapping("/{id}/component/{memberIndex}/delete")
+    fun removeCompoundMember(graph: Graph, @PathVariable id: Int, @PathVariable memberIndex: Int) {
+        graph.removeCompoundMember(graph.resolveCompound(id), memberIndex)
     }
 
     @PostMapping("/{id}")

@@ -1,4 +1,4 @@
-import {addLink, addToCompound, addWord, createCompound, fetchBackend, updateWord} from "@/api";
+import {addLink, addToCompound, addWord, createCompound, fetchBackend, replaceCompoundMember, updateWord} from "@/api";
 import EtymographForm, {EtymographFormProps, useEtymographFormContext} from "@/components/EtymographForm";
 import LanguageSelect from "@/components/LanguageSelect";
 import FormRow from "@/components/FormRow";
@@ -30,6 +30,7 @@ interface WordFormProps extends EtymographFormProps<WordFormData, WordViewModel>
     reverseLink?: boolean
     newCompound?: boolean
     addToCompound?: number
+    replaceCompoundMember?: {compoundId: number, memberIndex: number}
     linkTargetText?: string
     forceNewLinkTarget?: boolean
     textReadOnly?: boolean
@@ -109,13 +110,17 @@ export default function WordForm(props: WordFormProps) {
         else if (props.addToCompound !== undefined) {
             await addToCompound(graph, props.addToCompound, wordJson.id, data.markHead)
         }
+        else if (props.replaceCompoundMember !== undefined) {
+            await replaceCompoundMember(graph, props.replaceCompoundMember.compoundId,
+                props.replaceCompoundMember.memberIndex, wordJson.id)
+        }
         if (props.wordSubmitted !== undefined) {
             props.wordSubmitted(wordJson, undefined, data)
         }
     }
 
     async function updateWordStatus(data) {
-        if (!isAddingLink && !props.newCompound && !props.addToCompound) {
+        if (!isAddingLink && !props.newCompound && !props.addToCompound && !props.replaceCompoundMember) {
             return
         }
         if (!data.text) {

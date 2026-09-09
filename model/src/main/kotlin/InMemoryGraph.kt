@@ -762,6 +762,27 @@ open class InMemoryGraph : Graph() {
         compound.compoundWord.cachedSegments = null
     }
 
+    override fun replaceCompoundMember(compound: Compound, memberIndex: Int, component: Word) {
+        if (compound.compoundWord == component) {
+            throw IllegalArgumentException("A word cannot be a compound member of itself")
+        }
+        compound.components[memberIndex] = component
+        compound.compoundWord.cachedSegments = null
+    }
+
+    override fun removeCompoundMember(compound: Compound, memberIndex: Int) {
+        require(compound.components.size > 1) { "Cannot remove the last member of a compound" }
+        compound.components.removeAt(memberIndex)
+        compound.headIndex = compound.headIndex?.let { headIndex ->
+            when {
+                headIndex == memberIndex -> null
+                headIndex > memberIndex -> headIndex - 1
+                else -> headIndex
+            }
+        }
+        compound.compoundWord.cachedSegments = null
+    }
+
     override fun findCompoundsByComponent(component: Word): List<Compound> {
         return allLangEntities.filterIsInstance<Compound>().filter { component.id in it.components.map { c -> c.id } }
     }

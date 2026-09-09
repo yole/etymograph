@@ -30,6 +30,10 @@ export type UpdateCompoundParams = {
     markHead: boolean;
 };
 
+export type ReplaceCompoundMemberParams = {
+    componentId: number;
+};
+
 export type DeriveThroughSequenceParams = {
     sequenceId: number;
 };
@@ -885,6 +889,42 @@ export type AddToCompoundData = {
 };
 
 export type AddToCompoundResponses = {
+    /**
+     * OK
+     */
+    200: unknown;
+};
+
+export type ReplaceCompoundMemberData = {
+    body: ReplaceCompoundMemberParams;
+    path: {
+        graph?: unknown;
+        id: number;
+        memberIndex: number;
+    };
+    query?: never;
+    url: '/{graph}/compound/{id}/component/{memberIndex}';
+};
+
+export type ReplaceCompoundMemberResponses = {
+    /**
+     * OK
+     */
+    200: unknown;
+};
+
+export type RemoveCompoundMemberData = {
+    body?: never;
+    path: {
+        graph?: unknown;
+        id: number;
+        memberIndex: number;
+    };
+    query?: never;
+    url: '/{graph}/compound/{id}/component/{memberIndex}/delete';
+};
+
+export type RemoveCompoundMemberResponses = {
     /**
      * OK
      */

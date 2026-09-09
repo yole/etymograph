@@ -166,4 +166,29 @@ class CompoundTest : QBaseTest() {
             graph.addToCompound(compound, faramir)
         }
     }
+
+    @Test
+    fun replaceAndRemoveCompoundMember() {
+        val i = q.word("i", "PL")
+        val a = q.word("a", "A")
+        val compound = graph.createCompound(faramir, listOf(fara, mir, a), headIndex = 1)
+
+        graph.replaceCompoundMember(compound, 2, i)
+        assertEquals(listOf(fara, mir, i), compound.components)
+        assertEquals(1, compound.headIndex)
+
+        graph.removeCompoundMember(compound, 0)
+        assertEquals(listOf(mir, i), compound.components)
+        assertEquals(0, compound.headIndex)
+
+        graph.removeCompoundMember(compound, 0)
+        assertEquals(listOf(i), compound.components)
+        assertEquals(null, compound.headIndex)
+
+        assertThrows(IllegalArgumentException::class.java) {
+            graph.removeCompoundMember(compound, 0)
+        }
+        assertEquals(listOf(i), compound.components)
+        assertEquals(null, compound.headIndex)
+    }
 }

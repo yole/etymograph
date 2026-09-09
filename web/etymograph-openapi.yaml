@@ -108,6 +108,58 @@ paths:
       responses:
         "200":
           description: "OK"
+  /{graph}/compound/{id}/component/{memberIndex}:
+    post:
+      summary: "POST {graph}/compound/{id}/component/{memberIndex}"
+      operationId: "replaceCompoundMember"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+        - name: "memberIndex"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReplaceCompoundMemberParams"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+  /{graph}/compound/{id}/component/{memberIndex}/delete:
+    post:
+      summary: "POST {graph}/compound/{id}/component/{memberIndex}/delete"
+      operationId: "removeCompoundMember"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: false
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+        - name: "memberIndex"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
   /{graph}/compound/{id}/delete:
     post:
       summary: "POST {graph}/compound/{id}/delete"
@@ -1819,6 +1871,14 @@ components:
       required:
         - "componentId"
         - "markHead"
+    ReplaceCompoundMemberParams:
+      type: "object"
+      properties:
+        componentId:
+          type: "integer"
+          format: "int32"
+      required:
+        - "componentId"
     DeriveThroughSequenceParams:
       type: "object"
       properties:

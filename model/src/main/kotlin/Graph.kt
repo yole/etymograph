@@ -160,6 +160,8 @@ abstract class Graph {
         notes: String? = null
     ): Compound
     abstract fun addToCompound(compound: Compound, component: Word)
+    abstract fun replaceCompoundMember(compound: Compound, memberIndex: Int, component: Word)
+    abstract fun removeCompoundMember(compound: Compound, memberIndex: Int)
     abstract fun findCompoundsByComponent(component: Word): List<Compound>
     abstract fun findCompoundsByCompoundWord(compoundWord: Word): List<Compound>
     abstract fun deleteCompound(compound: Compound)

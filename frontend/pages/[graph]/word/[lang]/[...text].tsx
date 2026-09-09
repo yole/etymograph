@@ -9,6 +9,7 @@ import {
     deleteWord,
     fetchBackend,
     deleteCompound,
+    removeCompoundMember,
     applyRuleSequence,
     deriveThroughRuleSequence,
     fetchAllLanguagePaths,
@@ -37,6 +38,8 @@ import WordTextView from "@/components/WordTextView";
 import WordPickerModal from "@/components/WordPickerModal";
 import {Urls} from "@/components/Urls";
 import {Alert, Menu} from "@mantine/core";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faEdit, faTrash} from "@fortawesome/free-solid-svg-icons";
 
 export async function getStaticProps(context) {
     const params = context.params.text
@@ -221,6 +224,7 @@ function CompoundListComponent(
 
     const [addToCompoundId, setAddToCompoundId] = useState(undefined)
     const [editCompound, setEditCompound] = useState(undefined)
+    const [replaceCompoundMember, setReplaceCompoundMember] = useState<{compoundId: number, memberIndex: number} | undefined>(undefined)
     const [compoundSuggestions, setCompoundSuggestions] = useState([] as WordRefViewModel[])
     const canEdit = useAllowEditGraph()
 
@@ -239,9 +243,16 @@ function CompoundListComponent(
         }
     }
 
+    function removeCompoundMemberClicked(compoundId: number, memberIndex: number) {
+        if (window.confirm("Remove this compound member?")) {
+            removeCompoundMember(graph, compoundId, memberIndex).then(() => router.replace(router.asPath))
+        }
+    }
+
     function submitted() {
         setAddToCompoundId(undefined)
         setEditCompound(undefined)
+        setReplaceCompoundMember(undefined)
         router.replace(router.asPath)
     }
 
@@ -249,10 +260,22 @@ function CompoundListComponent(
         <div>{derivation ? "Derived with affix from:" : "Compound:"}</div>
         {compounds.map(m =>
             <div>
-                {m.components.map((mc, index) => <span key={mc.id}>
+                {m.components.map((mc, index) => <span key={`${mc.id}-${index}`}>
                     {index > 0 && " + "}
                     <WordLink word={mc} baseLanguage={word.language} gloss={true}/>
                     {index === m.headIndex && " (head)"}
+                    {canEdit && <>
+                        {' '}<button type="button" className="inlineButton" aria-label="Change component"
+                                     onClick={() => setReplaceCompoundMember({compoundId: m.compoundId, memberIndex: index})}>
+                            <FontAwesomeIcon icon={faEdit}/>
+                        </button>
+                        {m.components.length > 1 && <>{' '}
+                            <button type="button" className="inlineButton" aria-label="Delete component"
+                                    onClick={() => removeCompoundMemberClicked(m.compoundId, index)}>
+                                <FontAwesomeIcon icon={faTrash}/>
+                            </button>
+                        </>}
+                    </>}
                 </span>)}
                 {m.notes && <> &ndash; {m.notes}</>}
                 <SourceRefs source={m.source} span={true}/>
@@ -260,6 +283,11 @@ function CompoundListComponent(
                                  title="Add component"
                                  addToCompound={m.compoundId} linkTarget={word}
                                  suggestions={compoundSuggestions}
+                                 showSyllabographic={word.syllabographic}
+                                 defaultValues={{language: word.language}} wordSubmitted={submitted}/>
+                <WordPickerModal opened={replaceCompoundMember?.compoundId === m.compoundId}
+                                 onClose={() => setReplaceCompoundMember(undefined)} title="Change component"
+                                 replaceCompoundMember={replaceCompoundMember} linkTarget={word}
                                  showSyllabographic={word.syllabographic}
                                  defaultValues={{language: word.language}} wordSubmitted={submitted}/>
                 {editCompound === m.compoundId &&

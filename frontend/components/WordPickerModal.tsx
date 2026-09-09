@@ -13,7 +13,7 @@ import {
 } from "@mantine/core";
 import {useRouter} from "next/router";
 import ReactSelect from "react-select";
-import {addLink, addToCompound, createCompound, fetchBackend} from "@/api";
+import {addLink, addToCompound, createCompound, fetchBackend, replaceCompoundMember} from "@/api";
 import {GlobalStateContext} from "@/components/Contexts";
 import {LinkTypes} from "@/components/LinkTypes";
 import WordForm, {WordFormData} from "@/forms/WordForm";
@@ -28,6 +28,7 @@ interface WordPickerModalProps {
     linkType?: string
     reverseLink?: boolean
     addToCompound?: number
+    replaceCompoundMember?: {compoundId: number, memberIndex: number}
     newCompound?: boolean
     suggestions?: WordRefViewModel[]
     languageReadOnly?: boolean
@@ -53,8 +54,9 @@ export default function WordPickerModal(props: WordPickerModalProps) {
     const globalState = useContext(GlobalStateContext)
 
     const isAddToCompound = props.addToCompound !== undefined
+    const isReplacingCompoundMember = props.replaceCompoundMember !== undefined
     const isNewCompound = props.newCompound === true
-    const isLink = !isAddToCompound && !isNewCompound
+    const isLink = !isAddToCompound && !isReplacingCompoundMember && !isNewCompound
     const showRuleNames = isLink && (props.linkType === LinkTypes.Derived || props.linkType === LinkTypes.Origin)
     const showSourceNotes = isLink || isNewCompound
 
@@ -97,7 +99,7 @@ export default function WordPickerModal(props: WordPickerModalProps) {
             const dict = r?.props?.loaderData as DictionaryViewModel | undefined
             const loadedWords = dict?.words ?? []
             setWords(loadedWords)
-            if (!isAddToCompound && !isNewCompound) {
+            if (!isAddToCompound && !isReplacingCompoundMember && !isNewCompound) {
                 setSelectedWordId(closestPrefixMatchId(loadedWords))
             }
         })
@@ -172,6 +174,10 @@ export default function WordPickerModal(props: WordPickerModalProps) {
         let r: Response
         if (isAddToCompound) {
             r = await addToCompound(graph, props.addToCompound, wordId, markHead)
+        }
+        else if (isReplacingCompoundMember) {
+            r = await replaceCompoundMember(graph, props.replaceCompoundMember.compoundId,
+                props.replaceCompoundMember.memberIndex, wordId)
         }
         else if (isNewCompound) {
             r = await createCompound(graph, props.linkTarget.id, wordId, linkSource || null, linkNotes || null)
@@ -251,7 +257,7 @@ export default function WordPickerModal(props: WordPickerModalProps) {
                     </>}
                     {errorText !== "" && <div className="errorText">{errorText}</div>}
                     <Button disabled={selectedWordId === null} onClick={() => addExistingClicked()} style={{alignSelf: 'flex-start'}}>
-                        {isAddToCompound ? "Add component" : isNewCompound ? "Create compound" : "Add link"}
+                        {isAddToCompound ? "Add component" : isReplacingCompoundMember ? "Change component" : isNewCompound ? "Create compound" : "Add link"}
                     </Button>
                 </Stack>
             </Tabs.Panel>
@@ -262,6 +268,7 @@ export default function WordPickerModal(props: WordPickerModalProps) {
                     linkTarget={props.linkTarget}
                     reverseLink={props.reverseLink}
                     addToCompound={props.addToCompound}
+                    replaceCompoundMember={props.replaceCompoundMember}
                     newCompound={props.newCompound}
                     languageReadOnly={props.languageReadOnly}
                     showSyllabographic={props.showSyllabographic}
