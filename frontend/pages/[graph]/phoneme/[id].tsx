@@ -49,18 +49,21 @@ export default function Phoneme(props) {
         }
     }
 
+    let title = phoneme.graphemes.join(", ")
+    if (phoneme.sound.length > 0) {
+        title += " [" + phoneme.sound + "]"
+    }
+
     return <>
-        <Breadcrumbs langId={phoneme.languageShortName} langName={phoneme.languageFullName} title="Phoneme"/>
+        <Breadcrumbs langId={phoneme.languageShortName} langName={phoneme.languageFullName} title={title}/>
 
         <EtymographFormView buttons={[{text: "Delete", callback: deletePhonemeClicked}, {text: "Copy", callback: copyPhonemeClicked}]}>
             <View>
                 <p>
-                    Graphemes: {phoneme.graphemes.join(", ")}<br/>
-                    {phoneme.sound.length > 0 && <>Sound: {phoneme.sound}<br/></>}
                     {phoneme.simplifiedGrapheme.length > 0 && <>Simplified grapheme: {phoneme.simplifiedGrapheme}<br/></>}
                     {phoneme.classes.length > 0 && <>Classes: {phoneme.classes}<br/></>}
                     {phoneme.implicitClasses.length > 0 && <>Implicit classes: {phoneme.implicitClasses}<br/></>}
-                    {phoneme.features.length > 0 && <>Features {phoneme.features}<br/></>}
+                    {phoneme.features.length > 0 && <>Features: {phoneme.features}<br/></>}
                     {phoneme.historical && "Historical"}
                 </p>
                 <SourceRefs source={phoneme.source}/>
