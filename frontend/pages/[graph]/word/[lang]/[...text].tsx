@@ -616,7 +616,6 @@ function SingleWord({word, embeddedInWordIds}: { word: WordViewModel, embeddedIn
         {canEdit && !editMode && <>
             <p/>
             <button type="button" className="uiButton" onClick={() => setEditMode(true)}>{"Edit"}</button>&nbsp;
-            <button type="button" className="uiButton" onClick={() => deleteWordClicked()}>Delete</button>{' '}
             <Menu>
                 <Menu.Target>
                     <button type="button" className="uiButton">Define</button>
@@ -644,7 +643,8 @@ function SingleWord({word, embeddedInWordIds}: { word: WordViewModel, embeddedIn
                     {word.suggestedDeriveSequences.map(seq =>
                         <Menu.Item key={seq.id} onClick={() => deriveThroughSequenceClicked(seq.id)}>Derive through {seq.name}</Menu.Item>)}
                 </Menu.Dropdown>
-            </Menu>{' '}
+            </Menu>{' | '}
+            <button type="button" className="uiButton" onClick={() => deleteWordClicked()}>Delete</button>
             {canEdit && dictionaries.includes("wiktionary") && <>
                 <button type="button" className="uiButton" onClick={() => lookupWordClicked()}>Look up in Wiktionary</button>
                 <p>
