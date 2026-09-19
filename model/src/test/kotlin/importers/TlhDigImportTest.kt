@@ -266,6 +266,14 @@ class TlhDigImportTest {
         assertEquals("^m^ga-aš-šu-ú", word.text)
     }
 
+    @Test
+    fun numeral() {
+        val corpusText = importWord("""<w trans="3" mrp0sel=" 1 " mrp1="3@drei@@ QUANcar@"><num>3</num><d>KAM</d></w> """)
+        val word = corpusText.words[0].word
+        assertEquals("3^KAM^", word.text)
+        assertEquals(0, graph.getLinksFrom(word).count { it.type == Link.Transcription })
+    }
+
     private fun findWord(text: String, syllabographic: Boolean = false): Word =
         graph.wordsByText(hittite, text, syllabographic).single()
 

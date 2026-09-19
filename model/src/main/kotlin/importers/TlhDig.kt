@@ -118,7 +118,7 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
         corpusText.associateWord(index, sylWord)
 
         val posFromDeterminant = if (properNameDeterminants.any { sylWord.text.startsWith("^$it^") })"NP" else null
-        var transWord = if (trans.none { it.isUpperCase() }) {
+        var transWord = if (trans.none { it.isUpperCase() } && !trans.all { it.isDigit()} ) {
             graph.addWord(trans, hittite, gloss = null, pos = posFromDeterminant).also {
                 graph.addLink(sylWord, it, Link.Transcription)
             }
@@ -144,11 +144,14 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
             .replace(")", "")
             .normalizeSemivowels()
             .replace("IA", "I̯A")
-            .trimEnd { it.isDigit() }
+            .removeTrailingDigits()
             .removeSuffix("-")
             .replace("=", "")
             .replace("°", "^")
             .convertSubscripts()
+        if (cleanLemma.isEmpty()) {
+            throw IllegalArgumentException("Cleaning $lemma results in empty word")
+        }
 
         val gloss = mrpElements[1]
         val analysis = mrpElements[2]
@@ -205,7 +208,7 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
                 transWord.pos = pos
             }
         }
-        else {
+        else if (!cleanLemma.all { it.isDigit() }) {
             val matchingWord = graph.wordsByText(hittite, cleanLemma)
                 .firstOrNull { isAnyGlossSimilar(it, gloss) }
 
@@ -272,6 +275,9 @@ private fun findRulesByMrp(mrp: String, hittite: Language, posMarkers: MutableLi
         if (it == null) println("No rule for mrp $mrp")
     }?.let { listOf(it) } ?: emptyList()
 }
+
+private fun String.removeTrailingDigits() =
+    if (all { it.isDigit() }) this else trimEnd { it.isDigit() }
 
 private val posMap = mapOf(
     "PNm" to KnownPartsOfSpeech.properName.abbreviation,
