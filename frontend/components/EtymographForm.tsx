@@ -1,4 +1,4 @@
-import {createContext, startTransition, useActionState, useContext, useEffect, useState} from "react";
+import {createContext, KeyboardEvent, startTransition, useActionState, useContext, useEffect, useState} from "react";
 import {useRouter} from "next/router";
 import {EditModeContext, SetEditModeContext} from "@/components/EditModeContexts";
 import {useForm} from "@mantine/form";
@@ -92,11 +92,19 @@ export default function EtymographForm<Data, ResponseData=Data>(props: Etymograp
         startTransition(() => submitAction(data))
     }
 
+    function handleKeyDown(e: KeyboardEvent<HTMLFormElement>) {
+        if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
+            e.preventDefault()
+            e.stopPropagation()
+            if (!isPending) e.currentTarget.requestSubmit()
+        }
+    }
+
     if (editMode === false) return <></>
     const buttons = props.buttons || []
 
     return <EtymographFormContext.Provider value={form}>
-        <form onSubmit={form.onSubmit(saveForm)}>
+        <form onSubmit={form.onSubmit(saveForm)} onKeyDownCapture={handleKeyDown}>
             {props.children}
             <p>
                 <input type="submit" value={isPending ? "Saving…" : props.saveButtonText ?? "Save"}
