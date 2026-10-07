@@ -164,13 +164,13 @@ class PhonemeIterator {
         lookup.iteratePhonemes(text) { phonemeText, phoneme, stressType ->
             val normalizedResultText = if (resultPhonemic ?: phonemic) phoneme?.effectiveSound else phoneme?.graphemes?.first()
             val normalizedText = if (phonemic) phoneme?.effectiveSound else phoneme?.graphemes?.first()
-            if (mergeDiphthongs && sourcePhonemes.size > 0 && sourcePhonemes.last() + (phoneme?.effectiveSound ?: phonemeText!!) in language.diphthongs) {
-                sourcePhonemes[sourcePhonemes.size - 1] = sourcePhonemes[sourcePhonemes.size - 1] + (normalizedText ?: phonemeText!!)
-                resultPhonemes[resultPhonemes.size - 1] = resultPhonemes[resultPhonemes.size - 1] + (normalizedResultText ?: phonemeText!!)
+            if (mergeDiphthongs && sourcePhonemes.size > 0 && sourcePhonemes.last() + (phoneme?.effectiveSound ?: phonemeText) in language.diphthongs) {
+                sourcePhonemes[sourcePhonemes.size - 1] = sourcePhonemes[sourcePhonemes.size - 1] + (normalizedText ?: phonemeText)
+                resultPhonemes[resultPhonemes.size - 1] = resultPhonemes[resultPhonemes.size - 1] + (normalizedResultText ?: phonemeText)
             }
             else {
-                sourcePhonemes.add(normalizedText ?: phonemeText!!)
-                resultPhonemes.add(normalizedResultText ?: phonemeText!!)
+                sourcePhonemes.add(normalizedText ?: phonemeText)
+                resultPhonemes.add(normalizedResultText ?: phonemeText)
             }
             accentTypes.add(stressType)
         }

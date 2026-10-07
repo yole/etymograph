@@ -100,6 +100,13 @@ class CorpusTextTest : QBaseTest() {
     }
 
     @Test
+    fun normalizedTextMaintainOrthography() {
+        val corpusText = q.corpusText("ai laurië lantar")
+        val lines = corpusText.mapToLines()
+        assertEquals("laurië", lines[0].corpusWords[1].normalizedText)
+    }
+
+    @Test
     fun normalizedTextRemoveParentheses() {
         val corpusText = q.corpusText("Perhael (i sennui Panthael)")
 

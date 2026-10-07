@@ -33,11 +33,8 @@ object WordTextChecker : ConsistencyChecker() {
         val charactersNotInInventory = mutableSetOf<String>()
         val text = word.asPhonemic().text
         word.language.phonoPhonemeLookup.iteratePhonemes(text) { phonemeText, phoneme, _ ->
-            if (phoneme == null) {
-                val text = phonemeText!!
-                if (text != "-") {
-                    charactersNotInInventory.add(text)
-                }
+            if (phoneme == null && phonemeText != "-") {
+                charactersNotInInventory.add(phonemeText)
             }
         }
         if (charactersNotInInventory.isNotEmpty()) {

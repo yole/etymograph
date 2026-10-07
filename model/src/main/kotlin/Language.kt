@@ -93,7 +93,7 @@ class PhonemeLookup(val accentTypes: Set<AccentType>) {
         return CharCodeData(null, null, src)
     }
 
-    fun iteratePhonemes(text: String, callback: (String?, Phoneme?, AccentType?) -> Unit) {
+    fun iteratePhonemes(text: String, callback: (String, Phoneme?, AccentType?) -> Unit) {
         var offset = 0
         while (offset < text.length) {
             val code = text[offset].code
@@ -101,7 +101,7 @@ class PhonemeLookup(val accentTypes: Set<AccentType>) {
                 ?.filter { text.startsWith(it, offset) }
                 ?.maxByOrNull { it.length }
             if (digraph != null) {
-                callback(null, digraphs[digraph], null)
+                callback(text.substring(offset, offset + digraph.length), digraphs[digraph], null)
                 offset += digraph.length
             }
             else {
@@ -119,12 +119,12 @@ class PhonemeLookup(val accentTypes: Set<AccentType>) {
                                 continue
                             }
                         }
-                        callback(graphemeData.textWithoutAccent, graphemeData.phoneme, nextGraphemeData.accentType)
+                        callback(graphemeData.textWithoutAccent ?: composed, graphemeData.phoneme, nextGraphemeData.accentType)
                         offset += 2
                         continue
                     }
                 }
-                callback(graphemeData.textWithoutAccent, graphemeData.phoneme, graphemeData.accentType)
+                callback(graphemeData.textWithoutAccent ?: text.substring(offset, offset + 1), graphemeData.phoneme, graphemeData.accentType)
                 offset++
             }
         }
@@ -255,17 +255,18 @@ class Language(val graph: Graph, val name: String, val shortName: String) {
         return inverted?.let { listOf(it) } ?: emptyList()
     }
 
-    fun normalizeWord(text: String, removeAccent: Boolean = false): String {
-        val cacheKey = if (removeAccent) "-$text" else text
+    fun normalizeWord(text: String, removeAccent: Boolean = false, normalizeGraphemes: Boolean = true): String {
+        var cacheKey = text
+        if (normalizeGraphemes) cacheKey = "!$cacheKey"
+        if (removeAccent) cacheKey = "-$cacheKey"
         return normalizeCache.getOrPut(cacheKey) {
             buildString {
                 val lowerText = if (orthoPhonemeLookup.caseSensitiveGraphemes) text else text.lowercase(Locale.FRANCE)
                 orthoPhonemeLookup.iteratePhonemes(lowerText) { phonemeText, phoneme, accentType ->
-                    val text = phoneme?.graphemes?.get(0) ?: phonemeText!!
+                    val text = if (!normalizeGraphemes) phonemeText else (phoneme?.graphemes?.get(0) ?: phonemeText)
                     if (accentType != null && !removeAccent) {
                         append(accentType.combine(text))
-                    }
-                    else {
+                    } else {
                         append(text)
                     }
                 }

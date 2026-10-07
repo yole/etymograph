@@ -148,7 +148,7 @@ class CorpusText(
         return trimmed.split(' ').map {
             val cleanText = removePunctuation(it)
             WordText(it,
-                if (language.syllabographic) cleanText else language.normalizeWord(cleanText),
+                if (language.syllabographic) cleanText else language.normalizeWord(cleanText, normalizeGraphemes = false),
                 currentIndex++
             )
         }

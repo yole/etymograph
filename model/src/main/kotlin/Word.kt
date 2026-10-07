@@ -229,7 +229,7 @@ class Word(
                         append(accent?.combine(text) ?: text)
                     }
                     else {
-                        append(phonemeText!!)
+                        append(phonemeText)
                     }
                     index++
                 }
