@@ -222,7 +222,7 @@ export default function WordPickerModal(props: WordPickerModalProps) {
                     {props.languageReadOnly !== true &&
                         <Select label="Language" data={languageOptions} value={language ?? null}
                                 onChange={(val) => setLanguage(val ?? "")} searchable={true} allowDeselect={false}/>}
-                    <TextInput label="Search" value={search} onChange={(e) => setSearch(e.currentTarget.value)}/>
+                    <TextInput placeholder="Search" aria-label="Search" value={search} onChange={(e) => setSearch(e.currentTarget.value)}/>
                     <ScrollArea.Autosize mah={250} type="auto" viewportRef={scrollViewportRef}>
                         <Stack gap={0}>
                             {suggestions.length > 0 && <>
