@@ -34,7 +34,7 @@ import {
     ParseCandidateViewModel, WordRefViewModel,
     WordViewModel
 } from "@/models";
-import WordTextView from "@/components/WordTextView";
+import WordTextView, {wordTextToPlainText} from "@/components/WordTextView";
 import WordPickerModal from "@/components/WordPickerModal";
 import {Urls} from "@/components/Urls";
 import {Alert, Menu} from "@mantine/core";
@@ -360,7 +360,10 @@ function SingleWord({word, embeddedInWordIds}: { word: WordViewModel, embeddedIn
     const [parseCandidates, setParseCandidates] = useState([] as ParseCandidateViewModel[])
     const [compoundSuggestions, setCompoundSuggestions] = useState([] as WordRefViewModel[])
     const [suggestedTranscription, setSuggestedTranscription] = useState("")
-    useEffect(() => { document.title = "Etymograph : " + (word === undefined ? "Unknown Word" : word.text) })
+    useEffect(() => {
+        document.title = "Etymograph : " + (word === undefined ? "Unknown Word" :
+            wordTextToPlainText(word.text, word.syllabogramSequence))
+    })
 
     function submitted() {
         setWordPickerAction(null)

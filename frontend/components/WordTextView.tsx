@@ -9,14 +9,25 @@ function renderTextWithSubscript(text: string) {
     return <>{text}</>
 }
 
-function SyllabogramView(params: {syllabogram: Syllabogram, index: number, prevSyllabogram?: Syllabogram}) {
-    let syl = params.syllabogram
-    const delimiter = (!params.prevSyllabogram ||
+function syllabogramDelimiter(syl: Syllabogram, index: number, prevSyllabogram?: Syllabogram) {
+    return (!prevSyllabogram ||
         syl.type.startsWith("Determinative") ||
-        (params.index == 1 && params.prevSyllabogram.type.startsWith("Determinative"))
+        (index == 1 && prevSyllabogram.type.startsWith("Determinative"))
     )
         ? ""
         : (syl.type == "Logogram" ? "." : "-")
+}
+
+export function wordTextToPlainText(text: string, syllabograms?: SyllabogramSequence) {
+    if (!syllabograms) return text
+    return syllabograms.syllabograms.map((syl, index) =>
+        syllabogramDelimiter(syl, index, syllabograms.syllabograms[index - 1]) + syl.text
+    ).join("")
+}
+
+function SyllabogramView(params: {syllabogram: Syllabogram, index: number, prevSyllabogram?: Syllabogram}) {
+    const syl = params.syllabogram
+    const delimiter = syllabogramDelimiter(syl, params.index, params.prevSyllabogram)
 
     return <span className="syllabogram">
         {delimiter}
