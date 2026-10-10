@@ -23,7 +23,7 @@ class CompoundController {
         val markHead: Boolean = false,
     )
 
-    data class ReplaceCompoundMemberParams(val componentId: Int)
+    data class ReplaceCompoundMemberParams(val componentId: Int = -1)
 
     @PostMapping("")
     fun createCompound(graph: Graph, @RequestBody params: CompoundParams) {
