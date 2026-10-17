@@ -17,6 +17,29 @@ export type CloneGraphParams = {
     repoUrl: string;
 };
 
+export type OpenCompoundParams = {
+    componentIds: Array<number>;
+    /**
+     * Index of the required head in componentIds.
+     */
+    headIndex: number;
+    gloss?: string;
+    fullGloss?: string;
+    source?: string;
+    notes?: string;
+};
+
+export type OpenCompoundViewModel = {
+    id: number;
+    components: Array<WordRefViewModel>;
+    headIndex: number;
+    gloss?: string;
+    fullGloss?: string;
+    source: Array<SourceRefViewModel>;
+    sourceEditableText: string;
+    notes?: string;
+};
+
 export type CompoundParams = {
     compoundId: number;
     firstComponentId: number;
@@ -146,6 +169,7 @@ export type WordViewModel = {
     linksFrom: Array<LinkTypeViewModel>;
     linksTo: Array<LinkTypeViewModel>;
     compounds: Array<CompoundRefViewModel>;
+    openCompounds: Array<OpenCompoundViewModel>;
     derivationalCompounds: Array<CompoundRefViewModel>;
     components: Array<CompoundComponentsViewModel>;
     linkedRules: Array<LinkedRuleViewModel>;
@@ -726,6 +750,7 @@ export type CorpusWordViewModel = {
     stressLength?: number;
     glossable: boolean;
     homonym: boolean;
+    openCompoundId?: number;
 };
 
 export type CorpusLineViewModel = {
@@ -766,6 +791,11 @@ export type AlternativeViewModel = {
     gloss: string;
     wordId: number;
     ruleId: number;
+};
+
+export type AssociateOpenCompoundParams = {
+    index: number;
+    compoundId: number;
 };
 
 export type AssociateWordParameters = {
@@ -844,6 +874,97 @@ export type CloneGraphResponses = {
 };
 
 export type CloneGraphResponse = CloneGraphResponses[keyof CloneGraphResponses];
+
+export type OpenCompoundsData = {
+    body?: never;
+    path: {
+        graph: string;
+    };
+    query?: never;
+    url: '/{graph}/compound/open';
+};
+
+export type OpenCompoundsResponses = {
+    /**
+     * OK
+     */
+    200: Array<OpenCompoundViewModel>;
+};
+
+export type OpenCompoundsResponse = OpenCompoundsResponses[keyof OpenCompoundsResponses];
+
+export type CreateOpenCompoundData = {
+    body: OpenCompoundParams;
+    path: {
+        graph: string;
+    };
+    query?: never;
+    url: '/{graph}/compound/open';
+};
+
+export type CreateOpenCompoundResponses = {
+    /**
+     * OK
+     */
+    200: OpenCompoundViewModel;
+};
+
+export type CreateOpenCompoundResponse = CreateOpenCompoundResponses[keyof CreateOpenCompoundResponses];
+
+export type OpenCompoundData = {
+    body?: never;
+    path: {
+        graph: string;
+        id: number;
+    };
+    query?: never;
+    url: '/{graph}/compound/open/{id}';
+};
+
+export type OpenCompoundResponses = {
+    /**
+     * OK
+     */
+    200: OpenCompoundViewModel;
+};
+
+export type OpenCompoundResponse = OpenCompoundResponses[keyof OpenCompoundResponses];
+
+export type EditOpenCompoundData = {
+    body: OpenCompoundParams;
+    path: {
+        graph: string;
+        id: number;
+    };
+    query?: never;
+    url: '/{graph}/compound/open/{id}';
+};
+
+export type EditOpenCompoundResponses = {
+    /**
+     * OK
+     */
+    200: OpenCompoundViewModel;
+};
+
+export type EditOpenCompoundResponse = EditOpenCompoundResponses[keyof EditOpenCompoundResponses];
+
+export type DeleteOpenCompoundData = {
+    body?: never;
+    path: {
+        graph: string;
+        id: number;
+    };
+    query?: never;
+    url: '/{graph}/compound/open/{id}/delete';
+};
+
+export type DeleteOpenCompoundResponses = {
+    /**
+     * OK
+     */
+    200: unknown;
+};
 
 export type CreateCompoundData = {
     body: CompoundParams;
@@ -2148,6 +2269,60 @@ export type RequestAlternativesResponses = {
 };
 
 export type RequestAlternativesResponse = RequestAlternativesResponses[keyof RequestAlternativesResponses];
+
+export type OpenCompoundCandidatesData = {
+    body?: never;
+    path: {
+        graph: string;
+        id: number;
+        index: number;
+    };
+    query?: never;
+    url: '/{graph}/corpus/text/{id}/openCompounds/{index}';
+};
+
+export type OpenCompoundCandidatesResponses = {
+    /**
+     * OK
+     */
+    200: Array<OpenCompoundViewModel>;
+};
+
+export type OpenCompoundCandidatesResponse = OpenCompoundCandidatesResponses[keyof OpenCompoundCandidatesResponses];
+
+export type AssociateOpenCompoundData = {
+    body: AssociateOpenCompoundParams;
+    path: {
+        graph: string;
+        id: number;
+    };
+    query?: never;
+    url: '/{graph}/corpus/text/{id}/openCompound';
+};
+
+export type AssociateOpenCompoundResponses = {
+    /**
+     * OK
+     */
+    200: unknown;
+};
+
+export type RemoveOpenCompoundAssociationData = {
+    body: AssociateOpenCompoundParams;
+    path: {
+        graph: string;
+        id: number;
+    };
+    query?: never;
+    url: '/{graph}/corpus/text/{id}/openCompound/remove';
+};
+
+export type RemoveOpenCompoundAssociationResponses = {
+    /**
+     * OK
+     */
+    200: unknown;
+};
 
 export type AssociateWordData = {
     body: AssociateWordParameters;

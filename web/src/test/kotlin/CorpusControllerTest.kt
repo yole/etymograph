@@ -1,8 +1,17 @@
 package page.yole.etymograph.web
 
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
+import org.mockito.Mockito.mock
+import org.mockito.BDDMockito.given
+import org.springframework.http.MediaType
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
+import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import page.yole.etymograph.*
 import page.yole.etymograph.web.controllers.CorpusController
 import page.yole.etymograph.web.controllers.RuleController
@@ -18,6 +27,91 @@ class CorpusControllerTest {
         fixture = QTestFixture()
         graph = fixture.graph
         corpusController = CorpusController()
+    }
+
+    @Test
+    fun removeOpenCompoundApiPreservesOtherOccurrencesAndWordAssociations() {
+        val modifier = graph.addWord("laurie", fixture.q, "golden")
+        val head = graph.addWord("lasse", fixture.q, "leaf")
+        val compound = graph.createOpenCompound(listOf(modifier, head), 1, "foliage")
+        val text = graph.addCorpusText("laurie lasse laurie lasse", "Test", fixture.q)
+        text.associateOpenCompound(1, compound)
+        text.associateOpenCompound(3, compound)
+        val service = mock(GraphService::class.java)
+        given(service.resolveGraph("test")).willReturn(graph)
+        val mvc = MockMvcBuilders.standaloneSetup(corpusController)
+            .setCustomArgumentResolvers(GraphArgumentResolver(service)).build()
+        mvc.perform(get("/test/corpus/text/${text.id}"))
+            .andExpect(status().isOk)
+            .andExpect(jsonPath("$.lines[0].words[1].openCompoundId").value(compound.id))
+
+        mvc.perform(post("/test/corpus/text/${text.id}/openCompound/remove").contentType(MediaType.APPLICATION_JSON)
+            .content("""{"index":3,"compoundId":${compound.id}}"""))
+            .andExpect(status().isOk)
+
+        val corpusWords = corpusController.textJson(graph, text.id).lines.single().words
+        assertEquals(listOf(compound.id, compound.id, null, null), corpusWords.map { it.openCompoundId })
+        assertEquals(listOf("...", "foliage", "golden", "leaf"), corpusWords.map { it.gloss })
+        assertEquals(listOf(modifier.id, head.id, modifier.id, head.id), text.words.map { it.word.id })
+        mvc.perform(post("/test/corpus/text/${text.id}/openCompound/remove").contentType(MediaType.APPLICATION_JSON)
+            .content("""{"index":3,"compoundId":${compound.id}}"""))
+            .andExpect(status().isBadRequest)
+        assertEquals(listOf(compound.id, compound.id, null, null),
+            text.words.map { it.openCompound?.id })
+    }
+
+    @Test
+    fun openCompoundCandidateApiAssociatesAllMatchedOccurrences() {
+        val modifier = graph.addWord("laurie", fixture.q, "golden")
+        val head = graph.addWord("lasse", fixture.q, "leaf")
+        val compound = graph.createOpenCompound(listOf(modifier, head), 1, "foliage")
+        val text = graph.addCorpusText("laurie laurie lasse", "Test", fixture.q)
+        val service = mock(GraphService::class.java)
+        given(service.resolveGraph("test")).willReturn(graph)
+        val mvc = MockMvcBuilders.standaloneSetup(corpusController)
+            .setCustomArgumentResolvers(GraphArgumentResolver(service)).build()
+
+        mvc.perform(get("/test/corpus/text/${text.id}/openCompounds/2"))
+            .andExpect(status().isOk)
+            .andExpect(jsonPath("$[0].id").value(compound.id))
+            .andExpect(jsonPath("$[0].components[0].id").value(modifier.id))
+            .andExpect(jsonPath("$[0].components[1].id").value(head.id))
+            .andExpect(jsonPath("$[0].gloss").value("foliage"))
+        assertTrue(text.words.isEmpty())
+
+        mvc.perform(post("/test/corpus/text/${text.id}/openCompound").contentType(MediaType.APPLICATION_JSON)
+            .content("""{"index":2,"compoundId":${compound.id}}"""))
+            .andExpect(status().isOk)
+        assertEquals(listOf(1, 2), text.words.map { it.index })
+        assertTrue(text.words.all { it.openCompound === compound })
+        assertEquals(listOf("golden", "...", "foliage"),
+            corpusController.textJson(graph, text.id).lines.single().words.map { it.gloss })
+        mvc.perform(get("/test/corpus/text/${text.id}/openCompounds/99"))
+            .andExpect(status().isBadRequest)
+    }
+
+    @Test
+    fun associateOpenCompoundApiRechecksAvailabilityWithoutPartialChanges() {
+        val modifier = graph.addWord("laurie", fixture.q, "golden")
+        val head = graph.addWord("lasse", fixture.q, "leaf")
+        val compound = graph.createOpenCompound(listOf(modifier, head), 1)
+        val other = graph.createOpenCompound(listOf(modifier), 0)
+        val text = graph.addCorpusText("laurie lasse", "Test", fixture.q)
+        val service = mock(GraphService::class.java)
+        given(service.resolveGraph("test")).willReturn(graph)
+        val mvc = MockMvcBuilders.standaloneSetup(corpusController)
+            .setCustomArgumentResolvers(GraphArgumentResolver(service)).build()
+        assertEquals(compound.id, corpusController.openCompoundCandidates(graph, text.id, 1).single().id)
+
+        text.associateWord(0, modifier, openCompound = other)
+        mvc.perform(post("/test/corpus/text/${text.id}/openCompound").contentType(MediaType.APPLICATION_JSON)
+            .content("""{"index":1,"compoundId":${compound.id}}"""))
+            .andExpect(status().isBadRequest)
+        assertEquals(1, text.words.size)
+        assertEquals(other.id, text.words.single().openCompound?.id)
+        mvc.perform(post("/test/corpus/text/${text.id}/openCompound").contentType(MediaType.APPLICATION_JSON)
+            .content("""{"index":1,"compoundId":9999}"""))
+            .andExpect(status().isNotFound)
     }
 
     @Test
@@ -72,6 +166,33 @@ class CorpusControllerTest {
         val line = corpusTextViewModel2.lines.single()
         assertEquals(0, line.words[0].stressIndex)
         assertEquals(1, line.words[0].stressLength)
+    }
+
+    @Test
+    fun derivedOpenCompoundGloss() {
+        val head = graph.addWord("lassi", fixture.q, "leaves")
+        val form = graph.addWord("lassi", fixture.q, "leaves.ACC")
+        val (_, rule) = fixture.setupParadigm()
+        graph.addLink(form, head, Link.Derived, listOf(rule))
+        val compound = graph.createOpenCompound(listOf(head), 0, "foliage")
+        val text = graph.addCorpusText("lassi", "Test", fixture.q)
+        text.associateWord(0, form, openCompound = compound)
+
+        val response = corpusController.textJson(graph, text.id)
+        assertEquals("foliage.ACC", response.lines.single().words.single().gloss)
+    }
+
+    @Test
+    fun openCompoundGloss() {
+        val modifier = graph.addWord("laurie", fixture.q, "golden")
+        val head = graph.addWord("lassi", fixture.q, "leaves")
+        val compound = graph.createOpenCompound(listOf(modifier, head), 1, "foliage")
+        val text = graph.addCorpusText("laurie lassi", "Test", fixture.q)
+        text.associateWord(0, modifier, openCompound = compound)
+        text.associateWord(1, head, openCompound = compound)
+
+        val response = corpusController.textJson(graph, text.id)
+        assertEquals(listOf("...", "foliage"), response.lines.single().words.map { it.gloss })
     }
 
     @Test

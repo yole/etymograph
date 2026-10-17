@@ -7,6 +7,7 @@ import {
     associateWord,
     fetchAlternatives,
     acceptAlternative,
+    removeCorpusOpenCompoundAssociation,
     fetchPathsForAllGraphs, callApiAndRefresh, lockWordAssociations, deleteTranslation, deleteCorpusText, useAllowEditGraph
 } from "@/api";
 import {useRouter} from "next/router";
@@ -19,6 +20,7 @@ import {LinkTypes} from "@/components/LinkTypes";
 import WordGloss from "@/components/WordGloss";
 import {CorpusLineViewModel, CorpusTextViewModel, CorpusWordCandidateViewModel, CorpusWordViewModel, TranslationViewModel, WordViewModel} from "@/models";
 import WordTextView from "@/components/WordTextView";
+import CorpusOpenCompoundPicker from "@/components/CorpusOpenCompoundPicker";
 import {Urls} from "@/components/Urls";
 import {ActionIcon, Alert, Popover} from "@mantine/core";
 
@@ -90,7 +92,7 @@ function CorpusTextGlossChoice(params: CorpusTextGlossChoiceProps) {
     </span>
 }
 
-function GlossDropdown(params: {
+export function GlossDropdown(params: {
     corpusText: CorpusTextViewModel,
     word: CorpusWordViewModel,
     showDefineWordForm: (text: string, index: number) => void,
@@ -98,10 +100,37 @@ function GlossDropdown(params: {
     showTranslationFormAtWord: (index: number) => void
 }) {
     const [opened, setOpened] = useState(false)
+    const [showOpenCompounds, setShowOpenCompounds] = useState(false)
+    const [removingOpenCompound, setRemovingOpenCompound] = useState(false)
+    const [errorText, setErrorText] = useState("")
+    const router = useRouter()
     const editable = useAllowEditGraph()
     let w = params.word
     const candidates = w.wordCandidates
     const showPlus = w.wordCandidates && w.wordCandidates.length > 1
+
+    async function removeOpenCompoundLink() {
+        if (removingOpenCompound || w.openCompoundId == null) return
+        setRemovingOpenCompound(true)
+        setErrorText("")
+        try {
+            const response = await removeCorpusOpenCompoundAssociation(router.query.graph as string,
+                params.corpusText.id, w.index, w.openCompoundId)
+            if (!response.ok) {
+                const error = await response.json()
+                setErrorText(error.message || "Failed to remove open compound link")
+                return
+            }
+            setOpened(false)
+            void router.replace(router.asPath)
+        }
+        catch (error) {
+            setErrorText(error instanceof Error ? error.message : "Failed to remove open compound link")
+        }
+        finally {
+            setRemovingOpenCompound(false)
+        }
+    }
 
     if (!w.glossable) {
         return ""
@@ -111,7 +140,7 @@ function GlossDropdown(params: {
         return <WordGloss gloss={w.gloss}/>;
     }
 
-    return <Popover opened={opened} onChange={setOpened} position="bottom-start" withArrow shadow="md">
+    return <><Popover opened={opened} onChange={setOpened} position="bottom-start" withArrow shadow="md">
         <Popover.Target>
             <span className="glossChoice" style={{cursor: "pointer"}} onClick={() => setOpened(o => !o)}>
                 {showPlus && <><WordGloss gloss={candidates[0].gloss}/> &lt;+&gt;</>}
@@ -131,12 +160,23 @@ function GlossDropdown(params: {
                 setOpened(false)
                 params.showDefineLemmaForm(w.normalizedText, w.index)
             }}>Define lemma</span></div>
+            {w.openCompoundId != null
+                ? <div><button type="button" className="inlineButton" disabled={removingOpenCompound}
+                               onClick={removeOpenCompoundLink}>Remove open compound link</button></div>
+                : <div><button type="button" className="inlineButton" onClick={() => {
+                    setOpened(false)
+                    setShowOpenCompounds(true)
+                }}>Link to open compound</button></div>}
+            {errorText && <div className="errorText" role="alert">{errorText}</div>}
             <div><span className="inlineButton" onClick={() => {
                 setOpened(false)
                 params.showTranslationFormAtWord(w.index)
             }}>Translate from here</span></div>
         </Popover.Dropdown>
-    </Popover>;
+    </Popover>
+        {showOpenCompounds && <CorpusOpenCompoundPicker corpusTextId={params.corpusText.id} index={w.index}
+            onClose={() => setShowOpenCompounds(false)}/>}
+    </>;
 }
 
 export interface TextSegment {

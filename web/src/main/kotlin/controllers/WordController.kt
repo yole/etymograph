@@ -134,6 +134,7 @@ class WordController(val dictionaryService: DictionaryService) {
         val linksFrom: List<LinkTypeViewModel>,
         val linksTo: List<LinkTypeViewModel>,
         val compounds: List<CompoundRefViewModel>,
+        val openCompounds: List<CompoundController.OpenCompoundViewModel>,
         val derivationalCompounds: List<CompoundRefViewModel>,
         val components: List<CompoundComponentsViewModel>,
         val linkedRules: List<LinkedRuleViewModel>,
@@ -244,6 +245,7 @@ class WordController(val dictionaryService: DictionaryService) {
                     )
             },
             compoundsByComponent.filter { !it.isDerivation() }.map { it.compoundWord.toCompoundRefViewModel(graph) },
+            graph.allOpenCompounds().filter { it.headComponent().id == id }.map { it.toViewModel(graph) },
             compoundsByComponent.filter { it.isDerivation() }.map { it.compoundWord.toCompoundRefViewModel(graph) },
             compoundsByCompoundWord.map { compound ->
                 CompoundComponentsViewModel(

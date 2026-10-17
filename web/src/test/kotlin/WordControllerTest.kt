@@ -29,6 +29,40 @@ class WordControllerTest {
     }
 
     @Test
+    fun openCompoundsIncludeOnlyThoseWithWordAsHead() {
+        val head = graph.addWord("elen", fixture.q, "star")
+        val modifier = graph.addWord("laure", fixture.q, "gold")
+        val homonym = graph.addWord("elen", fixture.q, "different star")
+        val prefix = graph.createOpenCompound(listOf(modifier, head), 1,
+            "gold star", "A star of gold", notes = "Prefix notes")
+        val suffix = graph.createOpenCompound(listOf(head, modifier), 0, "star gold")
+        graph.createOpenCompound(listOf(head, modifier), 1)
+        graph.createOpenCompound(listOf(modifier, homonym), 1)
+
+        val word = wordController.singleWordJson(graph, "q", "elen", head.id)
+        assertEquals(listOf(prefix.id, suffix.id), word.openCompounds.map { it.id })
+        val prefixViewModel = word.openCompounds.first()
+        assertEquals(listOf(modifier.id, head.id), prefixViewModel.components.map { it.id })
+        assertEquals(1, prefixViewModel.headIndex)
+        assertEquals("gold star", prefixViewModel.gloss)
+        assertEquals("A star of gold", prefixViewModel.fullGloss)
+        assertEquals("Prefix notes", prefixViewModel.notes)
+        assertEquals(listOf(prefix.id, suffix.id),
+            wordController.wordJson(graph, "q", "elen", false).first { it.id == head.id }.openCompounds.map { it.id })
+
+        prefix.updateComponents(listOf(modifier, head), 0)
+        assertEquals(listOf(suffix.id),
+            wordController.singleWordJson(graph, "q", "elen", head.id).openCompounds.map { it.id })
+    }
+
+    @Test
+    fun wordWithoutOpenCompoundsHasEmptyList() {
+        val word = graph.addWord("elen", fixture.q, "star")
+        assertEquals(emptyList<Any>(),
+            wordController.singleWordJson(graph, "q", "elen", word.id).openCompounds)
+    }
+
+    @Test
     fun emptyPOS() {
         val addWordParams = WordController.AddWordParameters("ea", "be", "", "", "",false, false,"", "")
         val wordViewModel = wordController.addWord(graph, "q", addWordParams)

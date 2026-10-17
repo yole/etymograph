@@ -1,5 +1,5 @@
 import {expect, it} from "vitest";
-import {normalizeSearchText} from "@/components/WordPickerModal";
+import {normalizeSearchText} from "@/components/WordSearch";
 
 it("matches diacritic-bearing words with plain search letters", () => {
     expect(normalizeSearchText("šum")).toBe("sum");

@@ -36,6 +36,8 @@ import {
 } from "@/models";
 import WordTextView, {wordTextToPlainText} from "@/components/WordTextView";
 import WordPickerModal from "@/components/WordPickerModal";
+import OpenCompoundModal from "@/components/OpenCompoundModal";
+import OpenCompoundEntry from "@/components/OpenCompoundEntry";
 import {Urls} from "@/components/Urls";
 import {Alert, Menu} from "@mantine/core";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -352,6 +354,7 @@ function SingleWord({word, embeddedInWordIds}: { word: WordViewModel, embeddedIn
     const router = useRouter()
     const graph = router.query.graph as string
     const [wordPickerAction, setWordPickerAction] = useState<WordPickerAction | null>(null)
+    const [showOpenCompound, setShowOpenCompound] = useState(false)
     const [showRuleLink, setShowRuleLink] = useState(false)
     const [editMode, setEditMode] = useState(false)
     const [errorText, setErrorText] = useState("")
@@ -641,6 +644,7 @@ function SingleWord({word, embeddedInWordIds}: { word: WordViewModel, embeddedIn
                     <Menu.Item onClick={() => setShowRuleLink(!showRuleLink)}>Add related rule</Menu.Item>
                     <Menu.Item onClick={() => setWordPickerAction("originWord")}>Add origin word</Menu.Item>
                     <Menu.Item onClick={() => setWordPickerAction("derivativeWord")}>Add derivative word</Menu.Item>
+                    <Menu.Item onClick={() => setShowOpenCompound(true)}>Add open compound</Menu.Item>
                     {canSuggestParseCandidates &&
                         <Menu.Item onClick={() => suggestParseCandidatesClicked()}>Suggest lemma and derivation</Menu.Item>}
                     {word.suggestedDeriveSequences.map(seq =>
@@ -685,6 +689,11 @@ function SingleWord({word, embeddedInWordIds}: { word: WordViewModel, embeddedIn
                 <p/>
             </>
         }
+        {word.openCompounds?.length > 0 && <>
+            <div>Open compounds</div>
+            {word.openCompounds.map(compound => <OpenCompoundEntry key={compound.id} compound={compound} word={word}/>)}
+            <p/>
+        </>}
         {componentsOfDerivational.length > 0 && <CompoundListComponent word={word} compounds={componentsOfDerivational} derivation={true}/>}
         {componentsOfNonDerivational.length > 0 && <CompoundListComponent word={word} compounds={componentsOfNonDerivational} derivation={false}/>}
 
@@ -705,6 +714,13 @@ function SingleWord({word, embeddedInWordIds}: { word: WordViewModel, embeddedIn
         }
 
         {canEdit && <>
+            {showOpenCompound && <OpenCompoundModal opened={true} headWord={word}
+                onClose={() => setShowOpenCompound(false)}
+                onSaved={() => {
+                    setShowOpenCompound(false)
+                    router.replace(router.asPath)
+                }}/>
+            }
             {wordPickerProperties &&
                 <WordPickerModal {...wordPickerProperties} opened={true} onClose={() => setWordPickerAction(null)}
                                  linkTarget={word} wordSubmitted={submitted}/>

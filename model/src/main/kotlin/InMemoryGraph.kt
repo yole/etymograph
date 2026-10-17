@@ -387,6 +387,9 @@ open class InMemoryGraph : Graph() {
     }
 
     override fun deleteWord(word: Word) {
+        for (compound in allOpenCompounds().filter { word in it.components }) {
+            deleteOpenCompound(compound)
+        }
         for (corpusText in corpus) {
             corpusText.removeWord(word)
         }
@@ -799,6 +802,32 @@ open class InMemoryGraph : Graph() {
         }
         compound.compoundWord.cachedSegments = null
         allLangEntities[compound.id] = null
+    }
+
+    override fun allOpenCompounds(): List<OpenCompound> = allLangEntities.filterIsInstance<OpenCompound>()
+
+    override fun createOpenCompound(
+        components: List<Word>,
+        headIndex: Int,
+        gloss: String?,
+        fullGloss: String?,
+        source: List<SourceRef>,
+        notes: String?
+    ): OpenCompound {
+        val compound = OpenCompound(allLangEntities.size, components, headIndex, gloss, fullGloss, source, notes)
+        allLangEntities.add(compound)
+        return compound
+    }
+
+    override fun deleteOpenCompound(compound: OpenCompound) {
+        for (corpusText in corpus) {
+            for (association in corpusText.words) {
+                if (association.openCompound?.id == compound.id) {
+                    association.openCompound = null
+                }
+            }
+        }
+        deleteLangEntity(compound)
     }
 
     override fun suggestCompound(compoundWord: Word, compound: Compound?): List<Word> {

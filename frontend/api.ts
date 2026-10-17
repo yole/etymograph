@@ -3,6 +3,7 @@ import {
     CorpusTextParams, GenerateParadigmParameters,
     LookupParameters,
     LookupResultViewModel,
+    OpenCompoundParams, OpenCompoundViewModel,
     SuggestCompoundViewModel, TranslationParams,
     UpdateLanguageParameters,
     UpdateParadigmParameters, UpdatePhonemeParameters,
@@ -310,6 +311,26 @@ export function associateWord(graph: string, corpusTextId: number, wordId: numbe
     return postToBackend(`${graph}/corpus/text/${corpusTextId}/associate`, {wordId, index, contextGloss})
 }
 
+export async function fetchCorpusOpenCompoundCandidates(graph: string, corpusTextId: number,
+                                                       index: number): Promise<OpenCompoundViewModel[]> {
+    const response = await fetch(backendUrl(`${graph}/corpus/text/${corpusTextId}/openCompounds/${index}`), {
+        headers: {'Accept': 'application/json'}, credentials: 'include'
+    })
+    if (!response.ok) {
+        const error = await response.json()
+        throw new Error(error.message || "Failed to load open compounds")
+    }
+    return response.json()
+}
+
+export function associateCorpusOpenCompound(graph: string, corpusTextId: number, index: number, compoundId: number) {
+    return postToBackend(`${graph}/corpus/text/${corpusTextId}/openCompound`, {index, compoundId})
+}
+
+export function removeCorpusOpenCompoundAssociation(graph: string, corpusTextId: number, index: number, compoundId: number) {
+    return postToBackend(`${graph}/corpus/text/${corpusTextId}/openCompound/remove`, {index, compoundId})
+}
+
 export function lockWordAssociations(graph: string, corpusTextId: number) {
     return postToBackend(`${graph}/corpus/text/${corpusTextId}/lockAssociations`, {})
 }
@@ -342,6 +363,18 @@ export function updateLink(graph: string, fromWord: number, toWord: number, link
 
 export function createCompound(graph: string, compoundWord: number, firstComponentWord: number, source: string = null, notes: string = null) {
     return postToBackend(`${graph}/compound`, {compoundId: compoundWord, firstComponentId: firstComponentWord, source, notes})
+}
+
+export function createOpenCompound(graph: string, data: OpenCompoundParams): Promise<Response> {
+    return postToBackend(`${graph}/compound/open`, data)
+}
+
+export function updateOpenCompound(graph: string, id: number, data: OpenCompoundParams): Promise<Response> {
+    return postToBackend(`${graph}/compound/open/${id}`, data)
+}
+
+export function deleteOpenCompound(graph: string, id: number): Promise<Response> {
+    return postToBackend(`${graph}/compound/open/${id}/delete`, {})
 }
 
 export function addToCompound(graph: string, compoundId: number, componentWord: number, markHead: boolean) {

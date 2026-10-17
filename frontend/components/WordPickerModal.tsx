@@ -4,8 +4,6 @@ import {
     Checkbox,
     Input,
     Modal,
-    ScrollArea,
-    Select,
     Stack,
     Tabs,
     Textarea,
@@ -13,12 +11,12 @@ import {
 } from "@mantine/core";
 import {useRouter} from "next/router";
 import ReactSelect from "react-select";
-import {addLink, addToCompound, createCompound, fetchBackend, replaceCompoundMember} from "@/api";
+import {addLink, addToCompound, createCompound, replaceCompoundMember} from "@/api";
 import {GlobalStateContext} from "@/components/Contexts";
 import {LinkTypes} from "@/components/LinkTypes";
 import WordForm, {WordFormData} from "@/forms/WordForm";
-import WordTextView from "@/components/WordTextView";
-import {DictionaryViewModel, DictionaryWordViewModel, WordRefViewModel, WordViewModel} from "@/models";
+import WordSearch from "@/components/WordSearch";
+import {WordRefViewModel, WordViewModel} from "@/models";
 
 interface WordPickerModalProps {
     opened: boolean
@@ -38,16 +36,6 @@ interface WordPickerModalProps {
     wordSubmitted: (word: WordViewModel, baseWord: WordViewModel | undefined, formData: WordFormData) => any
 }
 
-function commonPrefixLength(a: string, b: string) {
-    let i = 0
-    while (i < a.length && i < b.length && a[i] === b[i]) i++
-    return i
-}
-
-export function normalizeSearchText(text: string) {
-    return text.toLocaleLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-}
-
 export default function WordPickerModal(props: WordPickerModalProps) {
     const router = useRouter()
     const graph = router.query.graph as string
@@ -61,8 +49,6 @@ export default function WordPickerModal(props: WordPickerModalProps) {
     const showSourceNotes = isLink || isNewCompound
 
     const [language, setLanguage] = useState(props.defaultValues.language)
-    const [search, setSearch] = useState("")
-    const [words, setWords] = useState([] as DictionaryWordViewModel[])
     const [selectedWordId, setSelectedWordId] = useState<number | null>(null)
     const [ruleNames, setRuleNames] = useState([] as string[])
     const [linkSource, setLinkSource] = useState("")
@@ -70,14 +56,11 @@ export default function WordPickerModal(props: WordPickerModalProps) {
     const [markHead, setMarkHead] = useState(false)
     const [errorText, setErrorText] = useState("")
     const [activeTab, setActiveTab] = useState<string | null>(props.defaultTab ?? "existing")
-    const selectedItemRef = useRef<HTMLButtonElement | null>(null)
     const newWordPanelRef = useRef<HTMLDivElement | null>(null)
-    const scrollViewportRef = useRef<HTMLDivElement | null>(null)
 
     useEffect(() => {
         if (props.opened) {
             setLanguage(props.defaultValues.language)
-            setSearch("")
             setSelectedWordId(null)
             setRuleNames([])
             setLinkSource("")
@@ -88,57 +71,6 @@ export default function WordPickerModal(props: WordPickerModalProps) {
         }
     }, [props.opened, props.defaultValues.language, props.defaultTab])
 
-    useEffect(() => {
-        if (!props.opened || !language) {
-            setWords([])
-            return
-        }
-        let cancelled = false
-        fetchBackend(graph, `dictionary/${language}/all`).then(r => {
-            if (cancelled) return
-            const dict = r?.props?.loaderData as DictionaryViewModel | undefined
-            const loadedWords = dict?.words ?? []
-            setWords(loadedWords)
-            if (!isAddToCompound && !isReplacingCompoundMember && !isNewCompound) {
-                setSelectedWordId(closestPrefixMatchId(loadedWords))
-            }
-        })
-        return () => { cancelled = true }
-    }, [props.opened, graph, language])
-
-    useEffect(() => {
-        if (props.opened && suggestions.length > 0) {
-            scrollViewportRef.current?.scrollTo({top: 0})
-        }
-    }, [props.opened, words, props.suggestions])
-
-    useEffect(() => {
-        if (selectedWordId !== null) {
-            selectedItemRef.current?.scrollIntoView({block: "nearest"})
-        }
-    }, [selectedWordId, words])
-
-    function closestPrefixMatchId(candidates: DictionaryWordViewModel[]): number | null {
-        const target = props.linkTarget.text.toLocaleLowerCase()
-        let bestId: number | null = null
-        let bestText = ""
-        let bestLength = 0
-        for (const w of candidates) {
-            if (w.ref.id === props.linkTarget.id) continue
-            const text = w.ref.text.toLocaleLowerCase()
-            const length = commonPrefixLength(target, text)
-            if (length > bestLength || (length === bestLength && length > 0 && text.localeCompare(bestText) < 0)) {
-                bestId = w.ref.id
-                bestText = text
-                bestLength = length
-            }
-        }
-        return bestId
-    }
-
-    const languageOptions = globalState.languages.map(
-        (l) => ({value: l.shortName, label: `${l.name} (${l.shortName})`})
-    )
     const ruleOptions = globalState.rules
         .filter(r => !language || language === r.toLang)
         .map(r => ({
@@ -146,28 +78,6 @@ export default function WordPickerModal(props: WordPickerModalProps) {
             label: r.summaryText === null || r.summaryText === "" || r.summaryText.length > 15
                 ? r.name : `${r.name} (${r.summaryText})`
         }))
-
-    const suggestions = props.suggestions ?? []
-    const suggestionIds = new Set(suggestions.map(s => s.id))
-    const searchLower = normalizeSearchText(search)
-    const filteredWords = words.filter(w =>
-        w.ref.id !== props.linkTarget.id &&
-        !suggestionIds.has(w.ref.id) &&
-        (searchLower === "" ||
-            normalizeSearchText(w.ref.text).startsWith(searchLower))
-        && (props.showSyllabographic || !w.ref.syllabogramSequence)
-    ).sort((a, b) => a.ref.text.localeCompare(b.ref.text))
-
-    function wordItem(ref: WordRefViewModel) {
-        return <button key={ref.id} type="button"
-                       ref={selectedWordId === ref.id ? selectedItemRef : undefined}
-                       className={selectedWordId === ref.id ? "wordPickerItem wordPickerItemSelected" : "wordPickerItem"}
-                       onClick={() => setSelectedWordId(ref.id)}
-                       onDoubleClick={() => { setSelectedWordId(ref.id); addExistingClicked(ref.id) }}>
-            <WordTextView text={ref.text} syllabograms={ref.syllabogramSequence}/>
-            {ref.gloss && <> &apos;{ref.gloss}&apos;</>}
-        </button>
-    }
 
     async function addExistingClicked(wordId: number | null = selectedWordId) {
         if (wordId === null) return
@@ -219,22 +129,20 @@ export default function WordPickerModal(props: WordPickerModalProps) {
 
             <Tabs.Panel value="existing" pt="sm">
                 <Stack gap="sm">
-                    {props.languageReadOnly !== true &&
-                        <Select label="Language" data={languageOptions} value={language ?? null}
-                                onChange={(val) => setLanguage(val ?? "")} searchable={true} allowDeselect={false}/>}
-                    <TextInput placeholder="Search" aria-label="Search" value={search} onChange={(e) => setSearch(e.currentTarget.value)}/>
-                    <ScrollArea.Autosize mah={250} type="auto" viewportRef={scrollViewportRef}>
-                        <Stack gap={0}>
-                            {suggestions.length > 0 && <>
-                                <div className="wordPickerLabel">Suggested</div>
-                                {suggestions.map(s => wordItem(s))}
-                                <div className="wordPickerLabel">All words</div>
-                            </>}
-                            {filteredWords.map(w => wordItem(w.ref))}
-                            {filteredWords.length === 0 && suggestions.length === 0 &&
-                                <div className="wordPickerLabel">No matching words</div>}
-                        </Stack>
-                    </ScrollArea.Autosize>
+                    <WordSearch
+                        key={props.defaultValues.language}
+                        enabled={props.opened}
+                        language={language}
+                        onLanguageChange={setLanguage}
+                        selectedWordId={selectedWordId}
+                        onSelectWord={setSelectedWordId}
+                        onConfirmWord={addExistingClicked}
+                        excludeWordId={props.linkTarget.id}
+                        closestMatchText={isLink ? props.linkTarget.text : undefined}
+                        suggestions={props.suggestions}
+                        languageReadOnly={props.languageReadOnly}
+                        showSyllabographic={props.showSyllabographic}
+                    />
                     {showRuleNames &&
                         <div>
                             <Input.Label htmlFor="word-picker-rule-names">Link rule names</Input.Label>

@@ -5,6 +5,207 @@ import org.junit.Assert.*
 
 class CorpusTextTest : QBaseTest() {
     @Test
+    fun openCompoundAssociationsAllowEachDerivationLinkType() {
+        for (type in listOf(Link.Derived, Link.Variation, Link.Transcription)) {
+            val head = q.word("lassi", "leaves")
+            val form = q.word("lassi", "explicit word gloss")
+            val rule = q.rule("- no change", name = "case-${type.id}", addedCategories = ".ACC")
+            graph.addLink(form, head, type, listOf(rule))
+            val compound = graph.createOpenCompound(listOf(head), 0, "foliage")
+            val text = q.corpusText("lassi")
+
+            text.associateWord(0, form, openCompound = compound)
+            val corpusWord = text.mapToLines().single().corpusWords.single()
+            assertSame(form, corpusWord.word)
+            assertEquals("foliage.ACC", corpusWord.gloss)
+            assertEquals("foliage.ACC", corpusWord.segmentedGloss)
+            compound.gloss = null
+            assertNull(text.mapToLines().single().corpusWords.single().gloss)
+        }
+    }
+
+    @Test
+    fun openCompoundGlossAppliesRulesInOrderAcrossMixedLinkChain() {
+        val head = q.word("lasse", "leaf")
+        val plural = q.word("lassi", "leaves")
+        val variant = q.word("lassie", "variant")
+        val transcription = q.word("lassië", "transcription")
+        val pluralRule = q.rule("- no change", name = "plural", addedCategories = ".PL").also {
+            it.replacedCategories = ".SG"
+        }
+        val accusative = q.rule("- no change", name = "accusative", addedCategories = ".ACC")
+        val genitive = q.rule("- no change", name = "genitive", addedCategories = ".GEN").also {
+            it.replacedCategories = ".ACC"
+        }
+        val emphasis = q.rule("- no change", name = "emphasis", addedCategories = ".EMPH")
+        graph.addLink(plural, head, Link.Derived, listOf(pluralRule))
+        graph.addLink(variant, plural, Link.Variation, listOf(accusative, genitive))
+        graph.addLink(transcription, variant, Link.Transcription, listOf(emphasis))
+        val compound = graph.createOpenCompound(listOf(head), 0, "foliage.SG")
+        val text = q.corpusText("lassië")
+
+        text.associateWord(0, transcription, openCompound = compound)
+        val corpusWord = text.mapToLines().single().corpusWords.single()
+        assertEquals("foliage.PL.GEN.EMPH", corpusWord.gloss)
+        assertEquals(corpusWord.gloss, corpusWord.segmentedGloss)
+    }
+
+    @Test
+    fun openCompoundGlossPreservesSegmentedCategoriesOnHeadAndModifier() {
+        val head = q.word("lassi", "leaves")
+        val modifier = q.word("laurie", "golden")
+        val headForm = q.word("lassillo", "leaves.ABL")
+        val modifierForm = q.word("lauriello", "golden.ABL")
+        val ablative = q.rule("- append 'llo'", name = "ablative", addedCategories = ".ABL")
+        graph.addLink(headForm, head, Link.Derived, listOf(ablative))
+        graph.addLink(modifierForm, modifier, Link.Derived, listOf(ablative))
+        val compound = graph.createOpenCompound(listOf(modifier, head), 1, "foliage")
+        val text = q.corpusText("lauriello lassillo")
+        text.associateWord(0, modifierForm, openCompound = compound)
+        text.associateWord(1, headForm, openCompound = compound)
+
+        val words = text.mapToLines().single().corpusWords
+        assertEquals(listOf("...-ABL", "foliage-ABL"), words.map { it.gloss })
+        assertEquals(listOf("...-ABL", "foliage-ABL"), words.map { it.segmentedGloss })
+    }
+
+    @Test
+    fun openCompoundAssociationRejectsOtherLinkTypesAndReverseLinks() {
+        for (type in listOf(Link.Origin, Link.Related)) {
+            val head = q.word("lassi", "leaves")
+            val intermediate = q.word("lasse", "intermediate")
+            val form = q.word("lassie", "form")
+            graph.addLink(form, intermediate, Link.Derived)
+            graph.addLink(intermediate, head, type)
+            val compound = graph.createOpenCompound(listOf(head), 0, "foliage")
+            assertThrows(IllegalArgumentException::class.java) {
+                q.corpusText("lassie").associateWord(0, form, openCompound = compound)
+            }
+        }
+        val head = q.word("lassi", "leaves")
+        val form = q.word("lasse", "form")
+        graph.addLink(head, form, Link.Derived)
+        val compound = graph.createOpenCompound(listOf(head), 0, "foliage")
+        assertThrows(IllegalArgumentException::class.java) {
+            q.corpusText("lasse").associateWord(0, form, openCompound = compound)
+        }
+    }
+
+    @Test
+    fun openCompoundAssociationSearchHandlesCyclesAndAlternativePathsById() {
+        val head = q.word("lassi", "leaves")
+        val first = q.word("lasse", "form")
+        val second = q.word("lasse", "form")
+        graph.addLink(first, second, Link.Derived)
+        graph.addLink(second, first, Link.Variation)
+        val compound = graph.createOpenCompound(listOf(head), 0, "foliage")
+        val text = q.corpusText("lasse")
+        assertThrows(IllegalArgumentException::class.java) {
+            text.associateWord(0, first, openCompound = compound)
+        }
+
+        graph.addLink(second, head, Link.Transcription)
+        text.associateWord(0, first, openCompound = compound)
+        assertEquals("foliage", text.mapToLines().single().corpusWords.single().gloss)
+    }
+
+    @Test
+    fun openCompoundGloss() {
+        val modifier = q.word("laurie", "golden")
+        val head = q.word("lassi", "leaves")
+        val other = q.word("lantar", "fall")
+        val compound = graph.createOpenCompound(listOf(modifier, head), 1, "golden foliage")
+        val text = q.corpusText("laurie lassi lantar")
+        text.associateWord(0, modifier, openCompound = compound)
+        text.associateWord(1, head, "context gloss", compound)
+        text.associateWord(2, other)
+
+        val words = text.mapToLines().single().corpusWords
+        assertEquals(listOf("...", "golden foliage", "fall"), words.map { it.gloss })
+        assertEquals(listOf("...", "golden foliage", "fall"), words.map { it.segmentedGloss })
+        assertEquals("context gloss", words[1].contextGloss)
+        assertSame(compound, words[0].openCompound)
+        assertSame(compound, words[1].openCompound)
+        assertSame(compound, text.words[0].openCompound)
+        assertNull(words[2].openCompound)
+    }
+
+    @Test
+    fun openCompoundHeadIsMatchedById() {
+        val head = graph.addWord("mir", q, "jewel")
+        val modifier = graph.addWord("mir", q, "jewel")
+        val compound = graph.createOpenCompound(listOf(head, modifier), 0, "jewels")
+        val text = q.corpusText("mir mir")
+        text.associateWord(0, head, openCompound = compound)
+        text.associateWord(1, modifier, openCompound = compound)
+
+        assertEquals(listOf("jewels", "..."), text.mapToLines().single().corpusWords.map { it.gloss })
+        compound.gloss = null
+        assertNull(text.mapToLines().single().corpusWords[0].gloss)
+    }
+
+    @Test
+    fun reassociateWordClearsOpenCompound() {
+        val head = q.word("lassi", "leaves")
+        val modifier = q.word("laurie", "golden")
+        val compound = graph.createOpenCompound(listOf(modifier, head), 1, "foliage")
+        val text = q.corpusText("lassi")
+        text.associateWord(0, head)
+        text.associateWord(0, head, openCompound = compound)
+        assertEquals("foliage", text.mapToLines().single().corpusWords.single().gloss)
+
+        text.associateWord(0, head)
+        assertNull(text.words.single().openCompound)
+        assertEquals("leaves", text.mapToLines().single().corpusWords.single().gloss)
+    }
+
+    @Test
+    fun editTextPreservesOpenCompoundAssociation() {
+        val head = q.word("lassi", "leaves")
+        val modifier = q.word("laurie", "golden")
+        val compound = graph.createOpenCompound(listOf(modifier, head), 1, "foliage")
+        val text = q.corpusText("ai laurie lassi")
+        text.associateWord(1, modifier, openCompound = compound)
+        text.associateWord(2, head, "context gloss", compound)
+
+        text.text = "laurie lassi"
+        assertEquals(listOf(0, 1), text.words.map { it.index })
+        assertTrue(text.words.all { it.openCompound === compound })
+        assertEquals(listOf("...", "foliage"), text.mapToLines().single().corpusWords.map { it.gloss })
+        assertEquals("context gloss", text.words[1].contextGloss)
+    }
+
+    @Test
+    fun associateWordRejectsNonMemberWithoutChangingAssociation() {
+        val head = q.word("lassi", "leaves")
+        val other = q.word("laurie", "golden")
+        val compound = graph.createOpenCompound(listOf(head), 0, "foliage")
+        val text = q.corpusText("lassi")
+        text.associateWord(0, head, "context gloss", compound)
+
+        assertThrows(IllegalArgumentException::class.java) {
+            text.associateWord(0, other, openCompound = compound)
+        }
+        assertSame(head, text.words.single().word)
+        assertSame(compound, text.words.single().openCompound)
+        assertEquals("context gloss", text.words.single().contextGloss)
+    }
+
+    @Test
+    fun deletingOpenCompoundClearsCorpusReferences() {
+        val head = q.word("lassi", "leaves")
+        val modifier = q.word("laurie", "golden")
+        val compound = graph.createOpenCompound(listOf(modifier, head), 1, "foliage")
+        val text = graph.addCorpusText("laurie lassi", null, q)
+        text.associateWord(0, modifier, openCompound = compound)
+        text.associateWord(1, head, openCompound = compound)
+
+        graph.deleteOpenCompound(compound)
+        assertTrue(text.words.all { it.openCompound == null })
+        assertEquals(listOf("golden", "leaves"), text.mapToLines().single().corpusWords.map { it.gloss })
+    }
+
+    @Test
     fun wordIndex() {
         val corpusText = q.corpusText("ai laurie lantar\nyeni unotime")
         val lines = corpusText.mapToLines()

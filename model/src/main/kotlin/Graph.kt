@@ -167,6 +167,17 @@ abstract class Graph {
     abstract fun deleteCompound(compound: Compound)
     abstract fun suggestCompound(compoundWord: Word, compound: Compound? = null): List<Word>
 
+    abstract fun allOpenCompounds(): List<OpenCompound>
+    abstract fun createOpenCompound(
+        components: List<Word>,
+        headIndex: Int,
+        gloss: String? = null,
+        fullGloss: String? = null,
+        source: List<SourceRef> = emptyList(),
+        notes: String? = null
+    ): OpenCompound
+    abstract fun deleteOpenCompound(compound: OpenCompound)
+
     abstract fun substituteKnownWord(baseWord: Word, derivedWord: Word): Word
 
     abstract fun findRuleExamples(rule: Rule): List<Link>

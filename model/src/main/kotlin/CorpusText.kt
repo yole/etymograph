@@ -17,6 +17,7 @@ class CorpusWord(
     val stressLength: Int?,
     val glossable: Boolean,
     val homonym: Boolean,
+    val openCompound: OpenCompound? = null,
 )
 
 class CorpusTextLine(val corpusWords: List<CorpusWord>, val lineNumber: String? = null, val separator: Boolean = false)
@@ -24,8 +25,45 @@ class CorpusTextLine(val corpusWords: List<CorpusWord>, val lineNumber: String? 
 class CorpusWordAssociation(
     val index: Int,
     var word: Word,
-    var contextGloss: String? = null
-)
+    var contextGloss: String? = null,
+    var openCompound: OpenCompound? = null
+) {
+    fun getOrComputeGloss(): String? {
+        val compound = openCompound ?: return word.getOrComputeGloss()
+        val path = compound.findComponentPath(word) ?: return null
+        val componentId = path.lastOrNull()?.toEntity?.id ?: word.id
+        val baseGloss = if (componentId == compound.headComponent().id) compound.gloss else "..."
+        return baseGloss?.let { gloss ->
+            path.asReversed().fold(gloss) { result, link ->
+                val derivedWord = link.fromEntity as Word
+                link.rules.fold(result) { ruleGloss, rule ->
+                    rule.applyCategories(ruleGloss, derivedWord.segments.any { it.sourceRule == rule })
+                }
+            }
+        }
+    }
+}
+
+private val openCompoundAssociationLinkTypes = setOf(Link.Derived, Link.Variation, Link.Transcription)
+
+internal fun OpenCompound.findComponentPath(word: Word): List<Link>? {
+    val componentIds = components.map { it.id }.toSet()
+    val visited = mutableSetOf(word.id)
+    val queue = ArrayDeque<Pair<Word, List<Link>>>()
+    queue.add(word to emptyList())
+    while (queue.isNotEmpty()) {
+        val (candidate, path) = queue.removeFirst()
+        if (candidate.id in componentIds) return path
+        for (link in word.graph.getLinksFrom(candidate)) {
+            if (link.type !in openCompoundAssociationLinkTypes) continue
+            val base = link.toEntity as? Word ?: continue
+            if (visited.add(base.id)) {
+                queue.add(base to (path + link))
+            }
+        }
+    }
+    return null
+}
 
 class CorpusText(
     id: Int,
@@ -74,7 +112,7 @@ class CorpusText(
                 oldToNewWordIndices[oldWord.index] = word.index
                 val assocWord = oldAssociations[oldWord.index]
                 if (assocWord != null) {
-                    _words.add(CorpusWordAssociation(word.index, assocWord.word, assocWord.contextGloss))
+                    _words.add(CorpusWordAssociation(word.index, assocWord.word, assocWord.contextGloss, assocWord.openCompound))
                 }
             }
         }
@@ -107,13 +145,14 @@ class CorpusText(
                     val leadingPunctuation = tw.baseText.takeWhile { it in leadingPunctuation }
                     val trailingPunctuation = tw.baseText.takeLastWhile { it in punctuation }
                     val segmentedText = leadingPunctuation + restoreCase(word.segmentedText(), tw.baseText) + trailingPunctuation
-                    val glossWithSegments = word.getOrComputeGloss() ?: word.getOrComputeGloss()
+                    val openCompound = assoc.openCompound
+                    val gloss = assoc.getOrComputeGloss()
                     val stressIndex = adjustStressIndex(word, stressData?.index)?.plus(leadingPunctuation.length)
 
                     CorpusWord(currentIndex++, tw.baseText, normalizedText, segmentedText, syllabogramSequence, word, null,
-                        word.getOrComputeGloss(),
+                        gloss,
                         assoc.contextGloss,
-                        glossWithSegments, stressIndex, stressData?.length, true,word.graph.isHomonym(word))
+                        gloss, stressIndex, stressData?.length, true, word.graph.isHomonym(word), openCompound)
                 }
                 else {
                     val wordCandidates = language.graph.wordsByText(language, tw.normalizedText, language.syllabographic)
@@ -182,15 +221,19 @@ class CorpusText(
 
     fun normalizedWordTextAt(index: Int) = iterateWords().elementAt(index).normalizedText
 
-    fun associateWord(index: Int, word: Word, contextGloss: String? = null) {
+    fun associateWord(index: Int, word: Word, contextGloss: String? = null, openCompound: OpenCompound? = null) {
+        require(openCompound == null || openCompound.findComponentPath(word) != null) {
+            "The associated word must be a member of the open compound or derived from one through Derived, Variation or Transcription links"
+        }
         for (assoc in _words) {
             if (assoc.index == index) {
                 assoc.word = word
                 assoc.contextGloss = contextGloss
+                assoc.openCompound = openCompound
                 return
             }
         }
-        _words.add(CorpusWordAssociation(index, word, contextGloss))
+        _words.add(CorpusWordAssociation(index, word, contextGloss, openCompound))
     }
 
     fun removeWord(word: Word) {

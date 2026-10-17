@@ -298,10 +298,22 @@ data class CompoundData(
 )
 
 @Serializable
+data class OpenCompoundData(
+    val id: Int,
+    val componentIds: List<Int>,
+    val headIndex: Int,
+    val gloss: String? = null,
+    val fullGloss: String? = null,
+    val sourceRefs: List<SourceRefData>? = null,
+    val notes: String? = null
+)
+
+@Serializable
 data class CorpusTextWordData(
     val index: Int,
     val id: Int,
-    val contextGloss: String? = null
+    val contextGloss: String? = null,
+    val openCompoundId: Int? = null
 )
 
 @Serializable
@@ -430,6 +442,7 @@ class JsonGraph(val path: Path?) : InMemoryGraph() {
         saveRules(consumer)
         saveCorpus(consumer)
         saveCompounds(consumer)
+        saveOpenCompounds(consumer)
         saveParadigms(consumer)
         saveRuleSequences(consumer)
     }
@@ -504,7 +517,7 @@ class JsonGraph(val path: Path?) : InMemoryGraph() {
             val corpusData = corpus.filter { it.language == language}.map {
                 CorpusTextData(
                     it.id, it.text, it.title,
-                    it.words.map { wa -> CorpusTextWordData(wa.index, wa.word.id, wa.contextGloss) },
+                    it.words.map { wa -> CorpusTextWordData(wa.index, wa.word.id, wa.contextGloss, wa.openCompound?.id) },
                     it.source.sourceToSerializedFormat(), it.notes,
                     collectTranslations(it)
                 )
@@ -537,6 +550,18 @@ class JsonGraph(val path: Path?) : InMemoryGraph() {
                 }
             if (compoundData.isNotEmpty()) {
                 consumer("${language.shortName}/compounds.json", theJson.encodeToString(compoundData))
+            }
+        }
+    }
+
+    private fun saveOpenCompounds(consumer: (String, String) -> Unit) {
+        for (language in languages.values) {
+            val data = allOpenCompounds().filter { it.headComponent().language == language }.map {
+                OpenCompoundData(it.id, it.components.map { c -> c.id }, it.headIndex,
+                    it.gloss, it.fullGloss, it.source.sourceToSerializedFormat(), it.notes)
+            }
+            if (data.isNotEmpty()) {
+                consumer("${language.shortName}/open-compounds.json", theJson.encodeToString(data))
             }
         }
     }
@@ -602,8 +627,9 @@ class JsonGraph(val path: Path?) : InMemoryGraph() {
         loadPublications(contentProviderCallback)
         loadWords(contentProviderCallback)
         loadRules(contentProviderCallback)
-        loadCorpus(contentProviderCallback)
         loadCompounds(contentProviderCallback)
+        loadOpenCompounds(contentProviderCallback)
+        loadCorpus(contentProviderCallback)
         loadParadigms(contentProviderCallback)
         loadRuleSequences(contentProviderCallback)
 
@@ -773,7 +799,14 @@ class JsonGraph(val path: Path?) : InMemoryGraph() {
                     corpusText.text,
                     corpusText.title,
                     language,
-                    corpusText.words.map { CorpusWordAssociation(it.index, allLangEntities[it.id] as Word, it.contextGloss) },
+                    corpusText.words.map { wordData ->
+                        val openCompound = wordData.openCompoundId?.let { id ->
+                            langEntityById(id) as? OpenCompound
+                                ?: throw IllegalStateException("No open compound with ID $id")
+                        }
+                        CorpusWordAssociation(wordData.index, allLangEntities[wordData.id] as Word,
+                            wordData.contextGloss, openCompound)
+                    },
                     loadSource(corpusText.sourceRefs),
                     corpusText.notes
                 )
@@ -815,6 +848,19 @@ class JsonGraph(val path: Path?) : InMemoryGraph() {
                 )
                 compounds.getOrPut(compoundWord.id) { arrayListOf() }.add(compound)
                 setLangEntity(compound.id, compound)
+            }
+        }
+    }
+
+    private fun loadOpenCompounds(contentProviderCallback: (String) -> String?) {
+        for (language in languages.values) {
+            val content = contentProviderCallback("${language.shortName}/open-compounds.json") ?: continue
+            for (data in Json.decodeFromString<List<OpenCompoundData>>(content)) {
+                val components = data.componentIds.map { id ->
+                    wordById(id) ?: throw IllegalStateException("No word with ID $id")
+                }
+                setLangEntity(data.id, OpenCompound(data.id, components, data.headIndex,
+                    data.gloss, data.fullGloss, loadSource(data.sourceRefs), data.notes))
             }
         }
     }

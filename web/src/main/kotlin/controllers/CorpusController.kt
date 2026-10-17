@@ -57,6 +57,7 @@ class CorpusController {
         val stressLength: Int? = null,
         val glossable: Boolean = false,
         val homonym: Boolean = false,
+        val openCompoundId: Int? = null,
     )
 
     @Serializable
@@ -118,7 +119,7 @@ class CorpusController {
                         cw.wordCandidates?.map { CorpusWordCandidateViewModel(it.id, it.getOrComputeGloss()) },
                         cw.stressIndex, cw.stressLength,
                         cw.glossable,
-                        cw.homonym)
+                        cw.homonym, cw.openCompound?.id)
                 }, line.lineNumber, line.separator)
             },
             source.toViewModel(graph),
@@ -185,6 +186,45 @@ class CorpusController {
     fun lockWordAssociations(graph: Graph, @PathVariable id: Int) {
         val corpusText = graph.resolveCorpusText(id)
         corpusText.lockWordAssociations()
+    }
+
+    @GetMapping("/text/{id}/openCompounds/{index}")
+    fun openCompoundCandidates(graph: Graph, @PathVariable id: Int,
+                               @PathVariable index: Int): List<CompoundController.OpenCompoundViewModel> {
+        val corpusText = graph.resolveCorpusText(id)
+        return try {
+            corpusText.findOpenCompoundCandidates(index).map { it.compound.toViewModel(graph) }
+        }
+        catch (e: IllegalArgumentException) {
+            badRequest(e.message ?: "Cannot find open compounds")
+        }
+    }
+
+    data class AssociateOpenCompoundParams(val index: Int, val compoundId: Int)
+
+    @PostMapping("/text/{id}/openCompound")
+    fun associateOpenCompound(graph: Graph, @PathVariable id: Int, @RequestBody params: AssociateOpenCompoundParams) {
+        val corpusText = graph.resolveCorpusText(id)
+        val compound = graph.resolveOpenCompound(params.compoundId)
+        try {
+            corpusText.associateOpenCompound(params.index, compound)
+        }
+        catch (e: IllegalArgumentException) {
+            badRequest(e.message ?: "Cannot associate open compound")
+        }
+    }
+
+    @PostMapping("/text/{id}/openCompound/remove")
+    fun removeOpenCompoundAssociation(graph: Graph, @PathVariable id: Int,
+                                      @RequestBody params: AssociateOpenCompoundParams) {
+        val corpusText = graph.resolveCorpusText(id)
+        val compound = graph.resolveOpenCompound(params.compoundId)
+        try {
+            corpusText.removeOpenCompoundAssociation(params.index, compound)
+        }
+        catch (e: IllegalArgumentException) {
+            badRequest(e.message ?: "Cannot remove open compound link")
+        }
     }
 
     data class AlternativeViewModel(val gloss: String, val wordId: Int, val ruleId: Int)

@@ -4,10 +4,15 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
+import org.junit.rules.TemporaryFolder
+import kotlin.io.path.exists
 import page.yole.etymograph.JsonGraph.Companion.ruleBranchesFromSerializedFormat
 import page.yole.etymograph.JsonGraph.Companion.ruleToSerializedFormat
 
 class JsonGraphTest {
+    @get:org.junit.Rule
+    val temporaryFolder = TemporaryFolder()
+
     lateinit var graph: JsonGraph
     lateinit var q: Language
     lateinit var ce: Language
@@ -172,6 +177,112 @@ class JsonGraphTest {
         val jsonFiles = mutableMapOf<String, String>()
         saveToJson { path, content -> jsonFiles[path] = content }
         return JsonGraph.fromJsonProvider { jsonFiles[it] }
+    }
+
+    @Test
+    fun serializeDerivedCorpusOpenCompoundAssociation() {
+        val head = graph.addWord("lassi", q, "leaves")
+        val form = graph.addWord("lassi", q, "leaves.ACC")
+        val transcription = graph.addWord("lassie", q, "transcription")
+        val rule = q.rule("- no change", name = "accusative", addedCategories = ".ACC")
+        graph.addLink(form, head, Link.Derived, listOf(rule))
+        graph.addLink(transcription, form, Link.Transcription)
+        val compound = graph.createOpenCompound(listOf(head), 0, "foliage")
+        val text = graph.addCorpusText("lassie", "Test", q)
+        text.associateWord(0, transcription, openCompound = compound)
+
+        val reloaded = graph.roundtrip()
+        val loadedText = reloaded.corpusTextById(text.id)!!
+        assertEquals(transcription.id, loadedText.words.single().word.id)
+        assertEquals(compound.id, loadedText.words.single().openCompound?.id)
+        assertEquals("foliage.ACC", loadedText.mapToLines().single().corpusWords.single().gloss)
+    }
+
+    @Test
+    fun serializeCorpusOpenCompoundAssociations() {
+        val head = graph.addWord("lassi", q, "leaves")
+        val modifier = graph.addWord("laurie", q, "golden")
+        val text = graph.addCorpusText("laurie lassi", "Test", q)
+        val compound = graph.createOpenCompound(listOf(modifier, head), 1, "foliage")
+        text.associateWord(0, modifier, openCompound = compound)
+        text.associateWord(1, head, "context gloss", compound)
+
+        val reloaded = graph.roundtrip()
+        val loadedText = reloaded.corpusTextById(text.id)!!
+        val loadedCompound = reloaded.langEntityById(compound.id) as OpenCompound
+        assertTrue(loadedText.words.all { it.openCompound === loadedCompound })
+        assertEquals("context gloss", loadedText.words[1].contextGloss)
+        assertEquals(listOf("...", "foliage"), loadedText.mapToLines().single().corpusWords.map { it.gloss })
+
+        reloaded.deleteOpenCompound(loadedCompound)
+        val afterDeletion = reloaded.roundtrip().corpusTextById(text.id)!!
+        assertTrue(afterDeletion.words.all { it.openCompound == null })
+        assertEquals(listOf("golden", "leaves"), afterDeletion.mapToLines().single().corpusWords.map { it.gloss })
+    }
+
+    @Test
+    fun serializeCorpusAssociationWithoutOpenCompound() {
+        val word = graph.addWord("lassi", q, "leaves")
+        val text = graph.addCorpusText("lassi", "Test", q)
+        text.associateWord(0, word, "context gloss")
+
+        val files = mutableMapOf<String, String>()
+        graph.saveToJson { path, content -> files[path] = content }
+        assertTrue("openCompoundId" !in files.getValue("Q/corpus.json"))
+        val loaded = JsonGraph.fromJsonProvider { files[it] }.corpusTextById(text.id)!!
+        assertEquals(null, loaded.words.single().openCompound)
+        assertEquals("context gloss", loaded.words.single().contextGloss)
+        assertEquals("leaves", loaded.mapToLines().single().corpusWords.single().gloss)
+    }
+
+    @Test
+    fun serializeOpenCompound() {
+        val fara = graph.addWord("fara", q, "hunt")
+        val mir = graph.addWord("mir", q, "jewel")
+        val publication = graph.addPublication("Test publication", "TEST")
+        val source = listOf(SourceRef(publication.id, "42"))
+        val compound = graph.createOpenCompound(listOf(fara, mir), 1, "hunting jewel",
+            "A jewel used for hunting", source, "Notes")
+        graph.addLink(compound, mir, Link.Related)
+
+        val reloaded = graph.roundtrip()
+        val loaded = reloaded.langEntityById(compound.id) as OpenCompound
+        assertEquals(listOf(fara.id, mir.id), loaded.components.map { it.id })
+        assertEquals(1, loaded.headIndex)
+        assertEquals(mir.id, loaded.headComponent().id)
+        assertEquals(compound.gloss, loaded.gloss)
+        assertEquals(compound.fullGloss, loaded.fullGloss)
+        assertEquals(source, loaded.source)
+        assertEquals("Notes", loaded.notes)
+        assertEquals(mir.id, reloaded.getLinksFrom(loaded).single().toEntity.id)
+    }
+
+    @Test
+    fun openCompoundFilesExistOnlyForLanguagesWithOpenCompounds() {
+        val path = temporaryFolder.newFolder().toPath()
+        val graph = JsonGraph(path)
+        val q = graph.addLanguage("Quenya", "Q")
+        graph.addLanguage("Common Eldarin", "CE")
+        val compoundFile = path.resolve("Q/open-compounds.json")
+        val emptyLanguageFile = path.resolve("CE/open-compounds.json")
+        graph.save()
+        assertEquals(false, compoundFile.exists())
+        assertEquals(false, emptyLanguageFile.exists())
+
+        val word = graph.addWord("mir", q, "jewel")
+        val compound = graph.createOpenCompound(listOf(word), 0)
+        graph.save()
+        assertTrue(compoundFile.exists())
+        assertEquals(false, emptyLanguageFile.exists())
+        assertEquals(1, JsonGraph.fromJson(path).allOpenCompounds().size)
+
+        graph.deleteOpenCompound(compound)
+        graph.save()
+        assertEquals(false, compoundFile.exists())
+
+        val reloaded = JsonGraph.fromJson(path)
+        assertTrue(reloaded.allOpenCompounds().isEmpty())
+        assertEquals(null, reloaded.langEntityById(compound.id))
     }
 
     @Test
