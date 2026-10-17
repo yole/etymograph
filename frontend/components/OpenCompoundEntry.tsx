@@ -1,5 +1,6 @@
 import {useState} from "react";
 import {useRouter} from "next/router";
+import Link from "next/link";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEdit, faTrash} from "@fortawesome/free-solid-svg-icons";
 import {callApiAndRefresh, deleteOpenCompound, useAllowEditGraph} from "@/api";
@@ -40,6 +41,12 @@ export default function OpenCompoundEntry({compound, word}: {compound: OpenCompo
                 : <WordLink word={component} baseLanguage={word.language}/>}
         </span>)}
         {(compound.fullGloss || compound.gloss) && <>{' '}&apos;{compound.fullGloss || compound.gloss}&apos;</>}
+        {compound.attestations?.length > 0 && <>
+            {' '}in {compound.attestations.map((attestation, index) => <span key={attestation.textId}>
+                {index > 0 && ", "}
+                <Link href={`/${graph}/corpus/text/${attestation.textId}`}>{attestation.textTitle}</Link>
+            </span>)}
+        </>}
         {compound.notes && <> &ndash; {compound.notes}</>}
         <SourceRefs source={compound.source} span={true}/>
         {canEdit && <>

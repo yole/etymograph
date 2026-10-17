@@ -2082,12 +2082,17 @@ components:
         notes:
           type: "string"
           nullable: true
+        attestations:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/AttestationViewModel"
       required:
         - "id"
         - "components"
         - "headIndex"
         - "source"
         - "sourceEditableText"
+        - "attestations"
     CompoundParams:
       type: "object"
       properties:

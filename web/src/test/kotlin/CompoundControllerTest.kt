@@ -12,8 +12,12 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPat
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import org.springframework.web.server.ResponseStatusException
+import page.yole.etymograph.Link
+import page.yole.etymograph.associateOpenCompound
+import page.yole.etymograph.removeOpenCompoundAssociation
 import page.yole.etymograph.web.controllers.CompoundController
 import page.yole.etymograph.web.controllers.CompoundController.OpenCompoundParams
+import page.yole.etymograph.web.controllers.WordController
 
 class CompoundControllerTest {
     private val fixture = QTestFixture()
@@ -23,6 +27,35 @@ class CompoundControllerTest {
     private val mir = graph.addWord("mir", fixture.q, "jewel")
     private val params = OpenCompoundParams(listOf(fara.id, mir.id), 1,
         "hunting jewel", "A jewel used for hunting", "Test source", "Notes")
+
+    @Test
+    fun attestationsIncludeEachLinkedCorpusTextOnce() {
+        val created = controller.createOpenCompound(graph, params)
+        val compound = graph.allOpenCompounds().single()
+        val first = graph.addCorpusText("fara mir fara mir", "First text", fixture.q)
+        first.associateOpenCompound(1, compound)
+        first.associateOpenCompound(3, compound)
+        val derived = graph.addWord("miri", fixture.q, "jewels")
+        graph.addLink(derived, mir, Link.Derived)
+        val untitled = graph.addCorpusText("fara miri", null, fixture.q)
+        untitled.associateOpenCompound(1, compound)
+        graph.addCorpusText("fara mir", "Unlinked text", fixture.q)
+        val otherCompound = graph.createOpenCompound(listOf(fara, mir), 1, "Other compound")
+        graph.addCorpusText("fara mir", "Other compound text", fixture.q).associateOpenCompound(1, otherCompound)
+
+        val attestations = controller.openCompound(graph, created.id).attestations
+        assertEquals(listOf(first.id, untitled.id), attestations.map { it.textId })
+        assertEquals(listOf("First text", "fara miri"), attestations.map { it.textTitle })
+        val word = WordController(TestDictionaryService()).singleWordJson(graph, "q", mir.text, mir.id)
+        assertEquals(attestations, word.openCompounds.single { it.id == compound.id }.attestations)
+
+        first.removeOpenCompoundAssociation(1, compound)
+        assertEquals(listOf(first.id, untitled.id), controller.openCompound(graph, created.id).attestations.map { it.textId })
+        first.removeOpenCompoundAssociation(3, compound)
+        assertEquals(listOf(untitled.id), controller.openCompound(graph, created.id).attestations.map { it.textId })
+        untitled.removeOpenCompoundAssociation(1, compound)
+        assertTrue(controller.openCompound(graph, created.id).attestations.isEmpty())
+    }
 
     @Test
     fun httpOpenCompoundCrudRequiresHead() {

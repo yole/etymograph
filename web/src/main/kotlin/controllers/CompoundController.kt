@@ -38,7 +38,8 @@ class CompoundController {
         val fullGloss: String?,
         val source: List<SourceRefViewModel>,
         val sourceEditableText: String,
-        val notes: String?
+        val notes: String?,
+        val attestations: List<WordController.AttestationViewModel>
     )
 
     @GetMapping("/open")
@@ -159,4 +160,7 @@ fun Graph.resolveOpenCompound(id: Int): OpenCompound {
 
 fun OpenCompound.toViewModel(graph: Graph): CompoundController.OpenCompoundViewModel =
     CompoundController.OpenCompoundViewModel(id, components.map { it.toRefViewModel() }, headIndex, gloss, fullGloss,
-        source.toViewModel(graph), source.toEditableText(graph), notes)
+        source.toViewModel(graph), source.toEditableText(graph), notes,
+        graph.allCorpusTexts().filter { text -> text.words.any { it.openCompound?.id == id } }.map { text ->
+            WordController.AttestationViewModel(text.id, text.title ?: text.text, null, null)
+        })

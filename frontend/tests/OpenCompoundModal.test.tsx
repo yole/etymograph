@@ -27,7 +27,7 @@ const compound: OpenCompoundViewModel = {
         {id: 10, text: "head", language: "q", displayLanguage: "q", gloss: "head", homonym: false, reconstructed: false}
     ],
     headIndex: 1, gloss: "Old gloss", fullGloss: "Old full gloss",
-    source: [{refText: "REF:12"}], sourceEditableText: "REF:12", notes: "Old notes"
+    source: [{refText: "REF:12"}], sourceEditableText: "REF:12", notes: "Old notes", attestations: []
 };
 let root: Root;
 let container: HTMLDivElement;
@@ -218,4 +218,15 @@ it("hides editing actions without write access", async () => {
     await renderContent(<OpenCompoundEntry compound={compound} word={head}/>, false);
     expect(document.querySelector('[aria-label="Edit open compound"]')).toBeNull();
     expect(document.querySelector('[aria-label="Delete open compound"]')).toBeNull();
+});
+
+it("shows links to attested corpus texts beside an open compound", async () => {
+    await renderContent(<OpenCompoundEntry compound={{...compound, attestations: [
+        {textId: 42, textTitle: "First corpus text"},
+        {textId: 43, textTitle: "Second corpus text"}
+    ]}} word={head}/>, false);
+
+    expect(container.querySelector('a[href="/test/corpus/text/42"]')!.textContent).toBe("First corpus text");
+    expect(container.querySelector('a[href="/test/corpus/text/43"]')!.textContent).toBe("Second corpus text");
+    expect(container.textContent).toContain("in First corpus text, Second corpus text");
 });

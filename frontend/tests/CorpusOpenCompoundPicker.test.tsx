@@ -24,7 +24,7 @@ const compound: OpenCompoundViewModel = {
         {id: 10, text: "golden", language: "q", displayLanguage: "q", homonym: false, reconstructed: false},
         {id: 20, text: "leaves", language: "q", displayLanguage: "q", homonym: false, reconstructed: false}
     ],
-    headIndex: 1, gloss: "foliage", source: [], sourceEditableText: ""
+    headIndex: 1, gloss: "foliage", source: [], sourceEditableText: "", attestations: []
 };
 let root: Root;
 let container: HTMLDivElement;

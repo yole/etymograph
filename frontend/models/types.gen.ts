@@ -38,6 +38,7 @@ export type OpenCompoundViewModel = {
     source: Array<SourceRefViewModel>;
     sourceEditableText: string;
     notes?: string;
+    attestations: Array<AttestationViewModel>;
 };
 
 export type CompoundParams = {
