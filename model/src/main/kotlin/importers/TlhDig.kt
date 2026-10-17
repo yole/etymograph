@@ -216,8 +216,10 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
                 pos = pos ?: rules.firstOrNull()?.fromPOS?.firstOrNull(),
                 syllabographic = lemma.any { it.isUpperCase() })
 
-            graph.addLink(transWord, lemmaWord, Link.Derived,
-                rules = rules)
+            if (graph.findLink(transWord, lemmaWord, Link.Derived) == null) {
+                graph.addLink(transWord, lemmaWord, Link.Derived,
+                    rules = rules)
+            }
         }
     }
 }

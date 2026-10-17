@@ -671,7 +671,7 @@ open class InMemoryGraph : Graph() {
         }
         val existingLink = findLink(fromEntity, toEntity, type)
         if (existingLink != null) {
-            throw IllegalArgumentException("Link already exists")
+            throw IllegalArgumentException("Link from ${fromEntity.id} to ${toEntity.id} of type ${type.id} already exists")
         }
 
         val allLinkedEntities = mutableSetOf<Int>()
