@@ -279,7 +279,7 @@ class TlhDigImportTest {
 
     private fun importWord(@org.intellij.lang.annotations.Language("XML") element: String): CorpusText {
         val doc = SAXBuilder().build(StringReader("<text>$element</text>"))
-        importTLHDig(graph, "doc", doc.rootElement.children)
+        importTLHDig(graph, "doc", doc.rootElement.children, TLHDigImportContext())
         return graph.allCorpusTexts().first()
     }
 

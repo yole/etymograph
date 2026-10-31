@@ -1630,6 +1630,37 @@ paths:
             '*/*':
               schema:
                 $ref: "#/components/schemas/DictionaryViewModel"
+  /{graph}/import/tlhDig:
+    post:
+      summary: "Upload and import a TLHDig XML file"
+      operationId: "importTLHDigText"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: "object"
+              properties:
+                file:
+                  type: "string"
+                  format: "binary"
+              required:
+                - "file"
+      responses:
+        "200":
+          description: "Import messages and new words"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TLHDigImportResult"
+        "400":
+          description: "Missing Hittite language, missing or empty upload, or invalid TLHDig file"
   /{graph}/corpus/:
     get:
       summary: "GET {graph}/corpus/"
@@ -4232,6 +4263,20 @@ components:
       required:
         - "index"
         - "wordId"
+    TLHDigImportResult:
+      type: "object"
+      properties:
+        messages:
+          type: "array"
+          items:
+            type: "string"
+        newWords:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/WordRefViewModel"
+      required:
+        - "messages"
+        - "newWords"
     CorpusLangViewModel:
       type: "object"
       properties:

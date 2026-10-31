@@ -4,7 +4,7 @@ import {
     LookupParameters,
     LookupResultViewModel,
     OpenCompoundParams, OpenCompoundViewModel,
-    SuggestCompoundViewModel, TranslationParams,
+    SuggestCompoundViewModel, TlhDigImportResult, TranslationParams,
     UpdateLanguageParameters,
     UpdateParadigmParameters, UpdatePhonemeParameters,
     UpdateRuleParameters,
@@ -285,6 +285,17 @@ export function deriveThroughRuleSequence(graph: string, wordId: number, seqId: 
 
 export function addCorpusText(graph: string, lang: string, data: CorpusTextParams) {
     return postToBackend(`${graph}/corpus/${lang}/new`, data)
+}
+
+export async function importTLHDig(graph: string, file: File): Promise<TypedResponse<TlhDigImportResult>> {
+    const data = new FormData()
+    data.append("file", file)
+    const response = await fetch(backendUrl(`${graph}/import/tlhDig`), {
+        method: 'POST',
+        credentials: 'include',
+        body: data
+    })
+    return new TypedResponse(response)
 }
 
 export function updateCorpusText(graph: string, id: number, data: CorpusTextParams) {

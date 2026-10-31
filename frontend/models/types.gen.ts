@@ -817,6 +817,11 @@ export type AssociateWordParameters = {
     contextGloss?: string;
 };
 
+export type TlhDigImportResult = {
+    messages: Array<string>;
+    newWords: Array<WordRefViewModel>;
+};
+
 export type CorpusLangViewModel = {
     language: string;
     languageFullName: string;
@@ -2210,6 +2215,33 @@ export type DictionaryResponses = {
 };
 
 export type DictionaryResponse = DictionaryResponses[keyof DictionaryResponses];
+
+export type ImportTlhDigTextData = {
+    body: {
+        file: Blob | File;
+    };
+    path: {
+        graph: string;
+    };
+    query?: never;
+    url: '/{graph}/import/tlhDig';
+};
+
+export type ImportTlhDigTextErrors = {
+    /**
+     * Missing Hittite language, missing or empty upload, or invalid TLHDig file
+     */
+    400: unknown;
+};
+
+export type ImportTlhDigTextResponses = {
+    /**
+     * Import messages and new words
+     */
+    200: TlhDigImportResult;
+};
+
+export type ImportTlhDigTextResponse = ImportTlhDigTextResponses[keyof ImportTlhDigTextResponses];
 
 export type AllCorpusTextsData = {
     body?: never;

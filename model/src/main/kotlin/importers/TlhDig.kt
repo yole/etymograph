@@ -1,6 +1,7 @@
 package page.yole.etymograph.importers
 
 import org.jdom2.Content
+import org.jdom2.Document
 import org.jdom2.Element
 import org.jdom2.input.SAXBuilder
 import page.yole.etymograph.AccentType
@@ -20,6 +21,7 @@ import page.yole.etymograph.removeDiacritics
 import page.yole.etymograph.removePunctuation
 import page.yole.etymograph.suggestTranscription
 import java.io.File
+import java.io.InputStream
 import java.nio.file.Path
 
 class TLHDigImportContext {
@@ -44,7 +46,14 @@ fun main(args: Array<String>) {
 }
 
 fun importTLHDig(graph: Graph, file: File, context: TLHDigImportContext) {
-    val doc = SAXBuilder().build(file)
+    importTLHDig(graph, SAXBuilder().build(file), context)
+}
+
+fun importTLHDig(graph: Graph, input: InputStream, context: TLHDigImportContext) {
+    importTLHDig(graph, SAXBuilder().build(input), context)
+}
+
+private fun importTLHDig(graph: Graph, doc: Document, context: TLHDigImportContext) {
     val body = doc.rootElement.getChild("body").getChild("div1").getChild("text")
     val header = doc.rootElement.getChild("AOHeader").getChild("docID").text
     importTLHDig(graph, header, body.children, context)
