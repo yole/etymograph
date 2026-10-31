@@ -149,7 +149,8 @@ export default function WordPickerModal(props: WordPickerModalProps) {
                             <ReactSelect inputId="word-picker-rule-names"
                                          options={ruleOptions}
                                          isMulti={true}
-                                         value={ruleOptions.filter(option => ruleNames.includes(option.value))}
+                                         value={ruleNames.map(name => ruleOptions.find(option => option.value === name))
+                                             .filter(option => option !== undefined)}
                                          onChange={(selected) => setRuleNames(selected.map(option => option.value))}
                                          isSearchable={true}
                                          isClearable={true}/>
