@@ -11,7 +11,7 @@ class CheckersTest : QBaseTest() {
 
         GlossChecker.checkWord(word, issues::add)
 
-        assertEquals(listOf(ConsistencyCheckerIssue("Orphan word (ID=${word.id})")), issues)
+        assertEquals(listOf(ConsistencyCheckerIssue("Orphan word (ID=${word.id})", word)), issues)
     }
 
     @Test
@@ -23,9 +23,9 @@ class CheckersTest : QBaseTest() {
 
         CorpusTextChecker.check(graph, q, issues::add)
 
-        assertEquals(listOf(ConsistencyCheckerIssue(
-            "Corpus word text 'alda' doesn't match word text 'elen', index 0 in Test text"
-        )), issues)
+        assertEquals("Corpus word text 'alda' doesn't match word text 'elen', index 0 in Test text",
+            issues.single().description.toString())
+        assertEquals(corpusText, issues.single().entity)
     }
 
     @Test

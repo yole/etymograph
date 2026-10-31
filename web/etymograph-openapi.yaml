@@ -1276,6 +1276,28 @@ paths:
       responses:
         "200":
           description: "OK"
+  /{graph}/consistency/{lang}:
+    get:
+      summary: "Check data consistency for a language"
+      operationId: "consistency"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+        - name: "lang"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ConsistencyViewModel"
   /{graph}/language/{lang}/copyPhonemes:
     post:
       summary: "POST {graph}/language/{lang}/copyPhonemes"
@@ -2893,6 +2915,10 @@ components:
         linkData:
           type: "string"
           nullable: true
+        syllabogramSequence:
+          allOf:
+            - $ref: "#/components/schemas/SyllabogramSequence"
+          nullable: true
       required:
         - "text"
         - "emph"
@@ -3664,6 +3690,33 @@ components:
         - "title"
         - "columnTitles"
         - "rows"
+    ConsistencyIssueGroupViewModel:
+      type: "object"
+      properties:
+        type:
+          type: "string"
+        issues:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/RichText"
+      required:
+        - "type"
+        - "issues"
+    ConsistencyViewModel:
+      type: "object"
+      properties:
+        language:
+          type: "string"
+        languageFullName:
+          type: "string"
+        issueGroups:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/ConsistencyIssueGroupViewModel"
+      required:
+        - "language"
+        - "languageFullName"
+        - "issueGroups"
     LanguageViewModel:
       type: "object"
       properties:

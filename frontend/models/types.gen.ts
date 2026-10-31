@@ -334,6 +334,7 @@ export type RichTextFragment = {
     linkId?: number;
     linkLanguage?: string;
     linkData?: string;
+    syllabogramSequence?: SyllabogramSequence;
 };
 
 export type RichText = {
@@ -615,6 +616,17 @@ export type PhonemeTableViewModel = {
     title: string;
     columnTitles: Array<string>;
     rows: Array<PhonemeTableRowViewModel>;
+};
+
+export type ConsistencyIssueGroupViewModel = {
+    type: string;
+    issues: Array<RichText>;
+};
+
+export type ConsistencyViewModel = {
+    language: string;
+    languageFullName: string;
+    issueGroups: Array<ConsistencyIssueGroupViewModel>;
 };
 
 export type LanguageViewModel = {
@@ -1901,6 +1913,25 @@ export type UpdateLanguageResponses = {
      */
     200: unknown;
 };
+
+export type ConsistencyData = {
+    body?: never;
+    path: {
+        graph: string;
+        lang: string;
+    };
+    query?: never;
+    url: '/{graph}/consistency/{lang}';
+};
+
+export type ConsistencyResponses = {
+    /**
+     * OK
+     */
+    200: ConsistencyViewModel;
+};
+
+export type ConsistencyResponse = ConsistencyResponses[keyof ConsistencyResponses];
 
 export type CopyPhonemesData = {
     body: CopyPhonemesParams;

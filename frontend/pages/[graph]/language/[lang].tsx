@@ -191,5 +191,6 @@ export default function LanguageIndex(props) {
         </EtymographFormView>
         <p/>
         {errorText !== "" && <div className="errorText">{errorText}</div>}
+        <p><Link href={`/${graph}/language/${langId}/check`}>Check Data Consistency</Link></p>
     </>
 }

@@ -2,26 +2,35 @@ import Link from "next/link";
 import {RichTextFragment as RichTextFragmentModel, RichText as RichTextModel} from "@/models";
 import {useContext} from "react";
 import {GraphContext} from "@/components/Contexts";
+import WordTextView from "@/components/WordTextView";
 
 function RichTextFragment(params: { fragment: RichTextFragmentModel }) {
     const graph = useContext(GraphContext)
+    const text = params.fragment.syllabogramSequence
+        ? <WordTextView text={params.fragment.text} syllabograms={params.fragment.syllabogramSequence}/>
+        : params.fragment.text
     if (params.fragment.linkType === "rule") {
-        return <Link href={`/${graph}/rule/${params.fragment.linkId}`}>{params.fragment.text}</Link>
+        return <Link href={`/${graph}/rule/${params.fragment.linkId}`}>{text}</Link>
     }
     if (params.fragment.linkType === "word") {
-        return <Link href={`/${graph}/word/${params.fragment.linkLanguage}/${params.fragment.linkData}/${params.fragment.linkId}`}>
-            {params.fragment.text}
+        return <Link href={`/${graph}/word/${encodeURIComponent(params.fragment.linkLanguage)}/${encodeURIComponent(params.fragment.linkData)}/${params.fragment.linkId}`}>
+            {text}
         </Link>
     }
     if (params.fragment.linkType === "phoneme") {
         return <Link href={`/${graph}/phoneme/${params.fragment.linkId}`}>
-            {params.fragment.text}
+            {text}
+        </Link>
+    }
+    if (params.fragment.linkType === "corpusText") {
+        return <Link href={`/${graph}/corpus/text/${params.fragment.linkId}`}>
+            {text}
         </Link>
     }
 
     const textWithTooltip = params.fragment.tooltip
-        ? <span className="richTextTooltip" title={params.fragment.tooltip}>{params.fragment.text}</span>
-        : params.fragment.text
+        ? <span className="richTextTooltip" title={params.fragment.tooltip}>{text}</span>
+        : text
 
     if (params.fragment.emph) {
         return <span className="richTextEmph">{textWithTooltip}</span>

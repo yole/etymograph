@@ -2,18 +2,25 @@ package page.yole.etymograph
 
 import java.util.*
 
-data class ConsistencyCheckerIssue(val description: String)
+data class ConsistencyCheckerIssue(val description: RichText, val entity: LangEntity) {
+    constructor(description: String, entity: LangEntity) : this(description.richText(), entity)
+}
 
-abstract class ConsistencyChecker {
+private fun Word.toCheckerText(): RichText = richText(text.rich(
+    linkType = "word", linkId = id, linkLanguage = language.shortName, linkData = text,
+    syllabogramSequence = syllabogramSequence
+))
+
+abstract class ConsistencyChecker(val name: String) {
     open fun check(graph: Graph, language: Language, report: (ConsistencyCheckerIssue) -> Unit) {
         for (word in graph.allWords(language)) {
             checkWord(word) {
-                report(ConsistencyCheckerIssue("${it.description} for $word"))
+                report(it.copy(description = it.description + " for " + word.toCheckerText() + " '${word.getOrComputeGloss()}'"))
             }
         }
         for (corpusText in graph.corpusTextsInLanguage(language)) {
             checkCorpusText(corpusText) {
-                report(ConsistencyCheckerIssue("${it.description} in ${corpusText.title}"))
+                report(it.copy(description = it.description + " in ${corpusText.title}"))
             }
         }
     }
@@ -25,7 +32,7 @@ abstract class ConsistencyChecker {
     }
 }
 
-object WordTextChecker : ConsistencyChecker() {
+object WordTextChecker : ConsistencyChecker("Word text") {
     override fun checkWord(word: Word, report: (ConsistencyCheckerIssue) -> Unit) {
         if (word.syllabographic) {
             return
@@ -39,72 +46,75 @@ object WordTextChecker : ConsistencyChecker() {
         }
         if (charactersNotInInventory.isNotEmpty()) {
             report(ConsistencyCheckerIssue("Word text contains characters outside of inventory: " +
-                    charactersNotInInventory.joinToString(", ")))
+                    charactersNotInInventory.joinToString(", "), word))
         }
     }
 }
 
-object PosChecker : ConsistencyChecker() {
+object PosChecker : ConsistencyChecker("Parts of speech") {
     override fun checkWord(word: Word, report: (ConsistencyCheckerIssue) -> Unit) {
         val baseWord = word.baseWord()
         if ((baseWord != null) && word.pos != null) {
-            report(ConsistencyCheckerIssue("POS specified for derived word"))
+            report(ConsistencyCheckerIssue("POS specified for derived word", word))
         }
         else if (baseWord == null && word.pos == null && word.graph.findCompoundsByCompoundWord(word).isEmpty()) {
-            report(ConsistencyCheckerIssue("No POS specified"))
+            report(ConsistencyCheckerIssue("No POS specified", word))
         }
         else if (word.pos != null && word.language.pos.none { it.abbreviation == word.pos }) {
-            report(ConsistencyCheckerIssue("POS '${word.pos}' not in list"))
+            report(ConsistencyCheckerIssue("POS '${word.pos}' not in list", word))
         }
     }
 }
 
-object GlossChecker : ConsistencyChecker() {
+object GlossChecker : ConsistencyChecker("Glosses") {
     override fun checkWord(word: Word, report: (ConsistencyCheckerIssue) -> Unit) {
         val baseWord = word.baseWord()
         if (baseWord != null  && word.gloss != null) {
-            report(ConsistencyCheckerIssue("Gloss specified for derived word"))
+            report(ConsistencyCheckerIssue("Gloss specified for derived word", word))
         }
         else if (baseWord == null && word.gloss == null &&
             word.pos != KnownPartsOfSpeech.properName.abbreviation && word.graph.findCompoundsByCompoundWord(word).isEmpty())
         {
             if (word.graph.findAttestations(word).isEmpty() && word.graph.findCompoundsByComponent(word).isEmpty()) {
-                report(ConsistencyCheckerIssue("Orphan word (ID=${word.id})"))
+                report(ConsistencyCheckerIssue("Orphan word (ID=${word.id})", word))
             }
             else {
-                report(ConsistencyCheckerIssue("No gloss specified for word"))
+                report(ConsistencyCheckerIssue("No gloss specified for word", word))
             }
         }
     }
 }
 
-object WordClassChecker : ConsistencyChecker() {
+object WordClassChecker : ConsistencyChecker("Word classes") {
     override fun checkWord(word: Word, report: (ConsistencyCheckerIssue) -> Unit) {
         for (cls in word.classes) {
             val wordClass = word.language.wordClasses.find { it.values.any { v -> v.abbreviation == cls } }
             if (wordClass == null) {
-                report(ConsistencyCheckerIssue("Word class '$cls''not found"))
+                report(ConsistencyCheckerIssue("Word class '$cls''not found", word))
             }
             else if (word.pos !in wordClass.pos) {
-                report(ConsistencyCheckerIssue("Word POS does not match POS of word class '$cls'"))
+                report(ConsistencyCheckerIssue("Word POS does not match POS of word class '$cls'", word))
             }
         }
     }
 }
 
-object LinkChecker : ConsistencyChecker() {
+object LinkChecker : ConsistencyChecker("Links") {
     override fun checkWord(word: Word, report: (ConsistencyCheckerIssue) -> Unit) {
         val links = word.graph.getLinksFrom(word)
         for (link in links) {
             if (link.type == Link.Derived && link.rules.isEmpty()) {
-                report(ConsistencyCheckerIssue("Derived link with no rules"))
+                report(ConsistencyCheckerIssue("Derived link with no rules", word))
             }
             var expectedPOS = (link.toEntity as? Word)?.pos
             if (expectedPOS != null) {
                 for (rule in link.rules) {
                     val rulePOS = (word.graph.paradigmForRule(rule)?.pos?.toSet() ?: emptySet()) + rule.fromPOS
                     if (rulePOS.isNotEmpty() && expectedPOS !in rulePOS) {
-                        report(ConsistencyCheckerIssue("Word POS does not match rule POS for link from $word, rule ${rule.name}"))
+                        report(ConsistencyCheckerIssue(
+                            "Word POS does not match rule POS for link from ${word.language.shortName} ".richText() +
+                                word.toCheckerText() + " '${word.gloss}', rule ${rule.name}", word
+                        ))
                     }
                     expectedPOS = rule.toPOS
                 }
@@ -113,7 +123,7 @@ object LinkChecker : ConsistencyChecker() {
     }
 }
 
-object CorpusTextChecker : ConsistencyChecker() {
+object CorpusTextChecker : ConsistencyChecker("Corpus texts") {
     override fun checkCorpusText(corpusText: CorpusText, report: (ConsistencyCheckerIssue) -> Unit) {
         for (line in corpusText.mapToLines()) {
             for (corpusWord in line.corpusWords) {
@@ -122,19 +132,26 @@ object CorpusTextChecker : ConsistencyChecker() {
                 val associatedSimplifiedText = associatedWord.asSimplified().text.lowercase(Locale.FRANCE)
                 val corpusWordText = corpusWord.normalizedText.lowercase(Locale.FRANCE)
                 if (associatedText != corpusWordText && associatedSimplifiedText != corpusWordText) {
-                    report(ConsistencyCheckerIssue("Corpus word text '${corpusWord.normalizedText}' doesn't match word text '${associatedWord.text}', index ${corpusWord.index}"))
+                    val corpusWordText = richText(corpusWord.normalizedText.rich(
+                        syllabogramSequence = if (corpusText.language.syllabographic)
+                            TlhDigSyllabogramSyntax.parse(corpusWord.normalizedText) else null
+                    ))
+                    report(ConsistencyCheckerIssue(
+                        "Corpus word text '".richText() + corpusWordText + "' doesn't match word text '" +
+                            associatedWord.toCheckerText() + "', index ${corpusWord.index}", corpusText
+                    ))
                 }
             }
         }
     }
 }
 
-object RuleChecker : ConsistencyChecker() {
+object RuleChecker : ConsistencyChecker("Rules") {
     override fun check(graph: Graph, language: Language, report: (ConsistencyCheckerIssue) -> Unit) {
         for (rule in graph.allRules().filter { it.toLanguage == language }) {
             for (pos in rule.fromPOS) {
                 if (rule.fromLanguage.pos.none { it.abbreviation == pos }) {
-                    report(ConsistencyCheckerIssue("Unknown rule from POS '$pos' in ${rule.name}"))
+                    report(ConsistencyCheckerIssue("Unknown rule from POS '$pos' in ${rule.name}", rule))
                 }
             }
             checkLogic(rule, report)
@@ -169,7 +186,7 @@ object RuleChecker : ConsistencyChecker() {
             if (pattern.literal != null &&
                 rule.fromLanguage.phonemes.find { it.effectiveSound == pattern.literal } == null)
             {
-                report(ConsistencyCheckerIssue("Rule ${rule.name} refers to unknown phoneme ${pattern.literal}"))
+                report(ConsistencyCheckerIssue("Rule ${rule.name} refers to unknown phoneme ${pattern.literal}", rule))
             }
         }
     }
@@ -198,12 +215,12 @@ object RuleChecker : ConsistencyChecker() {
         if (speNode is SpeLiteralNode) {
             val phoneme = language.phonemes.find { it.effectiveSound == speNode.text }
             if (phoneme == null) {
-                report(ConsistencyCheckerIssue("Rule ${rule.name} refers to unknown phoneme ${speNode.text}"))
+                report(ConsistencyCheckerIssue("Rule ${rule.name} refers to unknown phoneme ${speNode.text}", rule))
             }
         }
         if (speNode is SpeAlternativeNode) {
             if (speNode.choices.size == 1) {
-                report(ConsistencyCheckerIssue("Rule ${rule.name} contains alternative node with single choice: $speNode"))
+                report(ConsistencyCheckerIssue("Rule ${rule.name} contains alternative node with single choice: $speNode", rule))
             }
             for (choice in speNode.choices) {
                 for (element in choice) {

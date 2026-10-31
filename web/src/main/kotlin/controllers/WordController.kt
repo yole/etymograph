@@ -191,7 +191,7 @@ class WordController(val dictionaryService: DictionaryService) {
         val consistencyIssues = buildList {
             for (checker in consistencyCheckers) {
                 checker.checkWord(this@toViewModel) { issue ->
-                    add(issue.description)
+                    add(issue.description.toString())
                 }
             }
         }

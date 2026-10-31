@@ -131,7 +131,7 @@ class CorpusController {
             buildList {
                 for (checker in consistencyCheckers) {
                     checker.checkCorpusText(this@toViewModel) { issue ->
-                        add(issue.description)
+                        add(issue.description.toString())
                     }
                 }
             }
