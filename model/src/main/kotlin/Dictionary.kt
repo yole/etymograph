@@ -113,7 +113,10 @@ fun isGlossSimilar(candidateGloss: String?, gloss: String?): Boolean {
 }
 
 fun isAnyGlossSimilar(word: Word, gloss: String): Boolean =
-    isGlossSimilar(gloss, word.getOrComputeGloss()) || isGlossSimilar(gloss, word.fullGloss)
+    isGlossSimilar(gloss, word.getOrComputeGloss()) ||
+            isGlossSimilar(gloss, word.fullGlossOfWordOrVariant())
+
+fun Word.fullGlossOfWordOrVariant(): String? = fullGloss ?: getVariationOf()?.fullGloss
 
 private fun wordSet(gloss: String): Set<String> =
     gloss.lowercase()

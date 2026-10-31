@@ -274,6 +274,16 @@ class TlhDigImportTest {
         assertEquals(0, graph.getLinksFrom(word).count { it.type == Link.Transcription })
     }
 
+    @Test
+    fun variant() {
+        val zikk = hittite.word("zikk-", "decide", "decide; setzen")
+        val zikke = hittite.word("zikke")
+        graph.addLink(zikke, zikk, Link.Variation)
+        val corpusText = importWord("<w trans=\"zikkezi\" mrp0sel=\" 1 \" mrp1=\"zik=ke/a-@setzen@3SG.PRS.IMPF@I.8.1@\">zi-ik-ke-ez-zi</w>")
+        val word = corpusText.words[0].word
+        assertEquals(zikke.id, word.transcription.lemma.id)
+    }
+
     private fun findWord(text: String, syllabographic: Boolean = false): Word =
         graph.wordsByText(hittite, text, syllabographic).single()
 
