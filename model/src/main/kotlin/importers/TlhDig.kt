@@ -22,20 +22,35 @@ import page.yole.etymograph.suggestTranscription
 import java.io.File
 import java.nio.file.Path
 
+class TLHDigImportContext {
+    val messages = arrayListOf<String>()
+    val newWords = arrayListOf<Word>()
+}
 
 fun main(args: Array<String>) {
     val ieRepo = JsonGraph.fromJson(Path.of("data/etymograph-ie"))
     val tlhdigFile = File(args[0])
-    val doc = SAXBuilder().build(tlhdigFile)
-    val body = doc.rootElement.getChild("body").getChild("div1").getChild("text")
-    val header = doc.rootElement.getChild("AOHeader").getChild("docID").text
-
-    importTLHDig(ieRepo, header,body.children)
+    val context = TLHDigImportContext()
+    importTLHDig(ieRepo, tlhdigFile, context)
+    for (s in context.messages) {
+        println(s)
+    }
+    println("New words:")
+    for (word in context.newWords) {
+        println("${word.text} '${word.getOrComputeGloss()}'")
+    }
 
     ieRepo.save()
 }
 
-fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
+fun importTLHDig(graph: Graph, file: File, context: TLHDigImportContext) {
+    val doc = SAXBuilder().build(file)
+    val body = doc.rootElement.getChild("body").getChild("div1").getChild("text")
+    val header = doc.rootElement.getChild("AOHeader").getChild("docID").text
+    importTLHDig(graph, header, body.children, context)
+}
+
+fun importTLHDig(graph: Graph, title: String, children: List<Element>, context: TLHDigImportContext) {
     class TlhDigWord(val text: String, val trans: String, val element: Element?)
 
     val wordElements = mutableListOf<TlhDigWord>()
@@ -90,26 +105,26 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
         val wordElement = w.element
         val cleanText = removePunctuation(wordText)
         if (cleanText.isEmpty()) {
-            println("Skipping empty word $wordText")
+            context.messages.add("Skipping empty word $wordText")
             continue
         }
         if (cleanText.all { it.isDigit() }) {
-            println("Skipping numeric word $wordText")
+            context.messages.add("Skipping numeric word $wordText")
             continue
         }
 
         if ('x' in cleanText) {
-            println("Skipping damaged word $wordText")
+            context.messages.add("Skipping damaged word $wordText")
             continue
         }
 
         val existingWords = graph.wordsByText(hittite, cleanText, true)
         if (existingWords.isNotEmpty()) {
-            println("Skipping existing word $wordText")
+            context.messages.add("Skipping existing word $wordText")
             continue
         }
         if (w.element == null) {
-            println("Skipping Akkadian preposition")
+            context.messages.add("Skipping Akkadian preposition")
             continue
         }
         val trans = if (cleanText.any { it.isUpperCase() }) w.trans else suggestTranscription(cleanText)
@@ -120,6 +135,7 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
         val posFromDeterminant = if (properNameDeterminants.any { sylWord.text.startsWith("^$it^") })"NP" else null
         var transWord = if (trans.none { it.isUpperCase() } && !trans.all { it.isDigit()} ) {
             graph.addWord(trans, hittite, gloss = null, pos = posFromDeterminant).also {
+                context.newWords.add(it)
                 graph.addLink(sylWord, it, Link.Transcription)
             }
         }
@@ -156,7 +172,7 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
         val gloss = mrpElements[1]
         val analysis = mrpElements[2]
         var selectedAnalysis = if (analysis.startsWith('{')) {
-            findSelectedAnalysis(analysis, mrpSel.drop(1))
+            findSelectedAnalysis(analysis, mrpSel.drop(1), context)
         }
         else {
             analysis
@@ -164,7 +180,7 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
 
         if (lemma.any { it.isUpperCase() } && '_' in selectedAnalysis) {
             val oldText = transWord.text
-            transWord = createAkkadianCompound(sylWord, selectedAnalysis, transWord)
+            transWord = createAkkadianCompound(sylWord, selectedAnalysis, transWord, context)
             selectedAnalysis = selectedAnalysis.substringBefore('_')
             val tail = oldText.drop(transWord.text.length).replace("_", "")
             if (cleanLemma.endsWith(tail)) {
@@ -188,12 +204,12 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
             cleanLemma = lemma.substringBefore('=').normalizeSemivowels()
         }
         if (encliticTexts.isNotEmpty()) {
-            transWord = createEncliticCompound(transWord, encliticTexts, encliticAnalyses)
+            transWord = createEncliticCompound(transWord, encliticTexts, encliticAnalyses, context)
         }
 
         val posMarkers = mutableListOf<String>()
         val rules = if (selectedAnalysis.isNotEmpty()) {
-            findRulesByMrp(selectedAnalysis, hittite, posMarkers)
+            findRulesByMrp(selectedAnalysis, hittite, posMarkers, context)
         }
         else {
             emptyList()
@@ -214,7 +230,7 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>) {
 
             val lemmaWord = matchingWord ?: graph.findOrAddWord(cleanLemma, hittite, gloss,
                 pos = pos ?: rules.firstOrNull()?.fromPOS?.firstOrNull(),
-                syllabographic = lemma.any { it.isUpperCase() })
+                syllabographic = lemma.any { it.isUpperCase() }).also { context.newWords.add(it) }
 
             if (graph.findLink(transWord, lemmaWord, Link.Derived) == null) {
                 graph.addLink(transWord, lemmaWord, Link.Derived,
@@ -239,7 +255,7 @@ private fun String.normalizeSemivowels() = this
     .replace("y", "i̯")
     .replace("w", "u̯")
 
-private fun findRulesByMrp(mrp: String, hittite: Language, posMarkers: MutableList<String>): List<Rule> {
+private fun findRulesByMrp(mrp: String, hittite: Language, posMarkers: MutableList<String>, context: TLHDigImportContext): List<Rule> {
     val analysis = mrp.removeSuffix("(UNM)").removeSuffix("(ABBR)").removePrefix("…:")
     val categories = analysis.split('.')
     val categorySet = mutableSetOf<String>()
@@ -274,7 +290,7 @@ private fun findRulesByMrp(mrp: String, hittite: Language, posMarkers: MutableLi
     findMatchingRule(hittite, categorySet)?.let { return listOf(it) }
     categorySet.removeAll(optionalIgnoreCategories)
     return findMatchingRule(hittite, categorySet).also {
-        if (it == null) println("No rule for mrp $mrp")
+        if (it == null) context.messages.add("No rule for mrp $mrp")
     }?.let { listOf(it) } ?: emptyList()
 }
 
@@ -292,11 +308,11 @@ private val properNameDeterminants = setOf("m", "f", "URU")
 private val ignoreCategories = setOf("LUW||HITT", "HITT")
 private val optionalIgnoreCategories = setOf("C", "N", "PRS")
 
-private fun createEncliticCompound(word: Word, encliticTexts: List<String>, encliticAnalyses: List<String>): Word {
+private fun createEncliticCompound(word: Word, encliticTexts: List<String>, encliticAnalyses: List<String>, context: TLHDigImportContext): Word {
     var tail = word.text
     val compoundElements = mutableListOf<Word>()
     for (i in encliticTexts.size - 1 downTo 0) {
-        val clitic = findOrAddWordByTextOnly(word.language, encliticTexts[i], encliticAnalyses[i])
+        val clitic = findOrAddWordByTextOnly(word.language, encliticTexts[i], encliticAnalyses[i], context)
         val len = longestCommonTail(tail.removeSignVariants(), encliticTexts[i])
         if (len == 0) break
         tail = tail.substring(0, tail.length - len).removeSuffix("-")
@@ -306,7 +322,7 @@ private fun createEncliticCompound(word: Word, encliticTexts: List<String>, encl
         return word
     }
 
-    val headWord = findOrAddWordByTextOnly(word.language, tail, null)
+    val headWord = findOrAddWordByTextOnly(word.language, tail, null, context)
     compoundElements.add(0, headWord)
 
     word.graph.createCompound(word, compoundElements)
@@ -319,7 +335,8 @@ private fun longestCommonTail(s1: String, s2: String): Int =
 private fun createAkkadianCompound(
     sylWord: Word,
     selectedAnalysis: String,
-    transWord: Word
+    transWord: Word,
+    context: TLHDigImportContext
 ): Word {
     var tail = sylWord.text
     val elements = selectedAnalysis.split('_')
@@ -331,11 +348,11 @@ private fun createAkkadianCompound(
         val cliticText = if (cliticTail.startsWith('_')) cliticTail else "_$cliticTail"
         tail = tail.substringBeforeLast('-')
 
-        val clitic = findOrAddWordByTextOnly(sylWord.language, cliticText, cliticAnalysis, syllabographic = true)
+        val clitic = findOrAddWordByTextOnly(sylWord.language, cliticText, cliticAnalysis, context, syllabographic = true)
         compoundElements.add(0, clitic)
     }
 
-    val headWord = findOrAddWordByTextOnly(sylWord.language, tail, null, syllabographic = true)
+    val headWord = findOrAddWordByTextOnly(sylWord.language, tail, null, context, syllabographic = true)
     compoundElements.add(0, headWord)
 
     sylWord.graph.createCompound(transWord, compoundElements)
@@ -346,9 +363,10 @@ private fun findOrAddWordByTextOnly(
     language: Language,
     text: String,
     gloss: String?,
+    context: TLHDigImportContext,
     syllabographic: Boolean = false
 ): Word = (language.graph.wordsByText(language, text, syllabographic).firstOrNull()
-    ?: language.graph.addWord(text, language, gloss, syllabographic = syllabographic))
+    ?: language.graph.addWord(text, language, gloss, syllabographic = syllabographic)).also { context.newWords.add(it) }
 
 private fun collectWordText(element: Element): String {
     return buildString {
@@ -381,7 +399,7 @@ private fun collectWordText(element: Element): String {
     }
 }
 
-private fun findSelectedAnalysis(mrp: String, key: String): String {
+private fun findSelectedAnalysis(mrp: String, key: String, context: TLHDigImportContext): String {
     if (key.isEmpty()) return ""
     val options = mrp.split('}').filter { it.isNotEmpty() }
     for (option in options) {
@@ -390,7 +408,7 @@ private fun findSelectedAnalysis(mrp: String, key: String): String {
             return optionValue.trim()
         }
     }
-    println("No matching analysis for $key in $mrp")
+    context.messages.add("No matching analysis for $key in $mrp")
     return ""
 }
 
