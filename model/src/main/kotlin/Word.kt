@@ -150,6 +150,7 @@ class Word(
 
     var text = text
         set(value) {
+            language.graph.updateWordText(this, value, syllabographic)
             field = value
             _stressedPhonemeIndex = null
         }

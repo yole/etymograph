@@ -25,6 +25,50 @@ class GraphTest : QBaseTest() {
     }
 
     @Test
+    fun deleteWordAfterUpdatingText() {
+        val abc = q.word("abc", "abc")
+
+        abc.text = "xyzzy"
+        assertEquals(0, graph.wordsByText(q, "abc").size)
+        assertEquals(1, graph.wordsByText(q, "xyzzy").size)
+
+        graph.deleteWord(abc)
+        assertEquals(0, graph.dictionaryWords(q).size)
+        assertTrue(graph.wordById(abc.id) == null)
+        assertEquals(0, graph.wordsByText(q, "xyzzy").size)
+    }
+
+    @Test
+    fun deleteWordAfterUpdatingSyllabographic() {
+        val abc = q.word("abc", "abc")
+        assertEquals(1, graph.wordsByText(q, "abc", syllabographic = false).size)
+        assertEquals(0, graph.wordsByText(q, "abc", syllabographic = true).size)
+
+        abc.syllabographic = true
+        assertEquals(0, graph.wordsByText(q, "abc", syllabographic = false).size)
+        assertEquals(1, graph.wordsByText(q, "abc", syllabographic = true).size)
+
+        graph.deleteWord(abc)
+
+        assertEquals(0, graph.dictionaryWords(q).size)
+        assertTrue(graph.wordById(abc.id) == null)
+        assertEquals(0, graph.wordsByText(q, "xyzzy", syllabographic = true).size)
+    }
+
+    @Test
+    fun deleteWordHomonym() {
+        val abc = q.word("abc", "abc")
+        val abc2 = q.word("abc", "abc")
+        assertEquals(2, graph.wordsByText(q, "abc").size)
+
+        graph.deleteWord(abc2)
+        assertEquals(abc.id, graph.wordsByText(q, "abc").single().id)
+        assertEquals(1, graph.dictionaryWords(q).size)
+        assertFalse(graph.wordById(abc.id) == null)
+        assertTrue(graph.wordById(abc2.id) == null)
+    }
+
+    @Test
     fun deleteCorpusText() {
         val text1 = graph.addCorpusText("abc", "ABC", q)
         val text2 = graph.addCorpusText("def", "DEF", q)

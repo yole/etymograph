@@ -362,7 +362,8 @@ class WordController(val dictionaryService: DictionaryService) {
         if (params.text != null || params.syllabographic != null) {
             val (text, stressedPhonemeIndex) = parseStress(params.text ?: word.text, word.language)
             if (text != word.text || params.syllabographic != null) {
-                graph.updateWordText(word, text, params.syllabographic ?: word.syllabographic)
+                word.text = text
+                word.syllabographic = params.syllabographic ?: word.syllabographic
             }
             if (stressedPhonemeIndex != null) {
                 word.setExplicitStress(stressedPhonemeIndex)
@@ -451,7 +452,7 @@ class WordController(val dictionaryService: DictionaryService) {
             if (existingLink != null) {
                 // TODO what if word is used in corpus texts?
                 val existingWord = existingLink.fromEntity as Word
-                graph.updateWordText(existingWord, text, existingWord.syllabographic)
+                existingWord.text = text
             }
             else {
                 val newGloss = rule.applyCategories(gloss)

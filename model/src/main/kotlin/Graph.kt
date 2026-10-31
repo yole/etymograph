@@ -42,7 +42,7 @@ abstract class Graph {
     abstract fun wordById(id: Int): Word?
     abstract fun wordsByText(lang: Language, text: String, syllabographic: Boolean = false): List<Word>
     abstract fun wordsByTextFuzzy(lang: Language, text: String): List<Word>
-    abstract fun updateWordText(word: Word, text: String, syllabographic: Boolean)
+    internal abstract fun updateWordText(word: Word, text: String, syllabographic: Boolean)
     abstract fun dictionaryWords(lang: Language): List<Word>
     abstract fun filteredWords(lang: Language, kind: WordKind): List<Word>
     abstract fun allWords(lang: Language): List<Word>

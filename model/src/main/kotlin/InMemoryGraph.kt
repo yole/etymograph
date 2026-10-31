@@ -351,10 +351,9 @@ open class InMemoryGraph : Graph() {
 
     override fun updateWordText(word: Word, text: String, syllabographic: Boolean) {
         validateWordText(text)
-        mapOfWordsByText(word.language, word.text, word.syllabographic).remove(word)
-        word.text = text
-        word.syllabographic = syllabographic
-        mapOfWordsByText(word.language, text, word.syllabographic).add(word)
+        val oldMap = mapOfWordsByText(word.language, word.text, word.syllabographic)
+        oldMap.remove(word)
+        mapOfWordsByText(word.language, text, syllabographic).add(word)
     }
 
     override fun addWord(
@@ -387,6 +386,10 @@ open class InMemoryGraph : Graph() {
     }
 
     override fun deleteWord(word: Word) {
+        if (word.id == -1) {
+            throw IllegalArgumentException("Words not in the graph cannot be deleted")
+        }
+
         for (compound in allOpenCompounds().filter { word in it.components }) {
             deleteOpenCompound(compound)
         }
@@ -395,7 +398,9 @@ open class InMemoryGraph : Graph() {
         }
 
         val wordsByText = mapOfWordsByText(word.language, word.text, word.syllabographic)
-        wordsByText.remove(word)
+        if (!wordsByText.removeIf { it.id == word.id }) {
+            throw IllegalStateException("Consistency error: trying to delete word which is not in word-by-text map")
+        }
 
         val compoundsOfWord = compounds.remove(word.id)
         if (compoundsOfWord != null) {
