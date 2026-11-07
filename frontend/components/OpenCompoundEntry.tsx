@@ -1,6 +1,5 @@
 import {useState} from "react";
 import {useRouter} from "next/router";
-import Link from "next/link";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEdit, faTrash} from "@fortawesome/free-solid-svg-icons";
 import {callApiAndRefresh, deleteOpenCompound, useAllowEditGraph} from "@/api";
@@ -8,6 +7,7 @@ import OpenCompoundModal from "@/components/OpenCompoundModal";
 import WordLink from "@/components/WordLink";
 import WordTextView, {wordTextToPlainText} from "@/components/WordTextView";
 import SourceRefs from "@/components/SourceRefs";
+import InlineAttestations from "@/components/InlineAttestations";
 import {OpenCompoundViewModel, WordViewModel} from "@/models";
 
 export default function OpenCompoundEntry({compound, word}: {compound: OpenCompoundViewModel, word: WordViewModel}) {
@@ -41,12 +41,7 @@ export default function OpenCompoundEntry({compound, word}: {compound: OpenCompo
                 : <WordLink word={component} baseLanguage={word.language}/>}
         </span>)}
         {(compound.fullGloss || compound.gloss) && <>{' '}&apos;{compound.fullGloss || compound.gloss}&apos;</>}
-        {compound.attestations?.length > 0 && <>
-            {' '}in {compound.attestations.map((attestation, index) => <span key={attestation.textId}>
-                {index > 0 && ", "}
-                <Link href={`/${graph}/corpus/text/${attestation.textId}`}>{attestation.textTitle}</Link>
-            </span>)}
-        </>}
+        {compound.attestations?.length > 0 && <InlineAttestations attestations={compound.attestations} graph={graph}/>}
         {compound.notes && <> &ndash; {compound.notes}</>}
         <SourceRefs source={compound.source} span={true}/>
         {canEdit && <>

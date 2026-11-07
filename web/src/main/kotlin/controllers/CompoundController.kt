@@ -162,5 +162,7 @@ fun OpenCompound.toViewModel(graph: Graph): CompoundController.OpenCompoundViewM
     CompoundController.OpenCompoundViewModel(id, components.map { it.toRefViewModel() }, headIndex, gloss, fullGloss,
         source.toViewModel(graph), source.toEditableText(graph), notes,
         graph.allCorpusTexts().filter { text -> text.words.any { it.openCompound?.id == id } }.map { text ->
-            WordController.AttestationViewModel(text.id, text.title ?: text.text, null, null)
+            val lineNumbers = text.mapToLines().filter { line -> line.corpusWords.any { it.openCompound?.id == id } }
+                .mapNotNull { it.lineNumber?.takeIf { number -> number.isNotBlank() } }.distinct()
+            WordController.AttestationViewModel(text.id, text.title ?: text.text, null, null, lineNumbers)
         })

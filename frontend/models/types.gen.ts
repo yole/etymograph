@@ -80,6 +80,7 @@ export type SourceRefViewModel = {
 export type AttestationViewModel = {
     textId: number;
     textTitle: string;
+    lineNumbers: Array<string>;
     word?: string;
     syllabogramSequence?: SyllabogramSequence;
 };

@@ -201,6 +201,15 @@ class CorpusText(
         return false
     }
 
+    fun attestationLineNumbers(word: Word): List<String> {
+        val indices = iterateWords().filter { wordText ->
+            val associatedWord = wordByIndex(wordText.index)
+            associatedWord?.id == word.id || (associatedWord == null && wordText.normalizedText == word.text)
+        }.map { it.index }.toSet()
+        return mapToLines().filter { line -> line.corpusWords.any { it.index in indices } }
+            .mapNotNull { it.lineNumber?.takeIf { number -> number.isNotBlank() } }.distinct()
+    }
+
     fun wordCount(): Int = iterateWords().count()
 
     private fun iterateWords(): Sequence<WordText> {

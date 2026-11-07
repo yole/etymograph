@@ -29,7 +29,7 @@ import {GlobalStateContext, GraphContext} from "@/components/Contexts";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import WordGloss, {WordFullGloss} from "@/components/WordGloss";
 import {
-    AttestationViewModel, CompoundComponentsViewModel, CompoundRefViewModel, DictionaryViewModel, LinkTypeViewModel, LinkWordViewModel,
+    CompoundComponentsViewModel, CompoundRefViewModel, DictionaryViewModel, LinkTypeViewModel, LinkWordViewModel,
     LookupVariantViewModel,
     ParseCandidateViewModel, WordRefViewModel,
     WordViewModel
@@ -38,6 +38,7 @@ import WordTextView, {wordTextToPlainText} from "@/components/WordTextView";
 import WordPickerModal from "@/components/WordPickerModal";
 import OpenCompoundModal from "@/components/OpenCompoundModal";
 import OpenCompoundEntry from "@/components/OpenCompoundEntry";
+import InlineAttestations from "@/components/InlineAttestations";
 import {Urls} from "@/components/Urls";
 import {Alert, Menu} from "@mantine/core";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -90,16 +91,6 @@ interface WordLinkProps {
     showSequence?: boolean
     directionFrom: boolean
     linkClassName?: string
-}
-
-function InlineAttestations({attestations, graph}: {attestations: AttestationViewModel[], graph: string}) {
-    return <span>
-        {' '} in {attestations.map((att, i) => <span key={`${att.textId}-${i}`}>
-            {i > 0 && ", "}
-            <Link href={`/${graph}/corpus/text/${att.textId}`}>{att.textTitle}</Link>
-            {att.word && <>{' ('}<WordTextView text={att.word} syllabograms={att.syllabogramSequence}/>{')'}</>}
-        </span>)}
-    </span>
 }
 
 export function WordLinkComponent(params: WordLinkProps) {

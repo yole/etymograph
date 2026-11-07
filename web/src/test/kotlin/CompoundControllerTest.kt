@@ -32,7 +32,7 @@ class CompoundControllerTest {
     fun attestationsIncludeEachLinkedCorpusTextOnce() {
         val created = controller.createOpenCompound(graph, params)
         val compound = graph.allOpenCompounds().single()
-        val first = graph.addCorpusText("fara mir fara mir", "First text", fixture.q)
+        val first = graph.addCorpusText("1# fara mir\n3# fara mir", "First text", fixture.q)
         first.associateOpenCompound(1, compound)
         first.associateOpenCompound(3, compound)
         val derived = graph.addWord("miri", fixture.q, "jewels")
@@ -46,6 +46,8 @@ class CompoundControllerTest {
         val attestations = controller.openCompound(graph, created.id).attestations
         assertEquals(listOf(first.id, untitled.id), attestations.map { it.textId })
         assertEquals(listOf("First text", "fara miri"), attestations.map { it.textTitle })
+        assertEquals(listOf("1", "3"), attestations.first().lineNumbers)
+        assertTrue(attestations.last().lineNumbers.isEmpty())
         val word = WordController(TestDictionaryService()).singleWordJson(graph, "q", mir.text, mir.id)
         assertEquals(attestations, word.openCompounds.single { it.id == compound.id }.attestations)
 

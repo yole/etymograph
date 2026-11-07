@@ -157,6 +157,37 @@ class WordControllerTest {
         assertEquals(corpusText.id, attestation.textId)
         assertEquals("Sample text", attestation.textTitle)
         assertNull(attestation.word)
+        assertEquals(emptyList<String>(), attestation.lineNumbers)
+    }
+
+    @Test
+    fun wordAndDerivedFormAttestationsIncludeAllExplicitLineNumbers() {
+        val lemma = graph.findOrAddWord("elen", fixture.q, "star")
+        val inflected = graph.findOrAddWord("elena", fixture.q, "star.ACC")
+        val homonym = graph.findOrAddWord("elena", fixture.q, "another meaning")
+        graph.addLink(inflected, lemma, Link.Derived)
+        val corpusText = graph.addCorpusText("1# elena elena\n---\n2a# elena\n3# elena\nelena\n4# sila", "Sample text", fixture.q)
+        corpusText.associateWord(0, inflected)
+        corpusText.associateWord(1, inflected)
+        corpusText.associateWord(2, inflected)
+        corpusText.associateWord(3, homonym)
+        corpusText.associateWord(4, inflected)
+
+        val formViewModel = wordController.singleWordJson(graph, "q", inflected.text, inflected.id)
+        assertEquals(listOf("1", "2a"), formViewModel.attestations.single().lineNumbers)
+
+        val lemmaViewModel = wordController.singleWordJson(graph, "q", lemma.text, lemma.id)
+        val linkViewModel = lemmaViewModel.linksTo.single { it.typeId == ">" }.words.single()
+        assertEquals(formViewModel.attestations, linkViewModel.attestations)
+    }
+
+    @Test
+    fun unassignedAttestationsIncludeExplicitLineNumbers() {
+        val word = graph.findOrAddWord("elen", fixture.q, "star")
+        graph.addCorpusText("sila\n5# Elen\n8# elen elen\nelen", "Sample text", fixture.q)
+
+        val viewModel = wordController.singleWordJson(graph, "q", word.text, word.id)
+        assertEquals(listOf("5", "8"), viewModel.attestations.single().lineNumbers)
     }
 
     @Test

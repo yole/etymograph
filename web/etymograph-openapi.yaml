@@ -2266,6 +2266,10 @@ components:
           format: "int32"
         textTitle:
           type: "string"
+        lineNumbers:
+          type: "array"
+          items:
+            type: "string"
         word:
           type: "string"
           nullable: true
@@ -2275,6 +2279,7 @@ components:
       required:
         - "textId"
         - "textTitle"
+        - "lineNumbers"
     WordRefViewModel:
       type: "object"
       properties:

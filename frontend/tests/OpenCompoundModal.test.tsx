@@ -222,11 +222,11 @@ it("hides editing actions without write access", async () => {
 
 it("shows links to attested corpus texts beside an open compound", async () => {
     await renderContent(<OpenCompoundEntry compound={{...compound, attestations: [
-        {textId: 42, textTitle: "First corpus text"},
-        {textId: 43, textTitle: "Second corpus text"}
+        {textId: 42, textTitle: "First corpus text", lineNumbers: ["2", "4"]},
+        {textId: 43, textTitle: "Second corpus text", lineNumbers: []}
     ]}} word={head}/>, false);
 
     expect(container.querySelector('a[href="/test/corpus/text/42"]')!.textContent).toBe("First corpus text");
     expect(container.querySelector('a[href="/test/corpus/text/43"]')!.textContent).toBe("Second corpus text");
-    expect(container.textContent).toContain("in First corpus text, Second corpus text");
+    expect(container.textContent).toContain("in First corpus text 2, 4, Second corpus text");
 });
