@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {Fragment, useState} from "react";
 import {
     deleteLink,
     deleteRule,
@@ -7,7 +7,7 @@ import {
     useAllowEditGraph
 } from "@/api";
 import WordLink from "@/components/WordLink";
-import WordTextView from "@/components/WordTextView";
+import WordTextView, {wordTextToPlainText} from "@/components/WordTextView";
 import {fetchBackend} from "@/api";
 import {useRouter} from "next/router";
 import Link from "next/link";
@@ -20,7 +20,7 @@ import EtymographForm from "@/components/EtymographForm";
 import FormRow from "@/components/FormRow";
 import WordGloss from "@/components/WordGloss";
 import RuleLink from "@/components/RuleLink";
-import {RuleExampleViewModel, RuleTraceResult, RuleViewModel} from "@/models";
+import {RuleExampleViewModel, RuleTraceResult, RuleViewModel, WordRefViewModel} from "@/models";
 import LanguageSelect from "@/components/LanguageSelect";
 import WordSequenceForm from "@/forms/WordSequenceForm";
 import {Urls} from "@/components/Urls";
@@ -33,10 +33,30 @@ export async function getStaticPaths() {
     return fetchPathsForAllGraphs("rules", (r) => ({id: r.id.toString()}))
 }
 
+function compareWords(a: WordRefViewModel, b: WordRefViewModel) {
+    const syllabographicOrder = Number(a.syllabogramSequence != null) - Number(b.syllabogramSequence != null)
+    return syllabographicOrder || wordTextToPlainText(a.text, a.syllabogramSequence)
+        .localeCompare(wordTextToPlainText(b.text, b.syllabogramSequence))
+}
+
 function ExampleList(params: {rule: RuleViewModel, examples: RuleExampleViewModel[]}) {
     const {rule, examples} = params
     const haveSteps = examples.some(ex => ex.wordBeforeRule != null || ex.wordAfterRule != null)
     const haveExpected = examples.some(ex => ex.expectedWord && ex.expectedWord !== ex.fromWord.text)
+    const groups = new Map<string, RuleExampleViewModel[]>()
+    for (const example of examples) {
+        const hasSteps = example.wordBeforeRule != null || example.wordAfterRule != null
+        const key = JSON.stringify([
+            example.toWord.id,
+            example.wordBeforeRule ?? null,
+            example.wordAfterRule ?? null,
+            hasSteps ? example.expectedWord ?? example.fromWord.text : null
+        ])
+        const group = groups.get(key)
+        if (group) group.push(example)
+        else groups.set(key, [example])
+    }
+    const sortedGroups = [...groups.entries()].sort(([, a], [, b]) => compareWords(a[0].toWord, b[0].toWord))
     return <table className="tableWithBorders">
         <thead>
         <tr>
@@ -48,30 +68,44 @@ function ExampleList(params: {rule: RuleViewModel, examples: RuleExampleViewMode
         </tr>
         </thead>
         <tbody>
-        {params.examples.map(ex => <tr key={ex.toWord.id}>
-            <td>
-                <WordLink word={ex.toWord} baseLanguage={rule.toLang}/>
-            </td>
-            <td>
-                <WordLink word={ex.fromWord} baseLanguage={rule.toLang}/>
-            </td>
-            <td>
-                <WordGloss gloss={ex.toWord.gloss}/>
-            </td>
-            {haveSteps && <td>
-                {(ex.wordBeforeRule != null || ex.wordAfterRule != null) && <>
-                    {ex.toWord.text}
-                    {ex.wordBeforeRule && ' > ' + ex.wordBeforeRule}
-                    {ex.wordAfterRule && <>{' > '}<b>{ex.wordAfterRule}</b></>}
-                    {!ex.wordAfterRule && <>{' > '}<b>{ex.expectedWord ?? ex.fromWord.text}</b></>}
-                    {ex.wordAfterRule && <>{' > '}{ex.expectedWord ?? ex.fromWord.text}</>}
-                </>}
-            </td>}
-            {haveExpected && <td>
-                {ex.expectedWord != null && ex.expectedWord !== ex.fromWord.text &&
-                    <WordTextView text={ex.expectedWord} syllabograms={ex.expectedWordSyllabogramSequence}/>}
-            </td>}
-        </tr>)}
+        {sortedGroups.map(([key, group]) => {
+            const example = group[0]
+            const baseWord = example.toWord
+            const derivations = [...new Map(group.map(ex => [ex.fromWord.id, ex.fromWord])).values()]
+                .sort(compareWords)
+            const expected = [...new Map(group
+                .filter(ex => ex.expectedWord != null && ex.expectedWord !== ex.fromWord.text)
+                .map(ex => [ex.expectedWord, ex])).values()]
+            return <tr key={key}>
+                <td>
+                    <WordLink word={baseWord} baseLanguage={rule.toLang}/>
+                </td>
+                <td>
+                    {derivations.map((word, index) => <Fragment key={word.id}>
+                        {index > 0 && ', '}
+                        <WordLink word={word} baseLanguage={rule.toLang}/>
+                    </Fragment>)}
+                </td>
+                <td>
+                    <WordGloss gloss={baseWord.gloss}/>
+                </td>
+                {haveSteps && <td>
+                    {(example.wordBeforeRule != null || example.wordAfterRule != null) && <>
+                        {baseWord.text}
+                        {example.wordBeforeRule && ' > ' + example.wordBeforeRule}
+                        {example.wordAfterRule && <>{' > '}<b>{example.wordAfterRule}</b></>}
+                        {!example.wordAfterRule && <>{' > '}<b>{example.expectedWord ?? example.fromWord.text}</b></>}
+                        {example.wordAfterRule && <>{' > '}{example.expectedWord ?? example.fromWord.text}</>}
+                    </>}
+                </td>}
+                {haveExpected && <td>
+                    {expected.map((ex, index) => <Fragment key={ex.expectedWord}>
+                        {index > 0 && ', '}
+                        <WordTextView text={ex.expectedWord} syllabograms={ex.expectedWordSyllabogramSequence}/>
+                    </Fragment>)}
+                </td>}
+            </tr>
+        })}
         </tbody>
     </table>
 }
