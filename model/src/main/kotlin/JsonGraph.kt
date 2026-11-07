@@ -424,19 +424,21 @@ class JsonGraph(val path: Path?) : InMemoryGraph() {
         if (path == null) {
             throw IllegalStateException("Can't save: path not specified")
         }
-        saveToJson { relativePath, content ->
-            path.resolve(relativePath).createParentDirectories().writeText(content)
+        saveToJson { relativePath, content, empty ->
+            val filePath = path.resolve(relativePath)
+            if (!empty || filePath.exists()) {
+                filePath.createParentDirectories().writeText(content)
+            }
         }
     }
 
-    fun saveToJson(consumer: (String, String) -> Unit) {
+    fun saveToJson(consumer: (String, String, Boolean) -> Unit) {
         val repoData = createGraphRepositoryData()
-        consumer("graph.json", theJson.encodeToString(repoData))
-        consumer("publications.json", theJson.encodeToString(
-            publications.filterNotNull().map {
-                PublicationData(it.id, it.name, it.refId, it.author, it.date, it.publisher)
-            })
-        )
+        consumer("graph.json", theJson.encodeToString(repoData), false)
+        val publicationData = publications.filterNotNull().map {
+            PublicationData(it.id, it.name, it.refId, it.author, it.date, it.publisher)
+        }
+        consumer("publications.json", theJson.encodeToString(publicationData), publicationData.isEmpty())
         saveLanguageDetails(consumer)
         saveWords(consumer)
         saveRules(consumer)
@@ -447,7 +449,7 @@ class JsonGraph(val path: Path?) : InMemoryGraph() {
         saveRuleSequences(consumer)
     }
 
-    private fun saveLanguageDetails(consumer: (String, String) -> Unit) {
+    private fun saveLanguageDetails(consumer: (String, String, Boolean) -> Unit) {
         for (lang in languages.values) {
             val phonemes = lang.phonemes.map {
                 PhonemeData(
@@ -476,7 +478,7 @@ class JsonGraph(val path: Path?) : InMemoryGraph() {
                 lang.dictionarySettings,
                 lang.accentTypes.toList()
             )
-            consumer(lang.shortName + "/language.json", theJson.encodeToString(languageDetailsData))
+            consumer(lang.shortName + "/language.json", theJson.encodeToString(languageDetailsData), false)
         }
     }
 
@@ -488,7 +490,7 @@ class JsonGraph(val path: Path?) : InMemoryGraph() {
     private fun serializeWordCategoryValues(values: List<WordCategoryValue>) =
         values.map { v -> WordCategoryValueData(v.name, v.abbreviation) }
 
-    private fun saveWords(consumer: (String, String) -> Unit) {
+    private fun saveWords(consumer: (String, String, Boolean) -> Unit) {
         for (language in languages.values) {
             val wordData = allLangEntities.filterIsInstance<Word>().filter { it.language == language }.map {
                 WordData(it.id, it.text, it.gloss, it.fullGloss, it.pos,
@@ -499,20 +501,18 @@ class JsonGraph(val path: Path?) : InMemoryGraph() {
                     if (it.explicitStress) it.stressedPhonemeIndex else null
                 )
             }
-            consumer(language.shortName + "/words.json", theJson.encodeToString(wordData))
+            consumer(language.shortName + "/words.json", theJson.encodeToString(wordData), wordData.isEmpty())
         }
     }
 
-    private fun saveRules(consumer: (String, String) -> Unit) {
+    private fun saveRules(consumer: (String, String, Boolean) -> Unit) {
         for (language in languages.values) {
             val ruleData = rules.filter { it.toLanguage == language }.map { it.ruleToSerializedFormat() }
-            if (ruleData.isNotEmpty()) {
-                consumer("${language.shortName}/rules.json", theJson.encodeToString(ruleData))
-            }
+            consumer("${language.shortName}/rules.json", theJson.encodeToString(ruleData), ruleData.isEmpty())
         }
     }
 
-    private fun saveCorpus(consumer: (String, String) -> Unit) {
+    private fun saveCorpus(consumer: (String, String, Boolean) -> Unit) {
         for (language in languages.values) {
             val corpusData = corpus.filter { it.language == language}.map {
                 CorpusTextData(
@@ -522,9 +522,7 @@ class JsonGraph(val path: Path?) : InMemoryGraph() {
                     collectTranslations(it)
                 )
             }
-            if (corpusData.isNotEmpty()) {
-                consumer(language.shortName + "/corpus.json", theJson.encodeToString(corpusData))
-            }
+            consumer(language.shortName + "/corpus.json", theJson.encodeToString(corpusData), corpusData.isEmpty())
         }
     }
 
@@ -541,32 +539,28 @@ class JsonGraph(val path: Path?) : InMemoryGraph() {
         }
     }
 
-    private fun saveCompounds(consumer: (String, String) -> Unit) {
+    private fun saveCompounds(consumer: (String, String, Boolean) -> Unit) {
         for (language in languages.values) {
             val compoundData = allLangEntities.filterIsInstance<Compound>()
                 .filter { it.compoundWord.language == language }
                 .map { c ->
                     CompoundData(c.id, c.compoundWord.id, c.components.map { it.id }, c.headIndex, c.source.sourceToSerializedFormat(), c.notes)
                 }
-            if (compoundData.isNotEmpty()) {
-                consumer("${language.shortName}/compounds.json", theJson.encodeToString(compoundData))
-            }
+            consumer("${language.shortName}/compounds.json", theJson.encodeToString(compoundData), compoundData.isEmpty())
         }
     }
 
-    private fun saveOpenCompounds(consumer: (String, String) -> Unit) {
+    private fun saveOpenCompounds(consumer: (String, String, Boolean) -> Unit) {
         for (language in languages.values) {
             val data = allOpenCompounds().filter { it.headComponent().language == language }.map {
                 OpenCompoundData(it.id, it.components.map { c -> c.id }, it.headIndex,
                     it.gloss, it.fullGloss, it.source.sourceToSerializedFormat(), it.notes)
             }
-            if (data.isNotEmpty()) {
-                consumer("${language.shortName}/open-compounds.json", theJson.encodeToString(data))
-            }
+            consumer("${language.shortName}/open-compounds.json", theJson.encodeToString(data), data.isEmpty())
         }
     }
 
-    private fun saveParadigms(consumer: (String, String) -> Unit) {
+    private fun saveParadigms(consumer: (String, String, Boolean) -> Unit) {
         for (language in languages.values) {
             val paradigmData = paradigms.filterNotNull().filter { it.language == language }.map {
                 ParadigmData(it.id, it.name, it.rowTitles, it.columns.map { col ->
@@ -575,13 +569,11 @@ class JsonGraph(val path: Path?) : InMemoryGraph() {
                     })
                 }, it.pos, it.preRule?.id, it.postRule?.id)
             }
-            if (paradigmData.isNotEmpty()) {
-                consumer("${language.shortName}/paradigms.json", theJson.encodeToString(paradigmData))
-            }
+            consumer("${language.shortName}/paradigms.json", theJson.encodeToString(paradigmData), paradigmData.isEmpty())
         }
     }
 
-    private fun saveRuleSequences(consumer: (String, String) -> Unit) {
+    private fun saveRuleSequences(consumer: (String, String, Boolean) -> Unit) {
         for (language in languages.values) {
             val ruleSequenceData = allLangEntities.filterIsInstance<RuleSequence>().filter { it.toLanguage == language }.map { s ->
                 RuleSequenceData(
@@ -589,9 +581,7 @@ class JsonGraph(val path: Path?) : InMemoryGraph() {
                     s.steps.map { RuleSequenceStepData(it.ruleId, it.alternativeRuleId, it.optional, it.dispreferred) },
                     s.source.sourceToSerializedFormat(), s.notes)
             }
-            if (ruleSequenceData.isNotEmpty()) {
-                consumer("${language.shortName}/ruleSequences.json", theJson.encodeToString(ruleSequenceData))
-            }
+            consumer("${language.shortName}/ruleSequences.json", theJson.encodeToString(ruleSequenceData), ruleSequenceData.isEmpty())
         }
     }
 
@@ -701,7 +691,8 @@ class JsonGraph(val path: Path?) : InMemoryGraph() {
 
     private fun loadWords(contentProviderCallback: (String) -> String?) {
         for (language in languages.values) {
-            val data = Json.decodeFromString<List<WordData>>(contentProviderCallback(language.shortName + "/words.json")!!)
+            val content = contentProviderCallback(language.shortName + "/words.json") ?: continue
+            val data = Json.decodeFromString<List<WordData>>(content)
             for (wordData in data) {
                 val wordsByText = mapOfWordsByText(language, wordData.text, wordData.syllabographic)
                 val word = Word(
@@ -921,7 +912,8 @@ class JsonGraph(val path: Path?) : InMemoryGraph() {
     }
 
     private fun loadPublications(contentProviderCallback: (String) -> String?) {
-        val publicationsData = Json.decodeFromString<List<PublicationData>>(contentProviderCallback("publications.json")!!)
+        val content = contentProviderCallback("publications.json") ?: return
+        val publicationsData = Json.decodeFromString<List<PublicationData>>(content)
         for (pubData in publicationsData) {
             while (pubData.id > publications.size) {
                 publications.add(null)

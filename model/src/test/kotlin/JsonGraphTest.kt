@@ -6,6 +6,7 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.rules.TemporaryFolder
 import kotlin.io.path.exists
+import kotlin.io.path.readText
 import page.yole.etymograph.JsonGraph.Companion.ruleBranchesFromSerializedFormat
 import page.yole.etymograph.JsonGraph.Companion.ruleToSerializedFormat
 
@@ -175,7 +176,7 @@ class JsonGraphTest {
 
     private fun JsonGraph.roundtrip(): JsonGraph {
         val jsonFiles = mutableMapOf<String, String>()
-        saveToJson { path, content -> jsonFiles[path] = content }
+        saveToJson { path, content, _ -> jsonFiles[path] = content }
         return JsonGraph.fromJsonProvider { jsonFiles[it] }
     }
 
@@ -227,7 +228,7 @@ class JsonGraphTest {
         text.associateWord(0, word, "context gloss")
 
         val files = mutableMapOf<String, String>()
-        graph.saveToJson { path, content -> files[path] = content }
+        graph.saveToJson { path, content, _ -> files[path] = content }
         assertTrue("openCompoundId" !in files.getValue("Q/corpus.json"))
         val loaded = JsonGraph.fromJsonProvider { files[it] }.corpusTextById(text.id)!!
         assertEquals(null, loaded.words.single().openCompound)
@@ -278,11 +279,72 @@ class JsonGraphTest {
 
         graph.deleteOpenCompound(compound)
         graph.save()
-        assertEquals(false, compoundFile.exists())
+        assertEquals("[]", compoundFile.readText())
+        assertEquals(false, emptyLanguageFile.exists())
 
         val reloaded = JsonGraph.fromJson(path)
         assertTrue(reloaded.allOpenCompounds().isEmpty())
         assertEquals(null, reloaded.langEntityById(compound.id))
+    }
+
+    private val collectionFiles = listOf(
+        "publications.json", "Q/words.json", "Q/rules.json", "Q/corpus.json",
+        "Q/compounds.json", "Q/open-compounds.json", "Q/paradigms.json", "Q/ruleSequences.json"
+    )
+
+    @Test
+    fun emptyDataFilesAreNotCreated() {
+        val path = temporaryFolder.newFolder().toPath()
+        val graph = JsonGraph(path)
+        graph.addLanguage("Quenya", "Q")
+        graph.save()
+
+        for (file in collectionFiles) {
+            assertEquals(file, false, path.resolve(file).exists())
+        }
+        assertTrue(path.resolve("graph.json").exists())
+        assertTrue(path.resolve("Q/language.json").exists())
+
+        val reloaded = JsonGraph.fromJson(path)
+        assertTrue(reloaded.allWords(reloaded.languageByShortName("Q")!!).isEmpty())
+        assertTrue(reloaded.allPublications().isEmpty())
+        reloaded.save()
+        for (file in collectionFiles) {
+            assertEquals(file, false, path.resolve(file).exists())
+        }
+    }
+
+    @Test
+    fun emptyDataOverwritesExistingFiles() {
+        val path = temporaryFolder.newFolder().toPath()
+        val populatedGraph = JsonGraph(path)
+        val language = populatedGraph.addLanguage("Quenya", "Q")
+        val word = populatedGraph.addWord("mir", language, "jewel")
+        val compoundWord = populatedGraph.addWord("mirmir", language, null)
+        populatedGraph.addPublication("Test publication", "TEST")
+        populatedGraph.addRule("test", language, language, Rule.parseLogic("- no change", language.parseContext()))
+        populatedGraph.addCorpusText("mir", "Test", language)
+        populatedGraph.createCompound(compoundWord, listOf(word), headIndex = 0)
+        populatedGraph.createOpenCompound(listOf(word), 0)
+        populatedGraph.addParadigm("Noun", language, listOf("N"))
+        populatedGraph.addRuleSequence("test", language, language, emptyList())
+        populatedGraph.save()
+        for (file in collectionFiles) {
+            assertTrue(file, path.resolve(file).exists())
+            assertTrue(file, path.resolve(file).readText() != "[]")
+        }
+
+        val emptyGraph = JsonGraph(path)
+        emptyGraph.addLanguage("Quenya", "Q")
+        emptyGraph.save()
+        for (file in collectionFiles) {
+            assertEquals(file, "[]", path.resolve(file).readText())
+        }
+
+        val reloaded = JsonGraph.fromJson(path)
+        assertTrue(reloaded.allLangEntities.filterNotNull().isEmpty())
+        assertTrue(reloaded.allParadigms().isEmpty())
+        assertTrue(reloaded.allPublications().isEmpty())
     }
 
     @Test
