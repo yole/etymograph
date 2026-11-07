@@ -421,7 +421,7 @@ export function updateParadigm(graph: string, id: number, data: UpdateParadigmPa
     return postToBackend(`${graph}/paradigm/${id}`, data)
 }
 
-export function deleteParadigm(graph: string, id: UpdateParadigmParameters) {
+export function deleteParadigm(graph: string, id: number) {
     return postToBackend(`${graph}/paradigm/${id}/delete`, {})
 }
 

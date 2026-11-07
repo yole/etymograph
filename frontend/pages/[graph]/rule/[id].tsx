@@ -158,7 +158,7 @@ export default function Rule(params) {
                      steps={[ruleStep]}
                      title={rule.name}/>
         {rule.fromLang !== rule.toLang && <p>From {rule.fromLangFullName} to {rule.toLangFullName}</p>}
-        {rule.paradigmId !== null && <p>Paradigm: <Link href={`/${graph}/paradigm/${rule.paradigmId}`}>{rule.paradigmName}</Link></p>}
+        {rule.paradigmId !== null && <p>Paradigm: <Link href={Urls.Rules.morpho(graph, rule.fromLang, rule.paradigmId)}>{rule.paradigmName}</Link></p>}
         {!editMode && <>
             {rule.fromPOS.length > 0 && <p>From POS: {rule.fromPOS.join(", ")}</p>}
             {rule.toPOS && <p>To POS: {rule.toPOS}</p>}
@@ -261,7 +261,7 @@ export default function Rule(params) {
         {rule.referencingParadigms.length > 0 && <>
             <h3>Referencing paradigms</h3>
             {rule.referencingParadigms.map(p => <>
-                <Link href={`/${graph}/paradigm/${p.id}`}>{p.name} ({p.refType})</Link>
+                <Link href={Urls.Rules.morpho(graph, p.language, p.id)}>{p.name} ({p.refType})</Link>
             <br/></>)}
         </>}
         {rule.sequenceLinks.length > 0 && <>

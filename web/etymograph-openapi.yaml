@@ -3093,11 +3093,14 @@ components:
           format: "int32"
         name:
           type: "string"
+        language:
+          type: "string"
         refType:
           type: "string"
       required:
         - "id"
         - "name"
+        - "language"
         - "refType"
     RuleViewModel:
       type: "object"
@@ -3481,10 +3484,9 @@ components:
         sequenceToLang:
           type: "string"
           nullable: true
-        paradigmId:
-          type: "integer"
-          format: "int32"
+        paradigm:
           nullable: true
+          $ref: "#/components/schemas/ParadigmViewModel"
       required:
         - "groupName"
         - "rules"
@@ -3546,6 +3548,7 @@ components:
           items:
             type: "integer"
             format: "int32"
+            nullable: true
       required:
         - "alternativeRuleNames"
         - "alternativeRuleSummaries"

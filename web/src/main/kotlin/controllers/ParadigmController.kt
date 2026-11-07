@@ -37,28 +37,6 @@ class ParadigmController {
         return graph.allParadigms().map { it.toViewModel() }
     }
 
-    private fun Paradigm.toViewModel() =
-        ParadigmViewModel(
-            id, name,
-            language.shortName, language.name, pos, rowTitles,
-            columns.map { it.toViewModel(rowTitles.size) },
-            toEditableText(),
-            preRule?.toRefViewModel(),
-            postRule?.toRefViewModel()
-        )
-
-    private fun ParadigmColumn.toViewModel(rows: Int) =
-        ParadigmColumnViewModel(title, (0 until rows).map {
-            cells.getOrNull(it)?.toViewModel() ?: ParadigmCellViewModel(emptyList(), emptyList(), emptyList())
-        })
-
-    private fun ParadigmCell.toViewModel() =
-        ParadigmCellViewModel(
-            ruleAlternatives.map { it?.name ?: "." },
-            ruleAlternatives.map { it?.toSummaryText() ?: "" },
-            ruleAlternatives.map { it?.id },
-        )
-
     @GetMapping("/{graph}/paradigm/{id}")
     fun paradigm(graph: Graph, @PathVariable id: Int): ParadigmViewModel {
         val paradigmById = graph.resolveParadigm(id)
@@ -136,3 +114,26 @@ class ParadigmController {
         return paradigm.toViewModel()
     }
 }
+
+fun Paradigm.toViewModel() =
+    ParadigmController.ParadigmViewModel(
+        id, name,
+        language.shortName, language.name, pos, rowTitles,
+        columns.map { it.toViewModel(rowTitles.size) },
+        toEditableText(),
+        preRule?.toRefViewModel(),
+        postRule?.toRefViewModel()
+    )
+
+private fun ParadigmColumn.toViewModel(rows: Int) =
+    ParadigmController.ParadigmColumnViewModel(title, (0 until rows).map {
+        cells.getOrNull(it)?.toViewModel()
+            ?: ParadigmController.ParadigmCellViewModel(emptyList(), emptyList(), emptyList())
+    })
+
+private fun ParadigmCell.toViewModel() =
+    ParadigmController.ParadigmCellViewModel(
+        ruleAlternatives.map { it?.name ?: "." },
+        ruleAlternatives.map { it?.toSummaryText() ?: "" },
+        ruleAlternatives.map { it?.id },
+    )

@@ -381,6 +381,7 @@ export type RuleWordLinkViewModel = {
 export type ParadigmRefViewModel = {
     id: number;
     name: string;
+    language: string;
     refType: string;
 };
 
@@ -519,7 +520,7 @@ export type RuleGroupViewModel = {
     sequenceName?: string;
     sequenceFromLang?: string;
     sequenceToLang?: string;
-    paradigmId?: number;
+    paradigm?: ParadigmViewModel;
 };
 
 export type RuleListViewModel = {

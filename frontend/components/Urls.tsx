@@ -20,8 +20,8 @@ export const Urls = {
     Rules: {
         phono: (graph: string, lang: string, sequence?: string) =>
             sequence ? `/${graph}/rules/${lang}/phono#${sequence}` : `/${graph}/rules/${lang}/phono`,
-        morpho: (graph: string, lang) =>
-            `/${graph}/rules/${lang}/morpho`
+        morpho: (graph: string, lang: string, paradigmId?: number) =>
+            `/${graph}/rules/${lang}/morpho${paradigmId !== undefined ? `#paradigm-${paradigmId}` : ""}`
     },
     Phonemes: {
         newPhoneme: (graph: string, lang: string) => `/${graph}/phonemes/${lang}/new`

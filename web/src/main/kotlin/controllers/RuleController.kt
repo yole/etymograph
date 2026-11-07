@@ -15,6 +15,7 @@ data class RuleRefViewModel(
 data class ParadigmRefViewModel(
     val id: Int,
     val name: String,
+    val language: String,
     val refType: String
 )
 
@@ -119,7 +120,7 @@ class RuleController {
         val sequenceName: String? = null,
         val sequenceFromLang: String? = null,
         val sequenceToLang: String? = null,
-        val paradigmId: Int? = null
+        val paradigm: ParadigmController.ParadigmViewModel? = null
     )
 
     data class RuleListViewModel(
@@ -162,7 +163,7 @@ class RuleController {
                     it.sequence?.name,
                     it.sequence?.fromLanguage?.shortName,
                     it.sequence?.toLanguage?.shortName,
-                    it.paradigm?.id
+                    it.paradigm?.toViewModel()
                 )
             }
         )
@@ -346,7 +347,7 @@ class RuleController {
                 }
             },
             orphanExamples.map { exampleToViewModel(this, it) },
-            paradigms.map { ParadigmRefViewModel(it.first.id, it.first.name, it.second) }
+            paradigms.map { ParadigmRefViewModel(it.first.id, it.first.name, it.first.language.shortName, it.second) }
         )
     }
 

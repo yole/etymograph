@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useRouter} from "next/router";
 import Link from "next/link";
 import {Modal} from "@mantine/core";
@@ -11,6 +11,8 @@ import FormRow from "@/components/FormRow";
 import SourceInput from "@/components/SourceInput";
 import PosSelect from "@/components/PosSelect";
 import GrammaticalCategorySelect from "@/components/GrammaticalCategorySelect";
+import ParadigmView from "@/components/ParadigmView";
+import {Urls} from "@/components/Urls";
 
 export async function getStaticProps(context) {
     return fetchBackend(context.params.graph, `rules/${context.params.lang}/morpho`, true)
@@ -18,15 +20,14 @@ export async function getStaticProps(context) {
 
 export const getStaticPaths = fetchAllLanguagePaths
 
-export function RuleListView(params: {list: RuleListViewModel}) {
+export function RuleListView(params: {list: RuleListViewModel, refresh: () => Promise<void>}) {
     const router = useRouter()
     const graph = router.query.graph as string
 
     const ruleList = params.list
-    return <>{ruleList.ruleGroups.map(g => <>
-        <h2 key={g.groupName}>{g.groupName}</h2>
-        {g.paradigmId !== null && <p><Link href={`/${graph}/paradigm/${g.paradigmId}`}>Paradigm</Link></p>}
-        <table className="tableWithBorders"><tbody>
+    return <>{ruleList.ruleGroups.map(g => <section key={g.paradigm ? `paradigm-${g.paradigm.id}` : g.groupName}>
+        <h2 id={g.paradigm ? `paradigm-${g.paradigm.id}` : undefined}>{g.groupName}</h2>
+        {g.paradigm ? <ParadigmView paradigm={g.paradigm} refresh={params.refresh}/> : <table className="tableWithBorders"><tbody>
         {g.rules.map(r => <tr key={r.id}>
             <td>
                 <Link href={`/${graph}/rule/${r.id}`}>{r.name}</Link>
@@ -35,18 +36,24 @@ export function RuleListView(params: {list: RuleListViewModel}) {
                 {r.summaryText.length > 0 ? r.summaryText : ""}
             </td>
         </tr>)}
-        </tbody></table>
-    </>)}
+        </tbody></table>}
+    </section>)}
     </>
 }
 
 export default function MorphoRuleList(params) {
-    const ruleList = params.loaderData as RuleListViewModel
+    const [ruleList, setRuleList] = useState<RuleListViewModel>(params.loaderData)
+    useEffect(() => setRuleList(params.loaderData), [params.loaderData])
     const router = useRouter()
     const graph = router.query.graph as string
     const lang = router.query.lang as string
     const canEdit = useAllowEditGraph()
     const [generateParadigmOpened, setGenerateParadigmOpened] = useState(false)
+
+    async function refreshRules() {
+        const result = await fetchBackend(graph, `rules/${lang}/morpho`)
+        setRuleList(result.props.loaderData)
+    }
 
     return <>
         <Breadcrumbs langId={lang} langName={ruleList.toLangFullName} title="Morphology"/>
@@ -64,7 +71,11 @@ export default function MorphoRuleList(params) {
                 <EtymographForm<GenerateParadigmParameters, ParadigmViewModel>
                     create={(data) => generateParadigm(graph, lang, data)}
                     setEditMode={setGenerateParadigmOpened}
-                    redirectOnCreate={(r) => `/${graph}/paradigm/${r.id}`}>
+                    submitted={async (paradigm) => {
+                        await refreshRules()
+                        setGenerateParadigmOpened(false)
+                        await router.push(Urls.Rules.morpho(graph, paradigm.language, paradigm.id))
+                    }}>
 
                     <table>
                         <tbody>
@@ -81,6 +92,6 @@ export default function MorphoRuleList(params) {
                 </EtymographForm>
             </Modal>
         </>}
-        <RuleListView list={ruleList}/>
+        <RuleListView list={ruleList} refresh={refreshRules}/>
     </>
 }

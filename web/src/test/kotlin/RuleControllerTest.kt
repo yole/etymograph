@@ -368,6 +368,41 @@ class RuleControllerTest {
     }
 
     @Test
+    fun morphoRulesIncludeParadigmTable() {
+        val (paradigm, rule) = fixture.setupParadigm()
+        paradigm.setRule(0, 0, listOf(null, rule))
+        paradigm.preRule = rule
+        paradigm.postRule = rule
+
+        val group = ruleController.morphoRules(graph, "q").ruleGroups
+            .single { it.paradigm?.id == paradigm.id }
+        val table = group.paradigm!!
+        assertEquals("Grammar: Noun", group.groupName)
+        assertEquals("q", table.language)
+        assertEquals(listOf("N", "NP"), table.pos)
+        assertEquals(listOf("Nom", "Acc"), table.rowTitles)
+        assertEquals(listOf("Sg"), table.columns.map { it.title })
+        assertEquals(listOf(null, rule.id), table.columns.single().cells[0].alternativeRuleIds)
+        assertEquals(listOf(".", rule.name), table.columns.single().cells[0].alternativeRuleNames)
+        assertEquals(listOf("", rule.toSummaryText()), table.columns.single().cells[0].alternativeRuleSummaries)
+        assertEquals(paradigm.toEditableText(), table.editableText)
+        assertEquals(rule.id, table.preRule?.id)
+        assertEquals(rule.id, table.postRule?.id)
+    }
+
+    @Test
+    fun referencingParadigmsIncludeTheirLanguage() {
+        val (paradigm, _) = fixture.setupParadigm()
+        val rule = graph.addRule("ce-pre", ce, ce, MorphoRuleLogic.empty())
+        paradigm.preRule = rule
+
+        val ref = ruleController.rule(graph, rule.id).referencingParadigms.single()
+        assertEquals(paradigm.id, ref.id)
+        assertEquals("q", ref.language)
+        assertEquals("pre-rule", ref.refType)
+    }
+
+    @Test
     fun ruleGroupParadigmPreRule() {
         val (paradigm, _) = fixture.setupParadigm()
         val preRule = q.rule("word ends with 'a':\n- change ending to ''", name = "q-pre")
