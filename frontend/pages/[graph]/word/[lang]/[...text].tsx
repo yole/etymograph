@@ -543,10 +543,11 @@ function SingleWord({word, embeddedInWordIds}: { word: WordViewModel, embeddedIn
             case "baseWord":
                 return {title: "Add lemma", linkType: LinkTypes.Derived, reverseLink: true,
                     languageReadOnly: true, showSyllabographic: word.syllabographic,
-                    defaultValues: {language: word.language}}
+                    defaultValues: {language: word.language, text: word.text, syllabographic: word.syllabographic}}
             case "compoundComponent":
                 return {title: "Define compound", newCompound: true, suggestions: compoundSuggestions,
-                    showSyllabographic: word.syllabographic, defaultValues: {language: word.language, text: word.text}}
+                    showSyllabographic: word.syllabographic,
+                    defaultValues: {language: word.language, text: word.text, syllabographic: word.syllabographic}}
             case "variationOf":
                 return {title: "Add variation", linkType: LinkTypes.Variation, reverseLink: true,
                     languageReadOnly: true, showSyllabographic: word.syllabographic,
