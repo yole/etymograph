@@ -142,6 +142,18 @@ class CompoundTest : QBaseTest() {
     }
 
     @Test
+    fun suggestCompoundSyllabographic() {
+        val hitt = graph.addLanguage("Hittite", "Ht").also { it.syllabographic = true }
+        val compoundWord = hitt.word("ANŠE.KUR.RA-ma-mu", syllabographic = true)
+        val word1 = hitt.word("ANŠE.KUR.RA", gloss = "cavalry", syllabographic = true)
+        val word2 = hitt.word("ma", gloss = "but")
+        val word3 = hitt.word("mu", gloss = "me")
+        val compound = graph.createCompound(compoundWord, listOf(word1, word2))
+        val suggestions = graph.suggestCompound(compoundWord, compound)
+        assertEquals(word3, suggestions.single())
+    }
+
+    @Test
     fun suggestCompoundExcludeInflectedForm() {
         val onAcc = q.rule("word ends with 'r':\n- change ending to ''", name = "on-acc")
         val stadr = q.word("stadr", "city")

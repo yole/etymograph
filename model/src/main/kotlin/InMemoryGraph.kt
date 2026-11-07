@@ -838,9 +838,15 @@ open class InMemoryGraph : Graph() {
     override fun suggestCompound(compoundWord: Word, compound: Compound?): List<Word> {
         var longestPrefix = ""
         if (compound != null) {
-            val textSoFar = compound.components.joinToString("") { it.text }
+            var textSoFar = compound.components.joinToString("") { it.text }
             if (!compoundWord.text.startsWith(textSoFar)) {
-                return emptyList()
+                if (compoundWord.syllabographic) {
+                    textSoFar = compound.components.joinToString("-") { it.text }
+                    if (!compoundWord.text.startsWith(textSoFar)) return emptyList()
+                }
+                else {
+                    return emptyList()
+                }
             }
             longestPrefix = if (compoundWord.text.startsWith("-", startIndex = textSoFar.length)) {
                 "$textSoFar-"
