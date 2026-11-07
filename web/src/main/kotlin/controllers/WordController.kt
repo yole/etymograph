@@ -62,6 +62,9 @@ class WordController(val dictionaryService: DictionaryService) {
     )
 
     @Serializable
+    data class InflectionParadigmViewModel(val id: Int, val name: String)
+
+    @Serializable
     data class LinkWordViewModel(
         val word: WordRefViewModel,
         val ruleIds: List<Int>,
@@ -72,7 +75,8 @@ class WordController(val dictionaryService: DictionaryService) {
         val sourceEditableText: String,
         val notes: String?,
         val attestations: List<AttestationViewModel>,
-        val suggestedSequences: List<WordRuleSequenceViewModel>
+        val suggestedSequences: List<WordRuleSequenceViewModel>,
+        val paradigm: InflectionParadigmViewModel? = null
     )
 
     @Serializable
@@ -223,7 +227,7 @@ class WordController(val dictionaryService: DictionaryService) {
             source.toViewModel(graph),
             source.toEditableText(graph),
             notes,
-            attestationsToViewModel(graph),
+            attestationsToViewModel(graph, exactForms = true),
             linksFrom.mapNotNull {
                 val wordLinks = it.value.filter { link -> link.toEntity is Word }
                 if (wordLinks.isEmpty())
@@ -245,7 +249,7 @@ class WordController(val dictionaryService: DictionaryService) {
                     LinkTypeViewModel(
                         it.key.id,
                         it.key.reverseName,
-                        wordLinks.map { link ->
+                        if (it.key == Link.Derived) inflectedFormsToViewModel(wordLinks) else wordLinks.map { link ->
                             linkToViewModel(link, graph, false)
                         }
                     )
@@ -282,6 +286,25 @@ class WordController(val dictionaryService: DictionaryService) {
             consistencyIssues,
             baseWord?.toViewModel()
         )
+    }
+
+    private fun Word.inflectedFormsToViewModel(links: List<Link>): List<LinkWordViewModel> {
+        val remaining = links.toMutableList()
+        return buildList {
+            for (paradigm in graph.paradigmsForLanguage(language)) {
+                // allRules preserves the order of columns, then rows, then alternatives within each cell.
+                for (rule in paradigm.allRules) {
+                    val matching = remaining.filter { it.rules.firstOrNull() == rule }
+                    addAll(matching.map {
+                        linkToViewModel(it, graph, false).copy(
+                            paradigm = InflectionParadigmViewModel(paradigm.id, paradigm.name)
+                        )
+                    })
+                    remaining.removeAll(matching.toSet())
+                }
+            }
+            addAll(remaining.map { linkToViewModel(it, graph, false) })
+        }
     }
 
     data class AddWordParameters(
@@ -619,7 +642,7 @@ fun linkToViewModel(
     else
         emptyList()
     val attestations = if (link.type == Link.Derived && !fromSide)
-        toWord.attestationsToViewModel(graph)
+        toWord.attestationsToViewModel(graph, exactForms = toWord.language.syllabographic)
     else
         emptyList()
     return WordController.LinkWordViewModel(
@@ -639,16 +662,26 @@ fun linkToViewModel(
 private fun Word.toCompoundRefViewModel(graph: Graph): WordController.CompoundRefViewModel =
     WordController.CompoundRefViewModel(toRefViewModel(), attestationsToViewModel(graph))
 
-private fun Word.attestationsToViewModel(graph: Graph): List<WordController.AttestationViewModel> =
-    graph.findAttestations(this).map { attestation ->
-        WordController.AttestationViewModel(
-            attestation.corpusText.id,
-            attestation.corpusText.title ?: attestation.corpusText.text,
-            attestation.word.text.takeIf { it != text },
-            attestation.word.syllabogramSequence?.takeIf { attestation.word.text != text },
-            attestation.corpusText.attestationLineNumbers(attestation.word)
-        )
-    }
+private fun Word.attestationsToViewModel(
+    graph: Graph,
+    exactForms: Boolean = false
+): List<WordController.AttestationViewModel> =
+    graph.findAttestations(this, allVariants = exactForms).flatMap { attestation ->
+        val spellings = if (exactForms)
+            attestation.corpusText.attestedForms(attestation.word)
+        else
+            mapOf(attestation.word.text to attestation.corpusText.attestationLineNumbers(attestation.word))
+        spellings.map { (spelling, lineNumbers) ->
+            WordController.AttestationViewModel(
+                attestation.corpusText.id,
+                attestation.corpusText.title ?: attestation.corpusText.text,
+                spelling.takeIf { exactForms || it != text },
+                if (exactForms && language.syllabographic) TlhDigSyllabogramSyntax.parse(spelling)
+                else attestation.word.syllabogramSequence?.takeIf { attestation.word.text != text },
+                lineNumbers
+            )
+        }
+    }.distinct()
 
 fun suggestedSequences(graph: Graph, link: Link): List<WordController.WordRuleSequenceViewModel> {
     if (link.type != Link.Origin || link.sequence != null) return emptyList()

@@ -46,7 +46,7 @@ abstract class Graph {
     abstract fun dictionaryWords(lang: Language): List<Word>
     abstract fun filteredWords(lang: Language, kind: WordKind): List<Word>
     abstract fun allWords(lang: Language): List<Word>
-    abstract fun findAttestations(word: Word): List<Attestation>
+    abstract fun findAttestations(word: Word, allVariants: Boolean = false): List<Attestation>
     abstract fun isHomonym(word: Word): Boolean
     abstract fun isCompound(word: Word): Boolean
     abstract fun isCliticChain(word: Word): Boolean

@@ -219,6 +219,23 @@ class CorpusText(
 
     fun wordCount(): Int = iterateWords().count()
 
+    fun attestedForms(word: Word): Map<String, List<String>> {
+        val result = linkedMapOf<String, MutableSet<String>>()
+        for (line in mapToLines()) {
+            for (corpusWord in line.corpusWords) {
+                val cleanText = removePunctuation(corpusWord.text)
+                val normalizedText = if (language.syllabographic) cleanText
+                    else language.normalizeWord(cleanText, normalizeGraphemes = false)
+                if (corpusWord.word?.id != word.id &&
+                    !(corpusWord.word == null && normalizedText == word.text)) continue
+                val spelling = corpusWord.text.trimStart(*leadingPunctuation).trimEnd(*punctuation)
+                val lineNumbers = result.getOrPut(spelling) { linkedSetOf() }
+                line.lineNumber?.takeIf { it.isNotBlank() }?.let { lineNumbers.add(it) }
+            }
+        }
+        return result.mapValues { it.value.toList() }
+    }
+
     private fun iterateWords(): Sequence<WordText> {
         var currentIndex = 0
         return sequence {

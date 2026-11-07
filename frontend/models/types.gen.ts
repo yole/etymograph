@@ -103,6 +103,11 @@ export type WordRuleSequenceViewModel = {
     id: number;
 };
 
+export type InflectionParadigmViewModel = {
+    id: number;
+    name: string;
+};
+
 export type LinkWordViewModel = {
     word: WordRefViewModel;
     ruleIds: Array<number>;
@@ -114,6 +119,7 @@ export type LinkWordViewModel = {
     notes?: string;
     attestations: Array<AttestationViewModel>;
     suggestedSequences: Array<WordRuleSequenceViewModel>;
+    paradigm?: InflectionParadigmViewModel;
 };
 
 export type LinkTypeViewModel = {

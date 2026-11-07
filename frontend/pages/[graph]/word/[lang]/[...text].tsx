@@ -1,4 +1,4 @@
-import {type ComponentProps, useContext, useEffect, useState} from "react";
+import {type ComponentProps, Fragment, useContext, useEffect, useState} from "react";
 import WordForm from "@/forms/WordForm";
 import WordLink from "@/components/WordLink";
 import {LinkTypes} from "@/components/LinkTypes";
@@ -39,8 +39,9 @@ import WordPickerModal from "@/components/WordPickerModal";
 import OpenCompoundModal from "@/components/OpenCompoundModal";
 import OpenCompoundEntry from "@/components/OpenCompoundEntry";
 import InlineAttestations from "@/components/InlineAttestations";
+import AttestationsTable, {groupAttestationsByForm} from "@/components/AttestationsTable";
 import {Urls} from "@/components/Urls";
-import {Alert, Menu} from "@mantine/core";
+import {Alert, Menu, Modal} from "@mantine/core";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEdit, faTrash} from "@fortawesome/free-solid-svg-icons";
 
@@ -89,6 +90,11 @@ interface WordLinkProps {
     linkType: { typeId: string, type: string }
     showType?: boolean
     showSequence?: boolean
+    showRules?: boolean
+    showAttestations?: boolean
+    showGloss?: boolean
+    editInModal?: boolean
+    iconActions?: boolean
     directionFrom: boolean
     linkClassName?: string
 }
@@ -141,10 +147,23 @@ export function WordLinkComponent(params: WordLinkProps) {
         router.replace(router.asPath)
     }
 
+    const editForm = editMode && <EditLinkForm
+        baseWordId={baseWord.id}
+        linkWordId={linkWord.word.id}
+        linkType={params.linkType.typeId}
+        language={baseWord.language === linkWord.word.language ? baseWord.language : undefined}
+        defaultValues={{
+            ruleNames: linkWord.ruleNames.join(","),
+            source: linkWord.sourceEditableText,
+            notes: linkWord.notes
+        }}
+        submitted={linkSubmitted}
+        cancelled={() => setEditMode(false)}/>
+
     return <div className={params.linkClassName}>
         {params.showType && params.linkType.type + ": "}
-        <WordLink word={linkWord.word} baseLanguage={baseWord.language} gloss={true}/>
-        {linkWord.ruleIds.length > 0 && <>&nbsp;(
+        <WordLink word={linkWord.word} baseLanguage={baseWord.language} gloss={params.showGloss !== false}/>
+        {params.showRules !== false && linkWord.ruleIds.length > 0 && <>&nbsp;(
             {linkWord.ruleResults.length > 0 && <>
                 <span className="wordText">{params.directionFrom ? linkWord.word.text : baseWord.text}</span>
                 {linkWord.ruleIds.map((ruleId, index) => <>
@@ -160,16 +179,27 @@ export function WordLinkComponent(params: WordLinkProps) {
         {params.showSequence && linkWord.ruleSequence && <>&nbsp;through {linkWord.ruleSequence.name}</>}
         {linkWord.notes && <> &ndash; {linkWord.notes}</>}
         <SourceRefs source={linkWord.source} span={true}/>
-        {params.linkType.typeId === LinkTypes.Derived && !params.directionFrom && linkWord.attestations.length > 0 &&
+        {params.showAttestations !== false && params.linkType.typeId === LinkTypes.Derived && !params.directionFrom && linkWord.attestations.length > 0 &&
             <InlineAttestations attestations={linkWord.attestations} graph={graph}/>
         }
         {canEdit && <>
-            &nbsp;<span className="inlineButtonLink">
+            {params.iconActions ? <>
+                {' '}<button type="button" className="inlineButton compoundComponentIcon"
+                            aria-label="Edit inflected form" title="Edit" onClick={() => setEditMode(!editMode)}>
+                    <FontAwesomeIcon icon={faEdit}/>
+                </button>
+                {' '}<button type="button" className="inlineButton compoundComponentIcon"
+                            aria-label="Delete inflected form" title="Delete" onClick={() => deleteLinkClicked()}>
+                    <FontAwesomeIcon icon={faTrash}/>
+                </button>
+            </> : <>
+                &nbsp;<span className="inlineButtonLink">
                     (<button type="button" className="inlineButton" onClick={() => setEditMode(!editMode)}>edit</button>
                 </span>
-            &nbsp;|&nbsp;<span className="inlineButtonLink">
+                &nbsp;|&nbsp;<span className="inlineButtonLink">
                     <button type="button" className="inlineButton" onClick={() => deleteLinkClicked()}>delete</button>
                 </span>
+            </>}
             {params.showSequence && linkWord.ruleSequence && <>
                 &nbsp;|&nbsp;<span className="inlineButtonLink">
                     <button type="button" className="inlineButton" onClick={() => refreshSequenceClicked()}>refresh</button>
@@ -180,21 +210,12 @@ export function WordLinkComponent(params: WordLinkProps) {
                     <button type="button" className="inlineButton" onClick={() => applySequenceClicked(seq.id, baseWord.id, linkWord.word.id)}>apply sequence {seq.name}</button>
                 </span>
             </>)}
-            )
+            {!params.iconActions && ")"}
         </>}
-        {editMode && <EditLinkForm
-            baseWordId={baseWord.id}
-            linkWordId={linkWord.word.id}
-            linkType={params.linkType.typeId}
-            language={baseWord.language === linkWord.word.language ? baseWord.language : undefined}
-            defaultValues={{
-                ruleNames: linkWord.ruleNames.join(","),
-                source: linkWord.sourceEditableText,
-                notes: linkWord.notes
-            }}
-            submitted={linkSubmitted}
-            cancelled={() => setEditMode(false)}/>
-        }
+        {editMode && params.editInModal ?
+            <Modal opened={true} onClose={() => setEditMode(false)} title="Edit inflected form" size="lg">
+                {editForm}
+            </Modal> : editForm}
         {errorText !== "" && <div className="errorText">{errorText}</div>}
     </div>
 }
@@ -314,11 +335,73 @@ interface WordLinkTypeProps {
     excludeIds?: number[]
 }
 
-function WordLinkTypeComponent(params: WordLinkTypeProps) {
+function inflectedFormTableRows(forms: LinkWordViewModel[], syllabographic: boolean) {
+    const rows = forms.flatMap(form => {
+        const attestationGroups = syllabographic ? groupAttestationsByForm(form.attestations, form.word.text) : [form.attestations]
+        const formRows = attestationGroups.length > 0 ? attestationGroups : [[]]
+        return formRows.map((attestations, index) => ({
+            form, attestations, formRowSpan: index === 0 ? formRows.length : 0, ruleRowSpan: 0
+        }))
+    })
+    for (let start = 0; start < rows.length;) {
+        const ruleIds = rows[start].form.ruleIds.join(",")
+        let end = start + 1
+        while (end < rows.length && rows[end].form.ruleIds.join(",") === ruleIds) end++
+        rows[start].ruleRowSpan = end - start
+        start = end
+    }
+    return rows
+}
+
+function InflectedFormsTable({word, words, linkType}: {
+    word: WordViewModel, words: LinkWordViewModel[], linkType: LinkTypeViewModel
+}) {
+    const graph = useContext(GraphContext)
+    const groups = new Map<number | undefined, {name: string, words: LinkWordViewModel[]}>()
+    for (const form of words) {
+        const id = form.paradigm?.id
+        if (!groups.has(id)) groups.set(id, {name: form.paradigm?.name ?? "Other forms", words: []})
+        groups.get(id).words.push(form)
+    }
+    return <table className="tableWithBorders">
+        <caption>Inflected forms</caption>
+        <thead><tr>
+            <th scope="col">Rule</th>
+            <th scope="col">Form</th>
+            {word.languageSyllabographic && <th scope="col">Transliteration</th>}
+            <th scope="col">Attestations</th>
+        </tr></thead>
+        {[...groups].map(([id, group]) => <tbody key={id ?? "other"}>
+            <tr><th colSpan={word.languageSyllabographic ? 4 : 3} scope="rowgroup">{group.name}</th></tr>
+            {inflectedFormTableRows(group.words, word.languageSyllabographic).map(
+                ({form, attestations, formRowSpan, ruleRowSpan}, rowIndex) => <tr key={`${form.word.id}-${rowIndex}`}>
+                    {ruleRowSpan > 0 && <td rowSpan={ruleRowSpan}>{form.ruleIds.map((ruleId, index) => <Fragment key={ruleId}>
+                        {index > 0 && ", "}
+                        <Link href={`/${graph}/rule/${ruleId}`}>{form.ruleNames[index]}</Link>
+                    </Fragment>)}</td>}
+                    {formRowSpan > 0 && <td rowSpan={formRowSpan}><WordLinkComponent baseWord={word} linkWord={form} linkType={linkType}
+                                           directionFrom={false} showSequence={true} showRules={false} showAttestations={false}
+                                           showGloss={false} editInModal={true} iconActions={true}/></td>}
+                    {word.languageSyllabographic && <td>{attestations.length > 0 &&
+                        <WordTextView text={attestations[0].word ?? form.word.text}
+                                      syllabograms={attestations[0].syllabogramSequence ??
+                                          (attestations[0].word ? undefined : form.word.syllabogramSequence)}/>}</td>}
+                    <td>{attestations.length > 0 &&
+                        <InlineAttestations attestations={attestations} graph={graph} showPrefix={false}
+                                            showWord={!word.languageSyllabographic}/>}</td>
+                </tr>)}
+        </tbody>)}
+    </table>
+}
+
+export function WordLinkTypeComponent(params: WordLinkTypeProps) {
     const excludeIds = params.excludeIds || []
     return <>{params.links.map(l => {
         const words = l.words.filter(w => !excludeIds.includes(w.word.id))
-        return <>
+        if (l.typeId === LinkTypes.Derived && !params.directionFrom) {
+            return words.length > 0 && <InflectedFormsTable key={l.typeId} word={params.word} words={words} linkType={l}/>
+        }
+        return <Fragment key={l.typeId}>
             {words.length === 1 && params.directionFrom &&
                 <WordLinkComponent key={words[0].word.id} baseWord={params.word} linkWord={words[0]} linkType={l}
                                    directionFrom={params.directionFrom} showType={true} showSequence={true}/>}
@@ -327,7 +410,7 @@ function WordLinkTypeComponent(params: WordLinkTypeProps) {
                 {words.map(w => <WordLinkComponent key={w.word.id} baseWord={params.word} linkWord={w} linkType={l}
                                                      directionFrom={params.directionFrom} showSequence={true}/>)}
             </div>}
-        </>
+        </Fragment>
     })}</>
 }
 
@@ -664,7 +747,7 @@ function SingleWord({word, embeddedInWordIds}: { word: WordViewModel, embeddedIn
         </>}
 
         {(!word.baseWord || !embeddedInWordIds) && word.attestations.length > 0 &&
-            <div>Attested <InlineAttestations attestations={word.attestations} graph={graph}/></div>
+            <AttestationsTable word={word} graph={graph}/>
         }
 
         <WordLinkTypeComponent word={word} links={word.linksFrom} directionFrom={true}/>

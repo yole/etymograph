@@ -2326,6 +2326,17 @@ components:
       required:
         - "name"
         - "id"
+    InflectionParadigmViewModel:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int32"
+        name:
+          type: "string"
+      required:
+        - "id"
+        - "name"
     LinkWordViewModel:
       type: "object"
       properties:
@@ -2364,6 +2375,9 @@ components:
           type: "array"
           items:
             $ref: "#/components/schemas/WordRuleSequenceViewModel"
+        paradigm:
+          nullable: true
+          $ref: "#/components/schemas/InflectionParadigmViewModel"
       required:
         - "word"
         - "ruleIds"

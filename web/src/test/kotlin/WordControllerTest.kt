@@ -8,6 +8,8 @@ import org.junit.Test
 import page.yole.etymograph.Graph
 import page.yole.etymograph.Language
 import page.yole.etymograph.Link
+import page.yole.etymograph.MorphoRuleLogic
+import page.yole.etymograph.TlhDigSyllabogramSyntax
 import page.yole.etymograph.WordCategory
 import page.yole.etymograph.WordCategoryValue
 import page.yole.etymograph.web.controllers.WordController
@@ -143,6 +145,60 @@ class WordControllerTest {
     }
 
     @Test
+    fun inflectedFormsFollowParadigmColumnOrder() {
+        val lemma = graph.addWord("elen", fixture.q, "star", pos = "N")
+        fun rule(name: String) = graph.addRule(name, fixture.q, fixture.q, MorphoRuleLogic.empty())
+        val nomSg = rule("nom-sg")
+        val accSg = rule("acc-sg")
+        val accSgAlternative = rule("acc-sg-alt")
+        val nomPl = rule("nom-pl")
+        val otherParadigmRule = rule("other-paradigm")
+        val ungroupedRule = rule("ungrouped")
+        val nouns = graph.addParadigm("Nouns", fixture.q, listOf("N"))
+        nouns.addRow("Nom")
+        nouns.addRow("Acc")
+        nouns.addColumn("Sg")
+        nouns.addColumn("Pl")
+        nouns.setRule(0, 0, listOf(null, nomSg))
+        nouns.setRule(0, 1, listOf(nomPl))
+        nouns.setRule(1, 0, listOf(accSg, accSgAlternative))
+        nouns.setRule(1, 1, listOf(accSg)) // A repeated rule must not duplicate its forms.
+        val other = graph.addParadigm("Other paradigm", fixture.q, listOf("N"))
+        other.addRow("Nom")
+        other.addColumn("Sg")
+        other.setRule(0, 0, listOf(otherParadigmRule, nomSg))
+
+        fun form(text: String, vararg rules: page.yole.etymograph.Rule) {
+            graph.addLink(graph.addWord(text, fixture.q, null), lemma, Link.Derived, rules.toList())
+        }
+        // Insert forms in an order different from both paradigm and row order.
+        form("ungrouped", ungroupedRule)
+        form("no-rule")
+        form("other", otherParadigmRule)
+        form("plural", nomPl)
+        form("acc-alt", accSgAlternative)
+        form("acc", accSg)
+        form("nom", nomSg)
+        form("acc-variant", accSg)
+        form("multiple-rules", nomPl, accSg)
+        form("multiple-paradigms", otherParadigmRule, nomSg)
+        form("unmatched-first", ungroupedRule, nomSg)
+
+        val word = wordController.singleWordJson(graph, "q", lemma.text, lemma.id)
+        val forms = word.linksTo.single { it.typeId == Link.Derived.id }.words
+        assertEquals(listOf("nom", "acc", "acc-variant", "acc-alt", "plural", "multiple-rules",
+            "other", "multiple-paradigms", "ungrouped", "no-rule", "unmatched-first"), forms.map { it.word.text })
+        assertEquals(List(6) { nouns.id } + listOf(other.id, other.id, null, null, null), forms.map { it.paradigm?.id })
+        assertEquals(List(6) { "Nouns" } + listOf("Other paradigm", "Other paradigm", null, null, null),
+            forms.map { it.paradigm?.name })
+        assertEquals(listOf(nomPl.id, accSg.id), forms.single { it.word.text == "multiple-rules" }.ruleIds)
+
+        val formWord = graph.wordsByText(fixture.q, "nom").single()
+        val baseLink = wordController.singleWordJson(graph, "q", formWord.text, formWord.id).linksFrom.single().words.single()
+        assertNull(baseLink.paradigm)
+    }
+
+    @Test
     fun derivedFormLinksIncludeAttestations() {
         val lemma = graph.findOrAddWord("elen", fixture.q, "star")
         val inflected = graph.findOrAddWord("elena", fixture.q, "star.ACC")
@@ -158,6 +214,53 @@ class WordControllerTest {
         assertEquals("Sample text", attestation.textTitle)
         assertNull(attestation.word)
         assertEquals(emptyList<String>(), attestation.lineNumbers)
+    }
+
+    @Test
+    fun syllabographicFormsIncludeEveryExactAttestedTransliteration() {
+        fixture.q.syllabographic = true
+        val lemma = graph.addWord("pēda-", fixture.q, "place", pos = "N")
+        val inflected = graph.addWord("pēdas", fixture.q, null)
+        graph.addLink(inflected, lemma, Link.Derived)
+        val longSpelling = graph.addWord("pé-e-da-aš", fixture.q, null, syllabographic = true)
+        val shortSpelling = graph.addWord("pé-da-aš", fixture.q, null, syllabographic = true)
+        val logogram = graph.addWord("^d^_DU3", fixture.q, null, syllabographic = true)
+        val homonym = graph.addWord(longSpelling.text, fixture.q, "another meaning", syllabographic = true)
+        for (spelling in listOf(longSpelling, shortSpelling, logogram)) {
+            graph.addLink(spelling, inflected, Link.Transcription)
+        }
+        val first = graph.addCorpusText(
+            "1# pé-e-da-aš pé-da-aš pé-e-da-aš\n2# pé-da-aš\n3# pé-e-da-aš\n4# pé-[e]-da-aš\n5# ^d^_DU3\n6# pēdas",
+            "First text", fixture.q
+        )
+        first.associateWord(0, longSpelling)
+        first.associateWord(1, shortSpelling)
+        first.associateWord(2, longSpelling)
+        first.associateWord(3, shortSpelling)
+        first.associateWord(4, homonym)
+        first.associateWord(5, longSpelling)
+        first.associateWord(6, logogram)
+        val second = graph.addCorpusText("7# pé-e-da-aš\n8# pé-da-aš", "Second text", fixture.q)
+
+        val word = wordController.singleWordJson(graph, "q", lemma.text, lemma.id)
+        val attestations = word.linksTo.single { it.typeId == Link.Derived.id }.words.single().attestations
+        assertEquals(7, attestations.size)
+        fun lines(textId: Int, spelling: String) = attestations.single {
+            it.textId == textId && it.word == spelling
+        }.lineNumbers
+        assertEquals(listOf("1"), lines(first.id, longSpelling.text))
+        assertEquals(listOf("1", "2"), lines(first.id, shortSpelling.text))
+        assertEquals(listOf("4"), lines(first.id, "pé-[e]-da-aš"))
+        assertEquals(listOf("5"), lines(first.id, logogram.text))
+        assertEquals(listOf("6"), lines(first.id, inflected.text))
+        assertEquals(listOf("7"), lines(second.id, longSpelling.text))
+        assertEquals(listOf("8"), lines(second.id, shortSpelling.text))
+        for (attestation in attestations) {
+            assertEquals(TlhDigSyllabogramSyntax.parse(attestation.word!!), attestation.syllabogramSequence)
+        }
+        assertEquals(2, graph.findAttestations(inflected).size)
+        assertEquals(attestations,
+            wordController.singleWordJson(graph, "q", inflected.text, inflected.id).attestations)
     }
 
     @Test
@@ -178,7 +281,7 @@ class WordControllerTest {
 
         val lemmaViewModel = wordController.singleWordJson(graph, "q", lemma.text, lemma.id)
         val linkViewModel = lemmaViewModel.linksTo.single { it.typeId == ">" }.words.single()
-        assertEquals(formViewModel.attestations, linkViewModel.attestations)
+        assertEquals(formViewModel.attestations.map { it.copy(word = null) }, linkViewModel.attestations)
     }
 
     @Test
@@ -187,7 +290,27 @@ class WordControllerTest {
         graph.addCorpusText("sila\n5# Elen\n8# elen elen\nelen", "Sample text", fixture.q)
 
         val viewModel = wordController.singleWordJson(graph, "q", word.text, word.id)
-        assertEquals(listOf("5", "8"), viewModel.attestations.single().lineNumbers)
+        assertEquals(listOf("Elen", "elen"), viewModel.attestations.map { it.word })
+        assertEquals(listOf(listOf("5"), listOf("8")), viewModel.attestations.map { it.lineNumbers })
+    }
+
+    @Test
+    fun wordAttestationsIncludeEveryExactFormAndVariation() {
+        val word = graph.addWord("elen", fixture.q, "star")
+        val variant = graph.addWord("ellin", fixture.q, null)
+        val homonym = graph.addWord("elen", fixture.q, "another meaning")
+        graph.addLink(variant, word, Link.Variation)
+        val first = graph.addCorpusText("1# Elen e[len] elen\n2# ellin\n3# elen\n4# elen", "First text", fixture.q)
+        first.associateWord(5, homonym)
+        val second = graph.addCorpusText("5# Elen ellin", "Second text", fixture.q)
+
+        val attestations = wordController.singleWordJson(graph, "q", word.text, word.id).attestations
+        assertEquals(6, attestations.size)
+        assertEquals(listOf("Elen", "e[len]", "elen", "ellin"),
+            attestations.filter { it.textId == first.id }.map { it.word })
+        assertEquals(listOf("1", "3"), attestations.single { it.textId == first.id && it.word == "elen" }.lineNumbers)
+        assertEquals(listOf("Elen", "ellin"), attestations.filter { it.textId == second.id }.map { it.word })
+        assertEquals(true, attestations.all { it.syllabogramSequence == null })
     }
 
     @Test

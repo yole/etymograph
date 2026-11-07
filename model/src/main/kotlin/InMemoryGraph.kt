@@ -179,14 +179,14 @@ open class InMemoryGraph : Graph() {
 
     private fun Word.isRoot() = text.all { c -> c.isUpperCase() || c == '-' }
 
-    override fun findAttestations(word: Word): List<Attestation> {
+    override fun findAttestations(word: Word, allVariants: Boolean): List<Attestation> {
         val allDerivedWords = collectDerivedWords(word, true)
         val result = mutableListOf<Attestation>()
         corpusText@ for (corpusText in corpusTextsInLanguage(word.language)) {
             for (derivedWord in allDerivedWords) {
                 if (corpusText.containsWord(derivedWord)) {
                     result.add(Attestation(derivedWord, corpusText))
-                    continue@corpusText
+                    if (!allVariants) continue@corpusText
                 }
             }
         }
