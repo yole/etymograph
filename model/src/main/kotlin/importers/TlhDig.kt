@@ -122,7 +122,7 @@ fun importTLHDig(graph: Graph, title: String, children: List<Element>, context: 
             continue
         }
 
-        if ('x' in cleanText) {
+        if ('x' in cleanText || wordText.startsWith("]") || wordText.endsWith("[")) {
             context.messages.add("Skipping damaged word $wordText")
             continue
         }
@@ -285,6 +285,7 @@ private fun findRulesByMrp(mrp: String, hittite: Language, posMarkers: MutableLi
     }
 
     if (categorySet.isEmpty()) {
+        context.messages.add("No matching categories for $categories")
         return emptyList()
     }
 

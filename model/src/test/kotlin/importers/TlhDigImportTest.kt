@@ -284,6 +284,12 @@ class TlhDigImportTest {
         assertEquals(zikke.id, word.transcription.lemma.id)
     }
 
+    @Test
+    fun dontAssociateBrokenWord() {
+        val corpusText = importWord("<w><del_in/></w> <w trans=\"~aḫ\" mrp0sel=\"DEL\"><del_fin/>-aḫ<del_in/></w>")
+        assertEquals(0, corpusText.words.size)
+    }
+
     private fun findWord(text: String, syllabographic: Boolean = false): Word =
         graph.wordsByText(hittite, text, syllabographic).single()
 
