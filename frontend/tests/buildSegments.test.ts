@@ -78,6 +78,22 @@ describe("buildSegments", () => {
         expect(result.unanchoredTranslations).toEqual(invalid);
     });
 
+    it("shows overlapping ranges once each after their final word", () => {
+        const spanning = translation(1, 0, 3);
+        const inner = translation(2, 1, 2);
+        const overlapping = translation(3, 1, 4);
+
+        const result = buildSegments(corpusText([line(0, 1), line(2, 3)], [spanning, inner, overlapping]));
+
+        expect(result.segments).toEqual([
+            {start: 0, end: 1, translations: []},
+            {start: 1, end: 2, translations: [inner]},
+            {start: 2, end: 3, translations: [spanning]},
+            {start: 3, end: 4, translations: [overlapping]},
+        ]);
+        expect(result.unanchoredTranslations).toEqual([]);
+    });
+
     it("returns no segments for an empty text", () => {
         const unanchored = translation(1, 0, 1);
 

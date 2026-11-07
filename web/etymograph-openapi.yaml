@@ -3939,6 +3939,10 @@ components:
           type: "integer"
           format: "int32"
           nullable: true
+        anchorEndIndex:
+          type: "integer"
+          format: "int32"
+          nullable: true
       required:
         - "text"
         - "source"

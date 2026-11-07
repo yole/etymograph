@@ -3,7 +3,7 @@ import WordForm from "@/forms/WordForm";
 import EtymographForm from "@/components/EtymographForm";
 import FormRow from "@/components/FormRow";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faEdit, faCheck, faEraser} from '@fortawesome/free-solid-svg-icons'
+import {faEdit, faCheck, faTrash} from '@fortawesome/free-solid-svg-icons'
 import {
     fetchBackend,
     associateWord,
@@ -25,7 +25,7 @@ import {ContextGlossParams, CorpusLineViewModel, CorpusTextViewModel, CorpusWord
 import WordTextView from "@/components/WordTextView";
 import CorpusOpenCompoundPicker from "@/components/CorpusOpenCompoundPicker";
 import {Urls} from "@/components/Urls";
-import {ActionIcon, Alert, Popover} from "@mantine/core";
+import {Alert, Popover} from "@mantine/core";
 
 export async function getStaticProps(context) {
     return fetchBackend(context.params.graph, `corpus/text/${context.params.id}`, true)
@@ -195,10 +195,6 @@ export interface TextSegment {
     translations: TranslationViewModel[]
 }
 
-function segmentKey(start: number, end: number): string {
-    return `${start}:${end}`
-}
-
 // Returns, for each line, the word index at which it sits: for a normal line the index of its
 // first word, for a separator line the number of words preceding it.
 function computeLinePositions(lines: CorpusLineViewModel[]): number[] {
@@ -216,7 +212,7 @@ function computeLinePositions(lines: CorpusLineViewModel[]): number[] {
 export function buildSegments(corpusText: CorpusTextViewModel): { segments: TextSegment[], unanchoredTranslations: TranslationViewModel[] } {
     const wordCount = corpusText.lines.flatMap(line => line.words).length
     const boundaries = new Set<number>([0, wordCount])
-    const translationsBySegment = new Map<string, TranslationViewModel[]>()
+    const translationsByEnd = new Map<number, TranslationViewModel[]>()
     const unanchoredTranslations: TranslationViewModel[] = []
 
     corpusText.translations.forEach(translation => {
@@ -229,12 +225,11 @@ export function buildSegments(corpusText: CorpusTextViewModel): { segments: Text
 
         boundaries.add(start)
         boundaries.add(end)
-        const key = segmentKey(start, end)
-        const list = translationsBySegment.get(key)
+        const list = translationsByEnd.get(end)
         if (list) {
             list.push(translation)
         } else {
-            translationsBySegment.set(key, [translation])
+            translationsByEnd.set(end, [translation])
         }
     })
 
@@ -248,7 +243,9 @@ export function buildSegments(corpusText: CorpusTextViewModel): { segments: Text
         segments.push({
             start,
             end,
-            translations: translationsBySegment.get(segmentKey(start, end)) ?? []
+            // A selected range can span other translation boundaries. Show its translation
+            // after its last word even when it covers more than one display segment.
+            translations: translationsByEnd.get(end) ?? []
         })
     }
 
@@ -289,12 +286,14 @@ function TranslationView(params: {translation: TranslationViewModel}) {
             <div className="translation">
                 &quot;{t.text}&quot; <SourceRefs source={t.source} span={true}/>
                 {editable && <>
-                    <ActionIcon className="iconWithMargin" type="button" variant="outline" onClick={() => setShowTranslationForm(!showTranslationForm)}>
+                    {' '}<button type="button" className="inlineButton compoundComponentIcon" aria-label="Edit translation" title="Edit"
+                                onClick={() => setShowTranslationForm(!showTranslationForm)}>
                         <FontAwesomeIcon icon={faEdit}/>
-                    </ActionIcon>
-                    <ActionIcon type="button" variant="outline" onClick={() => deleteTranslationClicked(t.id)}>
-                        <FontAwesomeIcon icon={faEraser}/>
-                    </ActionIcon>
+                    </button>
+                    {' '}<button type="button" className="inlineButton compoundComponentIcon" aria-label="Delete translation" title="Delete"
+                                onClick={() => deleteTranslationClicked(t.id)}>
+                        <FontAwesomeIcon icon={faTrash}/>
+                    </button>
                 </>}
             </div>
         </>}
@@ -312,6 +311,10 @@ function TranslationView(params: {translation: TranslationViewModel}) {
     </>
 }
 
+type TranslationDraft =
+    | {phase: "selecting", position: number}
+    | {phase: "editing", position: number, anchorStartIndex?: number, anchorEndIndex?: number}
+
 export default function CorpusText(params) {
     const corpusText = params.loaderData as CorpusTextViewModel
     const [editMode, setEditMode] = useState(false)
@@ -320,8 +323,7 @@ export default function CorpusText(params) {
     const [predefWord, setPredefWord] = useState("")
     const [wordIndex, setWordIndex] = useState(-1)
     const [contextGlossIndex, setContextGlossIndex] = useState<number | undefined>(undefined)
-    const [showTranslationForm, setShowTranslationForm] = useState(false)
-    const [newTranslationAnchorStart, setNewTranslationAnchorStart] = useState<number | undefined>(undefined)
+    const [translationDraft, setTranslationDraft] = useState<TranslationDraft | undefined>(undefined)
     const [alternatives, setAlternatives] = useState([])
     const [errorText, setErrorText] = useState("")
     const router = useRouter()
@@ -368,19 +370,18 @@ export default function CorpusText(params) {
         setWordFormVisible(false)
     }
 
-    function toggleTranslationForm(anchorStartIndex?: number) {
-        if (showTranslationForm && newTranslationAnchorStart === anchorStartIndex) {
-            setShowTranslationForm(false)
-            setNewTranslationAnchorStart(undefined)
-        } else {
-            setShowTranslationForm(true)
-            setNewTranslationAnchorStart(anchorStartIndex)
-        }
+    function selectTranslationEnd(index: number) {
+        if (translationDraft?.phase !== "selecting") return
+        setTranslationDraft({
+            phase: "editing",
+            position: index,
+            anchorStartIndex: Math.min(translationDraft.position, index),
+            anchorEndIndex: Math.max(translationDraft.position, index) + 1
+        })
     }
 
     function translationSubmitted() {
-        setShowTranslationForm(false)
-        setNewTranslationAnchorStart(undefined)
+        setTranslationDraft(undefined)
         router.replace(router.asPath)
     }
 
@@ -432,15 +433,21 @@ export default function CorpusText(params) {
                                 {line.lineNumber && <span className="corpusTextLineNumber">{line.lineNumber} </span>}
                                 {segmentWords.map(w =>
                                     <div className="corpusTextWord" key={w.index}>
-                                        <CorpusTextWordLink word={w} corpusText={corpusText}/>
+                                        {translationDraft?.phase === "selecting"
+                                            ? <button type="button" className="inlineButton"
+                                                      onClick={() => selectTranslationEnd(w.index)}>
+                                                <WordTextView text={w.text} syllabograms={w.syllabogramSequence}
+                                                              stressIndex={w.stressIndex} stressLength={w.stressLength}/>
+                                            </button>
+                                            : <CorpusTextWordLink word={w} corpusText={corpusText}/>}
                                         <br/>
-                                        <GlossDropdown
+                                        {translationDraft?.phase === "selecting" ? <WordGloss gloss={w.gloss}/> : <GlossDropdown
                                             corpusText={corpusText}
                                             word={w}
                                             showDefineWordForm={(text, index) => showWordForm(text, index, 'word')}
                                             showDefineLemmaForm={(text, index) => showWordForm(text, index, 'lemma')}
                                             showContextGlossForm={setContextGlossIndex}
-                                            showTranslationFormAtWord={toggleTranslationForm}/>
+                                            showTranslationFormAtWord={index => setTranslationDraft({phase: "selecting", position: index})}/>}
                                         {editable && contextGlossIndex === w.index
                                             ? <EtymographForm<ContextGlossParams>
                                                 className="contextGlossForm"
@@ -455,6 +462,33 @@ export default function CorpusText(params) {
                                                 <table><tbody><FormRow id="contextGloss" label="Context gloss" size={16}/></tbody></table>
                                             </EtymographForm>
                                             : w.contextGloss && <><br/><span className="contextGloss">{w.contextGloss}</span></>}
+                                        {translationDraft?.position === w.index && (
+                                            translationDraft.phase === "selecting"
+                                                ? <div className="translationSelection">
+                                                    <div>
+                                                        Click last word to translate{' '}
+                                                        <button type="button" className="inlineButton" onClick={() =>
+                                                            setTranslationDraft({phase: "editing", position: w.index})}>
+                                                            Entire text
+                                                        </button>
+                                                        {' '}
+                                                        <button type="button" className="inlineButton"
+                                                                onClick={() => setTranslationDraft(undefined)}>Cancel</button>
+                                                    </div>
+                                                </div>
+                                                : <div className="corpusTranslationForm">
+                                                    <TranslationForm
+                                                        corpusTextId={corpusText.id}
+                                                        anchorStartIndex={translationDraft.anchorStartIndex}
+                                                        anchorEndIndex={translationDraft.anchorEndIndex}
+                                                        defaultValues={{text: "", source: findPreviousTranslationSource(
+                                                            segments, translationDraft.anchorStartIndex ?? translationDraft.position)}}
+                                                        submitted={translationSubmitted}
+                                                        cancelled={() => setTranslationDraft(undefined)}
+                                                        focusTarget="text"
+                                                    />
+                                                </div>
+                                        )}
                                     </div>)}
                             </div>
                             {wordIndex >= line.words[0].index && wordIndex <= line.words[line.words.length-1].index &&
@@ -496,20 +530,6 @@ export default function CorpusText(params) {
                             ? <hr key={`separator-${lineIdx}`} className="corpusTextSeparator"/>
                             : null
                     )}
-                    {showTranslationForm && newTranslationAnchorStart !== undefined &&
-                        newTranslationAnchorStart >= segment.start && newTranslationAnchorStart < segment.end &&
-                        <TranslationForm
-                            corpusTextId={Number.parseInt(router.query.id as string)}
-                            anchorStartIndex={newTranslationAnchorStart}
-                            defaultValues={{text: "", source: findPreviousTranslationSource(segments, newTranslationAnchorStart)}}
-                            submitted={translationSubmitted}
-                            cancelled={() => {
-                                setShowTranslationForm(false)
-                                setNewTranslationAnchorStart(undefined)
-                            }}
-                            focusTarget='text'
-                        />
-                    }
                 </div>
             ))}
             <SourceRefs source={corpusText.source}/>

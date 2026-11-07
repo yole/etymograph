@@ -687,6 +687,7 @@ export type TranslationParams = {
     text: string;
     source: string;
     anchorStartIndex?: number;
+    anchorEndIndex?: number;
 };
 
 export type TranslationViewModel = {

@@ -9,13 +9,14 @@ import {TranslationParams, TranslationViewModel} from "@/models";
 interface TranslationFormProps extends EtymographFormProps<TranslationParams, TranslationViewModel> {
     corpusTextId: number;
     anchorStartIndex?: number;
+    anchorEndIndex?: number;
 }
 
 export default function TranslationForm(props: TranslationFormProps) {
     const graph = useContext(GraphContext)
 
     return <EtymographForm
-        create={(data) => addTranslation(graph, props.corpusTextId, data, props.anchorStartIndex)}
+        create={(data) => addTranslation(graph, props.corpusTextId, data, props.anchorStartIndex, props.anchorEndIndex)}
         update={(data) => editTranslation(graph, props.updateId as number, data)}
         {...props}
     >

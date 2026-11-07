@@ -15,26 +15,34 @@ class TranslationController {
         val corpusTextId: Int? = null,
         val text: String,
         val source: String? = null,
-        val anchorStartIndex: Int? = null
+        val anchorStartIndex: Int? = null,
+        val anchorEndIndex: Int? = null
     )
 
     @PostMapping("/{graph}/translation")
     fun addTranslation(graph: Graph, @RequestBody params: TranslationParams): CorpusController.TranslationViewModel {
         val source = parseSourceRefs(graph, params.source)
         val corpusText = graph.resolveCorpusText(params.corpusTextId)
-        val translation = graph.addTranslation(corpusText, params.text, source)
-        params.anchorStartIndex?.let { anchorStartIndex ->
-            if (anchorStartIndex < 0 || anchorStartIndex >= corpusText.wordCount()) {
-                badRequest("Anchor index $anchorStartIndex is out of bounds")
-            }
+        val wordCount = corpusText.wordCount()
+        val anchorStartIndex = params.anchorStartIndex
+        val anchorEndIndex = params.anchorEndIndex
+        if (anchorStartIndex != null && (anchorStartIndex < 0 || anchorStartIndex >= wordCount)) {
+            badRequest("Anchor index $anchorStartIndex is out of bounds")
+        }
+        if (anchorEndIndex != null &&
+            (anchorStartIndex == null || anchorEndIndex <= anchorStartIndex || anchorEndIndex > wordCount)) {
+            badRequest("Invalid translation anchor range")
+        }
 
+        val translation = graph.addTranslation(corpusText, params.text, source)
+        if (anchorStartIndex != null) {
             val translations = graph.translationsForText(corpusText)
-            val nextAnchorStartIndex = translations
+            val nextAnchorStartIndex = anchorEndIndex ?: translations
                 .asSequence()
                 .mapNotNull { it.anchorStartIndex }
                 .filter { it > anchorStartIndex }
                 .minOrNull()
-                ?: corpusText.wordCount()
+                ?: wordCount
 
             translation.anchorStartIndex = anchorStartIndex
             translation.anchorEndIndex = nextAnchorStartIndex

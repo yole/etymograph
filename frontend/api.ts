@@ -306,8 +306,9 @@ export function deleteCorpusText(graph: string, id: number) {
     return postToBackend(`${graph}/corpus/text/${id}/delete`, {})
 }
 
-export function addTranslation(graph: string, corpusTextId: number, data: TranslationParams, anchorStartIndex?: number) {
-    return postToBackend(`${graph}/translation`, {corpusTextId: corpusTextId, ...data, anchorStartIndex})
+export function addTranslation(graph: string, corpusTextId: number, data: TranslationParams,
+                               anchorStartIndex?: number, anchorEndIndex?: number) {
+    return postToBackend(`${graph}/translation`, {corpusTextId: corpusTextId, ...data, anchorStartIndex, anchorEndIndex})
 }
 
 export function editTranslation(graph: string, id: number, data: TranslationParams) {
