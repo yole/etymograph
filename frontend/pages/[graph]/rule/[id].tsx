@@ -35,7 +35,7 @@ export async function getStaticPaths() {
 
 function ExampleList(params: {rule: RuleViewModel, examples: RuleExampleViewModel[]}) {
     const {rule, examples} = params
-    const haveSteps = examples.some(ex => ex.wordBeforeRule !== null || ex.wordAfterRule !== null)
+    const haveSteps = examples.some(ex => ex.wordBeforeRule != null || ex.wordAfterRule != null)
     const haveExpected = examples.some(ex => ex.expectedWord && ex.expectedWord !== ex.fromWord.text)
     return <table className="tableWithBorders">
         <thead>
@@ -59,11 +59,13 @@ function ExampleList(params: {rule: RuleViewModel, examples: RuleExampleViewMode
                 <WordGloss gloss={ex.toWord.gloss}/>
             </td>
             {haveSteps && <td>
-                {ex.toWord.text}
-                {ex.wordBeforeRule && ' > ' + ex.wordBeforeRule}
-                {ex.wordAfterRule && <>{' > '}<b>{ex.wordAfterRule}</b></>}
-                {!ex.wordAfterRule && <>{' > '}<b>{ex.expectedWord ?? ex.fromWord.text}</b></>}
-                {ex.wordAfterRule && <>{' > '}{ex.expectedWord ?? ex.fromWord.text}</>}
+                {(ex.wordBeforeRule != null || ex.wordAfterRule != null) && <>
+                    {ex.toWord.text}
+                    {ex.wordBeforeRule && ' > ' + ex.wordBeforeRule}
+                    {ex.wordAfterRule && <>{' > '}<b>{ex.wordAfterRule}</b></>}
+                    {!ex.wordAfterRule && <>{' > '}<b>{ex.expectedWord ?? ex.fromWord.text}</b></>}
+                    {ex.wordAfterRule && <>{' > '}{ex.expectedWord ?? ex.fromWord.text}</>}
+                </>}
             </td>}
             {haveExpected && <td>
                 {ex.expectedWord != null && ex.expectedWord !== ex.fromWord.text &&
