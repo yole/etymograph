@@ -14,10 +14,6 @@ open class QBaseTest {
             Phoneme(-1, listOf(p), sound = null, classes = setOf("short", "vowel"))
         }
     }
-
-    fun applyRule(rule: Rule, word: Word): String {
-        return rule.apply(word).text
-    }
 }
 
 fun quenya(graph: Graph): Language = graph.addLanguage("Quenya", "Q").also {
