@@ -409,6 +409,9 @@ function SingleWord({word, embeddedInWordIds}: { word: WordViewModel, embeddedIn
                     if (embeddedInWordIds) {
                         router.replace(router.asPath)
                     }
+                    else if (word.attestations.length === 1) {
+                        router.push(`/${graph}/corpus/text/${word.attestations[0].textId}`)
+                    }
                     else {
                         router.push(`/${graph}/dictionary/${word.language}`);
                     }

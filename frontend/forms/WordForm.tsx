@@ -171,7 +171,7 @@ export default function WordForm(props: WordFormProps) {
                 </button>
             </>}
         </FormRow>
-        {props.showSyllabographic && <tr><td colspan="2"><FormInlineCheckbox id="syllabographic" label="Syllabographic" handleChange={updateWordStatus}/></td></tr>}
+        {props.showSyllabographic && <tr><td colSpan={2}><FormInlineCheckbox id="syllabographic" label="Syllabographic" handleChange={updateWordStatus}/></td></tr>}
         <PosSelect id="pos" label="POS" language={props.defaultValues.language} languageProp={props.languageReadOnly !== true ? 'language' : undefined}/>
         <WordClassSelect
             id="classes" label="Classes"
