@@ -6,11 +6,10 @@ export interface FormCheckboxProps extends FormFieldProps {
     handleChange?: (data: any) => void
 }
 
-export default function FormCheckbox(props: FormCheckboxProps) {
+export function FormInlineCheckbox(props: FormCheckboxProps) {
     const form = useEtymographFormContext()
     const checkboxProps = form.getInputProps(props.id, {type: 'checkbox'})
-    return <>
-        <Checkbox
+    return <Checkbox
             {...checkboxProps}
             size="sm"
             label={props.label}
@@ -19,5 +18,8 @@ export default function FormCheckbox(props: FormCheckboxProps) {
                 if (props.handleChange !== undefined) props.handleChange(form.getValues())
             }}
         />
-        <br/></>
+}
+
+export default function FormCheckbox(props: FormCheckboxProps) {
+    return <><FormInlineCheckbox {...props} /><br/></>
 }

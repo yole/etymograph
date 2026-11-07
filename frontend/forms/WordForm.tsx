@@ -4,7 +4,7 @@ import LanguageSelect from "@/components/LanguageSelect";
 import FormRow from "@/components/FormRow";
 import SourceInput from "@/components/SourceInput";
 import FormTextArea from "@/components/FormTextArea";
-import FormCheckbox from "@/components/FormCheckbox";
+import FormCheckbox, {FormInlineCheckbox} from "@/components/FormCheckbox";
 import {useState} from "react";
 import RuleListSelect from "@/components/RuleListSelect";
 import {useRouter} from "next/router";
@@ -12,7 +12,7 @@ import PosSelect from "@/components/PosSelect";
 import WordClassSelect from "@/components/WordClassSelect";
 import {LinkTypes} from "@/components/LinkTypes";
 import {AddWordParameters, WordViewModel} from "@/models";
-import {Input} from "@mantine/core";
+import {Checkbox, Input} from "@mantine/core";
 
 export interface WordFormData extends AddWordParameters {
     language?: string
@@ -171,6 +171,7 @@ export default function WordForm(props: WordFormProps) {
                 </button>
             </>}
         </FormRow>
+        {props.showSyllabographic && <tr><td colspan="2"><FormInlineCheckbox id="syllabographic" label="Syllabographic" handleChange={updateWordStatus}/></td></tr>}
         <PosSelect id="pos" label="POS" language={props.defaultValues.language} languageProp={props.languageReadOnly !== true ? 'language' : undefined}/>
         <WordClassSelect
             id="classes" label="Classes"
@@ -193,7 +194,6 @@ export default function WordForm(props: WordFormProps) {
         </>}
         </tbody></table>
         {!props.hideReconstructed && <FormCheckbox id="reconstructed" label="Reconstructed"/>}
-        {props.showSyllabographic && <FormCheckbox id="syllabographic" label="Syllabographic" handleChange={updateWordStatus}/>}
         {props.addToCompound !== undefined && <FormCheckbox id="markHead" label="Mark as head"/>}
     </EtymographForm>
 }
