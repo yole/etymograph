@@ -159,11 +159,18 @@ class CorpusText(
                     val gloss = wordCandidates.firstOrNull()?.getOrComputeGloss()
                     CorpusWord(currentIndex++, tw.baseText, normalizedText, tw.baseText, syllabogramSequence,null, wordCandidates,
                         gloss, null, gloss, null, null,
-                        glossable = tw.baseText.any { it !in innerPunctuation && it !in punctuation && !it.isDigit() },
+                        glossable = isWordGlossable(tw),
                         homonym = false)
                 }
             }, lineNumber)
         }
+    }
+
+    private fun isWordGlossable(tw: WordText): Boolean {
+        if (language.syllabographic && 'x' in tw.baseText) {
+            return false
+        }
+        return tw.baseText.any { it !in innerPunctuation && it !in punctuation && !it.isDigit() }
     }
 
     private fun adjustStressIndex(wordWithSegments: Word?, stressIndex: Int?): Int? {
