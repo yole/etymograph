@@ -210,8 +210,10 @@ function computeLinePositions(lines: CorpusLineViewModel[]): number[] {
 }
 
 export function buildSegments(corpusText: CorpusTextViewModel): { segments: TextSegment[], unanchoredTranslations: TranslationViewModel[] } {
-    const wordCount = corpusText.lines.flatMap(line => line.words).length
+    const words = corpusText.lines.flatMap(line => line.words)
+    const wordCount = words.length
     const boundaries = new Set<number>([0, wordCount])
+    const anchoredRanges: {start: number, end: number}[] = []
     const translationsByEnd = new Map<number, TranslationViewModel[]>()
     const unanchoredTranslations: TranslationViewModel[] = []
 
@@ -225,6 +227,7 @@ export function buildSegments(corpusText: CorpusTextViewModel): { segments: Text
 
         boundaries.add(start)
         boundaries.add(end)
+        anchoredRanges.push({start, end})
         const list = translationsByEnd.get(end)
         if (list) {
             list.push(translation)
@@ -232,6 +235,31 @@ export function buildSegments(corpusText: CorpusTextViewModel): { segments: Text
             translationsByEnd.set(end, [translation])
         }
     })
+
+    anchoredRanges.sort((a, b) => a.start - b.start)
+    let previousEnd = anchoredRanges[0]?.end ?? 0
+    for (const {start, end} of anchoredRanges.slice(1)) {
+        if (start > previousEnd && words.slice(previousEnd, start).every(word => !word.glossable)) {
+            const previousLine = corpusText.lines.find(line => line.words.some(word => word.index === previousEnd - 1))
+            const line = corpusText.lines.find(line => line.words.some(word => word.index === start))
+            // Keep each end of the gap with the chunk sharing its line. If both chunks
+            // share a line, keep the gap with the following chunk.
+            // Only display boundaries change; the translation anchors remain intact.
+            if (previousLine !== line) {
+                const displayEnd = previousLine.words[previousLine.words.length - 1].index + 1
+                if (displayEnd > previousEnd) {
+                    boundaries.delete(previousEnd)
+                    boundaries.add(displayEnd)
+                    translationsByEnd.set(displayEnd, translationsByEnd.get(previousEnd) ?? [])
+                    translationsByEnd.delete(previousEnd)
+                }
+            }
+            const displayStart = Math.max(previousEnd, line.words[0].index)
+            boundaries.delete(start)
+            boundaries.add(displayStart)
+        }
+        previousEnd = Math.max(previousEnd, end)
+    }
 
     const sortedBoundaries = Array.from(boundaries).sort((a, b) => a - b)
     const segments: TextSegment[] = []

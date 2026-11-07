@@ -105,7 +105,7 @@ it("shows the endpoint prompt and link buttons underneath the starting word", as
     await startTranslation(1);
 
     expect(wordElement(1).querySelector(".translationSelection")!.textContent)
-        .toContain("Click on last word of the fragment to translate");
+        .toContain("Click last word to translate");
     expect(wordElement(1).querySelector(".translationSelection")!.textContent).toContain("Entire text");
     expect(wordElement(1).querySelector(".translationSelection")!.textContent).toContain("Cancel");
     expect(container.querySelector("textarea")).toBeNull();
