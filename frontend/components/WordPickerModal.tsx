@@ -132,6 +132,7 @@ export default function WordPickerModal(props: WordPickerModalProps) {
                     <WordSearch
                         key={props.defaultValues.language}
                         enabled={props.opened}
+                        defaultSearch={props.defaultValues.text}
                         language={language}
                         onLanguageChange={setLanguage}
                         selectedWordId={selectedWordId}

@@ -13,6 +13,7 @@ interface WordSearchProps {
     onSelectWord: (wordId: number | null) => void
     onConfirmWord?: (wordId: number) => void
     enabled?: boolean
+    defaultSearch?: string
     excludeWordId?: number
     closestMatchText?: string
     suggestions?: WordRefViewModel[]
@@ -35,14 +36,14 @@ export default function WordSearch(props: WordSearchProps) {
     const graph = router.query.graph as string
     const globalState = useContext(GlobalStateContext)
     const enabled = props.enabled ?? true
-    const [search, setSearch] = useState("")
+    const [search, setSearch] = useState(props.defaultSearch ?? "")
     const [words, setWords] = useState([] as DictionaryWordViewModel[])
     const selectedItemRef = useRef<HTMLButtonElement | null>(null)
     const scrollViewportRef = useRef<HTMLDivElement | null>(null)
 
     useEffect(() => {
-        if (enabled) setSearch("")
-    }, [enabled])
+        if (enabled) setSearch(props.defaultSearch ?? "")
+    }, [enabled, props.defaultSearch])
 
     useEffect(() => {
         if (!enabled || !props.language) {
