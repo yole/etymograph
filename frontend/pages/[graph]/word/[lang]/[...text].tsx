@@ -267,12 +267,12 @@ function CompoundListComponent(
                     <WordLink word={mc} baseLanguage={word.language} gloss={true}/>
                     {index === m.headIndex && " (head)"}
                     {canEdit && <>
-                        {' '}<button type="button" className="inlineButton" aria-label="Change component"
+                        {' '}<button type="button" className="inlineButton compoundComponentIcon" aria-label="Change component"
                                      onClick={() => setReplaceCompoundMember({compoundId: m.compoundId, memberIndex: index})}>
                             <FontAwesomeIcon icon={faEdit}/>
                         </button>
                         {m.components.length > 1 && <>{' '}
-                            <button type="button" className="inlineButton" aria-label="Delete component"
+                            <button type="button" className="inlineButton compoundComponentIcon" aria-label="Delete component"
                                     onClick={() => removeCompoundMemberClicked(m.compoundId, index)}>
                                 <FontAwesomeIcon icon={faTrash}/>
                             </button>
