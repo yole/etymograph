@@ -7,6 +7,7 @@ import {
     useAllowEditGraph
 } from "@/api";
 import WordLink from "@/components/WordLink";
+import WordTextView from "@/components/WordTextView";
 import {fetchBackend} from "@/api";
 import {useRouter} from "next/router";
 import Link from "next/link";
@@ -65,7 +66,8 @@ function ExampleList(params: {rule: RuleViewModel, examples: RuleExampleViewMode
                 {ex.wordAfterRule && <>{' > '}{ex.expectedWord ?? ex.fromWord.text}</>}
             </td>}
             {haveExpected && <td>
-                {ex.expectedWord !== null && ex.expectedWord !== ex.fromWord.text && ex.expectedWord}
+                {ex.expectedWord != null && ex.expectedWord !== ex.fromWord.text &&
+                    <WordTextView text={ex.expectedWord} syllabograms={ex.expectedWordSyllabogramSequence}/>}
             </td>}
         </tr>)}
         </tbody>

@@ -55,7 +55,8 @@ class RuleController {
         val toWord: WordRefViewModel,
         val expectedWord: String? = null,
         val wordBeforeRule: String? = null,
-        val wordAfterRule: String? = null
+        val wordAfterRule: String? = null,
+        val expectedWordSyllabogramSequence: SyllabogramSequence? = null
     )
 
     @Serializable
@@ -372,14 +373,16 @@ class RuleController {
         val ruleIndex = example.steps.indexOfFirst { it.rule == rule }
         val wordBeforeRule = if (ruleIndex > 0) example.steps[ruleIndex-1].result else null
         val wordAfterRule = if (ruleIndex < example.steps.size - 1) example.steps[ruleIndex].result else null
+        val expectedWord = link.applyRules(toWord).asOrthographic(fromWord.language)
+            .takeIf { !fromWord.language.isNormalizedEqual(it, fromWord) }?.text
 
         return RuleExampleViewModel(
             fromWord.toRefViewModel(),
             toWord.toRefViewModel(),
-            link.applyRules(toWord).asOrthographic(fromWord.language)
-                .takeIf { !fromWord.language.isNormalizedEqual(it, fromWord) }?.text,
+            expectedWord,
             wordBeforeRule,
-            wordAfterRule
+            wordAfterRule,
+            expectedWord?.takeIf { fromWord.syllabographic }?.let { TlhDigSyllabogramSyntax.parse(it) }
         )
     }
 

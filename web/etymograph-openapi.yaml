@@ -3009,6 +3009,10 @@ components:
         wordAfterRule:
           type: "string"
           nullable: true
+        expectedWordSyllabogramSequence:
+          allOf:
+            - $ref: "#/components/schemas/SyllabogramSequence"
+          nullable: true
       required:
         - "fromWord"
         - "toWord"

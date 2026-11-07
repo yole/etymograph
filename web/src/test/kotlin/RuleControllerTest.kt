@@ -275,6 +275,36 @@ class RuleControllerTest {
         val ruleViewModel = ruleController.rule(fixture.graph, rule.id)
         val example = ruleViewModel.branches.single().examples.single()
         assertNull(example.expectedWord)
+        assertNull(example.expectedWordSyllabogramSequence)
+    }
+
+    @Test
+    fun expectedWordSyllabograms() {
+        val rule = q.rule("- append '-aš'")
+        val baseWord = q.word("^d^_DU3", syllabographic = true)
+        val resultWord = q.word("^d^_DU3-iš", syllabographic = true)
+        graph.addLink(resultWord, baseWord, Link.Derived, listOf(rule))
+
+        val example = ruleController.rule(graph, rule.id).branches.single().examples.single()
+        assertEquals("^d^_DU3-aš", example.expectedWord)
+        assertEquals(SyllabogramSequence(listOf(
+            Syllabogram("d", SyllabogramType.Determinative),
+            Syllabogram("DU3", SyllabogramType.LogogramAlt),
+            Syllabogram("aš", SyllabogramType.Syllabogram)
+        )), example.expectedWordSyllabogramSequence)
+    }
+
+    @Test
+    fun expectedWordNonSyllabographic() {
+        q.syllabographic = true
+        val rule = q.rule("- append 'a'")
+        val baseWord = q.word("at")
+        val resultWord = q.word("ate")
+        graph.addLink(resultWord, baseWord, Link.Derived, listOf(rule))
+
+        val example = ruleController.rule(graph, rule.id).branches.single().examples.single()
+        assertEquals("ata", example.expectedWord)
+        assertNull(example.expectedWordSyllabogramSequence)
     }
 
     @Test

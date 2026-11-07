@@ -348,6 +348,7 @@ export type RuleExampleViewModel = {
     expectedWord?: string;
     wordBeforeRule?: string;
     wordAfterRule?: string;
+    expectedWordSyllabogramSequence?: SyllabogramSequence;
 };
 
 export type RuleBranchViewModel = {
