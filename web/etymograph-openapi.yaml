@@ -1874,6 +1874,30 @@ paths:
       responses:
         "200":
           description: "OK"
+  /{graph}/corpus/text/{id}/contextGloss:
+    post:
+      operationId: "updateContextGloss"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ContextGlossParams"
+      responses:
+        "200":
+          description: "OK"
   /{graph}/corpus/text/{id}/delete:
     post:
       summary: "POST {graph}/corpus/text/{id}/delete"
@@ -4066,6 +4090,17 @@ components:
           nullable: true
       required:
         - "id"
+    ContextGlossParams:
+      type: "object"
+      properties:
+        index:
+          type: "integer"
+          format: "int32"
+        contextGloss:
+          type: "string"
+          default: ""
+      required:
+        - "index"
     CorpusWordViewModel:
       type: "object"
       properties:

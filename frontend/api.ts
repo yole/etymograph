@@ -1,6 +1,6 @@
 import {
     AddPublicationParameters, AuthStatusViewModel, ComparePhonemesResult,
-    CorpusTextParams, GenerateParadigmParameters,
+    ContextGlossParams, CorpusTextParams, GenerateParadigmParameters,
     LookupParameters,
     LookupResultViewModel,
     OpenCompoundParams, OpenCompoundViewModel,
@@ -320,6 +320,10 @@ export function deleteTranslation(graph: string, id: number) {
 
 export function associateWord(graph: string, corpusTextId: number, wordId: number, index: number, contextGloss?: string) {
     return postToBackend(`${graph}/corpus/text/${corpusTextId}/associate`, {wordId, index, contextGloss})
+}
+
+export function updateContextGloss(graph: string, corpusTextId: number, data: ContextGlossParams) {
+    return postToBackend(`${graph}/corpus/text/${corpusTextId}/contextGloss`, data)
 }
 
 export async function fetchCorpusOpenCompoundCandidates(graph: string, corpusTextId: number,

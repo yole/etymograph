@@ -210,6 +210,67 @@ class CorpusControllerTest {
     }
 
     @Test
+    fun updateContextGlossPreservesAssociations() {
+        val modifier = graph.addWord("laurie", fixture.q, "golden")
+        val head = graph.addWord("lasse", fixture.q, "leaf")
+        val compound = graph.createOpenCompound(listOf(modifier, head), 1, "foliage")
+        val text = graph.addCorpusText("laurie lasse laurie lasse", "Test", fixture.q)
+        text.associateWord(0, modifier, "original", compound)
+        text.associateWord(2, modifier, "other occurrence", compound)
+        val service = mock(GraphService::class.java)
+        given(service.resolveGraph("test")).willReturn(graph)
+        val mvc = MockMvcBuilders.standaloneSetup(corpusController)
+            .setCustomArgumentResolvers(GraphArgumentResolver(service)).build()
+
+        mvc.perform(post("/test/corpus/text/${text.id}/contextGloss")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content("""{"index":0,"contextGloss":"goldenly"}"""))
+            .andExpect(status().isOk)
+
+        val words = corpusController.textJson(graph, text.id).lines.single().words
+        assertEquals("goldenly", words[0].contextGloss)
+        assertEquals(modifier.id, words[0].wordId)
+        assertEquals(compound.id, words[0].openCompoundId)
+        assertEquals("...", words[0].gloss)
+        assertEquals("other occurrence", words[2].contextGloss)
+        assertEquals(compound.id, words[2].openCompoundId)
+
+        corpusController.updateContextGloss(graph, text.id, CorpusController.ContextGlossParams(0, ""))
+        assertEquals(null, text.words.first().contextGloss)
+        assertEquals(compound, text.words.first().openCompound)
+    }
+
+    @Test
+    fun contextGlossAssociatesSingleCandidate() {
+        val word = graph.addWord("laurie", fixture.q, "golden")
+        val text = graph.addCorpusText("laurie", "Test", fixture.q)
+
+        corpusController.updateContextGloss(graph, text.id, CorpusController.ContextGlossParams(0, "goldenly"))
+
+        assertEquals(word, text.wordByIndex(0))
+        assertEquals("goldenly", text.words.single().contextGloss)
+    }
+
+    @Test
+    fun contextGlossRejectsUndefinedAmbiguousAndInvalidWords() {
+        graph.addWord("laurie", fixture.q, "golden")
+        graph.addWord("laurie", fixture.q, "other gloss")
+        val text = graph.addCorpusText("laurie unknown", "Test", fixture.q)
+        val service = mock(GraphService::class.java)
+        given(service.resolveGraph("test")).willReturn(graph)
+        val mvc = MockMvcBuilders.standaloneSetup(corpusController)
+            .setCustomArgumentResolvers(GraphArgumentResolver(service)).build()
+
+        for (index in listOf(0, 1, -1, 2)) {
+            mvc.perform(post("/test/corpus/text/${text.id}/contextGloss")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("""{"index":$index,"contextGloss":"test"}"""))
+                .andExpect(status().isBadRequest)
+        }
+        assertTrue(text.words.isEmpty())
+    }
+
+    @Test
     fun consistencyIssues() {
         val corpusText = graph.addCorpusText("alda", "Test text", fixture.q)
         val word = graph.findOrAddWord("elen", fixture.q, "star")

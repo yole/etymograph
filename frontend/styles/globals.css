@@ -203,6 +203,35 @@ code {
   font-size: smaller;
 }
 
+.contextGlossForm {
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  gap: 4px;
+  width: max-content;
+  margin-top: 2px;
+}
+
+.contextGlossForm > table {
+  border-spacing: 0;
+}
+
+.contextGlossForm > p {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+}
+
+.contextGlossForm .uiButtonSubmit,
+.contextGlossForm .uiButton {
+  margin: 0;
+}
+
+.contextGlossForm > .errorText {
+  grid-column: 1 / -1;
+}
+
 .paradigmRuleLink {
   font-size: small;
 }

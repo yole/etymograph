@@ -78,7 +78,8 @@ async function renderMenu(openCompoundId?: number) {
         glossable: true, homonym: false, openCompoundId
     };
     await renderContent(<GlossDropdown corpusText={{id: 42} as CorpusTextViewModel} word={word}
-        showDefineWordForm={vi.fn()} showDefineLemmaForm={vi.fn()} showTranslationFormAtWord={vi.fn()}/>);
+        showDefineWordForm={vi.fn()} showDefineLemmaForm={vi.fn()} showContextGlossForm={vi.fn()}
+        showTranslationFormAtWord={vi.fn()}/>);
     await act(() => { document.querySelector<HTMLElement>(".glossChoice")!.click(); });
 }
 

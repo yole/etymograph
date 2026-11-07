@@ -16,7 +16,6 @@ import {Input} from "@mantine/core";
 
 export interface WordFormData extends AddWordParameters {
     language?: string
-    contextGloss?: string
     linkRuleNames?: string
     markHead?: boolean
     linkSource?: string
@@ -34,7 +33,6 @@ interface WordFormProps extends EtymographFormProps<WordFormData, WordViewModel>
     linkTargetText?: string
     forceNewLinkTarget?: boolean
     textReadOnly?: boolean
-    showContextGloss?: boolean
     hideReconstructed?: boolean
     showSyllabographic?: boolean
     wordSubmitted?: (word: WordViewModel, baseWord: WordViewModel | undefined, formData: WordFormData) => any
@@ -181,7 +179,6 @@ export default function WordForm(props: WordFormProps) {
         />
         <FormRow id="gloss" label="Gloss"/>
         <FormRow id="fullGloss" label="Full gloss"/>
-        {props.showContextGloss && <FormRow id="contextGloss" label="Context gloss"/>}
         {(props.linkType === LinkTypes.Derived || props.linkType === LinkTypes.Origin) &&
             <RuleListSelect id="linkRuleNames" label="Link rule names" isMulti={true}
                             language={props.defaultValues.language} languageProp={props.languageReadOnly !== true ? 'language' : undefined}/>}

@@ -1,10 +1,13 @@
 import {useState} from "react";
-import WordForm, {WordFormData} from "@/forms/WordForm";
+import WordForm from "@/forms/WordForm";
+import EtymographForm from "@/components/EtymographForm";
+import FormRow from "@/components/FormRow";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faEdit, faCheck, faEraser} from '@fortawesome/free-solid-svg-icons'
 import {
     fetchBackend,
     associateWord,
+    updateContextGloss,
     fetchAlternatives,
     acceptAlternative,
     removeCorpusOpenCompoundAssociation,
@@ -18,7 +21,7 @@ import TranslationForm from "@/forms/TranslationForm";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import {LinkTypes} from "@/components/LinkTypes";
 import WordGloss from "@/components/WordGloss";
-import {CorpusLineViewModel, CorpusTextViewModel, CorpusWordCandidateViewModel, CorpusWordViewModel, TranslationViewModel, WordViewModel} from "@/models";
+import {ContextGlossParams, CorpusLineViewModel, CorpusTextViewModel, CorpusWordCandidateViewModel, CorpusWordViewModel, TranslationViewModel, WordViewModel} from "@/models";
 import WordTextView from "@/components/WordTextView";
 import CorpusOpenCompoundPicker from "@/components/CorpusOpenCompoundPicker";
 import {Urls} from "@/components/Urls";
@@ -97,6 +100,7 @@ export function GlossDropdown(params: {
     word: CorpusWordViewModel,
     showDefineWordForm: (text: string, index: number) => void,
     showDefineLemmaForm: (text: string, index: number) => void,
+    showContextGlossForm: (index: number) => void,
     showTranslationFormAtWord: (index: number) => void
 }) {
     const [opened, setOpened] = useState(false)
@@ -160,6 +164,12 @@ export function GlossDropdown(params: {
                 setOpened(false)
                 params.showDefineLemmaForm(w.normalizedText, w.index)
             }}>Define lemma</span></div>
+            <div><button type="button" className="inlineButton" disabled={w.wordId == null || showPlus}
+                         title={w.wordId == null || showPlus ? "Define or select a word first" : undefined}
+                         onClick={() => {
+                             setOpened(false)
+                             params.showContextGlossForm(w.index)
+                         }}>Edit context gloss</button></div>
             {w.openCompoundId != null
                 ? <div><button type="button" className="inlineButton" disabled={removingOpenCompound}
                                onClick={removeOpenCompoundLink}>Remove open compound link</button></div>
@@ -309,6 +319,7 @@ export default function CorpusText(params) {
     const [wordFormMode, setWordFormMode] = useState<'word' | 'lemma'>('word')
     const [predefWord, setPredefWord] = useState("")
     const [wordIndex, setWordIndex] = useState(-1)
+    const [contextGlossIndex, setContextGlossIndex] = useState<number | undefined>(undefined)
     const [showTranslationForm, setShowTranslationForm] = useState(false)
     const [newTranslationAnchorStart, setNewTranslationAnchorStart] = useState<number | undefined>(undefined)
     const [alternatives, setAlternatives] = useState([])
@@ -325,9 +336,10 @@ export default function CorpusText(params) {
         router.replace(router.asPath)
     }
 
-    function wordSubmitted(word: WordViewModel, baseWord: WordViewModel, data: WordFormData) {
+    function wordSubmitted(word: WordViewModel, baseWord: WordViewModel) {
         setWordFormVisible(false)
-        associateWord(graph, Number.parseInt(router.query.id as string), word.id, wordIndex, data.contextGloss).then(() => {
+        associateWord(graph, Number.parseInt(router.query.id as string), word.id, wordIndex,
+            allWords.find(w => w.index === wordIndex)?.contextGloss).then(() => {
             const targetWord = baseWord !== undefined ? baseWord : word
             if (targetWord.gloss === "" || targetWord.gloss === null) {
                 router.push(Urls.Words.fromWordForm(graph, targetWord))
@@ -418,8 +430,8 @@ export default function CorpusText(params) {
                         return <div key={`line-${segment.start}-${segment.end}-${line.words[0].index}`}>
                             <div className="corpusTextLine">
                                 {line.lineNumber && <span className="corpusTextLineNumber">{line.lineNumber} </span>}
-                                {segmentWords.map((w, index) =>
-                                    <span className="corpusTextWord" key={index}>
+                                {segmentWords.map(w =>
+                                    <div className="corpusTextWord" key={w.index}>
                                         <CorpusTextWordLink word={w} corpusText={corpusText}/>
                                         <br/>
                                         <GlossDropdown
@@ -427,9 +439,23 @@ export default function CorpusText(params) {
                                             word={w}
                                             showDefineWordForm={(text, index) => showWordForm(text, index, 'word')}
                                             showDefineLemmaForm={(text, index) => showWordForm(text, index, 'lemma')}
+                                            showContextGlossForm={setContextGlossIndex}
                                             showTranslationFormAtWord={toggleTranslationForm}/>
-                                        {w.contextGloss && <><br/><span className="contextGloss">{w.contextGloss}</span></>}
-                                    </span>)}
+                                        {editable && contextGlossIndex === w.index
+                                            ? <EtymographForm<ContextGlossParams>
+                                                className="contextGlossForm"
+                                                create={data => updateContextGloss(graph, corpusText.id, data)}
+                                                defaultValues={{index: w.index, contextGloss: w.contextGloss ?? ""}}
+                                                focusTarget="contextGloss"
+                                                submitted={() => {
+                                                    setContextGlossIndex(undefined)
+                                                    void router.replace(router.asPath)
+                                                }}
+                                                cancelled={() => setContextGlossIndex(undefined)}>
+                                                <table><tbody><FormRow id="contextGloss" label="Context gloss" size={16}/></tbody></table>
+                                            </EtymographForm>
+                                            : w.contextGloss && <><br/><span className="contextGloss">{w.contextGloss}</span></>}
+                                    </div>)}
                             </div>
                             {wordIndex >= line.words[0].index && wordIndex <= line.words[line.words.length-1].index &&
                                 wordIndex >= segment.start && wordIndex < segment.end && wordFormVisible &&
@@ -445,7 +471,6 @@ export default function CorpusText(params) {
                                               defaultValues={{
                                                   language: corpusText.language,
                                                   text: predefWord,
-                                                  contextGloss: allWords.find(w => w.index === wordIndex)?.contextGloss,
                                                   syllabographic: corpusText.syllabographic,
                                               }}
                                               languageReadOnly={true}
@@ -454,7 +479,6 @@ export default function CorpusText(params) {
                                               reverseLink={wordFormMode === 'lemma'}
                                               linkTargetText={wordFormMode === 'lemma' ? predefWord : undefined}
                                               forceNewLinkTarget={wordFormMode === 'lemma'}
-                                              showContextGloss={true}
                                               showSyllabographic={true}
                                               cancelled={() => setWordFormVisible(false)}/>
                                 </>

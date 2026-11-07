@@ -182,6 +182,23 @@ class CorpusController {
         corpusText.associateWord(params.index, word, params.contextGloss)
     }
 
+    data class ContextGlossParams(val index: Int, val contextGloss: String = "")
+
+    @PostMapping("/text/{id}/contextGloss")
+    fun updateContextGloss(graph: Graph, @PathVariable id: Int, @RequestBody params: ContextGlossParams) {
+        val corpusText = graph.resolveCorpusText(id)
+        val association = corpusText.words.find { it.index == params.index }
+        if (association != null) {
+            association.contextGloss = params.contextGloss.nullize()
+            return
+        }
+        val corpusWord = corpusText.mapToLines().flatMap { it.corpusWords }.find { it.index == params.index }
+            ?: badRequest("Word index is out of range")
+        val word = corpusWord.wordCandidates?.singleOrNull()
+            ?: badRequest("Define or select a word before editing its context gloss")
+        corpusText.associateWord(params.index, word, params.contextGloss.nullize())
+    }
+
     @PostMapping("/text/{id}/lockAssociations")
     fun lockWordAssociations(graph: Graph, @PathVariable id: Int) {
         val corpusText = graph.resolveCorpusText(id)

@@ -9,6 +9,7 @@ export interface EtymographFormButton {
 }
 
 export interface EtymographFormProps<Data, ResponseData=Data> {
+    className?: string
     defaultValues?: Data
     setEditMode?: (newEditMode: boolean) => void
     focusTarget?: string
@@ -104,7 +105,7 @@ export default function EtymographForm<Data, ResponseData=Data>(props: Etymograp
     const buttons = props.buttons || []
 
     return <EtymographFormContext.Provider value={form}>
-        <form onSubmit={form.onSubmit(saveForm)} onKeyDownCapture={handleKeyDown}>
+        <form className={props.className} onSubmit={form.onSubmit(saveForm)} onKeyDownCapture={handleKeyDown}>
             {props.children}
             <p>
                 <input type="submit" value={isPending ? "Saving…" : props.saveButtonText ?? "Save"}

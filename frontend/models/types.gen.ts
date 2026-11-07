@@ -748,6 +748,11 @@ export type CorpusWordCandidateViewModel = {
     gloss?: string;
 };
 
+export type ContextGlossParams = {
+    index: number;
+    contextGloss?: string;
+};
+
 export type CorpusWordViewModel = {
     index: number;
     text: string;
@@ -2399,6 +2404,23 @@ export type AssociateWordData = {
 };
 
 export type AssociateWordResponses = {
+    /**
+     * OK
+     */
+    200: unknown;
+};
+
+export type UpdateContextGlossData = {
+    body: ContextGlossParams;
+    path: {
+        graph: string;
+        id: number;
+    };
+    query?: never;
+    url: '/{graph}/corpus/text/{id}/contextGloss';
+};
+
+export type UpdateContextGlossResponses = {
     /**
      * OK
      */
