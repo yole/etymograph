@@ -1,10 +1,14 @@
 import {FormEvent, useEffect, useState} from "react";
-import {Button, Group, Modal, Radio, Stack, Text, Textarea, TextInput} from "@mantine/core";
+import {Button, Group, Input, Modal, Radio, Stack, Text} from "@mantine/core";
 import {useForm} from "@mantine/form";
 import {useRouter} from "next/router";
 import {createOpenCompound, updateOpenCompound} from "@/api";
 import WordSearch from "@/components/WordSearch";
 import WordTextView from "@/components/WordTextView";
+import SourceInput from "@/components/SourceInput";
+import FormRow from "@/components/FormRow";
+import FormTextArea from "@/components/FormTextArea";
+import {EtymographFormContext} from "@/components/EtymographForm";
 import {OpenCompoundViewModel, WordViewModel} from "@/models";
 
 interface OpenCompoundModalProps {
@@ -101,10 +105,17 @@ export default function OpenCompoundModal(props: OpenCompoundModalProps) {
                         showSyllabographic={props.headWord.syllabographic}
                     />
                 </>}
-                <TextInput label="Gloss" {...form.getInputProps("gloss")}/>
-                <Textarea label="Full gloss" rows={3} {...form.getInputProps("fullGloss")}/>
-                <TextInput label="Source" {...form.getInputProps("source")}/>
-                <Textarea label="Notes" rows={3} {...form.getInputProps("notes")}/>
+                <EtymographFormContext.Provider value={form}>
+                    <table><tbody>
+                        <FormRow id="gloss" label="Gloss"/>
+                        <FormRow id="fullGloss" label="Full gloss"/>
+                        <SourceInput id="source" label="Source"/>
+                        <tr>
+                            <td><Input.Label htmlFor="notes">Notes:</Input.Label></td>
+                            <td><FormTextArea rows={3} cols={50} id="notes"/></td>
+                        </tr>
+                    </tbody></table>
+                </EtymographFormContext.Provider>
                 {errorText !== "" && <div className="errorText" role="alert">{errorText}</div>}
                 <Group>
                     <Button type="submit" disabled={!props.compound && selectedWordId === null} loading={saving}>

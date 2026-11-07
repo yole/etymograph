@@ -71,7 +71,8 @@ async function renderContent(content: ReactNode, canEdit = true) {
             <GlobalStateContext.Provider value={{
                 languages: [{shortName: "q", name: "Quenya", pos: [], grammaticalCategories: [],
                     wordClasses: [], dictionaries: []}],
-                graphs: [], rules: [], publications: [], inputAssists: {graphemes: []}
+                graphs: [], rules: [], publications: [{id: 1, name: "Reference", refId: "REF"}],
+                inputAssists: {graphemes: []}
             }}>
                 {content}
             </GlobalStateContext.Provider>
@@ -93,7 +94,8 @@ async function selectWord() {
 }
 
 async function fillField(label: string, value: string) {
-    const labelElement = Array.from(document.querySelectorAll("label")).find(l => l.textContent === label)!;
+    const labelElement = Array.from(document.querySelectorAll("label"))
+        .find(l => l.textContent === label || l.textContent === `${label}:`)!;
     const field = document.getElementById(labelElement.htmlFor)!;
     await act(() => {
         const prototype = field.tagName === "TEXTAREA" ? HTMLTextAreaElement.prototype : HTMLInputElement.prototype;
@@ -118,6 +120,13 @@ it("requires a selection and creates a prefix while keeping the displayed word a
     await selectWord();
     await fillField("Gloss", "compound gloss");
     await fillField("Full gloss", "Full compound gloss");
+    await fillField("Source", "RE");
+    const suggestion = document.querySelector<HTMLButtonElement>(".sourceSuggestion")!;
+    expect(suggestion.textContent).toBe("REF");
+    await act(() => { suggestion.dispatchEvent(new MouseEvent("mousedown", {bubbles: true})); });
+    expect(document.querySelector<HTMLInputElement>("#source")!.value).toBe("REF:");
+    expect(document.querySelector(".sourceSuggestion")).toBeNull();
+    expect(postedRequest()).toBeUndefined();
     await fillField("Source", "REF:42");
     await fillField("Notes", "Notes");
     await submit();
@@ -164,7 +173,7 @@ it("edits all four metadata fields while preserving the components and head", as
     await act(() => { document.querySelector<HTMLButtonElement>('[aria-label="Edit open compound"]')!.click(); });
 
     expect(document.querySelector<HTMLInputElement>('input[value="Old gloss"]')).not.toBeNull();
-    expect(document.querySelector<HTMLTextAreaElement>("textarea")!.value).toBe("Old full gloss");
+    expect(document.querySelector<HTMLInputElement>("#fullGloss")!.value).toBe("Old full gloss");
     expect(document.querySelector<HTMLInputElement>('input[value="REF:12"]')).not.toBeNull();
     expect(Array.from(document.querySelectorAll("textarea")).some(field => field.value === "Old notes")).toBe(true);
     expect(document.querySelector('[aria-label="Search"]')).toBeNull();

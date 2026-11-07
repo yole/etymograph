@@ -122,7 +122,7 @@ export default function WordSearch(props: WordSearchProps) {
             <Select label="Language" data={languageOptions} value={props.language ?? null}
                     onChange={(val) => props.onLanguageChange(val ?? "")} searchable={true} allowDeselect={false}/>}
         <TextInput placeholder="Search" aria-label="Search" value={search} onChange={(e) => setSearch(e.currentTarget.value)}/>
-        <ScrollArea.Autosize mah={250} type="auto" viewportRef={scrollViewportRef}>
+        <ScrollArea.Autosize mah={250} type="auto" viewportRef={scrollViewportRef} className="wordPickerResults">
             <Stack gap={0}>
                 {suggestions.length > 0 && <>
                     <div className="wordPickerLabel">Suggested</div>

@@ -24,7 +24,7 @@ export interface EtymographFormProps<Data, ResponseData=Data> {
     saveButtonText?: string
 }
 
-const EtymographFormContext = createContext<any>(null)
+export const EtymographFormContext = createContext<any>(null)
 
 export function useEtymographFormContext() {
     const form = useContext(EtymographFormContext)
