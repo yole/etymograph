@@ -541,7 +541,7 @@ export default function CorpusText(params) {
                                               reverseLink={wordFormMode === 'lemma'}
                                               linkTargetText={wordFormMode === 'lemma' ? predefWord : undefined}
                                               forceNewLinkTarget={wordFormMode === 'lemma'}
-                                              showSyllabographic={true}
+                                              showSyllabographic={corpusText.syllabographic}
                                               cancelled={() => setWordFormVisible(false)}/>
                                 </>
                             }
