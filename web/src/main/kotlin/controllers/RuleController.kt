@@ -464,7 +464,14 @@ class RuleController {
         createUnresolvedEntities: Boolean = false
     ): RuleParseContext =
         RuleParseContext(fromLanguage, toLanguage, createUnresolvedEntities = createUnresolvedEntities) {
-            RuleRef.to(fromLanguage.graph.resolveRule(it))
+            val graph = fromLanguage.graph
+            val rule = if (createUnresolvedEntities) {
+                graph.ruleByName(it) ?: graph.addRule(it, fromLanguage, toLanguage, MorphoRuleLogic.empty())
+            }
+            else {
+                graph.resolveRule(it)
+            }
+            RuleRef.to(rule)
         }
 
     @PostMapping("/{graph}/rule/{id}", consumes = ["application/json"])

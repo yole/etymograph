@@ -106,6 +106,92 @@ class RuleControllerTest {
     }
 
     @Test
+    fun newRuleCreatesUnresolvedRules() {
+        val ruleVM = ruleController.newRule(
+            graph,
+            RuleController.UpdateRuleParameters(
+                "ce-to-q", "ce", "q",
+                "- apply rule 'ce-unresolved'\n- apply rule 'ce-unresolved'",
+                createUnresolvedEntities = true
+            )
+        )
+
+        val unresolved = graph.ruleByName("ce-unresolved")!!
+        assertSame(ce, unresolved.fromLanguage)
+        assertSame(q, unresolved.toLanguage)
+        assertEquals("", unresolved.logic.toEditableText(graph))
+        assertEquals(setOf(unresolved), graph.resolveRule(ruleVM.id).logic.referencedRules())
+        assertEquals(1, graph.allRules().count { it.name == "ce-unresolved" })
+    }
+
+    @Test
+    fun updateRuleCreatesUnresolvedRules() {
+        val rule = graph.addRule("q-test", q, q, MorphoRuleLogic.empty())
+
+        ruleController.updateRule(
+            graph, rule.id,
+            RuleController.UpdateRuleParameters(
+                rule.name, "q", "q", "- apply rule 'q-unresolved'",
+                createUnresolvedEntities = true
+            )
+        )
+
+        val unresolved = graph.ruleByName("q-unresolved")!!
+        assertSame(q, unresolved.fromLanguage)
+        assertSame(q, unresolved.toLanguage)
+        assertEquals(setOf(unresolved), rule.logic.referencedRules())
+    }
+
+    @Test
+    fun newRuleCreatesUnresolvedSoundRule() {
+        val ruleVM = ruleController.newRule(
+            graph,
+            RuleController.UpdateRuleParameters(
+                "q-test", "q", "q", "- apply sound rule 'q-unresolved' to first sound",
+                createUnresolvedEntities = true
+            )
+        )
+
+        val unresolved = graph.ruleByName("q-unresolved")!!
+        assertEquals(setOf(unresolved), graph.resolveRule(ruleVM.id).logic.referencedRules())
+    }
+
+    @Test
+    fun createUnresolvedRulesReusesExistingRule() {
+        val existing = graph.addRule("q-existing", q, q,
+            Rule.parseLogic("- append 's'", RuleParseContext.of(q, q)))
+
+        val ruleVM = ruleController.newRule(
+            graph,
+            RuleController.UpdateRuleParameters(
+                "q-test", "q", "q", "- apply rule 'q-existing'",
+                createUnresolvedEntities = true
+            )
+        )
+
+        assertEquals(setOf(existing), graph.resolveRule(ruleVM.id).logic.referencedRules())
+        assertEquals(" - append 's'", existing.logic.toEditableText(graph))
+        assertEquals(1, graph.allRules().count { it.name == "q-existing" })
+    }
+
+    @Test
+    fun unresolvedRuleRequiresCreateUnresolvedEntities() {
+        val exception = assertThrows(ResponseStatusException::class.java) {
+            ruleController.newRule(
+                graph,
+                RuleController.UpdateRuleParameters(
+                    "q-test", "q", "q", "- apply rule 'q-unresolved'"
+                )
+            )
+        }
+
+        assertEquals(404, exception.body.status)
+        assertEquals("No rule with name q-unresolved", exception.body.detail)
+        assertNull(graph.ruleByName("q-unresolved"))
+        assertNull(graph.ruleByName("q-test"))
+    }
+
+    @Test
     fun newSequence() {
         val rule = graph.addRule("q-gen", q, q,
             MorphoRuleLogic.empty())
