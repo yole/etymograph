@@ -228,7 +228,7 @@ class LeafRuleCondition(
     }
 }
 
-class WordClassCondition(val wordClass: String, negated: Boolean) : RuleCondition(negated) {
+class WordClassCondition(var wordClass: String, negated: Boolean) : RuleCondition(negated) {
     override fun matches(word: Word, trace: RuleTrace?): Boolean {
         return matchClass(word)
     }

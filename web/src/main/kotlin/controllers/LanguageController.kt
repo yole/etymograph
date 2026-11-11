@@ -208,6 +208,45 @@ class LanguageController {
         updateLanguageDetails(language, params)
     }
 
+    data class RenameWordClassValueParams(val oldAbbreviation: String, val newValue: String)
+
+    @PostMapping("/{graph}/language/{lang}/renameWordClassValue", consumes = ["application/json"])
+    fun renameWordClassValue(graph: Graph, @PathVariable lang: String, @RequestBody params: RenameWordClassValueParams) {
+        val language = graph.resolveLanguage(lang)
+        val category = language.wordClasses.find { wc -> wc.values.any { it.abbreviation == params.oldAbbreviation } }
+            ?: badRequest("Unknown word class '${params.oldAbbreviation}'")
+        val valueText = params.newValue.trim()
+        if (valueText.isEmpty() || valueText.any { it == ',' || it == ':' || it == '\n' || it == '\r' }) {
+            badRequest("Enter a single word class value")
+        }
+        val newValue = parseWordCategoryValues(valueText).single()
+        if (newValue.abbreviation.any { it.isWhitespace() }) {
+            badRequest("Word class abbreviation must not contain whitespace")
+        }
+        val otherValues = language.pos + language.wordClasses.flatMap { it.values }
+            .filter { it.abbreviation != params.oldAbbreviation }
+        if (otherValues.any { it.abbreviation.equals(newValue.abbreviation, ignoreCase = true) }) {
+            badRequest("Duplicate word class or part of speech abbreviation '${newValue.abbreviation}'")
+        }
+
+        category.values = category.values.map { if (it.abbreviation == params.oldAbbreviation) newValue else it }
+        for (word in graph.allWords(language)) {
+            if (word.classes.any { it.equals(params.oldAbbreviation, ignoreCase = true) }) {
+                word.classes = word.classes.map {
+                    if (it.equals(params.oldAbbreviation, ignoreCase = true)) newValue.abbreviation else it
+                }
+            }
+        }
+        for (rule in graph.allRules().filter { it.fromLanguage == language }) {
+            val conditions = rule.logic.findLeafConditions {
+                it is WordClassCondition && it.wordClass.equals(params.oldAbbreviation, ignoreCase = true)
+            }
+            for (condition in conditions.filterIsInstance<WordClassCondition>()) {
+                condition.wordClass = newValue.abbreviation
+            }
+        }
+    }
+
     data class CopyPhonemesParams(val fromLang: String = "")
 
     @PostMapping("/{graph}/language/{lang}/copyPhonemes", consumes = ["application/json"])

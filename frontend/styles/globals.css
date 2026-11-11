@@ -50,12 +50,12 @@ code {
   font-weight: bold;
 }
 
-.compoundComponentIcon {
+.hoverColorIcon {
   filter: grayscale(1);
   opacity: 0.5;
 }
 
-.compoundComponentIcon:hover {
+.hoverColorIcon:hover {
   filter: grayscale(0);
   opacity: 1;
 }
@@ -196,6 +196,23 @@ code {
 
 .languageSettings {
   white-space: pre;
+}
+
+.wordClassRenameForm {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.wordClassRenameForm .uiButtonSubmit,
+.wordClassRenameForm .uiButton {
+  margin: 0;
+}
+
+.wordClassRenameForm .errorText {
+  flex-basis: 100%;
 }
 
 .contextGloss {

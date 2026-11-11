@@ -681,6 +681,14 @@ export type UpdateLanguageParameters = {
     accentTypes?: Array<string>;
 };
 
+export type RenameWordClassValueParams = {
+    oldAbbreviation: string;
+    /**
+     * New class name, optionally followed by an abbreviation in parentheses
+     */
+    newValue: string;
+};
+
 export type CopyPhonemesParams = {
     fromLang: string;
 };
@@ -1928,6 +1936,30 @@ export type UpdateLanguageData = {
 };
 
 export type UpdateLanguageResponses = {
+    /**
+     * OK
+     */
+    200: unknown;
+};
+
+export type RenameWordClassValueData = {
+    body: RenameWordClassValueParams;
+    path: {
+        graph: string;
+        lang: string;
+    };
+    query?: never;
+    url: '/{graph}/language/{lang}/renameWordClassValue';
+};
+
+export type RenameWordClassValueErrors = {
+    /**
+     * Unknown class value, invalid new value, or duplicate abbreviation
+     */
+    400: unknown;
+};
+
+export type RenameWordClassValueResponses = {
     /**
      * OK
      */

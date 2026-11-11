@@ -3,7 +3,7 @@ import {
     ContextGlossParams, CorpusTextParams, GenerateParadigmParameters,
     LookupParameters,
     LookupResultViewModel,
-    OpenCompoundParams, OpenCompoundViewModel,
+    OpenCompoundParams, OpenCompoundViewModel, RenameWordClassValueParams,
     SuggestCompoundViewModel, TlhDigImportResult, TranslationParams,
     UpdateLanguageParameters,
     UpdateParadigmParameters, UpdatePhonemeParameters,
@@ -439,6 +439,10 @@ export function addLanguage(graph: string, name: string, shortName: string, reco
 
 export function updateLanguage(graph: string, lang: string, data: UpdateLanguageParameters) {
     return postToBackend(`${graph}/language/${lang}`, data)
+}
+
+export function renameWordClassValue(graph: string, lang: string, data: RenameWordClassValueParams): Promise<Response> {
+    return postToBackend(`${graph}/language/${lang}/renameWordClassValue`, data)
 }
 
 export function addPhoneme(graph: string, lang: string, data: UpdatePhonemeParameters) {

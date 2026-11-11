@@ -184,11 +184,11 @@ export function WordLinkComponent(params: WordLinkProps) {
         }
         {canEdit && <>
             {params.iconActions ? <>
-                {' '}<button type="button" className="inlineButton compoundComponentIcon"
+                {' '}<button type="button" className="inlineButton hoverColorIcon"
                             aria-label="Edit inflected form" title="Edit" onClick={() => setEditMode(!editMode)}>
                     <FontAwesomeIcon icon={faEdit}/>
                 </button>
-                {' '}<button type="button" className="inlineButton compoundComponentIcon"
+                {' '}<button type="button" className="inlineButton hoverColorIcon"
                             aria-label="Delete inflected form" title="Delete" onClick={() => deleteLinkClicked()}>
                     <FontAwesomeIcon icon={faTrash}/>
                 </button>
@@ -279,12 +279,12 @@ function CompoundListComponent(
                     <WordLink word={mc} baseLanguage={word.language} gloss={true}/>
                     {index === m.headIndex && " (head)"}
                     {canEdit && <>
-                        {' '}<button type="button" className="inlineButton compoundComponentIcon" aria-label="Change component"
+                        {' '}<button type="button" className="inlineButton hoverColorIcon" aria-label="Change component"
                                      onClick={() => setReplaceCompoundMember({compoundId: m.compoundId, memberIndex: index})}>
                             <FontAwesomeIcon icon={faEdit}/>
                         </button>
                         {m.components.length > 1 && <>{' '}
-                            <button type="button" className="inlineButton compoundComponentIcon" aria-label="Delete component"
+                            <button type="button" className="inlineButton hoverColorIcon" aria-label="Delete component"
                                     onClick={() => removeCompoundMemberClicked(m.compoundId, index)}>
                                 <FontAwesomeIcon icon={faTrash}/>
                             </button>

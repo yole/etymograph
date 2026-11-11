@@ -91,7 +91,7 @@ it("preserves link metadata and editing actions in the form column", () => {
     expect(cell.textContent).toContain("REF:42");
     expect([...cell.querySelectorAll("button")].map(button => button.getAttribute("aria-label")))
         .toEqual(["Edit inflected form", "Delete inflected form"]);
-    expect(cell.querySelectorAll("button.compoundComponentIcon svg")).toHaveLength(2);
+    expect(cell.querySelectorAll("button.hoverColorIcon svg")).toHaveLength(2);
     expect([...cell.querySelectorAll("button")].map(button => button.textContent)).toEqual(["", ""]);
 });
 

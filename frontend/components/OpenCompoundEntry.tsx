@@ -45,11 +45,11 @@ export default function OpenCompoundEntry({compound, word}: {compound: OpenCompo
         {compound.notes && <> &ndash; {compound.notes}</>}
         <SourceRefs source={compound.source} span={true}/>
         {canEdit && <>
-            {' '}<button type="button" className="inlineButton compoundComponentIcon" aria-label="Edit open compound" title="Edit"
+            {' '}<button type="button" className="inlineButton hoverColorIcon" aria-label="Edit open compound" title="Edit"
                         disabled={deleting} onClick={() => setEditing(true)}>
                 <FontAwesomeIcon icon={faEdit}/>
             </button>
-            {' '}<button type="button" className="inlineButton compoundComponentIcon" aria-label="Delete open compound" title="Delete"
+            {' '}<button type="button" className="inlineButton hoverColorIcon" aria-label="Delete open compound" title="Delete"
                         disabled={deleting} onClick={deleteClicked}>
                 <FontAwesomeIcon icon={faTrash}/>
             </button>

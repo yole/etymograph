@@ -314,11 +314,11 @@ function TranslationView(params: {translation: TranslationViewModel}) {
             <div className="translation">
                 &quot;{t.text}&quot; <SourceRefs source={t.source} span={true}/>
                 {editable && <>
-                    {' '}<button type="button" className="inlineButton compoundComponentIcon" aria-label="Edit translation" title="Edit"
+                    {' '}<button type="button" className="inlineButton hoverColorIcon" aria-label="Edit translation" title="Edit"
                                 onClick={() => setShowTranslationForm(!showTranslationForm)}>
                         <FontAwesomeIcon icon={faEdit}/>
                     </button>
-                    {' '}<button type="button" className="inlineButton compoundComponentIcon" aria-label="Delete translation" title="Delete"
+                    {' '}<button type="button" className="inlineButton hoverColorIcon" aria-label="Delete translation" title="Delete"
                                 onClick={() => deleteTranslationClicked(t.id)}>
                         <FontAwesomeIcon icon={faTrash}/>
                     </button>

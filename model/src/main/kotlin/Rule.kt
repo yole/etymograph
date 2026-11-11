@@ -258,6 +258,16 @@ sealed class RuleLogic {
     abstract fun reverseApply(word: Word, rule: Rule, trace: RuleTrace? = null): List<String>
     abstract fun toEditableText(graph: Graph): String
     abstract fun toSummaryText(graph: Graph): String
+    fun findLeafConditions(predicate: (RuleCondition) -> Boolean): List<RuleCondition> {
+        val branchConditions = (this as? MorphoRuleLogic)?.branches?.map { it.condition } ?: emptyList()
+        val instructions = when (this) {
+            is MorphoRuleLogic -> preInstructions + branches.flatMap { it.instructions }
+            is SpeRuleLogic -> instructions
+        } + postInstructions
+        val instructionConditions = instructions.filterIsInstance<SpeInstruction>().mapNotNull { it.condition }
+        return (branchConditions + instructionConditions).flatMap { it.findLeafConditions(predicate) }
+    }
+
     open fun findConditionForInstruction(instruction: RuleInstruction): RuleCondition? = null
     open fun referencedRules(): Set<Rule> = emptySet()
     abstract fun refersToLangEntity(entity: LangEntity): Boolean

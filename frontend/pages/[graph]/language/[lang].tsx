@@ -15,6 +15,7 @@ import FormCheckbox from "@/components/FormCheckbox";
 import {LanguageViewModel, UpdateLanguageParameters} from "@/models";
 import LanguageNavBar from "@/components/LanguageNavBar";
 import {Urls} from "@/components/Urls";
+import WordClassList from "@/components/WordClassList";
 
 export async function getStaticProps(context) {
     return fetchBackend(context.params.graph, `language/${context.params.lang}`, true)
@@ -124,9 +125,8 @@ export default function LanguageIndex(props) {
                 </>}
                 {lang.wordClasses.trim().length > 0 && <>
                     <h4>Word classes</h4>
-                    <ul>
-                        {lang.wordClasses.split('\n').map(s => <li>{s}</li>)}
-                    </ul>
+                    <WordClassList language={langId}
+                        categories={globalState.languages.find(language => language.shortName === langId)?.wordClasses ?? []}/>
                 </>}
                 {lang.dictionarySettings != null && <>
                     <h3>Dictionary Settings</h3>

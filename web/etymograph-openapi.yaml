@@ -1276,6 +1276,32 @@ paths:
       responses:
         "200":
           description: "OK"
+  /{graph}/language/{lang}/renameWordClassValue:
+    post:
+      summary: "Rename a word class value and update word and rule references in the language"
+      operationId: "renameWordClassValue"
+      parameters:
+        - name: "graph"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+        - name: "lang"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RenameWordClassValueParams"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+        "400":
+          description: "Unknown class value, invalid new value, or duplicate abbreviation"
   /{graph}/consistency/{lang}:
     get:
       summary: "Check data consistency for a language"
@@ -3929,6 +3955,17 @@ components:
           nullable: true
           items:
             type: "string"
+    RenameWordClassValueParams:
+      type: "object"
+      properties:
+        oldAbbreviation:
+          type: "string"
+        newValue:
+          type: "string"
+          description: "New class name, optionally followed by an abbreviation in parentheses"
+      required:
+        - "oldAbbreviation"
+        - "newValue"
     CopyPhonemesParams:
       type: "object"
       properties:
