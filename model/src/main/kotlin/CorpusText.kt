@@ -287,7 +287,7 @@ class CorpusText(
     companion object {
         const val leftHalfBracket = '⸢'
         const val rightHalfBracket = '⸣'
-        val punctuation = charArrayOf('!', ',', '.', '?', ':', ';', '\"', '\'', '(', ')', '|', '·', '〈', '〉')
+        val punctuation = charArrayOf('!', ',', '.', '?', ':', ';', '\"', '\'', '(', ')', '|', '·', '〈', '〉', '–', '¦')
         val sentenceEndPunctuation = charArrayOf('.', '?', '!')
         val leadingPunctuation = charArrayOf('\"', '(', '\'', '〈')
         val innerPunctuation = arrayOf('[', ']', leftHalfBracket, rightHalfBracket, '〈', '〉')
