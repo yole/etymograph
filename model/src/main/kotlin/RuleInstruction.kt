@@ -395,7 +395,7 @@ class InsertInstruction(arg: String, val relIndex: Int, val seekTarget: SeekTarg
 
     override fun toRichText(graph: Graph): RichText {
         val relIndexWord = if (relIndex == -1) "before" else "after"
-        return "insert '$arg' $relIndexWord ${seekTarget.toEditableText()}".richText()
+        return "insert '".rich() + arg.rich(emph = true) + "' $relIndexWord ".rich() + seekTarget.toRichText()
     }
 
     companion object {
